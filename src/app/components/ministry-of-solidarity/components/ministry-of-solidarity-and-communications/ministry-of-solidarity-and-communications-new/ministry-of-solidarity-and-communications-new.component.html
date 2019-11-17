@@ -1,0 +1,122 @@
+
+<app-new-form-layout
+    dir="rtl"
+    (submitClicked) = "onSubmit()"
+    (back) = "onBack()"
+    [pageTitle] = "'وزارة التضامن و الاتصالات'"
+>
+    <ng-template newFormContainer >
+        <form [formGroup] = "ministryOfSolidarityAndCommunicationsForm">
+         
+
+	<mat-form-field appearance="outline">
+	 <mat-label>الاسم</mat-label>
+	 <input matInput formControlName="name"/>
+	 <mat-error *ngIf = "getControls('name').invalid" >
+	  {{ getControls('name')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>العنوان</mat-label>
+	 <input matInput formControlName="address"/>
+	 <mat-error *ngIf = "getControls('address').invalid" >
+	  {{ getControls('address')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>المدير</mat-label>
+	 <input matInput formControlName="manager"/>
+	 <mat-error *ngIf = "getControls('manager').invalid" >
+	  {{ getControls('manager')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>المساحة</mat-label>
+	 <input matInput formControlName="area"/>
+	 <mat-error *ngIf = "getControls('area').invalid" >
+	  {{ getControls('area')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>تليفون</mat-label>
+	 <input matInput formControlName="telephone"/>
+	 <mat-error *ngIf = "getControls('telephone').invalid" >
+	  {{ getControls('telephone')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+         
+
+	<app-material-select appearance="outline"
+	  #ministry 
+	  [options] = "ministrySelectOptions"
+	  formControlName = "ministry"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #unit 
+	  [options] = "unitSelectOptions"
+	  formControlName = "unit"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #governorate 
+	  [options] = "governorateSelectOptions"
+	  formControlName = "governorate"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #center 
+	  [options] = "centerSelectOptions"
+	  formControlName = "center"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #village 
+	  [options] = "villageSelectOptions"
+	  formControlName = "village"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #follower 
+	  [options] = "followerSelectOptions"
+	  formControlName = "follower"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #headquarterType 
+	  [options] = "headquarterTypeSelectOptions"
+	  formControlName = "headquarterType"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #officeType 
+	  [options] = "officeTypeSelectOptions"
+	  formControlName = "officeType"
+	></app-material-select>
+
+        </form>
+
+        <mat-divider></mat-divider>
+
+		<mat-card-actions>
+			<form [formGroup]="attachmentForm" class="form-container">
+                <app-multi-file-upload [service] = "ministryOfSolidarityAndCommunicationsService" [id]="ministryOfSolidarityAndCommunicationsForm.get('id').value"
+                    formControlName = "attachmentFiles">
+                </app-multi-file-upload>
+            </form>
+            <button
+                type="submit"
+                (click)="onSubmit()"
+                [disabled]="ministryOfSolidarityAndCommunicationsForm.invalid"
+                mat-raised-button
+                color = "primary">
+             حفظ
+            </button>
+        </mat-card-actions>
+    </ng-template >
+</app-new-form-layout >
+

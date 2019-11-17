@@ -1,0 +1,98 @@
+
+<app-new-form-layout
+    dir="rtl"
+    (submitClicked) = "onSubmit()"
+    (back) = "onBack()"
+    [pageTitle] = "'الخطه السنويه'"
+>
+    <ng-template newFormContainer >
+        <form [formGroup] = "annualPlanForm">
+         
+
+	<mat-form-field appearance="outline">
+	 <mat-label>السنه التدريبيه</mat-label>
+	 <input matInput
+	  [matDatepicker] = "trainingYearDatepicker"
+	  autocomplete = "off"
+	  formControlName= "trainingYear"/>
+	 <mat-datepicker-toggle
+	   matSuffix
+	   [for]="trainingYearDatepicker"
+	 ></mat-datepicker-toggle>
+	 <mat-datepicker #trainingYearDatepicker></mat-datepicker>
+	 <mat-error *ngIf = "getControls('trainingYear').invalid" >
+	  {{ getControls('trainingYear')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>كود الدوره</mat-label>
+	 <input matInput formControlName="courseCode"/>
+	 <mat-error *ngIf = "getControls('courseCode').invalid" >
+	  {{ getControls('courseCode')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>مسلسل الدوره</mat-label>
+	 <input matInput formControlName="serialSession"/>
+	 <mat-error *ngIf = "getControls('serialSession').invalid" >
+	  {{ getControls('serialSession')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>العدد المرشح</mat-label>
+	 <input matInput formControlName="candidatesNumber"/>
+	 <mat-error *ngIf = "getControls('candidatesNumber').invalid" >
+	  {{ getControls('candidatesNumber')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+         
+
+	<app-material-select appearance="outline"
+	  #majorClassification 
+	  [options] = "majorClassificationSelectOptions"
+	  formControlName = "majorClassification"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #subcategory 
+	  [options] = "subcategorySelectOptions"
+	  formControlName = "subcategory"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #courseDestinationCode 
+	  [options] = "courseDestinationCodeSelectOptions"
+	  formControlName = "courseDestinationCode"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #administrationOrRegion 
+	  [options] = "administrationOrRegionSelectOptions"
+	  formControlName = "administrationOrRegion"
+	></app-material-select>
+
+        </form>
+
+        <mat-divider></mat-divider>
+
+		<mat-card-actions>
+			<form [formGroup]="attachmentForm" class="form-container">
+                <app-multi-file-upload [service] = "annualPlanService" [id]="annualPlanForm.get('id').value"
+                    formControlName = "attachmentFiles">
+                </app-multi-file-upload>
+            </form>
+            <button
+                type="submit"
+                (click)="onSubmit()"
+                [disabled]="annualPlanForm.invalid"
+                mat-raised-button
+                color = "primary">
+             حفظ
+            </button>
+        </mat-card-actions>
+    </ng-template >
+</app-new-form-layout >
+

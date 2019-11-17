@@ -1,0 +1,111 @@
+<div
+    id="dashboard-project"
+    class="page-layout simple right-sidebar"
+    fxLayout="row"
+>
+    <!-- CENTER -->
+    <div class="center" fusePerfectScrollbar>
+        <!-- HEADER -->
+        <div
+            class="header accent p-24 pb-0"
+            fxLayout="column"
+            fxLayoutAlign="space-between"
+        >
+            <div id="welcomeTitleMessage" fxLayout="row" fxLayoutAlign="space-between start">
+                <span
+                    class="mat-display-1 my-0 my-sm-24 welcome-message"
+                    [@animate]="{ value: '*', params: { x: '50px' } }"
+                >
+                    مرحبا بك
+                </span>
+            </div>
+        </div>
+        <!-- / HEADER -->
+        <!-- CONTENT -->
+        <div class="content">
+            <div
+                class="widget-group p-12"
+                fxLayout="row wrap"
+                fxFlex="100"
+                [@animateStagger]="{ value: '50' }"
+            >
+                <!-- WIDGET 1 -->
+                <fuse-widget
+                    *ngFor="let projectWidget of projectWidgets"
+                    [@animate]="{ value: '*', params: { y: '100%' } }"
+                    class="widget"
+                    fxLayout="column"
+                    fxFlex="100"
+                    fxFlex.gt-xs="50"
+                    fxFlex.gt-md="25"
+                    style="max-height: 300px"
+                >
+                    <!-- Front -->
+                    <div
+                        matRipple
+                        class="fuse-widget-front"
+                        style="cursor:pointer"
+                        (click)="subMenu(projectWidget)"
+                    >
+                        <div
+                            class="pl-16 pr-8 py-16 h-52"
+                            fxLayout="row"
+                            fxLayoutAlign="space-between center"
+                        >
+                            <div class="h3">{{ projectWidget.name }}</div>
+
+                            <button
+                                mat-icon-button
+                                fuseWidgetToggle
+                                class="fuse-widget-flip-button"
+                                aria-label="more"
+                            >
+                                <mat-icon>more_vert</mat-icon>
+                            </button>
+                        </div>
+
+                        <div
+                            class="pt-8 pb-32"
+                            fxLayout="column"
+                            fxLayoutAlign="center center"
+                        >
+                            <div
+                                class="font-size-72 line-height-72"
+                                ngClass="{{ projectWidget.class }}"
+                            >
+                                <mat-icon style="font-size:40px;">{{
+                                    projectWidget.icon
+                                }}</mat-icon>
+                            </div>
+                            <div class="h3 secondary-text font-weight-500">
+                                {{ projectWidget.name }}
+                            </div>
+                        </div>
+
+                    </div>
+                    <!-- / Front -->
+                    <!-- Back -->
+                    <div class="fuse-widget-back p-16 pt-32">
+                        <button
+                            mat-icon-button
+                            fuseWidgetToggle
+                            class="fuse-widget-flip-button"
+                            aria-label="Flip widget"
+                        >
+                            <mat-icon class="s-16">close</mat-icon>
+                        </button>
+
+                        <div>
+                            Project Details Project Details Project Details
+                        </div>
+                    </div>
+                    <!-- / Back -->
+                </fuse-widget>
+            </div>
+        </div>
+        <!-- / CONTENT -->
+    </div>
+    <!-- / CENTER -->
+    <!-- SIDEBAR -->
+    <!-- / SIDEBAR -->
+</div>

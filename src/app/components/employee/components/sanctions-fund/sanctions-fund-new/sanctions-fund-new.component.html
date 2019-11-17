@@ -1,0 +1,104 @@
+
+<app-new-form-layout
+    dir="rtl"
+    (submitClicked) = "onSubmit()"
+    (back) = "onBack()"
+    [pageTitle] = "'صندوق الجزاءات'"
+>
+    <ng-template newFormContainer >
+        <form [formGroup] = "sanctionsFundForm">
+         
+
+	<mat-form-field appearance="outline">
+	 <mat-label>كود الموظف</mat-label>
+	 <input matInput formControlName="employeeCode"/>
+	 <mat-error *ngIf = "getControls('employeeCode').invalid" >
+	  {{ getControls('employeeCode')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>تاريخ تقديم الطلب</mat-label>
+	 <input matInput
+	  [matDatepicker] = "demandDateDatepicker"
+	  autocomplete = "off"
+	  formControlName= "demandDate"/>
+	 <mat-datepicker-toggle
+	   matSuffix
+	   [for]="demandDateDatepicker"
+	 ></mat-datepicker-toggle>
+	 <mat-datepicker #demandDateDatepicker></mat-datepicker>
+	 <mat-error *ngIf = "getControls('demandDate').invalid" >
+	  {{ getControls('demandDate')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>تاريخ الوفاة</mat-label>
+	 <input matInput
+	  [matDatepicker] = "deathDateDatepicker"
+	  autocomplete = "off"
+	  formControlName= "deathDate"/>
+	 <mat-datepicker-toggle
+	   matSuffix
+	   [for]="deathDateDatepicker"
+	 ></mat-datepicker-toggle>
+	 <mat-datepicker #deathDateDatepicker></mat-datepicker>
+	 <mat-error *ngIf = "getControls('deathDate').invalid" >
+	  {{ getControls('deathDate')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>المبلغ</mat-label>
+	 <input matInput formControlName="amount"/>
+	 <mat-error *ngIf = "getControls('amount').invalid" >
+	  {{ getControls('amount')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>اسم المتوفي</mat-label>
+	 <input matInput formControlName="dietName" [disableControl]="true" />
+	 <mat-error *ngIf = "getControls('dietName').invalid" >
+	  {{ getControls('dietName')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>اسم المستلم</mat-label>
+	 <input matInput formControlName="receiverName"/>
+	 <mat-error *ngIf = "getControls('receiverName').invalid" >
+	  {{ getControls('receiverName')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+         
+
+	<app-material-select appearance="outline"
+	  #deathCode 
+	  [options] = "deathCodeSelectOptions"
+	  formControlName = "deathCode"
+	></app-material-select>
+
+        </form>
+
+        <mat-divider></mat-divider>
+
+		<mat-card-actions>
+			<form [formGroup]="attachmentForm" class="form-container">
+                <app-multi-file-upload [service] = "sanctionsFundService" [id]="sanctionsFundForm.get('id').value"
+                    formControlName = "attachmentFiles">
+                </app-multi-file-upload>
+            </form>
+            <button
+                type="submit"
+                (click)="onSubmit()"
+                [disabled]="sanctionsFundForm.invalid"
+                mat-raised-button
+                color = "primary">
+             حفظ
+            </button>
+        </mat-card-actions>
+    </ng-template >
+</app-new-form-layout >
+

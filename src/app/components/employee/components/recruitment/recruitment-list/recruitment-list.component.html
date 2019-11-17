@@ -1,0 +1,88 @@
+
+<app-search-list-expansion-panel
+    dir="rtl"
+    [pageTitle] = "'تجنيد'"
+    (beginSearch) = "onBeginSearch()"
+    (create) = "onCreate()"
+>
+    <ng-template searchFormContainer >
+        <form [formGroup] = "searchForm">
+           
+
+	<mat-form-field appearance="outline">
+	 <mat-label>تاريخ نهايه الاعفاء الموقت</mat-label>
+	 <input matInput
+	  [matDatepicker] = "temporaryExemptionDateDatepicker"
+	  autocomplete = "off"
+	  formControlName= "temporaryExemptionDate"/>
+	 <mat-datepicker-toggle
+	   matSuffix
+	   [for]="temporaryExemptionDateDatepicker"
+	 ></mat-datepicker-toggle>
+	 <mat-datepicker #temporaryExemptionDateDatepicker></mat-datepicker>
+	 <mat-error *ngIf = "getControls('temporaryExemptionDate').invalid" >
+	  {{ getControls('temporaryExemptionDate')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>تاريخ دخول الجيش</mat-label>
+	 <input matInput
+	  [matDatepicker] = "entryArmyDateDatepicker"
+	  autocomplete = "off"
+	  formControlName= "entryArmyDate"/>
+	 <mat-datepicker-toggle
+	   matSuffix
+	   [for]="entryArmyDateDatepicker"
+	 ></mat-datepicker-toggle>
+	 <mat-datepicker #entryArmyDateDatepicker></mat-datepicker>
+	 <mat-error *ngIf = "getControls('entryArmyDate').invalid" >
+	  {{ getControls('entryArmyDate')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>تاريخ خروج من الجيش</mat-label>
+	 <input matInput
+	  [matDatepicker] = "departureArmyDateDatepicker"
+	  autocomplete = "off"
+	  formControlName= "departureArmyDate"/>
+	 <mat-datepicker-toggle
+	   matSuffix
+	   [for]="departureArmyDateDatepicker"
+	 ></mat-datepicker-toggle>
+	 <mat-datepicker #departureArmyDateDatepicker></mat-datepicker>
+	 <mat-error *ngIf = "getControls('departureArmyDate').invalid" >
+	  {{ getControls('departureArmyDate')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>كود الموظف</mat-label>
+	 <input matInput formControlName="employeeCode"/>
+	 <mat-error *ngIf = "getControls('employeeCode').invalid" >
+	  {{ getControls('employeeCode')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+           
+
+	<app-material-select appearance="outline"
+	  #positionRecruitment 
+	  [options] = "positionRecruitmentSelectOptions"
+	  formControlName = "positionRecruitment"
+	></app-material-select>
+
+        </form>
+    </ng-template >
+    <ng-template searchResultContainer >
+        <app-grid-control
+            #gridControl
+            [rowDataService] = "getRecruitmentPaginatedSortedFiltered"
+            [columnOptions] = "columnOptions"
+            [gridHeaderOptions] = "gridHeaderOptions"
+            [searchInput] = "searchForm.value"
+            (deleteRow) = "onDeleteClicked($event)"
+        >
+        </app-grid-control>
+    </ng-template>
+</app-search-list-expansion-panel >

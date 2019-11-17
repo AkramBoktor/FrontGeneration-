@@ -1,0 +1,38 @@
+
+<app-search-list-expansion-panel
+    dir="rtl"
+    [pageTitle] = "'استخراج كود الكارت المؤقت للفرع والمناطق'"
+    (beginSearch) = "onBeginSearch()"
+    (create) = "onCreate()"
+>
+    <ng-template searchFormContainer >
+        <form [formGroup] = "searchForm">
+           
+           
+
+	<app-material-select appearance="outline"
+	  #branchCode 
+	  [options] = "branchCodeSelectOptions"
+	  formControlName = "branchCode"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #cardCode 
+	  [options] = "cardCodeSelectOptions"
+	  formControlName = "cardCode"
+	></app-material-select>
+
+        </form>
+    </ng-template >
+    <ng-template searchResultContainer >
+        <app-grid-control
+            #gridControl
+            [rowDataService] = "getExtractionOfTemporaryCardCodePaginatedSortedFiltered"
+            [columnOptions] = "columnOptions"
+            [gridHeaderOptions] = "gridHeaderOptions"
+            [searchInput] = "searchForm.value"
+            (deleteRow) = "onDeleteClicked($event)"
+        >
+        </app-grid-control>
+    </ng-template>
+</app-search-list-expansion-panel >

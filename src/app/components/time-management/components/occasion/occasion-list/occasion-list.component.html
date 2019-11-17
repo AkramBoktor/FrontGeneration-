@@ -1,0 +1,62 @@
+
+<app-search-list-expansion-panel
+    dir="rtl"
+    [pageTitle] = "'الاحداث'"
+    (beginSearch) = "onBeginSearch()"
+    (create) = "onCreate()"
+>
+    <ng-template searchFormContainer >
+        <form [formGroup] = "searchForm">
+           
+
+	<mat-form-field appearance="outline">
+	 <mat-label>كود الموظف</mat-label>
+	 <input matInput formControlName="employeeCode"/>
+	 <mat-error *ngIf = "getControls('employeeCode').invalid" >
+	  {{ getControls('employeeCode')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>تاريخ البدايه</mat-label>
+	 <input matInput
+	  [matDatepicker] = "startDateDatepicker"
+	  autocomplete = "off"
+	  formControlName= "startDate"/>
+	 <mat-datepicker-toggle
+	   matSuffix
+	   [for]="startDateDatepicker"
+	 ></mat-datepicker-toggle>
+	 <mat-datepicker #startDateDatepicker></mat-datepicker>
+	 <mat-error *ngIf = "getControls('startDate').invalid" >
+	  {{ getControls('startDate')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+           
+
+	<app-material-select appearance="outline"
+	  #eventType 
+	  [options] = "eventTypeSelectOptions"
+	  formControlName = "eventType"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #missionIssuer 
+	  [options] = "missionIssuerSelectOptions"
+	  formControlName = "missionIssuer"
+	></app-material-select>
+
+        </form>
+    </ng-template >
+    <ng-template searchResultContainer >
+        <app-grid-control
+            #gridControl
+            [rowDataService] = "getOccasionsPaginatedSortedFiltered"
+            [columnOptions] = "columnOptions"
+            [gridHeaderOptions] = "gridHeaderOptions"
+            [searchInput] = "searchForm.value"
+            (deleteRow) = "onDeleteClicked($event)"
+        >
+        </app-grid-control>
+    </ng-template>
+</app-search-list-expansion-panel >

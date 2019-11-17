@@ -1,0 +1,86 @@
+
+<app-search-list-expansion-panel
+    dir="rtl"
+    [pageTitle] = "'اذن اضافة نقدية لمخزن'"
+    (beginSearch) = "onBeginSearch()"
+    (create) = "onCreate()"
+>
+    <ng-template searchFormContainer >
+        <form [formGroup] = "searchForm">
+           
+
+	<mat-form-field appearance="outline">
+	 <mat-label>كود الموظف</mat-label>
+	 <input matInput formControlName="employeeCode"/>
+	 <mat-error *ngIf = "getControls('employeeCode').invalid" >
+	  {{ getControls('employeeCode')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>رقم الايصال</mat-label>
+	 <input matInput formControlName="receiptNumber"/>
+	 <mat-error *ngIf = "getControls('receiptNumber').invalid" >
+	  {{ getControls('receiptNumber')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>رقم الصنف </mat-label>
+	 <input matInput formControlName="itemNo"/>
+	 <mat-error *ngIf = "getControls('itemNo').invalid" >
+	  {{ getControls('itemNo')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>اسم الصنف</mat-label>
+	 <input matInput formControlName="productName"/>
+	 <mat-error *ngIf = "getControls('productName').invalid" >
+	  {{ getControls('productName')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>( تاريخ الايصال ( فتره من الي</mat-label>
+	 <input matInput
+	  [matDatepicker] = "receiptDateDatepicker"
+	  autocomplete = "off"
+	  formControlName= "receiptDate"/>
+	 <mat-datepicker-toggle
+	   matSuffix
+	   [for]="receiptDateDatepicker"
+	 ></mat-datepicker-toggle>
+	 <mat-datepicker #receiptDateDatepicker></mat-datepicker>
+	 <mat-error *ngIf = "getControls('receiptDate').invalid" >
+	  {{ getControls('receiptDate')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+           
+
+	<app-material-select appearance="outline"
+	  #type 
+	  [options] = "typeSelectOptions"
+	  formControlName = "type"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #condition 
+	  [options] = "conditionSelectOptions"
+	  formControlName = "condition"
+	></app-material-select>
+
+        </form>
+    </ng-template >
+    <ng-template searchResultContainer >
+        <app-grid-control
+            #gridControl
+            [rowDataService] = "getAddCashToAStorePaginatedSortedFiltered"
+            [columnOptions] = "columnOptions"
+            [gridHeaderOptions] = "gridHeaderOptions"
+            [searchInput] = "searchForm.value"
+            (deleteRow) = "onDeleteClicked($event)"
+        >
+        </app-grid-control>
+    </ng-template>
+</app-search-list-expansion-panel >

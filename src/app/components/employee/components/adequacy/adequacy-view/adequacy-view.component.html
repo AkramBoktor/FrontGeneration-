@@ -1,0 +1,78 @@
+
+<mat-card class="form-card">
+      <mat-card-header>
+  
+          <mat-card-title>
+              الكفاية
+          </mat-card-title>
+  
+      </mat-card-header>
+  
+      <mat-card-content>
+  
+        <form [formGroup] = "adequacyForm" class="form-container">
+         
+
+	<mat-form-field appearance="outline">
+	 <mat-label>كود الموظف</mat-label>
+	 <input matInput formControlName="employeeCode" [disableControl]="true" />
+	 <mat-error *ngIf = "getControls('employeeCode').invalid" >
+	  {{ getControls('employeeCode')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label> سنة تقرير الكفاية</mat-label>
+	 <input matInput
+	  [matDatepicker] = "adequacyYearDatepicker"
+	  autocomplete = "off"
+	  formControlName= "adequacyYear"/>
+	 <mat-datepicker-toggle
+	   matSuffix
+	   [for]="adequacyYearDatepicker"
+	 ></mat-datepicker-toggle>
+	 <mat-datepicker #adequacyYearDatepicker></mat-datepicker>
+	 <mat-error *ngIf = "getControls('adequacyYear').invalid" >
+	  {{ getControls('adequacyYear')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>الدرجة</mat-label>
+	 <input matInput formControlName="degree"/>
+	 <mat-error *ngIf = "getControls('degree').invalid" >
+	  {{ getControls('degree')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>اسم الموظف</mat-label>
+	 <input matInput formControlName="employeeName" [disableControl]="true" />
+	 <mat-error *ngIf = "getControls('employeeName').invalid" >
+	  {{ getControls('employeeName')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+         
+
+	<app-material-select appearance="outline"
+	  #overallAppreciation 
+	  [options] = "overallAppreciationSelectOptions"
+	  formControlName = "overallAppreciation"
+	></app-material-select>
+        </form>
+  
+      </mat-card-content >
+  
+      <mat-action-row>
+            <form [formGroup]="attachmentForm" class="form-container">
+                <app-multi-file-upload [service] = "adequacyService" [id]="adequacyForm.get('id').value"
+                    formControlName = "attachmentFiles">
+                </app-multi-file-upload>
+            </form>
+            <button (click) = "onConfirm()" mat-raised-button color = "primary" >
+                غلق
+            </button>
+        </mat-action-row>
+    </mat-card>
+
+    

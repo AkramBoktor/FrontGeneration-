@@ -1,0 +1,248 @@
+
+<app-new-form-layout
+    dir="rtl"
+    (submitClicked) = "onSubmit()"
+    (back) = "onBack()"
+    [pageTitle] = "' البيانات للوثيقه'"
+>
+    <ng-template newFormContainer >
+        <form [formGroup] = "dataForDocumentForm">
+         
+
+	<mat-form-field appearance="outline">
+	 <mat-label>رقم الكتاب</mat-label>
+	 <input matInput formControlName="bookNumber"/>
+	 <mat-error *ngIf = "getControls('bookNumber').invalid" >
+	  {{ getControls('bookNumber')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>عنوان الكتاب</mat-label>
+	 <input matInput formControlName="bookTitle"/>
+	 <mat-error *ngIf = "getControls('bookTitle').invalid" >
+	  {{ getControls('bookTitle')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>وصف الكتاب</mat-label>
+	 <input matInput formControlName="bookDescription"/>
+	 <mat-error *ngIf = "getControls('bookDescription').invalid" >
+	  {{ getControls('bookDescription')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>تاريخ الاضافه</mat-label>
+	 <input matInput
+	  [matDatepicker] = "addtionDateDatepicker"
+	  autocomplete = "off"
+	  formControlName= "addtionDate"/>
+	 <mat-datepicker-toggle
+	   matSuffix
+	   [for]="addtionDateDatepicker"
+	 ></mat-datepicker-toggle>
+	 <mat-datepicker #addtionDateDatepicker></mat-datepicker>
+	 <mat-error *ngIf = "getControls('addtionDate').invalid" >
+	  {{ getControls('addtionDate')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>سعر الوثيقه</mat-label>
+	 <input matInput formControlName="priceDocument"/>
+	 <mat-error *ngIf = "getControls('priceDocument').invalid" >
+	  {{ getControls('priceDocument')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>رقم الجزء</mat-label>
+	 <input matInput formControlName="partNumber"/>
+	 <mat-error *ngIf = "getControls('partNumber').invalid" >
+	  {{ getControls('partNumber')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>عدد صفحات الوثيقه</mat-label>
+	 <input matInput formControlName="documentPagesNumber"/>
+	 <mat-error *ngIf = "getControls('documentPagesNumber').invalid" >
+	  {{ getControls('documentPagesNumber')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>حجم الكتاب</mat-label>
+	 <input matInput formControlName="bookSize"/>
+	 <mat-error *ngIf = "getControls('bookSize').invalid" >
+	  {{ getControls('bookSize')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>بيان الطابعه</mat-label>
+	 <input matInput formControlName="editionStatement"/>
+	 <mat-error *ngIf = "getControls('editionStatement').invalid" >
+	  {{ getControls('editionStatement')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>رقم التصنيف</mat-label>
+	 <input matInput formControlName="classificationNumber"/>
+	 <mat-error *ngIf = "getControls('classificationNumber').invalid" >
+	  {{ getControls('classificationNumber')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>الترقيم الدولى</mat-label>
+	 <input matInput formControlName="internationalNumbering"/>
+	 <mat-error *ngIf = "getControls('internationalNumbering').invalid" >
+	  {{ getControls('internationalNumbering')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>سنه النشر</mat-label>
+	 <input matInput
+	  [matDatepicker] = "publicationYearDatepicker"
+	  autocomplete = "off"
+	  formControlName= "publicationYear"/>
+	 <mat-datepicker-toggle
+	   matSuffix
+	   [for]="publicationYearDatepicker"
+	 ></mat-datepicker-toggle>
+	 <mat-datepicker #publicationYearDatepicker></mat-datepicker>
+	 <mat-error *ngIf = "getControls('publicationYear').invalid" >
+	  {{ getControls('publicationYear')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>كود المؤلف</mat-label>
+	 <input matInput formControlName="authorCode"/>
+	 <mat-error *ngIf = "getControls('authorCode').invalid" >
+	  {{ getControls('authorCode')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>اسم المؤلف</mat-label>
+	 <input matInput formControlName="authorName"/>
+	 <mat-error *ngIf = "getControls('authorName').invalid" >
+	  {{ getControls('authorName')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>كود الموضوع</mat-label>
+	 <input matInput formControlName="subjectCode"/>
+	 <mat-error *ngIf = "getControls('subjectCode').invalid" >
+	  {{ getControls('subjectCode')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>اسم الموضوع</mat-label>
+	 <input matInput formControlName="subjectName"/>
+	 <mat-error *ngIf = "getControls('subjectName').invalid" >
+	  {{ getControls('subjectName')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>كود المكتبه</mat-label>
+	 <input matInput formControlName="libraryCode"/>
+	 <mat-error *ngIf = "getControls('libraryCode').invalid" >
+	  {{ getControls('libraryCode')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>اسم المكتبه</mat-label>
+	 <input matInput formControlName="libraryName"/>
+	 <mat-error *ngIf = "getControls('libraryName').invalid" >
+	  {{ getControls('libraryName')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+         
+
+	<app-material-select appearance="outline"
+	  #bookState 
+	  [options] = "bookStateSelectOptions"
+	  formControlName = "bookState"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #documentType 
+	  [options] = "documentTypeSelectOptions"
+	  formControlName = "documentType"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #sourceDocument 
+	  [options] = "sourceDocumentSelectOptions"
+	  formControlName = "sourceDocument"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #documentStatus 
+	  [options] = "documentStatusSelectOptions"
+	  formControlName = "documentStatus"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #documentLanguage 
+	  [options] = "documentLanguageSelectOptions"
+	  formControlName = "documentLanguage"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #publisherCode 
+	  [options] = "publisherCodeSelectOptions"
+	  formControlName = "publisherCode"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #publicationPlace 
+	  [options] = "publicationPlaceSelectOptions"
+	  formControlName = "publicationPlace"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #insightType 
+	  [options] = "insightTypeSelectOptions"
+	  formControlName = "insightType"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #insightCode 
+	  [options] = "insightCodeSelectOptions"
+	  formControlName = "insightCode"
+	></app-material-select>
+
+        </form>
+
+        <mat-divider></mat-divider>
+
+		<mat-card-actions>
+			<form [formGroup]="attachmentForm" class="form-container">
+                <app-multi-file-upload [service] = "dataForDocumentService" [id]="dataForDocumentForm.get('id').value"
+                    formControlName = "attachmentFiles">
+                </app-multi-file-upload>
+            </form>
+            <button
+                type="submit"
+                (click)="onSubmit()"
+                [disabled]="dataForDocumentForm.invalid"
+                mat-raised-button
+                color = "primary">
+             حفظ
+            </button>
+        </mat-card-actions>
+    </ng-template >
+</app-new-form-layout >
+

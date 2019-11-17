@@ -1,0 +1,122 @@
+
+<app-new-form-layout
+    dir="rtl"
+    (submitClicked) = "onSubmit()"
+    (back) = "onBack()"
+    [pageTitle] = "'بيانات البصمه الخطأ اليومي'"
+>
+    <ng-template newFormContainer >
+        <form [formGroup] = "dailyPrintErrorDataForm">
+         
+
+	<mat-form-field appearance="outline">
+	 <mat-label>تاريخ اليوم </mat-label>
+	 <input matInput
+	  [matDatepicker] = "todayDateDatepicker"
+	  autocomplete = "off"
+	  formControlName= "todayDate"/>
+	 <mat-datepicker-toggle
+	   matSuffix
+	   [for]="todayDateDatepicker"
+	 ></mat-datepicker-toggle>
+	 <mat-datepicker #todayDateDatepicker></mat-datepicker>
+	 <mat-error *ngIf = "getControls('todayDate').invalid" >
+	  {{ getControls('todayDate')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>كود الموظف</mat-label>
+	 <input matInput formControlName="employeeCode"/>
+	 <mat-error *ngIf = "getControls('employeeCode').invalid" >
+	  {{ getControls('employeeCode')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>توقيت الدخول 1</mat-label>
+	 <input matInput
+	  [matDatepicker] = "entryTime1Datepicker"
+	  autocomplete = "off"
+	  formControlName= "entryTime1"/>
+	 <mat-datepicker-toggle
+	   matSuffix
+	   [for]="entryTime1Datepicker"
+	 ></mat-datepicker-toggle>
+	 <mat-datepicker #entryTime1Datepicker></mat-datepicker>
+	 <mat-error *ngIf = "getControls('entryTime1').invalid" >
+	  {{ getControls('entryTime1')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>توقيت الدخول 2</mat-label>
+	 <input matInput
+	  [matDatepicker] = "entryTime2Datepicker"
+	  autocomplete = "off"
+	  formControlName= "entryTime2"/>
+	 <mat-datepicker-toggle
+	   matSuffix
+	   [for]="entryTime2Datepicker"
+	 ></mat-datepicker-toggle>
+	 <mat-datepicker #entryTime2Datepicker></mat-datepicker>
+	 <mat-error *ngIf = "getControls('entryTime2').invalid" >
+	  {{ getControls('entryTime2')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>توقيت الخروج 1</mat-label>
+	 <input matInput
+	  [matDatepicker] = "exitTime1Datepicker"
+	  autocomplete = "off"
+	  formControlName= "exitTime1"/>
+	 <mat-datepicker-toggle
+	   matSuffix
+	   [for]="exitTime1Datepicker"
+	 ></mat-datepicker-toggle>
+	 <mat-datepicker #exitTime1Datepicker></mat-datepicker>
+	 <mat-error *ngIf = "getControls('exitTime1').invalid" >
+	  {{ getControls('exitTime1')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>توقيت الخروج 2</mat-label>
+	 <input matInput
+	  [matDatepicker] = "exitTime2Datepicker"
+	  autocomplete = "off"
+	  formControlName= "exitTime2"/>
+	 <mat-datepicker-toggle
+	   matSuffix
+	   [for]="exitTime2Datepicker"
+	 ></mat-datepicker-toggle>
+	 <mat-datepicker #exitTime2Datepicker></mat-datepicker>
+	 <mat-error *ngIf = "getControls('exitTime2').invalid" >
+	  {{ getControls('exitTime2')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+         
+
+        </form>
+
+        <mat-divider></mat-divider>
+
+		<mat-card-actions>
+			<form [formGroup]="attachmentForm" class="form-container">
+                <app-multi-file-upload [service] = "dailyPrintErrorDataService" [id]="dailyPrintErrorDataForm.get('id').value"
+                    formControlName = "attachmentFiles">
+                </app-multi-file-upload>
+            </form>
+            <button
+                type="submit"
+                (click)="onSubmit()"
+                [disabled]="dailyPrintErrorDataForm.invalid"
+                mat-raised-button
+                color = "primary">
+             حفظ
+            </button>
+        </mat-card-actions>
+    </ng-template >
+</app-new-form-layout >
+

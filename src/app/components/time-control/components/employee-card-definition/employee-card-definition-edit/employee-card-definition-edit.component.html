@@ -1,0 +1,88 @@
+
+<mat-card>
+    <mat-card-header>
+        <mat-card-title>تعريف كارت موظف مبني رئيسي وفروع</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+        <form [formGroup]="employeeCardDefinitionForm" class="form-container">
+          
+
+	<mat-form-field appearance="outline">
+	 <mat-label>كود الموظف</mat-label>
+	 <input matInput formControlName="employeeCode"/>
+	 <mat-error *ngIf = "getControls('employeeCode').invalid" >
+	  {{ getControls('employeeCode')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>الوظيفه</mat-label>
+	 <input matInput formControlName="jobTitle"/>
+	 <mat-error *ngIf = "getControls('jobTitle').invalid" >
+	  {{ getControls('jobTitle')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>تاريخ استلام العمل</mat-label>
+	 <input matInput
+	  [matDatepicker] = "receiptWorkDateDatepicker"
+	  autocomplete = "off"
+	  formControlName= "receiptWorkDate"/>
+	 <mat-datepicker-toggle
+	   matSuffix
+	   [for]="receiptWorkDateDatepicker"
+	 ></mat-datepicker-toggle>
+	 <mat-datepicker #receiptWorkDateDatepicker></mat-datepicker>
+	 <mat-error *ngIf = "getControls('receiptWorkDate').invalid" >
+	  {{ getControls('receiptWorkDate')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+          
+
+	<app-material-select appearance="outline"
+	  #branchCode 
+	  [options] = "branchCodeSelectOptions"
+	  formControlName = "branchCode"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #employeeStatus 
+	  [options] = "employeeStatusSelectOptions"
+	  formControlName = "employeeStatus"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #cardIssuing 
+	  [options] = "cardIssuingSelectOptions"
+	  formControlName = "cardIssuing"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #cardCode 
+	  [options] = "cardCodeSelectOptions"
+	  formControlName = "cardCode"
+	></app-material-select>
+
+        </form>
+    </mat-card-content>
+
+    <mat-divider></mat-divider>
+
+	<mat-card-actions>
+			<form [formGroup]="attachmentForm" class="form-container">
+                <app-multi-file-upload [service] = "employeeCardDefinitionService" [id]="employeeCardDefinitionForm.get('id').value"
+                    formControlName = "attachmentFiles">
+                </app-multi-file-upload>
+            </form>
+            <button
+                color = "primary"
+                type = "submit"
+                (click) = "onSubmit()"
+                [disabled] = "employeeCardDefinitionForm.invalid"
+                mat-raised-button>
+                حفظ
+            </button>
+    </mat-card-actions>
+</mat-card>
+

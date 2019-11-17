@@ -1,0 +1,92 @@
+
+<mat-card>
+    <mat-card-header>
+        <mat-card-title>الخطه السنويه</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+        <form [formGroup]="annualPlanForm" class="form-container">
+          
+
+	<mat-form-field appearance="outline">
+	 <mat-label>السنه التدريبيه</mat-label>
+	 <input matInput
+	  [matDatepicker] = "trainingYearDatepicker"
+	  autocomplete = "off"
+	  formControlName= "trainingYear"/>
+	 <mat-datepicker-toggle
+	   matSuffix
+	   [for]="trainingYearDatepicker"
+	 ></mat-datepicker-toggle>
+	 <mat-datepicker #trainingYearDatepicker></mat-datepicker>
+	 <mat-error *ngIf = "getControls('trainingYear').invalid" >
+	  {{ getControls('trainingYear')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>العدد المرشح</mat-label>
+	 <input matInput formControlName="candidatesNumber"/>
+	 <mat-error *ngIf = "getControls('candidatesNumber').invalid" >
+	  {{ getControls('candidatesNumber')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+          
+
+	<app-material-select appearance="outline"
+	  #majorClassification 
+	  [options] = "majorClassificationSelectOptions"
+	  formControlName = "majorClassification"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #subcategory 
+	  [options] = "subcategorySelectOptions"
+	  formControlName = "subcategory"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #courseCode 
+	  [options] = "courseCodeSelectOptions"
+	  formControlName = "courseCode"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #courseDestinationCode 
+	  [options] = "courseDestinationCodeSelectOptions"
+	  formControlName = "courseDestinationCode"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #serialSession 
+	  [options] = "serialSessionSelectOptions"
+	  formControlName = "serialSession"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #administrationOrRegion 
+	  [options] = "administrationOrRegionSelectOptions"
+	  formControlName = "administrationOrRegion"
+	></app-material-select>
+
+        </form>
+    </mat-card-content>
+
+    <mat-divider></mat-divider>
+
+	<mat-card-actions>
+			<form [formGroup]="attachmentForm" class="form-container">
+                <app-multi-file-upload [service] = "annualPlanService" [id]="annualPlanForm.get('id').value"
+                    formControlName = "attachmentFiles">
+                </app-multi-file-upload>
+            </form>
+            <button
+                color = "primary"
+                type = "submit"
+                (click) = "onSubmit()"
+                [disabled] = "annualPlanForm.invalid"
+                mat-raised-button>
+                حفظ
+            </button>
+    </mat-card-actions>
+</mat-card>
+

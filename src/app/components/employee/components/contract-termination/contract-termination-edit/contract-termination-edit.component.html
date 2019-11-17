@@ -1,0 +1,148 @@
+
+<mat-card>
+    <mat-card-header>
+        <mat-card-title>فسخ التعاقد</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+        <form [formGroup]="contractTerminationForm" class="form-container">
+          
+
+	<mat-form-field appearance="outline">
+	 <mat-label>كود الموظف</mat-label>
+	 <input matInput formControlName="employeeCode"/>
+	 <mat-error *ngIf = "getControls('employeeCode').invalid" >
+	  {{ getControls('employeeCode')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>رقم الفتره</mat-label>
+	 <input matInput formControlName="periodNumber"/>
+	 <mat-error *ngIf = "getControls('periodNumber').invalid" >
+	  {{ getControls('periodNumber')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>تاريخ بدايه الفتره</mat-label>
+	 <input matInput
+	  [matDatepicker] = "periodStartDateDatepicker"
+	  autocomplete = "off"
+	  formControlName= "periodStartDate"/>
+	 <mat-datepicker-toggle
+	   matSuffix
+	   [for]="periodStartDateDatepicker"
+	 ></mat-datepicker-toggle>
+	 <mat-datepicker #periodStartDateDatepicker></mat-datepicker>
+	 <mat-error *ngIf = "getControls('periodStartDate').invalid" >
+	  {{ getControls('periodStartDate')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>قيمة العقد</mat-label>
+	 <input matInput formControlName="contractAmount"/>
+	 <mat-error *ngIf = "getControls('contractAmount').invalid" >
+	  {{ getControls('contractAmount')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>تاريخ الالتحاق بها</mat-label>
+	 <input matInput
+	  [matDatepicker] = "hiringDateDatepicker"
+	  autocomplete = "off"
+	  formControlName= "hiringDate"/>
+	 <mat-datepicker-toggle
+	   matSuffix
+	   [for]="hiringDateDatepicker"
+	 ></mat-datepicker-toggle>
+	 <mat-datepicker #hiringDateDatepicker></mat-datepicker>
+	 <mat-error *ngIf = "getControls('hiringDate').invalid" >
+	  {{ getControls('hiringDate')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>سبب انهاء التعاقد</mat-label>
+	 <input matInput formControlName="terminationReason"/>
+	 <mat-error *ngIf = "getControls('terminationReason').invalid" >
+	  {{ getControls('terminationReason')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>تاريخ انهاء التعاقد</mat-label>
+	 <input matInput
+	  [matDatepicker] = "terminationDateDatepicker"
+	  autocomplete = "off"
+	  formControlName= "terminationDate"/>
+	 <mat-datepicker-toggle
+	   matSuffix
+	   [for]="terminationDateDatepicker"
+	 ></mat-datepicker-toggle>
+	 <mat-datepicker #terminationDateDatepicker></mat-datepicker>
+	 <mat-error *ngIf = "getControls('terminationDate').invalid" >
+	  {{ getControls('terminationDate')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>ملاحظات</mat-label>
+	 <input matInput formControlName="notes"/>
+	 <mat-error *ngIf = "getControls('notes').invalid" >
+	  {{ getControls('notes')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>تاريخ نهايه الفتره</mat-label>
+	 <input matInput
+	  [matDatepicker] = "periodEndDateDatepicker"
+	  autocomplete = "off"
+	  formControlName= "periodEndDate"/>
+	 <mat-datepicker-toggle
+	   matSuffix
+	   [for]="periodEndDateDatepicker"
+	 ></mat-datepicker-toggle>
+	 <mat-datepicker #periodEndDateDatepicker></mat-datepicker>
+	 <mat-error *ngIf = "getControls('periodEndDate').invalid" >
+	  {{ getControls('periodEndDate')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+          
+
+	<app-material-select appearance="outline" [disabled]="true" 
+	  #centralAdministration 
+	  [options] = "centralAdministrationSelectOptions"
+	  formControlName = "centralAdministration"
+	></app-material-select>
+
+	<app-material-select appearance="outline" [disabled]="true" 
+	  #subAdministration 
+	  [options] = "subAdministrationSelectOptions"
+	  formControlName = "subAdministration"
+	></app-material-select>
+
+        </form>
+    </mat-card-content>
+
+    <mat-divider></mat-divider>
+
+	<mat-card-actions>
+			<form [formGroup]="attachmentForm" class="form-container">
+                <app-multi-file-upload [service] = "contractTerminationService" [id]="contractTerminationForm.get('id').value"
+                    formControlName = "attachmentFiles">
+                </app-multi-file-upload>
+            </form>
+            <button
+                color = "primary"
+                type = "submit"
+                (click) = "onSubmit()"
+                [disabled] = "contractTerminationForm.invalid"
+                mat-raised-button>
+                حفظ
+            </button>
+    </mat-card-actions>
+</mat-card>
+

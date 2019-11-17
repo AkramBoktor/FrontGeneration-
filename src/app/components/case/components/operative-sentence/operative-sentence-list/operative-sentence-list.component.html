@@ -1,0 +1,96 @@
+
+<app-search-list-expansion-panel
+    dir="rtl"
+    [pageTitle] = "'منطوق الحكم'"
+    (beginSearch) = "onBeginSearch()"
+    (create) = "onCreate()"
+>
+    <ng-template searchFormContainer >
+        <form [formGroup] = "searchForm">
+           
+
+	<mat-form-field appearance="outline">
+	 <mat-label>رقم الملف</mat-label>
+	 <input matInput formControlName="fileNumber"/>
+	 <mat-error *ngIf = "getControls('fileNumber').invalid" >
+	  {{ getControls('fileNumber')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>اسم الجهة</mat-label>
+	 <input matInput formControlName="entityName"/>
+	 <mat-error *ngIf = "getControls('entityName').invalid" >
+	  {{ getControls('entityName')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>تاريخ الحكم</mat-label>
+	 <input matInput
+	  [matDatepicker] = "judgmentDateDatepicker"
+	  autocomplete = "off"
+	  formControlName= "judgmentDate"/>
+	 <mat-datepicker-toggle
+	   matSuffix
+	   [for]="judgmentDateDatepicker"
+	 ></mat-datepicker-toggle>
+	 <mat-datepicker #judgmentDateDatepicker></mat-datepicker>
+	 <mat-error *ngIf = "getControls('judgmentDate').invalid" >
+	  {{ getControls('judgmentDate')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>بيان</mat-label>
+	 <input matInput formControlName="statement"/>
+	 <mat-error *ngIf = "getControls('statement').invalid" >
+	  {{ getControls('statement')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+           
+
+	<app-material-select appearance="outline"
+	  #branchCode 
+	  [options] = "branchCodeSelectOptions"
+	  formControlName = "branchCode"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #entityType 
+	  [options] = "entityTypeSelectOptions"
+	  formControlName = "entityType"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #entityCode 
+	  [options] = "entityCodeSelectOptions"
+	  formControlName = "entityCode"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #whoIs 
+	  [options] = "whoIsSelectOptions"
+	  formControlName = "whoIs"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #judgmentresult 
+	  [options] = "judgmentresultSelectOptions"
+	  formControlName = "judgmentresult"
+	></app-material-select>
+
+        </form>
+    </ng-template >
+    <ng-template searchResultContainer >
+        <app-grid-control
+            #gridControl
+            [rowDataService] = "getOperativeSentencePaginatedSortedFiltered"
+            [columnOptions] = "columnOptions"
+            [gridHeaderOptions] = "gridHeaderOptions"
+            [searchInput] = "searchForm.value"
+            (deleteRow) = "onDeleteClicked($event)"
+        >
+        </app-grid-control>
+    </ng-template>
+</app-search-list-expansion-panel >

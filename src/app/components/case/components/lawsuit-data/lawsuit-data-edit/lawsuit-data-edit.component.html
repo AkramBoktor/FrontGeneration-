@@ -1,0 +1,174 @@
+
+<mat-card>
+    <mat-card-header>
+        <mat-card-title>بيانات الدعوي</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+        <form [formGroup]="lawsuitDataForm" class="form-container">
+          
+
+	<mat-form-field appearance="outline">
+	 <mat-label>تاريخ استلام المحامي</mat-label>
+	 <input matInput
+	  [matDatepicker] = "lawyerReceiptDateDatepicker"
+	  autocomplete = "off"
+	  formControlName= "lawyerReceiptDate"/>
+	 <mat-datepicker-toggle
+	   matSuffix
+	   [for]="lawyerReceiptDateDatepicker"
+	 ></mat-datepicker-toggle>
+	 <mat-datepicker #lawyerReceiptDateDatepicker></mat-datepicker>
+	 <mat-error *ngIf = "getControls('lawyerReceiptDate').invalid" >
+	  {{ getControls('lawyerReceiptDate')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>كود المحامي</mat-label>
+	 <input matInput formControlName="employeeCode"/>
+	 <mat-error *ngIf = "getControls('employeeCode').invalid" >
+	  {{ getControls('employeeCode')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>تاريخ الوارد</mat-label>
+	 <input matInput
+	  [matDatepicker] = "incomingDateDatepicker"
+	  autocomplete = "off"
+	  formControlName= "incomingDate"/>
+	 <mat-datepicker-toggle
+	   matSuffix
+	   [for]="incomingDateDatepicker"
+	 ></mat-datepicker-toggle>
+	 <mat-datepicker #incomingDateDatepicker></mat-datepicker>
+	 <mat-error *ngIf = "getControls('incomingDate').invalid" >
+	  {{ getControls('incomingDate')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>لسنة</mat-label>
+	 <input matInput
+	  [matDatepicker] = "yearDatepicker"
+	  autocomplete = "off"
+	  formControlName= "year"/>
+	 <mat-datepicker-toggle
+	   matSuffix
+	   [for]="yearDatepicker"
+	 ></mat-datepicker-toggle>
+	 <mat-datepicker #yearDatepicker></mat-datepicker>
+	 <mat-error *ngIf = "getControls('year').invalid" >
+	  {{ getControls('year')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>رقم الملف</mat-label>
+	 <input matInput formControlName="fileNumber"/>
+	 <mat-error *ngIf = "getControls('fileNumber').invalid" >
+	  {{ getControls('fileNumber')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>رقم الدعوي</mat-label>
+	 <input matInput formControlName="lawsuitNumber"/>
+	 <mat-error *ngIf = "getControls('lawsuitNumber').invalid" >
+	  {{ getControls('lawsuitNumber')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>تارخ اول جلسة</mat-label>
+	 <input matInput
+	  [matDatepicker] = "firstSessionDateDatepicker"
+	  autocomplete = "off"
+	  formControlName= "firstSessionDate"/>
+	 <mat-datepicker-toggle
+	   matSuffix
+	   [for]="firstSessionDateDatepicker"
+	 ></mat-datepicker-toggle>
+	 <mat-datepicker #firstSessionDateDatepicker></mat-datepicker>
+	 <mat-error *ngIf = "getControls('firstSessionDate').invalid" >
+	  {{ getControls('firstSessionDate')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+          
+
+	<app-material-select appearance="outline"
+	  #branchCode 
+	  [options] = "branchCodeSelectOptions"
+	  formControlName = "branchCode"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #litigationDegree 
+	  [options] = "litigationDegreeSelectOptions"
+	  formControlName = "litigationDegree"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #chamberType 
+	  [options] = "chamberTypeSelectOptions"
+	  formControlName = "chamberType"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #courtCode 
+	  [options] = "courtCodeSelectOptions"
+	  formControlName = "courtCode"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #issueCode 
+	  [options] = "issueCodeSelectOptions"
+	  formControlName = "issueCode"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #lawsuitPosition 
+	  [options] = "lawsuitPositionSelectOptions"
+	  formControlName = "lawsuitPosition"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #whoIs 
+	  [options] = "whoIsSelectOptions"
+	  formControlName = "whoIs"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #entityCode 
+	  [options] = "entityCodeSelectOptions"
+	  formControlName = "entityCode"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #entityType 
+	  [options] = "entityTypeSelectOptions"
+	  formControlName = "entityType"
+	></app-material-select>
+
+        </form>
+    </mat-card-content>
+
+    <mat-divider></mat-divider>
+
+	<mat-card-actions>
+			<form [formGroup]="attachmentForm" class="form-container">
+                <app-multi-file-upload [service] = "lawsuitDataService" [id]="lawsuitDataForm.get('id').value"
+                    formControlName = "attachmentFiles">
+                </app-multi-file-upload>
+            </form>
+            <button
+                color = "primary"
+                type = "submit"
+                (click) = "onSubmit()"
+                [disabled] = "lawsuitDataForm.invalid"
+                mat-raised-button>
+                حفظ
+            </button>
+    </mat-card-actions>
+</mat-card>
+

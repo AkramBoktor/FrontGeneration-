@@ -1,0 +1,48 @@
+
+<app-search-list-expansion-panel
+    dir="rtl"
+    [pageTitle] = "'المنشأة'"
+    (beginSearch) = "onBeginSearch()"
+    (create) = "onCreate()"
+>
+    <ng-template searchFormContainer >
+        <form [formGroup] = "searchForm">
+           
+
+	<mat-form-field appearance="outline">
+	 <mat-label>رقم المنشأة</mat-label>
+	 <input matInput formControlName="organizationNumber"/>
+	 <mat-error *ngIf = "getControls('organizationNumber').invalid" >
+	  {{ getControls('organizationNumber')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>اسم الموظف</mat-label>
+	 <input matInput formControlName="organizationName"/>
+	 <mat-error *ngIf = "getControls('organizationName').invalid" >
+	  {{ getControls('organizationName')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+           
+
+	<app-material-select appearance="outline"
+	  #sector 
+	  [options] = "sectorSelectOptions"
+	  formControlName = "sector"
+	></app-material-select>
+
+        </form>
+    </ng-template >
+    <ng-template searchResultContainer >
+        <app-grid-control
+            #gridControl
+            [rowDataService] = "getOrganizationsPaginatedSortedFiltered"
+            [columnOptions] = "columnOptions"
+            [gridHeaderOptions] = "gridHeaderOptions"
+            [searchInput] = "searchForm.value"
+            (deleteRow) = "onDeleteClicked($event)"
+        >
+        </app-grid-control>
+    </ng-template>
+</app-search-list-expansion-panel >

@@ -1,0 +1,208 @@
+
+<app-search-list-expansion-panel
+    dir="rtl"
+    [pageTitle] = "'التحقيقات الداخليه'"
+    (beginSearch) = "onBeginSearch()"
+    (create) = "onCreate()"
+>
+    <ng-template searchFormContainer >
+        <form [formGroup] = "searchForm">
+           
+
+	<mat-form-field appearance="outline">
+	 <mat-label>رقم ملف التحقيق</mat-label>
+	 <input matInput formControlName="fileNumber"/>
+	 <mat-error *ngIf = "getControls('fileNumber').invalid" >
+	  {{ getControls('fileNumber')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>تاريخ الاحاله للتحقيق</mat-label>
+	 <input matInput
+	  [matDatepicker] = "investigatedReferralDateDatepicker"
+	  autocomplete = "off"
+	  formControlName= "investigatedReferralDate"/>
+	 <mat-datepicker-toggle
+	   matSuffix
+	   [for]="investigatedReferralDateDatepicker"
+	 ></mat-datepicker-toggle>
+	 <mat-datepicker #investigatedReferralDateDatepicker></mat-datepicker>
+	 <mat-error *ngIf = "getControls('investigatedReferralDate').invalid" >
+	  {{ getControls('investigatedReferralDate')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>كود المحامي</mat-label>
+	 <input matInput formControlName="lawyerCode"/>
+	 <mat-error *ngIf = "getControls('lawyerCode').invalid" >
+	  {{ getControls('lawyerCode')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>تاريخ احالة المذكره لادارة التحقيقات</mat-label>
+	 <input matInput
+	  [matDatepicker] = "referralInvestigationsDateDatepicker"
+	  autocomplete = "off"
+	  formControlName= "referralInvestigationsDate"/>
+	 <mat-datepicker-toggle
+	   matSuffix
+	   [for]="referralInvestigationsDateDatepicker"
+	 ></mat-datepicker-toggle>
+	 <mat-datepicker #referralInvestigationsDateDatepicker></mat-datepicker>
+	 <mat-error *ngIf = "getControls('referralInvestigationsDate').invalid" >
+	  {{ getControls('referralInvestigationsDate')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>تاريخ استلام المحامي للملف</mat-label>
+	 <input matInput
+	  [matDatepicker] = "attorneyReceiptDateDatepicker"
+	  autocomplete = "off"
+	  formControlName= "attorneyReceiptDate"/>
+	 <mat-datepicker-toggle
+	   matSuffix
+	   [for]="attorneyReceiptDateDatepicker"
+	 ></mat-datepicker-toggle>
+	 <mat-datepicker #attorneyReceiptDateDatepicker></mat-datepicker>
+	 <mat-error *ngIf = "getControls('attorneyReceiptDate').invalid" >
+	  {{ getControls('attorneyReceiptDate')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>تاريخ انتهاء مذكرة التحقيق</mat-label>
+	 <input matInput
+	  [matDatepicker] = "investigationDocumentExpiryDateDatepicker"
+	  autocomplete = "off"
+	  formControlName= "investigationDocumentExpiryDate"/>
+	 <mat-datepicker-toggle
+	   matSuffix
+	   [for]="investigationDocumentExpiryDateDatepicker"
+	 ></mat-datepicker-toggle>
+	 <mat-datepicker #investigationDocumentExpiryDateDatepicker></mat-datepicker>
+	 <mat-error *ngIf = "getControls('investigationDocumentExpiryDate').invalid" >
+	  {{ getControls('investigationDocumentExpiryDate')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>تاريخ موافقة السلطة المختصة</mat-label>
+	 <input matInput
+	  [matDatepicker] = "competentAuthorityDateDatepicker"
+	  autocomplete = "off"
+	  formControlName= "competentAuthorityDate"/>
+	 <mat-datepicker-toggle
+	   matSuffix
+	   [for]="competentAuthorityDateDatepicker"
+	 ></mat-datepicker-toggle>
+	 <mat-datepicker #competentAuthorityDateDatepicker></mat-datepicker>
+	 <mat-error *ngIf = "getControls('competentAuthorityDate').invalid" >
+	  {{ getControls('competentAuthorityDate')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>تاريخ موافاة الجهاز المركزي بالتحقيق</mat-label>
+	 <input matInput
+	  [matDatepicker] = "centralAgencyInvestigationSubmittedDateDatepicker"
+	  autocomplete = "off"
+	  formControlName= "centralAgencyInvestigationSubmittedDate"/>
+	 <mat-datepicker-toggle
+	   matSuffix
+	   [for]="centralAgencyInvestigationSubmittedDateDatepicker"
+	 ></mat-datepicker-toggle>
+	 <mat-datepicker #centralAgencyInvestigationSubmittedDateDatepicker></mat-datepicker>
+	 <mat-error *ngIf = "getControls('centralAgencyInvestigationSubmittedDate').invalid" >
+	  {{ getControls('centralAgencyInvestigationSubmittedDate')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>تاريخ الرد من الجهاز المركزي</mat-label>
+	 <input matInput
+	  [matDatepicker] = "centralAgencyReplyDateDatepicker"
+	  autocomplete = "off"
+	  formControlName= "centralAgencyReplyDate"/>
+	 <mat-datepicker-toggle
+	   matSuffix
+	   [for]="centralAgencyReplyDateDatepicker"
+	 ></mat-datepicker-toggle>
+	 <mat-datepicker #centralAgencyReplyDateDatepicker></mat-datepicker>
+	 <mat-error *ngIf = "getControls('centralAgencyReplyDate').invalid" >
+	  {{ getControls('centralAgencyReplyDate')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>تاريخ حفظ الملف</mat-label>
+	 <input matInput
+	  [matDatepicker] = "savedFileDateDatepicker"
+	  autocomplete = "off"
+	  formControlName= "savedFileDate"/>
+	 <mat-datepicker-toggle
+	   matSuffix
+	   [for]="savedFileDateDatepicker"
+	 ></mat-datepicker-toggle>
+	 <mat-datepicker #savedFileDateDatepicker></mat-datepicker>
+	 <mat-error *ngIf = "getControls('savedFileDate').invalid" >
+	  {{ getControls('savedFileDate')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>كود الموظف</mat-label>
+	 <input matInput formControlName="employeeCode"/>
+	 <mat-error *ngIf = "getControls('employeeCode').invalid" >
+	  {{ getControls('employeeCode')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+           
+
+	<app-material-select appearance="outline"
+	  #branchCode 
+	  [options] = "branchCodeSelectOptions"
+	  formControlName = "branchCode"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #actionCode 
+	  [options] = "actionCodeSelectOptions"
+	  formControlName = "actionCode"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #referralFrom 
+	  [options] = "referralFromSelectOptions"
+	  formControlName = "referralFrom"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #violationCode 
+	  [options] = "violationCodeSelectOptions"
+	  formControlName = "violationCode"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #category 
+	  [options] = "categorySelectOptions"
+	  formControlName = "category"
+	></app-material-select>
+
+        </form>
+    </ng-template >
+    <ng-template searchResultContainer >
+        <app-grid-control
+            #gridControl
+            [rowDataService] = "getInternalInvestigationsPaginatedSortedFiltered"
+            [columnOptions] = "columnOptions"
+            [gridHeaderOptions] = "gridHeaderOptions"
+            [searchInput] = "searchForm.value"
+            (deleteRow) = "onDeleteClicked($event)"
+        >
+        </app-grid-control>
+    </ng-template>
+</app-search-list-expansion-panel >

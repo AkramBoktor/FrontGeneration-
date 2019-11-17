@@ -1,0 +1,48 @@
+
+<mat-card class="form-card">
+      <mat-card-header>
+  
+          <mat-card-title>
+              نوع الوظيفة الخارجية
+          </mat-card-title>
+  
+      </mat-card-header>
+  
+      <mat-card-content>
+  
+        <form [formGroup] = "externalJobTypeForm" class="form-container">
+         
+
+	<mat-form-field appearance="outline">
+	 <mat-label>كود الوظيفة الخارجية</mat-label>
+	 <input matInput formControlName="eexternaljobcode"/>
+	 <mat-error *ngIf = "getControls('eexternaljobcode').invalid" >
+	  {{ getControls('eexternaljobcode')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>اسم الوظيفة الخارجية</mat-label>
+	 <input matInput formControlName="externaljobname"/>
+	 <mat-error *ngIf = "getControls('externaljobname').invalid" >
+	  {{ getControls('externaljobname')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+         
+        </form>
+  
+      </mat-card-content >
+  
+      <mat-action-row>
+            <form [formGroup]="attachmentForm" class="form-container">
+                <app-multi-file-upload [service] = "externalJobTypeService" [id]="externalJobTypeForm.get('id').value"
+                    formControlName = "attachmentFiles">
+                </app-multi-file-upload>
+            </form>
+            <button (click) = "onConfirm()" mat-raised-button color = "primary" >
+                غلق
+            </button>
+        </mat-action-row>
+    </mat-card>
+
+    

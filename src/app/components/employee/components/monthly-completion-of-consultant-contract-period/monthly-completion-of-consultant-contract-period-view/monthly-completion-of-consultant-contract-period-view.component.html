@@ -1,0 +1,124 @@
+
+<mat-card class="form-card">
+      <mat-card-header>
+  
+          <mat-card-title>
+               مقرر الانجاز الشهري  لفتره تعاقد الاستشاري
+          </mat-card-title>
+  
+      </mat-card-header>
+  
+      <mat-card-content>
+  
+        <form [formGroup] = "monthlyCompletionOfConsultantContractPeriodForm" class="form-container">
+         
+
+	<mat-form-field appearance="outline">
+	 <mat-label>كود الموظف</mat-label>
+	 <input matInput formControlName="employeeCode"/>
+	 <mat-error *ngIf = "getControls('employeeCode').invalid" >
+	  {{ getControls('employeeCode')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>عدد مرات الحضور</mat-label>
+	 <input matInput formControlName="attendeesNumber"/>
+	 <mat-error *ngIf = "getControls('attendeesNumber').invalid" >
+	  {{ getControls('attendeesNumber')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>فتره رقم</mat-label>
+	 <input matInput formControlName="periodNumber"/>
+	 <mat-error *ngIf = "getControls('periodNumber').invalid" >
+	  {{ getControls('periodNumber')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>تاريخ البدايه</mat-label>
+	 <input matInput
+	 [disableControl]="true" 
+	  [matDatepicker] = "startDateDatepicker"
+	  autocomplete = "off"
+	  formControlName= "startDate"/>
+	 <mat-datepicker-toggle
+	   matSuffix
+	   [for]="startDateDatepicker"
+	 ></mat-datepicker-toggle>
+	 <mat-datepicker #startDateDatepicker></mat-datepicker>
+	 <mat-error *ngIf = "getControls('startDate').invalid" >
+	  {{ getControls('startDate')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>قيمة العقد</mat-label>
+	 <input matInput formControlName="contractAmount" [disableControl]="true" />
+	 <mat-error *ngIf = "getControls('contractAmount').invalid" >
+	  {{ getControls('contractAmount')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>تاريخ النهايه</mat-label>
+	 <input matInput
+	 [disableControl]="true" 
+	  [matDatepicker] = "endDateDatepicker"
+	  autocomplete = "off"
+	  formControlName= "endDate"/>
+	 <mat-datepicker-toggle
+	   matSuffix
+	   [for]="endDateDatepicker"
+	 ></mat-datepicker-toggle>
+	 <mat-datepicker #endDateDatepicker></mat-datepicker>
+	 <mat-error *ngIf = "getControls('endDate').invalid" >
+	  {{ getControls('endDate')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>مده الفتره</mat-label>
+	 <input matInput formControlName="period" [disableControl]="true" />
+	 <mat-error *ngIf = "getControls('period').invalid" >
+	  {{ getControls('period')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+         
+
+	<app-material-select appearance="outline" [disabled]="true" 
+	  #centralAdministration 
+	  [options] = "centralAdministrationSelectOptions"
+	  formControlName = "centralAdministration"
+	></app-material-select>
+
+	<app-material-select appearance="outline" [disabled]="true" 
+	  #subAdministration 
+	  [options] = "subAdministrationSelectOptions"
+	  formControlName = "subAdministration"
+	></app-material-select>
+
+	<app-material-select appearance="outline" [disabled]="true" 
+	  #jobTitle 
+	  [options] = "jobTitleSelectOptions"
+	  formControlName = "jobTitle"
+	></app-material-select>
+        </form>
+  
+      </mat-card-content >
+  
+      <mat-action-row>
+            <form [formGroup]="attachmentForm" class="form-container">
+                <app-multi-file-upload [service] = "monthlyCompletionOfConsultantContractPeriodService" [id]="monthlyCompletionOfConsultantContractPeriodForm.get('id').value"
+                    formControlName = "attachmentFiles">
+                </app-multi-file-upload>
+            </form>
+            <button (click) = "onConfirm()" mat-raised-button color = "primary" >
+                غلق
+            </button>
+        </mat-action-row>
+    </mat-card>
+
+    

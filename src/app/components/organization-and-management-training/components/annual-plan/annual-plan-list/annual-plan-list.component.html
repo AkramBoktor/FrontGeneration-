@@ -1,0 +1,90 @@
+
+<app-search-list-expansion-panel
+    dir="rtl"
+    [pageTitle] = "'الخطه السنويه'"
+    (beginSearch) = "onBeginSearch()"
+    (create) = "onCreate()"
+>
+    <ng-template searchFormContainer >
+        <form [formGroup] = "searchForm">
+           
+
+	<mat-form-field appearance="outline">
+	 <mat-label>السنه التدريبيه</mat-label>
+	 <input matInput
+	  [matDatepicker] = "trainingYearDatepicker"
+	  autocomplete = "off"
+	  formControlName= "trainingYear"/>
+	 <mat-datepicker-toggle
+	   matSuffix
+	   [for]="trainingYearDatepicker"
+	 ></mat-datepicker-toggle>
+	 <mat-datepicker #trainingYearDatepicker></mat-datepicker>
+	 <mat-error *ngIf = "getControls('trainingYear').invalid" >
+	  {{ getControls('trainingYear')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>كود الدوره</mat-label>
+	 <input matInput formControlName="courseCode"/>
+	 <mat-error *ngIf = "getControls('courseCode').invalid" >
+	  {{ getControls('courseCode')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>مسلسل الدوره</mat-label>
+	 <input matInput formControlName="serialSession"/>
+	 <mat-error *ngIf = "getControls('serialSession').invalid" >
+	  {{ getControls('serialSession')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>العدد المرشح</mat-label>
+	 <input matInput formControlName="candidatesNumber"/>
+	 <mat-error *ngIf = "getControls('candidatesNumber').invalid" >
+	  {{ getControls('candidatesNumber')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+           
+
+	<app-material-select appearance="outline"
+	  #majorClassification 
+	  [options] = "majorClassificationSelectOptions"
+	  formControlName = "majorClassification"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #subcategory 
+	  [options] = "subcategorySelectOptions"
+	  formControlName = "subcategory"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #courseDestinationCode 
+	  [options] = "courseDestinationCodeSelectOptions"
+	  formControlName = "courseDestinationCode"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #administrationOrRegion 
+	  [options] = "administrationOrRegionSelectOptions"
+	  formControlName = "administrationOrRegion"
+	></app-material-select>
+
+        </form>
+    </ng-template >
+    <ng-template searchResultContainer >
+        <app-grid-control
+            #gridControl
+            [rowDataService] = "getAnnualPlansPaginatedSortedFiltered"
+            [columnOptions] = "columnOptions"
+            [gridHeaderOptions] = "gridHeaderOptions"
+            [searchInput] = "searchForm.value"
+            (deleteRow) = "onDeleteClicked($event)"
+        >
+        </app-grid-control>
+    </ng-template>
+</app-search-list-expansion-panel >

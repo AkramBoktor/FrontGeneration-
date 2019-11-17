@@ -1,0 +1,150 @@
+
+<app-new-form-layout
+    dir="rtl"
+    (submitClicked) = "onSubmit()"
+    (back) = "onBack()"
+    [pageTitle] = "'الحدث'"
+>
+    <ng-template newFormContainer >
+        <form [formGroup] = "occasionForm">
+         
+
+	<mat-form-field appearance="outline">
+	 <mat-label>كود الموظف</mat-label>
+	 <input matInput formControlName="employeeCode"/>
+	 <mat-error *ngIf = "getControls('employeeCode').invalid" >
+	  {{ getControls('employeeCode')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>تاريخ البدايه</mat-label>
+	 <input matInput
+	  [matDatepicker] = "startDateDatepicker"
+	  autocomplete = "off"
+	  formControlName= "startDate"/>
+	 <mat-datepicker-toggle
+	   matSuffix
+	   [for]="startDateDatepicker"
+	 ></mat-datepicker-toggle>
+	 <mat-datepicker #startDateDatepicker></mat-datepicker>
+	 <mat-error *ngIf = "getControls('startDate').invalid" >
+	  {{ getControls('startDate')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>وقت البدايه</mat-label>
+	 <input matInput
+	  [matDatepicker] = "startTimeDatepicker"
+	  autocomplete = "off"
+	  formControlName= "startTime"/>
+	 <mat-datepicker-toggle
+	   matSuffix
+	   [for]="startTimeDatepicker"
+	 ></mat-datepicker-toggle>
+	 <mat-datepicker #startTimeDatepicker></mat-datepicker>
+	 <mat-error *ngIf = "getControls('startTime').invalid" >
+	  {{ getControls('startTime')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>تاريخ النهايه</mat-label>
+	 <input matInput
+	  [matDatepicker] = "expiryDateDatepicker"
+	  autocomplete = "off"
+	  formControlName= "expiryDate"/>
+	 <mat-datepicker-toggle
+	   matSuffix
+	   [for]="expiryDateDatepicker"
+	 ></mat-datepicker-toggle>
+	 <mat-datepicker #expiryDateDatepicker></mat-datepicker>
+	 <mat-error *ngIf = "getControls('expiryDate').invalid" >
+	  {{ getControls('expiryDate')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>وقت النهايه</mat-label>
+	 <input matInput
+	  [matDatepicker] = "endTimeDatepicker"
+	  autocomplete = "off"
+	  formControlName= "endTime"/>
+	 <mat-datepicker-toggle
+	   matSuffix
+	   [for]="endTimeDatepicker"
+	 ></mat-datepicker-toggle>
+	 <mat-datepicker #endTimeDatepicker></mat-datepicker>
+	 <mat-error *ngIf = "getControls('endTime').invalid" >
+	  {{ getControls('endTime')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>الغرض من المأمورية</mat-label>
+	 <input matInput formControlName="missionPurpose"/>
+	 <mat-error *ngIf = "getControls('missionPurpose').invalid" >
+	  {{ getControls('missionPurpose')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>رقم الموظف المبدل</mat-label>
+	 <input matInput formControlName="exchangedEmployeeNumber"/>
+	 <mat-error *ngIf = "getControls('exchangedEmployeeNumber').invalid" >
+	  {{ getControls('exchangedEmployeeNumber')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>تاريخ الراحة</mat-label>
+	 <input matInput
+	  [matDatepicker] = "restDateDatepicker"
+	  autocomplete = "off"
+	  formControlName= "restDate"/>
+	 <mat-datepicker-toggle
+	   matSuffix
+	   [for]="restDateDatepicker"
+	 ></mat-datepicker-toggle>
+	 <mat-datepicker #restDateDatepicker></mat-datepicker>
+	 <mat-error *ngIf = "getControls('restDate').invalid" >
+	  {{ getControls('restDate')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+         
+
+	<app-material-select appearance="outline"
+	  #eventType 
+	  [options] = "eventTypeSelectOptions"
+	  formControlName = "eventType"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #missionIssuer 
+	  [options] = "missionIssuerSelectOptions"
+	  formControlName = "missionIssuer"
+	></app-material-select>
+
+        </form>
+
+        <mat-divider></mat-divider>
+
+		<mat-card-actions>
+			<form [formGroup]="attachmentForm" class="form-container">
+                <app-multi-file-upload [service] = "occasionService" [id]="occasionForm.get('id').value"
+                    formControlName = "attachmentFiles">
+                </app-multi-file-upload>
+            </form>
+            <button
+                type="submit"
+                (click)="onSubmit()"
+                [disabled]="occasionForm.invalid"
+                mat-raised-button
+                color = "primary">
+             حفظ
+            </button>
+        </mat-card-actions>
+    </ng-template >
+</app-new-form-layout >
+

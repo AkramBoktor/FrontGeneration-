@@ -1,0 +1,58 @@
+
+<app-search-list-expansion-panel
+    dir="rtl"
+    [pageTitle] = "'بيانات مخزن'"
+    (beginSearch) = "onBeginSearch()"
+    (create) = "onCreate()"
+>
+    <ng-template searchFormContainer >
+        <form [formGroup] = "searchForm">
+           
+
+	<mat-form-field appearance="outline">
+	 <mat-label>رقم المخزن   </mat-label>
+	 <input matInput formControlName="storeNumber"/>
+	 <mat-error *ngIf = "getControls('storeNumber').invalid" >
+	  {{ getControls('storeNumber')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>اسم المخزن   </mat-label>
+	 <input matInput formControlName="storeName"/>
+	 <mat-error *ngIf = "getControls('storeName').invalid" >
+	  {{ getControls('storeName')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>امين المخزن </mat-label>
+	 <input matInput formControlName="storekeeper"/>
+	 <mat-error *ngIf = "getControls('storekeeper').invalid" >
+	  {{ getControls('storekeeper')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label> عنوان المخزن</mat-label>
+	 <input matInput formControlName="storeAddress"/>
+	 <mat-error *ngIf = "getControls('storeAddress').invalid" >
+	  {{ getControls('storeAddress')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+           
+
+        </form>
+    </ng-template >
+    <ng-template searchResultContainer >
+        <app-grid-control
+            #gridControl
+            [rowDataService] = "getDataStorePaginatedSortedFiltered"
+            [columnOptions] = "columnOptions"
+            [gridHeaderOptions] = "gridHeaderOptions"
+            [searchInput] = "searchForm.value"
+            (deleteRow) = "onDeleteClicked($event)"
+        >
+        </app-grid-control>
+    </ng-template>
+</app-search-list-expansion-panel >

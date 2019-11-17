@@ -1,0 +1,66 @@
+{
+    "inputObject": [
+        {
+            "field":"id",
+            "type": "number",
+			"validators":[
+				"required"
+            ],
+            "visible": false
+        },
+        {
+			"label": "أسم الموظف",
+            "field":"name",
+            "type": "string",
+			"validators":[
+				"minLength(3)",
+				"maxLength(15)",
+				"required"
+            ],
+            "default":"'Default Name'"
+        },
+        {
+			"label": "التليفون",
+            "field":"phone",
+            "type": "string",
+			"validators":[
+				"required"
+            ]
+        },
+        {
+			"label": "البلد",
+            "field":"country",
+            "type": "string"
+        },
+        {
+			"label": "المدينة",
+            "field":"city",
+            "type": "string"
+        },
+        {
+			"label": "الشارع",
+            "field":"street",
+            "type": "string"
+        },
+        {
+			"label": "اللللللل",
+            "field":"position",
+            "type": "string",
+			"showInList": false,
+			"showInSearch":false
+        },
+        {
+			"label": "المستوي",
+            "field":"level",
+            "type": "string"
+        },
+        {
+			"label": "الصورة",
+            "field":"path",
+            "type": "string",
+			"showInList": false
+        }
+    ],
+	"pageTitle": "'الموظفين'",
+    "url": "http://localhost:50382/api/employees"
+}

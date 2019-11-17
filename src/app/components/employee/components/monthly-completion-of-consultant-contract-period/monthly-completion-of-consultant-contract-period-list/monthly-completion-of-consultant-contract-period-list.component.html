@@ -1,0 +1,116 @@
+
+<app-search-list-expansion-panel
+    dir="rtl"
+    [pageTitle] = "' مقرر الانجاز الشهري  لفتره تعاقد الاستشاري'"
+    (beginSearch) = "onBeginSearch()"
+    (create) = "onCreate()"
+>
+    <ng-template searchFormContainer >
+        <form [formGroup] = "searchForm">
+           
+
+	<mat-form-field appearance="outline">
+	 <mat-label>كود الموظف</mat-label>
+	 <input matInput formControlName="employeeCode"/>
+	 <mat-error *ngIf = "getControls('employeeCode').invalid" >
+	  {{ getControls('employeeCode')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>عدد مرات الحضور</mat-label>
+	 <input matInput formControlName="attendeesNumber"/>
+	 <mat-error *ngIf = "getControls('attendeesNumber').invalid" >
+	  {{ getControls('attendeesNumber')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>فتره رقم</mat-label>
+	 <input matInput formControlName="periodNumber"/>
+	 <mat-error *ngIf = "getControls('periodNumber').invalid" >
+	  {{ getControls('periodNumber')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>تاريخ البدايه</mat-label>
+	 <input matInput
+	  [matDatepicker] = "startDateDatepicker"
+	  autocomplete = "off"
+	  formControlName= "startDate"/>
+	 <mat-datepicker-toggle
+	   matSuffix
+	   [for]="startDateDatepicker"
+	 ></mat-datepicker-toggle>
+	 <mat-datepicker #startDateDatepicker></mat-datepicker>
+	 <mat-error *ngIf = "getControls('startDate').invalid" >
+	  {{ getControls('startDate')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>قيمة العقد</mat-label>
+	 <input matInput formControlName="contractAmount"/>
+	 <mat-error *ngIf = "getControls('contractAmount').invalid" >
+	  {{ getControls('contractAmount')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>تاريخ النهايه</mat-label>
+	 <input matInput
+	  [matDatepicker] = "endDateDatepicker"
+	  autocomplete = "off"
+	  formControlName= "endDate"/>
+	 <mat-datepicker-toggle
+	   matSuffix
+	   [for]="endDateDatepicker"
+	 ></mat-datepicker-toggle>
+	 <mat-datepicker #endDateDatepicker></mat-datepicker>
+	 <mat-error *ngIf = "getControls('endDate').invalid" >
+	  {{ getControls('endDate')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>مده الفتره</mat-label>
+	 <input matInput formControlName="period"/>
+	 <mat-error *ngIf = "getControls('period').invalid" >
+	  {{ getControls('period')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+           
+
+	<app-material-select appearance="outline"
+	  #centralAdministration 
+	  [options] = "centralAdministrationSelectOptions"
+	  formControlName = "centralAdministration"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #subAdministration 
+	  [options] = "subAdministrationSelectOptions"
+	  formControlName = "subAdministration"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #jobTitle 
+	  [options] = "jobTitleSelectOptions"
+	  formControlName = "jobTitle"
+	></app-material-select>
+
+        </form>
+    </ng-template >
+    <ng-template searchResultContainer >
+        <app-grid-control
+            #gridControl
+            [rowDataService] = "getMonthlyCompletionOfConsultantContractPeriodPaginatedSortedFiltered"
+            [columnOptions] = "columnOptions"
+            [gridHeaderOptions] = "gridHeaderOptions"
+            [searchInput] = "searchForm.value"
+            (deleteRow) = "onDeleteClicked($event)"
+        >
+        </app-grid-control>
+    </ng-template>
+</app-search-list-expansion-panel >

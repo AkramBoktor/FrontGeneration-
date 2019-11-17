@@ -1,0 +1,56 @@
+
+<app-search-list-expansion-panel
+    dir="rtl"
+    [pageTitle] = "'حالات الموظف'"
+    (beginSearch) = "onBeginSearch()"
+    (create) = "onCreate()"
+>
+    <ng-template searchFormContainer >
+        <form [formGroup] = "searchForm">
+           
+
+	<mat-form-field appearance="outline">
+	 <mat-label>كود الموظف</mat-label>
+	 <input matInput formControlName="employeeCode"/>
+	 <mat-error *ngIf = "getControls('employeeCode').invalid" >
+	  {{ getControls('employeeCode')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>تاريخ بداية الحالة</mat-label>
+	 <input matInput
+	  [matDatepicker] = "statusStartDateDatepicker"
+	  autocomplete = "off"
+	  formControlName= "statusStartDate"/>
+	 <mat-datepicker-toggle
+	   matSuffix
+	   [for]="statusStartDateDatepicker"
+	 ></mat-datepicker-toggle>
+	 <mat-datepicker #statusStartDateDatepicker></mat-datepicker>
+	 <mat-error *ngIf = "getControls('statusStartDate').invalid" >
+	  {{ getControls('statusStartDate')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+           
+
+	<app-material-select appearance="outline"
+	  #status 
+	  [options] = "statusSelectOptions"
+	  formControlName = "status"
+	></app-material-select>
+
+        </form>
+    </ng-template >
+    <ng-template searchResultContainer >
+        <app-grid-control
+            #gridControl
+            [rowDataService] = "getEmployeesStatusPaginatedSortedFiltered"
+            [columnOptions] = "columnOptions"
+            [gridHeaderOptions] = "gridHeaderOptions"
+            [searchInput] = "searchForm.value"
+            (deleteRow) = "onDeleteClicked($event)"
+        >
+        </app-grid-control>
+    </ng-template>
+</app-search-list-expansion-panel >

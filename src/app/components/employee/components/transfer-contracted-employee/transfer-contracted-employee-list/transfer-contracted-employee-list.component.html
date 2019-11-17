@@ -1,0 +1,160 @@
+
+<app-search-list-expansion-panel
+    dir="rtl"
+    [pageTitle] = "'نقل موظف متعاقد من اداره لاداره'"
+    (beginSearch) = "onBeginSearch()"
+    (create) = "onCreate()"
+>
+    <ng-template searchFormContainer >
+        <form [formGroup] = "searchForm">
+           
+
+	<mat-form-field appearance="outline">
+	 <mat-label>كود الموظف</mat-label>
+	 <input matInput formControlName="employeeCode"/>
+	 <mat-error *ngIf = "getControls('employeeCode').invalid" >
+	  {{ getControls('employeeCode')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>رقم الفتره</mat-label>
+	 <input matInput formControlName="periodNumber"/>
+	 <mat-error *ngIf = "getControls('periodNumber').invalid" >
+	  {{ getControls('periodNumber')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>تاريخ بدايه الفتره</mat-label>
+	 <input matInput
+	  [matDatepicker] = "periodStartDateDatepicker"
+	  autocomplete = "off"
+	  formControlName= "periodStartDate"/>
+	 <mat-datepicker-toggle
+	   matSuffix
+	   [for]="periodStartDateDatepicker"
+	 ></mat-datepicker-toggle>
+	 <mat-datepicker #periodStartDateDatepicker></mat-datepicker>
+	 <mat-error *ngIf = "getControls('periodStartDate').invalid" >
+	  {{ getControls('periodStartDate')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>تاريخ نهايه الفتره</mat-label>
+	 <input matInput
+	  [matDatepicker] = "periodEndDateDatepicker"
+	  autocomplete = "off"
+	  formControlName= "periodEndDate"/>
+	 <mat-datepicker-toggle
+	   matSuffix
+	   [for]="periodEndDateDatepicker"
+	 ></mat-datepicker-toggle>
+	 <mat-datepicker #periodEndDateDatepicker></mat-datepicker>
+	 <mat-error *ngIf = "getControls('periodEndDate').invalid" >
+	  {{ getControls('periodEndDate')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>تاريخ الالتحاق يها</mat-label>
+	 <input matInput
+	  [matDatepicker] = "hiringDateDatepicker"
+	  autocomplete = "off"
+	  formControlName= "hiringDate"/>
+	 <mat-datepicker-toggle
+	   matSuffix
+	   [for]="hiringDateDatepicker"
+	 ></mat-datepicker-toggle>
+	 <mat-datepicker #hiringDateDatepicker></mat-datepicker>
+	 <mat-error *ngIf = "getControls('hiringDate').invalid" >
+	  {{ getControls('hiringDate')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>تاريخ النقل</mat-label>
+	 <input matInput
+	  [matDatepicker] = "transferDateDatepicker"
+	  autocomplete = "off"
+	  formControlName= "transferDate"/>
+	 <mat-datepicker-toggle
+	   matSuffix
+	   [for]="transferDateDatepicker"
+	 ></mat-datepicker-toggle>
+	 <mat-datepicker #transferDateDatepicker></mat-datepicker>
+	 <mat-error *ngIf = "getControls('transferDate').invalid" >
+	  {{ getControls('transferDate')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>تاريخ امر التنفيذ</mat-label>
+	 <input matInput
+	  [matDatepicker] = "executionOrderDateDatepicker"
+	  autocomplete = "off"
+	  formControlName= "executionOrderDate"/>
+	 <mat-datepicker-toggle
+	   matSuffix
+	   [for]="executionOrderDateDatepicker"
+	 ></mat-datepicker-toggle>
+	 <mat-datepicker #executionOrderDateDatepicker></mat-datepicker>
+	 <mat-error *ngIf = "getControls('executionOrderDate').invalid" >
+	  {{ getControls('executionOrderDate')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>رقم امر التنفيذ</mat-label>
+	 <input matInput formControlName="executionOrderNumber"/>
+	 <mat-error *ngIf = "getControls('executionOrderNumber').invalid" >
+	  {{ getControls('executionOrderNumber')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+           
+
+	<app-material-select appearance="outline"
+	  #jobTitle 
+	  [options] = "jobTitleSelectOptions"
+	  formControlName = "jobTitle"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #fromCentralAdministration 
+	  [options] = "fromCentralAdministrationSelectOptions"
+	  formControlName = "fromCentralAdministration"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #fromSubAdministration 
+	  [options] = "fromSubAdministrationSelectOptions"
+	  formControlName = "fromSubAdministration"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #toCentralAdministration 
+	  [options] = "toCentralAdministrationSelectOptions"
+	  formControlName = "toCentralAdministration"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #toSubAdministration 
+	  [options] = "toSubAdministrationSelectOptions"
+	  formControlName = "toSubAdministration"
+	></app-material-select>
+
+        </form>
+    </ng-template >
+    <ng-template searchResultContainer >
+        <app-grid-control
+            #gridControl
+            [rowDataService] = "getTransferContractedEmployeePaginatedSortedFiltered"
+            [columnOptions] = "columnOptions"
+            [gridHeaderOptions] = "gridHeaderOptions"
+            [searchInput] = "searchForm.value"
+            (deleteRow) = "onDeleteClicked($event)"
+        >
+        </app-grid-control>
+    </ng-template>
+</app-search-list-expansion-panel >

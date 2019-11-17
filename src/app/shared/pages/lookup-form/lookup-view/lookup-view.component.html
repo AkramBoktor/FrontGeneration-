@@ -1,0 +1,37 @@
+<mat-card>
+    <mat-card-header>
+        <mat-card-title>{{ "عرض " + lookupLabel }}</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+        <form [formGroup]="lookupForm">
+            <div class="row">
+                <mat-form-field appearance="outline" class="column1">
+                    <mat-label>كود {{ lookupLabel }}</mat-label>
+                    <input matInput formControlName="code" />
+                    <mat-error *ngIf="getControls('code').invalid">
+                        {{
+                            getControls("code")
+                                | getErrorMessages: errorMessages
+                        }}
+                    </mat-error>
+                </mat-form-field>
+
+                <mat-form-field appearance="outline" class="column3">
+                    <mat-label>أسم {{ lookupLabel }}</mat-label>
+                    <input matInput formControlName="name" />
+                    <mat-error *ngIf="getControls('name').invalid">
+                        {{
+                            getControls("name")
+                                | getErrorMessages: errorMessages
+                        }}
+                    </mat-error>
+                </mat-form-field>
+            </div>
+        </form>
+    </mat-card-content>
+    <mat-action-row>
+        <button type="submit" (click)="onConfirm()" [disabled]="lookupForm.invalid" mat-raised-button color="primary">
+            غلق
+        </button>
+    </mat-action-row>
+</mat-card>

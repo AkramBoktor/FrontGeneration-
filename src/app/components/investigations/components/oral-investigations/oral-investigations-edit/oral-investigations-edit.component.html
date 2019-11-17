@@ -1,0 +1,122 @@
+
+<mat-card>
+    <mat-card-header>
+        <mat-card-title>التحقيقات الشفوية</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+        <form [formGroup]="oralInvestigationsForm" class="form-container">
+          
+
+	<mat-form-field appearance="outline">
+	 <mat-label>رقم ملف التحقيق</mat-label>
+	 <input matInput formControlName="investigationFileNumber"/>
+	 <mat-error *ngIf = "getControls('investigationFileNumber').invalid" >
+	  {{ getControls('investigationFileNumber')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>رقم موقع العقوبة (المحامي)</mat-label>
+	 <input matInput formControlName="lawyerPenaltyCode"/>
+	 <mat-error *ngIf = "getControls('lawyerPenaltyCode').invalid" >
+	  {{ getControls('lawyerPenaltyCode')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>تاريخ توقيع العقوبة</mat-label>
+	 <input matInput
+	  [matDatepicker] = "punishmentDateDatepicker"
+	  autocomplete = "off"
+	  formControlName= "punishmentDate"/>
+	 <mat-datepicker-toggle
+	   matSuffix
+	   [for]="punishmentDateDatepicker"
+	 ></mat-datepicker-toggle>
+	 <mat-datepicker #punishmentDateDatepicker></mat-datepicker>
+	 <mat-error *ngIf = "getControls('punishmentDate').invalid" >
+	  {{ getControls('punishmentDate')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>رقم الامر التنفيذي</mat-label>
+	 <input matInput formControlName="executiveOrderNumber"/>
+	 <mat-error *ngIf = "getControls('executiveOrderNumber').invalid" >
+	  {{ getControls('executiveOrderNumber')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>تاريخ صدور الامر التنفيذي</mat-label>
+	 <input matInput
+	  [matDatepicker] = "issuanceExecutiveOrderDateDatepicker"
+	  autocomplete = "off"
+	  formControlName= "issuanceExecutiveOrderDate"/>
+	 <mat-datepicker-toggle
+	   matSuffix
+	   [for]="issuanceExecutiveOrderDateDatepicker"
+	 ></mat-datepicker-toggle>
+	 <mat-datepicker #issuanceExecutiveOrderDateDatepicker></mat-datepicker>
+	 <mat-error *ngIf = "getControls('issuanceExecutiveOrderDate').invalid" >
+	  {{ getControls('issuanceExecutiveOrderDate')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>كود الموظف</mat-label>
+	 <input matInput formControlName="employeeCode"/>
+	 <mat-error *ngIf = "getControls('employeeCode').invalid" >
+	  {{ getControls('employeeCode')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>اسم الموظف</mat-label>
+	 <input matInput formControlName="employeeName" [disableControl]="true" />
+	 <mat-error *ngIf = "getControls('employeeName').invalid" >
+	  {{ getControls('employeeName')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+          
+
+	<app-material-select appearance="outline"
+	  #branchCode 
+	  [options] = "branchCodeSelectOptions"
+	  formControlName = "branchCode"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #violationCode 
+	  [options] = "violationCodeSelectOptions"
+	  formControlName = "violationCode"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #punishment 
+	  [options] = "punishmentSelectOptions"
+	  formControlName = "punishment"
+	></app-material-select>
+
+        </form>
+    </mat-card-content>
+
+    <mat-divider></mat-divider>
+
+	<mat-card-actions>
+			<form [formGroup]="attachmentForm" class="form-container">
+                <app-multi-file-upload [service] = "oralInvestigationsService" [id]="oralInvestigationsForm.get('id').value"
+                    formControlName = "attachmentFiles">
+                </app-multi-file-upload>
+            </form>
+            <button
+                color = "primary"
+                type = "submit"
+                (click) = "onSubmit()"
+                [disabled] = "oralInvestigationsForm.invalid"
+                mat-raised-button>
+                حفظ
+            </button>
+    </mat-card-actions>
+</mat-card>
+

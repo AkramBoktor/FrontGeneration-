@@ -1,0 +1,104 @@
+
+<app-new-form-layout
+    dir="rtl"
+    (submitClicked) = "onSubmit()"
+    (back) = "onBack()"
+    [pageTitle] = "'منطوق الحكم'"
+>
+    <ng-template newFormContainer >
+        <form [formGroup] = "operativeSentenceForm">
+         
+
+	<mat-form-field appearance="outline">
+	 <mat-label>رقم الملف</mat-label>
+	 <input matInput formControlName="fileNumber"/>
+	 <mat-error *ngIf = "getControls('fileNumber').invalid" >
+	  {{ getControls('fileNumber')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>اسم الجهة</mat-label>
+	 <input matInput formControlName="entityName" [disableControl]="true" />
+	 <mat-error *ngIf = "getControls('entityName').invalid" >
+	  {{ getControls('entityName')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>تاريخ الحكم</mat-label>
+	 <input matInput
+	  [matDatepicker] = "judgmentDateDatepicker"
+	  autocomplete = "off"
+	  formControlName= "judgmentDate"/>
+	 <mat-datepicker-toggle
+	   matSuffix
+	   [for]="judgmentDateDatepicker"
+	 ></mat-datepicker-toggle>
+	 <mat-datepicker #judgmentDateDatepicker></mat-datepicker>
+	 <mat-error *ngIf = "getControls('judgmentDate').invalid" >
+	  {{ getControls('judgmentDate')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>بيان</mat-label>
+	 <input matInput formControlName="statement"/>
+	 <mat-error *ngIf = "getControls('statement').invalid" >
+	  {{ getControls('statement')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+         
+
+	<app-material-select appearance="outline" [disabled]="true" 
+	  #branchCode 
+	  [options] = "branchCodeSelectOptions"
+	  formControlName = "branchCode"
+	></app-material-select>
+
+	<app-material-select appearance="outline" [disabled]="true" 
+	  #entityType 
+	  [options] = "entityTypeSelectOptions"
+	  formControlName = "entityType"
+	></app-material-select>
+
+	<app-material-select appearance="outline" [disabled]="true" 
+	  #entityCode 
+	  [options] = "entityCodeSelectOptions"
+	  formControlName = "entityCode"
+	></app-material-select>
+
+	<app-material-select appearance="outline" [disabled]="true" 
+	  #whoIs 
+	  [options] = "whoIsSelectOptions"
+	  formControlName = "whoIs"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #judgmentresult 
+	  [options] = "judgmentresultSelectOptions"
+	  formControlName = "judgmentresult"
+	></app-material-select>
+
+        </form>
+
+        <mat-divider></mat-divider>
+
+		<mat-card-actions>
+			<form [formGroup]="attachmentForm" class="form-container">
+                <app-multi-file-upload [service] = "operativeSentenceService" [id]="operativeSentenceForm.get('id').value"
+                    formControlName = "attachmentFiles">
+                </app-multi-file-upload>
+            </form>
+            <button
+                type="submit"
+                (click)="onSubmit()"
+                [disabled]="operativeSentenceForm.invalid"
+                mat-raised-button
+                color = "primary">
+             حفظ
+            </button>
+        </mat-card-actions>
+    </ng-template >
+</app-new-form-layout >
+

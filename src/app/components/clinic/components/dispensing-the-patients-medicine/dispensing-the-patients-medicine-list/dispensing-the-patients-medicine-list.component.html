@@ -1,0 +1,66 @@
+
+<app-search-list-expansion-panel
+    dir="rtl"
+    [pageTitle] = "'صرف ادويه المرض'"
+    (beginSearch) = "onBeginSearch()"
+    (create) = "onCreate()"
+>
+    <ng-template searchFormContainer >
+        <form [formGroup] = "searchForm">
+           
+
+	<mat-form-field appearance="outline">
+	 <mat-label>تاريخ الصرف</mat-label>
+	 <input matInput
+	  [matDatepicker] = "dateDatepicker"
+	  autocomplete = "off"
+	  formControlName= "date"/>
+	 <mat-datepicker-toggle
+	   matSuffix
+	   [for]="dateDatepicker"
+	 ></mat-datepicker-toggle>
+	 <mat-datepicker #dateDatepicker></mat-datepicker>
+	 <mat-error *ngIf = "getControls('date').invalid" >
+	  {{ getControls('date')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>الدواء المصروف</mat-label>
+	 <input matInput formControlName="drugCode"/>
+	 <mat-error *ngIf = "getControls('drugCode').invalid" >
+	  {{ getControls('drugCode')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>كود الموظف الطبيب</mat-label>
+	 <input matInput formControlName="doctorCode"/>
+	 <mat-error *ngIf = "getControls('doctorCode').invalid" >
+	  {{ getControls('doctorCode')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>كود الموظف المريض</mat-label>
+	 <input matInput formControlName="patientCode"/>
+	 <mat-error *ngIf = "getControls('patientCode').invalid" >
+	  {{ getControls('patientCode')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+           
+
+        </form>
+    </ng-template >
+    <ng-template searchResultContainer >
+        <app-grid-control
+            #gridControl
+            [rowDataService] = "getDispensingThePatientsMedicinePaginatedSortedFiltered"
+            [columnOptions] = "columnOptions"
+            [gridHeaderOptions] = "gridHeaderOptions"
+            [searchInput] = "searchForm.value"
+            (deleteRow) = "onDeleteClicked($event)"
+        >
+        </app-grid-control>
+    </ng-template>
+</app-search-list-expansion-panel >

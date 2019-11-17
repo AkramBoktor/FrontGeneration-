@@ -1,0 +1,100 @@
+
+<app-search-list-expansion-panel
+    dir="rtl"
+    [pageTitle] = "'حساب اجازات السادة المتعاقدين'"
+    (beginSearch) = "onBeginSearch()"
+    (create) = "onCreate()"
+>
+    <ng-template searchFormContainer >
+        <form [formGroup] = "searchForm">
+           
+
+	<mat-form-field appearance="outline">
+	 <mat-label>كود الموظف</mat-label>
+	 <input matInput formControlName="employeeCode"/>
+	 <mat-error *ngIf = "getControls('employeeCode').invalid" >
+	  {{ getControls('employeeCode')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>اسم الموظف</mat-label>
+	 <input matInput formControlName="employeeName"/>
+	 <mat-error *ngIf = "getControls('employeeName').invalid" >
+	  {{ getControls('employeeName')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>من تاريخ</mat-label>
+	 <input matInput
+	  [matDatepicker] = "fromDateDatepicker"
+	  autocomplete = "off"
+	  formControlName= "fromDate"/>
+	 <mat-datepicker-toggle
+	   matSuffix
+	   [for]="fromDateDatepicker"
+	 ></mat-datepicker-toggle>
+	 <mat-datepicker #fromDateDatepicker></mat-datepicker>
+	 <mat-error *ngIf = "getControls('fromDate').invalid" >
+	  {{ getControls('fromDate')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>الي تاريخ </mat-label>
+	 <input matInput
+	  [matDatepicker] = "toDateDatepicker"
+	  autocomplete = "off"
+	  formControlName= "toDate"/>
+	 <mat-datepicker-toggle
+	   matSuffix
+	   [for]="toDateDatepicker"
+	 ></mat-datepicker-toggle>
+	 <mat-datepicker #toDateDatepicker></mat-datepicker>
+	 <mat-error *ngIf = "getControls('toDate').invalid" >
+	  {{ getControls('toDate')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>تصريح</mat-label>
+	 <input matInput formControlName="permission"/>
+	 <mat-error *ngIf = "getControls('permission').invalid" >
+	  {{ getControls('permission')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+           
+
+	<app-material-select appearance="outline"
+	  #centralAdministration 
+	  [options] = "centralAdministrationSelectOptions"
+	  formControlName = "centralAdministration"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #subAdministration 
+	  [options] = "subAdministrationSelectOptions"
+	  formControlName = "subAdministration"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #vacationsType 
+	  [options] = "vacationsTypeSelectOptions"
+	  formControlName = "vacationsType"
+	></app-material-select>
+
+        </form>
+    </ng-template >
+    <ng-template searchResultContainer >
+        <app-grid-control
+            #gridControl
+            [rowDataService] = "getVacationsContractPaginatedSortedFiltered"
+            [columnOptions] = "columnOptions"
+            [gridHeaderOptions] = "gridHeaderOptions"
+            [searchInput] = "searchForm.value"
+            (deleteRow) = "onDeleteClicked($event)"
+        >
+        </app-grid-control>
+    </ng-template>
+</app-search-list-expansion-panel >

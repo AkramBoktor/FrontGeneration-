@@ -1,0 +1,116 @@
+
+<app-search-list-expansion-panel
+    dir="rtl"
+    [pageTitle] = "'التحقيقات الشفوية'"
+    (beginSearch) = "onBeginSearch()"
+    (create) = "onCreate()"
+>
+    <ng-template searchFormContainer >
+        <form [formGroup] = "searchForm">
+           
+
+	<mat-form-field appearance="outline">
+	 <mat-label>رقم ملف التحقيق</mat-label>
+	 <input matInput formControlName="investigationFileNumber"/>
+	 <mat-error *ngIf = "getControls('investigationFileNumber').invalid" >
+	  {{ getControls('investigationFileNumber')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>رقم موقع العقوبة (المحامي)</mat-label>
+	 <input matInput formControlName="lawyerPenaltyCode"/>
+	 <mat-error *ngIf = "getControls('lawyerPenaltyCode').invalid" >
+	  {{ getControls('lawyerPenaltyCode')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>تاريخ توقيع العقوبة</mat-label>
+	 <input matInput
+	  [matDatepicker] = "punishmentDateDatepicker"
+	  autocomplete = "off"
+	  formControlName= "punishmentDate"/>
+	 <mat-datepicker-toggle
+	   matSuffix
+	   [for]="punishmentDateDatepicker"
+	 ></mat-datepicker-toggle>
+	 <mat-datepicker #punishmentDateDatepicker></mat-datepicker>
+	 <mat-error *ngIf = "getControls('punishmentDate').invalid" >
+	  {{ getControls('punishmentDate')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>رقم الامر التنفيذي</mat-label>
+	 <input matInput formControlName="executiveOrderNumber"/>
+	 <mat-error *ngIf = "getControls('executiveOrderNumber').invalid" >
+	  {{ getControls('executiveOrderNumber')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>تاريخ صدور الامر التنفيذي</mat-label>
+	 <input matInput
+	  [matDatepicker] = "issuanceExecutiveOrderDateDatepicker"
+	  autocomplete = "off"
+	  formControlName= "issuanceExecutiveOrderDate"/>
+	 <mat-datepicker-toggle
+	   matSuffix
+	   [for]="issuanceExecutiveOrderDateDatepicker"
+	 ></mat-datepicker-toggle>
+	 <mat-datepicker #issuanceExecutiveOrderDateDatepicker></mat-datepicker>
+	 <mat-error *ngIf = "getControls('issuanceExecutiveOrderDate').invalid" >
+	  {{ getControls('issuanceExecutiveOrderDate')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>كود الموظف</mat-label>
+	 <input matInput formControlName="employeeCode"/>
+	 <mat-error *ngIf = "getControls('employeeCode').invalid" >
+	  {{ getControls('employeeCode')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>اسم الموظف</mat-label>
+	 <input matInput formControlName="employeeName"/>
+	 <mat-error *ngIf = "getControls('employeeName').invalid" >
+	  {{ getControls('employeeName')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+           
+
+	<app-material-select appearance="outline"
+	  #branchCode 
+	  [options] = "branchCodeSelectOptions"
+	  formControlName = "branchCode"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #violationCode 
+	  [options] = "violationCodeSelectOptions"
+	  formControlName = "violationCode"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #punishment 
+	  [options] = "punishmentSelectOptions"
+	  formControlName = "punishment"
+	></app-material-select>
+
+        </form>
+    </ng-template >
+    <ng-template searchResultContainer >
+        <app-grid-control
+            #gridControl
+            [rowDataService] = "getOralInvestigationsPaginatedSortedFiltered"
+            [columnOptions] = "columnOptions"
+            [gridHeaderOptions] = "gridHeaderOptions"
+            [searchInput] = "searchForm.value"
+            (deleteRow) = "onDeleteClicked($event)"
+        >
+        </app-grid-control>
+    </ng-template>
+</app-search-list-expansion-panel >

@@ -1,0 +1,94 @@
+
+<mat-card>
+    <mat-card-header>
+        <mat-card-title>بيانات اقرار الذمه الماليه</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+        <form [formGroup]="financialDisclosureStatementForm" class="form-container">
+          
+
+	<mat-form-field appearance="outline">
+	 <mat-label>كود الموظف</mat-label>
+	 <input matInput formControlName="employeeCode" [disableControl]="true" />
+	 <mat-error *ngIf = "getControls('employeeCode').invalid" >
+	  {{ getControls('employeeCode')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>تاريخ التقديم</mat-label>
+	 <input matInput
+	  [matDatepicker] = "submissionDateDatepicker"
+	  autocomplete = "off"
+	  formControlName= "submissionDate"/>
+	 <mat-datepicker-toggle
+	   matSuffix
+	   [for]="submissionDateDatepicker"
+	 ></mat-datepicker-toggle>
+	 <mat-datepicker #submissionDateDatepicker></mat-datepicker>
+	 <mat-error *ngIf = "getControls('submissionDate').invalid" >
+	  {{ getControls('submissionDate')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>تاريخ تسليم الملف</mat-label>
+	 <input matInput
+	  [matDatepicker] = "fileDeliveryDateDatepicker"
+	  autocomplete = "off"
+	  formControlName= "fileDeliveryDate"/>
+	 <mat-datepicker-toggle
+	   matSuffix
+	   [for]="fileDeliveryDateDatepicker"
+	 ></mat-datepicker-toggle>
+	 <mat-datepicker #fileDeliveryDateDatepicker></mat-datepicker>
+	 <mat-error *ngIf = "getControls('fileDeliveryDate').invalid" >
+	  {{ getControls('fileDeliveryDate')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>تاريخ استلام الملف</mat-label>
+	 <input matInput
+	  [matDatepicker] = "fileReceiptDateDatepicker"
+	  autocomplete = "off"
+	  formControlName= "fileReceiptDate"/>
+	 <mat-datepicker-toggle
+	   matSuffix
+	   [for]="fileReceiptDateDatepicker"
+	 ></mat-datepicker-toggle>
+	 <mat-datepicker #fileReceiptDateDatepicker></mat-datepicker>
+	 <mat-error *ngIf = "getControls('fileReceiptDate').invalid" >
+	  {{ getControls('fileReceiptDate')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+          
+
+	<app-material-select appearance="outline"
+	  #submissionReason 
+	  [options] = "submissionReasonSelectOptions"
+	  formControlName = "submissionReason"
+	></app-material-select>
+
+        </form>
+    </mat-card-content>
+
+    <mat-divider></mat-divider>
+
+	<mat-card-actions>
+			<form [formGroup]="attachmentForm" class="form-container">
+                <app-multi-file-upload [service] = "financialDisclosureStatementService" [id]="financialDisclosureStatementForm.get('id').value"
+                    formControlName = "attachmentFiles">
+                </app-multi-file-upload>
+            </form>
+            <button
+                color = "primary"
+                type = "submit"
+                (click) = "onSubmit()"
+                [disabled] = "financialDisclosureStatementForm.invalid"
+                mat-raised-button>
+                حفظ
+            </button>
+    </mat-card-actions>
+</mat-card>
+

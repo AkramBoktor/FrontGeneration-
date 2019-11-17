@@ -1,0 +1,70 @@
+
+<app-new-form-layout
+    dir="rtl"
+    (submitClicked) = "onSubmit()"
+    (back) = "onBack()"
+    [pageTitle] = "'المؤهلات العلمية للموظف'"
+>
+    <ng-template newFormContainer >
+        <form [formGroup] = "employeeEducationalQualificationsForm">
+         
+
+	<mat-form-field appearance="outline">
+	 <mat-label>كود الموظف</mat-label>
+	 <input matInput formControlName="employeeCode"/>
+	 <mat-error *ngIf = "getControls('employeeCode').invalid" >
+	  {{ getControls('employeeCode')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>تاريخ الحصول عليه</mat-label>
+	 <input matInput
+	  [matDatepicker] = "qualificationDateDatepicker"
+	  autocomplete = "off"
+	  formControlName= "qualificationDate"/>
+	 <mat-datepicker-toggle
+	   matSuffix
+	   [for]="qualificationDateDatepicker"
+	 ></mat-datepicker-toggle>
+	 <mat-datepicker #qualificationDateDatepicker></mat-datepicker>
+	 <mat-error *ngIf = "getControls('qualificationDate').invalid" >
+	  {{ getControls('qualificationDate')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+         
+
+	<app-material-select appearance="outline"
+	  #qualification 
+	  [options] = "qualificationSelectOptions"
+	  formControlName = "qualification"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #qualificationGrantSite 
+	  [options] = "qualificationGrantSiteSelectOptions"
+	  formControlName = "qualificationGrantSite"
+	></app-material-select>
+
+        </form>
+
+        <mat-divider></mat-divider>
+
+		<mat-card-actions>
+			<form [formGroup]="attachmentForm" class="form-container">
+                <app-multi-file-upload [service] = "employeeEducationalQualificationsService" [id]="employeeEducationalQualificationsForm.get('id').value"
+                    formControlName = "attachmentFiles">
+                </app-multi-file-upload>
+            </form>
+            <button
+                type="submit"
+                (click)="onSubmit()"
+                [disabled]="employeeEducationalQualificationsForm.invalid"
+                mat-raised-button
+                color = "primary">
+             حفظ
+            </button>
+        </mat-card-actions>
+    </ng-template >
+</app-new-form-layout >
+
