@@ -2316,7 +2316,188 @@ export const listMenuConfig: ListMenuConfig = {
 					children: []
 				}
 			]
+		},
+		
+	"organization-and-management--housing": [
+		{
+			"id": "organization-and-management--housing",
+			"title": "برنامج تنظيم واداره - تسكين",
+			"type": "group",
+			"icon": "app",
+			"children": [
+				{
+					"id": "Organization and management  housing Config",
+					"title": "الأعدادات",
+					"type": "collapsable",
+					"icon": "build",
+					"children": [
+						{
+							"id": "branchcodes",
+							"title": "كود الفرع",
+							"type": "item",
+							"url": "/lookup/branchcodes",
+							"exactMatch": true
+						},
+						{
+							"id": "jobtypes",
+							"title": "انواع الوظائف",
+							"type": "item",
+							"url": "/lookup/jobtypes",
+							"exactMatch": true
+						},
+						{
+							"id": "constructiontypes",
+							"title": "انواع الانشاء",
+							"type": "item",
+							"url": "/lookup/constructiontypes",
+							"exactMatch": true
+						},
+						{
+							"id": "offeringtypes",
+							"title": "انواع الطرح",
+							"type": "item",
+							"url": "/lookup/offeringtypes",
+							"exactMatch": true
+						},
+						{
+							"id": "genders",
+							"title": "النوع‎",
+							"type": "item",
+							"url": "/lookup/genders",
+							"exactMatch": true
+						},
+						{
+							"id": "centraldepartments",
+							"title": "الادارات المركزية",
+							"type": "item",
+							"url": "/lookup/centraldepartments",
+							"exactMatch": true
+						},
+						{
+							"id": "subdepartments",
+							"title": "الادارات الفرعية",
+							"type": "item",
+							"url": "/lookup/subdepartments",
+							"exactMatch": true
+						},
+						{
+							"id": "sectionsorcenters",
+							"title": "مركز/القسم‎",
+							"type": "item",
+							"url": "/lookup/sectionsorcenters",
+							"exactMatch": true
+						},
+						{
+							"id": "endingsupervisionreasons",
+							"title": "كود سبب انهاء اشراف",
+							"type": "item",
+							"url": "/lookup/endingsupervisionreasons",
+							"exactMatch": true
+						},
+						{
+							"id": "areas",
+							"title": "مناطق",
+							"type": "item",
+							"url": "/lookup/areas",
+							"exactMatch": true
+						}
+					]
+				},
+				{
+					"id": "Organization and management  housing Program",
+					"title": "البرامج",
+					"type": "collapsable",
+					"icon": "apps",
+					"children": [
+						{
+							"id": "Total functional course",
+							"title": " اجمالى المقرر الوظيفى",
+							"type": "item",
+							"url": "/organization-and-management--housing/total-functional-course",
+							"exactMatch": true
+						},
+						{
+							"id": "Introducing exception for branches Engineer",
+							"title": "ادخال الاثتثناء للفروع (المهندس)",
+							"type": "item",
+							"url": "/organization-and-management--housing/introducing-exception-for-branches-engineer",
+							"exactMatch": true
+						},
+						{
+							"id": "Complete the data of supervisor engineer",
+							"title": "استكمال بيانات مهندس مشرف",
+							"type": "item",
+							"url": "/organization-and-management--housing/complete-the-data-of-supervisor-engineer",
+							"exactMatch": true
+						},
+						{
+							"id": "Assign the supervision of an engineer from outside the implementation department",
+							"title": "اسناد اشراف مهندسين من خارج قسم التنفيذ",
+							"type": "item",
+							"url": "/organization-and-management--housing/assign-the-supervision-of-an-engineer-from-outside-the-implementation-department",
+							"exactMatch": true
+						},
+						{
+							"id": "Assigning maintenance electricity project to electrical engineer",
+							"title": "اسناد مشروع صيانه ( كهرباء) لمهندس كهرباء",
+							"type": "item",
+							"url": "/organization-and-management--housing/assigning-maintenance-electricity-project-to-electrical-engineer",
+							"exactMatch": true
+						},
+						{
+							"id": "Job placement of the departments of the body",
+							"title": "التسكين الوظيفى للادارات الهيئه",
+							"type": "item",
+							"url": "/organization-and-management--housing/job-placement-of-the-departments-of-the-body",
+							"exactMatch": true
+						},
+						{
+							"id": "Termination of the employee's job placement",
+							"title": "انهاء تسكين الوظيفى للموظف",
+							"type": "item",
+							"url": "/organization-and-management--housing/termination-of-the-employee's-job-placement",
+							"exactMatch": true
+						},
+						{
+							"id": "Ending placement of executive engineer",
+							"title": "انهاء تسكين مهندس تنفيذى على مشروع معين (الفروع) ظروف طارئه",
+							"type": "item",
+							"url": "/organization-and-management--housing/ending-placement-of-executive-engineer",
+							"exactMatch": true
+						},
+						{
+							"id": "Career Programs",
+							"title": "برنامج المقررات الوظيفيه",
+							"type": "item",
+							"url": "/organization-and-management--housing/career-Organization and management  housings",
+							"exactMatch": true
+						},
+						{
+							"id": "Job placement for an executive engineer without a project",
+							"title": "تسكين وظيفى لمهندس تنفيذى بدون مشروع ",
+							"type": "item",
+							"url": "/organization-and-management--housing/job-placement-for-an-executive-engineer-without-a-project",
+							"exactMatch": true
+						},
+						{
+							"id": "Reason for ending engineer housing on project",
+							"title": "كود سبب انهاء تسكين مهندس على مشروع",
+							"type": "item",
+							"url": "/organization-and-management--housing/reason-for-ending-engineer-housing-on-project",
+							"exactMatch": true
+						}
+					]
+				},
+				{
+					"id": "Organization and management  housing Report",
+					"title": "التقارير",
+					"type": "collapsable",
+					"icon": "assignment",
+					"children": []
+				}
+			]
 		}
+	]
 	]
 
 };
