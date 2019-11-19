@@ -1,0 +1,138 @@
+
+<app-new-form-layout
+    dir="rtl"
+    (submitClicked) = "onSubmit()"
+    (back) = "onBack()"
+    [pageTitle] = "' استماره مختلفه اضافه غير مستخلصه'"
+>
+    <ng-template newFormContainer >
+        <form [formGroup] = "differentFormAddedButNotExtractedForm">
+         
+
+	<mat-form-field appearance="outline">
+	 <mat-label>تاريخ الاستماره</mat-label>
+	 <input matInput
+	  [matDatepicker] = "dateFormDatepicker"
+	  autocomplete = "off"
+	  formControlName= "dateForm"/>
+	 <mat-datepicker-toggle
+	   matSuffix
+	   [for]="dateFormDatepicker"
+	 ></mat-datepicker-toggle>
+	 <mat-datepicker #dateFormDatepicker></mat-datepicker>
+	 <mat-error *ngIf = "getControls('dateForm').invalid" >
+	  {{ getControls('dateForm')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>مبلغ الاستماره </mat-label>
+	 <input matInput formControlName="formAmount"/>
+	 <mat-error *ngIf = "getControls('formAmount').invalid" >
+	  {{ getControls('formAmount')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>كود المبنى</mat-label>
+	 <input matInput formControlName="buildingCode"/>
+	 <mat-error *ngIf = "getControls('buildingCode').invalid" >
+	  {{ getControls('buildingCode')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>رقم المناقصه</mat-label>
+	 <input matInput formControlName="bidNumber"/>
+	 <mat-error *ngIf = "getControls('bidNumber').invalid" >
+	  {{ getControls('bidNumber')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>رقم الحساب</mat-label>
+	 <input matInput formControlName="accountNumber"/>
+	 <mat-error *ngIf = "getControls('accountNumber').invalid" >
+	  {{ getControls('accountNumber')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>البيان</mat-label>
+	 <input matInput formControlName="statement"/>
+	 <mat-error *ngIf = "getControls('statement').invalid" >
+	  {{ getControls('statement')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+         
+
+	<app-material-select appearance="outline"
+	  #region 
+	  [options] = "regionSelectOptions"
+	  formControlName = "region"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #administration 
+	  [options] = "administrationSelectOptions"
+	  formControlName = "administration"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #serialForm 
+	  [options] = "serialFormSelectOptions"
+	  formControlName = "serialForm"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #sourceForm 
+	  [options] = "sourceFormSelectOptions"
+	  formControlName = "sourceForm"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #destinationType 
+	  [options] = "destinationTypeSelectOptions"
+	  formControlName = "destinationType"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #destinationCode 
+	  [options] = "destinationCodeSelectOptions"
+	  formControlName = "destinationCode"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #offeringType 
+	  [options] = "offeringTypeSelectOptions"
+	  formControlName = "offeringType"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #bankCode 
+	  [options] = "bankCodeSelectOptions"
+	  formControlName = "bankCode"
+	></app-material-select>
+
+        </form>
+
+        <mat-divider></mat-divider>
+
+		<mat-card-actions>
+			<form [formGroup]="attachmentForm" class="form-container">
+                <app-multi-file-upload [service] = "differentFormAddedButNotExtractedService" [id]="differentFormAddedButNotExtractedForm.get('id').value"
+                    formControlName = "attachmentFiles">
+                </app-multi-file-upload>
+            </form>
+            <button
+                type="submit"
+                (click)="onSubmit()"
+                [disabled]="differentFormAddedButNotExtractedForm.invalid"
+                mat-raised-button
+                color = "primary">
+             حفظ
+            </button>
+        </mat-card-actions>
+    </ng-template >
+</app-new-form-layout >
+

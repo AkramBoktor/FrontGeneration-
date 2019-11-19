@@ -1,0 +1,106 @@
+
+<app-new-form-layout
+    dir="rtl"
+    (submitClicked) = "onSubmit()"
+    (back) = "onBack()"
+    [pageTitle] = "'صرف دواء المريض'"
+>
+    <ng-template newFormContainer >
+        <form [formGroup] = "dispensingThePatientsMedicineForm">
+         
+
+	<mat-form-field appearance="outline">
+	 <mat-label>اسم الموظف الطبيب</mat-label>
+	 <input matInput formControlName="doctorName" [disableControl]="true" />
+	 <mat-error *ngIf = "getControls('doctorName').invalid" >
+	  {{ getControls('doctorName')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>اسم الموظف المريض</mat-label>
+	 <input matInput formControlName="patientName" [disableControl]="true" />
+	 <mat-error *ngIf = "getControls('patientName').invalid" >
+	  {{ getControls('patientName')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>تاريخ الصرف</mat-label>
+	 <input matInput
+	  [matDatepicker] = "dateDatepicker"
+	  autocomplete = "off"
+	  formControlName= "date"/>
+	 <mat-datepicker-toggle
+	   matSuffix
+	   [for]="dateDatepicker"
+	 ></mat-datepicker-toggle>
+	 <mat-datepicker #dateDatepicker></mat-datepicker>
+	 <mat-error *ngIf = "getControls('date').invalid" >
+	  {{ getControls('date')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>الدواء المصروف</mat-label>
+	 <input matInput formControlName="drugCode"/>
+	 <mat-error *ngIf = "getControls('drugCode').invalid" >
+	  {{ getControls('drugCode')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>العدد</mat-label>
+	 <input matInput formControlName="number"/>
+	 <mat-error *ngIf = "getControls('number').invalid" >
+	  {{ getControls('number')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>ملاحظات</mat-label>
+	 <input matInput formControlName="notes"/>
+	 <mat-error *ngIf = "getControls('notes').invalid" >
+	  {{ getControls('notes')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>كود الموظف الطبيب</mat-label>
+	 <input matInput formControlName="doctorCode"/>
+	 <mat-error *ngIf = "getControls('doctorCode').invalid" >
+	  {{ getControls('doctorCode')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>كود الموظف المريض</mat-label>
+	 <input matInput formControlName="patientCode"/>
+	 <mat-error *ngIf = "getControls('patientCode').invalid" >
+	  {{ getControls('patientCode')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+         
+
+        </form>
+
+        <mat-divider></mat-divider>
+
+		<mat-card-actions>
+			<form [formGroup]="attachmentForm" class="form-container">
+                <app-multi-file-upload [service] = "dispensingThePatientsMedicineService" [id]="dispensingThePatientsMedicineForm.get('id').value"
+                    formControlName = "attachmentFiles">
+                </app-multi-file-upload>
+            </form>
+            <button
+                type="submit"
+                (click)="onSubmit()"
+                [disabled]="dispensingThePatientsMedicineForm.invalid"
+                mat-raised-button
+                color = "primary">
+             حفظ
+            </button>
+        </mat-card-actions>
+    </ng-template >
+</app-new-form-layout >
+

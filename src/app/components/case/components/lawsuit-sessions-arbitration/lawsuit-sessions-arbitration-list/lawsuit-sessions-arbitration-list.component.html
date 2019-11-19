@@ -1,0 +1,140 @@
+
+<app-search-list-expansion-panel
+    dir="rtl"
+    [pageTitle] = "'جلسات دعوي (تحكيم) '"
+    (beginSearch) = "onBeginSearch()"
+    (create) = "onCreate()"
+>
+    <ng-template searchFormContainer >
+        <form [formGroup] = "searchForm">
+           
+
+	<mat-form-field appearance="outline">
+	 <mat-label>رقم الملف</mat-label>
+	 <input matInput formControlName="fileNumber"/>
+	 <mat-error *ngIf = "getControls('fileNumber').invalid" >
+	  {{ getControls('fileNumber')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>رقم التحكيم</mat-label>
+	 <input matInput formControlName="arbitrationNumber"/>
+	 <mat-error *ngIf = "getControls('arbitrationNumber').invalid" >
+	  {{ getControls('arbitrationNumber')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>لسنة</mat-label>
+	 <input matInput
+	  [matDatepicker] = "yearDatepicker"
+	  autocomplete = "off"
+	  formControlName= "year"/>
+	 <mat-datepicker-toggle
+	   matSuffix
+	   [for]="yearDatepicker"
+	 ></mat-datepicker-toggle>
+	 <mat-datepicker #yearDatepicker></mat-datepicker>
+	 <mat-error *ngIf = "getControls('year').invalid" >
+	  {{ getControls('year')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>تاريخ الجلسة</mat-label>
+	 <input matInput
+	  [matDatepicker] = "sessionDateDatepicker"
+	  autocomplete = "off"
+	  formControlName= "sessionDate"/>
+	 <mat-datepicker-toggle
+	   matSuffix
+	   [for]="sessionDateDatepicker"
+	 ></mat-datepicker-toggle>
+	 <mat-datepicker #sessionDateDatepicker></mat-datepicker>
+	 <mat-error *ngIf = "getControls('sessionDate').invalid" >
+	  {{ getControls('sessionDate')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+           
+
+	<app-material-select appearance="outline"
+	  #branchCode 
+	  [options] = "branchCodeSelectOptions"
+	  formControlName = "branchCode"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #entityType 
+	  [options] = "entityTypeSelectOptions"
+	  formControlName = "entityType"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #arbitrationCode 
+	  [options] = "arbitrationCodeSelectOptions"
+	  formControlName = "arbitrationCode"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #whoIs 
+	  [options] = "whoIsSelectOptions"
+	  formControlName = "whoIs"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #arbitrationClassification 
+	  [options] = "arbitrationClassificationSelectOptions"
+	  formControlName = "arbitrationClassification"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #discountType 
+	  [options] = "discountTypeSelectOptions"
+	  formControlName = "discountType"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #code 
+	  [options] = "codeSelectOptions"
+	  formControlName = "code"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #arbitrationText 
+	  [options] = "arbitrationTextSelectOptions"
+	  formControlName = "arbitrationText"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #arbitrator 
+	  [options] = "arbitratorSelectOptions"
+	  formControlName = "arbitrator"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #technicalMember 
+	  [options] = "technicalMemberSelectOptions"
+	  formControlName = "technicalMember"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #legalMember 
+	  [options] = "legalMemberSelectOptions"
+	  formControlName = "legalMember"
+	></app-material-select>
+
+        </form>
+    </ng-template >
+    <ng-template searchResultContainer >
+        <app-grid-control
+            #gridControl
+            [rowDataService] = "getLawsuitSessionsArbitrationPaginatedSortedFiltered"
+            [columnOptions] = "columnOptions"
+            [gridHeaderOptions] = "gridHeaderOptions"
+            [searchInput] = "searchForm.value"
+            (deleteRow) = "onDeleteClicked($event)"
+        >
+        </app-grid-control>
+    </ng-template>
+</app-search-list-expansion-panel >

@@ -1,0 +1,120 @@
+
+<mat-card>
+    <mat-card-header>
+        <mat-card-title>طلب متابعة خبر لجهة</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+        <form [formGroup]="followupRequestToNewAgencyForm" class="form-container">
+          
+
+	<mat-form-field appearance="outline">
+	 <mat-label>تاريخ النشر</mat-label>
+	 <input matInput
+	  [matDatepicker] = "publicationDateDatepicker"
+	  autocomplete = "off"
+	  formControlName= "publicationDate"/>
+	 <mat-datepicker-toggle
+	   matSuffix
+	   [for]="publicationDateDatepicker"
+	 ></mat-datepicker-toggle>
+	 <mat-datepicker #publicationDateDatepicker></mat-datepicker>
+	 <mat-error *ngIf = "getControls('publicationDate').invalid" >
+	  {{ getControls('publicationDate')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>رقم الصفحة</mat-label>
+	 <input matInput formControlName="pageNumber"/>
+	 <mat-error *ngIf = "getControls('pageNumber').invalid" >
+	  {{ getControls('pageNumber')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>تاريخ العرض</mat-label>
+	 <input matInput
+	  [matDatepicker] = "presentationDateDatepicker"
+	  autocomplete = "off"
+	  formControlName= "presentationDate"/>
+	 <mat-datepicker-toggle
+	   matSuffix
+	   [for]="presentationDateDatepicker"
+	 ></mat-datepicker-toggle>
+	 <mat-datepicker #presentationDateDatepicker></mat-datepicker>
+	 <mat-error *ngIf = "getControls('presentationDate').invalid" >
+	  {{ getControls('presentationDate')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>تاريخ التاشيرة</mat-label>
+	 <input matInput
+	  [matDatepicker] = "visaDateDatepicker"
+	  autocomplete = "off"
+	  formControlName= "visaDate"/>
+	 <mat-datepicker-toggle
+	   matSuffix
+	   [for]="visaDateDatepicker"
+	 ></mat-datepicker-toggle>
+	 <mat-datepicker #visaDateDatepicker></mat-datepicker>
+	 <mat-error *ngIf = "getControls('visaDate').invalid" >
+	  {{ getControls('visaDate')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>رقم متابع الخبر</mat-label>
+	 <input matInput formControlName="newsFollowersNo"/>
+	 <mat-error *ngIf = "getControls('newsFollowersNo').invalid" >
+	  {{ getControls('newsFollowersNo')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+          
+
+	<app-material-select appearance="outline"
+	  #publisherCode 
+	  [options] = "publisherCodeSelectOptions"
+	  formControlName = "publisherCode"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #publicationCodePlace 
+	  [options] = "publicationCodePlaceSelectOptions"
+	  formControlName = "publicationCodePlace"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #specificEntityCode 
+	  [options] = "specificEntityCodeSelectOptions"
+	  formControlName = "specificEntityCode"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #requestType 
+	  [options] = "requestTypeSelectOptions"
+	  formControlName = "requestType"
+	></app-material-select>
+
+        </form>
+    </mat-card-content>
+
+    <mat-divider></mat-divider>
+
+	<mat-card-actions>
+			<form [formGroup]="attachmentForm" class="form-container">
+                <app-multi-file-upload [service] = "followupRequestToNewAgencyService" [id]="followupRequestToNewAgencyForm.get('id').value"
+                    formControlName = "attachmentFiles">
+                </app-multi-file-upload>
+            </form>
+            <button
+                color = "primary"
+                type = "submit"
+                (click) = "onSubmit()"
+                [disabled] = "followupRequestToNewAgencyForm.invalid"
+                mat-raised-button>
+                حفظ
+            </button>
+    </mat-card-actions>
+</mat-card>
+

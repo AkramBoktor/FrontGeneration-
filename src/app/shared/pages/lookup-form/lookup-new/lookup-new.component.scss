@@ -1,0 +1,31 @@
+ 
+mat-action-row {
+    button {
+        width: 120px;
+    }
+}
+ 
+app-new-form-layout {
+    width: 100%;
+
+    mat-form-field {
+        width: calc(50% - 10px) !important;
+        margin-left: 10px !important;
+    }
+
+    app-material-select {
+        display: inline-block;
+        width: calc(50% - 10px) !important;
+        margin-left: 10px !important;
+    }
+}
+
+mat-action-row {
+    button {
+        width: 120px;
+    }
+}
+
+mat-form-field {
+    margin-left: 10px !important;
+}

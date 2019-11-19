@@ -1,0 +1,32 @@
+<mat-form-field appearance="outline">
+    <mat-label>{{ options.label }}</mat-label>
+    <mat-select
+        #matSelect
+        [formControl]="matSelectInput"
+        (selectionChange)="onChanged($event.value)"
+        (blur)="onTouched()"
+        (opened)="onViewPortOpened()"
+        [compareWith]="compareFn"
+     >
+        <!-- <cdk-virtual-scroll-viewport
+            #CdkVirtualScrollViewport
+            class="example-viewport"
+            itemSize="50"
+            minBufferPx="200"
+            maxBufferPx="400"
+        > -->
+            <mat-option
+                *ngFor="let item of viewData; let index = index; trackBy: trackByFn"
+                [value]="item['code']"
+            >
+            {{ item['name'] }}
+            </mat-option>
+        <!-- </cdk-virtual-scroll-viewport> -->
+    </mat-select>
+    <mat-error *ngIf="control.invalid">
+        {{ control.control | getErrorMessages: this.options.errorMessages }}
+    </mat-error>
+    <mat-hint align="start">
+        {{ options.hint }}
+    </mat-hint>
+</mat-form-field>

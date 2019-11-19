@@ -1,0 +1,54 @@
+
+<app-search-list-expansion-panel
+    dir="rtl"
+    [pageTitle] = "'اكواد الدوره'"
+    (beginSearch) = "onBeginSearch()"
+    (create) = "onCreate()"
+>
+    <ng-template searchFormContainer >
+        <form [formGroup] = "searchForm">
+           
+
+	<mat-form-field appearance="outline">
+	 <mat-label>رقم الدوره</mat-label>
+	 <input matInput formControlName="courseCode"/>
+	 <mat-error *ngIf = "getControls('courseCode').invalid" >
+	  {{ getControls('courseCode')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>اسم الدوره</mat-label>
+	 <input matInput formControlName="courseName"/>
+	 <mat-error *ngIf = "getControls('courseName').invalid" >
+	  {{ getControls('courseName')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+           
+
+	<app-material-select appearance="outline"
+	  #majorClassification 
+	  [options] = "majorClassificationSelectOptions"
+	  formControlName = "majorClassification"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #subcategory 
+	  [options] = "subcategorySelectOptions"
+	  formControlName = "subcategory"
+	></app-material-select>
+
+        </form>
+    </ng-template >
+    <ng-template searchResultContainer >
+        <app-grid-control
+            #gridControl
+            [rowDataService] = "getCoursesCodesPaginatedSortedFiltered"
+            [columnOptions] = "columnOptions"
+            [gridHeaderOptions] = "gridHeaderOptions"
+            [searchInput] = "searchForm.value"
+            (deleteRow) = "onDeleteClicked($event)"
+        >
+        </app-grid-control>
+    </ng-template>
+</app-search-list-expansion-panel >

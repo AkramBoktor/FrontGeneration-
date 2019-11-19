@@ -1,0 +1,145 @@
+
+<app-new-form-layout
+    dir="rtl"
+    (submitClicked) = "onSubmit()"
+    (back) = "onBack()"
+    [pageTitle] = "'متابعة جلسات'"
+>
+    <ng-template newFormContainer >
+        <form [formGroup] = "followupSessionsForm">
+         
+
+	<mat-form-field appearance="outline">
+	 <mat-label>رقم الملف</mat-label>
+	 <input matInput formControlName="fileNumber"/>
+	 <mat-error *ngIf = "getControls('fileNumber').invalid" >
+	  {{ getControls('fileNumber')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>اسم الجهة</mat-label>
+	 <input matInput formControlName="entityName" [disableControl]="true" />
+	 <mat-error *ngIf = "getControls('entityName').invalid" >
+	  {{ getControls('entityName')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>رقم الدعوة</mat-label>
+	 <input matInput formControlName="lawsuitNumber" [disableControl]="true" />
+	 <mat-error *ngIf = "getControls('lawsuitNumber').invalid" >
+	  {{ getControls('lawsuitNumber')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>لسنة</mat-label>
+	 <input matInput
+	 [disableControl]="true" 
+	  [matDatepicker] = "yearDatepicker"
+	  autocomplete = "off"
+	  formControlName= "year"/>
+	 <mat-datepicker-toggle
+	   matSuffix
+	   [for]="yearDatepicker"
+	 ></mat-datepicker-toggle>
+	 <mat-datepicker #yearDatepicker></mat-datepicker>
+	 <mat-error *ngIf = "getControls('year').invalid" >
+	  {{ getControls('year')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>تاريخ الجلسة</mat-label>
+	 <input matInput
+	  [matDatepicker] = "sessionDateDatepicker"
+	  autocomplete = "off"
+	  formControlName= "sessionDate"/>
+	 <mat-datepicker-toggle
+	   matSuffix
+	   [for]="sessionDateDatepicker"
+	 ></mat-datepicker-toggle>
+	 <mat-datepicker #sessionDateDatepicker></mat-datepicker>
+	 <mat-error *ngIf = "getControls('sessionDate').invalid" >
+	  {{ getControls('sessionDate')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>كود القرار</mat-label>
+	 <input matInput formControlName="decisionCode"/>
+	 <mat-error *ngIf = "getControls('decisionCode').invalid" >
+	  {{ getControls('decisionCode')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>تاريخ الجلسة القادمة</mat-label>
+	 <input matInput
+	  [matDatepicker] = "nextSessionDateDatepicker"
+	  autocomplete = "off"
+	  formControlName= "nextSessionDate"/>
+	 <mat-datepicker-toggle
+	   matSuffix
+	   [for]="nextSessionDateDatepicker"
+	 ></mat-datepicker-toggle>
+	 <mat-datepicker #nextSessionDateDatepicker></mat-datepicker>
+	 <mat-error *ngIf = "getControls('nextSessionDate').invalid" >
+	  {{ getControls('nextSessionDate')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+         
+
+	<app-material-select appearance="outline" [disabled]="true" 
+	  #branchCode 
+	  [options] = "branchCodeSelectOptions"
+	  formControlName = "branchCode"
+	></app-material-select>
+
+	<app-material-select appearance="outline" [disabled]="true" 
+	  #entityType 
+	  [options] = "entityTypeSelectOptions"
+	  formControlName = "entityType"
+	></app-material-select>
+
+	<app-material-select appearance="outline" [disabled]="true" 
+	  #entityCode 
+	  [options] = "entityCodeSelectOptions"
+	  formControlName = "entityCode"
+	></app-material-select>
+
+	<app-material-select appearance="outline" [disabled]="true" 
+	  #courtCode 
+	  [options] = "courtCodeSelectOptions"
+	  formControlName = "courtCode"
+	></app-material-select>
+
+	<app-material-select appearance="outline" [disabled]="true" 
+	  #chamberType 
+	  [options] = "chamberTypeSelectOptions"
+	  formControlName = "chamberType"
+	></app-material-select>
+
+        </form>
+
+        <mat-divider></mat-divider>
+
+		<mat-card-actions>
+			<form [formGroup]="attachmentForm" class="form-container">
+                <app-multi-file-upload [service] = "followupSessionsService" [id]="followupSessionsForm.get('id').value"
+                    formControlName = "attachmentFiles">
+                </app-multi-file-upload>
+            </form>
+            <button
+                type="submit"
+                (click)="onSubmit()"
+                [disabled]="followupSessionsForm.invalid"
+                mat-raised-button
+                color = "primary">
+             حفظ
+            </button>
+        </mat-card-actions>
+    </ng-template >
+</app-new-form-layout >
+

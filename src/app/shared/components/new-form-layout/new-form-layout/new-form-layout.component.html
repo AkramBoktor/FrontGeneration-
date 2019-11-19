@@ -1,0 +1,33 @@
+<div class="page-layout carded fullwidth inner-scroll" dir="rtl">
+    <!-- TOP BACKGROUND -->
+    <div class="top-bg accent"></div>
+    <!-- / TOP BACKGROUND -->
+
+    <!-- BODY -->
+    <div class="center">
+        <mat-card class="form-card header-margin insert-header">
+            <mat-card-header class="card-header">
+                <mat-card-title>
+                    {{ pageTitle }}
+                </mat-card-title>
+
+                <span style="flex-grow: 1"></span>
+                <button mat-raised-button color="accent" (click)="onBack()">
+                    <span>رجوع</span>
+                </button>
+            </mat-card-header>
+        </mat-card>
+        <!---->
+
+        <mat-card class="form-card">
+            <mat-card-content>
+                <!-- < New Form Container here > -->
+                <ng-container
+                    *ngTemplateOutlet="newFormContainer"
+                >
+                </ng-container>
+                <!-- / New Form Container here > -->
+            </mat-card-content>
+        </mat-card>
+    </div>
+</div>

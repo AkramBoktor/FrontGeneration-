@@ -1,0 +1,101 @@
+
+<app-new-form-layout
+    dir="rtl"
+    (submitClicked) = "onSubmit()"
+    (back) = "onBack()"
+    [pageTitle] = "'ماتم في الجلسة'"
+>
+    <ng-template newFormContainer >
+        <form [formGroup] = "whatHappenedInTheSessionForm">
+         
+
+	<mat-form-field appearance="outline">
+	 <mat-label>رقم الملف</mat-label>
+	 <input matInput formControlName="fileNumber"/>
+	 <mat-error *ngIf = "getControls('fileNumber').invalid" >
+	  {{ getControls('fileNumber')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>اسم الجهة</mat-label>
+	 <input matInput formControlName="entityName" [disableControl]="true" />
+	 <mat-error *ngIf = "getControls('entityName').invalid" >
+	  {{ getControls('entityName')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>رقم الدعوي</mat-label>
+	 <input matInput formControlName="lawsuitNumber" [disableControl]="true" />
+	 <mat-error *ngIf = "getControls('lawsuitNumber').invalid" >
+	  {{ getControls('lawsuitNumber')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>لسنة </mat-label>
+	 <input matInput
+	 [disableControl]="true" 
+	  [matDatepicker] = "yearDatepicker"
+	  autocomplete = "off"
+	  formControlName= "year"/>
+	 <mat-datepicker-toggle
+	   matSuffix
+	   [for]="yearDatepicker"
+	 ></mat-datepicker-toggle>
+	 <mat-datepicker #yearDatepicker></mat-datepicker>
+	 <mat-error *ngIf = "getControls('year').invalid" >
+	  {{ getControls('year')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>ما تم في الجلسة من الاحداث</mat-label>
+	 <input matInput formControlName="sessionEvents"/>
+	 <mat-error *ngIf = "getControls('sessionEvents').invalid" >
+	  {{ getControls('sessionEvents')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+         
+
+	<app-material-select appearance="outline" [disabled]="true" 
+	  #branchCode 
+	  [options] = "branchCodeSelectOptions"
+	  formControlName = "branchCode"
+	></app-material-select>
+
+	<app-material-select appearance="outline" [disabled]="true" 
+	  #entityType 
+	  [options] = "entityTypeSelectOptions"
+	  formControlName = "entityType"
+	></app-material-select>
+
+	<app-material-select appearance="outline" [disabled]="true" 
+	  #entityCode 
+	  [options] = "entityCodeSelectOptions"
+	  formControlName = "entityCode"
+	></app-material-select>
+
+        </form>
+
+        <mat-divider></mat-divider>
+
+		<mat-card-actions>
+			<form [formGroup]="attachmentForm" class="form-container">
+                <app-multi-file-upload [service] = "whatHappenedInTheSessionService" [id]="whatHappenedInTheSessionForm.get('id').value"
+                    formControlName = "attachmentFiles">
+                </app-multi-file-upload>
+            </form>
+            <button
+                type="submit"
+                (click)="onSubmit()"
+                [disabled]="whatHappenedInTheSessionForm.invalid"
+                mat-raised-button
+                color = "primary">
+             حفظ
+            </button>
+        </mat-card-actions>
+    </ng-template >
+</app-new-form-layout >
+

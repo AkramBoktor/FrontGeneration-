@@ -1,0 +1,114 @@
+
+<app-search-list-expansion-panel
+    dir="rtl"
+    [pageTitle] = "'بيانات موظف'"
+    (beginSearch) = "onBeginSearch()"
+    (create) = "onCreate()"
+>
+    <ng-template searchFormContainer >
+        <form [formGroup] = "searchForm">
+           
+
+	<mat-form-field appearance="outline">
+	 <mat-label>اسم الموظف</mat-label>
+	 <input matInput formControlName="employeeName"/>
+	 <mat-error *ngIf = "getControls('employeeName').invalid" >
+	  {{ getControls('employeeName')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>كود الموظف</mat-label>
+	 <input matInput formControlName="employeeCode"/>
+	 <mat-error *ngIf = "getControls('employeeCode').invalid" >
+	  {{ getControls('employeeCode')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>تاريخ الميلاد</mat-label>
+	 <input matInput
+	  [matDatepicker] = "birthDateDatepicker"
+	  autocomplete = "off"
+	  formControlName= "birthDate"/>
+	 <mat-datepicker-toggle
+	   matSuffix
+	   [for]="birthDateDatepicker"
+	 ></mat-datepicker-toggle>
+	 <mat-datepicker #birthDateDatepicker></mat-datepicker>
+	 <mat-error *ngIf = "getControls('birthDate').invalid" >
+	  {{ getControls('birthDate')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>رقم البطاقه</mat-label>
+	 <input matInput formControlName="iDNumber"/>
+	 <mat-error *ngIf = "getControls('iDNumber').invalid" >
+	  {{ getControls('iDNumber')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+           
+
+	<app-material-select appearance="outline"
+	  #governorate 
+	  [options] = "governorateSelectOptions"
+	  formControlName = "governorate"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #employeeStatus 
+	  [options] = "employeeStatusSelectOptions"
+	  formControlName = "employeeStatus"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #subAdministration 
+	  [options] = "subAdministrationSelectOptions"
+	  formControlName = "subAdministration"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #centralAdministration 
+	  [options] = "centralAdministrationSelectOptions"
+	  formControlName = "centralAdministration"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #appointmentType 
+	  [options] = "appointmentTypeSelectOptions"
+	  formControlName = "appointmentType"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #financialDegree 
+	  [options] = "financialDegreeSelectOptions"
+	  formControlName = "financialDegree"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #jobGroup 
+	  [options] = "jobGroupSelectOptions"
+	  formControlName = "jobGroup"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #jobTitle 
+	  [options] = "jobTitleSelectOptions"
+	  formControlName = "jobTitle"
+	></app-material-select>
+
+        </form>
+    </ng-template >
+    <ng-template searchResultContainer >
+        <app-grid-control
+            #gridControl
+            [rowDataService] = "getEmployeeDataPaginatedSortedFiltered"
+            [columnOptions] = "columnOptions"
+            [gridHeaderOptions] = "gridHeaderOptions"
+            [searchInput] = "searchForm.value"
+            (deleteRow) = "onDeleteClicked($event)"
+        >
+        </app-grid-control>
+    </ng-template>
+</app-search-list-expansion-panel >

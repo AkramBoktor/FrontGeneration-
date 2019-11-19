@@ -1,0 +1,152 @@
+
+<mat-card>
+    <mat-card-header>
+        <mat-card-title>تاشيرة رئيس الهيئة</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+        <form [formGroup]="chairmanVisaForm" class="form-container">
+          
+
+	<mat-form-field appearance="outline">
+	 <mat-label>رقم الصفحة</mat-label>
+	 <input matInput formControlName="pageNumber"/>
+	 <mat-error *ngIf = "getControls('pageNumber').invalid" >
+	  {{ getControls('pageNumber')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>تاريخ النشر</mat-label>
+	 <input matInput
+	  [matDatepicker] = "publicationDateDatepicker"
+	  autocomplete = "off"
+	  formControlName= "publicationDate"/>
+	 <mat-datepicker-toggle
+	   matSuffix
+	   [for]="publicationDateDatepicker"
+	 ></mat-datepicker-toggle>
+	 <mat-datepicker #publicationDateDatepicker></mat-datepicker>
+	 <mat-error *ngIf = "getControls('publicationDate').invalid" >
+	  {{ getControls('publicationDate')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline" *ngIf="false" >
+	 <mat-label>تاريخ العرض</mat-label>
+	 <input matInput
+	  [matDatepicker] = "presentationDateDatepicker"
+	  autocomplete = "off"
+	  formControlName= "presentationDate"/>
+	 <mat-datepicker-toggle
+	   matSuffix
+	   [for]="presentationDateDatepicker"
+	 ></mat-datepicker-toggle>
+	 <mat-datepicker #presentationDateDatepicker></mat-datepicker>
+	 <mat-error *ngIf = "getControls('presentationDate').invalid" >
+	  {{ getControls('presentationDate')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>تاريخ التاشيرة</mat-label>
+	 <input matInput
+	  [matDatepicker] = "visaDateDatepicker"
+	  autocomplete = "off"
+	  formControlName= "visaDate"/>
+	 <mat-datepicker-toggle
+	   matSuffix
+	   [for]="visaDateDatepicker"
+	 ></mat-datepicker-toggle>
+	 <mat-datepicker #visaDateDatepicker></mat-datepicker>
+	 <mat-error *ngIf = "getControls('visaDate').invalid" >
+	  {{ getControls('visaDate')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>مسلسل</mat-label>
+	 <input matInput formControlName="serial"/>
+	 <mat-error *ngIf = "getControls('serial').invalid" >
+	  {{ getControls('serial')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>نص التاشيرة</mat-label>
+	 <input matInput formControlName="visaText"/>
+	 <mat-error *ngIf = "getControls('visaText').invalid" >
+	  {{ getControls('visaText')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+          
+
+	<app-material-select appearance="outline"
+	  #publisherCode 
+	  [options] = "publisherCodeSelectOptions"
+	  formControlName = "publisherCode"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #publicationCodePlace 
+	  [options] = "publicationCodePlaceSelectOptions"
+	  formControlName = "publicationCodePlace"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #entityTypeCode 
+	  [options] = "entityTypeCodeSelectOptions"
+	  formControlName = "entityTypeCode"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #specificEntityCode 
+	  [options] = "specificEntityCodeSelectOptions"
+	  formControlName = "specificEntityCode"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #display 
+	  [options] = "displaySelectOptions"
+	  formControlName = "display"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #aMCode 
+	  [options] = "aMCodeSelectOptions"
+	  formControlName = "aMCode"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #aFCode 
+	  [options] = "aFCodeSelectOptions"
+	  formControlName = "aFCode"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #showResult 
+	  [options] = "showResultSelectOptions"
+	  formControlName = "showResult"
+	></app-material-select>
+
+        </form>
+    </mat-card-content>
+
+    <mat-divider></mat-divider>
+
+	<mat-card-actions>
+			<form [formGroup]="attachmentForm" class="form-container">
+                <app-multi-file-upload [service] = "chairmanVisaService" [id]="chairmanVisaForm.get('id').value"
+                    formControlName = "attachmentFiles">
+                </app-multi-file-upload>
+            </form>
+            <button
+                color = "primary"
+                type = "submit"
+                (click) = "onSubmit()"
+                [disabled] = "chairmanVisaForm.invalid"
+                mat-raised-button>
+                حفظ
+            </button>
+    </mat-card-actions>
+</mat-card>
+

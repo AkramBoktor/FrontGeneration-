@@ -1,0 +1,126 @@
+
+<app-new-form-layout
+    dir="rtl"
+    (submitClicked) = "onSubmit()"
+    (back) = "onBack()"
+    [pageTitle] = "'اسناد القضية لمحامي جديد'"
+>
+    <ng-template newFormContainer >
+        <form [formGroup] = "assigningTheCaseToANewLawyerForm">
+         
+
+	<mat-form-field appearance="outline">
+	 <mat-label>رقم الملف</mat-label>
+	 <input matInput formControlName="fileNumber"/>
+	 <mat-error *ngIf = "getControls('fileNumber').invalid" >
+	  {{ getControls('fileNumber')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>رقم الدعوي</mat-label>
+	 <input matInput formControlName="lawsuitNumber" [disableControl]="true" />
+	 <mat-error *ngIf = "getControls('lawsuitNumber').invalid" >
+	  {{ getControls('lawsuitNumber')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>لسنة </mat-label>
+	 <input matInput
+	 [disableControl]="true" 
+	  [matDatepicker] = "yearDatepicker"
+	  autocomplete = "off"
+	  formControlName= "year"/>
+	 <mat-datepicker-toggle
+	   matSuffix
+	   [for]="yearDatepicker"
+	 ></mat-datepicker-toggle>
+	 <mat-datepicker #yearDatepicker></mat-datepicker>
+	 <mat-error *ngIf = "getControls('year').invalid" >
+	  {{ getControls('year')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>تاريخ الوارد</mat-label>
+	 <input matInput
+	 [disableControl]="true" 
+	  [matDatepicker] = "incomingDateDatepicker"
+	  autocomplete = "off"
+	  formControlName= "incomingDate"/>
+	 <mat-datepicker-toggle
+	   matSuffix
+	   [for]="incomingDateDatepicker"
+	 ></mat-datepicker-toggle>
+	 <mat-datepicker #incomingDateDatepicker></mat-datepicker>
+	 <mat-error *ngIf = "getControls('incomingDate').invalid" >
+	  {{ getControls('incomingDate')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>رقم المحامي </mat-label>
+	 <input matInput formControlName="employeeCode" [disableControl]="true" />
+	 <mat-error *ngIf = "getControls('employeeCode').invalid" >
+	  {{ getControls('employeeCode')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>تاريخ استلام المحامي</mat-label>
+	 <input matInput
+	  [matDatepicker] = "receiptAttorneyDateDatepicker"
+	  autocomplete = "off"
+	  formControlName= "receiptAttorneyDate"/>
+	 <mat-datepicker-toggle
+	   matSuffix
+	   [for]="receiptAttorneyDateDatepicker"
+	 ></mat-datepicker-toggle>
+	 <mat-datepicker #receiptAttorneyDateDatepicker></mat-datepicker>
+	 <mat-error *ngIf = "getControls('receiptAttorneyDate').invalid" >
+	  {{ getControls('receiptAttorneyDate')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+         
+
+	<app-material-select appearance="outline" [disabled]="true" 
+	  #branchCode 
+	  [options] = "branchCodeSelectOptions"
+	  formControlName = "branchCode"
+	></app-material-select>
+
+	<app-material-select appearance="outline" [disabled]="true" 
+	  #entityType 
+	  [options] = "entityTypeSelectOptions"
+	  formControlName = "entityType"
+	></app-material-select>
+
+	<app-material-select appearance="outline" [disabled]="true" 
+	  #issueCode 
+	  [options] = "issueCodeSelectOptions"
+	  formControlName = "issueCode"
+	></app-material-select>
+
+        </form>
+
+        <mat-divider></mat-divider>
+
+		<mat-card-actions>
+			<form [formGroup]="attachmentForm" class="form-container">
+                <app-multi-file-upload [service] = "assigningTheCaseToANewLawyerService" [id]="assigningTheCaseToANewLawyerForm.get('id').value"
+                    formControlName = "attachmentFiles">
+                </app-multi-file-upload>
+            </form>
+            <button
+                type="submit"
+                (click)="onSubmit()"
+                [disabled]="assigningTheCaseToANewLawyerForm.invalid"
+                mat-raised-button
+                color = "primary">
+             حفظ
+            </button>
+        </mat-card-actions>
+    </ng-template >
+</app-new-form-layout >
+

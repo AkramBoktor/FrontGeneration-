@@ -1,0 +1,154 @@
+
+<mat-card>
+    <mat-card-header>
+        <mat-card-title>حساب اجازه معين</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+        <form [formGroup]="vacationEmployeeForm" class="form-container">
+          
+
+	<mat-form-field appearance="outline">
+	 <mat-label>كود الموظف</mat-label>
+	 <input matInput formControlName="employeeCode" [disableControl]="true" />
+	 <mat-error *ngIf = "getControls('employeeCode').invalid" >
+	  {{ getControls('employeeCode')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>اسم الموظف</mat-label>
+	 <input matInput formControlName="employeeName" [disableControl]="true" />
+	 <mat-error *ngIf = "getControls('employeeName').invalid" >
+	  {{ getControls('employeeName')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>الاجازات الاعتيادية خلال مدة خدمة الموظف</mat-label>
+	 <input matInput formControlName="regularPreviousVacations" [disableControl]="true" />
+	 <mat-error *ngIf = "getControls('regularPreviousVacations').invalid" >
+	  {{ getControls('regularPreviousVacations')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>رصيد السنوي اعتيادي</mat-label>
+	 <input matInput formControlName="regularBalance" [disableControl]="true" />
+	 <mat-error *ngIf = "getControls('regularBalance').invalid" >
+	  {{ getControls('regularBalance')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>رصيد السنوي عارضة</mat-label>
+	 <input matInput formControlName="casualBalance" [disableControl]="true" />
+	 <mat-error *ngIf = "getControls('casualBalance').invalid" >
+	  {{ getControls('casualBalance')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>من تاريخ  </mat-label>
+	 <input matInput
+	  [matDatepicker] = "fromDateDatepicker"
+	  autocomplete = "off"
+	  formControlName= "fromDate"/>
+	 <mat-datepicker-toggle
+	   matSuffix
+	   [for]="fromDateDatepicker"
+	 ></mat-datepicker-toggle>
+	 <mat-datepicker #fromDateDatepicker></mat-datepicker>
+	 <mat-error *ngIf = "getControls('fromDate').invalid" >
+	  {{ getControls('fromDate')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>الي تاريخ </mat-label>
+	 <input matInput
+	  [matDatepicker] = "toDateDatepicker"
+	  autocomplete = "off"
+	  formControlName= "toDate"/>
+	 <mat-datepicker-toggle
+	   matSuffix
+	   [for]="toDateDatepicker"
+	 ></mat-datepicker-toggle>
+	 <mat-datepicker #toDateDatepicker></mat-datepicker>
+	 <mat-error *ngIf = "getControls('toDate').invalid" >
+	  {{ getControls('toDate')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>تصريح</mat-label>
+	 <input matInput formControlName="permission"/>
+	 <mat-error *ngIf = "getControls('permission').invalid" >
+	  {{ getControls('permission')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>رقم الإقرار </mat-label>
+	 <input matInput formControlName="decisionNumber"/>
+	 <mat-error *ngIf = "getControls('decisionNumber').invalid" >
+	  {{ getControls('decisionNumber')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>تاريخ اصدار القرار </mat-label>
+	 <input matInput
+	  [matDatepicker] = "decisionDateDatepicker"
+	  autocomplete = "off"
+	  formControlName= "decisionDate"/>
+	 <mat-datepicker-toggle
+	   matSuffix
+	   [for]="decisionDateDatepicker"
+	 ></mat-datepicker-toggle>
+	 <mat-datepicker #decisionDateDatepicker></mat-datepicker>
+	 <mat-error *ngIf = "getControls('decisionDate').invalid" >
+	  {{ getControls('decisionDate')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+          
+
+	<app-material-select appearance="outline" [disabled]="true" 
+	  #centralAdministration 
+	  [options] = "centralAdministrationSelectOptions"
+	  formControlName = "centralAdministration"
+	></app-material-select>
+
+	<app-material-select appearance="outline" [disabled]="true" 
+	  #subAdministration 
+	  [options] = "subAdministrationSelectOptions"
+	  formControlName = "subAdministration"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #vacationsType 
+	  [options] = "vacationsTypeSelectOptions"
+	  formControlName = "vacationsType"
+	></app-material-select>
+
+        </form>
+    </mat-card-content>
+
+    <mat-divider></mat-divider>
+
+	<mat-card-actions>
+			<form [formGroup]="attachmentForm" class="form-container">
+                <app-multi-file-upload [service] = "vacationEmployeeService" [id]="vacationEmployeeForm.get('id').value"
+                    formControlName = "attachmentFiles">
+                </app-multi-file-upload>
+            </form>
+            <button
+                color = "primary"
+                type = "submit"
+                (click) = "onSubmit()"
+                [disabled] = "vacationEmployeeForm.invalid"
+                mat-raised-button>
+                حفظ
+            </button>
+    </mat-card-actions>
+</mat-card>
+

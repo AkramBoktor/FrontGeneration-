@@ -1,0 +1,136 @@
+
+<app-search-list-expansion-panel
+    dir="rtl"
+    [pageTitle] = "'ارتجاع عهدة موظف'"
+    (beginSearch) = "onBeginSearch()"
+    (create) = "onCreate()"
+>
+    <ng-template searchFormContainer >
+        <form [formGroup] = "searchForm">
+           
+
+	<mat-form-field appearance="outline">
+	 <mat-label>رقم المخزن </mat-label>
+	 <input matInput formControlName="storeNumber"/>
+	 <mat-error *ngIf = "getControls('storeNumber').invalid" >
+	  {{ getControls('storeNumber')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>كود الموظف</mat-label>
+	 <input matInput formControlName="employeeCode"/>
+	 <mat-error *ngIf = "getControls('employeeCode').invalid" >
+	  {{ getControls('employeeCode')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>رقم الصنف </mat-label>
+	 <input matInput formControlName="itemNo"/>
+	 <mat-error *ngIf = "getControls('itemNo').invalid" >
+	  {{ getControls('itemNo')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>حاله الصنف </mat-label>
+	 <input matInput formControlName="itemCondition"/>
+	 <mat-error *ngIf = "getControls('itemCondition').invalid" >
+	  {{ getControls('itemCondition')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>رقم اذن الصرف </mat-label>
+	 <input matInput formControlName="authorizationNumber"/>
+	 <mat-error *ngIf = "getControls('authorizationNumber').invalid" >
+	  {{ getControls('authorizationNumber')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>تاريخ الصرف</mat-label>
+	 <input matInput
+	  [matDatepicker] = "exchangeDateDatepicker"
+	  autocomplete = "off"
+	  formControlName= "exchangeDate"/>
+	 <mat-datepicker-toggle
+	   matSuffix
+	   [for]="exchangeDateDatepicker"
+	 ></mat-datepicker-toggle>
+	 <mat-datepicker #exchangeDateDatepicker></mat-datepicker>
+	 <mat-error *ngIf = "getControls('exchangeDate').invalid" >
+	  {{ getControls('exchangeDate')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>الكمية الصرف  </mat-label>
+	 <input matInput formControlName="quantityExchange"/>
+	 <mat-error *ngIf = "getControls('quantityExchange').invalid" >
+	  {{ getControls('quantityExchange')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>تاريخ الارتجاع  </mat-label>
+	 <input matInput
+	  [matDatepicker] = "returnDateDatepicker"
+	  autocomplete = "off"
+	  formControlName= "returnDate"/>
+	 <mat-datepicker-toggle
+	   matSuffix
+	   [for]="returnDateDatepicker"
+	 ></mat-datepicker-toggle>
+	 <mat-datepicker #returnDateDatepicker></mat-datepicker>
+	 <mat-error *ngIf = "getControls('returnDate').invalid" >
+	  {{ getControls('returnDate')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>رقم اذن الاضافة   </mat-label>
+	 <input matInput formControlName="addPermissionNumber"/>
+	 <mat-error *ngIf = "getControls('addPermissionNumber').invalid" >
+	  {{ getControls('addPermissionNumber')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>كود الصنف  </mat-label>
+	 <input matInput formControlName="itemCode"/>
+	 <mat-error *ngIf = "getControls('itemCode').invalid" >
+	  {{ getControls('itemCode')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>اسم الصنف</mat-label>
+	 <input matInput formControlName="productName"/>
+	 <mat-error *ngIf = "getControls('productName').invalid" >
+	  {{ getControls('productName')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+           
+
+	<app-material-select appearance="outline"
+	  #itemCondition 
+	  [options] = "itemConditionSelectOptions"
+	  formControlName = "itemCondition"
+	></app-material-select>
+
+        </form>
+    </ng-template >
+    <ng-template searchResultContainer >
+        <app-grid-control
+            #gridControl
+            [rowDataService] = "getReturnOfCustodyOfAnEmployeePaginatedSortedFiltered"
+            [columnOptions] = "columnOptions"
+            [gridHeaderOptions] = "gridHeaderOptions"
+            [searchInput] = "searchForm.value"
+            (deleteRow) = "onDeleteClicked($event)"
+        >
+        </app-grid-control>
+    </ng-template>
+</app-search-list-expansion-panel >

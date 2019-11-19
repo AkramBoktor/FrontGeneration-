@@ -1,0 +1,102 @@
+
+<app-new-form-layout
+    dir="rtl"
+    (submitClicked) = "onSubmit()"
+    (back) = "onBack()"
+    [pageTitle] = "'البيانات الاساسية '"
+>
+    <ng-template newFormContainer >
+        <form [formGroup] = "basicDataLoggingForm">
+         
+
+	<mat-form-field appearance="outline">
+	 <mat-label>تاريخ النشر</mat-label>
+	 <input matInput
+	  [matDatepicker] = "publicationDateDatepicker"
+	  autocomplete = "off"
+	  formControlName= "publicationDate"/>
+	 <mat-datepicker-toggle
+	   matSuffix
+	   [for]="publicationDateDatepicker"
+	 ></mat-datepicker-toggle>
+	 <mat-datepicker #publicationDateDatepicker></mat-datepicker>
+	 <mat-error *ngIf = "getControls('publicationDate').invalid" >
+	  {{ getControls('publicationDate')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>رقم الصفحة</mat-label>
+	 <input matInput formControlName="pageNumber"/>
+	 <mat-error *ngIf = "getControls('pageNumber').invalid" >
+	  {{ getControls('pageNumber')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>اسم الكاتب</mat-label>
+	 <input matInput formControlName="authorName"/>
+	 <mat-error *ngIf = "getControls('authorName').invalid" >
+	  {{ getControls('authorName')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>رقم العدد</mat-label>
+	 <input matInput formControlName="number"/>
+	 <mat-error *ngIf = "getControls('number').invalid" >
+	  {{ getControls('number')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>مسلسل</mat-label>
+	 <input matInput formControlName="series"/>
+	 <mat-error *ngIf = "getControls('series').invalid" >
+	  {{ getControls('series')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>عنوان الخبر</mat-label>
+	 <input matInput formControlName="newsTitle"/>
+	 <mat-error *ngIf = "getControls('newsTitle').invalid" >
+	  {{ getControls('newsTitle')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+         
+
+	<app-material-select appearance="outline"
+	  #publisherCode 
+	  [options] = "publisherCodeSelectOptions"
+	  formControlName = "publisherCode"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #publicationCodePlace 
+	  [options] = "publicationCodePlaceSelectOptions"
+	  formControlName = "publicationCodePlace"
+	></app-material-select>
+
+        </form>
+
+        <mat-divider></mat-divider>
+
+		<mat-card-actions>
+			<form [formGroup]="attachmentForm" class="form-container">
+                <app-multi-file-upload [service] = "basicDataLoggingService" [id]="basicDataLoggingForm.get('id').value"
+                    formControlName = "attachmentFiles">
+                </app-multi-file-upload>
+            </form>
+            <button
+                type="submit"
+                (click)="onSubmit()"
+                [disabled]="basicDataLoggingForm.invalid"
+                mat-raised-button
+                color = "primary">
+             حفظ
+            </button>
+        </mat-card-actions>
+    </ng-template >
+</app-new-form-layout >
+

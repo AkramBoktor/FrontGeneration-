@@ -1,0 +1,84 @@
+
+<mat-card>
+    <mat-card-header>
+        <mat-card-title>مكاتب البريد</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+        <form [formGroup]="postOfficesScreensForm" class="form-container">
+          
+
+	<mat-form-field appearance="outline">
+	 <mat-label>الرقم التعريفي</mat-label>
+	 <input matInput formControlName="identityNumber"/>
+	 <mat-error *ngIf = "getControls('identityNumber').invalid" >
+	  {{ getControls('identityNumber')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>س</mat-label>
+	 <input matInput formControlName="x"/>
+	 <mat-error *ngIf = "getControls('x').invalid" >
+	  {{ getControls('x')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>ص</mat-label>
+	 <input matInput formControlName="y"/>
+	 <mat-error *ngIf = "getControls('y').invalid" >
+	  {{ getControls('y')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>ز</mat-label>
+	 <input matInput formControlName="z"/>
+	 <mat-error *ngIf = "getControls('z').invalid" >
+	  {{ getControls('z')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>مكتب</mat-label>
+	 <input matInput formControlName="office"/>
+	 <mat-error *ngIf = "getControls('office').invalid" >
+	  {{ getControls('office')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+          
+
+	<app-material-select appearance="outline"
+	  #governorate 
+	  [options] = "governorateSelectOptions"
+	  formControlName = "governorate"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #district 
+	  [options] = "districtSelectOptions"
+	  formControlName = "district"
+	></app-material-select>
+
+        </form>
+    </mat-card-content>
+
+    <mat-divider></mat-divider>
+
+	<mat-card-actions>
+			<form [formGroup]="attachmentForm" class="form-container">
+                <app-multi-file-upload [service] = "postOfficesScreensService" [id]="postOfficesScreensForm.get('id').value"
+                    formControlName = "attachmentFiles">
+                </app-multi-file-upload>
+            </form>
+            <button
+                color = "primary"
+                type = "submit"
+                (click) = "onSubmit()"
+                [disabled] = "postOfficesScreensForm.invalid"
+                mat-raised-button>
+                حفظ
+            </button>
+    </mat-card-actions>
+</mat-card>
+

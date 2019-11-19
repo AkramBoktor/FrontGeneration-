@@ -1,0 +1,95 @@
+<div class="page-layout carded fullwidth inner-scroll" dir="rtl">
+    <!-- TOP BACKGROUND -->
+    <div class="top-bg accent"></div>
+    <!-- / TOP BACKGROUND -->
+
+    <!-- BODY -->
+    <div class="center">
+        <mat-card class="form-card header-margin">
+            <mat-card-header class="card-header">
+                <mat-card-title>
+                    {{ pageTitle }}
+                </mat-card-title>
+                <span style="flex-grow: 1"></span>
+                <button
+                    mat-raised-button
+                    color="accent"
+                    (click)="onCreate()"
+                    [hideIfUnauthorized]="authorizeClaims.CanCreate">
+                    <span>جديد</span>
+                </button>
+            </mat-card-header>
+        </mat-card>
+        <mat-card class="form-card header-margin">
+            <mat-card-content class="search-wrapper">
+                <!-- SEARCH -->
+                <mat-expansion-panel
+                    #searchPanel
+                    [expanded]="true"
+                    (opened)="onOpenSearchPanel()"
+                    (closed)="onCloseSearchPanel()">
+                    <mat-expansion-panel-header>
+                        <mat-panel-title>
+                            {{ searchPanelTitle }}
+                        </mat-panel-title>
+                        <mat-panel-description>
+                            {{ searchPanelDescription }}
+                        </mat-panel-description>
+                    </mat-expansion-panel-header>
+                    <!-- SEARCH FORM CONTAINER -->
+                    <ng-container
+                        *ngTemplateOutlet="searchFormContainer">
+                    </ng-container>
+                    <!-- / SEARCH FORM CONTAINER -->
+                    <mat-action-row>
+                        <!-- <button
+                            color="warn"
+                            mat-raised-button
+                            (click)="onCancelSearch()">
+                            <span>الغاء</span>
+                        </button> -->
+                        <button
+                            color="primary"
+                            mat-raised-button
+                            (click)="onBeginSearch()">
+                            <span>بحث</span>
+                        </button>
+                        <!-- <button
+                  mat-raised-button
+                  (click)="onBeginSearch()"
+                  class="add-product-button fuse-white mt-24 mt-md-0">
+                  <span>الغاء</span>
+                </button> -->
+                    </mat-action-row>
+                </mat-expansion-panel>
+                <!-- / SEARCH -->
+            </mat-card-content>
+        </mat-card>
+
+        <!-- SEARCH RESULT -->
+        <mat-card class="form-card header-margin">
+            <mat-card-content class="search-wrapper">
+                <mat-expansion-panel
+                    #gridPanel
+                    (closed)="onOpenSearchPanel()"
+                    (opened)="onCloseSearchPanel()"
+                    [disabled]="true">
+                    <mat-expansion-panel-header>
+                        <mat-panel-title>
+                            {{ listPanelTitle }}
+                        </mat-panel-title>
+                    </mat-expansion-panel-header>
+                    <!-- <div class="table-container"> -->
+                    <!-- SEARCH RESULT CONTAINER -->
+                    <ng-container
+                        *ngTemplateOutlet="searchResultContainer">
+                    </ng-container>
+                    <!-- / SEARCH RESULT CONTAINER -->
+                    <!-- </div> -->
+                </mat-expansion-panel>
+            </mat-card-content>
+        </mat-card>
+    </div>
+    <!-- / SEARCH RESULT -->
+    <!-- / BODY -->
+</div>

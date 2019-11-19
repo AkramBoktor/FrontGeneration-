@@ -1,0 +1,74 @@
+
+<app-search-list-expansion-panel
+    dir="rtl"
+    [pageTitle] = "'صرف ادويه لمريض'"
+    (beginSearch) = "onBeginSearch()"
+    (create) = "onCreate()"
+>
+    <ng-template searchFormContainer >
+        <form [formGroup] = "searchForm">
+           
+
+	<mat-form-field appearance="outline">
+	 <mat-label>كود الطبيب</mat-label>
+	 <input matInput formControlName="doctorCode"/>
+	 <mat-error *ngIf = "getControls('doctorCode').invalid" >
+	  {{ getControls('doctorCode')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>كود المريض</mat-label>
+	 <input matInput formControlName="patientCode"/>
+	 <mat-error *ngIf = "getControls('patientCode').invalid" >
+	  {{ getControls('patientCode')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>تاريخ الصرف</mat-label>
+	 <input matInput
+	  [matDatepicker] = "dayDatepicker"
+	  autocomplete = "off"
+	  formControlName= "day"/>
+	 <mat-datepicker-toggle
+	   matSuffix
+	   [for]="dayDatepicker"
+	 ></mat-datepicker-toggle>
+	 <mat-datepicker #dayDatepicker></mat-datepicker>
+	 <mat-error *ngIf = "getControls('day').invalid" >
+	  {{ getControls('day')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>الدواء المصروف</mat-label>
+	 <input matInput formControlName="drugCode"/>
+	 <mat-error *ngIf = "getControls('drugCode').invalid" >
+	  {{ getControls('drugCode')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>كود الصيدلى</mat-label>
+	 <input matInput formControlName="pharmacistCode"/>
+	 <mat-error *ngIf = "getControls('pharmacistCode').invalid" >
+	  {{ getControls('pharmacistCode')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+           
+
+        </form>
+    </ng-template >
+    <ng-template searchResultContainer >
+        <app-grid-control
+            #gridControl
+            [rowDataService] = "getDispensingMedicationToAPatientPaginatedSortedFiltered"
+            [columnOptions] = "columnOptions"
+            [gridHeaderOptions] = "gridHeaderOptions"
+            [searchInput] = "searchForm.value"
+            (deleteRow) = "onDeleteClicked($event)"
+        >
+        </app-grid-control>
+    </ng-template>
+</app-search-list-expansion-panel >

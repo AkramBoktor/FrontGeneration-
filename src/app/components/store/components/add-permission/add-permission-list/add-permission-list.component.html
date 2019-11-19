@@ -1,0 +1,130 @@
+
+<app-search-list-expansion-panel
+    dir="rtl"
+    [pageTitle] = "'اذن اضافة'"
+    (beginSearch) = "onBeginSearch()"
+    (create) = "onCreate()"
+>
+    <ng-template searchFormContainer >
+        <form [formGroup] = "searchForm">
+           
+
+	<mat-form-field appearance="outline">
+	 <mat-label>رقم المخزن المستلم</mat-label>
+	 <input matInput formControlName="recipientStoreNumber"/>
+	 <mat-error *ngIf = "getControls('recipientStoreNumber').invalid" >
+	  {{ getControls('recipientStoreNumber')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>رقم الفاتورة</mat-label>
+	 <input matInput formControlName="billNumber"/>
+	 <mat-error *ngIf = "getControls('billNumber').invalid" >
+	  {{ getControls('billNumber')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>رقم اذن الاضافة</mat-label>
+	 <input matInput formControlName="addPermissionNumber"/>
+	 <mat-error *ngIf = "getControls('addPermissionNumber').invalid" >
+	  {{ getControls('addPermissionNumber')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>تاريخ التوريد </mat-label>
+	 <input matInput
+	  [matDatepicker] = "dateOfSupplyDatepicker"
+	  autocomplete = "off"
+	  formControlName= "dateOfSupply"/>
+	 <mat-datepicker-toggle
+	   matSuffix
+	   [for]="dateOfSupplyDatepicker"
+	 ></mat-datepicker-toggle>
+	 <mat-datepicker #dateOfSupplyDatepicker></mat-datepicker>
+	 <mat-error *ngIf = "getControls('dateOfSupply').invalid" >
+	  {{ getControls('dateOfSupply')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>رقم الصنف </mat-label>
+	 <input matInput formControlName="itemNo"/>
+	 <mat-error *ngIf = "getControls('itemNo').invalid" >
+	  {{ getControls('itemNo')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>اسم الصنف</mat-label>
+	 <input matInput formControlName="productName"/>
+	 <mat-error *ngIf = "getControls('productName').invalid" >
+	  {{ getControls('productName')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>الكمية ( 1- 2 – 3 - ... ) رصيد</mat-label>
+	 <input matInput formControlName="quantityBalance"/>
+	 <mat-error *ngIf = "getControls('quantityBalance').invalid" >
+	  {{ getControls('quantityBalance')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>السعر </mat-label>
+	 <input matInput formControlName="price"/>
+	 <mat-error *ngIf = "getControls('price').invalid" >
+	  {{ getControls('price')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>(القيمة ( السعر * الكمية</mat-label>
+	 <input matInput formControlName="value"/>
+	 <mat-error *ngIf = "getControls('value').invalid" >
+	  {{ getControls('value')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+           
+
+	<app-material-select appearance="outline"
+	  #bondCode 
+	  [options] = "bondCodeSelectOptions"
+	  formControlName = "bondCode"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #bondNo 
+	  [options] = "bondNoSelectOptions"
+	  formControlName = "bondNo"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #type 
+	  [options] = "typeSelectOptions"
+	  formControlName = "type"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #condition 
+	  [options] = "conditionSelectOptions"
+	  formControlName = "condition"
+	></app-material-select>
+
+        </form>
+    </ng-template >
+    <ng-template searchResultContainer >
+        <app-grid-control
+            #gridControl
+            [rowDataService] = "getAddPermissionPaginatedSortedFiltered"
+            [columnOptions] = "columnOptions"
+            [gridHeaderOptions] = "gridHeaderOptions"
+            [searchInput] = "searchForm.value"
+            (deleteRow) = "onDeleteClicked($event)"
+        >
+        </app-grid-control>
+    </ng-template>
+</app-search-list-expansion-panel >

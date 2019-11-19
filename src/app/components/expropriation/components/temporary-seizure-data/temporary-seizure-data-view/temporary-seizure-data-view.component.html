@@ -1,0 +1,88 @@
+
+<mat-card class="form-card">
+      <mat-card-header>
+  
+          <mat-card-title>
+              بيانات الاستيلاء المؤقت
+          </mat-card-title>
+  
+      </mat-card-header>
+  
+      <mat-card-content>
+  
+        <form [formGroup] = "temporarySeizureDataForm" class="form-container">
+         
+
+	<mat-form-field appearance="outline">
+	 <mat-label>رقم المدرسة</mat-label>
+	 <input matInput formControlName="schoolNumber"/>
+	 <mat-error *ngIf = "getControls('schoolNumber').invalid" >
+	  {{ getControls('schoolNumber')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>رقم الاستيلاء المؤقت</mat-label>
+	 <input matInput formControlName="temporarySeizureNumber"/>
+	 <mat-error *ngIf = "getControls('temporarySeizureNumber').invalid" >
+	  {{ getControls('temporarySeizureNumber')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>تاريخ الاستيلاء المؤقت</mat-label>
+	 <input matInput
+	  [matDatepicker] = "dateOfTemporarySeizureDatepicker"
+	  autocomplete = "off"
+	  formControlName= "dateOfTemporarySeizure"/>
+	 <mat-datepicker-toggle
+	   matSuffix
+	   [for]="dateOfTemporarySeizureDatepicker"
+	 ></mat-datepicker-toggle>
+	 <mat-datepicker #dateOfTemporarySeizureDatepicker></mat-datepicker>
+	 <mat-error *ngIf = "getControls('dateOfTemporarySeizure').invalid" >
+	  {{ getControls('dateOfTemporarySeizure')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>عدد النشر بالوقائع المصرية</mat-label>
+	 <input matInput formControlName="numberOfPublicationsInEgyptianFacts"/>
+	 <mat-error *ngIf = "getControls('numberOfPublicationsInEgyptianFacts').invalid" >
+	  {{ getControls('numberOfPublicationsInEgyptianFacts')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>تاريخ النشر بالوقائع المصرية</mat-label>
+	 <input matInput
+	  [matDatepicker] = "dateOfPublicationInTheEgyptianFactsDatepicker"
+	  autocomplete = "off"
+	  formControlName= "dateOfPublicationInTheEgyptianFacts"/>
+	 <mat-datepicker-toggle
+	   matSuffix
+	   [for]="dateOfPublicationInTheEgyptianFactsDatepicker"
+	 ></mat-datepicker-toggle>
+	 <mat-datepicker #dateOfPublicationInTheEgyptianFactsDatepicker></mat-datepicker>
+	 <mat-error *ngIf = "getControls('dateOfPublicationInTheEgyptianFacts').invalid" >
+	  {{ getControls('dateOfPublicationInTheEgyptianFacts')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+         
+        </form>
+  
+      </mat-card-content >
+  
+      <mat-action-row>
+            <form [formGroup]="attachmentForm" class="form-container">
+                <app-multi-file-upload [service] = "temporarySeizureDataService" [id]="temporarySeizureDataForm.get('id').value"
+                    formControlName = "attachmentFiles">
+                </app-multi-file-upload>
+            </form>
+            <button (click) = "onConfirm()" mat-raised-button color = "primary" >
+                غلق
+            </button>
+        </mat-action-row>
+    </mat-card>
+
+    

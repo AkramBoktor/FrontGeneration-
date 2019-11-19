@@ -1,0 +1,88 @@
+
+<app-new-form-layout
+    dir="rtl"
+    (submitClicked) = "onSubmit()"
+    (back) = "onBack()"
+    [pageTitle] = "'انهاء خدمة'"
+>
+    <ng-template newFormContainer >
+        <form [formGroup] = "retirementForm">
+         
+
+	<mat-form-field appearance="outline">
+	 <mat-label>كود الموظف</mat-label>
+	 <input matInput formControlName="employeeCode"/>
+	 <mat-error *ngIf = "getControls('employeeCode').invalid" >
+	  {{ getControls('employeeCode')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>رقم القرار</mat-label>
+	 <input matInput formControlName="decisionCode"/>
+	 <mat-error *ngIf = "getControls('decisionCode').invalid" >
+	  {{ getControls('decisionCode')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>تاريخ القرار</mat-label>
+	 <input matInput
+	  [matDatepicker] = "decisionDateDatepicker"
+	  autocomplete = "off"
+	  formControlName= "decisionDate"/>
+	 <mat-datepicker-toggle
+	   matSuffix
+	   [for]="decisionDateDatepicker"
+	 ></mat-datepicker-toggle>
+	 <mat-datepicker #decisionDateDatepicker></mat-datepicker>
+	 <mat-error *ngIf = "getControls('decisionDate').invalid" >
+	  {{ getControls('decisionDate')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>تاريخ انهاء الخدمه</mat-label>
+	 <input matInput
+	  [matDatepicker] = "terminationDateDatepicker"
+	  autocomplete = "off"
+	  formControlName= "terminationDate"/>
+	 <mat-datepicker-toggle
+	   matSuffix
+	   [for]="terminationDateDatepicker"
+	 ></mat-datepicker-toggle>
+	 <mat-datepicker #terminationDateDatepicker></mat-datepicker>
+	 <mat-error *ngIf = "getControls('terminationDate').invalid" >
+	  {{ getControls('terminationDate')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+         
+
+	<app-material-select appearance="outline"
+	  #terminationReason 
+	  [options] = "terminationReasonSelectOptions"
+	  formControlName = "terminationReason"
+	></app-material-select>
+
+        </form>
+
+        <mat-divider></mat-divider>
+
+		<mat-card-actions>
+			<form [formGroup]="attachmentForm" class="form-container">
+                <app-multi-file-upload [service] = "retirementService" [id]="retirementForm.get('id').value"
+                    formControlName = "attachmentFiles">
+                </app-multi-file-upload>
+            </form>
+            <button
+                type="submit"
+                (click)="onSubmit()"
+                [disabled]="retirementForm.invalid"
+                mat-raised-button
+                color = "primary">
+             حفظ
+            </button>
+        </mat-card-actions>
+    </ng-template >
+</app-new-form-layout >
+

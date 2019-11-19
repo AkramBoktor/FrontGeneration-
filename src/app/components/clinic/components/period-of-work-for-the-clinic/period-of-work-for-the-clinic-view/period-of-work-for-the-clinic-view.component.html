@@ -1,0 +1,104 @@
+
+<mat-card class="form-card">
+      <mat-card-header>
+  
+          <mat-card-title>
+              فتره عمل للعيادة
+          </mat-card-title>
+  
+      </mat-card-header>
+  
+      <mat-card-content>
+  
+        <form [formGroup] = "periodOfWorkForTheClinicForm" class="form-container">
+         
+
+	<mat-form-field appearance="outline">
+	 <mat-label>اليوم</mat-label>
+	 <input matInput
+	  [matDatepicker] = "dayDatepicker"
+	  autocomplete = "off"
+	  formControlName= "day"/>
+	 <mat-datepicker-toggle
+	   matSuffix
+	   [for]="dayDatepicker"
+	 ></mat-datepicker-toggle>
+	 <mat-datepicker #dayDatepicker></mat-datepicker>
+	 <mat-error *ngIf = "getControls('day').invalid" >
+	  {{ getControls('day')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>من</mat-label>
+	 <input matInput
+	  [matDatepicker] = "fromDatepicker"
+	  autocomplete = "off"
+	  formControlName= "from"/>
+	 <mat-datepicker-toggle
+	   matSuffix
+	   [for]="fromDatepicker"
+	 ></mat-datepicker-toggle>
+	 <mat-datepicker #fromDatepicker></mat-datepicker>
+	 <mat-error *ngIf = "getControls('from').invalid" >
+	  {{ getControls('from')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>الى</mat-label>
+	 <input matInput
+	  [matDatepicker] = "toDatepicker"
+	  autocomplete = "off"
+	  formControlName= "to"/>
+	 <mat-datepicker-toggle
+	   matSuffix
+	   [for]="toDatepicker"
+	 ></mat-datepicker-toggle>
+	 <mat-datepicker #toDatepicker></mat-datepicker>
+	 <mat-error *ngIf = "getControls('to').invalid" >
+	  {{ getControls('to')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>رقم الطبيب</mat-label>
+	 <input matInput formControlName="employeeCode"/>
+	 <mat-error *ngIf = "getControls('employeeCode').invalid" >
+	  {{ getControls('employeeCode')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>ملاحظات</mat-label>
+	 <input matInput formControlName="notes"/>
+	 <mat-error *ngIf = "getControls('notes').invalid" >
+	  {{ getControls('notes')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>اسم الطبيب</mat-label>
+	 <input matInput formControlName="employeeName" [disableControl]="true" />
+	 <mat-error *ngIf = "getControls('employeeName').invalid" >
+	  {{ getControls('employeeName')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+         
+        </form>
+  
+      </mat-card-content >
+  
+      <mat-action-row>
+            <form [formGroup]="attachmentForm" class="form-container">
+                <app-multi-file-upload [service] = "periodOfWorkForTheClinicService" [id]="periodOfWorkForTheClinicForm.get('id').value"
+                    formControlName = "attachmentFiles">
+                </app-multi-file-upload>
+            </form>
+            <button (click) = "onConfirm()" mat-raised-button color = "primary" >
+                غلق
+            </button>
+        </mat-action-row>
+    </mat-card>
+
+    

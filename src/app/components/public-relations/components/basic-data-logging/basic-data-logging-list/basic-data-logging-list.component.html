@@ -1,0 +1,78 @@
+
+<app-search-list-expansion-panel
+    dir="rtl"
+    [pageTitle] = "'البيانات الاساسية '"
+    (beginSearch) = "onBeginSearch()"
+    (create) = "onCreate()"
+>
+    <ng-template searchFormContainer >
+        <form [formGroup] = "searchForm">
+           
+
+	<mat-form-field appearance="outline">
+	 <mat-label>تاريخ النشر</mat-label>
+	 <input matInput
+	  [matDatepicker] = "publicationDateDatepicker"
+	  autocomplete = "off"
+	  formControlName= "publicationDate"/>
+	 <mat-datepicker-toggle
+	   matSuffix
+	   [for]="publicationDateDatepicker"
+	 ></mat-datepicker-toggle>
+	 <mat-datepicker #publicationDateDatepicker></mat-datepicker>
+	 <mat-error *ngIf = "getControls('publicationDate').invalid" >
+	  {{ getControls('publicationDate')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>رقم الصفحة</mat-label>
+	 <input matInput formControlName="pageNumber"/>
+	 <mat-error *ngIf = "getControls('pageNumber').invalid" >
+	  {{ getControls('pageNumber')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>اسم الكاتب</mat-label>
+	 <input matInput formControlName="authorName"/>
+	 <mat-error *ngIf = "getControls('authorName').invalid" >
+	  {{ getControls('authorName')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>رقم العدد</mat-label>
+	 <input matInput formControlName="number"/>
+	 <mat-error *ngIf = "getControls('number').invalid" >
+	  {{ getControls('number')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+           
+
+	<app-material-select appearance="outline"
+	  #publisherCode 
+	  [options] = "publisherCodeSelectOptions"
+	  formControlName = "publisherCode"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #publicationCodePlace 
+	  [options] = "publicationCodePlaceSelectOptions"
+	  formControlName = "publicationCodePlace"
+	></app-material-select>
+
+        </form>
+    </ng-template >
+    <ng-template searchResultContainer >
+        <app-grid-control
+            #gridControl
+            [rowDataService] = "getBasicDataLoggingPaginatedSortedFiltered"
+            [columnOptions] = "columnOptions"
+            [gridHeaderOptions] = "gridHeaderOptions"
+            [searchInput] = "searchForm.value"
+            (deleteRow) = "onDeleteClicked($event)"
+        >
+        </app-grid-control>
+    </ng-template>
+</app-search-list-expansion-panel >

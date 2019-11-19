@@ -1,0 +1,66 @@
+
+<app-search-list-expansion-panel
+    dir="rtl"
+    [pageTitle] = "'بيانات العضويه '"
+    (beginSearch) = "onBeginSearch()"
+    (create) = "onCreate()"
+>
+    <ng-template searchFormContainer >
+        <form [formGroup] = "searchForm">
+           
+
+	<mat-form-field appearance="outline">
+	 <mat-label>رقم المؤظف</mat-label>
+	 <input matInput formControlName="employeeCode"/>
+	 <mat-error *ngIf = "getControls('employeeCode').invalid" >
+	  {{ getControls('employeeCode')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>عدد الاسهم</mat-label>
+	 <input matInput formControlName="sharesNumber"/>
+	 <mat-error *ngIf = "getControls('sharesNumber').invalid" >
+	  {{ getControls('sharesNumber')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>رقم العضويه</mat-label>
+	 <input matInput formControlName="membershipNumber"/>
+	 <mat-error *ngIf = "getControls('membershipNumber').invalid" >
+	  {{ getControls('membershipNumber')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>تاريخ العضويه</mat-label>
+	 <input matInput
+	  [matDatepicker] = "membershipDateDatepicker"
+	  autocomplete = "off"
+	  formControlName= "membershipDate"/>
+	 <mat-datepicker-toggle
+	   matSuffix
+	   [for]="membershipDateDatepicker"
+	 ></mat-datepicker-toggle>
+	 <mat-datepicker #membershipDateDatepicker></mat-datepicker>
+	 <mat-error *ngIf = "getControls('membershipDate').invalid" >
+	  {{ getControls('membershipDate')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+           
+
+        </form>
+    </ng-template >
+    <ng-template searchResultContainer >
+        <app-grid-control
+            #gridControl
+            [rowDataService] = "getMembershipDataPaginatedSortedFiltered"
+            [columnOptions] = "columnOptions"
+            [gridHeaderOptions] = "gridHeaderOptions"
+            [searchInput] = "searchForm.value"
+            (deleteRow) = "onDeleteClicked($event)"
+        >
+        </app-grid-control>
+    </ng-template>
+</app-search-list-expansion-panel >

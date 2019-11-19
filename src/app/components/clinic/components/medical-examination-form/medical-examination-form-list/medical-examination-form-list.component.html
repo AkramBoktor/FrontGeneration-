@@ -1,0 +1,54 @@
+
+<app-search-list-expansion-panel
+    dir="rtl"
+    [pageTitle] = "'استماره كشف طبي'"
+    (beginSearch) = "onBeginSearch()"
+    (create) = "onCreate()"
+>
+    <ng-template searchFormContainer >
+        <form [formGroup] = "searchForm">
+           
+
+	<mat-form-field appearance="outline">
+	 <mat-label>رقم الموظف المريض</mat-label>
+	 <input matInput formControlName="patientCode"/>
+	 <mat-error *ngIf = "getControls('patientCode').invalid" >
+	  {{ getControls('patientCode')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>رقم الموظف الطبيب</mat-label>
+	 <input matInput formControlName="doctorCode"/>
+	 <mat-error *ngIf = "getControls('doctorCode').invalid" >
+	  {{ getControls('doctorCode')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+           
+
+	<app-material-select appearance="outline"
+	  #diseaseCode 
+	  [options] = "diseaseCodeSelectOptions"
+	  formControlName = "diseaseCode"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #examinationType 
+	  [options] = "examinationTypeSelectOptions"
+	  formControlName = "examinationType"
+	></app-material-select>
+
+        </form>
+    </ng-template >
+    <ng-template searchResultContainer >
+        <app-grid-control
+            #gridControl
+            [rowDataService] = "getMedicalExaminationFormPaginatedSortedFiltered"
+            [columnOptions] = "columnOptions"
+            [gridHeaderOptions] = "gridHeaderOptions"
+            [searchInput] = "searchForm.value"
+            (deleteRow) = "onDeleteClicked($event)"
+        >
+        </app-grid-control>
+    </ng-template>
+</app-search-list-expansion-panel >

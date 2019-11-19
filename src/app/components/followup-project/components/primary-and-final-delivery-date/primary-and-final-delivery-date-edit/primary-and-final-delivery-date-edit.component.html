@@ -1,0 +1,84 @@
+
+<mat-card>
+    <mat-card-header>
+        <mat-card-title>تاريخ التسليم الابتدائي والنهائي</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+        <form [formGroup]="primaryAndFinalDeliveryDateForm" class="form-container">
+          
+
+	<mat-form-field appearance="outline">
+	 <mat-label>كود المشروع</mat-label>
+	 <input matInput formControlName="projectCode"/>
+	 <mat-error *ngIf = "getControls('projectCode').invalid" >
+	  {{ getControls('projectCode')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>تاريخ تسليم ابتدائي</mat-label>
+	 <input matInput
+	  [matDatepicker] = "primaryDeliveryDateDatepicker"
+	  autocomplete = "off"
+	  formControlName= "primaryDeliveryDate"/>
+	 <mat-datepicker-toggle
+	   matSuffix
+	   [for]="primaryDeliveryDateDatepicker"
+	 ></mat-datepicker-toggle>
+	 <mat-datepicker #primaryDeliveryDateDatepicker></mat-datepicker>
+	 <mat-error *ngIf = "getControls('primaryDeliveryDate').invalid" >
+	  {{ getControls('primaryDeliveryDate')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>تاريخ تسليم نهائي</mat-label>
+	 <input matInput
+	  [matDatepicker] = "finalDeliveryDateDatepicker"
+	  autocomplete = "off"
+	  formControlName= "finalDeliveryDate"/>
+	 <mat-datepicker-toggle
+	   matSuffix
+	   [for]="finalDeliveryDateDatepicker"
+	 ></mat-datepicker-toggle>
+	 <mat-datepicker #finalDeliveryDateDatepicker></mat-datepicker>
+	 <mat-error *ngIf = "getControls('finalDeliveryDate').invalid" >
+	  {{ getControls('finalDeliveryDate')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+          
+
+	<app-material-select appearance="outline"
+	  #constructionType 
+	  [options] = "constructionTypeSelectOptions"
+	  formControlName = "constructionType"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #deliveryType 
+	  [options] = "deliveryTypeSelectOptions"
+	  formControlName = "deliveryType"
+	></app-material-select>
+
+        </form>
+    </mat-card-content>
+
+    <mat-divider></mat-divider>
+
+	<mat-card-actions>
+			<form [formGroup]="attachmentForm" class="form-container">
+                <app-multi-file-upload [service] = "primaryAndFinalDeliveryDateService" [id]="primaryAndFinalDeliveryDateForm.get('id').value"
+                    formControlName = "attachmentFiles">
+                </app-multi-file-upload>
+            </form>
+            <button
+                color = "primary"
+                type = "submit"
+                (click) = "onSubmit()"
+                [disabled] = "primaryAndFinalDeliveryDateForm.invalid"
+                mat-raised-button>
+                حفظ
+            </button>
+    </mat-card-actions>
+</mat-card>
+

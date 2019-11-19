@@ -1,0 +1,74 @@
+
+<app-search-list-expansion-panel
+    dir="rtl"
+    [pageTitle] = "'انهاء خدمة'"
+    (beginSearch) = "onBeginSearch()"
+    (create) = "onCreate()"
+>
+    <ng-template searchFormContainer >
+        <form [formGroup] = "searchForm">
+           
+
+	<mat-form-field appearance="outline">
+	 <mat-label>كود الموظف</mat-label>
+	 <input matInput formControlName="employeeCode"/>
+	 <mat-error *ngIf = "getControls('employeeCode').invalid" >
+	  {{ getControls('employeeCode')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>رقم القرار</mat-label>
+	 <input matInput formControlName="decisionCode"/>
+	 <mat-error *ngIf = "getControls('decisionCode').invalid" >
+	  {{ getControls('decisionCode')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>تاريخ القرار</mat-label>
+	 <input matInput
+	  [matDatepicker] = "decisionDateDatepicker"
+	  autocomplete = "off"
+	  formControlName= "decisionDate"/>
+	 <mat-datepicker-toggle
+	   matSuffix
+	   [for]="decisionDateDatepicker"
+	 ></mat-datepicker-toggle>
+	 <mat-datepicker #decisionDateDatepicker></mat-datepicker>
+	 <mat-error *ngIf = "getControls('decisionDate').invalid" >
+	  {{ getControls('decisionDate')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>تاريخ انهاء الخدمه</mat-label>
+	 <input matInput
+	  [matDatepicker] = "terminationDateDatepicker"
+	  autocomplete = "off"
+	  formControlName= "terminationDate"/>
+	 <mat-datepicker-toggle
+	   matSuffix
+	   [for]="terminationDateDatepicker"
+	 ></mat-datepicker-toggle>
+	 <mat-datepicker #terminationDateDatepicker></mat-datepicker>
+	 <mat-error *ngIf = "getControls('terminationDate').invalid" >
+	  {{ getControls('terminationDate')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+           
+
+        </form>
+    </ng-template >
+    <ng-template searchResultContainer >
+        <app-grid-control
+            #gridControl
+            [rowDataService] = "getRetirementPaginatedSortedFiltered"
+            [columnOptions] = "columnOptions"
+            [gridHeaderOptions] = "gridHeaderOptions"
+            [searchInput] = "searchForm.value"
+            (deleteRow) = "onDeleteClicked($event)"
+        >
+        </app-grid-control>
+    </ng-template>
+</app-search-list-expansion-panel >

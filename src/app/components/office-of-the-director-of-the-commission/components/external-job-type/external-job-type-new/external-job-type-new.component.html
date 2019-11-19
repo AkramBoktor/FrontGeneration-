@@ -1,0 +1,50 @@
+
+<app-new-form-layout
+    dir="rtl"
+    (submitClicked) = "onSubmit()"
+    (back) = "onBack()"
+    [pageTitle] = "'نوع الوظيفة الخارجية'"
+>
+    <ng-template newFormContainer >
+        <form [formGroup] = "externalJobTypeForm">
+         
+
+	<mat-form-field appearance="outline">
+	 <mat-label>كود الوظيفة الخارجية</mat-label>
+	 <input matInput formControlName="eexternaljobcode"/>
+	 <mat-error *ngIf = "getControls('eexternaljobcode').invalid" >
+	  {{ getControls('eexternaljobcode')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>اسم الوظيفة الخارجية</mat-label>
+	 <input matInput formControlName="externaljobname"/>
+	 <mat-error *ngIf = "getControls('externaljobname').invalid" >
+	  {{ getControls('externaljobname')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+         
+
+        </form>
+
+        <mat-divider></mat-divider>
+
+		<mat-card-actions>
+			<form [formGroup]="attachmentForm" class="form-container">
+                <app-multi-file-upload [service] = "externalJobTypeService" [id]="externalJobTypeForm.get('id').value"
+                    formControlName = "attachmentFiles">
+                </app-multi-file-upload>
+            </form>
+            <button
+                type="submit"
+                (click)="onSubmit()"
+                [disabled]="externalJobTypeForm.invalid"
+                mat-raised-button
+                color = "primary">
+             حفظ
+            </button>
+        </mat-card-actions>
+    </ng-template >
+</app-new-form-layout >
+

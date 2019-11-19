@@ -1,0 +1,25 @@
+.grid-toolbar {
+    height: 35px;
+    max-width: 1900px;
+}
+
+.search-input {
+    width: 50%;
+}
+
+.table-container {
+    flex: 1 1 auto;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+    overflow: auto;
+    -webkit-overflow-scrolling: touch;
+}
+
+// Hide the default paginator
+::ng-deep .ag-paging-panel {
+    display: none !important;
+}
+
+::ng-deep .action-column {
+    display: flex !important;
+    justify-content: flex-end !important;
+}

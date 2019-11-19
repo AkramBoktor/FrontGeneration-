@@ -1,0 +1,94 @@
+
+<app-new-form-layout
+    dir="rtl"
+    (submitClicked) = "onSubmit()"
+    (back) = "onBack()"
+    [pageTitle] = "'رصيد الاجازات'"
+>
+    <ng-template newFormContainer >
+        <form [formGroup] = "vacationsBalanceForm">
+         
+
+	<mat-form-field appearance="outline">
+	 <mat-label>كود الموظف</mat-label>
+	 <input matInput formControlName="employeeCode"/>
+	 <mat-error *ngIf = "getControls('employeeCode').invalid" >
+	  {{ getControls('employeeCode')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>رصيد الموظف</mat-label>
+	 <input matInput formControlName="employeeBalance"/>
+	 <mat-error *ngIf = "getControls('employeeBalance').invalid" >
+	  {{ getControls('employeeBalance')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>من تاريخ</mat-label>
+	 <input matInput
+	  [matDatepicker] = "fromDateDatepicker"
+	  autocomplete = "off"
+	  formControlName= "fromDate"/>
+	 <mat-datepicker-toggle
+	   matSuffix
+	   [for]="fromDateDatepicker"
+	 ></mat-datepicker-toggle>
+	 <mat-datepicker #fromDateDatepicker></mat-datepicker>
+	 <mat-error *ngIf = "getControls('fromDate').invalid" >
+	  {{ getControls('fromDate')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>الي تاريخ</mat-label>
+	 <input matInput
+	  [matDatepicker] = "toDateDatepicker"
+	  autocomplete = "off"
+	  formControlName= "toDate"/>
+	 <mat-datepicker-toggle
+	   matSuffix
+	   [for]="toDateDatepicker"
+	 ></mat-datepicker-toggle>
+	 <mat-datepicker #toDateDatepicker></mat-datepicker>
+	 <mat-error *ngIf = "getControls('toDate').invalid" >
+	  {{ getControls('toDate')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+         
+
+	<app-material-select appearance="outline"
+	  #creditType 
+	  [options] = "creditTypeSelectOptions"
+	  formControlName = "creditType"
+	></app-material-select>
+
+	<app-material-select appearance="outline" [disabled]="true" 
+	  #appointmentType 
+	  [options] = "appointmentTypeSelectOptions"
+	  formControlName = "appointmentType"
+	></app-material-select>
+
+        </form>
+
+        <mat-divider></mat-divider>
+
+		<mat-card-actions>
+			<form [formGroup]="attachmentForm" class="form-container">
+                <app-multi-file-upload [service] = "vacationsBalanceService" [id]="vacationsBalanceForm.get('id').value"
+                    formControlName = "attachmentFiles">
+                </app-multi-file-upload>
+            </form>
+            <button
+                type="submit"
+                (click)="onSubmit()"
+                [disabled]="vacationsBalanceForm.invalid"
+                mat-raised-button
+                color = "primary">
+             حفظ
+            </button>
+        </mat-card-actions>
+    </ng-template >
+</app-new-form-layout >
+

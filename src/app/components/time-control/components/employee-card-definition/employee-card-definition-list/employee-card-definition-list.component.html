@@ -1,0 +1,46 @@
+
+<app-search-list-expansion-panel
+    dir="rtl"
+    [pageTitle] = "'تعريف كارت موظف مبني رئيسي وفروع'"
+    (beginSearch) = "onBeginSearch()"
+    (create) = "onCreate()"
+>
+    <ng-template searchFormContainer >
+        <form [formGroup] = "searchForm">
+           
+
+	<mat-form-field appearance="outline">
+	 <mat-label>كود الموظف</mat-label>
+	 <input matInput formControlName="employeeCode"/>
+	 <mat-error *ngIf = "getControls('employeeCode').invalid" >
+	  {{ getControls('employeeCode')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+           
+
+	<app-material-select appearance="outline"
+	  #branchCode 
+	  [options] = "branchCodeSelectOptions"
+	  formControlName = "branchCode"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #cardCode 
+	  [options] = "cardCodeSelectOptions"
+	  formControlName = "cardCode"
+	></app-material-select>
+
+        </form>
+    </ng-template >
+    <ng-template searchResultContainer >
+        <app-grid-control
+            #gridControl
+            [rowDataService] = "getEmployeeCardDefinitionPaginatedSortedFiltered"
+            [columnOptions] = "columnOptions"
+            [gridHeaderOptions] = "gridHeaderOptions"
+            [searchInput] = "searchForm.value"
+            (deleteRow) = "onDeleteClicked($event)"
+        >
+        </app-grid-control>
+    </ng-template>
+</app-search-list-expansion-panel >
