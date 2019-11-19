@@ -1,0 +1,160 @@
+
+<mat-card>
+    <mat-card-header>
+        <mat-card-title>خصم مبلغ لموظف بالصندوق</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+        <form [formGroup]="deductionOfAmountToAnEmployeeOfTheFundForm" class="form-container">
+          
+
+	<mat-form-field appearance="outline">
+	 <mat-label>كود الموظف</mat-label>
+	 <input matInput formControlName="employeeCode"/>
+	 <mat-error *ngIf = "getControls('employeeCode').invalid" >
+	  {{ getControls('employeeCode')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>حاله الاشتراك</mat-label>
+	 <input matInput formControlName="subscriptionStatus" [disableControl]="true" />
+	 <mat-error *ngIf = "getControls('subscriptionStatus').invalid" >
+	  {{ getControls('subscriptionStatus')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>كود العضويه</mat-label>
+	 <input matInput formControlName="membershipCode" [disableControl]="true" />
+	 <mat-error *ngIf = "getControls('membershipCode').invalid" >
+	  {{ getControls('membershipCode')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>المرتب الاساسى</mat-label>
+	 <input matInput formControlName="basicSalary" [disableControl]="true" />
+	 <mat-error *ngIf = "getControls('basicSalary').invalid" >
+	  {{ getControls('basicSalary')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>قيم مبالغ الاشتراك</mat-label>
+	 <input matInput formControlName="subscriptionAmounts" [disableControl]="true" />
+	 <mat-error *ngIf = "getControls('subscriptionAmounts').invalid" >
+	  {{ getControls('subscriptionAmounts')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>سبب خصم المبلغ</mat-label>
+	 <input matInput formControlName="deductingAmountReason" [disableControl]="true" />
+	 <mat-error *ngIf = "getControls('deductingAmountReason').invalid" >
+	  {{ getControls('deductingAmountReason')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>كود المستفيد</mat-label>
+	 <input matInput formControlName="beneficiaryCode"/>
+	 <mat-error *ngIf = "getControls('beneficiaryCode').invalid" >
+	  {{ getControls('beneficiaryCode')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>اسم المستفيد</mat-label>
+	 <input matInput formControlName="beneficiaryName"/>
+	 <mat-error *ngIf = "getControls('beneficiaryName').invalid" >
+	  {{ getControls('beneficiaryName')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>قيمه الشيك</mat-label>
+	 <input matInput formControlName="checkAmount"/>
+	 <mat-error *ngIf = "getControls('checkAmount').invalid" >
+	  {{ getControls('checkAmount')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>بيان البنك</mat-label>
+	 <input matInput formControlName="bankStatement"/>
+	 <mat-error *ngIf = "getControls('bankStatement').invalid" >
+	  {{ getControls('bankStatement')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>رقم الشيك</mat-label>
+	 <input matInput formControlName="checkNumber" [disableControl]="true" />
+	 <mat-error *ngIf = "getControls('checkNumber').invalid" >
+	  {{ getControls('checkNumber')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>تاريخ الشيك</mat-label>
+	 <input matInput
+	  [matDatepicker] = "checkDateDatepicker"
+	  autocomplete = "off"
+	  formControlName= "checkDate"/>
+	 <mat-datepicker-toggle
+	   matSuffix
+	   [for]="checkDateDatepicker"
+	 ></mat-datepicker-toggle>
+	 <mat-datepicker #checkDateDatepicker></mat-datepicker>
+	 <mat-error *ngIf = "getControls('checkDate').invalid" >
+	  {{ getControls('checkDate')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+          
+
+	<app-material-select appearance="outline"
+	  #boxCode 
+	  [options] = "boxCodeSelectOptions"
+	  formControlName = "boxCode"
+	></app-material-select>
+
+	<app-material-select appearance="outline" [disabled]="true" 
+	  #administrationCode 
+	  [options] = "administrationCodeSelectOptions"
+	  formControlName = "administrationCode"
+	></app-material-select>
+
+	<app-material-select appearance="outline" [disabled]="true" 
+	  #employeeStatus 
+	  [options] = "employeeStatusSelectOptions"
+	  formControlName = "employeeStatus"
+	></app-material-select>
+
+	<app-material-select appearance="outline" [disabled]="true" 
+	  #bankCode 
+	  [options] = "bankCodeSelectOptions"
+	  formControlName = "bankCode"
+	></app-material-select>
+
+        </form>
+    </mat-card-content>
+
+    <mat-divider></mat-divider>
+
+	<mat-card-actions>
+			<form [formGroup]="attachmentForm" class="form-container">
+                <app-multi-file-upload [service] = "deductionOfAmountToAnEmployeeOfTheFundService" [id]="deductionOfAmountToAnEmployeeOfTheFundForm.get('id').value"
+                    formControlName = "attachmentFiles">
+                </app-multi-file-upload>
+            </form>
+            <button
+                color = "primary"
+                type = "submit"
+                (click) = "onSubmit()"
+                [disabled] = "deductionOfAmountToAnEmployeeOfTheFundForm.invalid"
+                mat-raised-button>
+                حفظ
+            </button>
+    </mat-card-actions>
+</mat-card>
+

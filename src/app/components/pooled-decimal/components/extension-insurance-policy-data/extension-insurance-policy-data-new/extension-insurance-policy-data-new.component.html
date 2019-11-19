@@ -1,0 +1,114 @@
+
+<app-new-form-layout
+    dir="rtl"
+    (submitClicked) = "onSubmit()"
+    (back) = "onBack()"
+    [pageTitle] = "'ادخال بيانات ملحق وثيقة التامين'"
+>
+    <ng-template newFormContainer >
+        <form [formGroup] = "extensionInsurancePolicyDataForm">
+         
+
+	<mat-form-field appearance="outline">
+	 <mat-label>كود المبني</mat-label>
+	 <input matInput formControlName="buildingCode"/>
+	 <mat-error *ngIf = "getControls('buildingCode').invalid" >
+	  {{ getControls('buildingCode')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>شركه التأمين</mat-label>
+	 <input matInput formControlName="insuranceCompany"/>
+	 <mat-error *ngIf = "getControls('insuranceCompany').invalid" >
+	  {{ getControls('insuranceCompany')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>رقم النموزج</mat-label>
+	 <input matInput formControlName="modelCode"/>
+	 <mat-error *ngIf = "getControls('modelCode').invalid" >
+	  {{ getControls('modelCode')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>عدد الادوار</mat-label>
+	 <input matInput formControlName="floorsNumber"/>
+	 <mat-error *ngIf = "getControls('floorsNumber').invalid" >
+	  {{ getControls('floorsNumber')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>عدد الفصول </mat-label>
+	 <input matInput formControlName="classroomNumber"/>
+	 <mat-error *ngIf = "getControls('classroomNumber').invalid" >
+	  {{ getControls('classroomNumber')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>تاريخ الملحق</mat-label>
+	 <input matInput
+	  [matDatepicker] = "extensionDateDatepicker"
+	  autocomplete = "off"
+	  formControlName= "extensionDate"/>
+	 <mat-datepicker-toggle
+	   matSuffix
+	   [for]="extensionDateDatepicker"
+	 ></mat-datepicker-toggle>
+	 <mat-datepicker #extensionDateDatepicker></mat-datepicker>
+	 <mat-error *ngIf = "getControls('extensionDate').invalid" >
+	  {{ getControls('extensionDate')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>رقم الملحق</mat-label>
+	 <input matInput formControlName="extensionCode"/>
+	 <mat-error *ngIf = "getControls('extensionCode').invalid" >
+	  {{ getControls('extensionCode')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>مبلغ الملحق</mat-label>
+	 <input matInput formControlName="extensionAmount"/>
+	 <mat-error *ngIf = "getControls('extensionAmount').invalid" >
+	  {{ getControls('extensionAmount')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>قسط التامين</mat-label>
+	 <input matInput formControlName="insuranceFee"/>
+	 <mat-error *ngIf = "getControls('insuranceFee').invalid" >
+	  {{ getControls('insuranceFee')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+         
+
+        </form>
+
+        <mat-divider></mat-divider>
+
+		<mat-card-actions>
+			<form [formGroup]="attachmentForm" class="form-container">
+                <app-multi-file-upload [service] = "extensionInsurancePolicyDataService" [id]="extensionInsurancePolicyDataForm.get('id').value"
+                    formControlName = "attachmentFiles">
+                </app-multi-file-upload>
+            </form>
+            <button
+                type="submit"
+                (click)="onSubmit()"
+                [disabled]="extensionInsurancePolicyDataForm.invalid"
+                mat-raised-button
+                color = "primary">
+             حفظ
+            </button>
+        </mat-card-actions>
+    </ng-template >
+</app-new-form-layout >
+

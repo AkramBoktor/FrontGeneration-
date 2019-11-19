@@ -1,0 +1,160 @@
+
+<app-new-form-layout
+    dir="rtl"
+    (submitClicked) = "onSubmit()"
+    (back) = "onBack()"
+    [pageTitle] = "'بيانات مقاول'"
+>
+    <ng-template newFormContainer >
+        <form [formGroup] = "contractorDataForm">
+         
+
+	<mat-form-field appearance="outline">
+	 <mat-label>كود المورد</mat-label>
+	 <input matInput formControlName="supplierCode"/>
+	 <mat-error *ngIf = "getControls('supplierCode').invalid" >
+	  {{ getControls('supplierCode')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>اسم الشركة</mat-label>
+	 <input matInput formControlName="companyName"/>
+	 <mat-error *ngIf = "getControls('companyName').invalid" >
+	  {{ getControls('companyName')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>اسم صاحب النشاط</mat-label>
+	 <input matInput formControlName="ownerName"/>
+	 <mat-error *ngIf = "getControls('ownerName').invalid" >
+	  {{ getControls('ownerName')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>اسم المدير المسؤول</mat-label>
+	 <input matInput formControlName="administratorName"/>
+	 <mat-error *ngIf = "getControls('administratorName').invalid" >
+	  {{ getControls('administratorName')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>عنوان المورد</mat-label>
+	 <input matInput formControlName="resourceAddress"/>
+	 <mat-error *ngIf = "getControls('resourceAddress').invalid" >
+	  {{ getControls('resourceAddress')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>المنطقة</mat-label>
+	 <input matInput formControlName="region"/>
+	 <mat-error *ngIf = "getControls('region').invalid" >
+	  {{ getControls('region')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>رقم تليفون المورد</mat-label>
+	 <input matInput formControlName="phoneNumber"/>
+	 <mat-error *ngIf = "getControls('phoneNumber').invalid" >
+	  {{ getControls('phoneNumber')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>رقم بطاقة المدير المسؤول</mat-label>
+	 <input matInput formControlName="managerCardCode"/>
+	 <mat-error *ngIf = "getControls('managerCardCode').invalid" >
+	  {{ getControls('managerCardCode')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>رقم البطاقة الضريبية</mat-label>
+	 <input matInput formControlName="taxCardNumber"/>
+	 <mat-error *ngIf = "getControls('taxCardNumber').invalid" >
+	  {{ getControls('taxCardNumber')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>رقم القيد</mat-label>
+	 <input matInput formControlName="constraintNumber"/>
+	 <mat-error *ngIf = "getControls('constraintNumber').invalid" >
+	  {{ getControls('constraintNumber')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>بيان المقاولين</mat-label>
+	 <input matInput formControlName="statement"/>
+	 <mat-error *ngIf = "getControls('statement').invalid" >
+	  {{ getControls('statement')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>قائمة سوداء</mat-label>
+	 <input matInput formControlName="blackList"/>
+	 <mat-error *ngIf = "getControls('blackList').invalid" >
+	  {{ getControls('blackList')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+         
+
+	<app-material-select appearance="outline"
+	  #category 
+	  [options] = "categorySelectOptions"
+	  formControlName = "category"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #resourceType 
+	  [options] = "resourceTypeSelectOptions"
+	  formControlName = "resourceType"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #issuer 
+	  [options] = "issuerSelectOptions"
+	  formControlName = "issuer"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #issuerOfTaxCard 
+	  [options] = "issuerOfTaxCardSelectOptions"
+	  formControlName = "issuerOfTaxCard"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #recordType 
+	  [options] = "recordTypeSelectOptions"
+	  formControlName = "recordType"
+	></app-material-select>
+
+        </form>
+
+        <mat-divider></mat-divider>
+
+		<mat-card-actions>
+			<form [formGroup]="attachmentForm" class="form-container">
+                <app-multi-file-upload [service] = "contractorDataService" [id]="contractorDataForm.get('id').value"
+                    formControlName = "attachmentFiles">
+                </app-multi-file-upload>
+            </form>
+            <button
+                type="submit"
+                (click)="onSubmit()"
+                [disabled]="contractorDataForm.invalid"
+                mat-raised-button
+                color = "primary">
+             حفظ
+            </button>
+        </mat-card-actions>
+    </ng-template >
+</app-new-form-layout >
+

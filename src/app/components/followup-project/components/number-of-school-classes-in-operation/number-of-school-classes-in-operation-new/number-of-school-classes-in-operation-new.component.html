@@ -35,11 +35,9 @@
         </form>
 
         <mat-divider></mat-divider>
- 
-
 
 		<mat-card-actions>
- 			<form [formGroup]="attachmentForm" class="form-container">
+			<form [formGroup]="attachmentForm" class="form-container">
                 <app-multi-file-upload [service] = "numberOfSchoolClassesInOperationService" [id]="numberOfSchoolClassesInOperationForm.get('id').value"
                     formControlName = "attachmentFiles">
                 </app-multi-file-upload>

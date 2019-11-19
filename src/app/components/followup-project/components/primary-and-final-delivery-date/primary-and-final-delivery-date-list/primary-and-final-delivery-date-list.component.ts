@@ -1,17 +1,22 @@
 
-import { Component, Injector, Input, OnInit, ViewChild } from '@angular/core';
-import { FormGroup } from '@angular/forms';
+import { Component,OnInit, Input, ViewChild, Injector } from '@angular/core';
 import { AppBaseComponent } from 'app/shared/base/app-base.component';
+import { FormGroup, AbstractControl, Validators } from '@angular/forms';
+import { ODataPagedResult } from 'angular-odata-es5';
 import { GridControlComponent } from 'app/shared/components/grid-control/grid-control.component';
-import { GridColumnOptions, GridHeaderOptions } from 'app/shared/models/controls/grid-control.model';
-import { FormControlError, GridPaginatedSortedFiltered } from 'app/shared/models/controls/interfaces';
+import { GridColumnOptions,GridHeaderOptions } from 'app/shared/models/controls/grid-control.model';
+import { GridPaginatedSortedFiltered, FormControlError } from 'app/shared/models/controls/interfaces';
 import { PrimaryAndFinalDeliveryDate } from 'app/shared/models/primary-and-final-delivery-date';
 import { Observable } from 'rxjs';
 import { take } from 'rxjs/operators';
+import { ValidatorFunctions } from 'app/shared/validations/validator-functions';
 import { PrimaryAndFinalDeliveryDateEditComponent } from '../primary-and-final-delivery-date-edit/primary-and-final-delivery-date-edit.component';
 import { PrimaryAndFinalDeliveryDateNewComponent } from '../primary-and-final-delivery-date-new/primary-and-final-delivery-date-new.component';
 import { PrimaryAndFinalDeliveryDateViewComponent } from '../primary-and-final-delivery-date-view/primary-and-final-delivery-date-view.component';
 import { PrimaryAndFinalDeliveryDateService } from '../shared/primary-and-final-delivery-date.service';
+import { MaterialSelectOptions } from 'app/shared/models/controls/material-select.model';
+import { MaterialSelectComponent } from 'app/shared/components/material-controls/material-select/material-select.component';
+import { LookupService } from 'app/shared/pages/lookup-form/lookup.service';
 
 @Component({
   selector: 'app-primary-and-final-delivery-date-list',
@@ -25,11 +30,16 @@ export class PrimaryAndFinalDeliveryDateListComponent extends AppBaseComponent i
   errorMessages: FormControlError[] = [
         
       ];
-  
+  private constructionTypesService: LookupService;
+private deliveryTypesService: LookupService;
 
   
+constructionTypeSelectOptions: MaterialSelectOptions;
+deliveryTypeSelectOptions: MaterialSelectOptions;
 
   
+	@ViewChild('constructionType', { static: true }) ConstructionTypeSelectComponent: MaterialSelectComponent;
+	@ViewChild('deliveryType', { static: true }) DeliveryTypeSelectComponent: MaterialSelectComponent;
 
   
   @Input() selectedPrimaryAndFinalDeliveryDate: PrimaryAndFinalDeliveryDate;
@@ -61,10 +71,25 @@ export class PrimaryAndFinalDeliveryDateListComponent extends AppBaseComponent i
     this.selectedPrimaryAndFinalDeliveryDate = new PrimaryAndFinalDeliveryDate();
 
     
+	this.constructionTypeSelectOptions = new MaterialSelectOptions({
+	 data: this.constructionTypesService.getAll(),
+	 errorMessages: this.errorMessages,
+	 label: 'نوع الإنشاء',
+	});
+
+	this.deliveryTypeSelectOptions = new MaterialSelectOptions({
+	 data: this.deliveryTypesService.getAll(),
+	 errorMessages: this.errorMessages,
+	 label: 'نوع التسليم',
+	});
+
 
     this.searchForm = this.formBuilder.group({
      	projectCode : [],
-	projectDesc : []
+	primaryDeliveryDate : [],
+	finalDeliveryDate : [],
+	constructionType : [],
+	deliveryType : []
     });
 
      
@@ -93,7 +118,8 @@ export class PrimaryAndFinalDeliveryDateListComponent extends AppBaseComponent i
   }
 
   initializeLookupServices() {
-    
+    this.constructionTypesService = new LookupService('constructiontypes', this.http);
+this.deliveryTypesService = new LookupService('deliverytypes', this.http);
   }
 }
 

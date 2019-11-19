@@ -1,0 +1,156 @@
+
+<mat-card>
+    <mat-card-header>
+        <mat-card-title>بيانات نزع الملكية بعد قرار رئيس الوزراء</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+        <form [formGroup]="expropriationAfterDecisionForm" class="form-container">
+          
+
+	<mat-form-field appearance="outline">
+	 <mat-label>كود المبنى</mat-label>
+	 <input matInput formControlName="buildingCode"/>
+	 <mat-error *ngIf = "getControls('buildingCode').invalid" >
+	  {{ getControls('buildingCode')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>تاريخ القرار</mat-label>
+	 <input matInput
+	  [matDatepicker] = "dateOfBecisionDatepicker"
+	  autocomplete = "off"
+	  formControlName= "dateOfBecision"/>
+	 <mat-datepicker-toggle
+	   matSuffix
+	   [for]="dateOfBecisionDatepicker"
+	 ></mat-datepicker-toggle>
+	 <mat-datepicker #dateOfBecisionDatepicker></mat-datepicker>
+	 <mat-error *ngIf = "getControls('dateOfBecision').invalid" >
+	  {{ getControls('dateOfBecision')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>عدد النشر في الجريده الرسمية</mat-label>
+	 <input matInput formControlName="numberOfPublicationInTheOfficialGazette"/>
+	 <mat-error *ngIf = "getControls('numberOfPublicationInTheOfficialGazette').invalid" >
+	  {{ getControls('numberOfPublicationInTheOfficialGazette')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>تاريخ النشر في الجريده الرسمية</mat-label>
+	 <input matInput
+	  [matDatepicker] = "dateOfPublicationInTheOfficialGazetteDatepicker"
+	  autocomplete = "off"
+	  formControlName= "dateOfPublicationInTheOfficialGazette"/>
+	 <mat-datepicker-toggle
+	   matSuffix
+	   [for]="dateOfPublicationInTheOfficialGazetteDatepicker"
+	 ></mat-datepicker-toggle>
+	 <mat-datepicker #dateOfPublicationInTheOfficialGazetteDatepicker></mat-datepicker>
+	 <mat-error *ngIf = "getControls('dateOfPublicationInTheOfficialGazette').invalid" >
+	  {{ getControls('dateOfPublicationInTheOfficialGazette')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>مشروع تربيه وتعليم</mat-label>
+	 <input matInput formControlName="educationProject"/>
+	 <mat-error *ngIf = "getControls('educationProject').invalid" >
+	  {{ getControls('educationProject')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>عدد الملاك في كشوف العرض</mat-label>
+	 <input matInput formControlName="theNumberOfOwnersInThePresentationStatements"/>
+	 <mat-error *ngIf = "getControls('theNumberOfOwnersInThePresentationStatements').invalid" >
+	  {{ getControls('theNumberOfOwnersInThePresentationStatements')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>سعر المتر في كشوف العرض</mat-label>
+	 <input matInput formControlName="thePriceOfAMeterInTheSupplyStatements"/>
+	 <mat-error *ngIf = "getControls('thePriceOfAMeterInTheSupplyStatements').invalid" >
+	  {{ getControls('thePriceOfAMeterInTheSupplyStatements')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>تاريخ من في كشوف العرض </mat-label>
+	 <input matInput
+	  [matDatepicker] = "dateFromThePresentationListsDatepicker"
+	  autocomplete = "off"
+	  formControlName= "dateFromThePresentationLists"/>
+	 <mat-datepicker-toggle
+	   matSuffix
+	   [for]="dateFromThePresentationListsDatepicker"
+	 ></mat-datepicker-toggle>
+	 <mat-datepicker #dateFromThePresentationListsDatepicker></mat-datepicker>
+	 <mat-error *ngIf = "getControls('dateFromThePresentationLists').invalid" >
+	  {{ getControls('dateFromThePresentationLists')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>تاريخ الي في كشوف العرض </mat-label>
+	 <input matInput
+	  [matDatepicker] = "dateToOfThePresentationStatementsDatepicker"
+	  autocomplete = "off"
+	  formControlName= "dateToOfThePresentationStatements"/>
+	 <mat-datepicker-toggle
+	   matSuffix
+	   [for]="dateToOfThePresentationStatementsDatepicker"
+	 ></mat-datepicker-toggle>
+	 <mat-datepicker #dateToOfThePresentationStatementsDatepicker></mat-datepicker>
+	 <mat-error *ngIf = "getControls('dateToOfThePresentationStatements').invalid" >
+	  {{ getControls('dateToOfThePresentationStatements')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>عدد استمارات البيع</mat-label>
+	 <input matInput formControlName="numberOfSalesForms"/>
+	 <mat-error *ngIf = "getControls('numberOfSalesForms').invalid" >
+	  {{ getControls('numberOfSalesForms')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+          
+
+	<app-material-select appearance="outline"
+	  #branchCode 
+	  [options] = "branchCodeSelectOptions"
+	  formControlName = "branchCode"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #resolutionNumber 
+	  [options] = "resolutionNumberSelectOptions"
+	  formControlName = "resolutionNumber"
+	></app-material-select>
+
+        </form>
+    </mat-card-content>
+
+    <mat-divider></mat-divider>
+
+	<mat-card-actions>
+			<form [formGroup]="attachmentForm" class="form-container">
+                <app-multi-file-upload [service] = "expropriationAfterDecisionService" [id]="expropriationAfterDecisionForm.get('id').value"
+                    formControlName = "attachmentFiles">
+                </app-multi-file-upload>
+            </form>
+            <button
+                color = "primary"
+                type = "submit"
+                (click) = "onSubmit()"
+                [disabled] = "expropriationAfterDecisionForm.invalid"
+                mat-raised-button>
+                حفظ
+            </button>
+    </mat-card-actions>
+</mat-card>
+

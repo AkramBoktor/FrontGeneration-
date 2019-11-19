@@ -1,0 +1,80 @@
+
+<app-new-form-layout
+    dir="rtl"
+    (submitClicked) = "onSubmit()"
+    (back) = "onBack()"
+    [pageTitle] = "'بيانات النشر'"
+>
+    <ng-template newFormContainer >
+        <form [formGroup] = "publishingDataForm">
+         
+
+	<mat-form-field appearance="outline">
+	 <mat-label>رقم المناقصة</mat-label>
+	 <input matInput formControlName="bidNumber"/>
+	 <mat-error *ngIf = "getControls('bidNumber').invalid" >
+	  {{ getControls('bidNumber')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>رقم النشر</mat-label>
+	 <input matInput formControlName="publicationNumber"/>
+	 <mat-error *ngIf = "getControls('publicationNumber').invalid" >
+	  {{ getControls('publicationNumber')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>تاريخ النشر</mat-label>
+	 <input matInput
+	  [matDatepicker] = "publicationDateDatepicker"
+	  autocomplete = "off"
+	  formControlName= "publicationDate"/>
+	 <mat-datepicker-toggle
+	   matSuffix
+	   [for]="publicationDateDatepicker"
+	 ></mat-datepicker-toggle>
+	 <mat-datepicker #publicationDateDatepicker></mat-datepicker>
+	 <mat-error *ngIf = "getControls('publicationDate').invalid" >
+	  {{ getControls('publicationDate')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>اسم الجريدة</mat-label>
+	 <input matInput formControlName="newspaperName"/>
+	 <mat-error *ngIf = "getControls('newspaperName').invalid" >
+	  {{ getControls('newspaperName')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+         
+
+	<app-material-select appearance="outline"
+	  #offeringType 
+	  [options] = "offeringTypeSelectOptions"
+	  formControlName = "offeringType"
+	></app-material-select>
+
+        </form>
+
+        <mat-divider></mat-divider>
+
+		<mat-card-actions>
+			<form [formGroup]="attachmentForm" class="form-container">
+                <app-multi-file-upload [service] = "publishingDataService" [id]="publishingDataForm.get('id').value"
+                    formControlName = "attachmentFiles">
+                </app-multi-file-upload>
+            </form>
+            <button
+                type="submit"
+                (click)="onSubmit()"
+                [disabled]="publishingDataForm.invalid"
+                mat-raised-button
+                color = "primary">
+             حفظ
+            </button>
+        </mat-card-actions>
+    </ng-template >
+</app-new-form-layout >
+

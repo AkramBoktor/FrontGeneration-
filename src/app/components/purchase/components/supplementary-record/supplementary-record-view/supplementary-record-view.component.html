@@ -1,0 +1,186 @@
+
+<mat-card class="form-card">
+      <mat-card-header>
+  
+          <mat-card-title>
+              بيانات المحضر التكميلي للجنة البت
+          </mat-card-title>
+  
+      </mat-card-header>
+  
+      <mat-card-content>
+  
+        <form [formGroup] = "supplementaryRecordForm" class="form-container">
+         
+
+	<mat-form-field appearance="outline">
+	 <mat-label>رقم المحضر</mat-label>
+	 <input matInput formControlName="recordNumber"/>
+	 <mat-error *ngIf = "getControls('recordNumber').invalid" >
+	  {{ getControls('recordNumber')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>رقم مناقصة</mat-label>
+	 <input matInput formControlName="bidNumber"/>
+	 <mat-error *ngIf = "getControls('bidNumber').invalid" >
+	  {{ getControls('bidNumber')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>رقم العطاء</mat-label>
+	 <input matInput formControlName="tenderNumber"/>
+	 <mat-error *ngIf = "getControls('tenderNumber').invalid" >
+	  {{ getControls('tenderNumber')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>كود المقاول</mat-label>
+	 <input matInput formControlName="contractorCode" [disableControl]="true" />
+	 <mat-error *ngIf = "getControls('contractorCode').invalid" >
+	  {{ getControls('contractorCode')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>اسم الشركة</mat-label>
+	 <input matInput formControlName="companyName" [disableControl]="true" />
+	 <mat-error *ngIf = "getControls('companyName').invalid" >
+	  {{ getControls('companyName')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>المدرسة</mat-label>
+	 <input matInput formControlName="school" [disableControl]="true" />
+	 <mat-error *ngIf = "getControls('school').invalid" >
+	  {{ getControls('school')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>دفعة مقدمة</mat-label>
+	 <input matInput formControlName="advancePayment" [disableControl]="true" />
+	 <mat-error *ngIf = "getControls('advancePayment').invalid" >
+	  {{ getControls('advancePayment')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>قيمة المقايسة</mat-label>
+	 <input matInput formControlName="assayValue" [disableControl]="true" />
+	 <mat-error *ngIf = "getControls('assayValue').invalid" >
+	  {{ getControls('assayValue')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>اجمالي قيمة العطاء</mat-label>
+	 <input matInput formControlName="tenderTotalValue" [disableControl]="true" />
+	 <mat-error *ngIf = "getControls('tenderTotalValue').invalid" >
+	  {{ getControls('tenderTotalValue')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>العلاوة التي تقدم عنها</mat-label>
+	 <input matInput formControlName="bonusProvided" [disableControl]="true" />
+	 <mat-error *ngIf = "getControls('bonusProvided').invalid" >
+	  {{ getControls('bonusProvided')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>مدة التنفيذ</mat-label>
+	 <input matInput formControlName="durationExecution" [disableControl]="true" />
+	 <mat-error *ngIf = "getControls('durationExecution').invalid" >
+	  {{ getControls('durationExecution')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>المندوب المفوض</mat-label>
+	 <input matInput formControlName="plenipotentiary" [disableControl]="true" />
+	 <mat-error *ngIf = "getControls('plenipotentiary').invalid" >
+	  {{ getControls('plenipotentiary')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>العلاوة الةي انةةة عليها المفاوضة</mat-label>
+	 <input matInput formControlName="negotiationEndedBouns"/>
+	 <mat-error *ngIf = "getControls('negotiationEndedBouns').invalid" >
+	  {{ getControls('negotiationEndedBouns')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>نسبة الدفعة المقدمة</mat-label>
+	 <input matInput formControlName="downPaymentRatio"/>
+	 <mat-error *ngIf = "getControls('downPaymentRatio').invalid" >
+	  {{ getControls('downPaymentRatio')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>العلاوة</mat-label>
+	 <input matInput formControlName="bouns"/>
+	 <mat-error *ngIf = "getControls('bouns').invalid" >
+	  {{ getControls('bouns')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>القيمة</mat-label>
+	 <input matInput formControlName="value"/>
+	 <mat-error *ngIf = "getControls('value').invalid" >
+	  {{ getControls('value')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>سبب عدم المطابقة</mat-label>
+	 <input matInput formControlName="reason"/>
+	 <mat-error *ngIf = "getControls('reason').invalid" >
+	  {{ getControls('reason')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+         
+
+	<app-material-select appearance="outline"
+	  #offeringType 
+	  [options] = "offeringTypeSelectOptions"
+	  formControlName = "offeringType"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #classificationDegree 
+	  [options] = "classificationDegreeSelectOptions"
+	  formControlName = "classificationDegree"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #contributionsAfterNegotiation 
+	  [options] = "contributionsAfterNegotiationSelectOptions"
+	  formControlName = "contributionsAfterNegotiation"
+	></app-material-select>
+        </form>
+  
+      </mat-card-content >
+  
+      <mat-action-row>
+            <form [formGroup]="attachmentForm" class="form-container">
+                <app-multi-file-upload [service] = "supplementaryRecordService" [id]="supplementaryRecordForm.get('id').value"
+                    formControlName = "attachmentFiles">
+                </app-multi-file-upload>
+            </form>
+            <button (click) = "onConfirm()" mat-raised-button color = "primary" >
+                غلق
+            </button>
+        </mat-action-row>
+    </mat-card>
+
+    

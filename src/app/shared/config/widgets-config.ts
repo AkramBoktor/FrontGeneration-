@@ -214,7 +214,7 @@ export const widgetConfig: Widget[] = [
         }]
     }
     , {
-        name: 'المركزية للشئون المالبة و الادارية'
+        name: 'المركزية للشئون المالية و الادارية'
         , class: 'light-blue-fg'
         , icon: 'people'
         , widget: [{
@@ -420,19 +420,19 @@ export const widgetConfig: Widget[] = [
                     name: 'برنامج شئون عاملين -اجازة'
                     , class: 'red-fg'
                     , icon: 'access_time'
-                    , url: 'vacation-'
+                    , url: 'vacation'
                 }
                     , {
                     name: 'برنامج شئون عاملين - بيانات موظف'
                     , class: 'red-fg'
                     , icon: 'access_time'
-                    , url: 'employee-data'
+                    , url: 'employee'
                 }
                     , {
                     name: 'برنامج شئون عاملين -تامينات اجتماعية '
                     , class: 'red-fg'
                     , icon: 'access_time'
-                    , url: 'socialsecurity'
+                    , url: 'social-security'
                 }
                     , {
                     name: 'برنامج شئون عاملين -حساب المرتب'

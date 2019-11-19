@@ -1,0 +1,182 @@
+
+<app-new-form-layout
+    dir="rtl"
+    (submitClicked) = "onSubmit()"
+    (back) = "onBack()"
+    [pageTitle] = "'مدد مقاول'"
+>
+    <ng-template newFormContainer >
+        <form [formGroup] = "contractorDurationsForm">
+         
+
+	<mat-form-field appearance="outline">
+	 <mat-label>رقم المبني</mat-label>
+	 <input matInput formControlName="buildingNumber"/>
+	 <mat-error *ngIf = "getControls('buildingNumber').invalid" >
+	  {{ getControls('buildingNumber')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>الفتره من</mat-label>
+	 <input matInput
+	  [matDatepicker] = "periodFromDatepicker"
+	  autocomplete = "off"
+	  formControlName= "periodFrom"/>
+	 <mat-datepicker-toggle
+	   matSuffix
+	   [for]="periodFromDatepicker"
+	 ></mat-datepicker-toggle>
+	 <mat-datepicker #periodFromDatepicker></mat-datepicker>
+	 <mat-error *ngIf = "getControls('periodFrom').invalid" >
+	  {{ getControls('periodFrom')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>الفتره الي</mat-label>
+	 <input matInput
+	  [matDatepicker] = "periodToDatepicker"
+	  autocomplete = "off"
+	  formControlName= "periodTo"/>
+	 <mat-datepicker-toggle
+	   matSuffix
+	   [for]="periodToDatepicker"
+	 ></mat-datepicker-toggle>
+	 <mat-datepicker #periodToDatepicker></mat-datepicker>
+	 <mat-error *ngIf = "getControls('periodTo').invalid" >
+	  {{ getControls('periodTo')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>الملحق</mat-label>
+	 <input matInput formControlName="extension"/>
+	 <mat-error *ngIf = "getControls('extension').invalid" >
+	  {{ getControls('extension')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>رقم المناقصه</mat-label>
+	 <input matInput formControlName="bidNumber"/>
+	 <mat-error *ngIf = "getControls('bidNumber').invalid" >
+	  {{ getControls('bidNumber')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>كود المقاول</mat-label>
+	 <input matInput formControlName="contractorCode"/>
+	 <mat-error *ngIf = "getControls('contractorCode').invalid" >
+	  {{ getControls('contractorCode')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>اسم المقاول</mat-label>
+	 <input matInput formControlName="contractorName" [disableControl]="true" />
+	 <mat-error *ngIf = "getControls('contractorName').invalid" >
+	  {{ getControls('contractorName')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>اسم المهندس</mat-label>
+	 <input matInput formControlName="engineerName" [disableControl]="true" />
+	 <mat-error *ngIf = "getControls('engineerName').invalid" >
+	  {{ getControls('engineerName')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>مده التنفيذ</mat-label>
+	 <input matInput formControlName="executionDuration" [disableControl]="true" />
+	 <mat-error *ngIf = "getControls('executionDuration').invalid" >
+	  {{ getControls('executionDuration')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>اسم المراجع</mat-label>
+	 <input matInput formControlName="referencesName" [disableControl]="true" />
+	 <mat-error *ngIf = "getControls('referencesName').invalid" >
+	  {{ getControls('referencesName')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>كود المهندس المشرف</mat-label>
+	 <input matInput formControlName="engineerCode"/>
+	 <mat-error *ngIf = "getControls('engineerCode').invalid" >
+	  {{ getControls('engineerCode')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>تاريخ تسليم الموقع</mat-label>
+	 <input matInput
+	  [matDatepicker] = "siteDeliveryDateDatepicker"
+	  autocomplete = "off"
+	  formControlName= "siteDeliveryDate"/>
+	 <mat-datepicker-toggle
+	   matSuffix
+	   [for]="siteDeliveryDateDatepicker"
+	 ></mat-datepicker-toggle>
+	 <mat-datepicker #siteDeliveryDateDatepicker></mat-datepicker>
+	 <mat-error *ngIf = "getControls('siteDeliveryDate').invalid" >
+	  {{ getControls('siteDeliveryDate')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>كود المراجع</mat-label>
+	 <input matInput formControlName="referenceCode"/>
+	 <mat-error *ngIf = "getControls('referenceCode').invalid" >
+	  {{ getControls('referenceCode')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>اسم المحافظه</mat-label>
+	 <input matInput formControlName="governorateName" [disableControl]="true" />
+	 <mat-error *ngIf = "getControls('governorateName').invalid" >
+	  {{ getControls('governorateName')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+         
+
+	<app-material-select appearance="outline"
+	  #offeringType 
+	  [options] = "offeringTypeSelectOptions"
+	  formControlName = "offeringType"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #reasonCode 
+	  [options] = "reasonCodeSelectOptions"
+	  formControlName = "reasonCode"
+	></app-material-select>
+
+        </form>
+
+        <mat-divider></mat-divider>
+
+		<mat-card-actions>
+			<form [formGroup]="attachmentForm" class="form-container">
+                <app-multi-file-upload [service] = "contractorDurationsService" [id]="contractorDurationsForm.get('id').value"
+                    formControlName = "attachmentFiles">
+                </app-multi-file-upload>
+            </form>
+            <button
+                type="submit"
+                (click)="onSubmit()"
+                [disabled]="contractorDurationsForm.invalid"
+                mat-raised-button
+                color = "primary">
+             حفظ
+            </button>
+        </mat-card-actions>
+    </ng-template >
+</app-new-form-layout >
+

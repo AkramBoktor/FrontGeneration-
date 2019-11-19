@@ -2317,8 +2317,750 @@ export const listMenuConfig: ListMenuConfig = {
 				}
 			]
 		}
+	],
+	'contracts': [
+		{
+			id: 'contracts',
+			title: 'عقود',
+			type: 'group',
+			icon: 'app',
+			children: [
+				{
+					id: 'Contracts Config',
+					title: 'الأعدادات',
+					type: 'collapsable',
+					icon: 'build',
+					children: [
+						{
+							id: 'branchcodes',
+							title: 'كود الفرع',
+							type: 'item',
+							url: '/lookup/branchcodes',
+							exactMatch: true
+						},
+						{
+							id: 'offeringtypes',
+							title: 'انواع الطرح',
+							type: 'item',
+							url: '/lookup/offeringtypes',
+							exactMatch: true
+						}
+					]
+				},
+				{
+					id: 'Contracts Program',
+					title: 'البرامج',
+					type: 'collapsable',
+					icon: 'apps',
+					children: [
+						{
+							id: 'Construction Contracts Project',
+							title: 'عقود المقاولات(مشروع)',
+							type: 'item',
+							url: '/contracts/construction-contracts-project',
+							exactMatch: true
+						},
+						{
+							id: 'Contracting Contracts Consolidated Tender',
+							title: 'عقود المقاولات (مناقصة مجمعة)',
+							type: 'item',
+							url: '/contracts/contracting-contracts-consolidated-tender',
+							exactMatch: true
+						},
+						{
+							id: 'Contracting Contracts Post Offices',
+							title: 'عقود المقاولات (مكاتب بريد)',
+							type: 'item',
+							url: '/contracts/contracting-contracts-post-offices',
+							exactMatch: true
+						},
+						{
+							id: 'Contract engineering body and the national agreement',
+							title: 'عقد اتفاق هيئة هندسية وهيئة وطنية',
+							type: 'item',
+							url: '/contracts/contract-engineering-body-and-the-national-agreement',
+							exactMatch: true
+						}
+					]
+				},
+				{
+					id: 'Contracts Report',
+					title: 'التقارير',
+					type: 'collapsable',
+					icon: 'assignment',
+					children: []
+				}
+			]
+		}
+	],
+	'social-solidarity-fund': [
+		{
+			id: 'social-solidarity-fund',
+			title: 'برنامج صندوق التكافل الاجتماعي',
+			type: 'group',
+			icon: 'app',
+			children: [
+				{
+					id: 'Social Solidarity Fund Config',
+					title: 'الأعدادات',
+					type: 'collapsable',
+					icon: 'build',
+					children: [
+						{
+							id: 'boxcodes',
+							title: 'كود الصندوق',
+							type: 'item',
+							url: '/lookup/boxcodes',
+							exactMatch: true
+						},
+						{
+							id: 'departmentssections',
+							title: 'أقسام الادارات',
+							type: 'item',
+							url: '/lookup/departmentssections',
+							exactMatch: true
+						},
+						{
+							id: 'employeestatuses',
+							title: 'حالة الموظف‎',
+							type: 'item',
+							url: '/lookup/employeestatuses',
+							exactMatch: true
+						},
+						{
+							id: 'bankcodes',
+							title: 'اكواد البنوك',
+							type: 'item',
+							url: '/lookup/bankcodes',
+							exactMatch: true
+						}
+					]
+				},
+				{
+					id: 'Social Solidarity Fund Program',
+					title: 'البرامج',
+					type: 'collapsable',
+					icon: 'apps',
+					children: [
+						{
+							id: 'Social Solidarity Fund Codes',
+							title: 'كود صندوق التكافل الاجتماعي',
+							type: 'item',
+							url: '/social-solidarity-fund/social-solidarity-fund-codes',
+							exactMatch: true
+						},
+						{
+							id: 'Deduction of amount to an employee of the Fund',
+							title: 'خصم مبلغ لموظف بالصندوق',
+							type: 'item',
+							url: '/social-solidarity-fund/deduction-of-amount-to-an-employee-of-the-fund',
+							exactMatch: true
+						}
+					]
+				},
+				{
+					id: 'Social Solidarity Fund Report',
+					title: 'التقارير',
+					type: 'collapsable',
+					icon: 'assignment',
+					children: []
+				}
+			]
+		}
+	],
+	'timing-and-pricing': [
+		{
+			id: 'timing-and-pricing',
+			title: 'برنامج التسعير و المدد',
+			type: 'group',
+			icon: 'app',
+			children: [
+				{
+					id: 'Timing And Pricing Config',
+					title: 'الأعدادات',
+					type: 'collapsable',
+					icon: 'build',
+					children: [
+						{
+							id: 'governorates',
+							title: 'المحافظة',
+							type: 'item',
+							url: '/lookup/governorates',
+							exactMatch: true
+						},
+						{
+							id: 'offeringtypes',
+							title: 'انواع الطرح',
+							type: 'item',
+							url: '/lookup/offeringtypes',
+							exactMatch: true
+						},
+						{
+							id: 'constructiontypes',
+							title: 'انواع الانشاء',
+							type: 'item',
+							url: '/lookup/constructiontypes',
+							exactMatch: true
+						},
+						{
+							id: 'extracttypes',
+							title: 'نوع المستخلص',
+							type: 'item',
+							url: '/lookup/extracttypes',
+							exactMatch: true
+						},
+						{
+							id: 'contractortidereasons',
+							title: 'اسباب المد للمقاول',
+							type: 'item',
+							url: '/lookup/contractortidereasons',
+							exactMatch: true
+						},
+						{
+							id: 'supporttypes',
+							title: 'نوع الاسناد',
+							type: 'item',
+							url: '/lookup/supporttypes',
+							exactMatch: true
+						},
+						{
+							id: 'implementationpositions  ',
+							title: 'موقف التنفيذ',
+							type: 'item',
+							url: '/lookup/implementationpositions  ',
+							exactMatch: true
+						}
+					]
+				},
+				{
+					id: 'Timing And Pricing Program',
+					title: 'البرامج',
+					type: 'collapsable',
+					icon: 'apps',
+					children: [
+						{
+							id: 'Final Clearance Cycle',
+							title: 'دورة المستخلص الختامي',
+							type: 'item',
+							url: '/timing-and-pricing/final-clearance-cycle',
+							exactMatch: true
+						},
+						{
+							id: 'Project Periods',
+							title: 'المدد للمشروعات',
+							type: 'item',
+							url: '/timing-and-pricing/project-periods',
+							exactMatch: true
+						},
+						{
+							id: 'Contractor Durations',
+							title: 'مدد مقاول',
+							type: 'item',
+							url: '/timing-and-pricing/contractor-durations',
+							exactMatch: true
+						},
+						{
+							id: 'obstacles and measures taken',
+							title: 'المعوقات والاجرأت اللي تم اتخاذها',
+							type: 'item',
+							url: '/timing-and-pricing/obstacles-and-measures-taken',
+							exactMatch: true
+						}
+					]
+				},
+				{
+					id: 'Timing And Pricing Report',
+					title: 'التقارير',
+					type: 'collapsable',
+					icon: 'assignment',
+					children: []
+				}
+			]
+		}
+	],
+	'expropriation': [
+		{
+			id: 'expropriation',
+			title: 'برنامج نزع الملكية',
+			type: 'group',
+			icon: 'app',
+			children: [
+				{
+					id: 'Expropriation Config',
+					title: 'الأعدادات',
+					type: 'collapsable',
+					icon: 'build',
+					children: [
+						{
+							id: 'branchcodes',
+							title: 'كود الفرع',
+							type: 'item',
+							url: '/lookup/branchcodes',
+							exactMatch: true
+						},
+						{
+							id: 'removaltypes',
+							title: 'نوع النزع',
+							type: 'item',
+							url: '/lookup/removaltypes',
+							exactMatch: true
+						},
+						{
+							id: 'removalapplicants',
+							title: 'جهة الطالبة للنزع',
+							type: 'item',
+							url: '/lookup/removalapplicants',
+							exactMatch: true
+						},
+						{
+							id: 'decisionnumbers',
+							title: 'رقم القرار',
+							type: 'item',
+							url: '/lookup/decisionnumbers',
+							exactMatch: true
+						},
+						{
+							id: 'modeltypes',
+							title: 'نوع الاستمارة',
+							type: 'item',
+							url: '/lookup/modeltypes',
+							exactMatch: true
+						}
+					]
+				},
+				{
+					id: 'Expropriation Program',
+					title: 'البرامج',
+					type: 'collapsable',
+					icon: 'apps',
+					children: [
+						{
+							id: 'Expropriation before decision',
+							title: 'بيانات نزع الملكية قبل قرار رئيس الوزراء',
+							type: 'item',
+							url: '/expropriation/expropriation-before-decision',
+							exactMatch: true
+						},
+						{
+							id: 'People Assembly Approval',
+							title: 'موافقة المجلس الشعبي',
+							type: 'item',
+							url: '/expropriation/people-assembly-approval',
+							exactMatch: true
+						},
+						{
+							id: 'Expropriation after decision',
+							title: 'بيانات نزع الملكية بعد قرار رئيس الوزراء',
+							type: 'item',
+							url: '/expropriation/expropriation-after-decision',
+							exactMatch: true
+						},
+						{
+							id: 'Sales Forms',
+							title: 'استمارات البيع',
+							type: 'item',
+							url: '/expropriation/sales-forms',
+							exactMatch: true
+						},
+						{
+							id: 'Business cost checks',
+							title: 'شيكات تكاليف الاعمال',
+							type: 'item',
+							url: '/expropriation/business-cost-checks',
+							exactMatch: true
+						},
+						{
+							id: 'Temporary seizure data',
+							title: 'بيانات الاستيلاء المؤقت',
+							type: 'item',
+							url: '/expropriation/temporary-seizure-data',
+							exactMatch: true
+						}
+					]
+				},
+				{
+					id: 'Expropriation Report',
+					title: 'التقارير',
+					type: 'collapsable',
+					icon: 'assignment',
+					children: []
+				}
+			]
+		}
+	],
+	'pooled-decimal': [
+		{
+			id: 'pooled-decimal',
+			title: 'برنامج المجمعة العشرية',
+			type: 'group',
+			icon: 'app',
+			children: [
+				{
+					id: 'Pooled Decimal Config',
+					title: 'الأعدادات',
+					type: 'collapsable',
+					icon: 'build',
+					children: []
+				},
+				{
+					id: 'Pooled Decimal Program',
+					title: 'البرامج',
+					type: 'collapsable',
+					icon: 'apps',
+					children: [
+						{
+							id: 'Registration of schools in the insurance company',
+							title: 'تسجيل المدارس في شركة التامين',
+							type: 'item',
+							url: '/pooled-decimal/registration-of-schools-in-the-insurance-company',
+							exactMatch: true
+						},
+						{
+							id: 'Schools do not need insurance',
+							title: 'مدارس لا تحتاج الي وثيقة تامين',
+							type: 'item',
+							url: '/pooled-decimal/schools-do-not-need-insurance',
+							exactMatch: true
+						},
+						{
+							id: 'Employee Performance Evaluation',
+							title: 'تقويم اداء موظف',
+							type: 'item',
+							url: '/pooled-decimal/employee-performance-evaluation',
+							exactMatch: true
+						},
+						{
+							id: 'Complete insurance data on a school',
+							title: 'استكمال بيانات التامين علي مدرسة',
+							type: 'item',
+							url: '/pooled-decimal/complete-insurance-data-on-a-school',
+							exactMatch: true
+						},
+						{
+							id: 'Schools currently extracting insurance',
+							title: 'ادخال المدارس الجارى استخراج وثائق تامنية لها',
+							type: 'item',
+							url: '/pooled-decimal/schools-currently-extracting-insurance',
+							exactMatch: true
+						},
+						{
+							id: 'extension Insurance policy data',
+							title: 'ادخال بيانات ملحق وثيقة التامين',
+							type: 'item',
+							url: '/pooled-decimal/extension-insurance-policy-data',
+							exactMatch: true
+						},
+						{
+							id: 'Insurance Companies Codes',
+							title: 'اكواد شركات التامين',
+							type: 'item',
+							url: '/pooled-decimal/insurance-companies-codes',
+							exactMatch: true
+						},
+						{
+							id: 'Insurance policy data',
+							title: 'بيانات وثيقه التامين',
+							type: 'item',
+							url: '/pooled-decimal/insurance-policy-data',
+							exactMatch: true
+						}
+					]
+				},
+				{
+					id: 'Pooled Decimal Report',
+					title: 'التقارير',
+					type: 'collapsable',
+					icon: 'assignment',
+					children: []
+				}
+			]
+		}
+	],
+	'purchase': [
+		{
+			id: 'purchase',
+			title: 'برنامج مشتريات',
+			type: 'group',
+			icon: 'app',
+			children: [
+				{
+					id: 'Purchase Config',
+					title: 'الأعدادات',
+					type: 'collapsable',
+					icon: 'build',
+					children: [
+						{
+							id: 'offeringtypes',
+							title: 'انواع الطرح',
+							type: 'item',
+							url: '/lookup/offeringtypes',
+							exactMatch: true
+						},
+						{
+							id: 'buildingtypes',
+							title: 'نوع المبني',
+							type: 'item',
+							url: '/lookup/buildingtypes',
+							exactMatch: true
+						},
+						{
+							id: 'areas',
+							title: 'مناطق',
+							type: 'item',
+							url: '/lookup/areas',
+							exactMatch: true
+						},
+						{
+							id: 'maintenancestatuses ',
+							title: 'حالة الصيانه ',
+							type: 'item',
+							url: '/lookup/maintenancestatuses ',
+							exactMatch: true
+						},
+						{
+							id: 'constructiontypes',
+							title: 'انواع الانشاء',
+							type: 'item',
+							url: '/lookup/constructiontypes',
+							exactMatch: true
+						},
+						{
+							id: 'paymentmethods',
+							title: 'طريقة السداد',
+							type: 'item',
+							url: '/lookup/paymentmethods',
+							exactMatch: true
+						},
+						{
+							id: 'governorates',
+							title: 'المحافظة',
+							type: 'item',
+							url: '/lookup/governorates',
+							exactMatch: true
+						},
+						{
+							id: 'members',
+							title: 'الاعضــاء',
+							type: 'item',
+							url: '/lookup/members',
+							exactMatch: true
+						},
+						{
+							id: 'classificationfieldcodes',
+							title: 'كود مجال التصنيف',
+							type: 'item',
+							url: '/lookup/classificationfieldcodes',
+							exactMatch: true
+						},
+						{
+							id: 'classificationvaluecodes',
+							title: 'كود قيمة التصنيف',
+							type: 'item',
+							url: '/lookup/classificationvaluecodes',
+							exactMatch: true
+						},
+						{
+							id: 'classificationdecisions',
+							title: 'قرار التصنيف',
+							type: 'item',
+							url: '/lookup/classificationdecisions',
+							exactMatch: true
+						},
+						{
+							id: 'classificationdegrees',
+							title: 'درجه التصنيف',
+							type: 'item',
+							url: '/lookup/classificationdegrees',
+							exactMatch: true
+						},
+						{
+							id: 'commissionerrequirements ',
+							title: 'اشتراطات بعد المفاوضة',
+							type: 'item',
+							url: '/lookup/commissionerrequirements ',
+							exactMatch: true
+						},
+						{
+							id: 'supplierclassifications',
+							title: 'تصنيف  مورد',
+							type: 'item',
+							url: '/lookup/supplierclassifications',
+							exactMatch: true
+						},
+						{
+							id: 'suppliertypes',
+							title: 'نوع المورد',
+							type: 'item',
+							url: '/lookup/suppliertypes',
+							exactMatch: true
+						},
+						{
+							id: 'sectionsorcenters',
+							title: 'مركز/القسم‎',
+							type: 'item',
+							url: '/lookup/sectionsorcenters',
+							exactMatch: true
+						},
+						{
+							id: 'supplierrecordtypes',
+							title: 'نوع السجل للمورد',
+							type: 'item',
+							url: '/lookup/supplierrecordtypes',
+							exactMatch: true
+						},
+						{
+							id: 'taxdescriptions',
+							title: 'توصيف الضريبة',
+							type: 'item',
+							url: '/lookup/taxdescriptions',
+							exactMatch: true
+						},
+						{
+							id: 'gearstatuses',
+							title: 'حاله الترسية',
+							type: 'item',
+							url: '/lookup/gearstatuses',
+							exactMatch: true
+						},
+						{
+							id: 'extracttypes',
+							title: 'نوع المستخلص',
+							type: 'item',
+							url: '/lookup/extracttypes',
+							exactMatch: true
+						}
+					]
+				},
+				{
+					id: 'Purchase Program',
+					title: 'البرامج',
+					type: 'collapsable',
+					icon: 'apps',
+					children: [
+						{
+							id: 'Canceled Tender',
+							title: 'عطاء مستبعد',
+							type: 'item',
+							url: '/purchase/canceled-tender',
+							exactMatch: true
+						},
+						{
+							id: 'Group Details Data',
+							title: 'بيانات اجزاء مجموعة',
+							type: 'item',
+							url: '/purchase/group-details-data',
+							exactMatch: true
+						},
+						{
+							id: 'Bid Parts Data',
+							title: 'بيانات اجزاء مناقصة',
+							type: 'item',
+							url: '/purchase/bid-parts-data',
+							exactMatch: true
+						},
+						{
+							id: 'Examination Committee Member Data',
+							title: 'بيانات اعضاء لجنة البت',
+							type: 'item',
+							url: '/purchase/examination-committee-member-data',
+							exactMatch: true
+						},
+						{
+							id: 'Envelopes Opennig Commety Members Data',
+							title: 'بيانات اعضاء لجنة فتح الظاريف',
+							type: 'item',
+							url: '/purchase/envelopes-opennig-commety-members-data',
+							exactMatch: true
+						},
+						{
+							id: 'Assignment Data',
+							title: 'بيانات الاحالة',
+							type: 'item',
+							url: '/purchase/assignment-data',
+							exactMatch: true
+						},
+						{
+							id: 'Contractor Ranking Data',
+							title: 'بيانات التصنيف للمقاول',
+							type: 'item',
+							url: '/purchase/contractor-ranking-data',
+							exactMatch: true
+						},
+						{
+							id: 'Statements of Supplementary Record of Decision Committee',
+							title: 'بيانات المحضر التكميلي للجنة البت',
+							type: 'item',
+							url: '/purchase/supplementary-record',
+							exactMatch: true
+						},
+						{
+							id: 'Contractor Data',
+							title: 'بيانات مقاول',
+							type: 'item',
+							url: '/purchase/contractor-data',
+							exactMatch: true
+						},
+						{
+							id: 'Publishing data',
+							title: 'بيانات النشر',
+							type: 'item',
+							url: '/purchase/publishing-data',
+							exactMatch: true
+						},
+						{
+							id: 'Job Data',
+							title: 'بيانات الشغل',
+							type: 'item',
+							url: '/purchase/job-data',
+							exactMatch: true
+						},
+						{
+							id: 'Tender Data',
+							title: 'بيانات عطاء',
+							type: 'item',
+							url: '/purchase/tender-data',
+							exactMatch: true
+						},
+						{
+							id: 'Examination CommitteeDate Data',
+							title: 'بيانات لجنة البت',
+							type: 'item',
+							url: '/purchase/examination-committee-date-data',
+							exactMatch: true
+						},
+						{
+							id: 'Envelopes Opennig Commety Data',
+							title: 'بيانات لجنة فتح الظاريف',
+							type: 'item',
+							url: '/purchase/envelopes-opennig-commety-data',
+							exactMatch: true
+						},
+						{
+							id: 'Invoice 50',
+							title: 'بيانات مستخلص (استمارة 50)',
+							type: 'item',
+							url: '/purchase/invoice-50',
+							exactMatch: true
+						},
+						{
+							id: 'Conditions Notebook Data',
+							title: 'بيانات كراسة الشروط',
+							type: 'item',
+							url: '/purchase/conditions-notebook-data',
+							exactMatch: true
+						}
+					]
+				},
+				{
+					id: 'Purchase Report',
+					title: 'التقارير',
+					type: 'collapsable',
+					icon: 'assignment',
+					children: []
+				}
+			]
+		}
 	]
-
 };
 
 export interface ListMenuConfig {

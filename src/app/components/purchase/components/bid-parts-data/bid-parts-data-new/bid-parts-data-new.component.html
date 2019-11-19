@@ -1,0 +1,276 @@
+
+<app-new-form-layout
+    dir="rtl"
+    (submitClicked) = "onSubmit()"
+    (back) = "onBack()"
+    [pageTitle] = "'بيانات اجزاء مناقصة'"
+>
+    <ng-template newFormContainer >
+        <form [formGroup] = "bidPartsDataForm">
+         
+
+	<mat-form-field appearance="outline">
+	 <mat-label>رقم المناقصة</mat-label>
+	 <input matInput formControlName="bidNumber"/>
+	 <mat-error *ngIf = "getControls('bidNumber').invalid" >
+	  {{ getControls('bidNumber')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>المشروع / المجموعة</mat-label>
+	 <input matInput formControlName="project"/>
+	 <mat-error *ngIf = "getControls('project').invalid" >
+	  {{ getControls('project')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>اسم المشروع</mat-label>
+	 <input matInput formControlName="projectName" [disableControl]="true" />
+	 <mat-error *ngIf = "getControls('projectName').invalid" >
+	  {{ getControls('projectName')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>تاريخ لجنة البت</mat-label>
+	 <input matInput
+	 [disableControl]="true" 
+	  [matDatepicker] = "examinationCommitteeDateDatepicker"
+	  autocomplete = "off"
+	  formControlName= "examinationCommitteeDate"/>
+	 <mat-datepicker-toggle
+	   matSuffix
+	   [for]="examinationCommitteeDateDatepicker"
+	 ></mat-datepicker-toggle>
+	 <mat-datepicker #examinationCommitteeDateDatepicker></mat-datepicker>
+	 <mat-error *ngIf = "getControls('examinationCommitteeDate').invalid" >
+	  {{ getControls('examinationCommitteeDate')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>تاريخ الاسناد</mat-label>
+	 <input matInput
+	 [disableControl]="true" 
+	  [matDatepicker] = "referenceDateDatepicker"
+	  autocomplete = "off"
+	  formControlName= "referenceDate"/>
+	 <mat-datepicker-toggle
+	   matSuffix
+	   [for]="referenceDateDatepicker"
+	 ></mat-datepicker-toggle>
+	 <mat-datepicker #referenceDateDatepicker></mat-datepicker>
+	 <mat-error *ngIf = "getControls('referenceDate').invalid" >
+	  {{ getControls('referenceDate')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>تاريخ فتح المظاريف</mat-label>
+	 <input matInput
+	 [disableControl]="true" 
+	  [matDatepicker] = "openingEnvelopesDateDatepicker"
+	  autocomplete = "off"
+	  formControlName= "openingEnvelopesDate"/>
+	 <mat-datepicker-toggle
+	   matSuffix
+	   [for]="openingEnvelopesDateDatepicker"
+	 ></mat-datepicker-toggle>
+	 <mat-datepicker #openingEnvelopesDateDatepicker></mat-datepicker>
+	 <mat-error *ngIf = "getControls('openingEnvelopesDate').invalid" >
+	  {{ getControls('openingEnvelopesDate')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>تاريخ تسليم الموقع</mat-label>
+	 <input matInput
+	 [disableControl]="true" 
+	  [matDatepicker] = "siteDeliveryDateDatepicker"
+	  autocomplete = "off"
+	  formControlName= "siteDeliveryDate"/>
+	 <mat-datepicker-toggle
+	   matSuffix
+	   [for]="siteDeliveryDateDatepicker"
+	 ></mat-datepicker-toggle>
+	 <mat-datepicker #siteDeliveryDateDatepicker></mat-datepicker>
+	 <mat-error *ngIf = "getControls('siteDeliveryDate').invalid" >
+	  {{ getControls('siteDeliveryDate')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>رقم المورد</mat-label>
+	 <input matInput formControlName="supplierNumber" [disableControl]="true" />
+	 <mat-error *ngIf = "getControls('supplierNumber').invalid" >
+	  {{ getControls('supplierNumber')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>مدة التنفيذ/التوريد</mat-label>
+	 <input matInput formControlName="implementationDurationOrSupply"/>
+	 <mat-error *ngIf = "getControls('implementationDurationOrSupply').invalid" >
+	  {{ getControls('implementationDurationOrSupply')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>قيمة كراسة الشروط</mat-label>
+	 <input matInput formControlName="bidRequirementsValue"/>
+	 <mat-error *ngIf = "getControls('bidRequirementsValue').invalid" >
+	  {{ getControls('bidRequirementsValue')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>توصيف الضريبة</mat-label>
+	 <input matInput formControlName="taxDescription" [disableControl]="true" />
+	 <mat-error *ngIf = "getControls('taxDescription').invalid" >
+	  {{ getControls('taxDescription')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>قيمة المقايسة</mat-label>
+	 <input matInput formControlName="assayValue"/>
+	 <mat-error *ngIf = "getControls('assayValue').invalid" >
+	  {{ getControls('assayValue')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>القيمة التعاقدية</mat-label>
+	 <input matInput formControlName="contractualValue" [disableControl]="true" />
+	 <mat-error *ngIf = "getControls('contractualValue').invalid" >
+	  {{ getControls('contractualValue')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>علاوة الترسية</mat-label>
+	 <input matInput formControlName="awardBonus"/>
+	 <mat-error *ngIf = "getControls('awardBonus').invalid" >
+	  {{ getControls('awardBonus')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>قيمة الدفعة المنصرفة</mat-label>
+	 <input matInput formControlName="outgoingPayment"/>
+	 <mat-error *ngIf = "getControls('outgoingPayment').invalid" >
+	  {{ getControls('outgoingPayment')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>التامين النهائي</mat-label>
+	 <input matInput formControlName="finalInsurance"/>
+	 <mat-error *ngIf = "getControls('finalInsurance').invalid" >
+	  {{ getControls('finalInsurance')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>حالة المشروع</mat-label>
+	 <input matInput formControlName="projectState"/>
+	 <mat-error *ngIf = "getControls('projectState').invalid" >
+	  {{ getControls('projectState')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>تاريخ الاستلام الابتدائي</mat-label>
+	 <input matInput
+	 [disableControl]="true" 
+	  [matDatepicker] = "primaryReceipDateDatepicker"
+	  autocomplete = "off"
+	  formControlName= "primaryReceipDate"/>
+	 <mat-datepicker-toggle
+	   matSuffix
+	   [for]="primaryReceipDateDatepicker"
+	 ></mat-datepicker-toggle>
+	 <mat-datepicker #primaryReceipDateDatepicker></mat-datepicker>
+	 <mat-error *ngIf = "getControls('primaryReceipDate').invalid" >
+	  {{ getControls('primaryReceipDate')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>تاريخ الاستلام النهائى</mat-label>
+	 <input matInput
+	 [disableControl]="true" 
+	  [matDatepicker] = "finalReceiptDateDatepicker"
+	  autocomplete = "off"
+	  formControlName= "finalReceiptDate"/>
+	 <mat-datepicker-toggle
+	   matSuffix
+	   [for]="finalReceiptDateDatepicker"
+	 ></mat-datepicker-toggle>
+	 <mat-datepicker #finalReceiptDateDatepicker></mat-datepicker>
+	 <mat-error *ngIf = "getControls('finalReceiptDate').invalid" >
+	  {{ getControls('finalReceiptDate')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+         
+
+	<app-material-select appearance="outline"
+	  #buildingType 
+	  [options] = "buildingTypeSelectOptions"
+	  formControlName = "buildingType"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #offeringType 
+	  [options] = "offeringTypeSelectOptions"
+	  formControlName = "offeringType"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #maintenanceStatus 
+	  [options] = "maintenanceStatusSelectOptions"
+	  formControlName = "maintenanceStatus"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #constructionType 
+	  [options] = "constructionTypeSelectOptions"
+	  formControlName = "constructionType"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #paymentMethod 
+	  [options] = "paymentMethodSelectOptions"
+	  formControlName = "paymentMethod"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #governorate 
+	  [options] = "governorateSelectOptions"
+	  formControlName = "governorate"
+	></app-material-select>
+
+        </form>
+
+        <mat-divider></mat-divider>
+
+		<mat-card-actions>
+			<form [formGroup]="attachmentForm" class="form-container">
+                <app-multi-file-upload [service] = "bidPartsDataService" [id]="bidPartsDataForm.get('id').value"
+                    formControlName = "attachmentFiles">
+                </app-multi-file-upload>
+            </form>
+            <button
+                type="submit"
+                (click)="onSubmit()"
+                [disabled]="bidPartsDataForm.invalid"
+                mat-raised-button
+                color = "primary">
+             حفظ
+            </button>
+        </mat-card-actions>
+    </ng-template >
+</app-new-form-layout >
+

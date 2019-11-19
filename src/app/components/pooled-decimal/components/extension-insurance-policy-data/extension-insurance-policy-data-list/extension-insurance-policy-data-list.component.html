@@ -1,0 +1,106 @@
+
+<app-search-list-expansion-panel
+    dir="rtl"
+    [pageTitle] = "'ادخال بيانات ملحق وثيقة التامين'"
+    (beginSearch) = "onBeginSearch()"
+    (create) = "onCreate()"
+>
+    <ng-template searchFormContainer >
+        <form [formGroup] = "searchForm">
+           
+
+	<mat-form-field appearance="outline">
+	 <mat-label>كود المبني</mat-label>
+	 <input matInput formControlName="buildingCode"/>
+	 <mat-error *ngIf = "getControls('buildingCode').invalid" >
+	  {{ getControls('buildingCode')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>شركه التأمين</mat-label>
+	 <input matInput formControlName="insuranceCompany"/>
+	 <mat-error *ngIf = "getControls('insuranceCompany').invalid" >
+	  {{ getControls('insuranceCompany')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>رقم النموزج</mat-label>
+	 <input matInput formControlName="modelCode"/>
+	 <mat-error *ngIf = "getControls('modelCode').invalid" >
+	  {{ getControls('modelCode')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>عدد الادوار</mat-label>
+	 <input matInput formControlName="floorsNumber"/>
+	 <mat-error *ngIf = "getControls('floorsNumber').invalid" >
+	  {{ getControls('floorsNumber')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>عدد الفصول </mat-label>
+	 <input matInput formControlName="classroomNumber"/>
+	 <mat-error *ngIf = "getControls('classroomNumber').invalid" >
+	  {{ getControls('classroomNumber')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>تاريخ الملحق</mat-label>
+	 <input matInput
+	  [matDatepicker] = "extensionDateDatepicker"
+	  autocomplete = "off"
+	  formControlName= "extensionDate"/>
+	 <mat-datepicker-toggle
+	   matSuffix
+	   [for]="extensionDateDatepicker"
+	 ></mat-datepicker-toggle>
+	 <mat-datepicker #extensionDateDatepicker></mat-datepicker>
+	 <mat-error *ngIf = "getControls('extensionDate').invalid" >
+	  {{ getControls('extensionDate')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>رقم الملحق</mat-label>
+	 <input matInput formControlName="extensionCode"/>
+	 <mat-error *ngIf = "getControls('extensionCode').invalid" >
+	  {{ getControls('extensionCode')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>مبلغ الملحق</mat-label>
+	 <input matInput formControlName="extensionAmount"/>
+	 <mat-error *ngIf = "getControls('extensionAmount').invalid" >
+	  {{ getControls('extensionAmount')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>قسط التامين</mat-label>
+	 <input matInput formControlName="insuranceFee"/>
+	 <mat-error *ngIf = "getControls('insuranceFee').invalid" >
+	  {{ getControls('insuranceFee')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+           
+
+        </form>
+    </ng-template >
+    <ng-template searchResultContainer >
+        <app-grid-control
+            #gridControl
+            [rowDataService] = "getExtensionInsurancePolicyDataPaginatedSortedFiltered"
+            [columnOptions] = "columnOptions"
+            [gridHeaderOptions] = "gridHeaderOptions"
+            [searchInput] = "searchForm.value"
+            (deleteRow) = "onDeleteClicked($event)"
+        >
+        </app-grid-control>
+    </ng-template>
+</app-search-list-expansion-panel >

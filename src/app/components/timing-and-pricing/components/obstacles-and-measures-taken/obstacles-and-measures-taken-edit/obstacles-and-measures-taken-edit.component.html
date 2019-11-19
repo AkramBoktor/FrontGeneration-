@@ -1,0 +1,118 @@
+
+<mat-card>
+    <mat-card-header>
+        <mat-card-title>المعوقات والاجرأت اللي تم اتخاذها</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+        <form [formGroup]="obstaclesAndMeasuresTakenForm" class="form-container">
+          
+
+	<mat-form-field appearance="outline">
+	 <mat-label>الرقم التعريفي</mat-label>
+	 <input matInput formControlName="iD"/>
+	 <mat-error *ngIf = "getControls('iD').invalid" >
+	  {{ getControls('iD')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>كود المراجع</mat-label>
+	 <input matInput formControlName="referencesCode"/>
+	 <mat-error *ngIf = "getControls('referencesCode').invalid" >
+	  {{ getControls('referencesCode')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>المعوقات</mat-label>
+	 <input matInput formControlName="difficulties"/>
+	 <mat-error *ngIf = "getControls('difficulties').invalid" >
+	  {{ getControls('difficulties')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>الاجرأت</mat-label>
+	 <input matInput formControlName="procedures"/>
+	 <mat-error *ngIf = "getControls('procedures').invalid" >
+	  {{ getControls('procedures')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>رقم الملحق</mat-label>
+	 <input matInput formControlName="extensionCode"/>
+	 <mat-error *ngIf = "getControls('extensionCode').invalid" >
+	  {{ getControls('extensionCode')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>رقم المناقصه</mat-label>
+	 <input matInput formControlName="bidNumber" [disableControl]="true" />
+	 <mat-error *ngIf = "getControls('bidNumber').invalid" >
+	  {{ getControls('bidNumber')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>رقم المقال</mat-label>
+	 <input matInput formControlName="contractorCode" [disableControl]="true" />
+	 <mat-error *ngIf = "getControls('contractorCode').invalid" >
+	  {{ getControls('contractorCode')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+          
+
+	<app-material-select appearance="outline"
+	  #governorate 
+	  [options] = "governorateSelectOptions"
+	  formControlName = "governorate"
+	></app-material-select>
+
+	<app-material-select appearance="outline" [disabled]="true" 
+	  #constructionType 
+	  [options] = "constructionTypeSelectOptions"
+	  formControlName = "constructionType"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #offeringType 
+	  [options] = "offeringTypeSelectOptions"
+	  formControlName = "offeringType"
+	></app-material-select>
+
+	<app-material-select appearance="outline" [disabled]="true" 
+	  #referenceCode 
+	  [options] = "referenceCodeSelectOptions"
+	  formControlName = "referenceCode"
+	></app-material-select>
+
+	<app-material-select appearance="outline" [disabled]="true" 
+	  #executionCode 
+	  [options] = "executionCodeSelectOptions"
+	  formControlName = "executionCode"
+	></app-material-select>
+
+        </form>
+    </mat-card-content>
+
+    <mat-divider></mat-divider>
+
+	<mat-card-actions>
+			<form [formGroup]="attachmentForm" class="form-container">
+                <app-multi-file-upload [service] = "obstaclesAndMeasuresTakenService" [id]="obstaclesAndMeasuresTakenForm.get('id').value"
+                    formControlName = "attachmentFiles">
+                </app-multi-file-upload>
+            </form>
+            <button
+                color = "primary"
+                type = "submit"
+                (click) = "onSubmit()"
+                [disabled] = "obstaclesAndMeasuresTakenForm.invalid"
+                mat-raised-button>
+                حفظ
+            </button>
+    </mat-card-actions>
+</mat-card>
+

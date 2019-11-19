@@ -1,0 +1,96 @@
+
+<app-new-form-layout
+    dir="rtl"
+    (submitClicked) = "onSubmit()"
+    (back) = "onBack()"
+    [pageTitle] = "'بيانات كراسة الشروط'"
+>
+    <ng-template newFormContainer >
+        <form [formGroup] = "conditionsNotebookDataForm">
+         
+
+	<mat-form-field appearance="outline">
+	 <mat-label>رقم المناقصة</mat-label>
+	 <input matInput formControlName="bidNumber"/>
+	 <mat-error *ngIf = "getControls('bidNumber').invalid" >
+	  {{ getControls('bidNumber')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>المشروع</mat-label>
+	 <input matInput formControlName="project"/>
+	 <mat-error *ngIf = "getControls('project').invalid" >
+	  {{ getControls('project')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>المورد</mat-label>
+	 <input matInput formControlName="supplier"/>
+	 <mat-error *ngIf = "getControls('supplier').invalid" >
+	  {{ getControls('supplier')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>قيمة الكراسة</mat-label>
+	 <input matInput formControlName="brochureValue"/>
+	 <mat-error *ngIf = "getControls('brochureValue').invalid" >
+	  {{ getControls('brochureValue')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>رقم ا.ش كراسة الشروط</mat-label>
+	 <input matInput formControlName="brochureNo"/>
+	 <mat-error *ngIf = "getControls('brochureNo').invalid" >
+	  {{ getControls('brochureNo')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>تاريخ شراء الكراسة</mat-label>
+	 <input matInput
+	  [matDatepicker] = "brochurePurchaseDateDatepicker"
+	  autocomplete = "off"
+	  formControlName= "brochurePurchaseDate"/>
+	 <mat-datepicker-toggle
+	   matSuffix
+	   [for]="brochurePurchaseDateDatepicker"
+	 ></mat-datepicker-toggle>
+	 <mat-datepicker #brochurePurchaseDateDatepicker></mat-datepicker>
+	 <mat-error *ngIf = "getControls('brochurePurchaseDate').invalid" >
+	  {{ getControls('brochurePurchaseDate')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+         
+
+	<app-material-select appearance="outline"
+	  #offeringType 
+	  [options] = "offeringTypeSelectOptions"
+	  formControlName = "offeringType"
+	></app-material-select>
+
+        </form>
+
+        <mat-divider></mat-divider>
+
+		<mat-card-actions>
+			<form [formGroup]="attachmentForm" class="form-container">
+                <app-multi-file-upload [service] = "conditionsNotebookDataService" [id]="conditionsNotebookDataForm.get('id').value"
+                    formControlName = "attachmentFiles">
+                </app-multi-file-upload>
+            </form>
+            <button
+                type="submit"
+                (click)="onSubmit()"
+                [disabled]="conditionsNotebookDataForm.invalid"
+                mat-raised-button
+                color = "primary">
+             حفظ
+            </button>
+        </mat-card-actions>
+    </ng-template >
+</app-new-form-layout >
+

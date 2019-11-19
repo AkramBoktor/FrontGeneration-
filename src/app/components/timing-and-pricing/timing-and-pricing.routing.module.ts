@@ -8,7 +8,36 @@ const routes: Routes = [
   {
     path: '',
     component: TimingAndPricingComponent,
-  }
+  },
+  
+{
+    path: 'project-periods', loadChildren: './components/project-periods/project-periods.module#ProjectPeriodsModule',
+    data: {
+      moduleName: 'ProjectPeriods'
+    },
+},
+
+{
+    path: 'contractor-durations', loadChildren: './components/contractor-durations/contractor-durations.module#ContractorDurationsModule',
+    data: {
+      moduleName: 'ContractorDurations'
+    },
+},
+
+{
+    path: 'obstacles-and-measures-taken', loadChildren: './components/obstacles-and-measures-taken/obstacles-and-measures-taken.module#ObstaclesAndMeasuresTakenModule',
+    data: {
+      moduleName: 'ObstaclesAndMeasuresTaken'
+    },
+},
+
+{
+    path: 'final-clearance-cycle', loadChildren: './components/final-clearance-cycle/final-clearance-cycle.module#FinalClearanceCycleModule',
+    data: {
+      moduleName: 'FinalClearanceCycle'
+    },
+},
+
 ];
 
 @NgModule({

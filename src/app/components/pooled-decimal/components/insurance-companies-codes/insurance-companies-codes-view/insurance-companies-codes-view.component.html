@@ -1,0 +1,72 @@
+
+<mat-card class="form-card">
+      <mat-card-header>
+  
+          <mat-card-title>
+              اكواد شركات التامين
+          </mat-card-title>
+  
+      </mat-card-header>
+  
+      <mat-card-content>
+  
+        <form [formGroup] = "insuranceCompaniesCodesForm" class="form-container">
+         
+
+	<mat-form-field appearance="outline">
+	 <mat-label>كود الشركة</mat-label>
+	 <input matInput formControlName="companionsCode"/>
+	 <mat-error *ngIf = "getControls('companionsCode').invalid" >
+	  {{ getControls('companionsCode')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>اسم الشركة</mat-label>
+	 <input matInput formControlName="companionsName"/>
+	 <mat-error *ngIf = "getControls('companionsName').invalid" >
+	  {{ getControls('companionsName')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>عنوان الشركة</mat-label>
+	 <input matInput formControlName="companyAddress"/>
+	 <mat-error *ngIf = "getControls('companyAddress').invalid" >
+	  {{ getControls('companyAddress')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>تليفون الشركة</mat-label>
+	 <input matInput formControlName="companyPhone"/>
+	 <mat-error *ngIf = "getControls('companyPhone').invalid" >
+	  {{ getControls('companyPhone')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>فاكس الشركة</mat-label>
+	 <input matInput formControlName="companyFax"/>
+	 <mat-error *ngIf = "getControls('companyFax').invalid" >
+	  {{ getControls('companyFax')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+         
+        </form>
+  
+      </mat-card-content >
+  
+      <mat-action-row>
+            <form [formGroup]="attachmentForm" class="form-container">
+                <app-multi-file-upload [service] = "insuranceCompaniesCodesService" [id]="insuranceCompaniesCodesForm.get('id').value"
+                    formControlName = "attachmentFiles">
+                </app-multi-file-upload>
+            </form>
+            <button (click) = "onConfirm()" mat-raised-button color = "primary" >
+                غلق
+            </button>
+        </mat-action-row>
+    </mat-card>
+
+    

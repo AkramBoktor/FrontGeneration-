@@ -16,7 +16,12 @@ const routes: Routes = [
       moduleName: 'VacationContract'
     },
 },
-
+{
+    path: 'vacation-employee', loadChildren: './components/vacation-employee/vacation-employee.module#VacationEmployeeModule',
+    data: {
+      moduleName: 'VacationEmployee'
+    },
+},
 {
     path: 'vacations-balance', loadChildren: './components/vacations-balance/vacations-balance.module#VacationsBalanceModule',
     data: {

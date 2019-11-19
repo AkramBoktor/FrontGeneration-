@@ -1,0 +1,152 @@
+
+<mat-card>
+    <mat-card-header>
+        <mat-card-title>بيانات الشغل</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+        <form [formGroup]="jobDataForm" class="form-container">
+          
+
+	<mat-form-field appearance="outline">
+	 <mat-label>رقم المناقصة</mat-label>
+	 <input matInput formControlName="bidNumber"/>
+	 <mat-error *ngIf = "getControls('bidNumber').invalid" >
+	  {{ getControls('bidNumber')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>المجموعة</mat-label>
+	 <input matInput formControlName="group"/>
+	 <mat-error *ngIf = "getControls('group').invalid" >
+	  {{ getControls('group')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>المدرسة</mat-label>
+	 <input matInput formControlName="school"/>
+	 <mat-error *ngIf = "getControls('school').invalid" >
+	  {{ getControls('school')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>رقم امر الشغل</mat-label>
+	 <input matInput formControlName="workOrderNumber"/>
+	 <mat-error *ngIf = "getControls('workOrderNumber').invalid" >
+	  {{ getControls('workOrderNumber')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>تاريخ امر الشغل</mat-label>
+	 <input matInput
+	  [matDatepicker] = "workOrderDateDatepicker"
+	  autocomplete = "off"
+	  formControlName= "workOrderDate"/>
+	 <mat-datepicker-toggle
+	   matSuffix
+	   [for]="workOrderDateDatepicker"
+	 ></mat-datepicker-toggle>
+	 <mat-datepicker #workOrderDateDatepicker></mat-datepicker>
+	 <mat-error *ngIf = "getControls('workOrderDate').invalid" >
+	  {{ getControls('workOrderDate')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>رقم المورد</mat-label>
+	 <input matInput formControlName="supplierNumber"/>
+	 <mat-error *ngIf = "getControls('supplierNumber').invalid" >
+	  {{ getControls('supplierNumber')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>مدة التنفيذ</mat-label>
+	 <input matInput formControlName="executionDuration"/>
+	 <mat-error *ngIf = "getControls('executionDuration').invalid" >
+	  {{ getControls('executionDuration')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>العلاوة</mat-label>
+	 <input matInput formControlName="bouns"/>
+	 <mat-error *ngIf = "getControls('bouns').invalid" >
+	  {{ getControls('bouns')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>قيمة امر الشغل</mat-label>
+	 <input matInput formControlName="workOrderValue"/>
+	 <mat-error *ngIf = "getControls('workOrderValue').invalid" >
+	  {{ getControls('workOrderValue')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>القيمة الاجمالية</mat-label>
+	 <input matInput formControlName="totalValue" [disableControl]="true" />
+	 <mat-error *ngIf = "getControls('totalValue').invalid" >
+	  {{ getControls('totalValue')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>نوع الصيانة</mat-label>
+	 <input matInput formControlName="maintenanceType" [disableControl]="true" />
+	 <mat-error *ngIf = "getControls('maintenanceType').invalid" >
+	  {{ getControls('maintenanceType')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+          
+
+	<app-material-select appearance="outline"
+	  #buildingType 
+	  [options] = "buildingTypeSelectOptions"
+	  formControlName = "buildingType"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #offeringType 
+	  [options] = "offeringTypeSelectOptions"
+	  formControlName = "offeringType"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #educationalAdministration 
+	  [options] = "educationalAdministrationSelectOptions"
+	  formControlName = "educationalAdministration"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #constructionType 
+	  [options] = "constructionTypeSelectOptions"
+	  formControlName = "constructionType"
+	></app-material-select>
+
+        </form>
+    </mat-card-content>
+
+    <mat-divider></mat-divider>
+
+	<mat-card-actions>
+			<form [formGroup]="attachmentForm" class="form-container">
+                <app-multi-file-upload [service] = "jobDataService" [id]="jobDataForm.get('id').value"
+                    formControlName = "attachmentFiles">
+                </app-multi-file-upload>
+            </form>
+            <button
+                color = "primary"
+                type = "submit"
+                (click) = "onSubmit()"
+                [disabled] = "jobDataForm.invalid"
+                mat-raised-button>
+                حفظ
+            </button>
+    </mat-card-actions>
+</mat-card>
+

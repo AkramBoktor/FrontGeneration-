@@ -1,0 +1,78 @@
+
+<app-new-form-layout
+    dir="rtl"
+    (submitClicked) = "onSubmit()"
+    (back) = "onBack()"
+    [pageTitle] = "'بيانات اعضاء لجنة البت'"
+>
+    <ng-template newFormContainer >
+        <form [formGroup] = "examinationCommitteeMemberDataForm">
+         
+
+	<mat-form-field appearance="outline">
+	 <mat-label>رقم مناقصة</mat-label>
+	 <input matInput formControlName="bidNumber"/>
+	 <mat-error *ngIf = "getControls('bidNumber').invalid" >
+	  {{ getControls('bidNumber')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>رقم الاجتماع</mat-label>
+	 <input matInput formControlName="meetingNumber"/>
+	 <mat-error *ngIf = "getControls('meetingNumber').invalid" >
+	  {{ getControls('meetingNumber')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>مسلسل العضو</mat-label>
+	 <input matInput formControlName="serialMember"/>
+	 <mat-error *ngIf = "getControls('serialMember').invalid" >
+	  {{ getControls('serialMember')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>اسم العضو</mat-label>
+	 <input matInput formControlName="memberName"/>
+	 <mat-error *ngIf = "getControls('memberName').invalid" >
+	  {{ getControls('memberName')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+         
+
+	<app-material-select appearance="outline"
+	  #offeringType 
+	  [options] = "offeringTypeSelectOptions"
+	  formControlName = "offeringType"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #memberType 
+	  [options] = "memberTypeSelectOptions"
+	  formControlName = "memberType"
+	></app-material-select>
+
+        </form>
+
+        <mat-divider></mat-divider>
+
+		<mat-card-actions>
+			<form [formGroup]="attachmentForm" class="form-container">
+                <app-multi-file-upload [service] = "examinationCommitteeMemberDataService" [id]="examinationCommitteeMemberDataForm.get('id').value"
+                    formControlName = "attachmentFiles">
+                </app-multi-file-upload>
+            </form>
+            <button
+                type="submit"
+                (click)="onSubmit()"
+                [disabled]="examinationCommitteeMemberDataForm.invalid"
+                mat-raised-button
+                color = "primary">
+             حفظ
+            </button>
+        </mat-card-actions>
+    </ng-template >
+</app-new-form-layout >
+

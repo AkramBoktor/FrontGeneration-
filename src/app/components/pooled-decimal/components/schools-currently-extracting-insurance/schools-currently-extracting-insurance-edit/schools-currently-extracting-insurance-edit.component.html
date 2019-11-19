@@ -1,0 +1,120 @@
+
+<mat-card>
+    <mat-card-header>
+        <mat-card-title>ادخال المدارس الجارى استخراج وثائق تامنية لها</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+        <form [formGroup]="schoolsCurrentlyExtractingInsuranceForm" class="form-container">
+          
+
+	<mat-form-field appearance="outline">
+	 <mat-label>كود شركه التأمين</mat-label>
+	 <input matInput formControlName="insuranceCompanyCode"/>
+	 <mat-error *ngIf = "getControls('insuranceCompanyCode').invalid" >
+	  {{ getControls('insuranceCompanyCode')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>اسم شركةالتأمين</mat-label>
+	 <input matInput formControlName="insuranceCompanyName" [disableControl]="true" />
+	 <mat-error *ngIf = "getControls('insuranceCompanyName').invalid" >
+	  {{ getControls('insuranceCompanyName')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>كود المدرسه</mat-label>
+	 <input matInput formControlName="schoolCode"/>
+	 <mat-error *ngIf = "getControls('schoolCode').invalid" >
+	  {{ getControls('schoolCode')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>اسم المدرسة</mat-label>
+	 <input matInput formControlName="schoolName" [disableControl]="true" />
+	 <mat-error *ngIf = "getControls('schoolName').invalid" >
+	  {{ getControls('schoolName')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>رقم الملحق</mat-label>
+	 <input matInput formControlName="extensionNumber"/>
+	 <mat-error *ngIf = "getControls('extensionNumber').invalid" >
+	  {{ getControls('extensionNumber')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>رقم النموزج</mat-label>
+	 <input matInput formControlName="modelCode"/>
+	 <mat-error *ngIf = "getControls('modelCode').invalid" >
+	  {{ getControls('modelCode')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>عدد الادوار</mat-label>
+	 <input matInput formControlName="floorsNumber"/>
+	 <mat-error *ngIf = "getControls('floorsNumber').invalid" >
+	  {{ getControls('floorsNumber')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>عدد الفصول </mat-label>
+	 <input matInput formControlName="classroomNumber"/>
+	 <mat-error *ngIf = "getControls('classroomNumber').invalid" >
+	  {{ getControls('classroomNumber')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>رقم المدرسة في المجمعه</mat-label>
+	 <input matInput formControlName="schoolNumber"/>
+	 <mat-error *ngIf = "getControls('schoolNumber').invalid" >
+	  {{ getControls('schoolNumber')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>تاريخ التسليم للمجمعه</mat-label>
+	 <input matInput
+	  [matDatepicker] = "deliveryDateDatepicker"
+	  autocomplete = "off"
+	  formControlName= "deliveryDate"/>
+	 <mat-datepicker-toggle
+	   matSuffix
+	   [for]="deliveryDateDatepicker"
+	 ></mat-datepicker-toggle>
+	 <mat-datepicker #deliveryDateDatepicker></mat-datepicker>
+	 <mat-error *ngIf = "getControls('deliveryDate').invalid" >
+	  {{ getControls('deliveryDate')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+          
+
+        </form>
+    </mat-card-content>
+
+    <mat-divider></mat-divider>
+
+	<mat-card-actions>
+			<form [formGroup]="attachmentForm" class="form-container">
+                <app-multi-file-upload [service] = "schoolsCurrentlyExtractingInsuranceService" [id]="schoolsCurrentlyExtractingInsuranceForm.get('id').value"
+                    formControlName = "attachmentFiles">
+                </app-multi-file-upload>
+            </form>
+            <button
+                color = "primary"
+                type = "submit"
+                (click) = "onSubmit()"
+                [disabled] = "schoolsCurrentlyExtractingInsuranceForm.invalid"
+                mat-raised-button>
+                حفظ
+            </button>
+    </mat-card-actions>
+</mat-card>
+

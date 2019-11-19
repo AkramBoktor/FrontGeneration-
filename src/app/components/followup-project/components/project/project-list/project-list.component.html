@@ -10,14 +10,6 @@
            
 
 	<mat-form-field appearance="outline">
-	 <mat-label>كود الفرع</mat-label>
-	 <input matInput formControlName="branchCode"/>
-	 <mat-error *ngIf = "getControls('branchCode').invalid" >
-	  {{ getControls('branchCode')| getErrorMessages : errorMessages}}
-	  </mat-error>
-	</mat-form-field>
-
-	<mat-form-field appearance="outline">
 	 <mat-label>كود المشروع</mat-label>
 	 <input matInput formControlName="projectCode"/>
 	 <mat-error *ngIf = "getControls('projectCode').invalid" >
@@ -26,10 +18,10 @@
 	</mat-form-field>
 
 	<mat-form-field appearance="outline">
-	 <mat-label>عدد الفصول</mat-label>
-	 <input matInput formControlName="classesNumber"/>
-	 <mat-error *ngIf = "getControls('classesNumber').invalid" >
-	  {{ getControls('classesNumber')| getErrorMessages : errorMessages}}
+	 <mat-label>وصف المشروع</mat-label>
+	 <input matInput formControlName="projectDesc"/>
+	 <mat-error *ngIf = "getControls('projectDesc').invalid" >
+	  {{ getControls('projectDesc')| getErrorMessages : errorMessages}}
 	  </mat-error>
 	</mat-form-field>
            

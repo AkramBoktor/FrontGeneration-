@@ -1,11 +1,10 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { Log, User, UserManager, UserManagerSettings, WebStorageStateStore } from 'oidc-client';
 import { from, Observable, of } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { Constants } from '../../shared/config/constants';
-import { ActivatedRoute } from '@angular/router';
-import { JwtHelperService } from '@auth0/angular-jwt';
 
 
 @Injectable({

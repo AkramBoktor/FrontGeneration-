@@ -1,0 +1,126 @@
+
+<mat-card>
+    <mat-card-header>
+        <mat-card-title>بيانات لجنة فتح الظاريف</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+        <form [formGroup]="envelopesOpennigCommetyDataForm" class="form-container">
+          
+
+	<mat-form-field appearance="outline">
+	 <mat-label>رقم مناقصة</mat-label>
+	 <input matInput formControlName="bidNumber"/>
+	 <mat-error *ngIf = "getControls('bidNumber').invalid" >
+	  {{ getControls('bidNumber')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>تاريخ انعقاد اللجنة</mat-label>
+	 <input matInput
+	  [matDatepicker] = "committeeDateDatepicker"
+	  autocomplete = "off"
+	  formControlName= "committeeDate"/>
+	 <mat-datepicker-toggle
+	   matSuffix
+	   [for]="committeeDateDatepicker"
+	 ></mat-datepicker-toggle>
+	 <mat-datepicker #committeeDateDatepicker></mat-datepicker>
+	 <mat-error *ngIf = "getControls('committeeDate').invalid" >
+	  {{ getControls('committeeDate')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>مقر انعقاد اللجنة</mat-label>
+	 <input matInput formControlName="committeeHeadquarters"/>
+	 <mat-error *ngIf = "getControls('committeeHeadquarters').invalid" >
+	  {{ getControls('committeeHeadquarters')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>تاريخ الموافقة على الطرح</mat-label>
+	 <input matInput
+	  [matDatepicker] = "offeringApprovalDateDatepicker"
+	  autocomplete = "off"
+	  formControlName= "offeringApprovalDate"/>
+	 <mat-datepicker-toggle
+	   matSuffix
+	   [for]="offeringApprovalDateDatepicker"
+	 ></mat-datepicker-toggle>
+	 <mat-datepicker #offeringApprovalDateDatepicker></mat-datepicker>
+	 <mat-error *ngIf = "getControls('offeringApprovalDate').invalid" >
+	  {{ getControls('offeringApprovalDate')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>تاريخ فتح المظاريف المالي</mat-label>
+	 <input matInput
+	  [matDatepicker] = "openingFinancialEnvelopesDateDatepicker"
+	  autocomplete = "off"
+	  formControlName= "openingFinancialEnvelopesDate"/>
+	 <mat-datepicker-toggle
+	   matSuffix
+	   [for]="openingFinancialEnvelopesDateDatepicker"
+	 ></mat-datepicker-toggle>
+	 <mat-datepicker #openingFinancialEnvelopesDateDatepicker></mat-datepicker>
+	 <mat-error *ngIf = "getControls('openingFinancialEnvelopesDate').invalid" >
+	  {{ getControls('openingFinancialEnvelopesDate')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>تاريخ الموافقة على التشكيل</mat-label>
+	 <input matInput
+	  [matDatepicker] = "approvalFormationDateDatepicker"
+	  autocomplete = "off"
+	  formControlName= "approvalFormationDate"/>
+	 <mat-datepicker-toggle
+	   matSuffix
+	   [for]="approvalFormationDateDatepicker"
+	 ></mat-datepicker-toggle>
+	 <mat-datepicker #approvalFormationDateDatepicker></mat-datepicker>
+	 <mat-error *ngIf = "getControls('approvalFormationDate').invalid" >
+	  {{ getControls('approvalFormationDate')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>موقف المناقصة من التقصير</mat-label>
+	 <input matInput formControlName="tenderPosition"/>
+	 <mat-error *ngIf = "getControls('tenderPosition').invalid" >
+	  {{ getControls('tenderPosition')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+          
+
+	<app-material-select appearance="outline"
+	  #offeringType 
+	  [options] = "offeringTypeSelectOptions"
+	  formControlName = "offeringType"
+	></app-material-select>
+
+        </form>
+    </mat-card-content>
+
+    <mat-divider></mat-divider>
+
+	<mat-card-actions>
+			<form [formGroup]="attachmentForm" class="form-container">
+                <app-multi-file-upload [service] = "envelopesOpennigCommetyDataService" [id]="envelopesOpennigCommetyDataForm.get('id').value"
+                    formControlName = "attachmentFiles">
+                </app-multi-file-upload>
+            </form>
+            <button
+                color = "primary"
+                type = "submit"
+                (click) = "onSubmit()"
+                [disabled] = "envelopesOpennigCommetyDataForm.invalid"
+                mat-raised-button>
+                حفظ
+            </button>
+    </mat-card-actions>
+</mat-card>
+

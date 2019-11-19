@@ -1,0 +1,200 @@
+
+<mat-card>
+    <mat-card-header>
+        <mat-card-title>بيانات عطاء</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+        <form [formGroup]="tenderDataForm" class="form-container">
+          
+
+	<mat-form-field appearance="outline">
+	 <mat-label>القيمة باعلى سعر</mat-label>
+	 <input matInput formControlName="highestPriceValue"/>
+	 <mat-error *ngIf = "getControls('highestPriceValue').invalid" >
+	  {{ getControls('highestPriceValue')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>القيمة بعد الممارسة</mat-label>
+	 <input matInput formControlName="valueAfterPractice"/>
+	 <mat-error *ngIf = "getControls('valueAfterPractice').invalid" >
+	  {{ getControls('valueAfterPractice')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>نسبة العلاوة</mat-label>
+	 <input matInput formControlName="bounsRate"/>
+	 <mat-error *ngIf = "getControls('bounsRate').invalid" >
+	  {{ getControls('bounsRate')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>رقم العطاء</mat-label>
+	 <input matInput formControlName="tenderNumber"/>
+	 <mat-error *ngIf = "getControls('tenderNumber').invalid" >
+	  {{ getControls('tenderNumber')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>نسبة الدفعة</mat-label>
+	 <input matInput formControlName="batchRatio"/>
+	 <mat-error *ngIf = "getControls('batchRatio').invalid" >
+	  {{ getControls('batchRatio')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>قيمة الترسية</mat-label>
+	 <input matInput formControlName="awardValue"/>
+	 <mat-error *ngIf = "getControls('awardValue').invalid" >
+	  {{ getControls('awardValue')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>تاريخ تقديم العطاء</mat-label>
+	 <input matInput
+	  [matDatepicker] = "tenderDateDatepicker"
+	  autocomplete = "off"
+	  formControlName= "tenderDate"/>
+	 <mat-datepicker-toggle
+	   matSuffix
+	   [for]="tenderDateDatepicker"
+	 ></mat-datepicker-toggle>
+	 <mat-datepicker #tenderDateDatepicker></mat-datepicker>
+	 <mat-error *ngIf = "getControls('tenderDate').invalid" >
+	  {{ getControls('tenderDate')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>مدة سريان العطاء بالشهور</mat-label>
+	 <input matInput formControlName="tenderDurationinMonths"/>
+	 <mat-error *ngIf = "getControls('tenderDurationinMonths').invalid" >
+	  {{ getControls('tenderDurationinMonths')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>اجمالي قيمة العطاء</mat-label>
+	 <input matInput formControlName="tenderTotalValue"/>
+	 <mat-error *ngIf = "getControls('tenderTotalValue').invalid" >
+	  {{ getControls('tenderTotalValue')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>قيمة المقايسة</mat-label>
+	 <input matInput formControlName="assayValue"/>
+	 <mat-error *ngIf = "getControls('assayValue').invalid" >
+	  {{ getControls('assayValue')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>رقم ايصال التامين الابتدائي</mat-label>
+	 <input matInput formControlName="insuranceNumber"/>
+	 <mat-error *ngIf = "getControls('insuranceNumber').invalid" >
+	  {{ getControls('insuranceNumber')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>قيمة التامين الابتدائي</mat-label>
+	 <input matInput formControlName="insuranceValue"/>
+	 <mat-error *ngIf = "getControls('insuranceValue').invalid" >
+	  {{ getControls('insuranceValue')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>الشركة</mat-label>
+	 <input matInput formControlName="company"/>
+	 <mat-error *ngIf = "getControls('company').invalid" >
+	  {{ getControls('company')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>المشروع</mat-label>
+	 <input matInput formControlName="project"/>
+	 <mat-error *ngIf = "getControls('project').invalid" >
+	  {{ getControls('project')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>رقم المناقصة</mat-label>
+	 <input matInput formControlName="bidNumber"/>
+	 <mat-error *ngIf = "getControls('bidNumber').invalid" >
+	  {{ getControls('bidNumber')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>القيمة باقل سعر</mat-label>
+	 <input matInput formControlName="lowestPriceValue"/>
+	 <mat-error *ngIf = "getControls('lowestPriceValue').invalid" >
+	  {{ getControls('lowestPriceValue')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>الافتراضات</mat-label>
+	 <input matInput formControlName="assumptions"/>
+	 <mat-error *ngIf = "getControls('assumptions').invalid" >
+	  {{ getControls('assumptions')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+          
+
+	<app-material-select appearance="outline"
+	  #offeringType 
+	  [options] = "offeringTypeSelectOptions"
+	  formControlName = "offeringType"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #gearStatus 
+	  [options] = "gearStatusSelectOptions"
+	  formControlName = "gearStatus"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #taxDescription 
+	  [options] = "taxDescriptionSelectOptions"
+	  formControlName = "taxDescription"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #paymentMethod 
+	  [options] = "paymentMethodSelectOptions"
+	  formControlName = "paymentMethod"
+	></app-material-select>
+
+        </form>
+    </mat-card-content>
+
+    <mat-divider></mat-divider>
+
+	<mat-card-actions>
+			<form [formGroup]="attachmentForm" class="form-container">
+                <app-multi-file-upload [service] = "tenderDataService" [id]="tenderDataForm.get('id').value"
+                    formControlName = "attachmentFiles">
+                </app-multi-file-upload>
+            </form>
+            <button
+                color = "primary"
+                type = "submit"
+                (click) = "onSubmit()"
+                [disabled] = "tenderDataForm.invalid"
+                mat-raised-button>
+                حفظ
+            </button>
+    </mat-card-actions>
+</mat-card>
+

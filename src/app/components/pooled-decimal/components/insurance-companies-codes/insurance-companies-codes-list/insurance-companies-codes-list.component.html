@@ -1,0 +1,66 @@
+
+<app-search-list-expansion-panel
+    dir="rtl"
+    [pageTitle] = "'اكواد شركات التامين'"
+    (beginSearch) = "onBeginSearch()"
+    (create) = "onCreate()"
+>
+    <ng-template searchFormContainer >
+        <form [formGroup] = "searchForm">
+           
+
+	<mat-form-field appearance="outline">
+	 <mat-label>كود الشركة</mat-label>
+	 <input matInput formControlName="companionsCode"/>
+	 <mat-error *ngIf = "getControls('companionsCode').invalid" >
+	  {{ getControls('companionsCode')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>اسم الشركة</mat-label>
+	 <input matInput formControlName="companionsName"/>
+	 <mat-error *ngIf = "getControls('companionsName').invalid" >
+	  {{ getControls('companionsName')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>عنوان الشركة</mat-label>
+	 <input matInput formControlName="companyAddress"/>
+	 <mat-error *ngIf = "getControls('companyAddress').invalid" >
+	  {{ getControls('companyAddress')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>تليفون الشركة</mat-label>
+	 <input matInput formControlName="companyPhone"/>
+	 <mat-error *ngIf = "getControls('companyPhone').invalid" >
+	  {{ getControls('companyPhone')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>فاكس الشركة</mat-label>
+	 <input matInput formControlName="companyFax"/>
+	 <mat-error *ngIf = "getControls('companyFax').invalid" >
+	  {{ getControls('companyFax')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+           
+
+        </form>
+    </ng-template >
+    <ng-template searchResultContainer >
+        <app-grid-control
+            #gridControl
+            [rowDataService] = "getInsuranceCompaniesCodesPaginatedSortedFiltered"
+            [columnOptions] = "columnOptions"
+            [gridHeaderOptions] = "gridHeaderOptions"
+            [searchInput] = "searchForm.value"
+            (deleteRow) = "onDeleteClicked($event)"
+        >
+        </app-grid-control>
+    </ng-template>
+</app-search-list-expansion-panel >

@@ -1,0 +1,74 @@
+
+<app-new-form-layout
+    dir="rtl"
+    (submitClicked) = "onSubmit()"
+    (back) = "onBack()"
+    [pageTitle] = "'مدارس لا تحتاج الي وثيقة تامين'"
+>
+    <ng-template newFormContainer >
+        <form [formGroup] = "schoolsDoNotNeedInsuranceForm">
+         
+
+	<mat-form-field appearance="outline">
+	 <mat-label>رقم المكاتبة</mat-label>
+	 <input matInput formControlName="theNumberOfTheLetter"/>
+	 <mat-error *ngIf = "getControls('theNumberOfTheLetter').invalid" >
+	  {{ getControls('theNumberOfTheLetter')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>رقم المدرسة</mat-label>
+	 <input matInput formControlName="schoolNumber"/>
+	 <mat-error *ngIf = "getControls('schoolNumber').invalid" >
+	  {{ getControls('schoolNumber')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>رقم الملحق</mat-label>
+	 <input matInput formControlName="annexNumber"/>
+	 <mat-error *ngIf = "getControls('annexNumber').invalid" >
+	  {{ getControls('annexNumber')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>رقم النموذج</mat-label>
+	 <input matInput formControlName="modelNumber"/>
+	 <mat-error *ngIf = "getControls('modelNumber').invalid" >
+	  {{ getControls('modelNumber')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>عدد الادوار</mat-label>
+	 <input matInput formControlName="numberOfFloors"/>
+	 <mat-error *ngIf = "getControls('numberOfFloors').invalid" >
+	  {{ getControls('numberOfFloors')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+         
+
+        </form>
+
+        <mat-divider></mat-divider>
+
+		<mat-card-actions>
+			<form [formGroup]="attachmentForm" class="form-container">
+                <app-multi-file-upload [service] = "schoolsDoNotNeedInsuranceService" [id]="schoolsDoNotNeedInsuranceForm.get('id').value"
+                    formControlName = "attachmentFiles">
+                </app-multi-file-upload>
+            </form>
+            <button
+                type="submit"
+                (click)="onSubmit()"
+                [disabled]="schoolsDoNotNeedInsuranceForm.invalid"
+                mat-raised-button
+                color = "primary">
+             حفظ
+            </button>
+        </mat-card-actions>
+    </ng-template >
+</app-new-form-layout >
+

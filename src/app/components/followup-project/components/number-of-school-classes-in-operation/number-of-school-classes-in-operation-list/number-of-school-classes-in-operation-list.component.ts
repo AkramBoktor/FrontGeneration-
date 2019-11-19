@@ -1,20 +1,22 @@
 
-import { Component, Injector, Input, OnInit, ViewChild } from '@angular/core';
-import { FormGroup } from '@angular/forms';
+import { Component,OnInit, Input, ViewChild, Injector } from '@angular/core';
 import { AppBaseComponent } from 'app/shared/base/app-base.component';
+import { FormGroup, AbstractControl, Validators } from '@angular/forms';
+import { ODataPagedResult } from 'angular-odata-es5';
 import { GridControlComponent } from 'app/shared/components/grid-control/grid-control.component';
-import { MaterialSelectComponent } from 'app/shared/components/material-controls/material-select/material-select.component';
-import { GridColumnOptions, GridHeaderOptions } from 'app/shared/models/controls/grid-control.model';
-import { FormControlError, GridPaginatedSortedFiltered } from 'app/shared/models/controls/interfaces';
-import { MaterialSelectOptions } from 'app/shared/models/controls/material-select.model';
+import { GridColumnOptions,GridHeaderOptions } from 'app/shared/models/controls/grid-control.model';
+import { GridPaginatedSortedFiltered, FormControlError } from 'app/shared/models/controls/interfaces';
 import { NumberOfSchoolClassesInOperation } from 'app/shared/models/number-of-school-classes-in-operation';
-import { LookupService } from 'app/shared/pages/lookup-form/lookup.service';
 import { Observable } from 'rxjs';
 import { take } from 'rxjs/operators';
+import { ValidatorFunctions } from 'app/shared/validations/validator-functions';
 import { NumberOfSchoolClassesInOperationEditComponent } from '../number-of-school-classes-in-operation-edit/number-of-school-classes-in-operation-edit.component';
 import { NumberOfSchoolClassesInOperationNewComponent } from '../number-of-school-classes-in-operation-new/number-of-school-classes-in-operation-new.component';
 import { NumberOfSchoolClassesInOperationViewComponent } from '../number-of-school-classes-in-operation-view/number-of-school-classes-in-operation-view.component';
 import { NumberOfSchoolClassesInOperationService } from '../shared/number-of-school-classes-in-operation.service';
+import { MaterialSelectOptions } from 'app/shared/models/controls/material-select.model';
+import { MaterialSelectComponent } from 'app/shared/components/material-controls/material-select/material-select.component';
+import { LookupService } from 'app/shared/pages/lookup-form/lookup.service';
 
 @Component({
   selector: 'app-number-of-school-classes-in-operation-list',
@@ -43,9 +45,9 @@ branchCodeSelectOptions: MaterialSelectOptions;
 
   columnOptions = [
         
-	new GridColumnOptions({ headerName: 'كود الفرع', field: 'branchCode' }),
 	new GridColumnOptions({ headerName: 'كود المشروع', field: 'projectCode' }),
 	new GridColumnOptions({ headerName: 'عدد الفصول', field: 'classesNumber' }),
+	new GridColumnOptions({ headerName: 'كود الفرع', field: 'branchCode' }),
   ];
 
   gridHeaderOptions = new GridHeaderOptions({

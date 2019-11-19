@@ -1,0 +1,122 @@
+
+<app-search-list-expansion-panel
+    dir="rtl"
+    [pageTitle] = "'بيانات التصنيف للمقاولين'"
+    (beginSearch) = "onBeginSearch()"
+    (create) = "onCreate()"
+>
+    <ng-template searchFormContainer >
+        <form [formGroup] = "searchForm">
+           
+
+	<mat-form-field appearance="outline">
+	 <mat-label>رقم المناقصة</mat-label>
+	 <input matInput formControlName="bidNumber"/>
+	 <mat-error *ngIf = "getControls('bidNumber').invalid" >
+	  {{ getControls('bidNumber')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>رقم المشروع</mat-label>
+	 <input matInput formControlName="projectNumber"/>
+	 <mat-error *ngIf = "getControls('projectNumber').invalid" >
+	  {{ getControls('projectNumber')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>كود المقاول</mat-label>
+	 <input matInput formControlName="contractorCode"/>
+	 <mat-error *ngIf = "getControls('contractorCode').invalid" >
+	  {{ getControls('contractorCode')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>اجمالي قيمه الاعمال الجاريه</mat-label>
+	 <input matInput formControlName="ongoingBusinessTotalValue"/>
+	 <mat-error *ngIf = "getControls('ongoingBusinessTotalValue').invalid" >
+	  {{ getControls('ongoingBusinessTotalValue')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>رقم بطاقه التصنيف</mat-label>
+	 <input matInput formControlName="classificationCardNumber"/>
+	 <mat-error *ngIf = "getControls('classificationCardNumber').invalid" >
+	  {{ getControls('classificationCardNumber')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>تاريخ بطاقه التصنيف</mat-label>
+	 <input matInput
+	  [matDatepicker] = "dateCardRatingDatepicker"
+	  autocomplete = "off"
+	  formControlName= "dateCardRating"/>
+	 <mat-datepicker-toggle
+	   matSuffix
+	   [for]="dateCardRatingDatepicker"
+	 ></mat-datepicker-toggle>
+	 <mat-datepicker #dateCardRatingDatepicker></mat-datepicker>
+	 <mat-error *ngIf = "getControls('dateCardRating').invalid" >
+	  {{ getControls('dateCardRating')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>القرار</mat-label>
+	 <input matInput formControlName="decision"/>
+	 <mat-error *ngIf = "getControls('decision').invalid" >
+	  {{ getControls('decision')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>سبب عدم المطابقه</mat-label>
+	 <input matInput formControlName="reason"/>
+	 <mat-error *ngIf = "getControls('reason').invalid" >
+	  {{ getControls('reason')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+           
+
+	<app-material-select appearance="outline"
+	  #offeringType 
+	  [options] = "offeringTypeSelectOptions"
+	  formControlName = "offeringType"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #constructionType 
+	  [options] = "constructionTypeSelectOptions"
+	  formControlName = "constructionType"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #classificationCode 
+	  [options] = "classificationCodeSelectOptions"
+	  formControlName = "classificationCode"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #classificationValueCode 
+	  [options] = "classificationValueCodeSelectOptions"
+	  formControlName = "classificationValueCode"
+	></app-material-select>
+
+        </form>
+    </ng-template >
+    <ng-template searchResultContainer >
+        <app-grid-control
+            #gridControl
+            [rowDataService] = "getContractorsRankingDataPaginatedSortedFiltered"
+            [columnOptions] = "columnOptions"
+            [gridHeaderOptions] = "gridHeaderOptions"
+            [searchInput] = "searchForm.value"
+            (deleteRow) = "onDeleteClicked($event)"
+        >
+        </app-grid-control>
+    </ng-template>
+</app-search-list-expansion-panel >

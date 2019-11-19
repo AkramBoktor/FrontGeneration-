@@ -1,0 +1,102 @@
+
+<mat-card class="form-card">
+      <mat-card-header>
+  
+          <mat-card-title>
+              بيانات لجنة البت
+          </mat-card-title>
+  
+      </mat-card-header>
+  
+      <mat-card-content>
+  
+        <form [formGroup] = "examinationCommitteeDateDataForm" class="form-container">
+         
+
+	<mat-form-field appearance="outline">
+	 <mat-label>رقم مناقصة</mat-label>
+	 <input matInput formControlName="bidNumber"/>
+	 <mat-error *ngIf = "getControls('bidNumber').invalid" >
+	  {{ getControls('bidNumber')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>رقم الاجتماع</mat-label>
+	 <input matInput formControlName="meetingNumber"/>
+	 <mat-error *ngIf = "getControls('meetingNumber').invalid" >
+	  {{ getControls('meetingNumber')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>تاريخ انعقاد لجنة البت</mat-label>
+	 <input matInput
+	  [matDatepicker] = "committeeDateDatepicker"
+	  autocomplete = "off"
+	  formControlName= "committeeDate"/>
+	 <mat-datepicker-toggle
+	   matSuffix
+	   [for]="committeeDateDatepicker"
+	 ></mat-datepicker-toggle>
+	 <mat-datepicker #committeeDateDatepicker></mat-datepicker>
+	 <mat-error *ngIf = "getControls('committeeDate').invalid" >
+	  {{ getControls('committeeDate')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>مقر انعقاد لجنة البت</mat-label>
+	 <input matInput formControlName="committeeHeadquarters"/>
+	 <mat-error *ngIf = "getControls('committeeHeadquarters').invalid" >
+	  {{ getControls('committeeHeadquarters')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>تاريخ الموافقة على التشكيل</mat-label>
+	 <input matInput
+	  [matDatepicker] = "approvalFormationDateDatepicker"
+	  autocomplete = "off"
+	  formControlName= "approvalFormationDate"/>
+	 <mat-datepicker-toggle
+	   matSuffix
+	   [for]="approvalFormationDateDatepicker"
+	 ></mat-datepicker-toggle>
+	 <mat-datepicker #approvalFormationDateDatepicker></mat-datepicker>
+	 <mat-error *ngIf = "getControls('approvalFormationDate').invalid" >
+	  {{ getControls('approvalFormationDate')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>اجراءات الطرح</mat-label>
+	 <input matInput formControlName="offeringProcedures"/>
+	 <mat-error *ngIf = "getControls('offeringProcedures').invalid" >
+	  {{ getControls('offeringProcedures')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+         
+
+	<app-material-select appearance="outline"
+	  #offeringType 
+	  [options] = "offeringTypeSelectOptions"
+	  formControlName = "offeringType"
+	></app-material-select>
+        </form>
+  
+      </mat-card-content >
+  
+      <mat-action-row>
+            <form [formGroup]="attachmentForm" class="form-container">
+                <app-multi-file-upload [service] = "examinationCommitteeDateDataService" [id]="examinationCommitteeDateDataForm.get('id').value"
+                    formControlName = "attachmentFiles">
+                </app-multi-file-upload>
+            </form>
+            <button (click) = "onConfirm()" mat-raised-button color = "primary" >
+                غلق
+            </button>
+        </mat-action-row>
+    </mat-card>
+
+    

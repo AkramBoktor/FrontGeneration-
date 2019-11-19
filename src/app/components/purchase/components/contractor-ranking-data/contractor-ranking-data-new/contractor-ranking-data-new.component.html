@@ -1,0 +1,128 @@
+
+<app-new-form-layout
+    dir="rtl"
+    (submitClicked) = "onSubmit()"
+    (back) = "onBack()"
+    [pageTitle] = "'بيانات التصنيف للمقاول'"
+>
+    <ng-template newFormContainer >
+        <form [formGroup] = "contractorRankingDataForm">
+         
+
+	<mat-form-field appearance="outline">
+	 <mat-label>رقم المناقصة</mat-label>
+	 <input matInput formControlName="bidNumber"/>
+	 <mat-error *ngIf = "getControls('bidNumber').invalid" >
+	  {{ getControls('bidNumber')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>رقم المشروع</mat-label>
+	 <input matInput formControlName="projectNumber"/>
+	 <mat-error *ngIf = "getControls('projectNumber').invalid" >
+	  {{ getControls('projectNumber')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>كود المقاول</mat-label>
+	 <input matInput formControlName="contractorCode"/>
+	 <mat-error *ngIf = "getControls('contractorCode').invalid" >
+	  {{ getControls('contractorCode')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>اجمالي قيمه الاعمال الجاريه</mat-label>
+	 <input matInput formControlName="ongoingBusinessTotalValue"/>
+	 <mat-error *ngIf = "getControls('ongoingBusinessTotalValue').invalid" >
+	  {{ getControls('ongoingBusinessTotalValue')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>رقم بطاقه التصنيف</mat-label>
+	 <input matInput formControlName="classificationCardNumber"/>
+	 <mat-error *ngIf = "getControls('classificationCardNumber').invalid" >
+	  {{ getControls('classificationCardNumber')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>تاريخ بطاقه التصنيف</mat-label>
+	 <input matInput
+	  [matDatepicker] = "dateCardRatingDatepicker"
+	  autocomplete = "off"
+	  formControlName= "dateCardRating"/>
+	 <mat-datepicker-toggle
+	   matSuffix
+	   [for]="dateCardRatingDatepicker"
+	 ></mat-datepicker-toggle>
+	 <mat-datepicker #dateCardRatingDatepicker></mat-datepicker>
+	 <mat-error *ngIf = "getControls('dateCardRating').invalid" >
+	  {{ getControls('dateCardRating')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>سبب عدم المطابقه</mat-label>
+	 <input matInput formControlName="reason"/>
+	 <mat-error *ngIf = "getControls('reason').invalid" >
+	  {{ getControls('reason')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+         
+
+	<app-material-select appearance="outline"
+	  #offeringType 
+	  [options] = "offeringTypeSelectOptions"
+	  formControlName = "offeringType"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #constructionType 
+	  [options] = "constructionTypeSelectOptions"
+	  formControlName = "constructionType"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #classificationCode 
+	  [options] = "classificationCodeSelectOptions"
+	  formControlName = "classificationCode"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #classificationValueCode 
+	  [options] = "classificationValueCodeSelectOptions"
+	  formControlName = "classificationValueCode"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #decision 
+	  [options] = "decisionSelectOptions"
+	  formControlName = "decision"
+	></app-material-select>
+
+        </form>
+
+        <mat-divider></mat-divider>
+
+		<mat-card-actions>
+			<form [formGroup]="attachmentForm" class="form-container">
+                <app-multi-file-upload [service] = "contractorRankingDataService" [id]="contractorRankingDataForm.get('id').value"
+                    formControlName = "attachmentFiles">
+                </app-multi-file-upload>
+            </form>
+            <button
+                type="submit"
+                (click)="onSubmit()"
+                [disabled]="contractorRankingDataForm.invalid"
+                mat-raised-button
+                color = "primary">
+             حفظ
+            </button>
+        </mat-card-actions>
+    </ng-template >
+</app-new-form-layout >
+
