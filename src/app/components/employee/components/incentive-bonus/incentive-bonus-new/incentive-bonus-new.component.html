@@ -1,0 +1,116 @@
+
+<app-new-form-layout
+    dir="rtl"
+    (submitClicked) = "onSubmit()"
+    (back) = "onBack()"
+    [pageTitle] = "'العلاوه التشجيعيه'"
+>
+    <ng-template newFormContainer >
+        <form [formGroup] = "incentiveBonusForm">
+         
+
+	<mat-form-field appearance="outline">
+	 <mat-label>كود الموظف</mat-label>
+	 <input matInput formControlName="employeeCode"/>
+	 <mat-error *ngIf = "getControls('employeeCode').invalid" >
+	  {{ getControls('employeeCode')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>سنه منح العلاوه</mat-label>
+	 <input matInput
+	  [matDatepicker] = "grantedYearDatepicker"
+	  autocomplete = "off"
+	  formControlName= "grantedYear"/>
+	 <mat-datepicker-toggle
+	   matSuffix
+	   [for]="grantedYearDatepicker"
+	 ></mat-datepicker-toggle>
+	 <mat-datepicker #grantedYearDatepicker></mat-datepicker>
+	 <mat-error *ngIf = "getControls('grantedYear').invalid" >
+	  {{ getControls('grantedYear')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>رقم القرار</mat-label>
+	 <input matInput formControlName="decisionNumber"/>
+	 <mat-error *ngIf = "getControls('decisionNumber').invalid" >
+	  {{ getControls('decisionNumber')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>تاريخ القرار</mat-label>
+	 <input matInput
+	  [matDatepicker] = "decisionDateDatepicker"
+	  autocomplete = "off"
+	  formControlName= "decisionDate"/>
+	 <mat-datepicker-toggle
+	   matSuffix
+	   [for]="decisionDateDatepicker"
+	 ></mat-datepicker-toggle>
+	 <mat-datepicker #decisionDateDatepicker></mat-datepicker>
+	 <mat-error *ngIf = "getControls('decisionDate').invalid" >
+	  {{ getControls('decisionDate')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>تاريخ اعتماد اللجنه</mat-label>
+	 <input matInput
+	  [matDatepicker] = "committeeAcceptedDateDatepicker"
+	  autocomplete = "off"
+	  formControlName= "committeeAcceptedDate"/>
+	 <mat-datepicker-toggle
+	   matSuffix
+	   [for]="committeeAcceptedDateDatepicker"
+	 ></mat-datepicker-toggle>
+	 <mat-datepicker #committeeAcceptedDateDatepicker></mat-datepicker>
+	 <mat-error *ngIf = "getControls('committeeAcceptedDate').invalid" >
+	  {{ getControls('committeeAcceptedDate')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+         
+
+	<app-material-select appearance="outline" [disabled]="true" 
+	  #jobGroup 
+	  [options] = "jobGroupSelectOptions"
+	  formControlName = "jobGroup"
+	></app-material-select>
+
+	<app-material-select appearance="outline" [disabled]="true" 
+	  #jobTitle 
+	  [options] = "jobTitleSelectOptions"
+	  formControlName = "jobTitle"
+	></app-material-select>
+
+	<app-material-select appearance="outline" [disabled]="true" 
+	  #financialDegree 
+	  [options] = "financialDegreeSelectOptions"
+	  formControlName = "financialDegree"
+	></app-material-select>
+
+        </form>
+
+        <mat-divider></mat-divider>
+
+		<mat-card-actions>
+			<form [formGroup]="attachmentForm" class="form-container">
+                <app-multi-file-upload [service] = "incentiveBonusService" [id]="incentiveBonusForm.get('id').value"
+                    formControlName = "attachmentFiles">
+                </app-multi-file-upload>
+            </form>
+            <button
+                type="submit"
+                (click)="onSubmit()"
+                [disabled]="incentiveBonusForm.invalid"
+                mat-raised-button
+                color = "primary">
+             حفظ
+            </button>
+        </mat-card-actions>
+    </ng-template >
+</app-new-form-layout >
+

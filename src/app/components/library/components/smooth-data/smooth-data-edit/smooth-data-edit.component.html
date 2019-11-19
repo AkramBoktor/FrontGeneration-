@@ -1,0 +1,65 @@
+
+<mat-card>
+    <mat-card-header>
+        <mat-card-title>بيانات السلسه</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+        <form [formGroup]="smoothDataForm" class="form-container">
+          
+
+	<mat-form-field appearance="outline">
+	 <mat-label>كود السلسه</mat-label>
+	 <input matInput formControlName="seriesCode"/>
+	 <mat-error *ngIf = "getControls('seriesCode').invalid" >
+	  {{ getControls('seriesCode')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>عنوان السلسله</mat-label>
+	 <input matInput formControlName="seriesTitle"/>
+	 <mat-error *ngIf = "getControls('seriesTitle').invalid" >
+	  {{ getControls('seriesTitle')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>رقم الكتاب</mat-label>
+	 <input matInput formControlName="bookNumber"/>
+	 <mat-error *ngIf = "getControls('bookNumber').invalid" >
+	  {{ getControls('bookNumber')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>عنوان الكتاب</mat-label>
+	 <input matInput formControlName="bookTitle"/>
+	 <mat-error *ngIf = "getControls('bookTitle').invalid" >
+	  {{ getControls('bookTitle')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+ 
+          
+
+        </form>
+    </mat-card-content>
+
+    <mat-divider></mat-divider>
+
+	<mat-card-actions>
+			<form [formGroup]="attachmentForm" class="form-container">
+                <app-multi-file-upload [service] = "smoothDataService" [id]="smoothDataForm.get('id').value"
+                    formControlName = "attachmentFiles">
+                </app-multi-file-upload>
+            </form>
+            <button
+                color = "primary"
+                type = "submit"
+                (click) = "onSubmit()"
+                [disabled] = "smoothDataForm.invalid"
+                mat-raised-button>
+                حفظ
+            </button>
+    </mat-card-actions>
+</mat-card>
+

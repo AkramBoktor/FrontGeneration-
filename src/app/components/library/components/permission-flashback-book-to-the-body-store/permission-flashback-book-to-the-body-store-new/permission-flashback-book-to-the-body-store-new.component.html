@@ -1,0 +1,106 @@
+
+<app-new-form-layout
+    dir="rtl"
+    (submitClicked) = "onSubmit()"
+    (back) = "onBack()"
+    [pageTitle] = "' اذن ارتجاع الكتاب لمخزن الهيئه'"
+>
+    <ng-template newFormContainer >
+        <form [formGroup] = "permissionFlashbackBookToTheBodyStoreForm">
+         
+
+	<mat-form-field appearance="outline">
+	 <mat-label>رقم الكتاب</mat-label>
+	 <input matInput formControlName="bookNumber"/>
+	 <mat-error *ngIf = "getControls('bookNumber').invalid" >
+	  {{ getControls('bookNumber')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>رقم االكتاب بالفرع</mat-label>
+	 <input matInput formControlName="bookNumberBranch"/>
+	 <mat-error *ngIf = "getControls('bookNumberBranch').invalid" >
+	  {{ getControls('bookNumberBranch')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>تاريخ اذن الارتجاع</mat-label>
+	 <input matInput
+	  [matDatepicker] = "returnAuthorizationDateDatepicker"
+	  autocomplete = "off"
+	  formControlName= "returnAuthorizationDate"/>
+	 <mat-datepicker-toggle
+	   matSuffix
+	   [for]="returnAuthorizationDateDatepicker"
+	 ></mat-datepicker-toggle>
+	 <mat-datepicker #returnAuthorizationDateDatepicker></mat-datepicker>
+	 <mat-error *ngIf = "getControls('returnAuthorizationDate').invalid" >
+	  {{ getControls('returnAuthorizationDate')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>المكتبه المنصرف لها</mat-label>
+	 <input matInput formControlName="outgoingLibraryRecipient"/>
+	 <mat-error *ngIf = "getControls('outgoingLibraryRecipient').invalid" >
+	  {{ getControls('outgoingLibraryRecipient')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>كود الموظف المستلم</mat-label>
+	 <input matInput formControlName="employeeCode"/>
+	 <mat-error *ngIf = "getControls('employeeCode').invalid" >
+	  {{ getControls('employeeCode')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>الرقم الفرعى</mat-label>
+	 <input matInput formControlName="extensionNumber" [disableControl]="true" />
+	 <mat-error *ngIf = "getControls('extensionNumber').invalid" >
+	  {{ getControls('extensionNumber')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>الرقم العام</mat-label>
+	 <input matInput formControlName="generalNumber" [disableControl]="true" />
+	 <mat-error *ngIf = "getControls('generalNumber').invalid" >
+	  {{ getControls('generalNumber')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>عنوان الكتاب</mat-label>
+	 <input matInput formControlName="bookTitle" [disableControl]="true" />
+	 <mat-error *ngIf = "getControls('bookTitle').invalid" >
+	  {{ getControls('bookTitle')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+         
+
+        </form>
+
+        <mat-divider></mat-divider>
+
+		<mat-card-actions>
+			<form [formGroup]="attachmentForm" class="form-container">
+                <app-multi-file-upload [service] = "permissionFlashbackBookToTheBodyStoreService" [id]="permissionFlashbackBookToTheBodyStoreForm.get('id').value"
+                    formControlName = "attachmentFiles">
+                </app-multi-file-upload>
+            </form>
+            <button
+                type="submit"
+                (click)="onSubmit()"
+                [disabled]="permissionFlashbackBookToTheBodyStoreForm.invalid"
+                mat-raised-button
+                color = "primary">
+             حفظ
+            </button>
+        </mat-card-actions>
+    </ng-template >
+</app-new-form-layout >
+

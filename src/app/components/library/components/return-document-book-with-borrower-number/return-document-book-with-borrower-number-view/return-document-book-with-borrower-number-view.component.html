@@ -1,0 +1,127 @@
+
+<mat-card class="form-card">
+      <mat-card-header>
+  
+          <mat-card-title>
+              ارجاع وثيقه(كتاب) برقم مستعير
+          </mat-card-title>
+  
+      </mat-card-header>
+  
+      <mat-card-content>
+  
+        <form [formGroup] = "returnDocumentBookWithBorrowerNumberForm" class="form-container">
+         
+
+	<mat-form-field appearance="outline">
+	 <mat-label>رقم المستعير</mat-label>
+	 <input matInput formControlName="borrowerNumber"/>
+	 <mat-error *ngIf = "getControls('borrowerNumber').invalid" >
+	  {{ getControls('borrowerNumber')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>رقم الكتاب</mat-label>
+	 <input matInput formControlName="bookNumber" [disableControl]="true" />
+	 <mat-error *ngIf = "getControls('bookNumber').invalid" >
+	  {{ getControls('bookNumber')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>رقم الايصال</mat-label>
+	 <input matInput formControlName="receiptNumber" [disableControl]="true" />
+	 <mat-error *ngIf = "getControls('receiptNumber').invalid" >
+	  {{ getControls('receiptNumber')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>تاريخ الارجاع الافتراضى</mat-label>
+	 <input matInput
+	 [disableControl]="true" 
+	  [matDatepicker] = "defaultReturnDateDatepicker"
+	  autocomplete = "off"
+	  formControlName= "defaultReturnDate"/>
+	 <mat-datepicker-toggle
+	   matSuffix
+	   [for]="defaultReturnDateDatepicker"
+	 ></mat-datepicker-toggle>
+	 <mat-datepicker #defaultReturnDateDatepicker></mat-datepicker>
+	 <mat-error *ngIf = "getControls('defaultReturnDate').invalid" >
+	  {{ getControls('defaultReturnDate')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>تاريخ ارجاع الكتاب</mat-label>
+	 <input matInput
+	 [disableControl]="true" 
+	  [matDatepicker] = "returnBookDateDatepicker"
+	  autocomplete = "off"
+	  formControlName= "returnBookDate"/>
+	 <mat-datepicker-toggle
+	   matSuffix
+	   [for]="returnBookDateDatepicker"
+	 ></mat-datepicker-toggle>
+	 <mat-datepicker #returnBookDateDatepicker></mat-datepicker>
+	 <mat-error *ngIf = "getControls('returnBookDate').invalid" >
+	  {{ getControls('returnBookDate')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>مده الاستعاره</mat-label>
+	 <input matInput formControlName="loanDuration" [disableControl]="true" />
+	 <mat-error *ngIf = "getControls('loanDuration').invalid" >
+	  {{ getControls('loanDuration')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>تاريخ بدء الاستعاره</mat-label>
+	 <input matInput
+	 [disableControl]="true" 
+	  [matDatepicker] = "loanStartDateDatepicker"
+	  autocomplete = "off"
+	  formControlName= "loanStartDate"/>
+	 <mat-datepicker-toggle
+	   matSuffix
+	   [for]="loanStartDateDatepicker"
+	 ></mat-datepicker-toggle>
+	 <mat-datepicker #loanStartDateDatepicker></mat-datepicker>
+	 <mat-error *ngIf = "getControls('loanStartDate').invalid" >
+	  {{ getControls('loanStartDate')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+         
+
+	<app-material-select appearance="outline" [disabled]="true" 
+	  #administration 
+	  [options] = "administrationSelectOptions"
+	  formControlName = "administration"
+	></app-material-select>
+
+	<app-material-select appearance="outline" [disabled]="true" 
+	  #jobBorrower 
+	  [options] = "jobBorrowerSelectOptions"
+	  formControlName = "jobBorrower"
+	></app-material-select>
+        </form>
+  
+      </mat-card-content >
+  
+      <mat-action-row>
+            <form [formGroup]="attachmentForm" class="form-container">
+                <app-multi-file-upload [service] = "returnDocumentBookWithBorrowerNumberService" [id]="returnDocumentBookWithBorrowerNumberForm.get('id').value"
+                    formControlName = "attachmentFiles">
+                </app-multi-file-upload>
+            </form>
+            <button (click) = "onConfirm()" mat-raised-button color = "primary" >
+                غلق
+            </button>
+        </mat-action-row>
+    </mat-card>
+
+    

@@ -1,0 +1,128 @@
+
+<mat-card>
+    <mat-card-header>
+        <mat-card-title>صرف دواء لمريض</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+        <form [formGroup]="dispensingMedicationToAPatientForm" class="form-container">
+          
+
+	<mat-form-field appearance="outline">
+	 <mat-label>كود الطبيب</mat-label>
+	 <input matInput formControlName="doctorCode"/>
+	 <mat-error *ngIf = "getControls('doctorCode').invalid" >
+	  {{ getControls('doctorCode')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>كود المريض</mat-label>
+	 <input matInput formControlName="patientCode"/>
+	 <mat-error *ngIf = "getControls('patientCode').invalid" >
+	  {{ getControls('patientCode')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>تاريخ الصرف</mat-label>
+	 <input matInput
+	  [matDatepicker] = "dayDatepicker"
+	  autocomplete = "off"
+	  formControlName= "day"/>
+	 <mat-datepicker-toggle
+	   matSuffix
+	   [for]="dayDatepicker"
+	 ></mat-datepicker-toggle>
+	 <mat-datepicker #dayDatepicker></mat-datepicker>
+	 <mat-error *ngIf = "getControls('day').invalid" >
+	  {{ getControls('day')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>الدواء المصروف</mat-label>
+	 <input matInput formControlName="drugCode"/>
+	 <mat-error *ngIf = "getControls('drugCode').invalid" >
+	  {{ getControls('drugCode')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>العدد</mat-label>
+	 <input matInput formControlName="number"/>
+	 <mat-error *ngIf = "getControls('number').invalid" >
+	  {{ getControls('number')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>كود الصيدلى</mat-label>
+	 <input matInput formControlName="pharmacistCode"/>
+	 <mat-error *ngIf = "getControls('pharmacistCode').invalid" >
+	  {{ getControls('pharmacistCode')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>ملاحظات</mat-label>
+	 <input matInput formControlName="notes"/>
+	 <mat-error *ngIf = "getControls('notes').invalid" >
+	  {{ getControls('notes')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>اسم الطبيب</mat-label>
+	 <input matInput formControlName="doctorName" [disableControl]="true" />
+	 <mat-error *ngIf = "getControls('doctorName').invalid" >
+	  {{ getControls('doctorName')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>اسم المريض</mat-label>
+	 <input matInput formControlName="patientName" [disableControl]="true" />
+	 <mat-error *ngIf = "getControls('patientName').invalid" >
+	  {{ getControls('patientName')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>اسم الصيدلي</mat-label>
+	 <input matInput formControlName="pharmacistName" [disableControl]="true" />
+	 <mat-error *ngIf = "getControls('pharmacistName').invalid" >
+	  {{ getControls('pharmacistName')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>أسم الدواء</mat-label>
+	 <input matInput formControlName="drugName" [disableControl]="true" />
+	 <mat-error *ngIf = "getControls('drugName').invalid" >
+	  {{ getControls('drugName')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+          
+
+        </form>
+    </mat-card-content>
+
+    <mat-divider></mat-divider>
+
+	<mat-card-actions>
+			<form [formGroup]="attachmentForm" class="form-container">
+                <app-multi-file-upload [service] = "dispensingMedicationToAPatientService" [id]="dispensingMedicationToAPatientForm.get('id').value"
+                    formControlName = "attachmentFiles">
+                </app-multi-file-upload>
+            </form>
+            <button
+                color = "primary"
+                type = "submit"
+                (click) = "onSubmit()"
+                [disabled] = "dispensingMedicationToAPatientForm.invalid"
+                mat-raised-button>
+                حفظ
+            </button>
+    </mat-card-actions>
+</mat-card>
+

@@ -1,0 +1,86 @@
+
+<app-search-list-expansion-panel
+    dir="rtl"
+    [pageTitle] = "'جهات التدريب '"
+    (beginSearch) = "onBeginSearch()"
+    (create) = "onCreate()"
+>
+    <ng-template searchFormContainer >
+        <form [formGroup] = "searchForm">
+           
+
+	<mat-form-field appearance="outline">
+	 <mat-label>كود الجهه</mat-label>
+	 <input matInput formControlName="destinationCode"/>
+	 <mat-error *ngIf = "getControls('destinationCode').invalid" >
+	  {{ getControls('destinationCode')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>الاسم</mat-label>
+	 <input matInput formControlName="name"/>
+	 <mat-error *ngIf = "getControls('name').invalid" >
+	  {{ getControls('name')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>العنوان</mat-label>
+	 <input matInput formControlName="titleAddress"/>
+	 <mat-error *ngIf = "getControls('titleAddress').invalid" >
+	  {{ getControls('titleAddress')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>التليفون</mat-label>
+	 <input matInput formControlName="phoneNumber"/>
+	 <mat-error *ngIf = "getControls('phoneNumber').invalid" >
+	  {{ getControls('phoneNumber')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>الفاكس</mat-label>
+	 <input matInput formControlName="fax"/>
+	 <mat-error *ngIf = "getControls('fax').invalid" >
+	  {{ getControls('fax')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>اسم المدير المسئول</mat-label>
+	 <input matInput formControlName="responsibleManagerName"/>
+	 <mat-error *ngIf = "getControls('responsibleManagerName').invalid" >
+	  {{ getControls('responsibleManagerName')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+           
+
+	<app-material-select appearance="outline"
+	  #destinationType 
+	  [options] = "destinationTypeSelectOptions"
+	  formControlName = "destinationType"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #institutionDestinationSpecialization 
+	  [options] = "institutionDestinationSpecializationSelectOptions"
+	  formControlName = "institutionDestinationSpecialization"
+	></app-material-select>
+
+        </form>
+    </ng-template >
+    <ng-template searchResultContainer >
+        <app-grid-control
+            #gridControl
+            [rowDataService] = "getTrainingDestinationsPaginatedSortedFiltered"
+            [columnOptions] = "columnOptions"
+            [gridHeaderOptions] = "gridHeaderOptions"
+            [searchInput] = "searchForm.value"
+            (deleteRow) = "onDeleteClicked($event)"
+        >
+        </app-grid-control>
+    </ng-template>
+</app-search-list-expansion-panel >

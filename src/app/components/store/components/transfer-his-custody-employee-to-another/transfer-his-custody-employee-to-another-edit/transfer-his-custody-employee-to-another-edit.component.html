@@ -1,0 +1,135 @@
+
+<mat-card>
+    <mat-card-header>
+        <mat-card-title>نقل عهده موظف لاخر</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+        <form [formGroup]="transferHisCustodyEmployeeToAnotherForm" class="form-container">
+          
+
+	<mat-form-field appearance="outline">
+	 <mat-label>رقم الموظف الناقل </mat-label>
+	 <input matInput formControlName="carrierEmployeeNumber"/>
+	 <mat-error *ngIf = "getControls('carrierEmployeeNumber').invalid" >
+	  {{ getControls('carrierEmployeeNumber')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label> رقم الموظف المستلم  </mat-label>
+	 <input matInput formControlName="recipientEmployeeNumber"/>
+	 <mat-error *ngIf = "getControls('recipientEmployeeNumber').invalid" >
+	  {{ getControls('recipientEmployeeNumber')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>رقم الصنف </mat-label>
+	 <input matInput formControlName="itemNo"/>
+	 <mat-error *ngIf = "getControls('itemNo').invalid" >
+	  {{ getControls('itemNo')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>اخر سعر </mat-label>
+	 <input matInput formControlName="lastPrice" [disableControl]="true" />
+	 <mat-error *ngIf = "getControls('lastPrice').invalid" >
+	  {{ getControls('lastPrice')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label> رقم المخزن </mat-label>
+	 <input matInput formControlName="storeNumber" [disableControl]="true" />
+	 <mat-error *ngIf = "getControls('storeNumber').invalid" >
+	  {{ getControls('storeNumber')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label> رقم اذن الصرف</mat-label>
+	 <input matInput formControlName="exchangeAuthorizationNumber" [disableControl]="true" />
+	 <mat-error *ngIf = "getControls('exchangeAuthorizationNumber').invalid" >
+	  {{ getControls('exchangeAuthorizationNumber')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>تاريخ الصرف </mat-label>
+	 <input matInput
+	 [disableControl]="true" 
+	  [matDatepicker] = "exchangeDateDatepicker"
+	  autocomplete = "off"
+	  formControlName= "exchangeDate"/>
+	 <mat-datepicker-toggle
+	   matSuffix
+	   [for]="exchangeDateDatepicker"
+	 ></mat-datepicker-toggle>
+	 <mat-datepicker #exchangeDateDatepicker></mat-datepicker>
+	 <mat-error *ngIf = "getControls('exchangeDate').invalid" >
+	  {{ getControls('exchangeDate')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>الكمية</mat-label>
+	 <input matInput formControlName="quantity" [disableControl]="true" />
+	 <mat-error *ngIf = "getControls('quantity').invalid" >
+	  {{ getControls('quantity')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>تاريخ النقل</mat-label>
+	 <input matInput
+	  [matDatepicker] = "transferDateDatepicker"
+	  autocomplete = "off"
+	  formControlName= "transferDate"/>
+	 <mat-datepicker-toggle
+	   matSuffix
+	   [for]="transferDateDatepicker"
+	 ></mat-datepicker-toggle>
+	 <mat-datepicker #transferDateDatepicker></mat-datepicker>
+	 <mat-error *ngIf = "getControls('transferDate').invalid" >
+	  {{ getControls('transferDate')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>الكمية المنقولة</mat-label>
+	 <input matInput formControlName="quantityTransferred"/>
+	 <mat-error *ngIf = "getControls('quantityTransferred').invalid" >
+	  {{ getControls('quantityTransferred')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+          
+
+	<app-material-select appearance="outline" [disabled]="true" 
+	  #itemCondition 
+	  [options] = "itemConditionSelectOptions"
+	  formControlName = "itemCondition"
+	></app-material-select>
+
+        </form>
+    </mat-card-content>
+
+    <mat-divider></mat-divider>
+
+	<mat-card-actions>
+			<form [formGroup]="attachmentForm" class="form-container">
+                <app-multi-file-upload [service] = "transferHisCustodyEmployeeToAnotherService" [id]="transferHisCustodyEmployeeToAnotherForm.get('id').value"
+                    formControlName = "attachmentFiles">
+                </app-multi-file-upload>
+            </form>
+            <button
+                color = "primary"
+                type = "submit"
+                (click) = "onSubmit()"
+                [disabled] = "transferHisCustodyEmployeeToAnotherForm.invalid"
+                mat-raised-button>
+                حفظ
+            </button>
+    </mat-card-actions>
+</mat-card>
+

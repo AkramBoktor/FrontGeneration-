@@ -1,0 +1,66 @@
+
+<app-search-list-expansion-panel
+    dir="rtl"
+    [pageTitle] = "'بيانات الادويه'"
+    (beginSearch) = "onBeginSearch()"
+    (create) = "onCreate()"
+>
+    <ng-template searchFormContainer >
+        <form [formGroup] = "searchForm">
+           
+
+	<mat-form-field appearance="outline">
+	 <mat-label>اسم الدواء</mat-label>
+	 <input matInput formControlName="drugName"/>
+	 <mat-error *ngIf = "getControls('drugName').invalid" >
+	  {{ getControls('drugName')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>كود الدواء</mat-label>
+	 <input matInput formControlName="drugCode"/>
+	 <mat-error *ngIf = "getControls('drugCode').invalid" >
+	  {{ getControls('drugCode')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>الكميه</mat-label>
+	 <input matInput formControlName="quantity"/>
+	 <mat-error *ngIf = "getControls('quantity').invalid" >
+	  {{ getControls('quantity')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>جهه المورد</mat-label>
+	 <input matInput formControlName="supplier"/>
+	 <mat-error *ngIf = "getControls('supplier').invalid" >
+	  {{ getControls('supplier')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>مكان التخزين</mat-label>
+	 <input matInput formControlName="storagePlace"/>
+	 <mat-error *ngIf = "getControls('storagePlace').invalid" >
+	  {{ getControls('storagePlace')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+           
+
+        </form>
+    </ng-template >
+    <ng-template searchResultContainer >
+        <app-grid-control
+            #gridControl
+            [rowDataService] = "getDrugsInformationPaginatedSortedFiltered"
+            [columnOptions] = "columnOptions"
+            [gridHeaderOptions] = "gridHeaderOptions"
+            [searchInput] = "searchForm.value"
+            (deleteRow) = "onDeleteClicked($event)"
+        >
+        </app-grid-control>
+    </ng-template>
+</app-search-list-expansion-panel >

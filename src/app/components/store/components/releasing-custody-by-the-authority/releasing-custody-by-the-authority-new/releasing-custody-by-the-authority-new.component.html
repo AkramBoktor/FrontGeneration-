@@ -1,0 +1,141 @@
+
+<app-new-form-layout
+    dir="rtl"
+    (submitClicked) = "onSubmit()"
+    (back) = "onBack()"
+    [pageTitle] = "'اسقاط العهدة بامر السلطة المختصة'"
+>
+    <ng-template newFormContainer >
+        <form [formGroup] = "releasingCustodyByTheAuthorityForm">
+         
+
+	<mat-form-field appearance="outline">
+	 <mat-label>كود الموظف</mat-label>
+	 <input matInput formControlName="employeeCode"/>
+	 <mat-error *ngIf = "getControls('employeeCode').invalid" >
+	  {{ getControls('employeeCode')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>رقم الصنف </mat-label>
+	 <input matInput formControlName="itemNo"/>
+	 <mat-error *ngIf = "getControls('itemNo').invalid" >
+	  {{ getControls('itemNo')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>اخر السعر </mat-label>
+	 <input matInput formControlName="lastPrice"/>
+	 <mat-error *ngIf = "getControls('lastPrice').invalid" >
+	  {{ getControls('lastPrice')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>رقم المخزن </mat-label>
+	 <input matInput formControlName="storeNumber" [disableControl]="true" />
+	 <mat-error *ngIf = "getControls('storeNumber').invalid" >
+	  {{ getControls('storeNumber')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>رقم اذن الصرف</mat-label>
+	 <input matInput formControlName="exchangeAuthorizationNumber" [disableControl]="true" />
+	 <mat-error *ngIf = "getControls('exchangeAuthorizationNumber').invalid" >
+	  {{ getControls('exchangeAuthorizationNumber')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>تاريخ الصرف</mat-label>
+	 <input matInput
+	 [disableControl]="true" 
+	  [matDatepicker] = "exchangeDateDatepicker"
+	  autocomplete = "off"
+	  formControlName= "exchangeDate"/>
+	 <mat-datepicker-toggle
+	   matSuffix
+	   [for]="exchangeDateDatepicker"
+	 ></mat-datepicker-toggle>
+	 <mat-datepicker #exchangeDateDatepicker></mat-datepicker>
+	 <mat-error *ngIf = "getControls('exchangeDate').invalid" >
+	  {{ getControls('exchangeDate')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>الكمية</mat-label>
+	 <input matInput formControlName="quantity" [disableControl]="true" />
+	 <mat-error *ngIf = "getControls('quantity').invalid" >
+	  {{ getControls('quantity')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>تاريخ الاسقاط </mat-label>
+	 <input matInput
+	  [matDatepicker] = "projectionDateDatepicker"
+	  autocomplete = "off"
+	  formControlName= "projectionDate"/>
+	 <mat-datepicker-toggle
+	   matSuffix
+	   [for]="projectionDateDatepicker"
+	 ></mat-datepicker-toggle>
+	 <mat-datepicker #projectionDateDatepicker></mat-datepicker>
+	 <mat-error *ngIf = "getControls('projectionDate').invalid" >
+	  {{ getControls('projectionDate')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>الكمية المرفوعة</mat-label>
+	 <input matInput formControlName="quantityRaised"/>
+	 <mat-error *ngIf = "getControls('quantityRaised').invalid" >
+	  {{ getControls('quantityRaised')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+         
+
+	<app-material-select appearance="outline"
+	  #authorityType 
+	  [options] = "authorityTypeSelectOptions"
+	  formControlName = "authorityType"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #authorityCode 
+	  [options] = "authorityCodeSelectOptions"
+	  formControlName = "authorityCode"
+	></app-material-select>
+
+	<app-material-select appearance="outline" [disabled]="true" 
+	  #itemCondition 
+	  [options] = "itemConditionSelectOptions"
+	  formControlName = "itemCondition"
+	></app-material-select>
+
+        </form>
+
+        <mat-divider></mat-divider>
+
+		<mat-card-actions>
+			<form [formGroup]="attachmentForm" class="form-container">
+                <app-multi-file-upload [service] = "releasingCustodyByTheAuthorityService" [id]="releasingCustodyByTheAuthorityForm.get('id').value"
+                    formControlName = "attachmentFiles">
+                </app-multi-file-upload>
+            </form>
+            <button
+                type="submit"
+                (click)="onSubmit()"
+                [disabled]="releasingCustodyByTheAuthorityForm.invalid"
+                mat-raised-button
+                color = "primary">
+             حفظ
+            </button>
+        </mat-card-actions>
+    </ng-template >
+</app-new-form-layout >
+

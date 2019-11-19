@@ -1,0 +1,24 @@
+<button
+    mat-raised-button
+    color="accent"
+    [hideIfUnauthorized]="authorizeClaims?.CanEdit"
+    (click)="onEdit()"
+>
+    <mat-icon>edit</mat-icon>
+</button>
+<button
+    mat-stroked-button
+    class="view"
+    [hideIfUnauthorized]="authorizeClaims?.CanSearch"
+    (click)="onView()"
+>
+    <mat-icon>visibility</mat-icon>
+</button>
+<button
+    mat-raised-button
+    color="warn"
+    [hideIfUnauthorized]="authorizeClaims?.CanDelete"
+    (click)="onDelete()"
+>
+    <mat-icon>delete</mat-icon>
+</button>

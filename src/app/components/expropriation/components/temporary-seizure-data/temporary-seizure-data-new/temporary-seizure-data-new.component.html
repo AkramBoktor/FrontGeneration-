@@ -1,0 +1,90 @@
+
+<app-new-form-layout
+    dir="rtl"
+    (submitClicked) = "onSubmit()"
+    (back) = "onBack()"
+    [pageTitle] = "'بيانات الاستيلاء المؤقت'"
+>
+    <ng-template newFormContainer >
+        <form [formGroup] = "temporarySeizureDataForm">
+         
+
+	<mat-form-field appearance="outline">
+	 <mat-label>رقم المدرسة</mat-label>
+	 <input matInput formControlName="schoolNumber"/>
+	 <mat-error *ngIf = "getControls('schoolNumber').invalid" >
+	  {{ getControls('schoolNumber')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>رقم الاستيلاء المؤقت</mat-label>
+	 <input matInput formControlName="temporarySeizureNumber"/>
+	 <mat-error *ngIf = "getControls('temporarySeizureNumber').invalid" >
+	  {{ getControls('temporarySeizureNumber')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>تاريخ الاستيلاء المؤقت</mat-label>
+	 <input matInput
+	  [matDatepicker] = "dateOfTemporarySeizureDatepicker"
+	  autocomplete = "off"
+	  formControlName= "dateOfTemporarySeizure"/>
+	 <mat-datepicker-toggle
+	   matSuffix
+	   [for]="dateOfTemporarySeizureDatepicker"
+	 ></mat-datepicker-toggle>
+	 <mat-datepicker #dateOfTemporarySeizureDatepicker></mat-datepicker>
+	 <mat-error *ngIf = "getControls('dateOfTemporarySeizure').invalid" >
+	  {{ getControls('dateOfTemporarySeizure')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>عدد النشر بالوقائع المصرية</mat-label>
+	 <input matInput formControlName="numberOfPublicationsInEgyptianFacts"/>
+	 <mat-error *ngIf = "getControls('numberOfPublicationsInEgyptianFacts').invalid" >
+	  {{ getControls('numberOfPublicationsInEgyptianFacts')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>تاريخ النشر بالوقائع المصرية</mat-label>
+	 <input matInput
+	  [matDatepicker] = "dateOfPublicationInTheEgyptianFactsDatepicker"
+	  autocomplete = "off"
+	  formControlName= "dateOfPublicationInTheEgyptianFacts"/>
+	 <mat-datepicker-toggle
+	   matSuffix
+	   [for]="dateOfPublicationInTheEgyptianFactsDatepicker"
+	 ></mat-datepicker-toggle>
+	 <mat-datepicker #dateOfPublicationInTheEgyptianFactsDatepicker></mat-datepicker>
+	 <mat-error *ngIf = "getControls('dateOfPublicationInTheEgyptianFacts').invalid" >
+	  {{ getControls('dateOfPublicationInTheEgyptianFacts')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+         
+
+        </form>
+
+        <mat-divider></mat-divider>
+
+		<mat-card-actions>
+			<form [formGroup]="attachmentForm" class="form-container">
+                <app-multi-file-upload [service] = "temporarySeizureDataService" [id]="temporarySeizureDataForm.get('id').value"
+                    formControlName = "attachmentFiles">
+                </app-multi-file-upload>
+            </form>
+            <button
+                type="submit"
+                (click)="onSubmit()"
+                [disabled]="temporarySeizureDataForm.invalid"
+                mat-raised-button
+                color = "primary">
+             حفظ
+            </button>
+        </mat-card-actions>
+    </ng-template >
+</app-new-form-layout >
+

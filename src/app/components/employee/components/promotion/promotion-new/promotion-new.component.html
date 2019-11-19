@@ -1,0 +1,114 @@
+
+<app-new-form-layout
+    dir="rtl"
+    (submitClicked) = "onSubmit()"
+    (back) = "onBack()"
+    [pageTitle] = "'ترقية'"
+>
+    <ng-template newFormContainer >
+        <form [formGroup] = "promotionForm">
+         
+
+	<mat-form-field appearance="outline">
+	 <mat-label>كود الموظف</mat-label>
+	 <input matInput formControlName="employeeCode"/>
+	 <mat-error *ngIf = "getControls('employeeCode').invalid" >
+	  {{ getControls('employeeCode')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>تاريخ الترقية</mat-label>
+	 <input matInput
+	  [matDatepicker] = "promotionDateDatepicker"
+	  autocomplete = "off"
+	  formControlName= "promotionDate"/>
+	 <mat-datepicker-toggle
+	   matSuffix
+	   [for]="promotionDateDatepicker"
+	 ></mat-datepicker-toggle>
+	 <mat-datepicker #promotionDateDatepicker></mat-datepicker>
+	 <mat-error *ngIf = "getControls('promotionDate').invalid" >
+	  {{ getControls('promotionDate')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>تاريخ شغل الدرجة</mat-label>
+	 <input matInput
+	  [matDatepicker] = "jobDateDatepicker"
+	  autocomplete = "off"
+	  formControlName= "jobDate"/>
+	 <mat-datepicker-toggle
+	   matSuffix
+	   [for]="jobDateDatepicker"
+	 ></mat-datepicker-toggle>
+	 <mat-datepicker #jobDateDatepicker></mat-datepicker>
+	 <mat-error *ngIf = "getControls('jobDate').invalid" >
+	  {{ getControls('jobDate')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>تاريخ شغل الوظيفة السابقة</mat-label>
+	 <input matInput
+	  [matDatepicker] = "previousJobDateDatepicker"
+	  autocomplete = "off"
+	  formControlName= "previousJobDate"/>
+	 <mat-datepicker-toggle
+	   matSuffix
+	   [for]="previousJobDateDatepicker"
+	 ></mat-datepicker-toggle>
+	 <mat-datepicker #previousJobDateDatepicker></mat-datepicker>
+	 <mat-error *ngIf = "getControls('previousJobDate').invalid" >
+	  {{ getControls('previousJobDate')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+         
+
+	<app-material-select appearance="outline"
+	  #financialDegree 
+	  [options] = "financialDegreeSelectOptions"
+	  formControlName = "financialDegree"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #jobTitle 
+	  [options] = "jobTitleSelectOptions"
+	  formControlName = "jobTitle"
+	></app-material-select>
+
+	<app-material-select appearance="outline" [disabled]="true" 
+	  #preFinancialDegree 
+	  [options] = "preFinancialDegreeSelectOptions"
+	  formControlName = "preFinancialDegree"
+	></app-material-select>
+
+	<app-material-select appearance="outline" [disabled]="true" 
+	  #previousJobTitle 
+	  [options] = "previousJobTitleSelectOptions"
+	  formControlName = "previousJobTitle"
+	></app-material-select>
+
+        </form>
+
+        <mat-divider></mat-divider>
+
+		<mat-card-actions>
+			<form [formGroup]="attachmentForm" class="form-container">
+                <app-multi-file-upload [service] = "promotionService" [id]="promotionForm.get('id').value"
+                    formControlName = "attachmentFiles">
+                </app-multi-file-upload>
+            </form>
+            <button
+                type="submit"
+                (click)="onSubmit()"
+                [disabled]="promotionForm.invalid"
+                mat-raised-button
+                color = "primary">
+             حفظ
+            </button>
+        </mat-card-actions>
+    </ng-template >
+</app-new-form-layout >
+

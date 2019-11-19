@@ -1,0 +1,60 @@
+
+<mat-card class="form-card">
+      <mat-card-header>
+  
+          <mat-card-title>
+              استخراج كود الكارت المؤقت للفرع والمناطق
+          </mat-card-title>
+  
+      </mat-card-header>
+  
+      <mat-card-content>
+  
+        <form [formGroup] = "extractionOfTemporaryCardCodeForm" class="form-container">
+         
+
+	<mat-form-field appearance="outline">
+	 <mat-label>رقم الكارت الؤقت</mat-label>
+	 <input matInput formControlName="temporaryCardNumber"/>
+	 <mat-error *ngIf = "getControls('temporaryCardNumber').invalid" >
+	  {{ getControls('temporaryCardNumber')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>اصدار الرقم المؤقت</mat-label>
+	 <input matInput formControlName="temporaryNumberIssuing"/>
+	 <mat-error *ngIf = "getControls('temporaryNumberIssuing').invalid" >
+	  {{ getControls('temporaryNumberIssuing')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+         
+
+	<app-material-select appearance="outline"
+	  #branchCode 
+	  [options] = "branchCodeSelectOptions"
+	  formControlName = "branchCode"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #cardCode 
+	  [options] = "cardCodeSelectOptions"
+	  formControlName = "cardCode"
+	></app-material-select>
+        </form>
+  
+      </mat-card-content >
+  
+      <mat-action-row>
+            <form [formGroup]="attachmentForm" class="form-container">
+                <app-multi-file-upload [service] = "extractionOfTemporaryCardCodeService" [id]="extractionOfTemporaryCardCodeForm.get('id').value"
+                    formControlName = "attachmentFiles">
+                </app-multi-file-upload>
+            </form>
+            <button (click) = "onConfirm()" mat-raised-button color = "primary" >
+                غلق
+            </button>
+        </mat-action-row>
+    </mat-card>
+
+    

@@ -1,0 +1,68 @@
+
+<mat-card>
+    <mat-card-header>
+        <mat-card-title>المؤهلات العلمية للموظف</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+        <form [formGroup]="employeeEducationalQualificationsForm" class="form-container">
+          
+
+	<mat-form-field appearance="outline">
+	 <mat-label>كود الموظف</mat-label>
+	 <input matInput formControlName="employeeCode"/>
+	 <mat-error *ngIf = "getControls('employeeCode').invalid" >
+	  {{ getControls('employeeCode')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>تاريخ الحصول عليه</mat-label>
+	 <input matInput
+	  [matDatepicker] = "qualificationDateDatepicker"
+	  autocomplete = "off"
+	  formControlName= "qualificationDate"/>
+	 <mat-datepicker-toggle
+	   matSuffix
+	   [for]="qualificationDateDatepicker"
+	 ></mat-datepicker-toggle>
+	 <mat-datepicker #qualificationDateDatepicker></mat-datepicker>
+	 <mat-error *ngIf = "getControls('qualificationDate').invalid" >
+	  {{ getControls('qualificationDate')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+          
+
+	<app-material-select appearance="outline"
+	  #qualification 
+	  [options] = "qualificationSelectOptions"
+	  formControlName = "qualification"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #qualificationGrantSite 
+	  [options] = "qualificationGrantSiteSelectOptions"
+	  formControlName = "qualificationGrantSite"
+	></app-material-select>
+
+        </form>
+    </mat-card-content>
+
+    <mat-divider></mat-divider>
+
+	<mat-card-actions>
+			<form [formGroup]="attachmentForm" class="form-container">
+                <app-multi-file-upload [service] = "employeeEducationalQualificationsService" [id]="employeeEducationalQualificationsForm.get('id').value"
+                    formControlName = "attachmentFiles">
+                </app-multi-file-upload>
+            </form>
+            <button
+                color = "primary"
+                type = "submit"
+                (click) = "onSubmit()"
+                [disabled] = "employeeEducationalQualificationsForm.invalid"
+                mat-raised-button>
+                حفظ
+            </button>
+    </mat-card-actions>
+</mat-card>
+

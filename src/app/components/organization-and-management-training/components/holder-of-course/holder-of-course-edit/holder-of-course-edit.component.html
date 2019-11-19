@@ -1,0 +1,132 @@
+
+<mat-card>
+    <mat-card-header>
+        <mat-card-title>الحاصلين ع الدورات</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+        <form [formGroup]="holderOfCourseForm" class="form-container">
+          
+
+	<mat-form-field appearance="outline">
+	 <mat-label>كود الموظف</mat-label>
+	 <input matInput formControlName="employeeCode"/>
+	 <mat-error *ngIf = "getControls('employeeCode').invalid" >
+	  {{ getControls('employeeCode')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>السنه التدريبيه</mat-label>
+	 <input matInput
+	  [matDatepicker] = "trainingYearDatepicker"
+	  autocomplete = "off"
+	  formControlName= "trainingYear"/>
+	 <mat-datepicker-toggle
+	   matSuffix
+	   [for]="trainingYearDatepicker"
+	 ></mat-datepicker-toggle>
+	 <mat-datepicker #trainingYearDatepicker></mat-datepicker>
+	 <mat-error *ngIf = "getControls('trainingYear').invalid" >
+	  {{ getControls('trainingYear')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>كود الدوره</mat-label>
+	 <input matInput formControlName="courseCode"/>
+	 <mat-error *ngIf = "getControls('courseCode').invalid" >
+	  {{ getControls('courseCode')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>مده الدوره</mat-label>
+	 <input matInput formControlName="courseDuration"/>
+	 <mat-error *ngIf = "getControls('courseDuration').invalid" >
+	  {{ getControls('courseDuration')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>تاريخ بدايه الدوره</mat-label>
+	 <input matInput
+	  [matDatepicker] = "beginningSessionDateDatepicker"
+	  autocomplete = "off"
+	  formControlName= "beginningSessionDate"/>
+	 <mat-datepicker-toggle
+	   matSuffix
+	   [for]="beginningSessionDateDatepicker"
+	 ></mat-datepicker-toggle>
+	 <mat-datepicker #beginningSessionDateDatepicker></mat-datepicker>
+	 <mat-error *ngIf = "getControls('beginningSessionDate').invalid" >
+	  {{ getControls('beginningSessionDate')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>تكلفه الدوره</mat-label>
+	 <input matInput formControlName="courseCost"/>
+	 <mat-error *ngIf = "getControls('courseCost').invalid" >
+	  {{ getControls('courseCost')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+          
+
+	<app-material-select appearance="outline"
+	  #managementCode 
+	  [options] = "managementCodeSelectOptions"
+	  formControlName = "managementCode"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #majorClassification 
+	  [options] = "majorClassificationSelectOptions"
+	  formControlName = "majorClassification"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #subcategory 
+	  [options] = "subcategorySelectOptions"
+	  formControlName = "subcategory"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #courseDestinationCode 
+	  [options] = "courseDestinationCodeSelectOptions"
+	  formControlName = "courseDestinationCode"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #serialSession 
+	  [options] = "serialSessionSelectOptions"
+	  formControlName = "serialSession"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #courseUnitDuration 
+	  [options] = "courseUnitDurationSelectOptions"
+	  formControlName = "courseUnitDuration"
+	></app-material-select>
+
+        </form>
+    </mat-card-content>
+
+    <mat-divider></mat-divider>
+
+	<mat-card-actions>
+			<form [formGroup]="attachmentForm" class="form-container">
+                <app-multi-file-upload [service] = "holderOfCourseService" [id]="holderOfCourseForm.get('id').value"
+                    formControlName = "attachmentFiles">
+                </app-multi-file-upload>
+            </form>
+            <button
+                color = "primary"
+                type = "submit"
+                (click) = "onSubmit()"
+                [disabled] = "holderOfCourseForm.invalid"
+                mat-raised-button>
+                حفظ
+            </button>
+    </mat-card-actions>
+</mat-card>
+

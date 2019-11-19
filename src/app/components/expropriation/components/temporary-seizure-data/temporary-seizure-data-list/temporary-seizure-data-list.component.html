@@ -1,0 +1,82 @@
+
+<app-search-list-expansion-panel
+    dir="rtl"
+    [pageTitle] = "'بيانات الاستيلاء المؤقت'"
+    (beginSearch) = "onBeginSearch()"
+    (create) = "onCreate()"
+>
+    <ng-template searchFormContainer >
+        <form [formGroup] = "searchForm">
+           
+
+	<mat-form-field appearance="outline">
+	 <mat-label>رقم المدرسة</mat-label>
+	 <input matInput formControlName="schoolNumber"/>
+	 <mat-error *ngIf = "getControls('schoolNumber').invalid" >
+	  {{ getControls('schoolNumber')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>رقم الاستيلاء المؤقت</mat-label>
+	 <input matInput formControlName="temporarySeizureNumber"/>
+	 <mat-error *ngIf = "getControls('temporarySeizureNumber').invalid" >
+	  {{ getControls('temporarySeizureNumber')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>تاريخ الاستيلاء المؤقت</mat-label>
+	 <input matInput
+	  [matDatepicker] = "dateOfTemporarySeizureDatepicker"
+	  autocomplete = "off"
+	  formControlName= "dateOfTemporarySeizure"/>
+	 <mat-datepicker-toggle
+	   matSuffix
+	   [for]="dateOfTemporarySeizureDatepicker"
+	 ></mat-datepicker-toggle>
+	 <mat-datepicker #dateOfTemporarySeizureDatepicker></mat-datepicker>
+	 <mat-error *ngIf = "getControls('dateOfTemporarySeizure').invalid" >
+	  {{ getControls('dateOfTemporarySeizure')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>عدد النشر بالوقائع المصرية</mat-label>
+	 <input matInput formControlName="numberOfPublicationsInEgyptianFacts"/>
+	 <mat-error *ngIf = "getControls('numberOfPublicationsInEgyptianFacts').invalid" >
+	  {{ getControls('numberOfPublicationsInEgyptianFacts')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>تاريخ النشر بالوقائع المصرية</mat-label>
+	 <input matInput
+	  [matDatepicker] = "dateOfPublicationInTheEgyptianFactsDatepicker"
+	  autocomplete = "off"
+	  formControlName= "dateOfPublicationInTheEgyptianFacts"/>
+	 <mat-datepicker-toggle
+	   matSuffix
+	   [for]="dateOfPublicationInTheEgyptianFactsDatepicker"
+	 ></mat-datepicker-toggle>
+	 <mat-datepicker #dateOfPublicationInTheEgyptianFactsDatepicker></mat-datepicker>
+	 <mat-error *ngIf = "getControls('dateOfPublicationInTheEgyptianFacts').invalid" >
+	  {{ getControls('dateOfPublicationInTheEgyptianFacts')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+           
+
+        </form>
+    </ng-template >
+    <ng-template searchResultContainer >
+        <app-grid-control
+            #gridControl
+            [rowDataService] = "getTemporarySeizureDataPaginatedSortedFiltered"
+            [columnOptions] = "columnOptions"
+            [gridHeaderOptions] = "gridHeaderOptions"
+            [searchInput] = "searchForm.value"
+            (deleteRow) = "onDeleteClicked($event)"
+        >
+        </app-grid-control>
+    </ng-template>
+</app-search-list-expansion-panel >

@@ -1,0 +1,72 @@
+
+<app-search-list-expansion-panel
+    dir="rtl"
+    [pageTitle] = "'بيانات التخصص'"
+    (beginSearch) = "onBeginSearch()"
+    (create) = "onCreate()"
+>
+    <ng-template searchFormContainer >
+        <form [formGroup] = "searchForm">
+           
+
+	<mat-form-field appearance="outline">
+	 <mat-label>السنه الماليه</mat-label>
+	 <input matInput
+	  [matDatepicker] = "fiscalYearDatepicker"
+	  autocomplete = "off"
+	  formControlName= "fiscalYear"/>
+	 <mat-datepicker-toggle
+	   matSuffix
+	   [for]="fiscalYearDatepicker"
+	 ></mat-datepicker-toggle>
+	 <mat-datepicker #fiscalYearDatepicker></mat-datepicker>
+	 <mat-error *ngIf = "getControls('fiscalYear').invalid" >
+	  {{ getControls('fiscalYear')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>الصنف</mat-label>
+	 <input matInput formControlName="product"/>
+	 <mat-error *ngIf = "getControls('product').invalid" >
+	  {{ getControls('product')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>المخصص</mat-label>
+	 <input matInput formControlName="allocated"/>
+	 <mat-error *ngIf = "getControls('allocated').invalid" >
+	  {{ getControls('allocated')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>ما تم صرفه</mat-label>
+	 <input matInput formControlName="spent"/>
+	 <mat-error *ngIf = "getControls('spent').invalid" >
+	  {{ getControls('spent')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+           
+
+	<app-material-select appearance="outline"
+	  #administrationOrRegion 
+	  [options] = "administrationOrRegionSelectOptions"
+	  formControlName = "administrationOrRegion"
+	></app-material-select>
+
+        </form>
+    </ng-template >
+    <ng-template searchResultContainer >
+        <app-grid-control
+            #gridControl
+            [rowDataService] = "getSpecializationDataPaginatedSortedFiltered"
+            [columnOptions] = "columnOptions"
+            [gridHeaderOptions] = "gridHeaderOptions"
+            [searchInput] = "searchForm.value"
+            (deleteRow) = "onDeleteClicked($event)"
+        >
+        </app-grid-control>
+    </ng-template>
+</app-search-list-expansion-panel >

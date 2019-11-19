@@ -1,0 +1,66 @@
+
+<app-new-form-layout
+    dir="rtl"
+    (submitClicked) = "onSubmit()"
+    (back) = "onBack()"
+    [pageTitle] = "'بيانات السلسه'"
+>
+    <ng-template newFormContainer >
+        <form [formGroup] = "smoothDataForm">
+         
+
+	<mat-form-field appearance="outline">
+	 <mat-label>كود السلسه</mat-label>
+	 <input matInput formControlName="seriesCode"/>
+	 <mat-error *ngIf = "getControls('seriesCode').invalid" >
+	  {{ getControls('seriesCode')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>عنوان السلسله</mat-label>
+	 <input matInput formControlName="seriesTitle"/>
+	 <mat-error *ngIf = "getControls('seriesTitle').invalid" >
+	  {{ getControls('seriesTitle')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>رقم الكتاب</mat-label>
+	 <input matInput formControlName="bookNumber"/>
+	 <mat-error *ngIf = "getControls('bookNumber').invalid" >
+	  {{ getControls('bookNumber')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>عنوان الكتاب</mat-label>
+	 <input matInput formControlName="bookTitle"/>
+	 <mat-error *ngIf = "getControls('bookTitle').invalid" >
+	  {{ getControls('bookTitle')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+         
+
+        </form>
+
+        <mat-divider></mat-divider>
+
+		<mat-card-actions>
+			<form [formGroup]="attachmentForm" class="form-container">
+                <app-multi-file-upload [service] = "smoothDataService" [id]="smoothDataForm.get('id').value"
+                    formControlName = "attachmentFiles">
+                </app-multi-file-upload>
+            </form>
+            <button
+                type="submit"
+                (click)="onSubmit()"
+                [disabled]="smoothDataForm.invalid"
+                mat-raised-button
+                color = "primary">
+             حفظ
+            </button>
+        </mat-card-actions>
+    </ng-template >
+</app-new-form-layout >
+

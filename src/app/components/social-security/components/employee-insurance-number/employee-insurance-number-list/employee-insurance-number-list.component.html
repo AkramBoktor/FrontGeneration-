@@ -1,0 +1,72 @@
+
+<app-search-list-expansion-panel
+    dir="rtl"
+    [pageTitle] = "'الرقم التاميني للموظفين'"
+    (beginSearch) = "onBeginSearch()"
+    (create) = "onCreate()"
+>
+    <ng-template searchFormContainer >
+        <form [formGroup] = "searchForm">
+           
+
+	<mat-form-field appearance="outline">
+	 <mat-label>كود الموظف</mat-label>
+	 <input matInput formControlName="employeeCode"/>
+	 <mat-error *ngIf = "getControls('employeeCode').invalid" >
+	  {{ getControls('employeeCode')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>الرقم التأميني</mat-label>
+	 <input matInput formControlName="insuranceNumber"/>
+	 <mat-error *ngIf = "getControls('insuranceNumber').invalid" >
+	  {{ getControls('insuranceNumber')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>الرقم القومي</mat-label>
+	 <input matInput formControlName="iDNumber"/>
+	 <mat-error *ngIf = "getControls('iDNumber').invalid" >
+	  {{ getControls('iDNumber')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>تاريخ الميلاد</mat-label>
+	 <input matInput
+	  [matDatepicker] = "birthdateDatepicker"
+	  autocomplete = "off"
+	  formControlName= "birthdate"/>
+	 <mat-datepicker-toggle
+	   matSuffix
+	   [for]="birthdateDatepicker"
+	 ></mat-datepicker-toggle>
+	 <mat-datepicker #birthdateDatepicker></mat-datepicker>
+	 <mat-error *ngIf = "getControls('birthdate').invalid" >
+	  {{ getControls('birthdate')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+           
+
+	<app-material-select appearance="outline"
+	  #administration 
+	  [options] = "administrationSelectOptions"
+	  formControlName = "administration"
+	></app-material-select>
+
+        </form>
+    </ng-template >
+    <ng-template searchResultContainer >
+        <app-grid-control
+            #gridControl
+            [rowDataService] = "getEmployeesInsuranceNumbersPaginatedSortedFiltered"
+            [columnOptions] = "columnOptions"
+            [gridHeaderOptions] = "gridHeaderOptions"
+            [searchInput] = "searchForm.value"
+            (deleteRow) = "onDeleteClicked($event)"
+        >
+        </app-grid-control>
+    </ng-template>
+</app-search-list-expansion-panel >

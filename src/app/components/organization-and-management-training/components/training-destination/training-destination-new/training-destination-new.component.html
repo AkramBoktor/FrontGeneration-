@@ -1,0 +1,94 @@
+
+<app-new-form-layout
+    dir="rtl"
+    (submitClicked) = "onSubmit()"
+    (back) = "onBack()"
+    [pageTitle] = "'جهه التدريب'"
+>
+    <ng-template newFormContainer >
+        <form [formGroup] = "trainingDestinationForm">
+         
+
+	<mat-form-field appearance="outline">
+	 <mat-label>كود الجهه</mat-label>
+	 <input matInput formControlName="destinationCode"/>
+	 <mat-error *ngIf = "getControls('destinationCode').invalid" >
+	  {{ getControls('destinationCode')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>الاسم</mat-label>
+	 <input matInput formControlName="name"/>
+	 <mat-error *ngIf = "getControls('name').invalid" >
+	  {{ getControls('name')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>العنوان</mat-label>
+	 <input matInput formControlName="titleAddress"/>
+	 <mat-error *ngIf = "getControls('titleAddress').invalid" >
+	  {{ getControls('titleAddress')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>التليفون</mat-label>
+	 <input matInput formControlName="phoneNumber"/>
+	 <mat-error *ngIf = "getControls('phoneNumber').invalid" >
+	  {{ getControls('phoneNumber')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>الفاكس</mat-label>
+	 <input matInput formControlName="fax"/>
+	 <mat-error *ngIf = "getControls('fax').invalid" >
+	  {{ getControls('fax')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>اسم المدير المسئول</mat-label>
+	 <input matInput formControlName="responsibleManagerName"/>
+	 <mat-error *ngIf = "getControls('responsibleManagerName').invalid" >
+	  {{ getControls('responsibleManagerName')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+         
+
+	<app-material-select appearance="outline"
+	  #destinationType 
+	  [options] = "destinationTypeSelectOptions"
+	  formControlName = "destinationType"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #institutionDestinationSpecialization 
+	  [options] = "institutionDestinationSpecializationSelectOptions"
+	  formControlName = "institutionDestinationSpecialization"
+	></app-material-select>
+
+        </form>
+
+        <mat-divider></mat-divider>
+
+		<mat-card-actions>
+			<form [formGroup]="attachmentForm" class="form-container">
+                <app-multi-file-upload [service] = "trainingDestinationService" [id]="trainingDestinationForm.get('id').value"
+                    formControlName = "attachmentFiles">
+                </app-multi-file-upload>
+            </form>
+            <button
+                type="submit"
+                (click)="onSubmit()"
+                [disabled]="trainingDestinationForm.invalid"
+                mat-raised-button
+                color = "primary">
+             حفظ
+            </button>
+        </mat-card-actions>
+    </ng-template >
+</app-new-form-layout >
+

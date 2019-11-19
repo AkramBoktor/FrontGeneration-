@@ -1,0 +1,62 @@
+
+<app-new-form-layout
+    dir="rtl"
+    (submitClicked) = "onSubmit()"
+    (back) = "onBack()"
+    [pageTitle] = "'اكواد الدوره'"
+>
+    <ng-template newFormContainer >
+        <form [formGroup] = "coursesCodeForm">
+         
+
+	<mat-form-field appearance="outline">
+	 <mat-label>رقم الدوره</mat-label>
+	 <input matInput formControlName="courseCode"/>
+	 <mat-error *ngIf = "getControls('courseCode').invalid" >
+	  {{ getControls('courseCode')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>اسم الدوره</mat-label>
+	 <input matInput formControlName="courseName" [disableControl]="true" />
+	 <mat-error *ngIf = "getControls('courseName').invalid" >
+	  {{ getControls('courseName')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+         
+
+	<app-material-select appearance="outline"
+	  #majorClassification 
+	  [options] = "majorClassificationSelectOptions"
+	  formControlName = "majorClassification"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #subcategory 
+	  [options] = "subcategorySelectOptions"
+	  formControlName = "subcategory"
+	></app-material-select>
+
+        </form>
+
+        <mat-divider></mat-divider>
+
+		<mat-card-actions>
+			<form [formGroup]="attachmentForm" class="form-container">
+                <app-multi-file-upload [service] = "coursesCodeService" [id]="coursesCodeForm.get('id').value"
+                    formControlName = "attachmentFiles">
+                </app-multi-file-upload>
+            </form>
+            <button
+                type="submit"
+                (click)="onSubmit()"
+                [disabled]="coursesCodeForm.invalid"
+                mat-raised-button
+                color = "primary">
+             حفظ
+            </button>
+        </mat-card-actions>
+    </ng-template >
+</app-new-form-layout >
+

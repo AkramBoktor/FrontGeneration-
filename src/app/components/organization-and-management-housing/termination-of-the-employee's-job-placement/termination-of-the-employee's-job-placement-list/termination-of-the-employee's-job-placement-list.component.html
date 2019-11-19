@@ -1,0 +1,86 @@
+
+<app-search-list-expansion-panel
+    dir="rtl"
+    [pageTitle] = "'انهاء تسكين الوظيفى للموظف'"
+    (beginSearch) = "onBeginSearch()"
+    (create) = "onCreate()"
+>
+    <ng-template searchFormContainer >
+        <form [formGroup] = "searchForm">
+           
+
+	<mat-form-field appearance="outline">
+	 <mat-label>رقم الموظف</mat-label>
+	 <input matInput formControlName="employeeCode"/>
+	 <mat-error *ngIf = "getControls('employeeCode').invalid" >
+	  {{ getControls('employeeCode')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>الوظيفه المسكن عليها </mat-label>
+	 <input matInput formControlName="jobDwellingonthem"/>
+	 <mat-error *ngIf = "getControls('jobDwellingonthem').invalid" >
+	  {{ getControls('jobDwellingonthem')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>تاريخ التسكين</mat-label>
+	 <input matInput
+	  [matDatepicker] = "analgesiaDateDatepicker"
+	  autocomplete = "off"
+	  formControlName= "analgesiaDate"/>
+	 <mat-datepicker-toggle
+	   matSuffix
+	   [for]="analgesiaDateDatepicker"
+	 ></mat-datepicker-toggle>
+	 <mat-datepicker #analgesiaDateDatepicker></mat-datepicker>
+	 <mat-error *ngIf = "getControls('analgesiaDate').invalid" >
+	  {{ getControls('analgesiaDate')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>تاريخ انهاء التسكين</mat-label>
+	 <input matInput
+	  [matDatepicker] = "endAnalgesiaDateDatepicker"
+	  autocomplete = "off"
+	  formControlName= "endAnalgesiaDate"/>
+	 <mat-datepicker-toggle
+	   matSuffix
+	   [for]="endAnalgesiaDateDatepicker"
+	 ></mat-datepicker-toggle>
+	 <mat-datepicker #endAnalgesiaDateDatepicker></mat-datepicker>
+	 <mat-error *ngIf = "getControls('endAnalgesiaDate').invalid" >
+	  {{ getControls('endAnalgesiaDate')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+           
+
+	<app-material-select appearance="outline"
+	  #branchCode 
+	  [options] = "branchCodeSelectOptions"
+	  formControlName = "branchCode"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #department 
+	  [options] = "departmentSelectOptions"
+	  formControlName = "department"
+	></app-material-select>
+
+        </form>
+    </ng-template >
+    <ng-template searchResultContainer >
+        <app-grid-control
+            #gridControl
+            [rowDataService] = "getTerminationOfTheEmployee'sJobPlacementPaginatedSortedFiltered"
+            [columnOptions] = "columnOptions"
+            [gridHeaderOptions] = "gridHeaderOptions"
+            [searchInput] = "searchForm.value"
+            (deleteRow) = "onDeleteClicked($event)"
+        >
+        </app-grid-control>
+    </ng-template>
+</app-search-list-expansion-panel >

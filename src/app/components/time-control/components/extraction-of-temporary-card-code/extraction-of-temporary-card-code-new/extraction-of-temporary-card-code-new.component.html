@@ -1,0 +1,62 @@
+
+<app-new-form-layout
+    dir="rtl"
+    (submitClicked) = "onSubmit()"
+    (back) = "onBack()"
+    [pageTitle] = "'استخراج كود الكارت المؤقت للفرع والمناطق'"
+>
+    <ng-template newFormContainer >
+        <form [formGroup] = "extractionOfTemporaryCardCodeForm">
+         
+
+	<mat-form-field appearance="outline">
+	 <mat-label>رقم الكارت الؤقت</mat-label>
+	 <input matInput formControlName="temporaryCardNumber"/>
+	 <mat-error *ngIf = "getControls('temporaryCardNumber').invalid" >
+	  {{ getControls('temporaryCardNumber')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>اصدار الرقم المؤقت</mat-label>
+	 <input matInput formControlName="temporaryNumberIssuing"/>
+	 <mat-error *ngIf = "getControls('temporaryNumberIssuing').invalid" >
+	  {{ getControls('temporaryNumberIssuing')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+         
+
+	<app-material-select appearance="outline"
+	  #branchCode 
+	  [options] = "branchCodeSelectOptions"
+	  formControlName = "branchCode"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #cardCode 
+	  [options] = "cardCodeSelectOptions"
+	  formControlName = "cardCode"
+	></app-material-select>
+
+        </form>
+
+        <mat-divider></mat-divider>
+
+		<mat-card-actions>
+			<form [formGroup]="attachmentForm" class="form-container">
+                <app-multi-file-upload [service] = "extractionOfTemporaryCardCodeService" [id]="extractionOfTemporaryCardCodeForm.get('id').value"
+                    formControlName = "attachmentFiles">
+                </app-multi-file-upload>
+            </form>
+            <button
+                type="submit"
+                (click)="onSubmit()"
+                [disabled]="extractionOfTemporaryCardCodeForm.invalid"
+                mat-raised-button
+                color = "primary">
+             حفظ
+            </button>
+        </mat-card-actions>
+    </ng-template >
+</app-new-form-layout >
+

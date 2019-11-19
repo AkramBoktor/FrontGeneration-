@@ -1,0 +1,193 @@
+
+<mat-card class="form-card">
+      <mat-card-header>
+  
+          <mat-card-title>
+              بيانات تجديد عقد موظف
+          </mat-card-title>
+  
+      </mat-card-header>
+  
+      <mat-card-content>
+  
+        <form [formGroup] = "employeeContractRenewalDataForm" class="form-container">
+         
+
+	<mat-form-field appearance="outline">
+	 <mat-label>كود الموظف</mat-label>
+	 <input matInput formControlName="employeeCode"/>
+	 <mat-error *ngIf = "getControls('employeeCode').invalid" >
+	  {{ getControls('employeeCode')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>تاريخ استلام العمل</mat-label>
+	 <input matInput
+	 [disableControl]="true" 
+	  [matDatepicker] = "receiptDateDatepicker"
+	  autocomplete = "off"
+	  formControlName= "receiptDate"/>
+	 <mat-datepicker-toggle
+	   matSuffix
+	   [for]="receiptDateDatepicker"
+	 ></mat-datepicker-toggle>
+	 <mat-datepicker #receiptDateDatepicker></mat-datepicker>
+	 <mat-error *ngIf = "getControls('receiptDate').invalid" >
+	  {{ getControls('receiptDate')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>تاريخ بدايه التجديد</mat-label>
+	 <input matInput
+	  [matDatepicker] = "startRenewalDateDatepicker"
+	  autocomplete = "off"
+	  formControlName= "startRenewalDate"/>
+	 <mat-datepicker-toggle
+	   matSuffix
+	   [for]="startRenewalDateDatepicker"
+	 ></mat-datepicker-toggle>
+	 <mat-datepicker #startRenewalDateDatepicker></mat-datepicker>
+	 <mat-error *ngIf = "getControls('startRenewalDate').invalid" >
+	  {{ getControls('startRenewalDate')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>مده فتره التجديد</mat-label>
+	 <input matInput formControlName="renewalPeriod" [disableControl]="true" />
+	 <mat-error *ngIf = "getControls('renewalPeriod').invalid" >
+	  {{ getControls('renewalPeriod')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>رقم الفترة السابقة</mat-label>
+	 <input matInput formControlName="prePeriodNumber" [disableControl]="true" />
+	 <mat-error *ngIf = "getControls('prePeriodNumber').invalid" >
+	  {{ getControls('prePeriodNumber')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>تاريخ بداية الفترة السابقة</mat-label>
+	 <input matInput
+	 [disableControl]="true" 
+	  [matDatepicker] = "prePeriodStartingDateDatepicker"
+	  autocomplete = "off"
+	  formControlName= "prePeriodStartingDate"/>
+	 <mat-datepicker-toggle
+	   matSuffix
+	   [for]="prePeriodStartingDateDatepicker"
+	 ></mat-datepicker-toggle>
+	 <mat-datepicker #prePeriodStartingDateDatepicker></mat-datepicker>
+	 <mat-error *ngIf = "getControls('prePeriodStartingDate').invalid" >
+	  {{ getControls('prePeriodStartingDate')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>تاريخ نهاية الفترة السابقة</mat-label>
+	 <input matInput
+	 [disableControl]="true" 
+	  [matDatepicker] = "prePeriodEndDateDatepicker"
+	  autocomplete = "off"
+	  formControlName= "prePeriodEndDate"/>
+	 <mat-datepicker-toggle
+	   matSuffix
+	   [for]="prePeriodEndDateDatepicker"
+	 ></mat-datepicker-toggle>
+	 <mat-datepicker #prePeriodEndDateDatepicker></mat-datepicker>
+	 <mat-error *ngIf = "getControls('prePeriodEndDate').invalid" >
+	  {{ getControls('prePeriodEndDate')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>مدة الفترة</mat-label>
+	 <input matInput formControlName="durationPeriod" [disableControl]="true" />
+	 <mat-error *ngIf = "getControls('durationPeriod').invalid" >
+	  {{ getControls('durationPeriod')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>رقم الفترة الجديدة</mat-label>
+	 <input matInput formControlName="newPeriodNumber"/>
+	 <mat-error *ngIf = "getControls('newPeriodNumber').invalid" >
+	  {{ getControls('newPeriodNumber')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>تاريخ نهاية الفترة</mat-label>
+	 <input matInput
+	  [matDatepicker] = "periodEndDateDatepicker"
+	  autocomplete = "off"
+	  formControlName= "periodEndDate"/>
+	 <mat-datepicker-toggle
+	   matSuffix
+	   [for]="periodEndDateDatepicker"
+	 ></mat-datepicker-toggle>
+	 <mat-datepicker #periodEndDateDatepicker></mat-datepicker>
+	 <mat-error *ngIf = "getControls('periodEndDate').invalid" >
+	  {{ getControls('periodEndDate')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>قيمة العقد</mat-label>
+	 <input matInput formControlName="contractAmount"/>
+	 <mat-error *ngIf = "getControls('contractAmount').invalid" >
+	  {{ getControls('contractAmount')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+         
+
+	<app-material-select appearance="outline" [disabled]="true" 
+	  #centralAdministration 
+	  [options] = "centralAdministrationSelectOptions"
+	  formControlName = "centralAdministration"
+	></app-material-select>
+
+	<app-material-select appearance="outline" [disabled]="true" 
+	  #subAdministration 
+	  [options] = "subAdministrationSelectOptions"
+	  formControlName = "subAdministration"
+	></app-material-select>
+
+	<app-material-select appearance="outline" [disabled]="true" 
+	  #jobTitle 
+	  [options] = "jobTitleSelectOptions"
+	  formControlName = "jobTitle"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #financialDegree 
+	  [options] = "financialDegreeSelectOptions"
+	  formControlName = "financialDegree"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #renewalType 
+	  [options] = "renewalTypeSelectOptions"
+	  formControlName = "renewalType"
+	></app-material-select>
+        </form>
+  
+      </mat-card-content >
+  
+      <mat-action-row>
+            <form [formGroup]="attachmentForm" class="form-container">
+                <app-multi-file-upload [service] = "employeeContractRenewalDataService" [id]="employeeContractRenewalDataForm.get('id').value"
+                    formControlName = "attachmentFiles">
+                </app-multi-file-upload>
+            </form>
+            <button (click) = "onConfirm()" mat-raised-button color = "primary" >
+                غلق
+            </button>
+        </mat-action-row>
+    </mat-card>
+
+    

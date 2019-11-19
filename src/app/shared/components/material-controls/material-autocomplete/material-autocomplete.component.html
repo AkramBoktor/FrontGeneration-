@@ -1,0 +1,37 @@
+<div class="row">
+    <mat-form-field appearance="outline" class="column1">
+        <mat-label>كود {{ options.label }}</mat-label>
+        <input
+            [formControl]="matCodeInput"
+            matInput
+            (change)="onCodeChanged($event.target.value)"
+        />
+        <mat-error *ngIf="matCodeInput.invalid">
+            هذا الكود غير معرف
+        </mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="column3">
+        <mat-label>اسم {{ options.label }}</mat-label>
+        <input
+            #matAutoCompleteInput="matInput"
+            matInput
+            [matAutocomplete]="auto"
+            (blur)="onTouched()"
+            (input)="onAutoCompleteInput($event.target.value)"
+        />
+        <mat-autocomplete
+            autoActiveFirstOption
+            #auto="matAutocomplete"
+            (optionSelected)="onSelectionChanged($event.option.value)"
+            [displayWith]="getDisplayName"
+        >
+            <mat-option *ngFor="let option of filteredDatasource" [value]="option">
+                {{ option.name }}
+            </mat-option>
+        </mat-autocomplete>
+        <mat-error *ngIf="control.control.invalid">
+            {{ control.control | getErrorMessages: [] }}
+        </mat-error>
+    </mat-form-field>
+</div>

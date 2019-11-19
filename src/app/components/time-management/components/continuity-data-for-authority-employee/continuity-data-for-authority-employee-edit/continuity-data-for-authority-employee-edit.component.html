@@ -1,0 +1,68 @@
+
+<mat-card>
+    <mat-card-header>
+        <mat-card-title>بيانات الاستمرار للعاملين بالهيئة</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+        <form [formGroup]="continuityDataForAuthorityEmployeeForm" class="form-container">
+          
+
+	<mat-form-field appearance="outline">
+	 <mat-label>يوم الاستمرار</mat-label>
+	 <input matInput
+	  [matDatepicker] = "continueDayDatepicker"
+	  autocomplete = "off"
+	  formControlName= "continueDay"/>
+	 <mat-datepicker-toggle
+	   matSuffix
+	   [for]="continueDayDatepicker"
+	 ></mat-datepicker-toggle>
+	 <mat-datepicker #continueDayDatepicker></mat-datepicker>
+	 <mat-error *ngIf = "getControls('continueDay').invalid" >
+	  {{ getControls('continueDay')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>كود الموظف</mat-label>
+	 <input matInput formControlName="employeeCode"/>
+	 <mat-error *ngIf = "getControls('employeeCode').invalid" >
+	  {{ getControls('employeeCode')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+          
+
+	<app-material-select appearance="outline"
+	  #centralAdministration 
+	  [options] = "centralAdministrationSelectOptions"
+	  formControlName = "centralAdministration"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #subAdministration 
+	  [options] = "subAdministrationSelectOptions"
+	  formControlName = "subAdministration"
+	></app-material-select>
+
+        </form>
+    </mat-card-content>
+
+    <mat-divider></mat-divider>
+
+	<mat-card-actions>
+			<form [formGroup]="attachmentForm" class="form-container">
+                <app-multi-file-upload [service] = "continuityDataForAuthorityEmployeeService" [id]="continuityDataForAuthorityEmployeeForm.get('id').value"
+                    formControlName = "attachmentFiles">
+                </app-multi-file-upload>
+            </form>
+            <button
+                color = "primary"
+                type = "submit"
+                (click) = "onSubmit()"
+                [disabled] = "continuityDataForAuthorityEmployeeForm.invalid"
+                mat-raised-button>
+                حفظ
+            </button>
+    </mat-card-actions>
+</mat-card>
+

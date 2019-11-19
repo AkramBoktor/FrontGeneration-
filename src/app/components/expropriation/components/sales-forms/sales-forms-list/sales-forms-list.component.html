@@ -1,0 +1,96 @@
+
+<app-search-list-expansion-panel
+    dir="rtl"
+    [pageTitle] = "'استمارات البيع'"
+    (beginSearch) = "onBeginSearch()"
+    (create) = "onCreate()"
+>
+    <ng-template searchFormContainer >
+        <form [formGroup] = "searchForm">
+           
+
+	<mat-form-field appearance="outline">
+	 <mat-label>رقم المدرسة</mat-label>
+	 <input matInput formControlName="schoolNumber"/>
+	 <mat-error *ngIf = "getControls('schoolNumber').invalid" >
+	  {{ getControls('schoolNumber')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>رقم الاستمارة</mat-label>
+	 <input matInput formControlName="formNumber"/>
+	 <mat-error *ngIf = "getControls('formNumber').invalid" >
+	  {{ getControls('formNumber')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>اسم صاحب الشان</mat-label>
+	 <input matInput formControlName="nameOfTheOwner"/>
+	 <mat-error *ngIf = "getControls('nameOfTheOwner').invalid" >
+	  {{ getControls('nameOfTheOwner')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>مشهر برقم</mat-label>
+	 <input matInput formControlName="famousForNumber"/>
+	 <mat-error *ngIf = "getControls('famousForNumber').invalid" >
+	  {{ getControls('famousForNumber')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>تاريخ</mat-label>
+	 <input matInput
+	  [matDatepicker] = "dateDatepicker"
+	  autocomplete = "off"
+	  formControlName= "date"/>
+	 <mat-datepicker-toggle
+	   matSuffix
+	   [for]="dateDatepicker"
+	 ></mat-datepicker-toggle>
+	 <mat-datepicker #dateDatepicker></mat-datepicker>
+	 <mat-error *ngIf = "getControls('date').invalid" >
+	  {{ getControls('date')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>المساحة</mat-label>
+	 <input matInput formControlName="space"/>
+	 <mat-error *ngIf = "getControls('space').invalid" >
+	  {{ getControls('space')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>القيمة</mat-label>
+	 <input matInput formControlName="theValue"/>
+	 <mat-error *ngIf = "getControls('theValue').invalid" >
+	  {{ getControls('theValue')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+           
+
+	<app-material-select appearance="outline"
+	  #typeOfForm 
+	  [options] = "typeOfFormSelectOptions"
+	  formControlName = "typeOfForm"
+	></app-material-select>
+
+        </form>
+    </ng-template >
+    <ng-template searchResultContainer >
+        <app-grid-control
+            #gridControl
+            [rowDataService] = "getSalesFormsPaginatedSortedFiltered"
+            [columnOptions] = "columnOptions"
+            [gridHeaderOptions] = "gridHeaderOptions"
+            [searchInput] = "searchForm.value"
+            (deleteRow) = "onDeleteClicked($event)"
+        >
+        </app-grid-control>
+    </ng-template>
+</app-search-list-expansion-panel >

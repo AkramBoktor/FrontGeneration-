@@ -1,0 +1,160 @@
+
+<app-new-form-layout
+    dir="rtl"
+    (submitClicked) = "onSubmit()"
+    (back) = "onBack()"
+    [pageTitle] = "'تجنيد'"
+>
+    <ng-template newFormContainer >
+        <form [formGroup] = "recruitmentForm">
+         
+
+	<mat-form-field appearance="outline">
+	 <mat-label>تاريخ تحرير شهاده الخدمه</mat-label>
+	 <input matInput
+	  [matDatepicker] = "serviceCertificateDateDatepicker"
+	  autocomplete = "off"
+	  formControlName= "serviceCertificateDate"/>
+	 <mat-datepicker-toggle
+	   matSuffix
+	   [for]="serviceCertificateDateDatepicker"
+	 ></mat-datepicker-toggle>
+	 <mat-datepicker #serviceCertificateDateDatepicker></mat-datepicker>
+	 <mat-error *ngIf = "getControls('serviceCertificateDate').invalid" >
+	  {{ getControls('serviceCertificateDate')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>تاريخ نهايه الاعفاء الموقت</mat-label>
+	 <input matInput
+	  [matDatepicker] = "temporaryExemptionDateDatepicker"
+	  autocomplete = "off"
+	  formControlName= "temporaryExemptionDate"/>
+	 <mat-datepicker-toggle
+	   matSuffix
+	   [for]="temporaryExemptionDateDatepicker"
+	 ></mat-datepicker-toggle>
+	 <mat-datepicker #temporaryExemptionDateDatepicker></mat-datepicker>
+	 <mat-error *ngIf = "getControls('temporaryExemptionDate').invalid" >
+	  {{ getControls('temporaryExemptionDate')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>تاريخ الاستدعاء للاحتياط</mat-label>
+	 <input matInput
+	  [matDatepicker] = "callbackReserveDateDatepicker"
+	  autocomplete = "off"
+	  formControlName= "callbackReserveDate"/>
+	 <mat-datepicker-toggle
+	   matSuffix
+	   [for]="callbackReserveDateDatepicker"
+	 ></mat-datepicker-toggle>
+	 <mat-datepicker #callbackReserveDateDatepicker></mat-datepicker>
+	 <mat-error *ngIf = "getControls('callbackReserveDate').invalid" >
+	  {{ getControls('callbackReserveDate')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>تاريخ العوده من الاحتياط</mat-label>
+	 <input matInput
+	  [matDatepicker] = "reserveReturnDateDatepicker"
+	  autocomplete = "off"
+	  formControlName= "reserveReturnDate"/>
+	 <mat-datepicker-toggle
+	   matSuffix
+	   [for]="reserveReturnDateDatepicker"
+	 ></mat-datepicker-toggle>
+	 <mat-datepicker #reserveReturnDateDatepicker></mat-datepicker>
+	 <mat-error *ngIf = "getControls('reserveReturnDate').invalid" >
+	  {{ getControls('reserveReturnDate')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>تاريخ نهايه الاحتياط</mat-label>
+	 <input matInput
+	  [matDatepicker] = "reserveEndDateDatepicker"
+	  autocomplete = "off"
+	  formControlName= "reserveEndDate"/>
+	 <mat-datepicker-toggle
+	   matSuffix
+	   [for]="reserveEndDateDatepicker"
+	 ></mat-datepicker-toggle>
+	 <mat-datepicker #reserveEndDateDatepicker></mat-datepicker>
+	 <mat-error *ngIf = "getControls('reserveEndDate').invalid" >
+	  {{ getControls('reserveEndDate')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>تاريخ دخول الجيش</mat-label>
+	 <input matInput
+	  [matDatepicker] = "entryArmyDateDatepicker"
+	  autocomplete = "off"
+	  formControlName= "entryArmyDate"/>
+	 <mat-datepicker-toggle
+	   matSuffix
+	   [for]="entryArmyDateDatepicker"
+	 ></mat-datepicker-toggle>
+	 <mat-datepicker #entryArmyDateDatepicker></mat-datepicker>
+	 <mat-error *ngIf = "getControls('entryArmyDate').invalid" >
+	  {{ getControls('entryArmyDate')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>تاريخ خروج من الجيش</mat-label>
+	 <input matInput
+	  [matDatepicker] = "departureArmyDateDatepicker"
+	  autocomplete = "off"
+	  formControlName= "departureArmyDate"/>
+	 <mat-datepicker-toggle
+	   matSuffix
+	   [for]="departureArmyDateDatepicker"
+	 ></mat-datepicker-toggle>
+	 <mat-datepicker #departureArmyDateDatepicker></mat-datepicker>
+	 <mat-error *ngIf = "getControls('departureArmyDate').invalid" >
+	  {{ getControls('departureArmyDate')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>كود الموظف</mat-label>
+	 <input matInput formControlName="employeeCode"/>
+	 <mat-error *ngIf = "getControls('employeeCode').invalid" >
+	  {{ getControls('employeeCode')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+         
+
+	<app-material-select appearance="outline"
+	  #positionRecruitment 
+	  [options] = "positionRecruitmentSelectOptions"
+	  formControlName = "positionRecruitment"
+	></app-material-select>
+
+        </form>
+
+        <mat-divider></mat-divider>
+
+		<mat-card-actions>
+			<form [formGroup]="attachmentForm" class="form-container">
+                <app-multi-file-upload [service] = "recruitmentService" [id]="recruitmentForm.get('id').value"
+                    formControlName = "attachmentFiles">
+                </app-multi-file-upload>
+            </form>
+            <button
+                type="submit"
+                (click)="onSubmit()"
+                [disabled]="recruitmentForm.invalid"
+                mat-raised-button
+                color = "primary">
+             حفظ
+            </button>
+        </mat-card-actions>
+    </ng-template >
+</app-new-form-layout >
+

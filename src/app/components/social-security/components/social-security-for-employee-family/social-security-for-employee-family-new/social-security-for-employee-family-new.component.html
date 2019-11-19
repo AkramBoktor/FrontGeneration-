@@ -1,0 +1,72 @@
+
+<app-new-form-layout
+    dir="rtl"
+    (submitClicked) = "onSubmit()"
+    (back) = "onBack()"
+    [pageTitle] = "'تامينات اجتماعية لعائلة الموظف'"
+>
+    <ng-template newFormContainer >
+        <form [formGroup] = "socialSecurityForEmployeeFamilyForm">
+         
+
+	<mat-form-field appearance="outline">
+	 <mat-label>مسلسل الفرد</mat-label>
+	 <input matInput formControlName="individualSerial"/>
+	 <mat-error *ngIf = "getControls('individualSerial').invalid" >
+	  {{ getControls('individualSerial')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>اسم الموظف</mat-label>
+	 <input matInput formControlName="employeeName" [disableControl]="true" />
+	 <mat-error *ngIf = "getControls('employeeName').invalid" >
+	  {{ getControls('employeeName')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>مسلسل الموظف</mat-label>
+	 <input matInput formControlName="employeeCode" [disableControl]="true" />
+	 <mat-error *ngIf = "getControls('employeeCode').invalid" >
+	  {{ getControls('employeeCode')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>الرقم التأميني</mat-label>
+	 <input matInput formControlName="insuranceNumber" [disableControl]="true" />
+	 <mat-error *ngIf = "getControls('insuranceNumber').invalid" >
+	  {{ getControls('insuranceNumber')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+         
+
+	<app-material-select appearance="outline"
+	  #relationship 
+	  [options] = "relationshipSelectOptions"
+	  formControlName = "relationship"
+	></app-material-select>
+
+        </form>
+
+        <mat-divider></mat-divider>
+
+		<mat-card-actions>
+			<form [formGroup]="attachmentForm" class="form-container">
+                <app-multi-file-upload [service] = "socialSecurityForEmployeeFamilyService" [id]="socialSecurityForEmployeeFamilyForm.get('id').value"
+                    formControlName = "attachmentFiles">
+                </app-multi-file-upload>
+            </form>
+            <button
+                type="submit"
+                (click)="onSubmit()"
+                [disabled]="socialSecurityForEmployeeFamilyForm.invalid"
+                mat-raised-button
+                color = "primary">
+             حفظ
+            </button>
+        </mat-card-actions>
+    </ng-template >
+</app-new-form-layout >
+

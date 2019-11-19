@@ -1,0 +1,124 @@
+
+<mat-card>
+    <mat-card-header>
+        <mat-card-title>اذن اضافة نقدية لمخزن</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+        <form [formGroup]="addCashToAStoreForm" class="form-container">
+          
+
+	<mat-form-field appearance="outline">
+	 <mat-label>كود الموظف</mat-label>
+	 <input matInput formControlName="employeeCode"/>
+	 <mat-error *ngIf = "getControls('employeeCode').invalid" >
+	  {{ getControls('employeeCode')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>رقم الايصال</mat-label>
+	 <input matInput formControlName="receiptNumber"/>
+	 <mat-error *ngIf = "getControls('receiptNumber').invalid" >
+	  {{ getControls('receiptNumber')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>رقم الصنف </mat-label>
+	 <input matInput formControlName="itemNo"/>
+	 <mat-error *ngIf = "getControls('itemNo').invalid" >
+	  {{ getControls('itemNo')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>اسم الصنف</mat-label>
+	 <input matInput formControlName="productName" [disableControl]="true" />
+	 <mat-error *ngIf = "getControls('productName').invalid" >
+	  {{ getControls('productName')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>(...-الكمية ( 1- 2 – 3 </mat-label>
+	 <input matInput formControlName="quantity"/>
+	 <mat-error *ngIf = "getControls('quantity').invalid" >
+	  {{ getControls('quantity')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>السعر</mat-label>
+	 <input matInput formControlName="price"/>
+	 <mat-error *ngIf = "getControls('price').invalid" >
+	  {{ getControls('price')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>(القيمة ( السعر * الكمية </mat-label>
+	 <input matInput formControlName="value" [disableControl]="true" />
+	 <mat-error *ngIf = "getControls('value').invalid" >
+	  {{ getControls('value')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>تاريخ الايصال </mat-label>
+	 <input matInput
+	  [matDatepicker] = "receiptDateDatepicker"
+	  autocomplete = "off"
+	  formControlName= "receiptDate"/>
+	 <mat-datepicker-toggle
+	   matSuffix
+	   [for]="receiptDateDatepicker"
+	 ></mat-datepicker-toggle>
+	 <mat-datepicker #receiptDateDatepicker></mat-datepicker>
+	 <mat-error *ngIf = "getControls('receiptDate').invalid" >
+	  {{ getControls('receiptDate')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>الكمية المفقودة </mat-label>
+	 <input matInput formControlName="missingQuantity"/>
+	 <mat-error *ngIf = "getControls('missingQuantity').invalid" >
+	  {{ getControls('missingQuantity')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+          
+
+	<app-material-select appearance="outline" [disabled]="true" 
+	  #type 
+	  [options] = "typeSelectOptions"
+	  formControlName = "type"
+	></app-material-select>
+
+	<app-material-select appearance="outline" [disabled]="true" 
+	  #condition 
+	  [options] = "conditionSelectOptions"
+	  formControlName = "condition"
+	></app-material-select>
+
+        </form>
+    </mat-card-content>
+
+    <mat-divider></mat-divider>
+
+	<mat-card-actions>
+			<form [formGroup]="attachmentForm" class="form-container">
+                <app-multi-file-upload [service] = "addCashToAStoreService" [id]="addCashToAStoreForm.get('id').value"
+                    formControlName = "attachmentFiles">
+                </app-multi-file-upload>
+            </form>
+            <button
+                color = "primary"
+                type = "submit"
+                (click) = "onSubmit()"
+                [disabled] = "addCashToAStoreForm.invalid"
+                mat-raised-button>
+                حفظ
+            </button>
+    </mat-card-actions>
+</mat-card>
+

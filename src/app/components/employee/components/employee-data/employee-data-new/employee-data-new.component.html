@@ -1,0 +1,401 @@
+
+<app-new-form-layout
+    dir="rtl"
+    (submitClicked) = "onSubmit()"
+    (back) = "onBack()"
+    [pageTitle] = "'بيانات موظف'"
+>
+    <ng-template newFormContainer >
+        <form [formGroup] = "employeeDataForm">
+         
+
+	<mat-form-field appearance="outline">
+	 <mat-label>اسم الموظف</mat-label>
+	 <input matInput formControlName="employeeName"/>
+	 <mat-error *ngIf = "getControls('employeeName').invalid" >
+	  {{ getControls('employeeName')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>تاريخ شغل الوظيفه الحاليه</mat-label>
+	 <input matInput
+	  [matDatepicker] = "currentJobDateDatepicker"
+	  autocomplete = "off"
+	  formControlName= "currentJobDate"/>
+	 <mat-datepicker-toggle
+	   matSuffix
+	   [for]="currentJobDateDatepicker"
+	 ></mat-datepicker-toggle>
+	 <mat-datepicker #currentJobDateDatepicker></mat-datepicker>
+	 <mat-error *ngIf = "getControls('currentJobDate').invalid" >
+	  {{ getControls('currentJobDate')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>تاريخ الحصول على الفئه</mat-label>
+	 <input matInput
+	  [matDatepicker] = "levelDateDatepicker"
+	  autocomplete = "off"
+	  formControlName= "levelDate"/>
+	 <mat-datepicker-toggle
+	   matSuffix
+	   [for]="levelDateDatepicker"
+	 ></mat-datepicker-toggle>
+	 <mat-datepicker #levelDateDatepicker></mat-datepicker>
+	 <mat-error *ngIf = "getControls('levelDate').invalid" >
+	  {{ getControls('levelDate')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>تاريخ الاقدميه الفرضيه</mat-label>
+	 <input matInput
+	  [matDatepicker] = "seniorityHistoryDateDatepicker"
+	  autocomplete = "off"
+	  formControlName= "seniorityHistoryDate"/>
+	 <mat-datepicker-toggle
+	   matSuffix
+	   [for]="seniorityHistoryDateDatepicker"
+	 ></mat-datepicker-toggle>
+	 <mat-datepicker #seniorityHistoryDateDatepicker></mat-datepicker>
+	 <mat-error *ngIf = "getControls('seniorityHistoryDate').invalid" >
+	  {{ getControls('seniorityHistoryDate')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>تاريخ استلام العمل</mat-label>
+	 <input matInput
+	  [matDatepicker] = "receiptDateDatepicker"
+	  autocomplete = "off"
+	  formControlName= "receiptDate"/>
+	 <mat-datepicker-toggle
+	   matSuffix
+	   [for]="receiptDateDatepicker"
+	 ></mat-datepicker-toggle>
+	 <mat-datepicker #receiptDateDatepicker></mat-datepicker>
+	 <mat-error *ngIf = "getControls('receiptDate').invalid" >
+	  {{ getControls('receiptDate')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>تاريخ قرار التعيين</mat-label>
+	 <input matInput
+	  [matDatepicker] = "decisionDateDatepicker"
+	  autocomplete = "off"
+	  formControlName= "decisionDate"/>
+	 <mat-datepicker-toggle
+	   matSuffix
+	   [for]="decisionDateDatepicker"
+	 ></mat-datepicker-toggle>
+	 <mat-datepicker #decisionDateDatepicker></mat-datepicker>
+	 <mat-error *ngIf = "getControls('decisionDate').invalid" >
+	  {{ getControls('decisionDate')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>رقم قرار التعيين</mat-label>
+	 <input matInput formControlName="decisionNumber"/>
+	 <mat-error *ngIf = "getControls('decisionNumber').invalid" >
+	  {{ getControls('decisionNumber')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>رقم التليفون</mat-label>
+	 <input matInput formControlName="telephoneNumber"/>
+	 <mat-error *ngIf = "getControls('telephoneNumber').invalid" >
+	  {{ getControls('telephoneNumber')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>عنوان الموظف</mat-label>
+	 <input matInput formControlName="employeeAddress"/>
+	 <mat-error *ngIf = "getControls('employeeAddress').invalid" >
+	  {{ getControls('employeeAddress')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>تاريخ الاصدار</mat-label>
+	 <input matInput
+	  [matDatepicker] = "releaseDateDatepicker"
+	  autocomplete = "off"
+	  formControlName= "releaseDate"/>
+	 <mat-datepicker-toggle
+	   matSuffix
+	   [for]="releaseDateDatepicker"
+	 ></mat-datepicker-toggle>
+	 <mat-datepicker #releaseDateDatepicker></mat-datepicker>
+	 <mat-error *ngIf = "getControls('releaseDate').invalid" >
+	  {{ getControls('releaseDate')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>رقم البطاقه</mat-label>
+	 <input matInput formControlName="iDNumber"/>
+	 <mat-error *ngIf = "getControls('iDNumber').invalid" >
+	  {{ getControls('iDNumber')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>اسم الام</mat-label>
+	 <input matInput formControlName="motherName"/>
+	 <mat-error *ngIf = "getControls('motherName').invalid" >
+	  {{ getControls('motherName')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>تاريخ اخر اقرار ذمه ماليه</mat-label>
+	 <input matInput
+	 [disableControl]="true" 
+	  [matDatepicker] = "lastFinancialDisclosureDatepicker"
+	  autocomplete = "off"
+	  formControlName= "lastFinancialDisclosure"/>
+	 <mat-datepicker-toggle
+	   matSuffix
+	   [for]="lastFinancialDisclosureDatepicker"
+	 ></mat-datepicker-toggle>
+	 <mat-datepicker #lastFinancialDisclosureDatepicker></mat-datepicker>
+	 <mat-error *ngIf = "getControls('lastFinancialDisclosure').invalid" >
+	  {{ getControls('lastFinancialDisclosure')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>اعانه غلاء المعيشه</mat-label>
+	 <input matInput formControlName="livingHelpedCost"/>
+	 <mat-error *ngIf = "getControls('livingHelpedCost').invalid" >
+	  {{ getControls('livingHelpedCost')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>كود الموظف</mat-label>
+	 <input matInput formControlName="employeeCode"/>
+	 <mat-error *ngIf = "getControls('employeeCode').invalid" >
+	  {{ getControls('employeeCode')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline" *ngIf="approvalNumberIsVisible">
+	 <mat-label>رقم الموافقة</mat-label>
+	 <input matInput formControlName="approvalNumber"/>
+	 <mat-error *ngIf = "getControls('approvalNumber').invalid" >
+	  {{ getControls('approvalNumber')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline" *ngIf="approvalDateIsVisible">
+	 <mat-label>تاريخ الموافقة</mat-label>
+	 <input matInput
+	  [matDatepicker] = "approvalDateDatepicker"
+	  autocomplete = "off"
+	  formControlName= "approvalDate"/>
+	 <mat-datepicker-toggle
+	   matSuffix
+	   [for]="approvalDateDatepicker"
+	 ></mat-datepicker-toggle>
+	 <mat-datepicker #approvalDateDatepicker></mat-datepicker>
+	 <mat-error *ngIf = "getControls('approvalDate').invalid" >
+	  {{ getControls('approvalDate')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>تاريخ الميلاد</mat-label>
+	 <input matInput
+	  [matDatepicker] = "birthDateDatepicker"
+	  autocomplete = "off"
+	  formControlName= "birthDate"/>
+	 <mat-datepicker-toggle
+	   matSuffix
+	   [for]="birthDateDatepicker"
+	 ></mat-datepicker-toggle>
+	 <mat-datepicker #birthDateDatepicker></mat-datepicker>
+	 <mat-error *ngIf = "getControls('birthDate').invalid" >
+	  {{ getControls('birthDate')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline" *ngIf="contractStartingDateIsVisible">
+	 <mat-label>تاريخ بداية العقد</mat-label>
+	 <input matInput
+	  [matDatepicker] = "contractStartingDateDatepicker"
+	  autocomplete = "off"
+	  formControlName= "contractStartingDate"/>
+	 <mat-datepicker-toggle
+	   matSuffix
+	   [for]="contractStartingDateDatepicker"
+	 ></mat-datepicker-toggle>
+	 <mat-datepicker #contractStartingDateDatepicker></mat-datepicker>
+	 <mat-error *ngIf = "getControls('contractStartingDate').invalid" >
+	  {{ getControls('contractStartingDate')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline" *ngIf="contractEndDateIsVisible">
+	 <mat-label>تاريخ نهاية العقد</mat-label>
+	 <input matInput
+	  [matDatepicker] = "contractEndDateDatepicker"
+	  autocomplete = "off"
+	  formControlName= "contractEndDate"/>
+	 <mat-datepicker-toggle
+	   matSuffix
+	   [for]="contractEndDateDatepicker"
+	 ></mat-datepicker-toggle>
+	 <mat-datepicker #contractEndDateDatepicker></mat-datepicker>
+	 <mat-error *ngIf = "getControls('contractEndDate').invalid" >
+	  {{ getControls('contractEndDate')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline" *ngIf="durationPeriodIsVisible">
+	 <mat-label>مدة الفترة</mat-label>
+	 <input matInput formControlName="durationPeriod" [disableControl]="true" />
+	 <mat-error *ngIf = "getControls('durationPeriod').invalid" >
+	  {{ getControls('durationPeriod')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline" *ngIf="contractAmountIsVisible">
+	 <mat-label>قيمة العقد</mat-label>
+	 <input matInput formControlName="contractAmount"/>
+	 <mat-error *ngIf = "getControls('contractAmount').invalid" >
+	  {{ getControls('contractAmount')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+         
+
+	<app-material-select appearance="outline"
+	  #employeeStatus 
+	  [options] = "employeeStatusSelectOptions"
+	  formControlName = "employeeStatus"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #subAdministration 
+	  [options] = "subAdministrationSelectOptions"
+	  formControlName = "subAdministration"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #centralAdministration 
+	  [options] = "centralAdministrationSelectOptions"
+	  formControlName = "centralAdministration"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #appointmentType 
+	  [options] = "appointmentTypeSelectOptions"
+	  formControlName = "appointmentType"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #financialDegree 
+	  [options] = "financialDegreeSelectOptions"
+	  formControlName = "financialDegree"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #jobGroup 
+	  [options] = "jobGroupSelectOptions"
+	  formControlName = "jobGroup"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #jobTitle 
+	  [options] = "jobTitleSelectOptions"
+	  formControlName = "jobTitle"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #specialization 
+	  [options] = "specializationSelectOptions"
+	  formControlName = "specialization"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #socialStatus 
+	  [options] = "socialStatusSelectOptions"
+	  formControlName = "socialStatus"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #governorate 
+	  [options] = "governorateSelectOptions"
+	  formControlName = "governorate"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #sectionCenter 
+	  [options] = "sectionCenterSelectOptions"
+	  formControlName = "sectionCenter"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #religion 
+	  [options] = "religionSelectOptions"
+	  formControlName = "religion"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #nationality 
+	  [options] = "nationalitySelectOptions"
+	  formControlName = "nationality"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #issuer 
+	  [options] = "issuerSelectOptions"
+	  formControlName = "issuer"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #gender 
+	  [options] = "genderSelectOptions"
+	  formControlName = "gender"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #birthPlace 
+	  [options] = "birthPlaceSelectOptions"
+	  formControlName = "birthPlace"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #iDType 
+	  [options] = "iDTypeSelectOptions"
+	  formControlName = "iDType"
+	></app-material-select>
+
+        </form>
+
+        <mat-divider></mat-divider>
+
+		<mat-card-actions>
+			<form [formGroup]="attachmentForm" class="form-container">
+                <app-multi-file-upload [service] = "employeeDataService" [id]="employeeDataForm.get('id').value"
+                    formControlName = "attachmentFiles">
+                </app-multi-file-upload>
+            </form>
+            <button
+                type="submit"
+                (click)="onSubmit()"
+                [disabled]="employeeDataForm.invalid"
+                mat-raised-button
+                color = "primary">
+             حفظ
+            </button>
+        </mat-card-actions>
+    </ng-template >
+</app-new-form-layout >
+

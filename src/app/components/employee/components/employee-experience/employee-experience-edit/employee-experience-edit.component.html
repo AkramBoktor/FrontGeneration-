@@ -1,0 +1,120 @@
+
+<mat-card>
+    <mat-card-header>
+        <mat-card-title>خبرات الموظف</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+        <form [formGroup]="employeeExperienceForm" class="form-container">
+          
+
+	<mat-form-field appearance="outline">
+	 <mat-label>تاريخ بداية الخبرة</mat-label>
+	 <input matInput
+	  [matDatepicker] = "experienceStartDateDatepicker"
+	  autocomplete = "off"
+	  formControlName= "experienceStartDate"/>
+	 <mat-datepicker-toggle
+	   matSuffix
+	   [for]="experienceStartDateDatepicker"
+	 ></mat-datepicker-toggle>
+	 <mat-datepicker #experienceStartDateDatepicker></mat-datepicker>
+	 <mat-error *ngIf = "getControls('experienceStartDate').invalid" >
+	  {{ getControls('experienceStartDate')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>تاريخ نهاية الخبرة</mat-label>
+	 <input matInput
+	  [matDatepicker] = "experienceEndDateDatepicker"
+	  autocomplete = "off"
+	  formControlName= "experienceEndDate"/>
+	 <mat-datepicker-toggle
+	   matSuffix
+	   [for]="experienceEndDateDatepicker"
+	 ></mat-datepicker-toggle>
+	 <mat-datepicker #experienceEndDateDatepicker></mat-datepicker>
+	 <mat-error *ngIf = "getControls('experienceEndDate').invalid" >
+	  {{ getControls('experienceEndDate')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>جهة الخبرة</mat-label>
+	 <input matInput formControlName="experienceEntity"/>
+	 <mat-error *ngIf = "getControls('experienceEntity').invalid" >
+	  {{ getControls('experienceEntity')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>تاريخ عضوية النقابة</mat-label>
+	 <input matInput
+	  [matDatepicker] = "unionMembershipDateDatepicker"
+	  autocomplete = "off"
+	  formControlName= "unionMembershipDate"/>
+	 <mat-datepicker-toggle
+	   matSuffix
+	   [for]="unionMembershipDateDatepicker"
+	 ></mat-datepicker-toggle>
+	 <mat-datepicker #unionMembershipDateDatepicker></mat-datepicker>
+	 <mat-error *ngIf = "getControls('unionMembershipDate').invalid" >
+	  {{ getControls('unionMembershipDate')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>كود الموظف</mat-label>
+	 <input matInput formControlName="employeeCode"/>
+	 <mat-error *ngIf = "getControls('employeeCode').invalid" >
+	  {{ getControls('employeeCode')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+          
+
+	<app-material-select appearance="outline"
+	  #experienceType 
+	  [options] = "experienceTypeSelectOptions"
+	  formControlName = "experienceType"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #leavingServiceReason 
+	  [options] = "leavingServiceReasonSelectOptions"
+	  formControlName = "leavingServiceReason"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #financialDegree 
+	  [options] = "financialDegreeSelectOptions"
+	  formControlName = "financialDegree"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #jobTitle 
+	  [options] = "jobTitleSelectOptions"
+	  formControlName = "jobTitle"
+	></app-material-select>
+
+        </form>
+    </mat-card-content>
+
+    <mat-divider></mat-divider>
+
+	<mat-card-actions>
+			<form [formGroup]="attachmentForm" class="form-container">
+                <app-multi-file-upload [service] = "employeeExperienceService" [id]="employeeExperienceForm.get('id').value"
+                    formControlName = "attachmentFiles">
+                </app-multi-file-upload>
+            </form>
+            <button
+                color = "primary"
+                type = "submit"
+                (click) = "onSubmit()"
+                [disabled] = "employeeExperienceForm.invalid"
+                mat-raised-button>
+                حفظ
+            </button>
+    </mat-card-actions>
+</mat-card>
+

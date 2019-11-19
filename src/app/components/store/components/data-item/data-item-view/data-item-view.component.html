@@ -1,0 +1,104 @@
+
+<mat-card class="form-card">
+      <mat-card-header>
+  
+          <mat-card-title>
+              بيانات الصنف
+          </mat-card-title>
+  
+      </mat-card-header>
+  
+      <mat-card-content>
+  
+        <form [formGroup] = "dataItemForm" class="form-container">
+         
+
+	<mat-form-field appearance="outline">
+	 <mat-label>رقم الصنف</mat-label>
+	 <input matInput formControlName="itemNumber"/>
+	 <mat-error *ngIf = "getControls('itemNumber').invalid" >
+	  {{ getControls('itemNumber')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>اسم الصنف</mat-label>
+	 <input matInput formControlName="productName"/>
+	 <mat-error *ngIf = "getControls('productName').invalid" >
+	  {{ getControls('productName')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>سعر الوحده</mat-label>
+	 <input matInput formControlName="unitpPrice"/>
+	 <mat-error *ngIf = "getControls('unitpPrice').invalid" >
+	  {{ getControls('unitpPrice')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>حدد الطلب</mat-label>
+	 <input matInput formControlName="selectOrder"/>
+	 <mat-error *ngIf = "getControls('selectOrder').invalid" >
+	  {{ getControls('selectOrder')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>  الحد الادني</mat-label>
+	 <input matInput formControlName="minimum"/>
+	 <mat-error *ngIf = "getControls('minimum').invalid" >
+	  {{ getControls('minimum')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>العمر الافتراض للصنف المستديم</mat-label>
+	 <input matInput formControlName="assumedLifetime"/>
+	 <mat-error *ngIf = "getControls('assumedLifetime').invalid" >
+	  {{ getControls('assumedLifetime')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+         
+
+	<app-material-select appearance="outline"
+	  #numberType 
+	  [options] = "numberTypeSelectOptions"
+	  formControlName = "numberType"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #productType 
+	  [options] = "productTypeSelectOptions"
+	  formControlName = "productType"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #itemCondition 
+	  [options] = "itemConditionSelectOptions"
+	  formControlName = "itemCondition"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #unit 
+	  [options] = "unitSelectOptions"
+	  formControlName = "unit"
+	></app-material-select>
+        </form>
+  
+      </mat-card-content >
+  
+      <mat-action-row>
+            <form [formGroup]="attachmentForm" class="form-container">
+                <app-multi-file-upload [service] = "dataItemService" [id]="dataItemForm.get('id').value"
+                    formControlName = "attachmentFiles">
+                </app-multi-file-upload>
+            </form>
+            <button (click) = "onConfirm()" mat-raised-button color = "primary" >
+                غلق
+            </button>
+        </mat-action-row>
+    </mat-card>
+
+    

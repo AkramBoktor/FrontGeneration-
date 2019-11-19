@@ -1,0 +1,126 @@
+
+<app-search-list-expansion-panel
+    dir="rtl"
+    [pageTitle] = "'رد الجهة علي التاشيرة'"
+    (beginSearch) = "onBeginSearch()"
+    (create) = "onCreate()"
+>
+    <ng-template searchFormContainer >
+        <form [formGroup] = "searchForm">
+           
+
+	<mat-form-field appearance="outline">
+	 <mat-label>تاريخ النشر</mat-label>
+	 <input matInput
+	  [matDatepicker] = "publicationDateDatepicker"
+	  autocomplete = "off"
+	  formControlName= "publicationDate"/>
+	 <mat-datepicker-toggle
+	   matSuffix
+	   [for]="publicationDateDatepicker"
+	 ></mat-datepicker-toggle>
+	 <mat-datepicker #publicationDateDatepicker></mat-datepicker>
+	 <mat-error *ngIf = "getControls('publicationDate').invalid" >
+	  {{ getControls('publicationDate')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>تاريخ الرد</mat-label>
+	 <input matInput
+	  [matDatepicker] = "replyDateDatepicker"
+	  autocomplete = "off"
+	  formControlName= "replyDate"/>
+	 <mat-datepicker-toggle
+	   matSuffix
+	   [for]="replyDateDatepicker"
+	 ></mat-datepicker-toggle>
+	 <mat-datepicker #replyDateDatepicker></mat-datepicker>
+	 <mat-error *ngIf = "getControls('replyDate').invalid" >
+	  {{ getControls('replyDate')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>كود القائم بالرد</mat-label>
+	 <input matInput formControlName="replierCode"/>
+	 <mat-error *ngIf = "getControls('replierCode').invalid" >
+	  {{ getControls('replierCode')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>هل توجد مرفقات</mat-label>
+	 <input matInput formControlName="hasAttachments"/>
+	 <mat-error *ngIf = "getControls('hasAttachments').invalid" >
+	  {{ getControls('hasAttachments')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>مسلسل</mat-label>
+	 <input matInput formControlName="serial"/>
+	 <mat-error *ngIf = "getControls('serial').invalid" >
+	  {{ getControls('serial')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>نص الرد</mat-label>
+	 <input matInput formControlName="replyText"/>
+	 <mat-error *ngIf = "getControls('replyText').invalid" >
+	  {{ getControls('replyText')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+           
+
+	<app-material-select appearance="outline"
+	  #publisherCode 
+	  [options] = "publisherCodeSelectOptions"
+	  formControlName = "publisherCode"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #publicationCodePlace 
+	  [options] = "publicationCodePlaceSelectOptions"
+	  formControlName = "publicationCodePlace"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #entityTypeCode 
+	  [options] = "entityTypeCodeSelectOptions"
+	  formControlName = "entityTypeCode"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #replyCode 
+	  [options] = "replyCodeSelectOptions"
+	  formControlName = "replyCode"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #entityReplyCode 
+	  [options] = "entityReplyCodeSelectOptions"
+	  formControlName = "entityReplyCode"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #orderTypeCode 
+	  [options] = "orderTypeCodeSelectOptions"
+	  formControlName = "orderTypeCode"
+	></app-material-select>
+
+        </form>
+    </ng-template >
+    <ng-template searchResultContainer >
+        <app-grid-control
+            #gridControl
+            [rowDataService] = "getRespondToVisaPaginatedSortedFiltered"
+            [columnOptions] = "columnOptions"
+            [gridHeaderOptions] = "gridHeaderOptions"
+            [searchInput] = "searchForm.value"
+            (deleteRow) = "onDeleteClicked($event)"
+        >
+        </app-grid-control>
+    </ng-template>
+</app-search-list-expansion-panel >

@@ -1,0 +1,64 @@
+
+<mat-card>
+    <mat-card-header>
+        <mat-card-title>بيانات مخزن</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+        <form [formGroup]="dataStoreForm" class="form-container">
+          
+
+	<mat-form-field appearance="outline">
+	 <mat-label>رقم المخزن   </mat-label>
+	 <input matInput formControlName="storeNumber"/>
+	 <mat-error *ngIf = "getControls('storeNumber').invalid" >
+	  {{ getControls('storeNumber')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>اسم المخزن   </mat-label>
+	 <input matInput formControlName="storeName"/>
+	 <mat-error *ngIf = "getControls('storeName').invalid" >
+	  {{ getControls('storeName')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>امين المخزن </mat-label>
+	 <input matInput formControlName="storekeeper"/>
+	 <mat-error *ngIf = "getControls('storekeeper').invalid" >
+	  {{ getControls('storekeeper')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label> عنوان المخزن</mat-label>
+	 <input matInput formControlName="storeAddress"/>
+	 <mat-error *ngIf = "getControls('storeAddress').invalid" >
+	  {{ getControls('storeAddress')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+          
+
+        </form>
+    </mat-card-content>
+
+    <mat-divider></mat-divider>
+
+	<mat-card-actions>
+			<form [formGroup]="attachmentForm" class="form-container">
+                <app-multi-file-upload [service] = "dataStoreService" [id]="dataStoreForm.get('id').value"
+                    formControlName = "attachmentFiles">
+                </app-multi-file-upload>
+            </form>
+            <button
+                color = "primary"
+                type = "submit"
+                (click) = "onSubmit()"
+                [disabled] = "dataStoreForm.invalid"
+                mat-raised-button>
+                حفظ
+            </button>
+    </mat-card-actions>
+</mat-card>
+

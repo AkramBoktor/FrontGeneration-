@@ -1,0 +1,44 @@
+    <!-- <ng-container>
+        <mat-form-field class="search-input">
+            <input
+                matInput
+                autocomplete="off"
+                placeholder="بحث في الأعمدة"
+                (change)="searchChanged($event.target.value)"
+            />
+        </mat-form-field>
+    </ng-container> -->
+    <mat-toolbar class="grid-toolbar" *ngIf="showToolBar">
+        <button mat-button color="light" (click)="create()">
+            <mat-icon>add</mat-icon>
+        </button>
+    </mat-toolbar> 
+    <ng-container class="table-container">
+        <ag-grid-angular 
+            #agGrid
+            class="ag-theme-material"
+            [enableRtl]="true"
+            [rowData]="rowData"
+            [columnDefs]="columnOptions"
+            (gridReady)="onGridReady($event)"
+            [defaultColDef]="gridHeaderOptions.defaultColDef"
+            [rowModelType]="gridHeaderOptions.rowModelType"
+            [localeText]="gridHeaderOptions.localeText"
+            [cacheQuickFilter]="true"
+            [multiSortKey]="'ctrl'"
+            [domLayout]="gridHeaderOptions.domLayout"
+            [enableCellTextSelection]="gridHeaderOptions.enableCellTextSelection"
+            [rowSelection]="gridHeaderOptions.rowSelection"
+            
+            [pagination]="true"
+            [paginationPageSize]="gridHeaderOptions.pageSize"
+            [cacheBlockSize]="gridHeaderOptions.pageSize">
+        </ag-grid-angular>
+        <mat-paginator 
+            #paginator
+            [length]="_rowCount"
+            [pageSize]="gridHeaderOptions.pageSize"
+            [pageSizeOptions]="[5,10,20,50]"
+            (page)="onPageEvent($event)">
+        </mat-paginator>
+    </ng-container>

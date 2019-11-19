@@ -1,0 +1,91 @@
+
+<app-new-form-layout
+    dir="rtl"
+    (submitClicked) = "onSubmit()"
+    (back) = "onBack()"
+    [pageTitle] = "'تسليم وتسلم المخازن لامناء المخازن'"
+>
+    <ng-template newFormContainer >
+        <form [formGroup] = "deliveryWarehousesToKeepersForm">
+         
+
+	<mat-form-field appearance="outline">
+	 <mat-label>رقم المخزن</mat-label>
+	 <input matInput formControlName="storeNumber"/>
+	 <mat-error *ngIf = "getControls('storeNumber').invalid" >
+	  {{ getControls('storeNumber')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>امين المخزن الحالي </mat-label>
+	 <input matInput formControlName="currentStorekeeper" [disableControl]="true" />
+	 <mat-error *ngIf = "getControls('currentStorekeeper').invalid" >
+	  {{ getControls('currentStorekeeper')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>تاريخ الاستلام </mat-label>
+	 <input matInput
+	 [disableControl]="true" 
+	  [matDatepicker] = "receivedDateDatepicker"
+	  autocomplete = "off"
+	  formControlName= "receivedDate"/>
+	 <mat-datepicker-toggle
+	   matSuffix
+	   [for]="receivedDateDatepicker"
+	 ></mat-datepicker-toggle>
+	 <mat-datepicker #receivedDateDatepicker></mat-datepicker>
+	 <mat-error *ngIf = "getControls('receivedDate').invalid" >
+	  {{ getControls('receivedDate')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>رقم الموظف المستلم</mat-label>
+	 <input matInput formControlName="employeeCode"/>
+	 <mat-error *ngIf = "getControls('employeeCode').invalid" >
+	  {{ getControls('employeeCode')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>تاريخ التسليم</mat-label>
+	 <input matInput
+	  [matDatepicker] = "deliveryDateDatepicker"
+	  autocomplete = "off"
+	  formControlName= "deliveryDate"/>
+	 <mat-datepicker-toggle
+	   matSuffix
+	   [for]="deliveryDateDatepicker"
+	 ></mat-datepicker-toggle>
+	 <mat-datepicker #deliveryDateDatepicker></mat-datepicker>
+	 <mat-error *ngIf = "getControls('deliveryDate').invalid" >
+	  {{ getControls('deliveryDate')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+         
+
+        </form>
+
+        <mat-divider></mat-divider>
+
+		<mat-card-actions>
+			<form [formGroup]="attachmentForm" class="form-container">
+                <app-multi-file-upload [service] = "deliveryWarehousesToKeepersService" [id]="deliveryWarehousesToKeepersForm.get('id').value"
+                    formControlName = "attachmentFiles">
+                </app-multi-file-upload>
+            </form>
+            <button
+                type="submit"
+                (click)="onSubmit()"
+                [disabled]="deliveryWarehousesToKeepersForm.invalid"
+                mat-raised-button
+                color = "primary">
+             حفظ
+            </button>
+        </mat-card-actions>
+    </ng-template >
+</app-new-form-layout >
+
