@@ -27,11 +27,16 @@
                             "src/assets",
                             "src/app/main/angular-material-elements"
                         ],
-                        "styles": [
-                            "src/styles.scss"
-                        ],
+                        "styles": ["src/styles.scss"],
                         "scripts": [],
-                        "showCircularDependencies": false
+                        "showCircularDependencies": false,
+                        "stylePreprocessorOptions": {
+                            "includePaths": [
+                                "src/",
+                                "src/@fuse",
+                                "src/@fuse/"
+                            ]
+                        }
                     },
                     "configurations": {
                         "production": {
@@ -103,13 +108,8 @@
                         "polyfills": "src/polyfills.ts",
                         "tsConfig": "tsconfig.spec.json",
                         "karmaConfig": "karma.conf.js",
-                        "assets": [
-                            "src/favicon.ico",
-                            "src/assets"
-                        ],
-                        "styles": [
-                            "src/styles.scss"
-                        ],
+                        "assets": ["src/favicon.ico", "src/assets"],
+                        "styles": ["src/styles.scss"],
                         "scripts": []
                     }
                 },
