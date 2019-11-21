@@ -1,0 +1,90 @@
+
+<app-new-form-layout
+    dir="rtl"
+    (submitClicked) = "onSubmit()"
+    (back) = "onBack()"
+    [pageTitle] = "'حدود الموقع العام'"
+>
+    <ng-template newFormContainer >
+        <form [formGroup] = "boundariesOfThePublicSiteForm">
+         
+
+	<mat-form-field appearance="outline">
+	 <mat-label>كود المبنى</mat-label>
+	 <input matInput formControlName="buildingCode"/>
+	 <mat-error *ngIf = "getControls('buildingCode').invalid" >
+	  {{ getControls('buildingCode')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>طول الحد</mat-label>
+	 <input matInput formControlName="length"/>
+	 <mat-error *ngIf = "getControls('length').invalid" >
+	  {{ getControls('length')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>زاويه ميل الحد</mat-label>
+	 <input matInput formControlName="slope"/>
+	 <mat-error *ngIf = "getControls('slope').invalid" >
+	  {{ getControls('slope')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>وصف الحد</mat-label>
+	 <input matInput formControlName="description"/>
+	 <mat-error *ngIf = "getControls('description').invalid" >
+	  {{ getControls('description')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+         
+
+	<app-material-select appearance="outline" [disabled]="true" 
+	  #regionalCenterCode 
+	  [options] = "regionalCenterCodeSelectOptions"
+	  formControlName = "regionalCenterCode"
+	></app-material-select>
+
+	<app-material-select appearance="outline" [disabled]="true" 
+	  #branchCode 
+	  [options] = "branchCodeSelectOptions"
+	  formControlName = "branchCode"
+	></app-material-select>
+
+	<app-material-select appearance="outline" [disabled]="true" 
+	  #direction 
+	  [options] = "directionSelectOptions"
+	  formControlName = "direction"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #neighborState 
+	  [options] = "neighborStateSelectOptions"
+	  formControlName = "neighborState"
+	></app-material-select>
+
+        </form>
+
+        <mat-divider></mat-divider>
+
+		<mat-card-actions>
+			<form [formGroup]="attachmentForm" class="form-container">
+                <app-multi-file-upload [service] = "boundariesOfThePublicSiteService" [id]="boundariesOfThePublicSiteForm.get('id').value"
+                    formControlName = "attachmentFiles">
+                </app-multi-file-upload>
+            </form>
+            <button
+                type="submit"
+                (click)="onSubmit()"
+                [disabled]="boundariesOfThePublicSiteForm.invalid"
+                mat-raised-button
+                color = "primary">
+             حفظ
+            </button>
+        </mat-card-actions>
+    </ng-template >
+</app-new-form-layout >
+
