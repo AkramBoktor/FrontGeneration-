@@ -3057,11 +3057,449 @@ export const listMenuConfig: ListMenuConfig = {
 					type: 'collapsable',
 					icon: 'assignment',
 					children: []
+				},
+			]
+		}
+	],
+	'educational-study': [
+		{
+			id: 'educational-study',
+			title: 'برنامج الدراسة التربوية',
+			type: 'group',
+			icon: 'app',
+			children: [
+				{
+					id: 'Educational Study Config',
+					title: 'الأعدادات',
+					type: 'collapsable',
+					icon: 'build',
+					children: [
+						{
+							id: 'studyreasons',
+							title: 'سبب الدراسة',
+							type: 'item',
+							url: '/lookup/studyreasons',
+							exactMatch: true
+						},
+						{
+							id: 'sectionsorcenters',
+							title: 'مركز/القسم‎',
+							type: 'item',
+							url: '/lookup/sectionsorcenters',
+							exactMatch: true
+						},
+						{
+							id: 'villages',
+							title: 'قري',
+							type: 'item',
+							url: '/lookup/villages',
+							exactMatch: true
+						},
+						{
+							id: 'landownerships',
+							title: 'ملكية ارض',
+							type: 'item',
+							url: '/lookup/landownerships',
+							exactMatch: true
+						},
+						{
+							id: 'areas',
+							title: 'مناطق',
+							type: 'item',
+							url: '/lookup/areas',
+							exactMatch: true
+						},
+						{
+							id: 'regionpopulationdensities',
+							title: 'الكثافة السكانية للمنطقة',
+							type: 'item',
+							url: '/lookup/regionpopulationdensities',
+							exactMatch: true
+						},
+						{
+							id: 'regionadministrativeclassifications',
+							title: 'التصنيف الاداري للمنطقة',
+							type: 'item',
+							url: '/lookup/regionadministrativeclassifications',
+							exactMatch: true
+						},
+						{
+							id: 'educationalneedattitudes',
+							title: 'موقف الاحتياج التربوي',
+							type: 'item',
+							url: '/lookup/educationalneedattitudes',
+							exactMatch: true
+						},
+						{
+							id: 'educationallevels',
+							title: 'المرحلة التعليمية',
+							type: 'item',
+							url: '/lookup/educationallevels',
+							exactMatch: true
+						},
+						{
+							id: 'educationtypes',
+							title: 'نوعية التعليم',
+							type: 'item',
+							url: '/lookup/educationtypes',
+							exactMatch: true
+						},
+						{
+							id: 'pupilstypes',
+							title: 'نوع التلاميذ',
+							type: 'item',
+							url: '/lookup/pupilstypes',
+							exactMatch: true
+						},
+						{
+							id: 'schoolsurroundingimpacts',
+							title: 'التاثير علي المدارس المحيطة',
+							type: 'item',
+							url: '/lookup/schoolsurroundingimpacts',
+							exactMatch: true
+						},
+						{
+							id: 'positionareaneeds',
+							title: 'موقف منطقة الاحتياج',
+							type: 'item',
+							url: '/lookup/positionareaneeds',
+							exactMatch: true
+						},
+						{
+							id: 'secondperioddepartmentlocalizations',
+							title: 'الفترة الثانية لدائرة التوطين',
+							type: 'item',
+							url: '/lookup/secondperioddepartmentlocalizations',
+							exactMatch: true
+						}
+					]
+				},
+				{
+					id: 'Educational Study Program',
+					title: 'البرامج',
+					type: 'collapsable',
+					icon: 'apps',
+					children: [
+						{
+							id: 'Data of educational study',
+							title: 'بيانات الدراسة التربوية',
+							type: 'item',
+							url: '/educational-study/data-of-educational-study',
+							exactMatch: true
+						}
+					]
+				},
+				{
+					id: 'Educational Study Report',
+					title: 'التقارير',
+					type: 'collapsable',
+					icon: 'assignment',
+					children: []
+				}
+			]
+		}
+	],	
+	'organization-and-management-housing': [
+		{
+			id: 'organization-and-management-housing',
+			title: 'برنامج تنظيم واداره - تسكين',
+			type: 'group',
+			icon: 'app',
+			children: [
+				{
+					id: 'Organization and management  housing Config',
+					title: 'الأعدادات',
+					type: 'collapsable',
+					icon: 'build',
+					children: [
+						{
+							id: 'branchcodes',
+							title: 'كود الفرع',
+							type: 'item',
+							url: '/lookup/branchcodes',
+							exactMatch: true
+						},
+						{
+							id: 'jobtypes',
+							title: 'انواع الوظائف',
+							type: 'item',
+							url: '/lookup/jobtypes',
+							exactMatch: true
+						},
+						{
+							id: 'constructiontypes',
+							title: 'انواع الانشاء',
+							type: 'item',
+							url: '/lookup/constructiontypes',
+							exactMatch: true
+						},
+						{
+							id: 'offeringtypes',
+							title: 'انواع الطرح',
+							type: 'item',
+							url: '/lookup/offeringtypes',
+							exactMatch: true
+						},
+						{
+							id: 'genders',
+							title: 'النوع‎',
+							type: 'item',
+							url: '/lookup/genders',
+							exactMatch: true
+						},
+						{
+							id: 'centraldepartments',
+							title: 'الادارات المركزية',
+							type: 'item',
+							url: '/lookup/centraldepartments',
+							exactMatch: true
+						},
+						{
+							id: 'subdepartments',
+							title: 'الادارات الفرعية',
+							type: 'item',
+							url: '/lookup/subdepartments',
+							exactMatch: true
+						},
+						{
+							id: 'sectionsorcenters',
+							title: 'مركز/القسم‎',
+							type: 'item',
+							url: '/lookup/sectionsorcenters',
+							exactMatch: true
+						},
+						{
+							id: 'endingsupervisionreasons',
+							title: 'كود سبب انهاء اشراف',
+							type: 'item',
+							url: '/lookup/endingsupervisionreasons',
+							exactMatch: true
+						},
+						{
+							id: 'areas',
+							title: 'مناطق',
+							type: 'item',
+							url: '/lookup/areas',
+							exactMatch: true
+						}
+					]
+				},
+				{
+					id: 'Organization and management  housing Program',
+					title: 'البرامج',
+					type: 'collapsable',
+					icon: 'apps',
+					children: [
+						{
+							id: 'Total functional course',
+							title: ' اجمالى المقرر الوظيفى',
+							type: 'item',
+							url: '/organization-and-management-housing/total-functional-course',
+							exactMatch: true
+						},
+						{
+							id: 'Introducing exception for branches Engineer',
+							title: 'ادخال الاثتثناء للفروع (المهندس)',
+							type: 'item',
+							url: '/organization-and-management-housing/introducing-exception-for-branches-engineer',
+							exactMatch: true
+						},
+						{
+							id: 'Complete the data of supervisor engineer',
+							title: 'استكمال بيانات مهندس مشرف',
+							type: 'item',
+							url: '/organization-and-management-housing/complete-the-data-of-supervisor-engineer',
+							exactMatch: true
+						},
+						{
+							id: 'Assign engineer outside department',
+							title: 'اسناد اشراف مهندسين من خارج قسم التنفيذ',
+							type: 'item',
+							url: '/organization-and-management-housing/assign-engineer-outside-department',
+							exactMatch: true
+						},
+						{
+							id: 'Assigning maintenance electricity project to electrical engineer',
+							title: 'اسناد مشروع صيانه ( كهرباء) لمهندس كهرباء',
+							type: 'item',
+							url: '/organization-and-management-housing/assigning-maintenance-electricity-project-to-electrical-engineer',
+							exactMatch: true
+						},
+						{
+							id: 'Job placement of the departments of the body',
+							title: 'التسكين الوظيفى للادارات الهيئه',
+							type: 'item',
+							url: '/organization-and-management-housing/job-placement-of-the-departments-of-the-body',
+							exactMatch: true
+						},
+						{
+							id: 'Termination of the employees job placement',
+							title: 'انهاء تسكين الوظيفى للموظف',
+							type: 'item',
+							url: '/organization-and-management-housing/termination-of-the-employees-job-placement',
+							exactMatch: true
+						},
+						{
+							id: 'Ending placement of executive engineer',
+							title: 'انهاء تسكين مهندس تنفيذى على مشروع معين (الفروع) ظروف طارئه',
+							type: 'item',
+							url: '/organization-and-management-housing/ending-placement-of-executive-engineer',
+							exactMatch: true
+						},
+						{
+							id: 'Career Programs',
+							title: 'برنامج المقررات الوظيفيه',
+							type: 'item',
+							url: '/organization-and-management-housing/career-programs',
+							exactMatch: true
+						},
+						{
+							id: 'Job placement for an executive engineer without a project',
+							title: 'تسكين وظيفى لمهندس تنفيذى بدون مشروع ',
+							type: 'item',
+							url: '/organization-and-management-housing/job-placement-for-an-executive-engineer-without-a-project',
+							exactMatch: true
+						},
+						{
+							id: 'Reason for ending engineer housing on project',
+							title: 'كود سبب انهاء تسكين مهندس على مشروع',
+							type: 'item',
+							url: '/organization-and-management-housing/reason-for-ending-engineer-housing-on-project',
+							exactMatch: true
+						}
+					]
+				},
+				{
+					id: 'Organization and management  housing Report',
+					title: 'التقارير',
+					type: 'collapsable',
+					icon: 'assignment',
+					children: []
+				}
+			]
+		}
+	],
+	'weights-differences': [
+		{
+			id: 'weights-differences',
+			title: 'برنامج  فروق الاوزان',
+			type: 'group',
+			icon: 'app',
+			children: [
+				{
+					id: 'Weights differences Config',
+					title: 'الأعدادات',
+					type: 'collapsable',
+					icon: 'build',
+					children: [
+						{
+							id: 'offeringtypes',
+							title: 'انواع الطرح',
+							type: 'item',
+							url: '/lookup/offeringtypes',
+							exactMatch: true
+						},
+						{
+							id: 'constructiontypes',
+							title: 'انواع الانشاء',
+							type: 'item',
+							url: '/lookup/constructiontypes',
+							exactMatch: true
+						},
+						{
+							id: 'governorates',
+							title: 'المحافظة',
+							type: 'item',
+							url: '/lookup/governorates',
+							exactMatch: true
+						}
+					]
+				},
+				{
+					id: 'Weights differences Program',
+					title: 'البرامج',
+					type: 'collapsable',
+					icon: 'apps',
+					children: [
+						{
+							id: 'The planned start date for the schedule',
+							title: 'تاريخ البداية المخطط للجدول الزمني',
+							type: 'item',
+							url: '/weights-differences/the-planned-start-date-for-the-schedule',
+							exactMatch: true
+						},
+						{
+							id: 'Weights Factor',
+							title: 'معامل الاوزان',
+							type: 'item',
+							url: '/weights-differences/weights-factor',
+							exactMatch: true
+						},
+						{
+							id: 'Assay items due to weights factor',
+							title: 'بنود المقايسة المستحقة لمعامل الاوزان',
+							type: 'item',
+							url: '/weights-differences/assay-items-due-to-weights-factor',
+							exactMatch: true
+						},
+						{
+							id: 'the movement of material indices',
+							title: 'حركة الارقام القياسية للمواد',
+							type: 'item',
+							url: '/weights-differences/the-movement-of-material-indices',
+							exactMatch: true
+						},
+						{
+							id: 'Timetable',
+							title: 'الجدول الزمني',
+							type: 'item',
+							url: '/weights-differences/timetable',
+							exactMatch: true
+						},
+						{
+							id: 'Link item to TimeTable',
+							title: ' ربط البند بانشطة الجدول الزمني',
+							type: 'item',
+							url: '/weights-differences/link-item-to-timetable',
+							exactMatch: true
+						},
+						{
+							id: 'Elements of the measured items due to the weights factor of a building',
+							title: 'عناصر البنود المقايسة المستحقة لمعامل الاوزان لمبني',
+							type: 'item',
+							url: '/weights-differences/elements-of-the-measured-items-due-to-the-weights-factor-of-a-building',
+							exactMatch: true
+						},
+						{
+							id: 'Link Items To Object Codes',
+							title: 'ربط البنود باكواد العناصر',
+							type: 'item',
+							url: '/weights-differences/link-items-to-object-codes',
+							exactMatch: true
+						},
+						{
+							id: 'Schedule at the building level',
+							title: 'الجدول الزمني علي مستوي المبني',
+							type: 'item',
+							url: '/weights-differences/schedule-at-the-building-level',
+							exactMatch: true
+						}
+					]
+				},
+				{
+					id: 'Weights differences Report',
+					title: 'التقارير',
+					type: 'collapsable',
+					icon: 'assignment',
+					children: []
 				}
 			]
 		}
 	]
 };
+
+
+
 
 export interface ListMenuConfig {
 	[key: string]: FuseNavigation[];

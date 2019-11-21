@@ -329,6 +329,7 @@ const routes: Routes = [
             },
 
             {
+                // tslint:disable-next-line: max-line-length
                 path: 'assay-unctions-of-items-and-elements-of-the-project', loadChildren: './components/assay-unctions-of-items-and-elements-of-the-project/assay-unctions-of-items-and-elements-of-the-project.module#AssayUnctionsOfItemsAndElementsOfTheProjectModule',
                 data: {
                     menuName: 'assay-unctions-of-items-and-elements-of-the-project'
@@ -557,10 +558,7 @@ const routes: Routes = [
                 data: {
                     menuName: 'probes'
                 }
-            },
-
-
-
+            }
         ]
     },
     {
