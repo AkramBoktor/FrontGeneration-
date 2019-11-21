@@ -1,0 +1,78 @@
+
+<app-new-form-layout
+    dir="rtl"
+    (submitClicked) = "onSubmit()"
+    (back) = "onBack()"
+    [pageTitle] = "'بيانات المدرسة '"
+>
+    <ng-template newFormContainer >
+        <form [formGroup] = "schoolDataForm">
+         
+
+	<mat-form-field appearance="outline">
+	 <mat-label>كود المبنى</mat-label>
+	 <input matInput formControlName="buildingCode"/>
+	 <mat-error *ngIf = "getControls('buildingCode').invalid" >
+	  {{ getControls('buildingCode')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+         
+
+	<app-material-select appearance="outline"
+	  #regionalCenterCode 
+	  [options] = "regionalCenterCodeSelectOptions"
+	  formControlName = "regionalCenterCode"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #branchCode 
+	  [options] = "branchCodeSelectOptions"
+	  formControlName = "branchCode"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #dependencyCode 
+	  [options] = "dependencyCodeSelectOptions"
+	  formControlName = "dependencyCode"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #phaseCode 
+	  [options] = "phaseCodeSelectOptions"
+	  formControlName = "phaseCode"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #educationQualityCode 
+	  [options] = "educationQualityCodeSelectOptions"
+	  formControlName = "educationQualityCode"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #periodsOfUseNumber 
+	  [options] = "periodsOfUseNumberSelectOptions"
+	  formControlName = "periodsOfUseNumber"
+	></app-material-select>
+
+        </form>
+
+        <mat-divider></mat-divider>
+
+		<mat-card-actions>
+			<form [formGroup]="attachmentForm" class="form-container">
+                <app-multi-file-upload [service] = "schoolDataService" [id]="schoolDataForm.get('id').value"
+                    formControlName = "attachmentFiles">
+                </app-multi-file-upload>
+            </form>
+            <button
+                type="submit"
+                (click)="onSubmit()"
+                [disabled]="schoolDataForm.invalid"
+                mat-raised-button
+                color = "primary">
+             حفظ
+            </button>
+        </mat-card-actions>
+    </ng-template >
+</app-new-form-layout >
+
