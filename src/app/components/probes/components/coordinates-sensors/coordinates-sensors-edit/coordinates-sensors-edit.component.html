@@ -1,0 +1,64 @@
+
+<mat-card>
+    <mat-card-header>
+        <mat-card-title>احداثيات الجسات</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+        <form [formGroup]="coordinatesSensorsForm" class="form-container">
+          
+
+	<mat-form-field appearance="outline">
+	 <mat-label>كود المبنى</mat-label>
+	 <input matInput formControlName="buildingCode"/>
+	 <mat-error *ngIf = "getControls('buildingCode').invalid" >
+	  {{ getControls('buildingCode')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>رقم الجسه</mat-label>
+	 <input matInput formControlName="sensorNumber"/>
+	 <mat-error *ngIf = "getControls('sensorNumber').invalid" >
+	  {{ getControls('sensorNumber')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>الاحداثي السيني</mat-label>
+	 <input matInput formControlName="coordinatesX"/>
+	 <mat-error *ngIf = "getControls('coordinatesX').invalid" >
+	  {{ getControls('coordinatesX')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>الاحداثي الصادي</mat-label>
+	 <input matInput formControlName="coordinatesY"/>
+	 <mat-error *ngIf = "getControls('coordinatesY').invalid" >
+	  {{ getControls('coordinatesY')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+          
+
+        </form>
+    </mat-card-content>
+
+    <mat-divider></mat-divider>
+
+	<mat-card-actions>
+			<form [formGroup]="attachmentForm" class="form-container">
+                <app-multi-file-upload [service] = "coordinatesSensorsService" [id]="coordinatesSensorsForm.get('id').value"
+                    formControlName = "attachmentFiles">
+                </app-multi-file-upload>
+            </form>
+            <button
+                color = "primary"
+                type = "submit"
+                (click) = "onSubmit()"
+                [disabled] = "coordinatesSensorsForm.invalid"
+                mat-raised-button>
+                حفظ
+            </button>
+    </mat-card-actions>
+</mat-card>
+

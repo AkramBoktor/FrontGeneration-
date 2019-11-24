@@ -3057,10 +3057,85 @@ export const listMenuConfig: ListMenuConfig = {
 					type: 'collapsable',
 					icon: 'assignment',
 					children: []
-				}
+				},
 			]
 		}
-	]
+	],
+		"probes": [
+			{
+				"id": "probes",
+				"title": "الجسات",
+				"type": "group",
+				"icon": "app",
+				"children": [
+					{
+						"id": "Probes Config",
+						"title": "الأعدادات",
+						"type": "collapsable",
+						"icon": "build",
+						"children": [
+							{
+								"id": "governorates",
+								"title": "المحافظة",
+								"type": "item",
+								"url": "/lookup/governorates",
+								"exactMatch": true
+							},
+							{
+								"id": "firstlevelcodes",
+								"title": "كود المستوي الاول",
+								"type": "item",
+								"url": "/lookup/firstlevelcodes",
+								"exactMatch": true
+							}
+						]
+					},
+					{
+						"id": "Probes Program",
+						"title": "البرامج",
+						"type": "collapsable",
+						"icon": "apps",
+						"children": [
+							{
+								"id": "General data on the probes",
+								"title": "بيانات عامه عن الجسات",
+								"type": "item",
+								"url": "/probes/general-data-on-the-probes",
+								"exactMatch": true
+							},
+							{
+								"id": "Coordinates Sensors",
+								"title": "احداثيات الجسات",
+								"type": "item",
+								"url": "/probes/coordinates-sensors",
+								"exactMatch": true
+							},
+							{
+								"id": "Analysis value",
+								"title": "قيم التحليل",
+								"type": "item",
+								"url": "/probes/analysis-value",
+								"exactMatch": true
+							},
+							{
+								"id": "Statements of Sensors",
+								"title": "بيانات توصيات الجسات",
+								"type": "item",
+								"url": "/probes/statements-of-sensors",
+								"exactMatch": true
+							}
+						]
+					},
+					{
+						"id": "Probes Report",
+						"title": "التقارير",
+						"type": "collapsable",
+						"icon": "assignment",
+						"children": []
+					}
+				]
+			}
+		]
 };
 
 export interface ListMenuConfig {

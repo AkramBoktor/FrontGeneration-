@@ -50,12 +50,16 @@ export class DataService<T> {
   }
   public postAttachments(id: number, fileItems: Attachment[]): Observable<{ status: number, message: number } | Attachment[]> {
     const formData = new FormData();
-    for (const fileItem of fileItems) {
-      formData.append('Files', fileItem.file);
-    }
-    formData.append('ServiceName', this.url);
-    formData.append('EntityId', id ? id.toString() : '0');
 
+    if (fileItems) {
+      for (const fileItem of fileItems) {
+        formData.append('Files', fileItem.file);
+      }
+      formData.append('ServiceName', this.url);
+      formData.append('EntityId', id ? id.toString() : '0');
+  
+    }
+    
 
     return this.httpClient.post<any>(`${this.attachmentUrlPrefix}/attachments`, formData, {
       headers: this.formHeaders, reportProgress: true,
