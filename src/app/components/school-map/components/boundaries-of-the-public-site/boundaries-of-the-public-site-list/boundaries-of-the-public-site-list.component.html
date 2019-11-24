@@ -1,0 +1,58 @@
+
+<app-search-list-expansion-panel
+    dir="rtl"
+    [pageTitle] = "'حدود الموقع العام'"
+    (beginSearch) = "onBeginSearch()"
+    (create) = "onCreate()"
+>
+    <ng-template searchFormContainer >
+        <form [formGroup] = "searchForm">
+           
+
+	<mat-form-field appearance="outline">
+	 <mat-label>كود المبنى</mat-label>
+	 <input matInput formControlName="buildingCode"/>
+	 <mat-error *ngIf = "getControls('buildingCode').invalid" >
+	  {{ getControls('buildingCode')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>طول الحد</mat-label>
+	 <input matInput formControlName="length"/>
+	 <mat-error *ngIf = "getControls('length').invalid" >
+	  {{ getControls('length')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>زاويه ميل الحد</mat-label>
+	 <input matInput formControlName="slope"/>
+	 <mat-error *ngIf = "getControls('slope').invalid" >
+	  {{ getControls('slope')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>وصف الحد</mat-label>
+	 <input matInput formControlName="description"/>
+	 <mat-error *ngIf = "getControls('description').invalid" >
+	  {{ getControls('description')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+           
+
+        </form>
+    </ng-template >
+    <ng-template searchResultContainer >
+        <app-grid-control
+            #gridControl
+            [rowDataService] = "getBoundariesOfThePublicSitesPaginatedSortedFiltered"
+            [columnOptions] = "columnOptions"
+            [gridHeaderOptions] = "gridHeaderOptions"
+            [searchInput] = "searchForm.value"
+            (deleteRow) = "onDeleteClicked($event)"
+        >
+        </app-grid-control>
+    </ng-template>
+</app-search-list-expansion-panel >

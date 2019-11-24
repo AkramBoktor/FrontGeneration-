@@ -1,0 +1,82 @@
+
+<app-search-list-expansion-panel
+    dir="rtl"
+    [pageTitle] = "'المساحات'"
+    (beginSearch) = "onBeginSearch()"
+    (create) = "onCreate()"
+>
+    <ng-template searchFormContainer >
+        <form [formGroup] = "searchForm">
+           
+
+	<mat-form-field appearance="outline">
+	 <mat-label>كود المبنى</mat-label>
+	 <input matInput formControlName="buildingCode"/>
+	 <mat-error *ngIf = "getControls('buildingCode').invalid" >
+	  {{ getControls('buildingCode')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>مساحه مباني الدور الارضى</mat-label>
+	 <input matInput formControlName="groundFloorArea"/>
+	 <mat-error *ngIf = "getControls('groundFloorArea').invalid" >
+	  {{ getControls('groundFloorArea')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>مساحه الافنيه</mat-label>
+	 <input matInput formControlName="backyardArea"/>
+	 <mat-error *ngIf = "getControls('backyardArea').invalid" >
+	  {{ getControls('backyardArea')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>مساحه المناطق الخضراء</mat-label>
+	 <input matInput formControlName="greenAreas"/>
+	 <mat-error *ngIf = "getControls('greenAreas').invalid" >
+	  {{ getControls('greenAreas')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>مساحه الملاعب</mat-label>
+	 <input matInput formControlName="playgroundArea"/>
+	 <mat-error *ngIf = "getControls('playgroundArea').invalid" >
+	  {{ getControls('playgroundArea')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>مساحه الارصفه</mat-label>
+	 <input matInput formControlName="sideWalksArea"/>
+	 <mat-error *ngIf = "getControls('sideWalksArea').invalid" >
+	  {{ getControls('sideWalksArea')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>اجمالى مساحه الكليه للموقع</mat-label>
+	 <input matInput formControlName="siteTotalArea"/>
+	 <mat-error *ngIf = "getControls('siteTotalArea').invalid" >
+	  {{ getControls('siteTotalArea')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+           
+
+        </form>
+    </ng-template >
+    <ng-template searchResultContainer >
+        <app-grid-control
+            #gridControl
+            [rowDataService] = "getAreasPaginatedSortedFiltered"
+            [columnOptions] = "columnOptions"
+            [gridHeaderOptions] = "gridHeaderOptions"
+            [searchInput] = "searchForm.value"
+            (deleteRow) = "onDeleteClicked($event)"
+        >
+        </app-grid-control>
+    </ng-template>
+</app-search-list-expansion-panel >

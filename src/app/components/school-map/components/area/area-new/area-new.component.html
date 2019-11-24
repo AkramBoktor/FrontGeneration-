@@ -1,0 +1,102 @@
+
+<app-new-form-layout
+    dir="rtl"
+    (submitClicked) = "onSubmit()"
+    (back) = "onBack()"
+    [pageTitle] = "'المساحة'"
+>
+    <ng-template newFormContainer >
+        <form [formGroup] = "areaForm">
+         
+
+	<mat-form-field appearance="outline">
+	 <mat-label>كود المبنى</mat-label>
+	 <input matInput formControlName="buildingCode"/>
+	 <mat-error *ngIf = "getControls('buildingCode').invalid" >
+	  {{ getControls('buildingCode')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>مساحه مباني الدور الارضى</mat-label>
+	 <input matInput formControlName="groundFloorArea"/>
+	 <mat-error *ngIf = "getControls('groundFloorArea').invalid" >
+	  {{ getControls('groundFloorArea')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>مساحه الافنيه</mat-label>
+	 <input matInput formControlName="backyardArea"/>
+	 <mat-error *ngIf = "getControls('backyardArea').invalid" >
+	  {{ getControls('backyardArea')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>مساحه المناطق الخضراء</mat-label>
+	 <input matInput formControlName="greenAreas"/>
+	 <mat-error *ngIf = "getControls('greenAreas').invalid" >
+	  {{ getControls('greenAreas')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>مساحه الملاعب</mat-label>
+	 <input matInput formControlName="playgroundArea"/>
+	 <mat-error *ngIf = "getControls('playgroundArea').invalid" >
+	  {{ getControls('playgroundArea')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>مساحه الارصفه</mat-label>
+	 <input matInput formControlName="sideWalksArea"/>
+	 <mat-error *ngIf = "getControls('sideWalksArea').invalid" >
+	  {{ getControls('sideWalksArea')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>اجمالى مساحه الكليه للموقع</mat-label>
+	 <input matInput formControlName="siteTotalArea"/>
+	 <mat-error *ngIf = "getControls('siteTotalArea').invalid" >
+	  {{ getControls('siteTotalArea')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+         
+
+	<app-material-select appearance="outline"
+	  #regionalCenterCode 
+	  [options] = "regionalCenterCodeSelectOptions"
+	  formControlName = "regionalCenterCode"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #branchCode 
+	  [options] = "branchCodeSelectOptions"
+	  formControlName = "branchCode"
+	></app-material-select>
+
+        </form>
+
+        <mat-divider></mat-divider>
+
+		<mat-card-actions>
+			<form [formGroup]="attachmentForm" class="form-container">
+                <app-multi-file-upload [service] = "areaService" [id]="areaForm.get('id').value"
+                    formControlName = "attachmentFiles">
+                </app-multi-file-upload>
+            </form>
+            <button
+                type="submit"
+                (click)="onSubmit()"
+                [disabled]="areaForm.invalid"
+                mat-raised-button
+                color = "primary">
+             حفظ
+            </button>
+        </mat-card-actions>
+    </ng-template >
+</app-new-form-layout >
+
