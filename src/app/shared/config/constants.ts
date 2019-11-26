@@ -1,6 +1,6 @@
 export class Constants {
   // public static baseApiUrl = 'https://securingangularappscourse-api.azurewebsites.net/api/';
-  public static baseUrl = 'http://localhost:7159';
+  public static baseUrl = 'http://localhost:8002';
   public static baseApiUrl = Constants.baseUrl + `/api`;
   public static baseAttachmentUrl = `http://mahmoudexcel-001-site1.btempurl.com/api`;
 

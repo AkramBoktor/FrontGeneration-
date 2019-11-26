@@ -1,0 +1,246 @@
+
+<app-new-form-layout
+    dir="rtl"
+    (submitClicked) = "onSubmit()"
+    (back) = "onBack()"
+    [pageTitle] = "'الملحق'"
+>
+    <ng-template newFormContainer >
+        <form [formGroup] = "extensionForm">
+         
+
+	<mat-form-field appearance="outline">
+	 <mat-label>كود المبنى</mat-label>
+	 <input matInput formControlName="buildingCode"/>
+	 <mat-error *ngIf = "getControls('buildingCode').invalid" >
+	  {{ getControls('buildingCode')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>مسلسل الملحق</mat-label>
+	 <input matInput formControlName="extensionSerial"/>
+	 <mat-error *ngIf = "getControls('extensionSerial').invalid" >
+	  {{ getControls('extensionSerial')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>اجمالي عدد الأدوار</mat-label>
+	 <input matInput formControlName="totalNumberOfFloors"/>
+	 <mat-error *ngIf = "getControls('totalNumberOfFloors').invalid" >
+	  {{ getControls('totalNumberOfFloors')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>اجمالي مساحة الملحق</mat-label>
+	 <input matInput formControlName="totalExtensionArea"/>
+	 <mat-error *ngIf = "getControls('totalExtensionArea').invalid" >
+	  {{ getControls('totalExtensionArea')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>تاريخ انشاء الملحق</mat-label>
+	 <input matInput
+	  [matDatepicker] = "extensionConstructionDateDatepicker"
+	  autocomplete = "off"
+	  formControlName= "extensionConstructionDate"/>
+	 <mat-datepicker-toggle
+	   matSuffix
+	   [for]="extensionConstructionDateDatepicker"
+	 ></mat-datepicker-toggle>
+	 <mat-datepicker #extensionConstructionDateDatepicker></mat-datepicker>
+	 <mat-error *ngIf = "getControls('extensionConstructionDate').invalid" >
+	  {{ getControls('extensionConstructionDate')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>كود طريقة انشاء الملحق </mat-label>
+	 <input matInput formControlName="extensionConstructionWayCode"/>
+	 <mat-error *ngIf = "getControls('extensionConstructionWayCode').invalid" >
+	  {{ getControls('extensionConstructionWayCode')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+         
+
+	<app-material-select appearance="outline"
+	  #regionalCenterCode 
+	  [options] = "regionalCenterCodeSelectOptions"
+	  formControlName = "regionalCenterCode"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #branchCode 
+	  [options] = "branchCodeSelectOptions"
+	  formControlName = "branchCode"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #extensionStructureStatusCode 
+	  [options] = "extensionStructureStatusCodeSelectOptions"
+	  formControlName = "extensionStructureStatusCode"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #interiorFinishesStatusCode 
+	  [options] = "interiorFinishesStatusCodeSelectOptions"
+	  formControlName = "interiorFinishesStatusCode"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #sanitationStatusCode 
+	  [options] = "sanitationStatusCodeSelectOptions"
+	  formControlName = "sanitationStatusCode"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #electricalWorksStatusCode 
+	  [options] = "electricalWorksStatusCodeSelectOptions"
+	  formControlName = "electricalWorksStatusCode"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #extensionAbilityForRampingCode 
+	  [options] = "extensionAbilityForRampingCodeSelectOptions"
+	  formControlName = "extensionAbilityForRampingCode"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #extensionConstructionSystemCode 
+	  [options] = "extensionConstructionSystemCodeSelectOptions"
+	  formControlName = "extensionConstructionSystemCode"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #extensionWallConstructionMaterialsCode 
+	  [options] = "extensionWallConstructionMaterialsCodeSelectOptions"
+	  formControlName = "extensionWallConstructionMaterialsCode"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #roofingMaterialsCode 
+	  [options] = "roofingMaterialsCodeSelectOptions"
+	  formControlName = "roofingMaterialsCode"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #classFloorsFinishingCode 
+	  [options] = "classFloorsFinishingCodeSelectOptions"
+	  formControlName = "classFloorsFinishingCode"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #corridorsFloorFinishingCode 
+	  [options] = "corridorsFloorFinishingCodeSelectOptions"
+	  formControlName = "corridorsFloorFinishingCode"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #bathroomsFloorFinishingCode 
+	  [options] = "bathroomsFloorFinishingCodeSelectOptions"
+	  formControlName = "bathroomsFloorFinishingCode"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #labsFloorFinishingCode 
+	  [options] = "labsFloorFinishingCodeSelectOptions"
+	  formControlName = "labsFloorFinishingCode"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #otherFloorFinishingCode 
+	  [options] = "otherFloorFinishingCodeSelectOptions"
+	  formControlName = "otherFloorFinishingCode"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #classWallsFinishingCode 
+	  [options] = "classWallsFinishingCodeSelectOptions"
+	  formControlName = "classWallsFinishingCode"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #corridorsWallsFinishingCode 
+	  [options] = "corridorsWallsFinishingCodeSelectOptions"
+	  formControlName = "corridorsWallsFinishingCode"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #bathroomsWallsFinishingCode 
+	  [options] = "bathroomsWallsFinishingCodeSelectOptions"
+	  formControlName = "bathroomsWallsFinishingCode"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #labsWallsFinishingCode 
+	  [options] = "labsWallsFinishingCodeSelectOptions"
+	  formControlName = "labsWallsFinishingCode"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #otherWallsFinishingCode 
+	  [options] = "otherWallsFinishingCodeSelectOptions"
+	  formControlName = "otherWallsFinishingCode"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #classCeilingsFinishingCode 
+	  [options] = "classCeilingsFinishingCodeSelectOptions"
+	  formControlName = "classCeilingsFinishingCode"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #corridorsCeilingsFinishingCode 
+	  [options] = "corridorsCeilingsFinishingCodeSelectOptions"
+	  formControlName = "corridorsCeilingsFinishingCode"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #bathroomsCeilingsFinishingCode 
+	  [options] = "bathroomsCeilingsFinishingCodeSelectOptions"
+	  formControlName = "bathroomsCeilingsFinishingCode"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #labsCeilingsFinishingCode 
+	  [options] = "labsCeilingsFinishingCodeSelectOptions"
+	  formControlName = "labsCeilingsFinishingCode"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #otherCeilingsFinishingCode 
+	  [options] = "otherCeilingsFinishingCodeSelectOptions"
+	  formControlName = "otherCeilingsFinishingCode"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #exteriorFinishingCode 
+	  [options] = "exteriorFinishingCodeSelectOptions"
+	  formControlName = "exteriorFinishingCode"
+	></app-material-select>
+
+        </form>
+
+        <mat-divider></mat-divider>
+
+		<mat-card-actions>
+			<form [formGroup]="attachmentForm" class="form-container">
+                <app-multi-file-upload [service] = "extensionService" [id]="extensionForm.get('id').value"
+                    formControlName = "attachmentFiles">
+                </app-multi-file-upload>
+            </form>
+            <button
+                type="submit"
+                (click)="onSubmit()"
+                [disabled]="extensionForm.invalid"
+                mat-raised-button
+                color = "primary">
+             حفظ
+            </button>
+        </mat-card-actions>
+    </ng-template >
+</app-new-form-layout >
+

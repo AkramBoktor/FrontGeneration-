@@ -3057,28 +3057,28 @@ export const listMenuConfig: ListMenuConfig = {
 					type: 'collapsable',
 					icon: 'assignment',
 					children: []
-				},
+				}
 			]
 		}
 	],
-	'educational-study': [
+	'school-map': [
 		{
-			id: 'educational-study',
-			title: 'برنامج الدراسة التربوية',
+			id: 'school-map',
+			title: 'برنامج الخريطة المدرسية',
 			type: 'group',
 			icon: 'app',
 			children: [
 				{
-					id: 'Educational Study Config',
+					id: 'School Map Config',
 					title: 'الأعدادات',
 					type: 'collapsable',
 					icon: 'build',
 					children: [
 						{
-							id: 'studyreasons',
-							title: 'سبب الدراسة',
+							id: 'governorates',
+							title: 'المحافظة',
 							type: 'item',
-							url: '/lookup/studyreasons',
+							url: '/lookup/governorates',
 							exactMatch: true
 						},
 						{
@@ -3096,6 +3096,41 @@ export const listMenuConfig: ListMenuConfig = {
 							exactMatch: true
 						},
 						{
+							id: 'areas',
+							title: 'مناطق',
+							type: 'item',
+							url: '/lookup/areas',
+							exactMatch: true
+						},
+						{
+							id: 'regionalcentercodes',
+							title: 'كود المركز الاقليمي',
+							type: 'item',
+							url: '/lookup/regionalcentercodes',
+							exactMatch: true
+						},
+						{
+							id: 'branchcodes',
+							title: 'كود الفرع',
+							type: 'item',
+							url: '/lookup/branchcodes',
+							exactMatch: true
+						},
+						{
+							id: 'purposeofconstructions',
+							title: 'الغرض الأساسي لانشاء المبنى',
+							type: 'item',
+							url: '/lookup/purposeofconstructions',
+							exactMatch: true
+						},
+						{
+							id: 'usebuildingpositions',
+							title: 'موقف استخدام المبنى',
+							type: 'item',
+							url: '/lookup/usebuildingpositions',
+							exactMatch: true
+						},
+						{
 							id: 'landownerships',
 							title: 'ملكية ارض',
 							type: 'item',
@@ -3103,10 +3138,353 @@ export const listMenuConfig: ListMenuConfig = {
 							exactMatch: true
 						},
 						{
-							id: 'areas',
-							title: 'مناطق',
+							id: 'buildingownerships',
+							title: 'ملكية مبني',
 							type: 'item',
-							url: '/lookup/areas',
+							url: '/lookup/buildingownerships',
+							exactMatch: true
+						},
+						{
+							id: 'constructiontypes',
+							title: 'انواع الانشاء',
+							type: 'item',
+							url: '/lookup/constructiontypes',
+							exactMatch: true
+						},
+						{
+							id: 'effecttypecodes',
+							title: 'كود نوع المؤثر\t',
+							type: 'item',
+							url: '/lookup/effecttypecodes',
+							exactMatch: true
+						},
+						{
+							id: 'effectcodes',
+							title: 'كود المؤثر',
+							type: 'item',
+							url: '/lookup/effectcodes',
+							exactMatch: true
+						},
+						{
+							id: 'dependencycodes',
+							title: 'كود التبعية',
+							type: 'item',
+							url: '/lookup/dependencycodes',
+							exactMatch: true
+						},
+						{
+							id: 'educationallevels',
+							title: 'المرحلة التعليمية',
+							type: 'item',
+							url: '/lookup/educationallevels',
+							exactMatch: true
+						},
+						{
+							id: 'educationtypes',
+							title: 'نوعية التعليم',
+							type: 'item',
+							url: '/lookup/educationtypes',
+							exactMatch: true
+						},
+						{
+							id: 'usageperiodnumbers',
+							title: 'عدد فترات الاستخدام',
+							type: 'item',
+							url: '/lookup/usageperiodnumbers',
+							exactMatch: true
+						},
+						{
+							id: 'playgroundtypes',
+							title: 'نوع الملعب',
+							type: 'item',
+							url: '/lookup/playgroundtypes',
+							exactMatch: true
+						},
+						{
+							id: 'landtypes',
+							title: 'نوع الارض',
+							type: 'item',
+							url: '/lookup/landtypes',
+							exactMatch: true
+						},
+						{
+							id: 'statuscodes',
+							title: 'كود الحالة',
+							type: 'item',
+							url: '/lookup/statuscodes',
+							exactMatch: true
+						},
+						{
+							id: 'gatesqualitycodes',
+							title: 'كود نوعية البوابات',
+							type: 'item',
+							url: '/lookup/gatesqualitycodes',
+							exactMatch: true
+						},
+						{
+							id: 'periodnumbers',
+							title: 'رقم الفترة',
+							type: 'item',
+							url: '/lookup/periodnumbers',
+							exactMatch: true
+						},
+						{
+							id: 'pupilstypes',
+							title: 'نوع التلاميذ',
+							type: 'item',
+							url: '/lookup/pupilstypes',
+							exactMatch: true
+						},
+						{
+							id: 'extensionstructurestatuscodes',
+							title: 'كود حالة هيكل الملحق',
+							type: 'item',
+							url: '/lookup/extensionstructurestatuscodes',
+							exactMatch: true
+						},
+						{
+							id: 'interiorfinishesstatuscodes',
+							title: 'كود حالة التشطيبات الداخلية',
+							type: 'item',
+							url: '/lookup/interiorfinishesstatuscodes',
+							exactMatch: true
+						},
+						{
+							id: 'sanitationstatuscodes',
+							title: 'كود حالة الاعمال الصحية',
+							type: 'item',
+							url: '/lookup/sanitationstatuscodes',
+							exactMatch: true
+						},
+						{
+							id: 'electricalworksstatuscodes',
+							title: 'كود حالة الاعمال الكهربائية',
+							type: 'item',
+							url: '/lookup/electricalworksstatuscodes',
+							exactMatch: true
+						},
+						{
+							id: 'extensionabilityforrampingcodes',
+							title: 'كود قابلة الملحق للتعلية',
+							type: 'item',
+							url: '/lookup/extensionabilityforrampingcodes',
+							exactMatch: true
+						},
+						{
+							id: 'extensionconstructionsystemcodes',
+							title: 'كود نظام انشاء الملحق',
+							type: 'item',
+							url: '/lookup/extensionconstructionsystemcodes',
+							exactMatch: true
+						},
+						{
+							id: 'extensionwallconstructionmaterialscodes',
+							title: 'كود مواد بناء حوائط الملحق',
+							type: 'item',
+							url: '/lookup/extensionwallconstructionmaterialscodes',
+							exactMatch: true
+						},
+						{
+							id: 'roofingmaterialscodes',
+							title: 'كود مواد بناء الاسقف',
+							type: 'item',
+							url: '/lookup/roofingmaterialscodes',
+							exactMatch: true
+						},
+						{
+							id: 'classfloorsfinishingcodes',
+							title: 'كود تشطيبات ارضيات الفصول',
+							type: 'item',
+							url: '/lookup/classfloorsfinishingcodes',
+							exactMatch: true
+						},
+						{
+							id: 'corridorsfloorfinishingcodes',
+							title: 'كود تشطيبات ارضيات الطرقات',
+							type: 'item',
+							url: '/lookup/corridorsfloorfinishingcodes',
+							exactMatch: true
+						},
+						{
+							id: 'bathroomsfloorfinishingcodes',
+							title: 'كود تشطيبات ارضيات دورات مياة',
+							type: 'item',
+							url: '/lookup/bathroomsfloorfinishingcodes',
+							exactMatch: true
+						},
+						{
+							id: 'labsfloorfinishingcodes',
+							title: 'كود تشطيبات ارضيات معامل',
+							type: 'item',
+							url: '/lookup/labsfloorfinishingcodes',
+							exactMatch: true
+						},
+						{
+							id: 'otherfloorfinishingcodes',
+							title: 'كود تشطيبات ارضيات اخري',
+							type: 'item',
+							url: '/lookup/otherfloorfinishingcodes',
+							exactMatch: true
+						},
+						{
+							id: 'classwallsfinishingcodes',
+							title: 'كود تشطيبات حوائط الفصول',
+							type: 'item',
+							url: '/lookup/classwallsfinishingcodes',
+							exactMatch: true
+						},
+						{
+							id: 'corridorswallsfinishingcodes',
+							title: 'كود تشطيبات حوائط الطرقات',
+							type: 'item',
+							url: '/lookup/corridorswallsfinishingcodes',
+							exactMatch: true
+						},
+						{
+							id: 'bathroomswallsfinishingcodes',
+							title: 'كود تشطيبات حوائط دورات',
+							type: 'item',
+							url: '/lookup/bathroomswallsfinishingcodes',
+							exactMatch: true
+						},
+						{
+							id: 'labswallsfinishingcodes',
+							title: 'كود تشطيبات حوائط معامل',
+							type: 'item',
+							url: '/lookup/labswallsfinishingcodes',
+							exactMatch: true
+						},
+						{
+							id: 'otherwallsfinishingcodes',
+							title: 'كود تشطيبات حوائط اخري',
+							type: 'item',
+							url: '/lookup/otherwallsfinishingcodes',
+							exactMatch: true
+						},
+						{
+							id: 'classceilingsfinishingcodes',
+							title: 'كود تشطيبات اسقف الفصول',
+							type: 'item',
+							url: '/lookup/classceilingsfinishingcodes',
+							exactMatch: true
+						},
+						{
+							id: 'corridorsceilingsfinishingcodes',
+							title: 'كود تشطيبات اسقف الطرقات',
+							type: 'item',
+							url: '/lookup/corridorsceilingsfinishingcodes',
+							exactMatch: true
+						},
+						{
+							id: 'bathroomsceilingsfinishingcodes',
+							title: 'كود تشطيبات اسقف مياه',
+							type: 'item',
+							url: '/lookup/bathroomsceilingsfinishingcodes',
+							exactMatch: true
+						},
+						{
+							id: 'labsceilingsfinishingcodes',
+							title: 'كود تشطيبات اسقف معامل',
+							type: 'item',
+							url: '/lookup/labsceilingsfinishingcodes',
+							exactMatch: true
+						},
+						{
+							id: 'otherceilingsfinishingcodes',
+							title: 'كود تشطيبات اسقف اخرى',
+							type: 'item',
+							url: '/lookup/otherceilingsfinishingcodes',
+							exactMatch: true
+						},
+						{
+							id: 'exteriorfinishingcodes',
+							title: 'كود تشطيب الواجاهات الخارجية',
+							type: 'item',
+							url: '/lookup/exteriorfinishingcodes',
+							exactMatch: true
+						},
+						{
+							id: 'extensionconstructionwaycodes',
+							title: 'كود طريقة انشاء الملحق',
+							type: 'item',
+							url: '/lookup/extensionconstructionwaycodes',
+							exactMatch: true
+						},
+						{
+							id: 'mainroadtypecodes',
+							title: 'كود نوع الطريق الرئيسي',
+							type: 'item',
+							url: '/lookup/mainroadtypecodes',
+							exactMatch: true
+						},
+						{
+							id: 'directionstatuscodes',
+							title: 'كود حالة الطريق الرئيسي',
+							type: 'item',
+							url: '/lookup/directionstatuscodes',
+							exactMatch: true
+						},
+						{
+							id: 'directioncodes',
+							title: 'كود الاتجاه',
+							type: 'item',
+							url: '/lookup/directioncodes',
+							exactMatch: true
+						},
+						{
+							id: 'educationalspaces',
+							title: 'الفراغات التعليمية',
+							type: 'item',
+							url: '/lookup/educationalspaces',
+							exactMatch: true
+						},
+						{
+							id: 'processingtypes',
+							title: 'نوع التجهيز',
+							type: 'item',
+							url: '/lookup/processingtypes',
+							exactMatch: true
+						},
+						{
+							id: 'processingstates',
+							title: 'الحاله للتجهيز',
+							type: 'item',
+							url: '/lookup/processingstates',
+							exactMatch: true
+						},
+						{
+							id: 'neighborstates',
+							title: 'حاله الجار الملاصق',
+							type: 'item',
+							url: '/lookup/neighborstates',
+							exactMatch: true
+						},
+						{
+							id: 'hostingreasons',
+							title: 'أسباب الاستضافة',
+							type: 'item',
+							url: '/lookup/hostingreasons',
+							exactMatch: true
+						},
+						{
+							id: 'fencestatuscodes',
+							title: 'كود حالة السور',
+							type: 'item',
+							url: '/lookup/fencestatuscodes',
+							exactMatch: true
+						},
+						{
+							id: 'constructionmaterials',
+							title: 'مادة البناء',
+							type: 'item',
+							url: '/lookup/constructionmaterials',
+							exactMatch: true
+						},
+						{
+							id: 'studyreasons',
+							title: 'سبب الدراسة',
+							type: 'item',
+							url: '/lookup/studyreasons',
 							exactMatch: true
 						},
 						{
@@ -3131,38 +3509,10 @@ export const listMenuConfig: ListMenuConfig = {
 							exactMatch: true
 						},
 						{
-							id: 'educationallevels',
-							title: 'المرحلة التعليمية',
-							type: 'item',
-							url: '/lookup/educationallevels',
-							exactMatch: true
-						},
-						{
-							id: 'educationtypes',
-							title: 'نوعية التعليم',
-							type: 'item',
-							url: '/lookup/educationtypes',
-							exactMatch: true
-						},
-						{
-							id: 'pupilstypes',
-							title: 'نوع التلاميذ',
-							type: 'item',
-							url: '/lookup/pupilstypes',
-							exactMatch: true
-						},
-						{
 							id: 'schoolsurroundingimpacts',
 							title: 'التاثير علي المدارس المحيطة',
 							type: 'item',
 							url: '/lookup/schoolsurroundingimpacts',
-							exactMatch: true
-						},
-						{
-							id: 'positionareaneeds',
-							title: 'موقف منطقة الاحتياج',
-							type: 'item',
-							url: '/lookup/positionareaneeds',
 							exactMatch: true
 						},
 						{
@@ -3171,323 +3521,352 @@ export const listMenuConfig: ListMenuConfig = {
 							type: 'item',
 							url: '/lookup/secondperioddepartmentlocalizations',
 							exactMatch: true
+						},
+						{
+							id: 'positionareaneeds',
+							title: 'موقف منطقة الاحتياج',
+							type: 'item',
+							url: '/lookup/positionareaneeds',
+							exactMatch: true
 						}
 					]
 				},
 				{
-					id: 'Educational Study Program',
+					id: 'School Map Program',
 					title: 'البرامج',
 					type: 'collapsable',
 					icon: 'apps',
 					children: [
 						{
-							id: 'Data of educational study',
-							title: 'بيانات الدراسة التربوية',
+							id: 'Private Center Data',
+							title: 'بيانات المراكز الخاصة',
 							type: 'item',
-							url: '/educational-study/data-of-educational-study',
+							url: '/school-map/private-center-data',
+							exactMatch: true
+						},
+						{
+							id: 'Educational Building Data',
+							title: 'بيانات المبني التعليمي',
+							type: 'item',
+							url: '/school-map/educational-building-data',
+							exactMatch: true
+						},
+						{
+							id: 'Influential ocean',
+							title: 'المحيطات المؤثرة',
+							type: 'item',
+							url: '/school-map/influential-ocean',
+							exactMatch: true
+						},
+						{
+							id: 'School Data',
+							title: 'بيانات المدرسة ',
+							type: 'item',
+							url: '/school-map/school-data',
+							exactMatch: true
+						},
+						{
+							id: 'Area',
+							title: 'المساحة',
+							type: 'item',
+							url: '/school-map/area',
+							exactMatch: true
+						},
+						{
+							id: 'Playground Data',
+							title: 'بيانات الملعب',
+							type: 'item',
+							url: '/school-map/playground-data',
+							exactMatch: true
+						},
+						{
+							id: 'Gate',
+							title: 'البوابة',
+							type: 'item',
+							url: '/school-map/gate',
+							exactMatch: true
+						},
+						{
+							id: 'School Period',
+							title: 'الفتره المدرسية ',
+							type: 'item',
+							url: '/school-map/school-period',
+							exactMatch: true
+						},
+						{
+							id: 'Extension',
+							title: 'الملحق',
+							type: 'item',
+							url: '/school-map/extension',
+							exactMatch: true
+						},
+						{
+							id: 'Level',
+							title: 'منسوب',
+							type: 'item',
+							url: '/school-map/level',
+							exactMatch: true
+						},
+						{
+							id: 'General Site',
+							title: 'الموقع العام ',
+							type: 'item',
+							url: '/school-map/general-site',
+							exactMatch: true
+						},
+						{
+							id: 'Processing',
+							title: 'التجهيز',
+							type: 'item',
+							url: '/school-map/processing',
+							exactMatch: true
+						},
+						{
+							id: 'Boundaries of the public site',
+							title: 'حدود الموقع العام',
+							type: 'item',
+							url: '/school-map/boundaries-of-the-public-site',
+							exactMatch: true
+						},
+						{
+							id: 'Public water network',
+							title: 'شبكة عمومية للمياه',
+							type: 'item',
+							url: '/school-map/public-water-network',
+							exactMatch: true
+						},
+						{
+							id: 'Hosted School',
+							title: 'مدرسة مستضافة',
+							type: 'item',
+							url: '/school-map/hosted-school',
+							exactMatch: true
+						},
+						{
+							id: 'Fence File',
+							title: 'ملف السور',
+							type: 'item',
+							url: '/school-map/fence-file',
+							exactMatch: true
+						},
+						{
+							id: 'General Location',
+							title: 'الموقع العام ',
+							type: 'item',
+							url: '/school-map/general-location',
+							exactMatch: true
+						},
+						{
+							id: 'Educational Studies',
+							title: 'الدراسات التربوية',
+							type: 'item',
+							url: '/school-map/educational-studies',
 							exactMatch: true
 						}
 					]
 				},
 				{
-					id: 'Educational Study Report',
+					id: 'School Map Report',
 					title: 'التقارير',
 					type: 'collapsable',
 					icon: 'assignment',
 					children: []
+				},
+
+
+				{
+					id: 'assay',
+					title: 'برنامج المقايسة',
+					type: 'group',
+					icon: 'app',
+					children: [
+						{
+							id: 'Assay Config',
+							title: 'الأعدادات',
+							type: 'collapsable',
+							icon: 'build',
+							children: [
+								{
+									id: 'offeringtypes',
+									title: 'انواع الطرح',
+									type: 'item',
+									url: '/lookup/offeringtypes',
+									exactMatch: true
+								},
+								{
+									id: 'constructiontypes',
+									title: 'انواع الانشاء',
+									type: 'item',
+									url: '/lookup/constructiontypes',
+									exactMatch: true
+								},
+								{
+									id: 'itemcodes',
+									title: 'كود البند',
+									type: 'item',
+									url: '/lookup/itemcodes',
+									exactMatch: true
+								},
+								{
+									id: 'branchcodes',
+									title: 'كود الفرع',
+									type: 'item',
+									url: '/lookup/branchcodes',
+									exactMatch: true
+								},
+								{
+									id: 'areas',
+									title: 'مناطق',
+									type: 'item',
+									url: '/lookup/areas',
+									exactMatch: true
+								},
+								{
+									id: 'modelcodes',
+									title: 'كود النموذج',
+									type: 'item',
+									url: '/lookup/modelcodes',
+									exactMatch: true
+								},
+								{
+									id: 'worktypes',
+									title: 'نوع العمل',
+									type: 'item',
+									url: '/lookup/worktypes',
+									exactMatch: true
+								}
+							]
+						},
+						{
+							id: 'Assay Program',
+							title: 'البرامج',
+							type: 'collapsable',
+							icon: 'apps',
+							children: [
+								{
+									id: 'Memoirs of Transgression',
+									title: 'مذكرات التجاوز اعمال الغير',
+									type: 'item',
+									url: '/assay/memoirs-of-transgression',
+									exactMatch: true
+								},
+								{
+									id: 'Add Extensions On Construction Plan',
+									title: 'اضافة ملاحق على خطة الإنشاء',
+									type: 'item',
+									url: '/assay/add-extensions-on-construction-plan',
+									exactMatch: true
+								},
+								{
+									id: 'Indexation Opening',
+									title: 'فتح مقايسة',
+									type: 'item',
+									url: '/assay/indexation-opening',
+									exactMatch: true
+								},
+								{
+									id: 'Add assay data according to arithmetic coefficient',
+									title: 'اضافه بيانات مقايسه وفقا  لمعامل حسابي',
+									type: 'item',
+									url: '/assay/add-assay-data-according-to-arithmetic-coefficient',
+									exactMatch: true
+								},
+								{
+									id: 'Modify the prices of schools for pricing 2018',
+									title: 'تعديل اسعار مدارس لتسعير 2018',
+									type: 'item',
+									url: '/assay/modify-the-prices-of-schools-for-pricing-2018',
+									exactMatch: true
+								},
+								{
+									id: 'Adjust the position of projects',
+									title: 'تعديل موقف المشروعات  ',
+									type: 'item',
+									url: '/assay/adjust-the-position-of-projects',
+									exactMatch: true
+								}
+							]
+						},
+						{
+							id: 'Assay Report',
+							title: 'التقارير',
+							type: 'collapsable',
+							icon: 'assignment',
+							children: []
+						}
+					]
 				}
 			]
 		}
-	],	
-	'organization-and-management-housing': [
-		{
-			id: 'organization-and-management-housing',
-			title: 'برنامج تنظيم واداره - تسكين',
-			type: 'group',
-			icon: 'app',
-			children: [
-				{
-					id: 'Organization and management  housing Config',
-					title: 'الأعدادات',
-					type: 'collapsable',
-					icon: 'build',
-					children: [
-						{
-							id: 'branchcodes',
-							title: 'كود الفرع',
-							type: 'item',
-							url: '/lookup/branchcodes',
-							exactMatch: true
-						},
-						{
-							id: 'jobtypes',
-							title: 'انواع الوظائف',
-							type: 'item',
-							url: '/lookup/jobtypes',
-							exactMatch: true
-						},
-						{
-							id: 'constructiontypes',
-							title: 'انواع الانشاء',
-							type: 'item',
-							url: '/lookup/constructiontypes',
-							exactMatch: true
-						},
-						{
-							id: 'offeringtypes',
-							title: 'انواع الطرح',
-							type: 'item',
-							url: '/lookup/offeringtypes',
-							exactMatch: true
-						},
-						{
-							id: 'genders',
-							title: 'النوع‎',
-							type: 'item',
-							url: '/lookup/genders',
-							exactMatch: true
-						},
-						{
-							id: 'centraldepartments',
-							title: 'الادارات المركزية',
-							type: 'item',
-							url: '/lookup/centraldepartments',
-							exactMatch: true
-						},
-						{
-							id: 'subdepartments',
-							title: 'الادارات الفرعية',
-							type: 'item',
-							url: '/lookup/subdepartments',
-							exactMatch: true
-						},
-						{
-							id: 'sectionsorcenters',
-							title: 'مركز/القسم‎',
-							type: 'item',
-							url: '/lookup/sectionsorcenters',
-							exactMatch: true
-						},
-						{
-							id: 'endingsupervisionreasons',
-							title: 'كود سبب انهاء اشراف',
-							type: 'item',
-							url: '/lookup/endingsupervisionreasons',
-							exactMatch: true
-						},
-						{
-							id: 'areas',
-							title: 'مناطق',
-							type: 'item',
-							url: '/lookup/areas',
-							exactMatch: true
-						}
-					]
-				},
-				{
-					id: 'Organization and management  housing Program',
-					title: 'البرامج',
-					type: 'collapsable',
-					icon: 'apps',
-					children: [
-						{
-							id: 'Total functional course',
-							title: ' اجمالى المقرر الوظيفى',
-							type: 'item',
-							url: '/organization-and-management-housing/total-functional-course',
-							exactMatch: true
-						},
-						{
-							id: 'Introducing exception for branches Engineer',
-							title: 'ادخال الاثتثناء للفروع (المهندس)',
-							type: 'item',
-							url: '/organization-and-management-housing/introducing-exception-for-branches-engineer',
-							exactMatch: true
-						},
-						{
-							id: 'Complete the data of supervisor engineer',
-							title: 'استكمال بيانات مهندس مشرف',
-							type: 'item',
-							url: '/organization-and-management-housing/complete-the-data-of-supervisor-engineer',
-							exactMatch: true
-						},
-						{
-							id: 'Assign engineer outside department',
-							title: 'اسناد اشراف مهندسين من خارج قسم التنفيذ',
-							type: 'item',
-							url: '/organization-and-management-housing/assign-engineer-outside-department',
-							exactMatch: true
-						},
-						{
-							id: 'Assigning maintenance electricity project to electrical engineer',
-							title: 'اسناد مشروع صيانه ( كهرباء) لمهندس كهرباء',
-							type: 'item',
-							url: '/organization-and-management-housing/assigning-maintenance-electricity-project-to-electrical-engineer',
-							exactMatch: true
-						},
-						{
-							id: 'Job placement of the departments of the body',
-							title: 'التسكين الوظيفى للادارات الهيئه',
-							type: 'item',
-							url: '/organization-and-management-housing/job-placement-of-the-departments-of-the-body',
-							exactMatch: true
-						},
-						{
-							id: 'Termination of the employees job placement',
-							title: 'انهاء تسكين الوظيفى للموظف',
-							type: 'item',
-							url: '/organization-and-management-housing/termination-of-the-employees-job-placement',
-							exactMatch: true
-						},
-						{
-							id: 'Ending placement of executive engineer',
-							title: 'انهاء تسكين مهندس تنفيذى على مشروع معين (الفروع) ظروف طارئه',
-							type: 'item',
-							url: '/organization-and-management-housing/ending-placement-of-executive-engineer',
-							exactMatch: true
-						},
-						{
-							id: 'Career Programs',
-							title: 'برنامج المقررات الوظيفيه',
-							type: 'item',
-							url: '/organization-and-management-housing/career-programs',
-							exactMatch: true
-						},
-						{
-							id: 'Job placement for an executive engineer without a project',
-							title: 'تسكين وظيفى لمهندس تنفيذى بدون مشروع ',
-							type: 'item',
-							url: '/organization-and-management-housing/job-placement-for-an-executive-engineer-without-a-project',
-							exactMatch: true
-						},
-						{
-							id: 'Reason for ending engineer housing on project',
-							title: 'كود سبب انهاء تسكين مهندس على مشروع',
-							type: 'item',
-							url: '/organization-and-management-housing/reason-for-ending-engineer-housing-on-project',
-							exactMatch: true
-						}
-					]
-				},
-				{
-					id: 'Organization and management  housing Report',
-					title: 'التقارير',
-					type: 'collapsable',
-					icon: 'assignment',
-					children: []
-				}
-			]
-		}
+
 	],
-	'weights-differences': [
+	'probes': [
 		{
-			id: 'weights-differences',
-			title: 'برنامج  فروق الاوزان',
+			id: 'probes',
+			title: 'الجسات',
 			type: 'group',
 			icon: 'app',
 			children: [
 				{
-					id: 'Weights differences Config',
+					id: 'Probes Config',
 					title: 'الأعدادات',
 					type: 'collapsable',
 					icon: 'build',
 					children: [
-						{
-							id: 'offeringtypes',
-							title: 'انواع الطرح',
-							type: 'item',
-							url: '/lookup/offeringtypes',
-							exactMatch: true
-						},
-						{
-							id: 'constructiontypes',
-							title: 'انواع الانشاء',
-							type: 'item',
-							url: '/lookup/constructiontypes',
-							exactMatch: true
-						},
 						{
 							id: 'governorates',
 							title: 'المحافظة',
 							type: 'item',
 							url: '/lookup/governorates',
 							exactMatch: true
+						},
+						{
+							id: 'firstlevelcodes',
+							title: 'كود المستوي الاول',
+							type: 'item',
+							url: '/lookup/firstlevelcodes',
+							exactMatch: true
 						}
 					]
 				},
 				{
-					id: 'Weights differences Program',
+					id: 'Probes Program',
 					title: 'البرامج',
 					type: 'collapsable',
 					icon: 'apps',
 					children: [
 						{
-							id: 'The planned start date for the schedule',
-							title: 'تاريخ البداية المخطط للجدول الزمني',
+							id: 'General data on the probes',
+							title: 'بيانات عامه عن الجسات',
 							type: 'item',
-							url: '/weights-differences/the-planned-start-date-for-the-schedule',
+							url: '/probes/general-data-on-the-probes',
 							exactMatch: true
 						},
 						{
-							id: 'Weights Factor',
-							title: 'معامل الاوزان',
+							id: 'Coordinates Sensors',
+							title: 'احداثيات الجسات',
 							type: 'item',
-							url: '/weights-differences/weights-factor',
+							url: '/probes/coordinates-sensors',
 							exactMatch: true
 						},
 						{
-							id: 'Assay items due to weights factor',
-							title: 'بنود المقايسة المستحقة لمعامل الاوزان',
+							id: 'Analysis value',
+							title: 'قيم التحليل',
 							type: 'item',
-							url: '/weights-differences/assay-items-due-to-weights-factor',
+							url: '/probes/analysis-value',
 							exactMatch: true
 						},
 						{
-							id: 'the movement of material indices',
-							title: 'حركة الارقام القياسية للمواد',
+							id: 'Statements of Sensors',
+							title: 'بيانات توصيات الجسات',
 							type: 'item',
-							url: '/weights-differences/the-movement-of-material-indices',
-							exactMatch: true
-						},
-						{
-							id: 'Timetable',
-							title: 'الجدول الزمني',
-							type: 'item',
-							url: '/weights-differences/timetable',
-							exactMatch: true
-						},
-						{
-							id: 'Link item to TimeTable',
-							title: ' ربط البند بانشطة الجدول الزمني',
-							type: 'item',
-							url: '/weights-differences/link-item-to-timetable',
-							exactMatch: true
-						},
-						{
-							id: 'Elements of the measured items due to the weights factor of a building',
-							title: 'عناصر البنود المقايسة المستحقة لمعامل الاوزان لمبني',
-							type: 'item',
-							url: '/weights-differences/elements-of-the-measured-items-due-to-the-weights-factor-of-a-building',
-							exactMatch: true
-						},
-						{
-							id: 'Link Items To Object Codes',
-							title: 'ربط البنود باكواد العناصر',
-							type: 'item',
-							url: '/weights-differences/link-items-to-object-codes',
-							exactMatch: true
-						},
-						{
-							id: 'Schedule at the building level',
-							title: 'الجدول الزمني علي مستوي المبني',
-							type: 'item',
-							url: '/weights-differences/schedule-at-the-building-level',
+							url: '/probes/statements-of-sensors',
 							exactMatch: true
 						}
 					]
 				},
 				{
-					id: 'Weights differences Report',
+					id: 'Probes Report',
 					title: 'التقارير',
 					type: 'collapsable',
 					icon: 'assignment',
@@ -3496,7 +3875,10 @@ export const listMenuConfig: ListMenuConfig = {
 			]
 		}
 	]
+
+
 };
+
 
 
 

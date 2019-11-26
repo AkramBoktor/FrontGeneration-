@@ -1,0 +1,86 @@
+
+<mat-card>
+    <mat-card-header>
+        <mat-card-title>الموقع العام </mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+        <form [formGroup]="generalLocationForm" class="form-container">
+          
+
+	<mat-form-field appearance="outline">
+	 <mat-label>كود المبنى</mat-label>
+	 <input matInput formControlName="buildingCode"/>
+	 <mat-error *ngIf = "getControls('buildingCode').invalid" >
+	  {{ getControls('buildingCode')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>عرض الطريق</mat-label>
+	 <input matInput formControlName="roadWidth"/>
+	 <mat-error *ngIf = "getControls('roadWidth').invalid" >
+	  {{ getControls('roadWidth')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>النوعية</mat-label>
+	 <input matInput formControlName="type"/>
+	 <mat-error *ngIf = "getControls('type').invalid" >
+	  {{ getControls('type')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+          
+
+	<app-material-select appearance="outline" [disabled]="true" 
+	  #sectionCode 
+	  [options] = "sectionCodeSelectOptions"
+	  formControlName = "sectionCode"
+	></app-material-select>
+
+	<app-material-select appearance="outline" [disabled]="true" 
+	  #branchCode 
+	  [options] = "branchCodeSelectOptions"
+	  formControlName = "branchCode"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #mainRoadTypeCode 
+	  [options] = "mainRoadTypeCodeSelectOptions"
+	  formControlName = "mainRoadTypeCode"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #mainRoadStatusCode 
+	  [options] = "mainRoadStatusCodeSelectOptions"
+	  formControlName = "mainRoadStatusCode"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #roadDirectionCode 
+	  [options] = "roadDirectionCodeSelectOptions"
+	  formControlName = "roadDirectionCode"
+	></app-material-select>
+
+        </form>
+    </mat-card-content>
+
+    <mat-divider></mat-divider>
+
+	<mat-card-actions>
+			<form [formGroup]="attachmentForm" class="form-container">
+                <app-multi-file-upload [service] = "generalLocationService" [id]="generalLocationForm.get('id').value"
+                    formControlName = "attachmentFiles">
+                </app-multi-file-upload>
+            </form>
+            <button
+                color = "primary"
+                type = "submit"
+                (click) = "onSubmit()"
+                [disabled] = "generalLocationForm.invalid"
+                mat-raised-button>
+                حفظ
+            </button>
+    </mat-card-actions>
+</mat-card>
+
