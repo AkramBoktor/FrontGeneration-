@@ -329,16 +329,16 @@ const routes: Routes = [
             },
 
             {
-                path: 'assay-unctions-of-items-and-elements-of-the-project', loadChildren: './components/assay-unctions-of-items-and-elements-of-the-project/assay-unctions-of-items-and-elements-of-the-project.module#AssayUnctionsOfItemsAndElementsOfTheProjectModule',
+                path: 'assay--unctions-of-items-and-elements-of-the-project', loadChildren: './components/assay-unctions-of-items-and-elements-of-the-project/assay-unctions-of-items-and-elements-of-the-project.module#AssayUnctionsOfItemsAndElementsOfTheProjectModule',
                 data: {
-                    menuName: 'assay-unctions-of-items-and-elements-of-the-project'
+                    menuName: 'assay--unctions-of-items-and-elements-of-the-project'
                 }
             },
 
             {
-                path: 'assay-assay-list-standardization-subsystem-code', loadChildren: './components/assay-assay-list-standardization-subsystem-code/assay-assay-list-standardization-subsystem-code.module#AssayAssayListStandardizationSubsystemCodeModule',
+                path: 'assay-list-subsystem-code', loadChildren: './components/assay-list-subsystem-code/assay-list-subsystem-code.module#AssayListSubsystemCodeModule',
                 data: {
-                    menuName: 'assay-assay-list-standardization-subsystem-code'
+                    menuName: 'assay-list-subsystem-code'
                 }
             },
 
@@ -561,8 +561,18 @@ const routes: Routes = [
 
 
 
+            //path
+            
+
+
+
         ]
+        
     },
+
+    
+    
+    
     {
         path: 'home', loadChildren: './shared/pages/home/home.module#HomeModule',
         data: {

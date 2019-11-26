@@ -581,7 +581,25 @@ const routes: Routes = [
       lookupServiceName: 'formtypes',
       lookupLabel: 'نوع النموذج'
     }
-  },
+  }
+  ,
+  {
+    path: 'foundationtypes',
+    component: LookupListComponent,
+    data: {
+      lookupServiceName: 'foundationtypes',
+      lookupLabel: 'نوع الاساس'
+    }
+  } ,
+  {
+    path: 'worktypes',
+    component: LookupListComponent,
+    data: {
+      lookupServiceName: 'worktypes',
+      lookupLabel: 'نوع العمل'
+    }
+  }
+  ,
   {
     path: 'functionalgroups',
     component: LookupListComponent,
