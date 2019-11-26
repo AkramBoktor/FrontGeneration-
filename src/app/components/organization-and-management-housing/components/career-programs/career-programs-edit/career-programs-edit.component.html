@@ -1,0 +1,62 @@
+
+<mat-card>
+    <mat-card-header>
+        <mat-card-title>برنامج المقررات الوظيفيه</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+        <form [formGroup]="careerProgramsForm" class="form-container">
+          
+
+	<mat-form-field appearance="outline">
+	 <mat-label>كود الوظيفه</mat-label>
+	 <input matInput formControlName="jobCode"/>
+	 <mat-error *ngIf = "getControls('jobCode').invalid" >
+	  {{ getControls('jobCode')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>اسم الوظيفه</mat-label>
+	 <input matInput formControlName="jobName"/>
+	 <mat-error *ngIf = "getControls('jobName').invalid" >
+	  {{ getControls('jobName')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>العدد المقرر</mat-label>
+	 <input matInput formControlName="scheduledNumber"/>
+	 <mat-error *ngIf = "getControls('scheduledNumber').invalid" >
+	  {{ getControls('scheduledNumber')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+          
+
+	<app-material-select appearance="outline"
+	  #region 
+	  [options] = "regionSelectOptions"
+	  formControlName = "region"
+	></app-material-select>
+
+        </form>
+    </mat-card-content>
+
+    <mat-divider></mat-divider>
+
+	<mat-card-actions>
+			<form [formGroup]="attachmentForm" class="form-container">
+                <app-multi-file-upload [service] = "careerProgramsService" [id]="careerProgramsForm.get('id').value"
+                    formControlName = "attachmentFiles">
+                </app-multi-file-upload>
+            </form>
+            <button
+                color = "primary"
+                type = "submit"
+                (click) = "onSubmit()"
+                [disabled] = "careerProgramsForm.invalid"
+                mat-raised-button>
+                حفظ
+            </button>
+    </mat-card-actions>
+</mat-card>
+

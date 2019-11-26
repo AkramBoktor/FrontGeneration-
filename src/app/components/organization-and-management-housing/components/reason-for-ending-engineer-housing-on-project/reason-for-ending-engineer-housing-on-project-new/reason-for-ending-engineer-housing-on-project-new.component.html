@@ -1,0 +1,50 @@
+
+<app-new-form-layout
+    dir="rtl"
+    (submitClicked) = "onSubmit()"
+    (back) = "onBack()"
+    [pageTitle] = "'كود سبب انهاء تسكين مهندس على مشروع'"
+>
+    <ng-template newFormContainer >
+        <form [formGroup] = "reasonForEndingEngineerHousingOnProjectForm">
+         
+
+	<mat-form-field appearance="outline">
+	 <mat-label>كود سبب الانتهاء</mat-label>
+	 <input matInput formControlName="terminateResonCode"/>
+	 <mat-error *ngIf = "getControls('terminateResonCode').invalid" >
+	  {{ getControls('terminateResonCode')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>سبب الانهاء</mat-label>
+	 <input matInput formControlName="terminateReson"/>
+	 <mat-error *ngIf = "getControls('terminateReson').invalid" >
+	  {{ getControls('terminateReson')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+         
+
+        </form>
+
+        <mat-divider></mat-divider>
+
+		<mat-card-actions>
+			<form [formGroup]="attachmentForm" class="form-container">
+                <app-multi-file-upload [service] = "reasonForEndingEngineerHousingOnProjectService" [id]="reasonForEndingEngineerHousingOnProjectForm.get('id').value"
+                    formControlName = "attachmentFiles">
+                </app-multi-file-upload>
+            </form>
+            <button
+                type="submit"
+                (click)="onSubmit()"
+                [disabled]="reasonForEndingEngineerHousingOnProjectForm.invalid"
+                mat-raised-button
+                color = "primary">
+             حفظ
+            </button>
+        </mat-card-actions>
+    </ng-template >
+</app-new-form-layout >
+

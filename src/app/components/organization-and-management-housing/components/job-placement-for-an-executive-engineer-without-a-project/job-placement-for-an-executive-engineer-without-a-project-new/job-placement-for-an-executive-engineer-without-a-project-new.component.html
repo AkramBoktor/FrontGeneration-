@@ -1,0 +1,76 @@
+
+<app-new-form-layout
+    dir="rtl"
+    (submitClicked) = "onSubmit()"
+    (back) = "onBack()"
+    [pageTitle] = "'تسكين وظيفى لمهندس تنفيذى بدون مشروع '"
+>
+    <ng-template newFormContainer >
+        <form [formGroup] = "jobPlacementForAnExecutiveEngineerWithoutAProjectForm">
+         
+
+	<mat-form-field appearance="outline">
+	 <mat-label>رقم الموظف</mat-label>
+	 <input matInput formControlName="employeeCode"/>
+	 <mat-error *ngIf = "getControls('employeeCode').invalid" >
+	  {{ getControls('employeeCode')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>تاريخ التسكين</mat-label>
+	 <input matInput
+	  [matDatepicker] = "hiringdateDatepicker"
+	  autocomplete = "off"
+	  formControlName= "hiringdate"/>
+	 <mat-datepicker-toggle
+	   matSuffix
+	   [for]="hiringdateDatepicker"
+	 ></mat-datepicker-toggle>
+	 <mat-datepicker #hiringdateDatepicker></mat-datepicker>
+	 <mat-error *ngIf = "getControls('hiringdate').invalid" >
+	  {{ getControls('hiringdate')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+         
+
+	<app-material-select appearance="outline"
+	  #branchCode 
+	  [options] = "branchCodeSelectOptions"
+	  formControlName = "branchCode"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #department 
+	  [options] = "departmentSelectOptions"
+	  formControlName = "department"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #jobDwellingonThem 
+	  [options] = "jobDwellingonThemSelectOptions"
+	  formControlName = "jobDwellingonThem"
+	></app-material-select>
+
+        </form>
+
+        <mat-divider></mat-divider>
+
+		<mat-card-actions>
+			<form [formGroup]="attachmentForm" class="form-container">
+                <app-multi-file-upload [service] = "jobPlacementForAnExecutiveEngineerWithoutAProjectService" [id]="jobPlacementForAnExecutiveEngineerWithoutAProjectForm.get('id').value"
+                    formControlName = "attachmentFiles">
+                </app-multi-file-upload>
+            </form>
+            <button
+                type="submit"
+                (click)="onSubmit()"
+                [disabled]="jobPlacementForAnExecutiveEngineerWithoutAProjectForm.invalid"
+                mat-raised-button
+                color = "primary">
+             حفظ
+            </button>
+        </mat-card-actions>
+    </ng-template >
+</app-new-form-layout >
+

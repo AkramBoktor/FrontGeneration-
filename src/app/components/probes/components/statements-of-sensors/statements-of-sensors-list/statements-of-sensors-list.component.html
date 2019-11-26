@@ -1,0 +1,146 @@
+
+<app-search-list-expansion-panel
+    dir="rtl"
+    [pageTitle] = "'بيانات توصيات الجسات'"
+    (beginSearch) = "onBeginSearch()"
+    (create) = "onCreate()"
+>
+    <ng-template searchFormContainer >
+        <form [formGroup] = "searchForm">
+           
+
+	<mat-form-field appearance="outline">
+	 <mat-label>رقم المدرسه</mat-label>
+	 <input matInput formControlName="schoolNumber"/>
+	 <mat-error *ngIf = "getControls('schoolNumber').invalid" >
+	  {{ getControls('schoolNumber')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>تاريخ التسجيل</mat-label>
+	 <input matInput
+	  [matDatepicker] = "recordDateDatepicker"
+	  autocomplete = "off"
+	  formControlName= "recordDate"/>
+	 <mat-datepicker-toggle
+	   matSuffix
+	   [for]="recordDateDatepicker"
+	 ></mat-datepicker-toggle>
+	 <mat-datepicker #recordDateDatepicker></mat-datepicker>
+	 <mat-error *ngIf = "getControls('recordDate').invalid" >
+	  {{ getControls('recordDate')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>المسئول</mat-label>
+	 <input matInput formControlName="administrator"/>
+	 <mat-error *ngIf = "getControls('administrator').invalid" >
+	  {{ getControls('administrator')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>رقم البديل</mat-label>
+	 <input matInput formControlName="alternativeNumber"/>
+	 <mat-error *ngIf = "getControls('alternativeNumber').invalid" >
+	  {{ getControls('alternativeNumber')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>عدد الادوار</mat-label>
+	 <input matInput formControlName="floorsNumbers"/>
+	 <mat-error *ngIf = "getControls('floorsNumbers').invalid" >
+	  {{ getControls('floorsNumbers')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>عمود الرد</mat-label>
+	 <input matInput formControlName="backfill"/>
+	 <mat-error *ngIf = "getControls('backfill').invalid" >
+	  {{ getControls('backfill')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>عمق الحفر</mat-label>
+	 <input matInput formControlName="drillingDepth"/>
+	 <mat-error *ngIf = "getControls('drillingDepth').invalid" >
+	  {{ getControls('drillingDepth')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>رفرفه الحفر</mat-label>
+	 <input matInput formControlName="flutterDrill"/>
+	 <mat-error *ngIf = "getControls('flutterDrill').invalid" >
+	  {{ getControls('flutterDrill')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>نوعيه الاحلال</mat-label>
+	 <input matInput formControlName="qualitySubstitution"/>
+	 <mat-error *ngIf = "getControls('qualitySubstitution').invalid" >
+	  {{ getControls('qualitySubstitution')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>سمك الاحلال</mat-label>
+	 <input matInput formControlName="substitutionDepth"/>
+	 <mat-error *ngIf = "getControls('substitutionDepth').invalid" >
+	  {{ getControls('substitutionDepth')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>نوعيه الاساسات</mat-label>
+	 <input matInput formControlName="qualityFoundations"/>
+	 <mat-error *ngIf = "getControls('qualityFoundations').invalid" >
+	  {{ getControls('qualityFoundations')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>جهد التربه</mat-label>
+	 <input matInput formControlName="soilEffort"/>
+	 <mat-error *ngIf = "getControls('soilEffort').invalid" >
+	  {{ getControls('soilEffort')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>نوعيه الاسمنت</mat-label>
+	 <input matInput formControlName="qualityCement"/>
+	 <mat-error *ngIf = "getControls('qualityCement').invalid" >
+	  {{ getControls('qualityCement')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>ملاحظات</mat-label>
+	 <input matInput formControlName="notes"/>
+	 <mat-error *ngIf = "getControls('notes').invalid" >
+	  {{ getControls('notes')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+           
+
+        </form>
+    </ng-template >
+    <ng-template searchResultContainer >
+        <app-grid-control
+            #gridControl
+            [rowDataService] = "getStatementsOfSensorPaginatedSortedFiltered"
+            [columnOptions] = "columnOptions"
+            [gridHeaderOptions] = "gridHeaderOptions"
+            [searchInput] = "searchForm.value"
+            (deleteRow) = "onDeleteClicked($event)"
+        >
+        </app-grid-control>
+    </ng-template>
+</app-search-list-expansion-panel >

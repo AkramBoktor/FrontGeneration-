@@ -51,6 +51,7 @@ export class DataService<T> {
   }
 
   public postAttachments(id: number, fileItems: Attachment[]): Observable<{ status: number, message: number } | Attachment[]> {
+    //debugger;
     const formData = new FormData();
     if (fileItems) {
       for (const fileItem of fileItems) {

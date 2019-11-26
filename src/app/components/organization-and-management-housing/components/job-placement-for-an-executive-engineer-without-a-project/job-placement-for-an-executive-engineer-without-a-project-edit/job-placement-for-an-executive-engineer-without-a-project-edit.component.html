@@ -1,0 +1,74 @@
+
+<mat-card>
+    <mat-card-header>
+        <mat-card-title>تسكين وظيفى لمهندس تنفيذى بدون مشروع </mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+        <form [formGroup]="jobPlacementForAnExecutiveEngineerWithoutAProjectForm" class="form-container">
+          
+
+	<mat-form-field appearance="outline">
+	 <mat-label>رقم الموظف</mat-label>
+	 <input matInput formControlName="employeeCode"/>
+	 <mat-error *ngIf = "getControls('employeeCode').invalid" >
+	  {{ getControls('employeeCode')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>تاريخ التسكين</mat-label>
+	 <input matInput
+	  [matDatepicker] = "hiringdateDatepicker"
+	  autocomplete = "off"
+	  formControlName= "hiringdate"/>
+	 <mat-datepicker-toggle
+	   matSuffix
+	   [for]="hiringdateDatepicker"
+	 ></mat-datepicker-toggle>
+	 <mat-datepicker #hiringdateDatepicker></mat-datepicker>
+	 <mat-error *ngIf = "getControls('hiringdate').invalid" >
+	  {{ getControls('hiringdate')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+          
+
+	<app-material-select appearance="outline"
+	  #branchCode 
+	  [options] = "branchCodeSelectOptions"
+	  formControlName = "branchCode"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #department 
+	  [options] = "departmentSelectOptions"
+	  formControlName = "department"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #jobDwellingonThem 
+	  [options] = "jobDwellingonThemSelectOptions"
+	  formControlName = "jobDwellingonThem"
+	></app-material-select>
+
+        </form>
+    </mat-card-content>
+
+    <mat-divider></mat-divider>
+
+	<mat-card-actions>
+			<form [formGroup]="attachmentForm" class="form-container">
+                <app-multi-file-upload [service] = "jobPlacementForAnExecutiveEngineerWithoutAProjectService" [id]="jobPlacementForAnExecutiveEngineerWithoutAProjectForm.get('id').value"
+                    formControlName = "attachmentFiles">
+                </app-multi-file-upload>
+            </form>
+            <button
+                color = "primary"
+                type = "submit"
+                (click) = "onSubmit()"
+                [disabled] = "jobPlacementForAnExecutiveEngineerWithoutAProjectForm.invalid"
+                mat-raised-button>
+                حفظ
+            </button>
+    </mat-card-actions>
+</mat-card>
+

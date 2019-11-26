@@ -1,0 +1,68 @@
+
+<mat-card>
+    <mat-card-header>
+        <mat-card-title> اجمالى المقرر الوظيفى</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+        <form [formGroup]="totalFunctionalCourseForm" class="form-container">
+          
+
+	<mat-form-field appearance="outline">
+	 <mat-label>الاجمالى</mat-label>
+	 <input matInput formControlName="total"/>
+	 <mat-error *ngIf = "getControls('total').invalid" >
+	  {{ getControls('total')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>الثابت</mat-label>
+	 <input matInput formControlName="fixed"/>
+	 <mat-error *ngIf = "getControls('fixed').invalid" >
+	  {{ getControls('fixed')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>المتغير</mat-label>
+	 <input matInput formControlName="variable"/>
+	 <mat-error *ngIf = "getControls('variable').invalid" >
+	  {{ getControls('variable')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+          
+
+	<app-material-select appearance="outline"
+	  #branchCode 
+	  [options] = "branchCodeSelectOptions"
+	  formControlName = "branchCode"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #jobCode 
+	  [options] = "jobCodeSelectOptions"
+	  formControlName = "jobCode"
+	></app-material-select>
+
+        </form>
+    </mat-card-content>
+
+    <mat-divider></mat-divider>
+
+	<mat-card-actions>
+			<form [formGroup]="attachmentForm" class="form-container">
+                <app-multi-file-upload [service] = "totalFunctionalCourseService" [id]="totalFunctionalCourseForm.get('id').value"
+                    formControlName = "attachmentFiles">
+                </app-multi-file-upload>
+            </form>
+            <button
+                color = "primary"
+                type = "submit"
+                (click) = "onSubmit()"
+                [disabled] = "totalFunctionalCourseForm.invalid"
+                mat-raised-button>
+                حفظ
+            </button>
+    </mat-card-actions>
+</mat-card>
+
