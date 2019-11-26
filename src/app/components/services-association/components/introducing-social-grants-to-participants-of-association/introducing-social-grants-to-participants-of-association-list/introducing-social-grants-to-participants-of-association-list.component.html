@@ -1,0 +1,80 @@
+
+<app-search-list-expansion-panel
+    dir="rtl"
+    [pageTitle] = "'ادخال المنح الاجتماعية للمشتركين بالجمعية'"
+    (beginSearch) = "onBeginSearch()"
+    (create) = "onCreate()"
+>
+    <ng-template searchFormContainer >
+        <form [formGroup] = "searchForm">
+           
+
+	<mat-form-field appearance="outline">
+	 <mat-label>كود الموظف</mat-label>
+	 <input matInput formControlName="employeeCode"/>
+	 <mat-error *ngIf = "getControls('employeeCode').invalid" >
+	  {{ getControls('employeeCode')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label> رقم العضوية</mat-label>
+	 <input matInput formControlName="membershipNo"/>
+	 <mat-error *ngIf = "getControls('membershipNo').invalid" >
+	  {{ getControls('membershipNo')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label> تاريخ الصرف</mat-label>
+	 <input matInput
+	  [matDatepicker] = "exchangeDateDatepicker"
+	  autocomplete = "off"
+	  formControlName= "exchangeDate"/>
+	 <mat-datepicker-toggle
+	   matSuffix
+	   [for]="exchangeDateDatepicker"
+	 ></mat-datepicker-toggle>
+	 <mat-datepicker #exchangeDateDatepicker></mat-datepicker>
+	 <mat-error *ngIf = "getControls('exchangeDate').invalid" >
+	  {{ getControls('exchangeDate')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label> قيمة الصرف</mat-label>
+	 <input matInput formControlName="exchangeValue"/>
+	 <mat-error *ngIf = "getControls('exchangeValue').invalid" >
+	  {{ getControls('exchangeValue')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label> اسم المتوفي</mat-label>
+	 <input matInput formControlName="deceasedName"/>
+	 <mat-error *ngIf = "getControls('deceasedName').invalid" >
+	  {{ getControls('deceasedName')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+           
+
+	<app-material-select appearance="outline"
+	  #case 
+	  [options] = "caseSelectOptions"
+	  formControlName = "case"
+	></app-material-select>
+
+        </form>
+    </ng-template >
+    <ng-template searchResultContainer >
+        <app-grid-control
+            #gridControl
+            [rowDataService] = "getIntroducingSocialGrantsToParticipantsOfAssociationPaginatedSortedFiltered"
+            [columnOptions] = "columnOptions"
+            [gridHeaderOptions] = "gridHeaderOptions"
+            [searchInput] = "searchForm.value"
+            (deleteRow) = "onDeleteClicked($event)"
+        >
+        </app-grid-control>
+    </ng-template>
+</app-search-list-expansion-panel >

@@ -1,0 +1,92 @@
+
+<mat-card>
+    <mat-card-header>
+        <mat-card-title>انهاء تسكين الوظيفى للموظف</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+        <form [formGroup]="terminationOfTheEmployeesJobPlacementForm" class="form-container">
+          
+
+	<mat-form-field appearance="outline">
+	 <mat-label>رقم الموظف</mat-label>
+	 <input matInput formControlName="employeeCode"/>
+	 <mat-error *ngIf = "getControls('employeeCode').invalid" >
+	  {{ getControls('employeeCode')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>الوظيفه المسكن عليها </mat-label>
+	 <input matInput formControlName="jobDwellingonthem"/>
+	 <mat-error *ngIf = "getControls('jobDwellingonthem').invalid" >
+	  {{ getControls('jobDwellingonthem')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>تاريخ التسكين</mat-label>
+	 <input matInput
+	  [matDatepicker] = "analgesiaDateDatepicker"
+	  autocomplete = "off"
+	  formControlName= "analgesiaDate"/>
+	 <mat-datepicker-toggle
+	   matSuffix
+	   [for]="analgesiaDateDatepicker"
+	 ></mat-datepicker-toggle>
+	 <mat-datepicker #analgesiaDateDatepicker></mat-datepicker>
+	 <mat-error *ngIf = "getControls('analgesiaDate').invalid" >
+	  {{ getControls('analgesiaDate')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>تاريخ انهاء التسكين</mat-label>
+	 <input matInput
+	  [matDatepicker] = "endAnalgesiaDateDatepicker"
+	  autocomplete = "off"
+	  formControlName= "endAnalgesiaDate"/>
+	 <mat-datepicker-toggle
+	   matSuffix
+	   [for]="endAnalgesiaDateDatepicker"
+	 ></mat-datepicker-toggle>
+	 <mat-datepicker #endAnalgesiaDateDatepicker></mat-datepicker>
+	 <mat-error *ngIf = "getControls('endAnalgesiaDate').invalid" >
+	  {{ getControls('endAnalgesiaDate')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+          
+
+	<app-material-select appearance="outline"
+	  #branchCode 
+	  [options] = "branchCodeSelectOptions"
+	  formControlName = "branchCode"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #department 
+	  [options] = "departmentSelectOptions"
+	  formControlName = "department"
+	></app-material-select>
+
+        </form>
+    </mat-card-content>
+
+    <mat-divider></mat-divider>
+
+	<mat-card-actions>
+			<form [formGroup]="attachmentForm" class="form-container">
+                <app-multi-file-upload [service] = "terminationOfTheEmployeesJobPlacementService" [id]="terminationOfTheEmployeesJobPlacementForm.get('id').value"
+                    formControlName = "attachmentFiles">
+                </app-multi-file-upload>
+            </form>
+            <button
+                color = "primary"
+                type = "submit"
+                (click) = "onSubmit()"
+                [disabled] = "terminationOfTheEmployeesJobPlacementForm.invalid"
+                mat-raised-button>
+                حفظ
+            </button>
+    </mat-card-actions>
+</mat-card>
+
