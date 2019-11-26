@@ -1,0 +1,64 @@
+
+<app-new-form-layout
+    dir="rtl"
+    (submitClicked) = "onSubmit()"
+    (back) = "onBack()"
+    [pageTitle] = "'برنامج المقررات الوظيفيه'"
+>
+    <ng-template newFormContainer >
+        <form [formGroup] = "careerProgramsForm">
+         
+
+	<mat-form-field appearance="outline">
+	 <mat-label>كود الوظيفه</mat-label>
+	 <input matInput formControlName="jobCode" [disableControl]="true" />
+	 <mat-error *ngIf = "getControls('jobCode').invalid" >
+	  {{ getControls('jobCode')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>اسم الوظيفه</mat-label>
+	 <input matInput formControlName="jobName" [disableControl]="true" />
+	 <mat-error *ngIf = "getControls('jobName').invalid" >
+	  {{ getControls('jobName')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>العدد المقرر</mat-label>
+	 <input matInput formControlName="scheduledNumber" [disableControl]="true" />
+	 <mat-error *ngIf = "getControls('scheduledNumber').invalid" >
+	  {{ getControls('scheduledNumber')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+         
+
+	<app-material-select appearance="outline"
+	  #region 
+	  [options] = "regionSelectOptions"
+	  formControlName = "region"
+	></app-material-select>
+
+        </form>
+
+        <mat-divider></mat-divider>
+
+		<mat-card-actions>
+			<form [formGroup]="attachmentForm" class="form-container">
+                <app-multi-file-upload [service] = "careerProgramsService" [id]="careerProgramsForm.get('id').value"
+                    formControlName = "attachmentFiles">
+                </app-multi-file-upload>
+            </form>
+            <button
+                type="submit"
+                (click)="onSubmit()"
+                [disabled]="careerProgramsForm.invalid"
+                mat-raised-button
+                color = "primary">
+             حفظ
+            </button>
+        </mat-card-actions>
+    </ng-template >
+</app-new-form-layout >
+

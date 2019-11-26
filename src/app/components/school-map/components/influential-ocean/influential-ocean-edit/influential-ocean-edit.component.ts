@@ -104,6 +104,7 @@ effectCodeSelectOptions: MaterialSelectOptions;
   }
 
   onSubmit() {
+    console.log("id onsubmit ="+ this.getControls('id').value)
     this.influentialOceanService.update(this.influentialOceanForm.value, this.getControls('id').value)
     .pipe(switchMap(x => {
 	    return this.influentialOceanService.postAttachments(x.id, this.attachmentForm.get('attachmentFiles').value);

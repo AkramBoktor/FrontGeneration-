@@ -8,7 +8,15 @@ const routes: Routes = [
   {
     path: '',
     component: AssayUnctionsOfItemsAndElementsOfTheProjectComponent,
-  }
+  },
+  
+{
+    path: 'data-element-of-basic-item', loadChildren: './components/data-element-of-basic-item/data-element-of-basic-item.module#DataElementOfBasicItemModule',
+    data: {
+      moduleName: 'DataElementOfBasicItem'
+    },
+},
+
 ];
 
 @NgModule({

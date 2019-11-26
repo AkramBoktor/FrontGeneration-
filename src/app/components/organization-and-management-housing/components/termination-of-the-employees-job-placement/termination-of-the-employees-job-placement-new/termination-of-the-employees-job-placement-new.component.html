@@ -1,0 +1,93 @@
+
+<app-new-form-layout
+    dir="rtl"
+    (submitClicked) = "onSubmit()"
+    (back) = "onBack()"
+    [pageTitle] = "'انهاء تسكين الوظيفى للموظف'"
+>
+    <ng-template newFormContainer >
+        <form [formGroup] = "terminationOfTheEmployeesJobPlacementForm">
+         
+
+	<mat-form-field appearance="outline">
+	 <mat-label>رقم الموظف</mat-label>
+	 <input matInput formControlName="employeeCode"/>
+	 <mat-error *ngIf = "getControls('employeeCode').invalid" >
+	  {{ getControls('employeeCode')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>تاريخ التسكين</mat-label>
+	 <input matInput
+	 [disableControl]="true" 
+	  [matDatepicker] = "analgesiaDateDatepicker"
+	  autocomplete = "off"
+	  formControlName= "analgesiaDate"/>
+	 <mat-datepicker-toggle
+	   matSuffix
+	   [for]="analgesiaDateDatepicker"
+	 ></mat-datepicker-toggle>
+	 <mat-datepicker #analgesiaDateDatepicker></mat-datepicker>
+	 <mat-error *ngIf = "getControls('analgesiaDate').invalid" >
+	  {{ getControls('analgesiaDate')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>تاريخ انهاء التسكين</mat-label>
+	 <input matInput
+	  [matDatepicker] = "endAnalgesiaDateDatepicker"
+	  autocomplete = "off"
+	  formControlName= "endAnalgesiaDate"/>
+	 <mat-datepicker-toggle
+	   matSuffix
+	   [for]="endAnalgesiaDateDatepicker"
+	 ></mat-datepicker-toggle>
+	 <mat-datepicker #endAnalgesiaDateDatepicker></mat-datepicker>
+	 <mat-error *ngIf = "getControls('endAnalgesiaDate').invalid" >
+	  {{ getControls('endAnalgesiaDate')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+         
+
+	<app-material-select appearance="outline"
+	  #branchCode 
+	  [options] = "branchCodeSelectOptions"
+	  formControlName = "branchCode"
+	></app-material-select>
+
+	<app-material-select appearance="outline" [disabled]="true" 
+	  #department 
+	  [options] = "departmentSelectOptions"
+	  formControlName = "department"
+	></app-material-select>
+
+	<app-material-select appearance="outline" [disabled]="true" 
+	  #jobDwellingonthem 
+	  [options] = "jobDwellingonthemSelectOptions"
+	  formControlName = "jobDwellingonthem"
+	></app-material-select>
+
+        </form>
+
+        <mat-divider></mat-divider>
+
+		<mat-card-actions>
+			<form [formGroup]="attachmentForm" class="form-container">
+                <app-multi-file-upload [service] = "terminationOfTheEmployeesJobPlacementService" [id]="terminationOfTheEmployeesJobPlacementForm.get('id').value"
+                    formControlName = "attachmentFiles">
+                </app-multi-file-upload>
+            </form>
+            <button
+                type="submit"
+                (click)="onSubmit()"
+                [disabled]="terminationOfTheEmployeesJobPlacementForm.invalid"
+                mat-raised-button
+                color = "primary">
+             حفظ
+            </button>
+        </mat-card-actions>
+    </ng-template >
+</app-new-form-layout >
+
