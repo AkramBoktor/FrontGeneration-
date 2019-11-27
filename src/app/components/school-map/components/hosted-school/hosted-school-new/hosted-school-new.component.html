@@ -1,0 +1,116 @@
+
+<app-new-form-layout
+    dir="rtl"
+    (submitClicked) = "onSubmit()"
+    (back) = "onBack()"
+    [pageTitle] = "'مدرسة مستضافة'"
+>
+    <ng-template newFormContainer >
+        <form [formGroup] = "hostedSchoolForm">
+         
+
+	<mat-form-field appearance="outline">
+	 <mat-label>رقم المدرسة المستضيفة</mat-label>
+	 <input matInput formControlName="hostSchoolNumber"/>
+	 <mat-error *ngIf = "getControls('hostSchoolNumber').invalid" >
+	  {{ getControls('hostSchoolNumber')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>مدة الاستضافه من </mat-label>
+	 <input matInput
+	  [matDatepicker] = "hostingDurationFromDatepicker"
+	  autocomplete = "off"
+	  formControlName= "hostingDurationFrom"/>
+	 <mat-datepicker-toggle
+	   matSuffix
+	   [for]="hostingDurationFromDatepicker"
+	 ></mat-datepicker-toggle>
+	 <mat-datepicker #hostingDurationFromDatepicker></mat-datepicker>
+	 <mat-error *ngIf = "getControls('hostingDurationFrom').invalid" >
+	  {{ getControls('hostingDurationFrom')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>المدة الي</mat-label>
+	 <input matInput
+	  [matDatepicker] = "durationToDatepicker"
+	  autocomplete = "off"
+	  formControlName= "durationTo"/>
+	 <mat-datepicker-toggle
+	   matSuffix
+	   [for]="durationToDatepicker"
+	 ></mat-datepicker-toggle>
+	 <mat-datepicker #durationToDatepicker></mat-datepicker>
+	 <mat-error *ngIf = "getControls('durationTo').invalid" >
+	  {{ getControls('durationTo')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>رقم المدرسة المستضافة</mat-label>
+	 <input matInput formControlName="hostedSchoolNumber"/>
+	 <mat-error *ngIf = "getControls('hostedSchoolNumber').invalid" >
+	  {{ getControls('hostedSchoolNumber')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>عدد تلاميذ المستضافة</mat-label>
+	 <input matInput formControlName="pupilsNumber"/>
+	 <mat-error *ngIf = "getControls('pupilsNumber').invalid" >
+	  {{ getControls('pupilsNumber')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>عدد الفراغات المستخدمة</mat-label>
+	 <input matInput formControlName="spacesUsedNumber"/>
+	 <mat-error *ngIf = "getControls('spacesUsedNumber').invalid" >
+	  {{ getControls('spacesUsedNumber')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+         
+
+	<app-material-select appearance="outline"
+	  #hostingReasons 
+	  [options] = "hostingReasonsSelectOptions"
+	  formControlName = "hostingReasons"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #hostedSchoolStage 
+	  [options] = "hostedSchoolStageSelectOptions"
+	  formControlName = "hostedSchoolStage"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #pupilsType 
+	  [options] = "pupilsTypeSelectOptions"
+	  formControlName = "pupilsType"
+	></app-material-select>
+
+        </form>
+
+        <mat-divider></mat-divider>
+
+		<mat-card-actions>
+			<form [formGroup]="attachmentForm" class="form-container">
+                <app-multi-file-upload [service] = "hostedSchoolService" [id]="hostedSchoolForm.get('id').value"
+                    formControlName = "attachmentFiles">
+                </app-multi-file-upload>
+            </form>
+            <button
+                type="submit"
+                (click)="onSubmit()"
+                [disabled]="hostedSchoolForm.invalid"
+                mat-raised-button
+                color = "primary">
+             حفظ
+            </button>
+        </mat-card-actions>
+    </ng-template >
+</app-new-form-layout >
+

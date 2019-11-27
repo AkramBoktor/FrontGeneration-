@@ -1,0 +1,144 @@
+
+<mat-card class="form-card">
+      <mat-card-header>
+  
+          <mat-card-title>
+              ملف السور
+          </mat-card-title>
+  
+      </mat-card-header>
+  
+      <mat-card-content>
+  
+        <form [formGroup] = "fenceFileForm" class="form-container">
+         
+
+	<mat-form-field appearance="outline">
+	 <mat-label>كود المبنى</mat-label>
+	 <input matInput formControlName="buildingCode"/>
+	 <mat-error *ngIf = "getControls('buildingCode').invalid" >
+	  {{ getControls('buildingCode')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>كود السور</mat-label>
+	 <input matInput formControlName="fenceCode"/>
+	 <mat-error *ngIf = "getControls('fenceCode').invalid" >
+	  {{ getControls('fenceCode')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>ارتفاع  السور</mat-label>
+	 <input matInput formControlName="fenceHight"/>
+	 <mat-error *ngIf = "getControls('fenceHight').invalid" >
+	  {{ getControls('fenceHight')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>طول الضلع الشمالي</mat-label>
+	 <input matInput formControlName="northSideLength"/>
+	 <mat-error *ngIf = "getControls('northSideLength').invalid" >
+	  {{ getControls('northSideLength')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>طول الضلع الحنوبي</mat-label>
+	 <input matInput formControlName="southSideLength"/>
+	 <mat-error *ngIf = "getControls('southSideLength').invalid" >
+	  {{ getControls('southSideLength')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>طول الضلع الشرق</mat-label>
+	 <input matInput formControlName="eastSideLength"/>
+	 <mat-error *ngIf = "getControls('eastSideLength').invalid" >
+	  {{ getControls('eastSideLength')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>طول الضلع الغرب</mat-label>
+	 <input matInput formControlName="westSideLength"/>
+	 <mat-error *ngIf = "getControls('westSideLength').invalid" >
+	  {{ getControls('westSideLength')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>طول الضلع شمال الشرق</mat-label>
+	 <input matInput formControlName="northEastSideLength"/>
+	 <mat-error *ngIf = "getControls('northEastSideLength').invalid" >
+	  {{ getControls('northEastSideLength')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>طول الضلع  جنوب الشرق</mat-label>
+	 <input matInput formControlName="southEastSidelength"/>
+	 <mat-error *ngIf = "getControls('southEastSidelength').invalid" >
+	  {{ getControls('southEastSidelength')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>طول الضلع شمال غرب</mat-label>
+	 <input matInput formControlName="northWestLength"/>
+	 <mat-error *ngIf = "getControls('northWestLength').invalid" >
+	  {{ getControls('northWestLength')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>طول الضلع جنوب غرب</mat-label>
+	 <input matInput formControlName="southWestLength"/>
+	 <mat-error *ngIf = "getControls('southWestLength').invalid" >
+	  {{ getControls('southWestLength')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+         
+
+	<app-material-select appearance="outline" [disabled]="true" 
+	  #regionalCenterCode 
+	  [options] = "regionalCenterCodeSelectOptions"
+	  formControlName = "regionalCenterCode"
+	></app-material-select>
+
+	<app-material-select appearance="outline" [disabled]="true" 
+	  #branchCode 
+	  [options] = "branchCodeSelectOptions"
+	  formControlName = "branchCode"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #fenceStatusCode 
+	  [options] = "fenceStatusCodeSelectOptions"
+	  formControlName = "fenceStatusCode"
+	></app-material-select>
+
+	<app-material-select appearance="outline" [disabled]="true" 
+	  #constructionMaterial 
+	  [options] = "constructionMaterialSelectOptions"
+	  formControlName = "constructionMaterial"
+	></app-material-select>
+        </form>
+  
+      </mat-card-content >
+  
+      <mat-action-row>
+            <form [formGroup]="attachmentForm" class="form-container">
+                <app-multi-file-upload [service] = "fenceFileService" [id]="fenceFileForm.get('id').value"
+                    formControlName = "attachmentFiles">
+                </app-multi-file-upload>
+            </form>
+            <button (click) = "onConfirm()" mat-raised-button color = "primary" >
+                غلق
+            </button>
+        </mat-action-row>
+    </mat-card>
+
+    

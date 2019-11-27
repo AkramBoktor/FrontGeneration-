@@ -1,0 +1,154 @@
+
+<mat-card class="form-card">
+      <mat-card-header>
+  
+          <mat-card-title>
+              بيانات المبني التعليمي
+          </mat-card-title>
+  
+      </mat-card-header>
+  
+      <mat-card-content>
+  
+        <form [formGroup] = "educationalBuildingDataForm" class="form-container">
+         
+
+	<mat-form-field appearance="outline">
+	 <mat-label>كود المبنى</mat-label>
+	 <input matInput formControlName="buildingCode"/>
+	 <mat-error *ngIf = "getControls('buildingCode').invalid" >
+	  {{ getControls('buildingCode')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>اسم المدرسة</mat-label>
+	 <input matInput formControlName="schoolName"/>
+	 <mat-error *ngIf = "getControls('schoolName').invalid" >
+	  {{ getControls('schoolName')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>اسم المدرسة السابق</mat-label>
+	 <input matInput formControlName="prevSchoolName"/>
+	 <mat-error *ngIf = "getControls('prevSchoolName').invalid" >
+	  {{ getControls('prevSchoolName')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>اسم شارع المبنى التعليمي</mat-label>
+	 <input matInput formControlName="educationalBuildingStreetName"/>
+	 <mat-error *ngIf = "getControls('educationalBuildingStreetName').invalid" >
+	  {{ getControls('educationalBuildingStreetName')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>رقم الشارع</mat-label>
+	 <input matInput formControlName="streetNumber"/>
+	 <mat-error *ngIf = "getControls('streetNumber').invalid" >
+	  {{ getControls('streetNumber')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>رقم تليفون المبنى التعليمي</mat-label>
+	 <input matInput formControlName="educationalBuildingPhoneNumber"/>
+	 <mat-error *ngIf = "getControls('educationalBuildingPhoneNumber').invalid" >
+	  {{ getControls('educationalBuildingPhoneNumber')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>تكلفة انشاء المبنى</mat-label>
+	 <input matInput formControlName="buildingConstructionCost"/>
+	 <mat-error *ngIf = "getControls('buildingConstructionCost').invalid" >
+	  {{ getControls('buildingConstructionCost')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+         
+
+	<app-material-select appearance="outline"
+	  #regionalCenterCode 
+	  [options] = "regionalCenterCodeSelectOptions"
+	  formControlName = "regionalCenterCode"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #branchCode 
+	  [options] = "branchCodeSelectOptions"
+	  formControlName = "branchCode"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #purposeOfConstruction 
+	  [options] = "purposeOfConstructionSelectOptions"
+	  formControlName = "purposeOfConstruction"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #useBuildingPosition 
+	  [options] = "useBuildingPositionSelectOptions"
+	  formControlName = "useBuildingPosition"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #educationalAdministration 
+	  [options] = "educationalAdministrationSelectOptions"
+	  formControlName = "educationalAdministration"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #sectionCenter 
+	  [options] = "sectionCenterSelectOptions"
+	  formControlName = "sectionCenter"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #village 
+	  [options] = "villageSelectOptions"
+	  formControlName = "village"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #city 
+	  [options] = "citySelectOptions"
+	  formControlName = "city"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #continuedToVillage 
+	  [options] = "continuedToVillageSelectOptions"
+	  formControlName = "continuedToVillage"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #landOwnershipCode 
+	  [options] = "landOwnershipCodeSelectOptions"
+	  formControlName = "landOwnershipCode"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #buildingOwnershipCode 
+	  [options] = "buildingOwnershipCodeSelectOptions"
+	  formControlName = "buildingOwnershipCode"
+	></app-material-select>
+        </form>
+  
+      </mat-card-content >
+  
+      <mat-action-row>
+            <form [formGroup]="attachmentForm" class="form-container">
+                <app-multi-file-upload [service] = "educationalBuildingDataService" [id]="educationalBuildingDataForm.get('id').value"
+                    formControlName = "attachmentFiles">
+                </app-multi-file-upload>
+            </form>
+            <button (click) = "onConfirm()" mat-raised-button color = "primary" >
+                غلق
+            </button>
+        </mat-action-row>
+    </mat-card>
+
+    

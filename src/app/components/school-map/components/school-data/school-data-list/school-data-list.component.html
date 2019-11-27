@@ -1,0 +1,70 @@
+
+<app-search-list-expansion-panel
+    dir="rtl"
+    [pageTitle] = "'بيانات المدارس'"
+    (beginSearch) = "onBeginSearch()"
+    (create) = "onCreate()"
+>
+    <ng-template searchFormContainer >
+        <form [formGroup] = "searchForm">
+           
+
+	<mat-form-field appearance="outline">
+	 <mat-label>كود المبنى</mat-label>
+	 <input matInput formControlName="buildingCode"/>
+	 <mat-error *ngIf = "getControls('buildingCode').invalid" >
+	  {{ getControls('buildingCode')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+           
+
+	<app-material-select appearance="outline"
+	  #regionalCenterCode 
+	  [options] = "regionalCenterCodeSelectOptions"
+	  formControlName = "regionalCenterCode"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #branchCode 
+	  [options] = "branchCodeSelectOptions"
+	  formControlName = "branchCode"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #dependencyCode 
+	  [options] = "dependencyCodeSelectOptions"
+	  formControlName = "dependencyCode"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #phaseCode 
+	  [options] = "phaseCodeSelectOptions"
+	  formControlName = "phaseCode"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #educationQualityCode 
+	  [options] = "educationQualityCodeSelectOptions"
+	  formControlName = "educationQualityCode"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #periodsOfUseNumber 
+	  [options] = "periodsOfUseNumberSelectOptions"
+	  formControlName = "periodsOfUseNumber"
+	></app-material-select>
+
+        </form>
+    </ng-template >
+    <ng-template searchResultContainer >
+        <app-grid-control
+            #gridControl
+            [rowDataService] = "getSchoolsDataPaginatedSortedFiltered"
+            [columnOptions] = "columnOptions"
+            [gridHeaderOptions] = "gridHeaderOptions"
+            [searchInput] = "searchForm.value"
+            (deleteRow) = "onDeleteClicked($event)"
+        >
+        </app-grid-control>
+    </ng-template>
+</app-search-list-expansion-panel >

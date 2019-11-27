@@ -1,0 +1,68 @@
+
+<app-search-list-expansion-panel
+    dir="rtl"
+    [pageTitle] = "'تسكين وظيفى لمهندس تنفيذى بدون مشروع '"
+    (beginSearch) = "onBeginSearch()"
+    (create) = "onCreate()"
+>
+    <ng-template searchFormContainer >
+        <form [formGroup] = "searchForm">
+           
+
+	<mat-form-field appearance="outline">
+	 <mat-label>رقم الموظف</mat-label>
+	 <input matInput formControlName="employeeCode"/>
+	 <mat-error *ngIf = "getControls('employeeCode').invalid" >
+	  {{ getControls('employeeCode')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>تاريخ التسكين</mat-label>
+	 <input matInput
+	  [matDatepicker] = "hiringdateDatepicker"
+	  autocomplete = "off"
+	  formControlName= "hiringdate"/>
+	 <mat-datepicker-toggle
+	   matSuffix
+	   [for]="hiringdateDatepicker"
+	 ></mat-datepicker-toggle>
+	 <mat-datepicker #hiringdateDatepicker></mat-datepicker>
+	 <mat-error *ngIf = "getControls('hiringdate').invalid" >
+	  {{ getControls('hiringdate')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+           
+
+	<app-material-select appearance="outline"
+	  #branchCode 
+	  [options] = "branchCodeSelectOptions"
+	  formControlName = "branchCode"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #department 
+	  [options] = "departmentSelectOptions"
+	  formControlName = "department"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #jobDwellingonThem 
+	  [options] = "jobDwellingonThemSelectOptions"
+	  formControlName = "jobDwellingonThem"
+	></app-material-select>
+
+        </form>
+    </ng-template >
+    <ng-template searchResultContainer >
+        <app-grid-control
+            #gridControl
+            [rowDataService] = "getJobPlacementForAnExecutiveEngineersWithoutAProjectsPaginatedSortedFiltered"
+            [columnOptions] = "columnOptions"
+            [gridHeaderOptions] = "gridHeaderOptions"
+            [searchInput] = "searchForm.value"
+            (deleteRow) = "onDeleteClicked($event)"
+        >
+        </app-grid-control>
+    </ng-template>
+</app-search-list-expansion-panel >

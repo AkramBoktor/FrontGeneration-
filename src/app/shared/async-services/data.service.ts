@@ -2,7 +2,7 @@ import { HttpClient, HttpEventType, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { ODataService } from 'angular-odata-es5';
 import { saveAs } from 'file-saver';
-import { Observable } from 'rxjs';
+import { Observable, of } from 'rxjs';
 import { debounceTime, map } from 'rxjs/operators';
 import { Constants } from '../config/constants';
 import { Attachment } from '../models/controls/interfaces';
@@ -45,10 +45,13 @@ export class DataService<T> {
   public getAttachments(): Observable<Attachment[]> {
     return this.httpClient.get<Attachment[]>(`${this.attachmentUrlPrefix}/attachments/${this.url}`);
   }
+  
   public getAttachmentsById(id: number): Observable<Attachment[]> {
     return this.httpClient.get<Attachment[]>(`${this.attachmentUrlPrefix}/attachments/${this.url}/${id}`);
   }
+
   public postAttachments(id: number, fileItems: Attachment[]): Observable<{ status: number, message: number } | Attachment[]> {
+    //debugger;
     const formData = new FormData();
     if (fileItems) {
       for (const fileItem of fileItems) {
@@ -74,6 +77,7 @@ export class DataService<T> {
       }),
         debounceTime(300));
     }
+    return of([]);
 
   }
   public downloadAttachments(id: number, fileName: string): any {

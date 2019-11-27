@@ -1,0 +1,82 @@
+
+<mat-card class="form-card">
+      <mat-card-header>
+  
+          <mat-card-title>
+               بيانات عناصر البنود الاساسية 
+          </mat-card-title>
+  
+      </mat-card-header>
+  
+      <mat-card-content>
+  
+        <form [formGroup] = "dataElementOfBasicItemForm" class="form-container">
+         
+
+	<mat-form-field appearance="outline">
+	 <mat-label>بيان العنصر</mat-label>
+	 <input matInput formControlName="itemStatment"/>
+	 <mat-error *ngIf = "getControls('itemStatment').invalid" >
+	  {{ getControls('itemStatment')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>سنه التسعير</mat-label>
+	 <input matInput
+	  [matDatepicker] = "pricingYearDatepicker"
+	  autocomplete = "off"
+	  formControlName= "pricingYear"/>
+	 <mat-datepicker-toggle
+	   matSuffix
+	   [for]="pricingYearDatepicker"
+	 ></mat-datepicker-toggle>
+	 <mat-datepicker #pricingYearDatepicker></mat-datepicker>
+	 <mat-error *ngIf = "getControls('pricingYear').invalid" >
+	  {{ getControls('pricingYear')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>اول سعر</mat-label>
+	 <input matInput formControlName="firstPrice"/>
+	 <mat-error *ngIf = "getControls('firstPrice').invalid" >
+	  {{ getControls('firstPrice')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+         
+
+	<app-material-select appearance="outline"
+	  #groupCode 
+	  [options] = "groupCodeSelectOptions"
+	  formControlName = "groupCode"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #pricingType 
+	  [options] = "pricingTypeSelectOptions"
+	  formControlName = "pricingType"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #measuringUnit 
+	  [options] = "measuringUnitSelectOptions"
+	  formControlName = "measuringUnit"
+	></app-material-select>
+        </form>
+  
+      </mat-card-content >
+  
+      <mat-action-row>
+            <form [formGroup]="attachmentForm" class="form-container">
+                <app-multi-file-upload [service] = "dataElementOfBasicItemService" [id]="dataElementOfBasicItemForm.get('id').value"
+                    formControlName = "attachmentFiles">
+                </app-multi-file-upload>
+            </form>
+            <button (click) = "onConfirm()" mat-raised-button color = "primary" >
+                غلق
+            </button>
+        </mat-action-row>
+    </mat-card>
+
+    

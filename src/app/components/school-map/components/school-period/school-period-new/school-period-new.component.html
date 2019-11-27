@@ -1,0 +1,98 @@
+
+<app-new-form-layout
+    dir="rtl"
+    (submitClicked) = "onSubmit()"
+    (back) = "onBack()"
+    [pageTitle] = "'الفتره المدرسية '"
+>
+    <ng-template newFormContainer >
+        <form [formGroup] = "schoolPeriodForm">
+         
+
+	<mat-form-field appearance="outline">
+	 <mat-label>كود المبنى</mat-label>
+	 <input matInput formControlName="buildingCode"/>
+	 <mat-error *ngIf = "getControls('buildingCode').invalid" >
+	  {{ getControls('buildingCode')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>اسم المدرسه</mat-label>
+	 <input matInput formControlName="schoolName"/>
+	 <mat-error *ngIf = "getControls('schoolName').invalid" >
+	  {{ getControls('schoolName')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>المدير المسؤل</mat-label>
+	 <input matInput formControlName="responsibleManager"/>
+	 <mat-error *ngIf = "getControls('responsibleManager').invalid" >
+	  {{ getControls('responsibleManager')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>عدد تلاميذ المدرسة بنين</mat-label>
+	 <input matInput formControlName="schoolPupilsBoysNumber"/>
+	 <mat-error *ngIf = "getControls('schoolPupilsBoysNumber').invalid" >
+	  {{ getControls('schoolPupilsBoysNumber')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>عدد تلاميذ المدرسة بنات</mat-label>
+	 <input matInput formControlName="schoolPupilsGirlsNumber"/>
+	 <mat-error *ngIf = "getControls('schoolPupilsGirlsNumber').invalid" >
+	  {{ getControls('schoolPupilsGirlsNumber')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+         
+
+	<app-material-select appearance="outline"
+	  #regionalCenterCode 
+	  [options] = "regionalCenterCodeSelectOptions"
+	  formControlName = "regionalCenterCode"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #branchCode 
+	  [options] = "branchCodeSelectOptions"
+	  formControlName = "branchCode"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #periodNumber 
+	  [options] = "periodNumberSelectOptions"
+	  formControlName = "periodNumber"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #schoolPupilsType 
+	  [options] = "schoolPupilsTypeSelectOptions"
+	  formControlName = "schoolPupilsType"
+	></app-material-select>
+
+        </form>
+
+        <mat-divider></mat-divider>
+
+		<mat-card-actions>
+			<form [formGroup]="attachmentForm" class="form-container">
+                <app-multi-file-upload [service] = "schoolPeriodService" [id]="schoolPeriodForm.get('id').value"
+                    formControlName = "attachmentFiles">
+                </app-multi-file-upload>
+            </form>
+            <button
+                type="submit"
+                (click)="onSubmit()"
+                [disabled]="schoolPeriodForm.invalid"
+                mat-raised-button
+                color = "primary">
+             حفظ
+            </button>
+        </mat-card-actions>
+    </ng-template >
+</app-new-form-layout >
+

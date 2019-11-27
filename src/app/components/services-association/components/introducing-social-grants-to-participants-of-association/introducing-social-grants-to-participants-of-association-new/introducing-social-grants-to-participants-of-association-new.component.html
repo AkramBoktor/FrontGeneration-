@@ -1,0 +1,88 @@
+
+<app-new-form-layout
+    dir="rtl"
+    (submitClicked) = "onSubmit()"
+    (back) = "onBack()"
+    [pageTitle] = "'ادخال المنح الاجتماعية للمشتركين بالجمعية'"
+>
+    <ng-template newFormContainer >
+        <form [formGroup] = "introducingSocialGrantsToParticipantsOfAssociationForm">
+         
+
+	<mat-form-field appearance="outline">
+	 <mat-label>كود الموظف</mat-label>
+	 <input matInput formControlName="employeeCode"/>
+	 <mat-error *ngIf = "getControls('employeeCode').invalid" >
+	  {{ getControls('employeeCode')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label> رقم العضوية</mat-label>
+	 <input matInput formControlName="membershipNo"/>
+	 <mat-error *ngIf = "getControls('membershipNo').invalid" >
+	  {{ getControls('membershipNo')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label> تاريخ الصرف</mat-label>
+	 <input matInput
+	  [matDatepicker] = "exchangeDateDatepicker"
+	  autocomplete = "off"
+	  formControlName= "exchangeDate"/>
+	 <mat-datepicker-toggle
+	   matSuffix
+	   [for]="exchangeDateDatepicker"
+	 ></mat-datepicker-toggle>
+	 <mat-datepicker #exchangeDateDatepicker></mat-datepicker>
+	 <mat-error *ngIf = "getControls('exchangeDate').invalid" >
+	  {{ getControls('exchangeDate')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label> قيمة الصرف</mat-label>
+	 <input matInput formControlName="exchangeValue"/>
+	 <mat-error *ngIf = "getControls('exchangeValue').invalid" >
+	  {{ getControls('exchangeValue')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label> اسم المتوفي</mat-label>
+	 <input matInput formControlName="deceasedName"/>
+	 <mat-error *ngIf = "getControls('deceasedName').invalid" >
+	  {{ getControls('deceasedName')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+         
+
+	<app-material-select appearance="outline" [disabled]="true" 
+	  #case 
+	  [options] = "caseSelectOptions"
+	  formControlName = "case"
+	></app-material-select>
+
+        </form>
+
+        <mat-divider></mat-divider>
+
+		<mat-card-actions>
+			<form [formGroup]="attachmentForm" class="form-container">
+                <app-multi-file-upload [service] = "introducingSocialGrantsToParticipantsOfAssociationService" [id]="introducingSocialGrantsToParticipantsOfAssociationForm.get('id').value"
+                    formControlName = "attachmentFiles">
+                </app-multi-file-upload>
+            </form>
+            <button
+                type="submit"
+                (click)="onSubmit()"
+                [disabled]="introducingSocialGrantsToParticipantsOfAssociationForm.invalid"
+                mat-raised-button
+                color = "primary">
+             حفظ
+            </button>
+        </mat-card-actions>
+    </ng-template >
+</app-new-form-layout >
+
