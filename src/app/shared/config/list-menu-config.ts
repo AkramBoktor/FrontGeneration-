@@ -4194,267 +4194,352 @@ export const listMenuConfig: ListMenuConfig = {
             ]
         }
     ],
-    "assay--unctions-of-items-and-elements-of-the-project": [
+    'assay--unctions-of-items-and-elements-of-the-project': [
         {
-            "id": "assay--unctions-of-items-and-elements-of-the-project",
-            "title": "برنامج مقايسه -وظائف البنود والعناصر للمشروع",
-            "type": "group",
-            "icon": "app",
-            "children": [
+            id: 'assay--unctions-of-items-and-elements-of-the-project',
+            title: 'برنامج مقايسه -وظائف البنود والعناصر للمشروع',
+            type: 'group',
+            icon: 'app',
+            children: [
                 {
-                    "id": "Assay  unctions of items and elements of the project Config",
-                    "title": "الأعدادات",
-                    "type": "collapsable",
-                    "icon": "build",
-                    "children": [
+                    id: 'Assay  unctions of items and elements of the project Config',
+                    title: 'الأعدادات',
+                    type: 'collapsable',
+                    icon: 'build',
+                    children: [
                         {
-                            "id": "groupcodes ",
-                            "title": "كود المجموعة المقايسات",
-                            "type": "item",
-                            "url": "/lookup/groupcodes ",
-                            "exactMatch": true
+                            id: 'groupcodes ',
+                            title: 'كود المجموعة المقايسات',
+                            type: 'item',
+                            url: '/lookup/groupcodes ',
+                            exactMatch: true
                         },
                         {
-                            "id": "pricingtypes",
-                            "title": "نوع التسعير",
-                            "type": "item",
-                            "url": "/lookup/pricingtypes",
-                            "exactMatch": true
+                            id: 'pricingtypes',
+                            title: 'نوع التسعير',
+                            type: 'item',
+                            url: '/lookup/pricingtypes',
+                            exactMatch: true
                         },
                         {
-                            "id": "measurementunits",
-                            "title": "وحدات القياس",
-                            "type": "item",
-                            "url": "/lookup/measurementunits",
-                            "exactMatch": true
+                            id: 'measurementunits',
+                            title: 'وحدات القياس',
+                            type: 'item',
+                            url: '/lookup/measurementunits',
+                            exactMatch: true
                         }
                     ]
                 },
                 {
-                    "id": "Assay  unctions of items and elements of the project Program",
-                    "title": "البرامج",
-                    "type": "collapsable",
-                    "icon": "apps",
-                    "children": [
+                    id: 'Assay  unctions of items and elements of the project Program',
+                    title: 'البرامج',
+                    type: 'collapsable',
+                    icon: 'apps',
+                    children: [
                         {
-                            "id": "Data element of basic item",
-                            "title": " بيانات عناصر البنود الاساسية ",
-                            "type": "item",
-                            "url": "/assay--unctions-of-items-and-elements-of-the-project/data-element-of-basic-item",
-                            "exactMatch": true
+                            id: 'Data element of basic item',
+                            title: ' بيانات عناصر البنود الاساسية ',
+                            type: 'item',
+                            url: '/assay--unctions-of-items-and-elements-of-the-project/data-element-of-basic-item',
+                            exactMatch: true
                         }
                     ]
                 },
                 {
-                    "id": "Assay  unctions of items and elements of the project Report",
-                    "title": "التقارير",
-                    "type": "collapsable",
-                    "icon": "assignment",
-                    "children": []
+                    id: 'Assay  unctions of items and elements of the project Report',
+                    title: 'التقارير',
+                    type: 'collapsable',
+                    icon: 'assignment',
+                    children: []
                 }
             ]
         }
     ],
-    "assay-list-subsystem-code": [
+    'assay-list-subsystem-code': [
         {
-            "id": "assay-list-subsystem-code",
-            "title": "برنامج المقايسة - قائمة المقايسات - أكواد النظام الفرعي للمقايسات",
-            "type": "group",
-            "icon": "app",
-            "children": [
+            id: 'assay-list-subsystem-code',
+            title: 'برنامج المقايسة - قائمة المقايسات - أكواد النظام الفرعي للمقايسات',
+            type: 'group',
+            icon: 'app',
+            children: [
                 {
-                    "id": "Assay List Subsystem Code Config",
-                    "title": "الأعدادات",
-                    "type": "collapsable",
-                    "icon": "build",
-                    "children": [
+                    id: 'Assay List Subsystem Code Config',
+                    title: 'الأعدادات',
+                    type: 'collapsable',
+                    icon: 'build',
+                    children: [
                         {
-                            "id": "foundationtypes",
-                            "title": "نوع الاساس",
-                            "type": "item",
-                            "url": "/lookup/foundationtypes",
-                            "exactMatch": true
+                            id: 'foundationtypes',
+                            title: 'نوع الاساس',
+                            type: 'item',
+                            url: '/lookup/foundationtypes',
+                            exactMatch: true
                         },
                         {
-                            "id": "formtypes",
-                            "title": "نوع النموذج",
-                            "type": "item",
-                            "url": "/lookup/formtypes",
-                            "exactMatch": true
+                            id: 'formtypes',
+                            title: 'نوع النموذج',
+                            type: 'item',
+                            url: '/lookup/formtypes',
+                            exactMatch: true
                         },
                         {
-                            "id": "worktypes",
-                            "title": "نوع العمل",
-                            "type": "item",
-                            "url": "/lookup/worktypes",
-                            "exactMatch": true
+                            id: 'worktypes',
+                            title: 'نوع العمل',
+                            type: 'item',
+                            url: '/lookup/worktypes',
+                            exactMatch: true
                         }
                     ]
                 },
                 {
-                    "id": "Assay List Subsystem Code Program",
-                    "title": "البرامج",
-                    "type": "collapsable",
-                    "icon": "apps",
-                    "children": [
+                    id: 'Assay List Subsystem Code Program',
+                    title: 'البرامج',
+                    type: 'collapsable',
+                    icon: 'apps',
+                    children: [
                         {
-                            "id": "implementation activity Schedule",
-                            "title": "الجداول الزمنية للتنفيذ -أنشطة الجداول الزمنية",
-                            "type": "item",
-                            "url": "/assay-list-subsystem-code/implementation-activity-schedule",
-                            "exactMatch": true
+                            id: 'implementation activity Schedule',
+                            title: 'الجداول الزمنية للتنفيذ -أنشطة الجداول الزمنية',
+                            type: 'item',
+                            url: '/assay-list-subsystem-code/implementation-activity-schedule',
+                            exactMatch: true
                         },
                         {
-                            "id": "implementation data Schedule",
-                            "title": "الجداول الزمنية للتنفيذ -بيانات الجدول الزمني",
-                            "type": "item",
-                            "url": "/assay-list-subsystem-code/implementation-data-schedule",
-                            "exactMatch": true
+                            id: 'implementation data Schedule',
+                            title: 'الجداول الزمنية للتنفيذ -بيانات الجدول الزمني',
+                            type: 'item',
+                            url: '/assay-list-subsystem-code/implementation-data-schedule',
+                            exactMatch: true
                         },
                         {
-                            "id": "Base Type",
-                            "title": "انواع الاساس",
-                            "type": "item",
-                            "url": "/assay-list-subsystem-code/base-type",
-                            "exactMatch": true
+                            id: 'Base Type',
+                            title: 'انواع الاساس',
+                            type: 'item',
+                            url: '/assay-list-subsystem-code/base-type',
+                            exactMatch: true
                         },
                         {
-                            "id": "Assay Model",
-                            "title": "نماذج المقايسة",
-                            "type": "item",
-                            "url": "/assay-list-subsystem-code/assay-model",
-                            "exactMatch": true
+                            id: 'Assay Model',
+                            title: 'نماذج المقايسة',
+                            type: 'item',
+                            url: '/assay-list-subsystem-code/assay-model',
+                            exactMatch: true
                         },
                         {
-                            "id": "Work Type",
-                            "title": "نوع العمل",
-                            "type": "item",
-                            "url": "/assay-list-subsystem-code/work-type",
-                            "exactMatch": true
+                            id: 'Work Type',
+                            title: 'نوع العمل',
+                            type: 'item',
+                            url: '/assay-list-subsystem-code/work-type',
+                            exactMatch: true
                         },
                         {
-                            "id": "Material Type",
-                            "title": "نوع المادة",
-                            "type": "item",
-                            "url": "/assay-list-subsystem-code/material-type",
-                            "exactMatch": true
+                            id: 'Material Type',
+                            title: 'نوع المادة',
+                            type: 'item',
+                            url: '/assay-list-subsystem-code/material-type',
+                            exactMatch: true
                         },
                         {
-                            "id": "Activity Type",
-                            "title": "نوع النشاط",
-                            "type": "item",
-                            "url": "/assay-list-subsystem-code/activity-type",
-                            "exactMatch": true
+                            id: 'Activity Type',
+                            title: 'نوع النشاط',
+                            type: 'item',
+                            url: '/assay-list-subsystem-code/activity-type',
+                            exactMatch: true
                         },
                         {
-                            "id": "SubActivity Type",
-                            "title": "نوع النشاط الفرعي",
-                            "type": "item",
-                            "url": "/assay-list-subsystem-code/sub-activity-type",
-                            "exactMatch": true
+                            id: 'SubActivity Type',
+                            title: 'نوع النشاط الفرعي',
+                            type: 'item',
+                            url: '/assay-list-subsystem-code/sub-activity-type',
+                            exactMatch: true
                         },
                         {
-                            "id": "Measurement unit",
-                            "title": "وحدة القياس",
-                            "type": "item",
-                            "url": "/assay-list-subsystem-code/measurement-unit",
-                            "exactMatch": true
+                            id: 'Measurement unit',
+                            title: 'وحدة القياس',
+                            type: 'item',
+                            url: '/assay-list-subsystem-code/measurement-unit',
+                            exactMatch: true
                         }
                     ]
                 },
                 {
-                    "id": "Assay List Subsystem Code Report",
-                    "title": "التقارير",
-                    "type": "collapsable",
-                    "icon": "assignment",
-                    "children": []
+                    id: 'Assay List Subsystem Code Report',
+                    title: 'التقارير',
+                    type: 'collapsable',
+                    icon: 'assignment',
+                    children: []
                 }
             ]
         }
     ],
-    "assay-subsystem-of-assays": [
+    'assay-subsystem-of-assays': [
         {
-            "id": "assay-subsystem-of-assays",
-            "title": " المقايسة - النظام الفرعي للمقايسات",
-            "type": "group",
-            "icon": "app",
-            "children": [
+            id: 'assay-subsystem-of-assays',
+            title: ' المقايسة - النظام الفرعي للمقايسات',
+            type: 'group',
+            icon: 'app',
+            children: [
                 {
-                    "id": "Assay  Subsystem Of Assays Config",
-                    "title": "الأعدادات",
-                    "type": "collapsable",
-                    "icon": "build",
-                    "children": [
+                    id: 'Assay  Subsystem Of Assays Config',
+                    title: 'الأعدادات',
+                    type: 'collapsable',
+                    icon: 'build',
+                    children: [
                         {
-                            "id": "constructiontypes",
-                            "title": "انواع الانشاء",
-                            "type": "item",
-                            "url": "/lookup/constructiontypes",
-                            "exactMatch": true
+                            id: 'constructiontypes',
+                            title: 'انواع الانشاء',
+                            type: 'item',
+                            url: '/lookup/constructiontypes',
+                            exactMatch: true
                         },
                         {
-                            "id": "worktypes",
-                            "title": "نوع العمل",
-                            "type": "item",
-                            "url": "/lookup/worktypes",
-                            "exactMatch": true
+                            id: 'worktypes',
+                            title: 'نوع العمل',
+                            type: 'item',
+                            url: '/lookup/worktypes',
+                            exactMatch: true
                         },
 
                         {
-                            "id": "itemcodes",
-                            "title": "كود البند",
-                            "type": "item",
-                            "url": "/lookup/itemcodes",
-                            "exactMatch": true
+                            id: 'itemcodes',
+                            title: 'كود البند',
+                            type: 'item',
+                            url: '/lookup/itemcodes',
+                            exactMatch: true
                         },
                         {
-                            "id": "measurementunits",
-                            "title": "وحدات القياس",
-                            "type": "item",
-                            "url": "/lookup/measurementunits",
-                            "exactMatch": true
+                            id: 'measurementunits',
+                            title: 'وحدات القياس',
+                            type: 'item',
+                            url: '/lookup/measurementunits',
+                            exactMatch: true
                         }
                     ]
                 },
                 {
-                    "id": "Assay  Subsystem Of Assays Program",
-                    "title": "البرامج",
-                    "type": "collapsable",
-                    "icon": "apps",
-                    "children": [
+                    id: 'Assay  Subsystem Of Assays Program',
+                    title: 'البرامج',
+                    type: 'collapsable',
+                    icon: 'apps',
+                    children: [
                         {
-                            "id": "Building Assays",
-                            "title": "أعمال مقايسات الأبنية",
-                            "type": "item",
-                            "url": "/assay-subsystem-of-assays/building-assays",
-                            "exactMatch": true
+                            id: 'Building Assays',
+                            title: 'أعمال مقايسات الأبنية',
+                            type: 'item',
+                            url: '/assay-subsystem-of-assays/building-assays',
+                            exactMatch: true
                         },
                         {
-                            "id": "Building Models Works",
-                            "title": "أعمال نماذج الأبنية",
-                            "type": "item",
-                            "url": "/assay-subsystem-of-assays/building-models-works",
-                            "exactMatch": true
+                            id: 'Building Models Works',
+                            title: 'أعمال نماذج الأبنية',
+                            type: 'item',
+                            url: '/assay-subsystem-of-assays/building-models-works',
+                            exactMatch: true
                         },
                         {
-                            "id": "Contractor Prices Building Assay",
-                            "title": "اسعار مقاول - مقايسة مبنى",
-                            "type": "item",
-                            "url": "/assay-subsystem-of-assays/contractor-prices-building-assay",
-                            "exactMatch": true
+                            id: 'Contractor Prices Building Assay',
+                            title: 'اسعار مقاول - مقايسة مبنى',
+                            type: 'item',
+                            url: '/assay-subsystem-of-assays/contractor-prices-building-assay',
+                            exactMatch: true
                         }
                     ]
                 },
                 {
-                    "id": "Assay  Subsystem Of Assays Report",
-                    "title": "التقارير",
-                    "type": "collapsable",
-                    "icon": "assignment",
-                    "children": []
+                    id: 'Assay  Subsystem Of Assays Report',
+                    title: 'التقارير',
+                    type: 'collapsable',
+                    icon: 'assignment',
+                    children: []
                 }
             ]
         }
-    ]
+    ],
+    'health-units-ministry': [ 
+        { 
+           id: 'health-units-ministry',
+           title: 'برنامج الوحدات الصحية وزارة التضامن هيئة البريد',
+           type: 'group',
+           icon: 'app',
+           children: [ 
+              { 
+                 id: 'Health Units Ministry Config',
+                 title: 'الأعدادات',
+                 type: 'collapsable',
+                 icon: 'build',
+                 children: [ 
+                    { 
+                       id: 'entitynames',
+                       title: 'اسم الجهة وحدات صحة',
+                       type: 'item',
+                       url: '/lookup/entitynames',
+                       exactMatch: true
+                    },
+                    { 
+                       id: 'governorates',
+                       title: 'المحافظة',
+                       type: 'item',
+                       url: '/lookup/governorates',
+                       exactMatch: true
+                    },
+                    { 
+                       id: 'sectionsorcenters',
+                       title: 'مركز/القسم‎',
+                       type: 'item',
+                       url: '/lookup/sectionsorcenters',
+                       exactMatch: true
+                    },
+                    { 
+                       id: 'servicetypes',
+                       title: 'نوع الخدمة وحدات صحية',
+                       type: 'item',
+                       url: '/lookup/servicetypes',
+                       exactMatch: true
+                    }
+                 ]
+              },
+              { 
+                 id: 'Health Units Ministry Program',
+                 title: 'البرامج',
+                 type: 'collapsable',
+                 icon: 'apps',
+                 children: [ 
+                    { 
+                       id: 'new service request',
+                       title: ' طلب خدمة جديد',
+                       type: 'item',
+                       url: '/health-units-ministry/new-service-request',
+                       exactMatch: true
+                    },
+                    { 
+                       id: 'required services',
+                       title: 'الخدمات المطلوبة',
+                       type: 'item',
+                       url: '/health-units-ministry/required-services',
+                       exactMatch: true
+                    },
+                    { 
+                       id: 'external services codes and cost',
+                       title: 'اكواد الخدمات الخارجية وتكلفتها',
+                       type: 'item',
+                       url: '/health-units-ministry/external-services-codes-and-cost',
+                       exactMatch: true
+                    }
+                 ]
+              },
+              { 
+                 id: 'Health Units Ministry Report',
+                 title: 'التقارير',
+                 type: 'collapsable',
+                 icon: 'assignment',
+                 children: [ 
+  
+                 ]
+              }
+           ]
+        }
+     ],
+  
 };
 
 
