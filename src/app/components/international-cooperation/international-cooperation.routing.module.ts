@@ -8,7 +8,23 @@ const routes: Routes = [
   {
     path: '',
     component: InternationalCooperationComponent,
-  }
+  },
+  
+  
+{
+    path: 'grant-information', loadChildren: './components/grant-information/grant-information.module#GrantInformationModule',
+    data: {
+      moduleName: 'GrantInformation'
+    },
+},
+
+{
+    path: 'grant-codes', loadChildren: './components/grant-codes/grant-codes.module#GrantCodesModule',
+    data: {
+      moduleName: 'GrantCodes'
+    },
+},
+
 ];
 
 @NgModule({
