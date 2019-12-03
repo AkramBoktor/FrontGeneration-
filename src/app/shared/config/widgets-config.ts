@@ -918,7 +918,7 @@ export const widgetConfig: Widget[] = [
                     name: 'برنامج الوحدات الصحية وزارة التضامن هيئة البريد'
                     , class: 'red-fg'
                     , icon: 'access_time'
-                    , url: 'health-units-ministry-of-solidarity-postal-authority'
+                    , url: 'health-units-ministry'
                 }
                     , {
                     name: 'مكاتب البريد'

@@ -1,0 +1,64 @@
+
+<mat-card class="form-card">
+      <mat-card-header>
+  
+          <mat-card-title>
+              الجداول الزمنية للتنفيذ (أنشطة الجداول الزمنية)
+          </mat-card-title>
+  
+      </mat-card-header>
+  
+      <mat-card-content>
+  
+        <form [formGroup] = "implementationActivityScheduleForm" class="form-container">
+         
+
+	<mat-form-field appearance="outline">
+	 <mat-label>كود الجدول الزمني</mat-label>
+	 <input matInput formControlName="scheduleCode"/>
+	 <mat-error *ngIf = "getControls('scheduleCode').invalid" >
+	  {{ getControls('scheduleCode')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>اسم النشاط</mat-label>
+	 <input matInput formControlName="activity"/>
+	 <mat-error *ngIf = "getControls('activity').invalid" >
+	  {{ getControls('activity')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>بداية الايام</mat-label>
+	 <input matInput formControlName="daysStart"/>
+	 <mat-error *ngIf = "getControls('daysStart').invalid" >
+	  {{ getControls('daysStart')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>مدة النشاط</mat-label>
+	 <input matInput formControlName="activityDuration"/>
+	 <mat-error *ngIf = "getControls('activityDuration').invalid" >
+	  {{ getControls('activityDuration')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+         
+        </form>
+  
+      </mat-card-content >
+  
+      <mat-action-row>
+            <form [formGroup]="attachmentForm" class="form-container">
+                <app-multi-file-upload [service] = "implementationActivityScheduleService" [id]="implementationActivityScheduleForm.get('id').value"
+                    formControlName = "attachmentFiles">
+                </app-multi-file-upload>
+            </form>
+            <button (click) = "onConfirm()" mat-raised-button color = "primary" >
+                غلق
+            </button>
+        </mat-action-row>
+    </mat-card>
+
+    

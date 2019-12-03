@@ -1,0 +1,63 @@
+
+<app-new-form-layout
+    dir="rtl"
+    (submitClicked) = "onSubmit()"
+    (back) = "onBack()"
+    [pageTitle] = "'نوع النشاط الفرعي'"
+>
+    <ng-template newFormContainer >
+        <form [formGroup] = "subActivityTypeForm">
+         
+
+	<mat-form-field appearance="outline" >
+	 <mat-label>نوع النشاط</mat-label>
+	 <input matInput formControlName="activityType"/>
+	 <mat-error *ngIf = "getControls('activityType').invalid" >
+	  {{ getControls('activityType')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>الكود</mat-label>
+	 <input matInput formControlName="code"/>
+	 <mat-error *ngIf = "getControls('code').invalid" >
+	  {{ getControls('code')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>الاسم</mat-label>
+	 <input matInput formControlName="name"/>
+	 <mat-error *ngIf = "getControls('name').invalid" >
+	  {{ getControls('name')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+         
+	<app-material-select appearance="outline"
+	  #workType 
+	  [options] = "workTypeSelectOptions"
+	  formControlName = "workType"
+	></app-material-select>
+
+        </form>
+
+        <mat-divider></mat-divider>
+
+		<mat-card-actions>
+			<form [formGroup]="attachmentForm" class="form-container">
+                <app-multi-file-upload [service] = "subActivityTypeService" [id]="subActivityTypeForm.get('id').value"
+                    formControlName = "attachmentFiles">
+                </app-multi-file-upload>
+            </form>
+            <button
+                type="submit"
+                (click)="onSubmit()"
+                [disabled]="subActivityTypeForm.invalid"
+                mat-raised-button
+                color = "primary">
+             حفظ
+            </button>
+        </mat-card-actions>
+    </ng-template >
+</app-new-form-layout >
+

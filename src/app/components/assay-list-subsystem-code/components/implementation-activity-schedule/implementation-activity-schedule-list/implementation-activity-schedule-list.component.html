@@ -1,0 +1,58 @@
+
+<app-search-list-expansion-panel
+    dir="rtl"
+    [pageTitle] = "'الجداول الزمنية للتنفيذ (أنشطة الجداول الزمنية)'"
+    (beginSearch) = "onBeginSearch()"
+    (create) = "onCreate()"
+>
+    <ng-template searchFormContainer >
+        <form [formGroup] = "searchForm">
+           
+
+	<mat-form-field appearance="outline">
+	 <mat-label>كود الجدول الزمني</mat-label>
+	 <input matInput formControlName="scheduleCode"/>
+	 <mat-error *ngIf = "getControls('scheduleCode').invalid" >
+	  {{ getControls('scheduleCode')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>اسم النشاط</mat-label>
+	 <input matInput formControlName="activity"/>
+	 <mat-error *ngIf = "getControls('activity').invalid" >
+	  {{ getControls('activity')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>بداية الايام</mat-label>
+	 <input matInput formControlName="daysStart"/>
+	 <mat-error *ngIf = "getControls('daysStart').invalid" >
+	  {{ getControls('daysStart')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>مدة النشاط</mat-label>
+	 <input matInput formControlName="activityDuration"/>
+	 <mat-error *ngIf = "getControls('activityDuration').invalid" >
+	  {{ getControls('activityDuration')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+           
+
+        </form>
+    </ng-template >
+    <ng-template searchResultContainer >
+        <app-grid-control
+            #gridControl
+            [rowDataService] = "getImplementationActivitySchedulePaginatedSortedFiltered"
+            [columnOptions] = "columnOptions"
+            [gridHeaderOptions] = "gridHeaderOptions"
+            [searchInput] = "searchForm.value"
+            (deleteRow) = "onDeleteClicked($event)"
+        >
+        </app-grid-control>
+    </ng-template>
+</app-search-list-expansion-panel >

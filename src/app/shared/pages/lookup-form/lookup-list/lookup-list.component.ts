@@ -83,7 +83,7 @@ export class LookupListComponent extends AppBaseComponent implements OnInit {
 
   onCreate(): void {
     const dialogRef = this.dialogService.openDialog(this.gridHeaderOptions.newDialogClassType, {
-      data: { ...this.activatedRoute.snapshot.data }, actionType: Constants.actionNew
+      data: { ...this.activatedRoute.snapshot.data }, actionType: 'create'
     });
 
     dialogRef.afterClosed().pipe(take(1)).subscribe(result => {

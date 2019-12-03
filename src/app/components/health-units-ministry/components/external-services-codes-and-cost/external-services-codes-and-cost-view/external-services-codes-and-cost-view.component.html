@@ -1,0 +1,72 @@
+
+<mat-card class="form-card">
+      <mat-card-header>
+  
+          <mat-card-title>
+              اكواد الخدمات الخارجية وتكلفتها
+          </mat-card-title>
+  
+      </mat-card-header>
+  
+      <mat-card-content>
+  
+        <form [formGroup] = "externalServicesCodesAndCostForm" class="form-container">
+         
+
+	<mat-form-field appearance="outline">
+	 <mat-label> كود الخدمة</mat-label>
+	 <input matInput formControlName="serviceCode"/>
+	 <mat-error *ngIf = "getControls('serviceCode').invalid" >
+	  {{ getControls('serviceCode')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label> اسم الخدمة</mat-label>
+	 <input matInput formControlName="serviceName"/>
+	 <mat-error *ngIf = "getControls('serviceName').invalid" >
+	  {{ getControls('serviceName')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>   نسبة تكلفة التصنيف الاول</mat-label>
+	 <input matInput formControlName="firstClassificationCostRatio"/>
+	 <mat-error *ngIf = "getControls('firstClassificationCostRatio').invalid" >
+	  {{ getControls('firstClassificationCostRatio')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label> نسبة تكلفة التصنيف  الثاني</mat-label>
+	 <input matInput formControlName="secondClassificationCostRatio"/>
+	 <mat-error *ngIf = "getControls('secondClassificationCostRatio').invalid" >
+	  {{ getControls('secondClassificationCostRatio')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label> نسبة تكلفة التصنيف  الثالث</mat-label>
+	 <input matInput formControlName="thirdClassificationCostRatio"/>
+	 <mat-error *ngIf = "getControls('thirdClassificationCostRatio').invalid" >
+	  {{ getControls('thirdClassificationCostRatio')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+         
+        </form>
+  
+      </mat-card-content >
+  
+      <mat-action-row>
+            <form [formGroup]="attachmentForm" class="form-container">
+                <app-multi-file-upload [service] = "externalServicesCodesAndCostService" [id]="externalServicesCodesAndCostForm.get('id').value"
+                    formControlName = "attachmentFiles">
+                </app-multi-file-upload>
+            </form>
+            <button (click) = "onConfirm()" mat-raised-button color = "primary" >
+                غلق
+            </button>
+        </mat-action-row>
+    </mat-card>
+
+    

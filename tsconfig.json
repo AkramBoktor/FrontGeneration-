@@ -22,6 +22,8 @@
             "@fuse/*": [
                 "@fuse/*"
             ]
-        }
+        },
+        "resolveJsonModule": true, 
+        "esModuleInterop": true
     }
 }

@@ -1,0 +1,9 @@
+{
+  "baseApiUrl":"http://localhost:9000/api",
+  "baseUrl":"http://localhost:9000",
+  "baseAttachmentUrl":"http://mahmoudexcel-001-site1.btempurl.com/api",
+  "baseLookupUrl":"http://mahmoudexcel-001-site1.btempurl.com/api",
+  "baseOdataUrl":"http://localhost:9000/odata",
+  "stsAuthority":"http://localhost:9989",
+  "clientRoot":"http://localhost:4200"
+}

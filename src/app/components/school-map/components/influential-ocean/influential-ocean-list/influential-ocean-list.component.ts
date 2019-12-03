@@ -90,10 +90,13 @@ effectCodeSelectOptions: MaterialSelectOptions;
 	effectCode : []
     });
 
+
+
      
   }
 
   getInfluentialOceansPaginatedSortedFiltered = (arg: GridPaginatedSortedFiltered): Observable<InfluentialOcean[]> => {
+    this.influentialOceanService.getAllWithFilter(arg).subscribe(x=>console.log(x));
     return this.influentialOceanService.getAllWithFilter(arg);
   }
 
