@@ -1,0 +1,72 @@
+
+<mat-card>
+    <mat-card-header>
+        <mat-card-title>الجدول الزمني</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+        <form [formGroup]="timetableForm" class="form-container">
+          
+
+	<mat-form-field appearance="outline">
+	 <mat-label>رقم الجدول</mat-label>
+	 <input matInput formControlName="tableTumber"/>
+	 <mat-error *ngIf = "getControls('tableTumber').invalid" >
+	  {{ getControls('tableTumber')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>رقم النشاط</mat-label>
+	 <input matInput formControlName="activityNumber"/>
+	 <mat-error *ngIf = "getControls('activityNumber').invalid" >
+	  {{ getControls('activityNumber')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>بداية الايام</mat-label>
+	 <input matInput
+	  [matDatepicker] = "beginningDaysDatepicker"
+	  autocomplete = "off"
+	  formControlName= "beginningDays"/>
+	 <mat-datepicker-toggle
+	   matSuffix
+	   [for]="beginningDaysDatepicker"
+	 ></mat-datepicker-toggle>
+	 <mat-datepicker #beginningDaysDatepicker></mat-datepicker>
+	 <mat-error *ngIf = "getControls('beginningDays').invalid" >
+	  {{ getControls('beginningDays')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>مدة النشاط</mat-label>
+	 <input matInput formControlName="activityDuration"/>
+	 <mat-error *ngIf = "getControls('activityDuration').invalid" >
+	  {{ getControls('activityDuration')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+          
+
+        </form>
+    </mat-card-content>
+
+    <mat-divider></mat-divider>
+
+	<mat-card-actions>
+			<form [formGroup]="attachmentForm" class="form-container">
+                <app-multi-file-upload [service] = "timetableService" [id]="timetableForm.get('id').value"
+                    formControlName = "attachmentFiles">
+                </app-multi-file-upload>
+            </form>
+            <button
+                color = "primary"
+                type = "submit"
+                (click) = "onSubmit()"
+                [disabled] = "timetableForm.invalid"
+                mat-raised-button>
+                حفظ
+            </button>
+    </mat-card-actions>
+</mat-card>
+

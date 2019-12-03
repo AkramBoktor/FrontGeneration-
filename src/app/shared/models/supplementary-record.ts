@@ -5,10 +5,10 @@
 	recordNumber: string;
 	offeringType: number;
 	bidNumber: string;
-	tenderNumber: number;
+	tenderNumber: string;
 	contractorCode: string;
 	companyName: string;
-	school: number;
+	school: string;
 	advancePayment: number;
 	assayValue: number;
 	tenderTotalValue: number;

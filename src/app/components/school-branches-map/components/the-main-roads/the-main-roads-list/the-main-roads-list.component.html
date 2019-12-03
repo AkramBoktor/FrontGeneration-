@@ -1,0 +1,90 @@
+
+<app-search-list-expansion-panel
+    dir="rtl"
+    [pageTitle] = "'الطرق الرئيسية'"
+    (beginSearch) = "onBeginSearch()"
+    (create) = "onCreate()"
+>
+    <ng-template searchFormContainer >
+        <form [formGroup] = "searchForm">
+           
+
+	<mat-form-field appearance="outline">
+	 <mat-label>كود المبنى</mat-label>
+	 <input matInput formControlName="buildingCode"/>
+	 <mat-error *ngIf = "getControls('buildingCode').invalid" >
+	  {{ getControls('buildingCode')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>رقم الطريق الرئيسي</mat-label>
+	 <input matInput formControlName="mainRoadNumber"/>
+	 <mat-error *ngIf = "getControls('mainRoadNumber').invalid" >
+	  {{ getControls('mainRoadNumber')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>عرض الطريق</mat-label>
+	 <input matInput formControlName="roadWidth"/>
+	 <mat-error *ngIf = "getControls('roadWidth').invalid" >
+	  {{ getControls('roadWidth')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>الاستعمال</mat-label>
+	 <input matInput formControlName="usage"/>
+	 <mat-error *ngIf = "getControls('usage').invalid" >
+	  {{ getControls('usage')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>اسم الطريق</mat-label>
+	 <input matInput formControlName="theNameOfTheRoad"/>
+	 <mat-error *ngIf = "getControls('theNameOfTheRoad').invalid" >
+	  {{ getControls('theNameOfTheRoad')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+           
+
+	<app-material-select appearance="outline"
+	  #centerCode 
+	  [options] = "centerCodeSelectOptions"
+	  formControlName = "centerCode"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #branchCode 
+	  [options] = "branchCodeSelectOptions"
+	  formControlName = "branchCode"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #mainRoadStatusCode 
+	  [options] = "mainRoadStatusCodeSelectOptions"
+	  formControlName = "mainRoadStatusCode"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #movementDirectionCode 
+	  [options] = "movementDirectionCodeSelectOptions"
+	  formControlName = "movementDirectionCode"
+	></app-material-select>
+
+        </form>
+    </ng-template >
+    <ng-template searchResultContainer >
+        <app-grid-control
+            #gridControl
+            [rowDataService] = "getTheMainRoadsPaginatedSortedFiltered"
+            [columnOptions] = "columnOptions"
+            [gridHeaderOptions] = "gridHeaderOptions"
+            [searchInput] = "searchForm.value"
+            (deleteRow) = "onDeleteClicked($event)"
+        >
+        </app-grid-control>
+    </ng-template>
+</app-search-list-expansion-panel >

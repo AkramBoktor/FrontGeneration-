@@ -33,6 +33,7 @@ export class ContractorDataListComponent extends AppBaseComponent implements OnI
   private supplierClassificationsService: LookupService;
 private supplierTypesService: LookupService;
 private sectionsOrCentersService: LookupService;
+
 private supplierRecordTypesService: LookupService;
 
   
@@ -170,6 +171,7 @@ recordTypeSelectOptions: MaterialSelectOptions;
   initializeLookupServices() {
     this.supplierClassificationsService = new LookupService('supplierclassifications', this.http);
 this.supplierTypesService = new LookupService('suppliertypes', this.http);
+this.sectionsOrCentersService = new LookupService('sectionsorcenters', this.http);
 this.sectionsOrCentersService = new LookupService('sectionsorcenters', this.http);
 this.supplierRecordTypesService = new LookupService('supplierrecordtypes', this.http);
   }

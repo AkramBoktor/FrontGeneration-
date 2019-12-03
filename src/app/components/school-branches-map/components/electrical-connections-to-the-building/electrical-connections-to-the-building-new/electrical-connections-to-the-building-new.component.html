@@ -1,0 +1,110 @@
+
+<app-new-form-layout
+    dir="rtl"
+    (submitClicked) = "onSubmit()"
+    (back) = "onBack()"
+    [pageTitle] = "'التوصيلات الكهربائيه للمبني'"
+>
+    <ng-template newFormContainer >
+        <form [formGroup] = "electricalConnectionsToTheBuildingForm">
+         
+
+	<mat-form-field appearance="outline">
+	 <mat-label>كود المبنى</mat-label>
+	 <input matInput formControlName="buildingCode"/>
+	 <mat-error *ngIf = "getControls('buildingCode').invalid" >
+	  {{ getControls('buildingCode')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>قوه العداد</mat-label>
+	 <input matInput formControlName="guoCounter"/>
+	 <mat-error *ngIf = "getControls('guoCounter').invalid" >
+	  {{ getControls('guoCounter')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>عدد اوجه </mat-label>
+	 <input matInput formControlName="facetsNumber"/>
+	 <mat-error *ngIf = "getControls('facetsNumber').invalid" >
+	  {{ getControls('facetsNumber')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>محاولات خاصه</mat-label>
+	 <input matInput formControlName="specialtransformers"/>
+	 <mat-error *ngIf = "getControls('specialtransformers').invalid" >
+	  {{ getControls('specialtransformers')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>قدرتها</mat-label>
+	 <input matInput formControlName="ability"/>
+	 <mat-error *ngIf = "getControls('ability').invalid" >
+	  {{ getControls('ability')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>عددها</mat-label>
+	 <input matInput formControlName="number"/>
+	 <mat-error *ngIf = "getControls('number').invalid" >
+	  {{ getControls('number')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>قطاع الكابل الرئيسي المغذي</mat-label>
+	 <input matInput formControlName="feederMainCableStrip"/>
+	 <mat-error *ngIf = "getControls('feederMainCableStrip').invalid" >
+	  {{ getControls('feederMainCableStrip')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>بعد اقرب مصدر تغذيه عن الشبكه</mat-label>
+	 <input matInput formControlName="networkClosestSourceFeed"/>
+	 <mat-error *ngIf = "getControls('networkClosestSourceFeed').invalid" >
+	  {{ getControls('networkClosestSourceFeed')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+         
+
+	<app-material-select appearance="outline"
+	  #powerSource 
+	  [options] = "powerSourceSelectOptions"
+	  formControlName = "powerSource"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #electricalConductivityCode 
+	  [options] = "electricalConductivityCodeSelectOptions"
+	  formControlName = "electricalConductivityCode"
+	></app-material-select>
+
+        </form>
+
+        <mat-divider></mat-divider>
+
+		<mat-card-actions>
+			<form [formGroup]="attachmentForm" class="form-container">
+                <app-multi-file-upload [service] = "electricalConnectionsToTheBuildingService" [id]="electricalConnectionsToTheBuildingForm.get('id').value"
+                    formControlName = "attachmentFiles">
+                </app-multi-file-upload>
+            </form>
+            <button
+                type="submit"
+                (click)="onSubmit()"
+                [disabled]="electricalConnectionsToTheBuildingForm.invalid"
+                mat-raised-button
+                color = "primary">
+             حفظ
+            </button>
+        </mat-card-actions>
+    </ng-template >
+</app-new-form-layout >
+

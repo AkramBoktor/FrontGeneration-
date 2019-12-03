@@ -1,0 +1,202 @@
+
+<app-new-form-layout
+    dir="rtl"
+    (submitClicked) = "onSubmit()"
+    (back) = "onBack()"
+    [pageTitle] = "' بيانات الاساسيه للمبني التعليمي فرع القاهره'"
+>
+    <ng-template newFormContainer >
+        <form [formGroup] = "basicDataOfTheEducationalBuildingCairoBranchForm">
+         
+
+	<mat-form-field appearance="outline">
+	 <mat-label>كود المبنى</mat-label>
+	 <input matInput formControlName="buildingCode"/>
+	 <mat-error *ngIf = "getControls('buildingCode').invalid" >
+	  {{ getControls('buildingCode')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>العنوان</mat-label>
+	 <input matInput formControlName="address"/>
+	 <mat-error *ngIf = "getControls('address').invalid" >
+	  {{ getControls('address')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>رقم التليفون</mat-label>
+	 <input matInput formControlName="phoneNumber"/>
+	 <mat-error *ngIf = "getControls('phoneNumber').invalid" >
+	  {{ getControls('phoneNumber')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>ارتفاع السور</mat-label>
+	 <input matInput formControlName="fenceHeight"/>
+	 <mat-error *ngIf = "getControls('fenceHeight').invalid" >
+	  {{ getControls('fenceHeight')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>ضلع شمال السور</mat-label>
+	 <input matInput formControlName="fenceRibNorth"/>
+	 <mat-error *ngIf = "getControls('fenceRibNorth').invalid" >
+	  {{ getControls('fenceRibNorth')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>ضلع جنوب السور</mat-label>
+	 <input matInput formControlName="fenceRibSouth"/>
+	 <mat-error *ngIf = "getControls('fenceRibSouth').invalid" >
+	  {{ getControls('fenceRibSouth')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>ضلع غرب السور</mat-label>
+	 <input matInput formControlName="fenceRibWest"/>
+	 <mat-error *ngIf = "getControls('fenceRibWest').invalid" >
+	  {{ getControls('fenceRibWest')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>ضلع شرق السور</mat-label>
+	 <input matInput formControlName="fenceRibEast"/>
+	 <mat-error *ngIf = "getControls('fenceRibEast').invalid" >
+	  {{ getControls('fenceRibEast')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>شمال شرق السور</mat-label>
+	 <input matInput formControlName="northeastFence"/>
+	 <mat-error *ngIf = "getControls('northeastFence').invalid" >
+	  {{ getControls('northeastFence')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>شمال غرب السور</mat-label>
+	 <input matInput formControlName="northwestFence"/>
+	 <mat-error *ngIf = "getControls('northwestFence').invalid" >
+	  {{ getControls('northwestFence')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>جنوب شرق السور</mat-label>
+	 <input matInput formControlName="southeastFence"/>
+	 <mat-error *ngIf = "getControls('southeastFence').invalid" >
+	  {{ getControls('southeastFence')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>جنوب غرب السور</mat-label>
+	 <input matInput formControlName="southwestFence"/>
+	 <mat-error *ngIf = "getControls('southwestFence').invalid" >
+	  {{ getControls('southwestFence')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label> X  احدثيات</mat-label>
+	 <input matInput formControlName="coordinatesX"/>
+	 <mat-error *ngIf = "getControls('coordinatesX').invalid" >
+	  {{ getControls('coordinatesX')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label> Yاحدثيات </mat-label>
+	 <input matInput formControlName="coordinatesY"/>
+	 <mat-error *ngIf = "getControls('coordinatesY').invalid" >
+	  {{ getControls('coordinatesY')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>Z احدثيات </mat-label>
+	 <input matInput formControlName="coordinatesZ"/>
+	 <mat-error *ngIf = "getControls('coordinatesZ').invalid" >
+	  {{ getControls('coordinatesZ')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+         
+
+	<app-material-select appearance="outline"
+	  #usePosition 
+	  [options] = "usePositionSelectOptions"
+	  formControlName = "usePosition"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #landOwnership 
+	  [options] = "landOwnershipSelectOptions"
+	  formControlName = "landOwnership"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #buildingOwnership 
+	  [options] = "buildingOwnershipSelectOptions"
+	  formControlName = "buildingOwnership"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #fenceCode 
+	  [options] = "fenceCodeSelectOptions"
+	  formControlName = "fenceCode"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #fenceState 
+	  [options] = "fenceStateSelectOptions"
+	  formControlName = "fenceState"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #buildingMaterial 
+	  [options] = "buildingMaterialSelectOptions"
+	  formControlName = "buildingMaterial"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #positiveInfluentialStations 
+	  [options] = "positiveInfluentialStationsSelectOptions"
+	  formControlName = "positiveInfluentialStations"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #negativeInfluentialStations 
+	  [options] = "negativeInfluentialStationsSelectOptions"
+	  formControlName = "negativeInfluentialStations"
+	></app-material-select>
+
+        </form>
+
+        <mat-divider></mat-divider>
+
+		<mat-card-actions>
+			<form [formGroup]="attachmentForm" class="form-container">
+                <app-multi-file-upload [service] = "basicDataOfTheEducationalBuildingCairoBranchService" [id]="basicDataOfTheEducationalBuildingCairoBranchForm.get('id').value"
+                    formControlName = "attachmentFiles">
+                </app-multi-file-upload>
+            </form>
+            <button
+                type="submit"
+                (click)="onSubmit()"
+                [disabled]="basicDataOfTheEducationalBuildingCairoBranchForm.invalid"
+                mat-raised-button
+                color = "primary">
+             حفظ
+            </button>
+        </mat-card-actions>
+    </ng-template >
+</app-new-form-layout >
+

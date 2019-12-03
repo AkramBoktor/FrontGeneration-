@@ -1,0 +1,74 @@
+
+<mat-card>
+    <mat-card-header>
+        <mat-card-title>تحديد فراغات النموذج</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+        <form [formGroup]="specifyModelBlankForm" class="form-container">
+          
+
+	<mat-form-field appearance="outline">
+	 <mat-label>كود النموذج</mat-label>
+	 <input matInput formControlName="modelCode"/>
+	 <mat-error *ngIf = "getControls('modelCode').invalid" >
+	  {{ getControls('modelCode')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>رقم الدور</mat-label>
+	 <input matInput formControlName="floorNumber"/>
+	 <mat-error *ngIf = "getControls('floorNumber').invalid" >
+	  {{ getControls('floorNumber')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>العدد</mat-label>
+	 <input matInput formControlName="count"/>
+	 <mat-error *ngIf = "getControls('count').invalid" >
+	  {{ getControls('count')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+          
+
+	<app-material-select appearance="outline"
+	  #modelType 
+	  [options] = "modelTypeSelectOptions"
+	  formControlName = "modelType"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #educationalStage 
+	  [options] = "educationalStageSelectOptions"
+	  formControlName = "educationalStage"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #spaceCode 
+	  [options] = "spaceCodeSelectOptions"
+	  formControlName = "spaceCode"
+	></app-material-select>
+
+        </form>
+    </mat-card-content>
+
+    <mat-divider></mat-divider>
+
+	<mat-card-actions>
+			<form [formGroup]="attachmentForm" class="form-container">
+                <app-multi-file-upload [service] = "specifyModelBlankService" [id]="specifyModelBlankForm.get('id').value"
+                    formControlName = "attachmentFiles">
+                </app-multi-file-upload>
+            </form>
+            <button
+                color = "primary"
+                type = "submit"
+                (click) = "onSubmit()"
+                [disabled] = "specifyModelBlankForm.invalid"
+                mat-raised-button>
+                حفظ
+            </button>
+    </mat-card-actions>
+</mat-card>
+

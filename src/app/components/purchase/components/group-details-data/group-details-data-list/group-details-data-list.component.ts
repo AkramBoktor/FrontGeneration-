@@ -30,7 +30,7 @@ export class GroupDetailsDataListComponent extends AppBaseComponent implements O
   errorMessages: FormControlError[] = [
         
 	{
-	 errorName: 'min',
+	 errorName: 'minLength',
 	 errorMessage: 'لا يوجد مسلسل يساوي صفر'
 	}
       ];

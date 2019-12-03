@@ -74,7 +74,7 @@ memberTypeSelectOptions: MaterialSelectOptions;
   bidNumber : [this.selectedExaminationCommitteeMemberData.bidNumber, [ Validators.required ]],
   meetingNumber : [this.selectedExaminationCommitteeMemberData.meetingNumber, [ Validators.required ]],
   serialMember : [this.selectedExaminationCommitteeMemberData.serialMember, [ Validators.required ]],
-  memberName : [this.selectedExaminationCommitteeMemberData.memberName, [ Validators.required ]],
+  memberName : [this.selectedExaminationCommitteeMemberData.memberName, [ ]],
   offeringType : [this.selectedExaminationCommitteeMemberData.offeringType, [ Validators.required ]],
   memberType : [this.selectedExaminationCommitteeMemberData.memberType, [ Validators.required ]]
    }, {

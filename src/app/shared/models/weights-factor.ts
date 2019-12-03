@@ -4,14 +4,14 @@
     
 	buildingCode: string;
 	offeringType: number;
+	tenderNumber: string;
 	tenderName: string;
 	contractorCode: string;
 	supplementSeries: string;
-	itemCode: string;
+	itemCode: number;
 	dateOfOpeningTechnicalAttribution: Date;
 	assayPriceCategory: string;
-	elementCode: string;
-	itemName: string;
+	elementCode: number;
 	ratioOfWeightsCoefficient: string;
 	constructor(arg?: WeightsFactor) {
         if (arg) {

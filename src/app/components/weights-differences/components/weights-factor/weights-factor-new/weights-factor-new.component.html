@@ -1,0 +1,124 @@
+
+<app-new-form-layout
+    dir="rtl"
+    (submitClicked) = "onSubmit()"
+    (back) = "onBack()"
+    [pageTitle] = "'معامل الاوزان'"
+>
+    <ng-template newFormContainer >
+        <form [formGroup] = "weightsFactorForm">
+         
+
+	<mat-form-field appearance="outline">
+	 <mat-label>كود المبنى</mat-label>
+	 <input matInput formControlName="buildingCode"/>
+	 <mat-error *ngIf = "getControls('buildingCode').invalid" >
+	  {{ getControls('buildingCode')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>رقم المناقصة</mat-label>
+	 <input matInput formControlName="tenderNumber"/>
+	 <mat-error *ngIf = "getControls('tenderNumber').invalid" >
+	  {{ getControls('tenderNumber')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>اسم المناقصة</mat-label>
+	 <input matInput formControlName="tenderName" [disableControl]="true" />
+	 <mat-error *ngIf = "getControls('tenderName').invalid" >
+	  {{ getControls('tenderName')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>كود المقاول</mat-label>
+	 <input matInput formControlName="contractorCode"/>
+	 <mat-error *ngIf = "getControls('contractorCode').invalid" >
+	  {{ getControls('contractorCode')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>مسلسل الملحق</mat-label>
+	 <input matInput formControlName="supplementSeries"/>
+	 <mat-error *ngIf = "getControls('supplementSeries').invalid" >
+	  {{ getControls('supplementSeries')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>تاريخ فتح الفني/ اسناد</mat-label>
+	 <input matInput
+	  [matDatepicker] = "dateOfOpeningTechnicalAttributionDatepicker"
+	  autocomplete = "off"
+	  formControlName= "dateOfOpeningTechnicalAttribution"/>
+	 <mat-datepicker-toggle
+	   matSuffix
+	   [for]="dateOfOpeningTechnicalAttributionDatepicker"
+	 ></mat-datepicker-toggle>
+	 <mat-datepicker #dateOfOpeningTechnicalAttributionDatepicker></mat-datepicker>
+	 <mat-error *ngIf = "getControls('dateOfOpeningTechnicalAttribution').invalid" >
+	  {{ getControls('dateOfOpeningTechnicalAttribution')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>فئة سعر المقايسة</mat-label>
+	 <input matInput formControlName="assayPriceCategory"/>
+	 <mat-error *ngIf = "getControls('assayPriceCategory').invalid" >
+	  {{ getControls('assayPriceCategory')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>نسبة معامل الاوزان</mat-label>
+	 <input matInput formControlName="ratioOfWeightsCoefficient"/>
+	 <mat-error *ngIf = "getControls('ratioOfWeightsCoefficient').invalid" >
+	  {{ getControls('ratioOfWeightsCoefficient')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+         
+
+	<app-material-select appearance="outline"
+	  #offeringType 
+	  [options] = "offeringTypeSelectOptions"
+	  formControlName = "offeringType"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #itemCode 
+	  [options] = "itemCodeSelectOptions"
+	  formControlName = "itemCode"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #elementCode 
+	  [options] = "elementCodeSelectOptions"
+	  formControlName = "elementCode"
+	></app-material-select>
+
+        </form>
+
+        <mat-divider></mat-divider>
+
+		<mat-card-actions>
+			<form [formGroup]="attachmentForm" class="form-container">
+                <app-multi-file-upload [service] = "weightsFactorService" [id]="weightsFactorForm.get('id').value"
+                    formControlName = "attachmentFiles">
+                </app-multi-file-upload>
+            </form>
+            <button
+                type="submit"
+                (click)="onSubmit()"
+                [disabled]="weightsFactorForm.invalid"
+                mat-raised-button
+                color = "primary">
+             حفظ
+            </button>
+        </mat-card-actions>
+    </ng-template >
+</app-new-form-layout >
+

@@ -1,0 +1,66 @@
+
+<app-new-form-layout
+    dir="rtl"
+    (submitClicked) = "onSubmit()"
+    (back) = "onBack()"
+    [pageTitle] = "'بيانات اساسيه لمركز الشباب'"
+>
+    <ng-template newFormContainer >
+        <form [formGroup] = "basicDataForTheYouthCenterForm">
+         
+
+	<mat-form-field appearance="outline">
+	 <mat-label>الاسم</mat-label>
+	 <input matInput formControlName="centerName"/>
+	 <mat-error *ngIf = "getControls('centerName').invalid" >
+	  {{ getControls('centerName')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+         
+
+	<app-material-select appearance="outline"
+	  #governorate 
+	  [options] = "governorateSelectOptions"
+	  formControlName = "governorate"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #regionalCenter 
+	  [options] = "regionalCenterSelectOptions"
+	  formControlName = "regionalCenter"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #sectionCenter 
+	  [options] = "sectionCenterSelectOptions"
+	  formControlName = "sectionCenter"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #neighborhoodVillage 
+	  [options] = "neighborhoodVillageSelectOptions"
+	  formControlName = "neighborhoodVillage"
+	></app-material-select>
+
+        </form>
+
+        <mat-divider></mat-divider>
+
+		<mat-card-actions>
+			<form [formGroup]="attachmentForm" class="form-container">
+                <app-multi-file-upload [service] = "basicDataForTheYouthCenterService" [id]="basicDataForTheYouthCenterForm.get('id').value"
+                    formControlName = "attachmentFiles">
+                </app-multi-file-upload>
+            </form>
+            <button
+                type="submit"
+                (click)="onSubmit()"
+                [disabled]="basicDataForTheYouthCenterForm.invalid"
+                mat-raised-button
+                color = "primary">
+             حفظ
+            </button>
+        </mat-card-actions>
+    </ng-template >
+</app-new-form-layout >
+

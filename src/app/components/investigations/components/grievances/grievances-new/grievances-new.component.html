@@ -35,7 +35,7 @@
 
 	<mat-form-field appearance="outline">
 	 <mat-label> رقم الامر التنفيذي القديم</mat-label>
-	 <input matInput formControlName="executiveOrderNumber" [disableControl]="true" />
+	 <input matInput formControlName="executiveOrderNumber"  [disableControl]="false" />
 	 <mat-error *ngIf = "getControls('executiveOrderNumber').invalid" >
 	  {{ getControls('executiveOrderNumber')| getErrorMessages : errorMessages}}
 	  </mat-error>
@@ -44,7 +44,7 @@
 	<mat-form-field appearance="outline">
 	 <mat-label>تاريخ صدور الامر التنفيذي القديم</mat-label>
 	 <input matInput
-	 [disableControl]="true" 
+	  [disableControl]="false" 
 	  [matDatepicker] = "issuanceExecutiveOrderDateDatepicker"
 	  autocomplete = "off"
 	  formControlName= "issuanceExecutiveOrderDate"/>

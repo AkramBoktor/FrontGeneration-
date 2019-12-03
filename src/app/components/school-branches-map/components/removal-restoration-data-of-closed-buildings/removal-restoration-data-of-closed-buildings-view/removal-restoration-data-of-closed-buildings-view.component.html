@@ -1,0 +1,116 @@
+
+<mat-card class="form-card">
+      <mat-card-header>
+  
+          <mat-card-title>
+              ادخال بيانات ( الازاله / الترميم ) للمبانى المغلقه
+          </mat-card-title>
+  
+      </mat-card-header>
+  
+      <mat-card-content>
+  
+        <form [formGroup] = "removalRestorationDataOfClosedBuildingsForm" class="form-container">
+         
+
+	<mat-form-field appearance="outline">
+	 <mat-label>كود المدرسة</mat-label>
+	 <input matInput formControlName="schoolCode"/>
+	 <mat-error *ngIf = "getControls('schoolCode').invalid" >
+	  {{ getControls('schoolCode')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>رقم الملحق</mat-label>
+	 <input matInput formControlName="extensionNumber"/>
+	 <mat-error *ngIf = "getControls('extensionNumber').invalid" >
+	  {{ getControls('extensionNumber')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>تاريخ الاغلاق</mat-label>
+	 <input matInput
+	  [matDatepicker] = "closingDateDatepicker"
+	  autocomplete = "off"
+	  formControlName= "closingDate"/>
+	 <mat-datepicker-toggle
+	   matSuffix
+	   [for]="closingDateDatepicker"
+	 ></mat-datepicker-toggle>
+	 <mat-datepicker #closingDateDatepicker></mat-datepicker>
+	 <mat-error *ngIf = "getControls('closingDate').invalid" >
+	  {{ getControls('closingDate')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>رقم القرار</mat-label>
+	 <input matInput formControlName="decisionNumber"/>
+	 <mat-error *ngIf = "getControls('decisionNumber').invalid" >
+	  {{ getControls('decisionNumber')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>تاريخ القرار</mat-label>
+	 <input matInput
+	  [matDatepicker] = "decisionDateDatepicker"
+	  autocomplete = "off"
+	  formControlName= "decisionDate"/>
+	 <mat-datepicker-toggle
+	   matSuffix
+	   [for]="decisionDateDatepicker"
+	 ></mat-datepicker-toggle>
+	 <mat-datepicker #decisionDateDatepicker></mat-datepicker>
+	 <mat-error *ngIf = "getControls('decisionDate').invalid" >
+	  {{ getControls('decisionDate')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>تاريخ الازالة</mat-label>
+	 <input matInput
+	  [matDatepicker] = "removalDateDatepicker"
+	  autocomplete = "off"
+	  formControlName= "removalDate"/>
+	 <mat-datepicker-toggle
+	   matSuffix
+	   [for]="removalDateDatepicker"
+	 ></mat-datepicker-toggle>
+	 <mat-datepicker #removalDateDatepicker></mat-datepicker>
+	 <mat-error *ngIf = "getControls('removalDate').invalid" >
+	  {{ getControls('removalDate')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+         
+
+	<app-material-select appearance="outline"
+	  #usageStatus 
+	  [options] = "usageStatusSelectOptions"
+	  formControlName = "usageStatus"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #extensionClosingStatus 
+	  [options] = "extensionClosingStatusSelectOptions"
+	  formControlName = "extensionClosingStatus"
+	></app-material-select>
+        </form>
+  
+      </mat-card-content >
+  
+      <mat-action-row>
+            <form [formGroup]="attachmentForm" class="form-container">
+                <app-multi-file-upload [service] = "removalRestorationDataOfClosedBuildingsService" [id]="removalRestorationDataOfClosedBuildingsForm.get('id').value"
+                    formControlName = "attachmentFiles">
+                </app-multi-file-upload>
+            </form>
+            <button (click) = "onConfirm()" mat-raised-button color = "primary" >
+                غلق
+            </button>
+        </mat-action-row>
+    </mat-card>
+
+    

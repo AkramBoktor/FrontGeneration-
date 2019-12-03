@@ -8,7 +8,7 @@
 	resourceType: number;
 	ownerName: string;
 	administratorName: string;
-	resourceAddress: number;
+	resourceAddress: string;
 	region: string;
 	phoneNumber: string;
 	managerCardCode: string;
@@ -16,8 +16,8 @@
 	taxCardNumber: string;
 	issuerOfTaxCard: number;
 	recordType: number;
-	constraintNumber: number;
-	statement: number;
+	constraintNumber: string;
+	statement: string;
 	blackList: number;
 	constructor(arg?: ContractorData) {
         if (arg) {

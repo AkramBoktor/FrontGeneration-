@@ -3,34 +3,34 @@
     id: number;
     
 	offeringType: number;
-	bidNumber: number;
+	bidNumber: string;
 	school: string;
 	governorate: number;
 	contractorCode: string;
-	abstractNumber: number;
-	contractualValue: number;
+	abstractNumber: string;
+	contractualValue: string;
 	extractType: number;
-	executionDuration: number;
+	executionDuration: string;
 	abstractPosition: string;
-	advancePayment: number;
+	advancePayment: string;
 	receiptDate: Date;
 	abstractWorksStartDate: Date;
 	primaryReceiptDate: Date;
 	abstractWorksEndDate: Date;
-	fineValue: number;
-	disbursementRate: number;
-	totalValue: number;
-	paymentAmount: number;
+	fineValue: string;
+	disbursementRate: string;
+	totalValue: string;
+	paymentAmount: string;
 	previousBalance: string;
-	oldSpent: number;
-	advanceBalance: number;
-	abstractValue: number;
-	netAbstract: number;
-	prepaymentDiscount: number;
+	oldSpent: string;
+	advanceBalance: string;
+	abstractValue: string;
+	netAbstract: string;
+	prepaymentDiscount: string;
 	registrationDate: Date;
-	paymentRate: number;
-	requestingAreaNumber: number;
-	serialForm: number;
+	paymentRate: string;
+	requestingAreaNumber: string;
+	serialForm: string;
 	constructor(arg?: Invoice50) {
         if (arg) {
             for (const property in arg) {

@@ -29,7 +29,7 @@ export class CanceledTenderNewComponent extends AppBaseComponent implements OnIn
   errorMessages: FormControlError[] = [
         
 	{
-	 errorName: 'min',
+	 errorName: 'minLength',
 	 errorMessage: 'لا يوجد مسلسل يساوي صفر'
 	},
 	{
@@ -37,7 +37,11 @@ export class CanceledTenderNewComponent extends AppBaseComponent implements OnIn
 	 errorMessage: 'لا يوجد مسلسل يساوي صفر'
 	},
 	{
-	 errorName: 'min',
+	 errorName: 'minLength',
+	 errorMessage: 'لا يوجد مسلسل يساوي صفر'
+	},
+	{
+	 errorName: 'minLength',
 	 errorMessage: 'لا يوجد مسلسل يساوي صفر'
 	}
   ];
@@ -74,10 +78,10 @@ offeringTypeSelectOptions: MaterialSelectOptions;
     this.canceledTenderForm = this.formBuilder.group({
      
   id : [0],
-  bidNumber : [this.selectedCanceledTender.bidNumber, [ Validators.required,Validators.min(1) ]],
-  tenderNumber : [this.selectedCanceledTender.tenderNumber, [ Validators.required ]],
+  bidNumber : [this.selectedCanceledTender.bidNumber, [ Validators.required,Validators.minLength(1) ]],
+  tenderNumber : [this.selectedCanceledTender.tenderNumber, [ Validators.required,Validators.minLength(1) ]],
   contractorCode : [this.selectedCanceledTender.contractorCode, [ ]],
-  schoolNumber : [this.selectedCanceledTender.schoolNumber, [ Validators.required,Validators.min(1) ]],
+  schoolNumber : [this.selectedCanceledTender.schoolNumber, [ Validators.required,Validators.minLength(1) ]],
   schoolName : [this.selectedCanceledTender.schoolName, [ ]],
   exclusionReason : [this.selectedCanceledTender.exclusionReason, [ Validators.required ]],
   offeringType : [this.selectedCanceledTender.offeringType, [ Validators.required ]]

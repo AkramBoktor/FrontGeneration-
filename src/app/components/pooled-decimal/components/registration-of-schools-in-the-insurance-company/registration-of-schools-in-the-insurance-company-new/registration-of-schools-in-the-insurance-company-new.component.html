@@ -19,7 +19,7 @@
 
 	<mat-form-field appearance="outline">
 	 <mat-label>اسم الشركة</mat-label>
-	 <input matInput formControlName="companyname" [disableControl]="true" />
+	 <input matInput formControlName="companyname" [disableControl]="false" />
 	 <mat-error *ngIf = "getControls('companyname').invalid" >
 	  {{ getControls('companyname')| getErrorMessages : errorMessages}}
 	  </mat-error>

@@ -3,7 +3,7 @@
     id: number;
     
 	offeringType: number;
-	bidNumber: number;
+	bidNumber: string;
 	technicalReport: string;
 	constructor(arg?: AssignmentData) {
         if (arg) {
