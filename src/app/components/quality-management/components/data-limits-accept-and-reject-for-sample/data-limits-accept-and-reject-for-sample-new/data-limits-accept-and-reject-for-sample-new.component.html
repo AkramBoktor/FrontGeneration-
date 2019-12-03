@@ -1,0 +1,94 @@
+
+<app-new-form-layout
+    dir="rtl"
+    (submitClicked) = "onSubmit()"
+    (back) = "onBack()"
+    [pageTitle] = "'بيانات حدود قبول ورفض لعينة'"
+>
+    <ng-template newFormContainer >
+        <form [formGroup] = "dataLimitsAcceptAndRejectForSampleForm">
+         
+
+	<mat-form-field appearance="outline">
+	 <mat-label>كود المادة الأساسية </mat-label>
+	 <input matInput formControlName="basicMaterialCode"/>
+	 <mat-error *ngIf = "getControls('basicMaterialCode').invalid" >
+	  {{ getControls('basicMaterialCode')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label> كود لمادة الفرعية</mat-label>
+	 <input matInput formControlName="subMaterialCode"/>
+	 <mat-error *ngIf = "getControls('subMaterialCode').invalid" >
+	  {{ getControls('subMaterialCode')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>كود الاختبار</mat-label>
+	 <input matInput formControlName="testCode"/>
+	 <mat-error *ngIf = "getControls('testCode').invalid" >
+	  {{ getControls('testCode')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>اسم بيان الاختبار</mat-label>
+	 <input matInput formControlName="testStatementName" [disableControl]="true" />
+	 <mat-error *ngIf = "getControls('testStatementName').invalid" >
+	  {{ getControls('testStatementName')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>قيمة بيان لاتزيد عن</mat-label>
+	 <input matInput formControlName="noMoreThanStatementvalue"/>
+	 <mat-error *ngIf = "getControls('noMoreThanStatementvalue').invalid" >
+	  {{ getControls('noMoreThanStatementvalue')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>قيمة بيان لاتقل عن</mat-label>
+	 <input matInput formControlName="notLessThanStatementValue"/>
+	 <mat-error *ngIf = "getControls('notLessThanStatementValue').invalid" >
+	  {{ getControls('notLessThanStatementValue')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+         
+
+	<app-material-select appearance="outline"
+	  #measruingUnitStatement 
+	  [options] = "measruingUnitStatementSelectOptions"
+	  formControlName = "measruingUnitStatement"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #statementType 
+	  [options] = "statementTypeSelectOptions"
+	  formControlName = "statementType"
+	></app-material-select>
+
+        </form>
+
+        <mat-divider></mat-divider>
+
+		<mat-card-actions>
+			<form [formGroup]="attachmentForm" class="form-container">
+                <app-multi-file-upload [service] = "dataLimitsAcceptAndRejectForSampleService" [id]="dataLimitsAcceptAndRejectForSampleForm.get('id').value"
+                    formControlName = "attachmentFiles">
+                </app-multi-file-upload>
+            </form>
+            <button
+                type="submit"
+                (click)="onSubmit()"
+                [disabled]="dataLimitsAcceptAndRejectForSampleForm.invalid"
+                mat-raised-button
+                color = "primary">
+             حفظ
+            </button>
+        </mat-card-actions>
+    </ng-template >
+</app-new-form-layout >
+

@@ -1,0 +1,48 @@
+
+<app-search-list-expansion-panel
+    dir="rtl"
+    [pageTitle] = "'ادخال اكواد ماموريات الضرائب للمحافظات'"
+    (beginSearch) = "onBeginSearch()"
+    (create) = "onCreate()"
+>
+    <ng-template searchFormContainer >
+        <form [formGroup] = "searchForm">
+           
+
+	<mat-form-field appearance="outline">
+	 <mat-label>كود المامورية</mat-label>
+	 <input matInput formControlName="mamoriaCode"/>
+	 <mat-error *ngIf = "getControls('mamoriaCode').invalid" >
+	  {{ getControls('mamoriaCode')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>مسمي المامورية</mat-label>
+	 <input matInput formControlName="mamoriaName"/>
+	 <mat-error *ngIf = "getControls('mamoriaName').invalid" >
+	  {{ getControls('mamoriaName')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+           
+
+	<app-material-select appearance="outline"
+	  #governorateCode 
+	  [options] = "governorateCodeSelectOptions"
+	  formControlName = "governorateCode"
+	></app-material-select>
+
+        </form>
+    </ng-template >
+    <ng-template searchResultContainer >
+        <app-grid-control
+            #gridControl
+            [rowDataService] = "getIntroducingTaxCodesForTheGovernoratesPaginatedSortedFiltered"
+            [columnOptions] = "columnOptions"
+            [gridHeaderOptions] = "gridHeaderOptions"
+            [searchInput] = "searchForm.value"
+            (deleteRow) = "onDeleteClicked($event)"
+        >
+        </app-grid-control>
+    </ng-template>
+</app-search-list-expansion-panel >

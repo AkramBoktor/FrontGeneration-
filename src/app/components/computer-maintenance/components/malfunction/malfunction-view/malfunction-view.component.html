@@ -1,0 +1,118 @@
+
+<mat-card class="form-card">
+      <mat-card-header>
+  
+          <mat-card-title>
+              الاعطال
+          </mat-card-title>
+  
+      </mat-card-header>
+  
+      <mat-card-content>
+  
+        <form [formGroup] = "malfunctionForm" class="form-container">
+         
+
+	<mat-form-field appearance="outline">
+	 <mat-label>كود المبنى</mat-label>
+	 <input matInput formControlName="buildingCode"/>
+	 <mat-error *ngIf = "getControls('buildingCode').invalid" >
+	  {{ getControls('buildingCode')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>رقم المعمل</mat-label>
+	 <input matInput formControlName="laboratoryNumber"/>
+	 <mat-error *ngIf = "getControls('laboratoryNumber').invalid" >
+	  {{ getControls('laboratoryNumber')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>رقم الجهاز</mat-label>
+	 <input matInput formControlName="deviceNumber"/>
+	 <mat-error *ngIf = "getControls('deviceNumber').invalid" >
+	  {{ getControls('deviceNumber')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>تاريخ العطل</mat-label>
+	 <input matInput
+	  [matDatepicker] = "malfunctionDateDatepicker"
+	  autocomplete = "off"
+	  formControlName= "malfunctionDate"/>
+	 <mat-datepicker-toggle
+	   matSuffix
+	   [for]="malfunctionDateDatepicker"
+	 ></mat-datepicker-toggle>
+	 <mat-datepicker #malfunctionDateDatepicker></mat-datepicker>
+	 <mat-error *ngIf = "getControls('malfunctionDate').invalid" >
+	  {{ getControls('malfunctionDate')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>عدد لاجزاء العاطله</mat-label>
+	 <input matInput formControlName="malfunctionPartNumber"/>
+	 <mat-error *ngIf = "getControls('malfunctionPartNumber').invalid" >
+	  {{ getControls('malfunctionPartNumber')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>مسلسل الجزء العاطل</mat-label>
+	 <input matInput formControlName="malfunctionPartSerial"/>
+	 <mat-error *ngIf = "getControls('malfunctionPartSerial').invalid" >
+	  {{ getControls('malfunctionPartSerial')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+         
+
+	<app-material-select appearance="outline"
+	  #buildingType 
+	  [options] = "buildingTypeSelectOptions"
+	  formControlName = "buildingType"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #laboratoryType 
+	  [options] = "laboratoryTypeSelectOptions"
+	  formControlName = "laboratoryType"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #equipmentCode 
+	  [options] = "equipmentCodeSelectOptions"
+	  formControlName = "equipmentCode"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #deviceType 
+	  [options] = "deviceTypeSelectOptions"
+	  formControlName = "deviceType"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #malfunctionPart 
+	  [options] = "malfunctionPartSelectOptions"
+	  formControlName = "malfunctionPart"
+	></app-material-select>
+        </form>
+  
+      </mat-card-content >
+  
+      <mat-action-row>
+            <form [formGroup]="attachmentForm" class="form-container">
+                <app-multi-file-upload [service] = "malfunctionService" [id]="malfunctionForm.get('id').value"
+                    formControlName = "attachmentFiles">
+                </app-multi-file-upload>
+            </form>
+            <button (click) = "onConfirm()" mat-raised-button color = "primary" >
+                غلق
+            </button>
+        </mat-action-row>
+    </mat-card>
+
+    

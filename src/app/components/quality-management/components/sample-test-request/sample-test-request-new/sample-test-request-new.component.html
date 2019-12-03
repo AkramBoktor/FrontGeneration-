@@ -1,0 +1,132 @@
+
+<app-new-form-layout
+    dir="rtl"
+    (submitClicked) = "onSubmit()"
+    (back) = "onBack()"
+    [pageTitle] = "'طلب اختبار عينة'"
+>
+    <ng-template newFormContainer >
+        <form [formGroup] = "sampleTestRequestForm">
+         
+
+	<mat-form-field appearance="outline">
+	 <mat-label>مسلسل طلب الاختبار</mat-label>
+	 <input matInput formControlName="serialRequestTest"/>
+	 <mat-error *ngIf = "getControls('serialRequestTest').invalid" >
+	  {{ getControls('serialRequestTest')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>المورد</mat-label>
+	 <input matInput formControlName="supplier"/>
+	 <mat-error *ngIf = "getControls('supplier').invalid" >
+	  {{ getControls('supplier')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>عدد العينات</mat-label>
+	 <input matInput formControlName="samplesNumber"/>
+	 <mat-error *ngIf = "getControls('samplesNumber').invalid" >
+	  {{ getControls('samplesNumber')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>مبني تعليمي رقم</mat-label>
+	 <input matInput formControlName="educationalBuildingNumber"/>
+	 <mat-error *ngIf = "getControls('educationalBuildingNumber').invalid" >
+	  {{ getControls('educationalBuildingNumber')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>الملحق</mat-label>
+	 <input matInput formControlName="supplement"/>
+	 <mat-error *ngIf = "getControls('supplement').invalid" >
+	  {{ getControls('supplement')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>رقم المناقصة</mat-label>
+	 <input matInput formControlName="bidNumber"/>
+	 <mat-error *ngIf = "getControls('bidNumber').invalid" >
+	  {{ getControls('bidNumber')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>المبلغ المدفوع</mat-label>
+	 <input matInput formControlName="paidAmount" [disableControl]="true" />
+	 <mat-error *ngIf = "getControls('paidAmount').invalid" >
+	  {{ getControls('paidAmount')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+         
+
+	<app-material-select appearance="outline"
+	  #testRequestType 
+	  [options] = "testRequestTypeSelectOptions"
+	  formControlName = "testRequestType"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #sampleTestedType 
+	  [options] = "sampleTestedTypeSelectOptions"
+	  formControlName = "sampleTestedType"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #testdemand 
+	  [options] = "testdemandSelectOptions"
+	  formControlName = "testdemand"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #sampleTested 
+	  [options] = "sampleTestedSelectOptions"
+	  formControlName = "sampleTested"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #offeringTypeCode 
+	  [options] = "offeringTypeCodeSelectOptions"
+	  formControlName = "offeringTypeCode"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #laboratoryCode 
+	  [options] = "laboratoryCodeSelectOptions"
+	  formControlName = "laboratoryCode"
+	></app-material-select>
+
+	<app-material-select appearance="outline" [disabled]="true" 
+	  #branchCode 
+	  [options] = "branchCodeSelectOptions"
+	  formControlName = "branchCode"
+	></app-material-select>
+
+        </form>
+
+        <mat-divider></mat-divider>
+
+		<mat-card-actions>
+			<form [formGroup]="attachmentForm" class="form-container">
+                <app-multi-file-upload [service] = "sampleTestRequestService" [id]="sampleTestRequestForm.get('id').value"
+                    formControlName = "attachmentFiles">
+                </app-multi-file-upload>
+            </form>
+            <button
+                type="submit"
+                (click)="onSubmit()"
+                [disabled]="sampleTestRequestForm.invalid"
+                mat-raised-button
+                color = "primary">
+             حفظ
+            </button>
+        </mat-card-actions>
+    </ng-template >
+</app-new-form-layout >
+

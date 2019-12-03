@@ -1,0 +1,50 @@
+
+<app-search-list-expansion-panel
+    dir="rtl"
+    [pageTitle] = "'بيانات اختبارات عينة'"
+    (beginSearch) = "onBeginSearch()"
+    (create) = "onCreate()"
+>
+    <ng-template searchFormContainer >
+        <form [formGroup] = "searchForm">
+           
+
+	<mat-form-field appearance="outline">
+	 <mat-label>كود المادة الأساسية </mat-label>
+	 <input matInput formControlName="basicMaterialCode"/>
+	 <mat-error *ngIf = "getControls('basicMaterialCode').invalid" >
+	  {{ getControls('basicMaterialCode')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label> كود لمادة الفرعية</mat-label>
+	 <input matInput formControlName="subMaterialCode"/>
+	 <mat-error *ngIf = "getControls('subMaterialCode').invalid" >
+	  {{ getControls('subMaterialCode')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>كود الاختبار</mat-label>
+	 <input matInput formControlName="testCode"/>
+	 <mat-error *ngIf = "getControls('testCode').invalid" >
+	  {{ getControls('testCode')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+           
+
+        </form>
+    </ng-template >
+    <ng-template searchResultContainer >
+        <app-grid-control
+            #gridControl
+            [rowDataService] = "getSampleTestsDataPaginatedSortedFiltered"
+            [columnOptions] = "columnOptions"
+            [gridHeaderOptions] = "gridHeaderOptions"
+            [searchInput] = "searchForm.value"
+            (deleteRow) = "onDeleteClicked($event)"
+        >
+        </app-grid-control>
+    </ng-template>
+</app-search-list-expansion-panel >

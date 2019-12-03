@@ -1,0 +1,89 @@
+
+<mat-card>
+    <mat-card-header>
+        <mat-card-title>اشتراك الصندوق عن سنوات سابقه</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+        <form [formGroup]="contributionOfTheFundForPreviousYearsBForm" class="form-container">
+          
+
+	<mat-form-field appearance="outline">
+	 <mat-label>قيمه الاشتراك</mat-label>
+	 <input matInput formControlName="registrationPrice"/>
+	 <mat-error *ngIf = "getControls('registrationPrice').invalid" >
+	  {{ getControls('registrationPrice')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>سنة الاشتراك</mat-label>
+	 <input matInput formControlName="subscriptionYear"/>
+	 <mat-error *ngIf = "getControls('subscriptionYear').invalid" >
+	  {{ getControls('subscriptionYear')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>تاريخ الاشتراك</mat-label>
+	 <input matInput
+	 [disableControl]="true" 
+	  [matDatepicker] = "joinDateDatepicker"
+	  autocomplete = "off"
+	  formControlName= "joinDate"/>
+	 <mat-datepicker-toggle
+	   matSuffix
+	   [for]="joinDateDatepicker"
+	 ></mat-datepicker-toggle>
+	 <mat-datepicker #joinDateDatepicker></mat-datepicker>
+	 <mat-error *ngIf = "getControls('joinDate').invalid" >
+	  {{ getControls('joinDate')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>حالة الاشتراك</mat-label>
+	 <input matInput formControlName="subscriptionStatus" [disableControl]="true" />
+	 <mat-error *ngIf = "getControls('subscriptionStatus').invalid" >
+	  {{ getControls('subscriptionStatus')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>كود الموظف</mat-label>
+	 <input matInput formControlName="employeeCode"/>
+	 <mat-error *ngIf = "getControls('employeeCode').invalid" >
+	  {{ getControls('employeeCode')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>رقم عضويه</mat-label>
+	 <input matInput formControlName="membershipNumber" [disableControl]="true" />
+	 <mat-error *ngIf = "getControls('membershipNumber').invalid" >
+	  {{ getControls('membershipNumber')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+          
+
+        </form>
+    </mat-card-content>
+
+    <mat-divider></mat-divider>
+
+	<mat-card-actions>
+			<form [formGroup]="attachmentForm" class="form-container">
+                <app-multi-file-upload [service] = "contributionOfTheFundForPreviousYearsBService" [id]="contributionOfTheFundForPreviousYearsBForm.get('id').value"
+                    formControlName = "attachmentFiles">
+                </app-multi-file-upload>
+            </form>
+            <button
+                color = "primary"
+                type = "submit"
+                (click) = "onSubmit()"
+                [disabled] = "contributionOfTheFundForPreviousYearsBForm.invalid"
+                mat-raised-button>
+                حفظ
+            </button>
+    </mat-card-actions>
+</mat-card>
+

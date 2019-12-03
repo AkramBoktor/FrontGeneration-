@@ -1,0 +1,56 @@
+
+<app-new-form-layout
+    dir="rtl"
+    (submitClicked) = "onSubmit()"
+    (back) = "onBack()"
+    [pageTitle] = "'ماكينة متربطه بالمعمل'"
+>
+    <ng-template newFormContainer >
+        <form [formGroup] = "machineLinkedToTheLaboratoryForm">
+         
+
+	<mat-form-field appearance="outline">
+	 <mat-label>كود الماكينة</mat-label>
+	 <input matInput formControlName="machineCode"/>
+	 <mat-error *ngIf = "getControls('machineCode').invalid" >
+	  {{ getControls('machineCode')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>اسم الماكينة</mat-label>
+	 <input matInput formControlName="machineName"/>
+	 <mat-error *ngIf = "getControls('machineName').invalid" >
+	  {{ getControls('machineName')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+         
+
+	<app-material-select appearance="outline"
+	  #laboratoryCode 
+	  [options] = "laboratoryCodeSelectOptions"
+	  formControlName = "laboratoryCode"
+	></app-material-select>
+
+        </form>
+
+        <mat-divider></mat-divider>
+
+		<mat-card-actions>
+			<form [formGroup]="attachmentForm" class="form-container">
+                <app-multi-file-upload [service] = "machineLinkedToTheLaboratoryService" [id]="machineLinkedToTheLaboratoryForm.get('id').value"
+                    formControlName = "attachmentFiles">
+                </app-multi-file-upload>
+            </form>
+            <button
+                type="submit"
+                (click)="onSubmit()"
+                [disabled]="machineLinkedToTheLaboratoryForm.invalid"
+                mat-raised-button
+                color = "primary">
+             حفظ
+            </button>
+        </mat-card-actions>
+    </ng-template >
+</app-new-form-layout >
+

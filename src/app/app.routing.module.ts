@@ -14,6 +14,12 @@ const routes: Routes = [
                 path: 'lookup', loadChildren: './shared/pages/lookup-form/lookup-form.module#LookupFormModule',
             },
             {
+                path: 'profile', loadChildren: './shared/pages/profile/profile.module#ProfileModule',
+                data: {
+                    menuName: 'profile'
+                }
+            },
+            {
                 path: 'vacation', loadChildren: './components/vacation/vacation.module#VacationModule',
                 data: {
                     menuName: 'vacation'
@@ -98,9 +104,9 @@ const routes: Routes = [
             },
 
             {
-                path: 'health-units-ministry-of-solidarity-postal-authority', loadChildren: './components/health-units-ministry-of-solidarity-postal-authority/health-units-ministry-of-solidarity-postal-authority.module#HealthUnitsMinistryOfSolidarityPostalAuthorityModule',
+                path: 'health-units-ministry', loadChildren: './components/health-units-ministry/health-units-ministry.module#HealthUnitsMinistryOfSolidarityPostalAuthorityModule',
                 data: {
-                    menuName: 'health-units-ministry-of-solidarity-postal-authority'
+                    menuName: 'health-units-ministry'
                 }
             },
 

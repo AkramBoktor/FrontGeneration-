@@ -1,0 +1,86 @@
+
+<app-new-form-layout
+    dir="rtl"
+    (submitClicked) = "onSubmit()"
+    (back) = "onBack()"
+    [pageTitle] = "'فراغات المعامل التي لم تصل لها اجهزة'"
+>
+    <ng-template newFormContainer >
+        <form [formGroup] = "laboratorySpaceForm">
+         
+
+	<mat-form-field appearance="outline">
+	 <mat-label>كود المبنى</mat-label>
+	 <input matInput formControlName="buildingCode"/>
+	 <mat-error *ngIf = "getControls('buildingCode').invalid" >
+	  {{ getControls('buildingCode')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>اسم الفراغ</mat-label>
+	 <input matInput formControlName="spaceName"/>
+	 <mat-error *ngIf = "getControls('spaceName').invalid" >
+	  {{ getControls('spaceName')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>رقم الملحق</mat-label>
+	 <input matInput formControlName="annexNumber"/>
+	 <mat-error *ngIf = "getControls('annexNumber').invalid" >
+	  {{ getControls('annexNumber')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>رقم الدور</mat-label>
+	 <input matInput formControlName="floorNumber"/>
+	 <mat-error *ngIf = "getControls('floorNumber').invalid" >
+	  {{ getControls('floorNumber')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>مسلسل الفراغ</mat-label>
+	 <input matInput formControlName="spaceSeries"/>
+	 <mat-error *ngIf = "getControls('spaceSeries').invalid" >
+	  {{ getControls('spaceSeries')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+         
+
+	<app-material-select appearance="outline"
+	  #spaceCode 
+	  [options] = "spaceCodeSelectOptions"
+	  formControlName = "spaceCode"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #spaceNotConnectedToDevices 
+	  [options] = "spaceNotConnectedToDevicesSelectOptions"
+	  formControlName = "spaceNotConnectedToDevices"
+	></app-material-select>
+
+        </form>
+
+        <mat-divider></mat-divider>
+
+		<mat-card-actions>
+			<form [formGroup]="attachmentForm" class="form-container">
+                <app-multi-file-upload [service] = "laboratorySpaceService" [id]="laboratorySpaceForm.get('id').value"
+                    formControlName = "attachmentFiles">
+                </app-multi-file-upload>
+            </form>
+            <button
+                type="submit"
+                (click)="onSubmit()"
+                [disabled]="laboratorySpaceForm.invalid"
+                mat-raised-button
+                color = "primary">
+             حفظ
+            </button>
+        </mat-card-actions>
+    </ng-template >
+</app-new-form-layout >
+

@@ -4194,267 +4194,1481 @@ export const listMenuConfig: ListMenuConfig = {
             ]
         }
     ],
-    "assay--unctions-of-items-and-elements-of-the-project": [
+    'assay--unctions-of-items-and-elements-of-the-project': [
         {
-            "id": "assay--unctions-of-items-and-elements-of-the-project",
-            "title": "برنامج مقايسه -وظائف البنود والعناصر للمشروع",
-            "type": "group",
-            "icon": "app",
-            "children": [
+            id: 'assay--unctions-of-items-and-elements-of-the-project',
+            title: 'برنامج مقايسه -وظائف البنود والعناصر للمشروع',
+            type: 'group',
+            icon: 'app',
+            children: [
                 {
-                    "id": "Assay  unctions of items and elements of the project Config",
-                    "title": "الأعدادات",
-                    "type": "collapsable",
-                    "icon": "build",
-                    "children": [
+                    id: 'Assay  unctions of items and elements of the project Config',
+                    title: 'الأعدادات',
+                    type: 'collapsable',
+                    icon: 'build',
+                    children: [
                         {
-                            "id": "groupcodes ",
-                            "title": "كود المجموعة المقايسات",
-                            "type": "item",
-                            "url": "/lookup/groupcodes ",
-                            "exactMatch": true
+                            id: 'groupcodes ',
+                            title: 'كود المجموعة المقايسات',
+                            type: 'item',
+                            url: '/lookup/groupcodes ',
+                            exactMatch: true
                         },
                         {
-                            "id": "pricingtypes",
-                            "title": "نوع التسعير",
-                            "type": "item",
-                            "url": "/lookup/pricingtypes",
-                            "exactMatch": true
+                            id: 'pricingtypes',
+                            title: 'نوع التسعير',
+                            type: 'item',
+                            url: '/lookup/pricingtypes',
+                            exactMatch: true
                         },
                         {
-                            "id": "measurementunits",
-                            "title": "وحدات القياس",
-                            "type": "item",
-                            "url": "/lookup/measurementunits",
-                            "exactMatch": true
+                            id: 'measurementunits',
+                            title: 'وحدات القياس',
+                            type: 'item',
+                            url: '/lookup/measurementunits',
+                            exactMatch: true
                         }
                     ]
                 },
                 {
-                    "id": "Assay  unctions of items and elements of the project Program",
-                    "title": "البرامج",
-                    "type": "collapsable",
-                    "icon": "apps",
-                    "children": [
+                    id: 'Assay  unctions of items and elements of the project Program',
+                    title: 'البرامج',
+                    type: 'collapsable',
+                    icon: 'apps',
+                    children: [
                         {
-                            "id": "Data element of basic item",
-                            "title": " بيانات عناصر البنود الاساسية ",
-                            "type": "item",
-                            "url": "/assay--unctions-of-items-and-elements-of-the-project/data-element-of-basic-item",
-                            "exactMatch": true
+                            id: 'Data element of basic item',
+                            title: ' بيانات عناصر البنود الاساسية ',
+                            type: 'item',
+                            url: '/assay--unctions-of-items-and-elements-of-the-project/data-element-of-basic-item',
+                            exactMatch: true
                         }
                     ]
                 },
                 {
-                    "id": "Assay  unctions of items and elements of the project Report",
-                    "title": "التقارير",
-                    "type": "collapsable",
-                    "icon": "assignment",
-                    "children": []
+                    id: 'Assay  unctions of items and elements of the project Report',
+                    title: 'التقارير',
+                    type: 'collapsable',
+                    icon: 'assignment',
+                    children: []
                 }
             ]
         }
     ],
-    "assay-list-subsystem-code": [
+    'assay-list-subsystem-code': [
         {
-            "id": "assay-list-subsystem-code",
-            "title": "برنامج المقايسة - قائمة المقايسات - أكواد النظام الفرعي للمقايسات",
-            "type": "group",
-            "icon": "app",
-            "children": [
+            id: 'assay-list-subsystem-code',
+            title: 'برنامج المقايسة - قائمة المقايسات - أكواد النظام الفرعي للمقايسات',
+            type: 'group',
+            icon: 'app',
+            children: [
                 {
-                    "id": "Assay List Subsystem Code Config",
-                    "title": "الأعدادات",
-                    "type": "collapsable",
-                    "icon": "build",
-                    "children": [
+                    id: 'Assay List Subsystem Code Config',
+                    title: 'الأعدادات',
+                    type: 'collapsable',
+                    icon: 'build',
+                    children: [
                         {
-                            "id": "foundationtypes",
-                            "title": "نوع الاساس",
-                            "type": "item",
-                            "url": "/lookup/foundationtypes",
-                            "exactMatch": true
+                            id: 'foundationtypes',
+                            title: 'نوع الاساس',
+                            type: 'item',
+                            url: '/lookup/foundationtypes',
+                            exactMatch: true
                         },
                         {
-                            "id": "formtypes",
-                            "title": "نوع النموذج",
-                            "type": "item",
-                            "url": "/lookup/formtypes",
-                            "exactMatch": true
+                            id: 'formtypes',
+                            title: 'نوع النموذج',
+                            type: 'item',
+                            url: '/lookup/formtypes',
+                            exactMatch: true
                         },
                         {
-                            "id": "worktypes",
-                            "title": "نوع العمل",
-                            "type": "item",
-                            "url": "/lookup/worktypes",
-                            "exactMatch": true
+                            id: 'worktypes',
+                            title: 'نوع العمل',
+                            type: 'item',
+                            url: '/lookup/worktypes',
+                            exactMatch: true
                         }
                     ]
                 },
                 {
-                    "id": "Assay List Subsystem Code Program",
-                    "title": "البرامج",
-                    "type": "collapsable",
-                    "icon": "apps",
-                    "children": [
+                    id: 'Assay List Subsystem Code Program',
+                    title: 'البرامج',
+                    type: 'collapsable',
+                    icon: 'apps',
+                    children: [
                         {
-                            "id": "implementation activity Schedule",
-                            "title": "الجداول الزمنية للتنفيذ -أنشطة الجداول الزمنية",
-                            "type": "item",
-                            "url": "/assay-list-subsystem-code/implementation-activity-schedule",
-                            "exactMatch": true
+                            id: 'implementation activity Schedule',
+                            title: 'الجداول الزمنية للتنفيذ -أنشطة الجداول الزمنية',
+                            type: 'item',
+                            url: '/assay-list-subsystem-code/implementation-activity-schedule',
+                            exactMatch: true
                         },
                         {
-                            "id": "implementation data Schedule",
-                            "title": "الجداول الزمنية للتنفيذ -بيانات الجدول الزمني",
-                            "type": "item",
-                            "url": "/assay-list-subsystem-code/implementation-data-schedule",
-                            "exactMatch": true
+                            id: 'implementation data Schedule',
+                            title: 'الجداول الزمنية للتنفيذ -بيانات الجدول الزمني',
+                            type: 'item',
+                            url: '/assay-list-subsystem-code/implementation-data-schedule',
+                            exactMatch: true
                         },
                         {
-                            "id": "Base Type",
-                            "title": "انواع الاساس",
-                            "type": "item",
-                            "url": "/assay-list-subsystem-code/base-type",
-                            "exactMatch": true
+                            id: 'Base Type',
+                            title: 'انواع الاساس',
+                            type: 'item',
+                            url: '/assay-list-subsystem-code/base-type',
+                            exactMatch: true
                         },
                         {
-                            "id": "Assay Model",
-                            "title": "نماذج المقايسة",
-                            "type": "item",
-                            "url": "/assay-list-subsystem-code/assay-model",
-                            "exactMatch": true
+                            id: 'Assay Model',
+                            title: 'نماذج المقايسة',
+                            type: 'item',
+                            url: '/assay-list-subsystem-code/assay-model',
+                            exactMatch: true
                         },
                         {
-                            "id": "Work Type",
-                            "title": "نوع العمل",
-                            "type": "item",
-                            "url": "/assay-list-subsystem-code/work-type",
-                            "exactMatch": true
+                            id: 'Work Type',
+                            title: 'نوع العمل',
+                            type: 'item',
+                            url: '/assay-list-subsystem-code/work-type',
+                            exactMatch: true
                         },
                         {
-                            "id": "Material Type",
-                            "title": "نوع المادة",
-                            "type": "item",
-                            "url": "/assay-list-subsystem-code/material-type",
-                            "exactMatch": true
+                            id: 'Material Type',
+                            title: 'نوع المادة',
+                            type: 'item',
+                            url: '/assay-list-subsystem-code/material-type',
+                            exactMatch: true
                         },
                         {
-                            "id": "Activity Type",
-                            "title": "نوع النشاط",
-                            "type": "item",
-                            "url": "/assay-list-subsystem-code/activity-type",
-                            "exactMatch": true
+                            id: 'Activity Type',
+                            title: 'نوع النشاط',
+                            type: 'item',
+                            url: '/assay-list-subsystem-code/activity-type',
+                            exactMatch: true
                         },
                         {
-                            "id": "SubActivity Type",
-                            "title": "نوع النشاط الفرعي",
-                            "type": "item",
-                            "url": "/assay-list-subsystem-code/sub-activity-type",
-                            "exactMatch": true
+                            id: 'SubActivity Type',
+                            title: 'نوع النشاط الفرعي',
+                            type: 'item',
+                            url: '/assay-list-subsystem-code/sub-activity-type',
+                            exactMatch: true
                         },
                         {
-                            "id": "Measurement unit",
-                            "title": "وحدة القياس",
-                            "type": "item",
-                            "url": "/assay-list-subsystem-code/measurement-unit",
-                            "exactMatch": true
+                            id: 'Measurement unit',
+                            title: 'وحدة القياس',
+                            type: 'item',
+                            url: '/assay-list-subsystem-code/measurement-unit',
+                            exactMatch: true
                         }
                     ]
                 },
                 {
-                    "id": "Assay List Subsystem Code Report",
-                    "title": "التقارير",
-                    "type": "collapsable",
-                    "icon": "assignment",
-                    "children": []
+                    id: 'Assay List Subsystem Code Report',
+                    title: 'التقارير',
+                    type: 'collapsable',
+                    icon: 'assignment',
+                    children: []
                 }
             ]
         }
     ],
-    "assay-subsystem-of-assays": [
+    'assay-subsystem-of-assays': [
         {
-            "id": "assay-subsystem-of-assays",
-            "title": " المقايسة - النظام الفرعي للمقايسات",
-            "type": "group",
-            "icon": "app",
-            "children": [
+            id: 'assay-subsystem-of-assays',
+            title: ' المقايسة - النظام الفرعي للمقايسات',
+            type: 'group',
+            icon: 'app',
+            children: [
                 {
-                    "id": "Assay  Subsystem Of Assays Config",
-                    "title": "الأعدادات",
-                    "type": "collapsable",
-                    "icon": "build",
-                    "children": [
+                    id: 'Assay  Subsystem Of Assays Config',
+                    title: 'الأعدادات',
+                    type: 'collapsable',
+                    icon: 'build',
+                    children: [
                         {
-                            "id": "constructiontypes",
-                            "title": "انواع الانشاء",
-                            "type": "item",
-                            "url": "/lookup/constructiontypes",
-                            "exactMatch": true
+                            id: 'constructiontypes',
+                            title: 'انواع الانشاء',
+                            type: 'item',
+                            url: '/lookup/constructiontypes',
+                            exactMatch: true
                         },
                         {
-                            "id": "worktypes",
-                            "title": "نوع العمل",
-                            "type": "item",
-                            "url": "/lookup/worktypes",
-                            "exactMatch": true
+                            id: 'worktypes',
+                            title: 'نوع العمل',
+                            type: 'item',
+                            url: '/lookup/worktypes',
+                            exactMatch: true
                         },
 
                         {
-                            "id": "itemcodes",
-                            "title": "كود البند",
-                            "type": "item",
-                            "url": "/lookup/itemcodes",
-                            "exactMatch": true
+                            id: 'itemcodes',
+                            title: 'كود البند',
+                            type: 'item',
+                            url: '/lookup/itemcodes',
+                            exactMatch: true
                         },
                         {
-                            "id": "measurementunits",
-                            "title": "وحدات القياس",
-                            "type": "item",
-                            "url": "/lookup/measurementunits",
-                            "exactMatch": true
+                            id: 'measurementunits',
+                            title: 'وحدات القياس',
+                            type: 'item',
+                            url: '/lookup/measurementunits',
+                            exactMatch: true
                         }
                     ]
                 },
                 {
-                    "id": "Assay  Subsystem Of Assays Program",
-                    "title": "البرامج",
-                    "type": "collapsable",
-                    "icon": "apps",
-                    "children": [
+                    id: 'Assay  Subsystem Of Assays Program',
+                    title: 'البرامج',
+                    type: 'collapsable',
+                    icon: 'apps',
+                    children: [
                         {
-                            "id": "Building Assays",
-                            "title": "أعمال مقايسات الأبنية",
-                            "type": "item",
-                            "url": "/assay-subsystem-of-assays/building-assays",
-                            "exactMatch": true
+                            id: 'Building Assays',
+                            title: 'أعمال مقايسات الأبنية',
+                            type: 'item',
+                            url: '/assay-subsystem-of-assays/building-assays',
+                            exactMatch: true
                         },
                         {
-                            "id": "Building Models Works",
-                            "title": "أعمال نماذج الأبنية",
-                            "type": "item",
-                            "url": "/assay-subsystem-of-assays/building-models-works",
-                            "exactMatch": true
+                            id: 'Building Models Works',
+                            title: 'أعمال نماذج الأبنية',
+                            type: 'item',
+                            url: '/assay-subsystem-of-assays/building-models-works',
+                            exactMatch: true
                         },
                         {
-                            "id": "Contractor Prices Building Assay",
-                            "title": "اسعار مقاول - مقايسة مبنى",
-                            "type": "item",
-                            "url": "/assay-subsystem-of-assays/contractor-prices-building-assay",
-                            "exactMatch": true
+                            id: 'Contractor Prices Building Assay',
+                            title: 'اسعار مقاول - مقايسة مبنى',
+                            type: 'item',
+                            url: '/assay-subsystem-of-assays/contractor-prices-building-assay',
+                            exactMatch: true
                         }
                     ]
                 },
                 {
-                    "id": "Assay  Subsystem Of Assays Report",
-                    "title": "التقارير",
-                    "type": "collapsable",
-                    "icon": "assignment",
-                    "children": []
+                    id: 'Assay  Subsystem Of Assays Report',
+                    title: 'التقارير',
+                    type: 'collapsable',
+                    icon: 'assignment',
+                    children: []
+                }
+            ]
+        }
+    ],
+    'health-units-ministry': [
+        {
+            id: 'health-units-ministry',
+            title: 'برنامج الوحدات الصحية وزارة التضامن هيئة البريد',
+            type: 'group',
+            icon: 'app',
+            children: [
+                {
+                    id: 'Health Units Ministry Config',
+                    title: 'الأعدادات',
+                    type: 'collapsable',
+                    icon: 'build',
+                    children: [
+                        {
+                            id: 'entitynames',
+                            title: 'اسم الجهة وحدات صحة',
+                            type: 'item',
+                            url: '/lookup/entitynames',
+                            exactMatch: true
+                        },
+                        {
+                            id: 'governorates',
+                            title: 'المحافظة',
+                            type: 'item',
+                            url: '/lookup/governorates',
+                            exactMatch: true
+                        },
+                        {
+                            id: 'sectionsorcenters',
+                            title: 'مركز/القسم‎',
+                            type: 'item',
+                            url: '/lookup/sectionsorcenters',
+                            exactMatch: true
+                        },
+                        {
+                            id: 'servicetypes',
+                            title: 'نوع الخدمة وحدات صحية',
+                            type: 'item',
+                            url: '/lookup/servicetypes',
+                            exactMatch: true
+                        }
+                    ]
+                },
+                {
+                    id: 'Health Units Ministry Program',
+                    title: 'البرامج',
+                    type: 'collapsable',
+                    icon: 'apps',
+                    children: [
+                        {
+                            id: 'new service request',
+                            title: ' طلب خدمة جديد',
+                            type: 'item',
+                            url: '/health-units-ministry/new-service-request',
+                            exactMatch: true
+                        },
+                        {
+                            id: 'required services',
+                            title: 'الخدمات المطلوبة',
+                            type: 'item',
+                            url: '/health-units-ministry/required-services',
+                            exactMatch: true
+                        },
+                        {
+                            id: 'external services codes and cost',
+                            title: 'اكواد الخدمات الخارجية وتكلفتها',
+                            type: 'item',
+                            url: '/health-units-ministry/external-services-codes-and-cost',
+                            exactMatch: true
+                        }
+                    ]
+                },
+                {
+                    id: 'Health Units Ministry Report',
+                    title: 'التقارير',
+                    type: 'collapsable',
+                    icon: 'assignment',
+                    children: [
+
+                    ]
+                }
+            ]
+        }
+    ],
+
+    'social-solidarity-fund-a': [
+        {
+            id: 'social-solidarity-fund-a',
+            title: 'برنامج صندوق التكافل الاجتماعي أ',
+            type: 'group',
+            icon: 'app',
+            children: [
+                {
+                    id: 'Social Solidarity Fund A Config',
+                    title: 'الأعدادات',
+                    type: 'collapsable',
+                    icon: 'build',
+                    children: [
+                        {
+                            id: 'subscriptionstatus',
+                            title: 'حالة الاشتراك\t',
+                            type: 'item',
+                            url: '/lookup/subscriptionstatus',
+                            exactMatch: true
+                        },
+                        {
+                            id: 'employeestatuses',
+                            title: 'حالة الموظف‎',
+                            type: 'item',
+                            url: '/lookup/employeestatuses',
+                            exactMatch: true
+                        },
+                        {
+                            id: 'departmentssections',
+                            title: 'أقسام الادارات',
+                            type: 'item',
+                            url: '/lookup/departmentssections',
+                            exactMatch: true
+                        },
+                        {
+                            id: 'terminationtypes',
+                            title: 'نوع الانهاء الخدمة من الصندوق',
+                            type: 'item',
+                            url: '/lookup/terminationtypes',
+                            exactMatch: true
+                        },
+                        {
+                            id: 'paymenttypes',
+                            title: 'نوع السداد',
+                            type: 'item',
+                            url: '/lookup/paymenttypes',
+                            exactMatch: true
+                        },
+                        {
+                            id: 'deductionreasons',
+                            title: 'سبب الخصم من الصندوق',
+                            type: 'item',
+                            url: '/lookup/deductionreasons',
+                            exactMatch: true
+                        },
+                        {
+                            id: 'relationshiptypes',
+                            title: 'نوع القرابة',
+                            type: 'item',
+                            url: '/lookup/relationshiptypes',
+                            exactMatch: true
+                        },
+                        {
+                            id: 'bankcodes',
+                            title: 'اكواد البنوك',
+                            type: 'item',
+                            url: '/lookup/bankcodes',
+                            exactMatch: true
+                        },
+                        {
+                            id: 'boxcodes',
+                            title: 'كود الصندوق',
+                            type: 'item',
+                            url: '/lookup/boxcodes',
+                            exactMatch: true
+                        },
+                        {
+                            id: 'vacationtypes',
+                            title: 'انواع الاجازات',
+                            type: 'item',
+                            url: '/lookup/vacationtypes',
+                            exactMatch: true
+                        }
+                    ]
+                },
+                {
+                    id: 'Social Solidarity Fund A Program',
+                    title: 'البرامج',
+                    type: 'collapsable',
+                    icon: 'apps',
+                    children: [
+                        {
+                            id: 'Contribution of the Fund for previous yearsA',
+                            title: 'اشتراك الصندوق عن سنوات سابقه',
+                            type: 'item',
+                            url: '/social-solidarity-fund-a/contribution-of-the-fund-for-previous-yearsa',
+                            exactMatch: true
+                        },
+                        {
+                            id: 'End of a special vacation for employeeA',
+                            title: 'انهاء اجازه خاصه بالموظف',
+                            type: 'item',
+                            url: '/social-solidarity-fund-a/end-of-a-special-vacation-for-employeea',
+                            exactMatch: true
+                        },
+                        {
+                            id: 'Termination of the participation of an employee in the FundA',
+                            title: 'انهاء اشتراك موظف بالصندوق',
+                            type: 'item',
+                            url: '/social-solidarity-fund-a/termination-of-the-participation-of-an-employee-in-the-funda',
+                            exactMatch: true
+                        },
+                        {
+                            id: 'Subscriber data in fundA',
+                            title: 'بيانات المشترك في الصندوق',
+                            type: 'item',
+                            url: '/social-solidarity-fund-a/subscriber-data-in-funda',
+                            exactMatch: true
+                        },
+                        {
+                            id: 'Deduction of an amount to an employee of the FundA',
+                            title: 'خصم مبلغ لموظف بالصندوق',
+                            type: 'item',
+                            url: '/social-solidarity-fund-a/deduction-of-an-amount-to-an-employee-of-the-funda',
+                            exactMatch: true
+                        },
+                        {
+                            id: 'Subscription value by ageA',
+                            title: 'قيمة الاشتراك حسب السن',
+                            type: 'item',
+                            url: '/social-solidarity-fund-a/subscription-value-by-agea',
+                            exactMatch: true
+                        },
+                        {
+                            id: 'Subscription amount under checksA',
+                            title: 'مبلغ اشتراك بموجب الشيكات ',
+                            type: 'item',
+                            url: '/social-solidarity-fund-a/subscription-amount-under-checksa',
+                            exactMatch: true
+                        },
+                        {
+                            id: 'Data to take special leave for employeeA',
+                            title: 'بيانات القيام باجازه خاصه للموظف',
+                            type: 'item',
+                            url: '/social-solidarity-fund-a/data-to-take-special-leave-for-employeea',
+                            exactMatch: true
+                        }
+                    ]
+                },
+                {
+                    id: 'Social Solidarity Fund A Report',
+                    title: 'التقارير',
+                    type: 'collapsable',
+                    icon: 'assignment',
+                    children: []
+                }
+            ]
+        }
+    ],
+
+    'social-solidarity-fund-b': [
+        {
+            id: 'social-solidarity-fund-b',
+            title: 'برنامج صندوق التكافل الاجتماعي ب',
+            type: 'group',
+            icon: 'app',
+            children: [
+                {
+                    id: 'Social Solidarity Fund B Config',
+                    title: 'الأعدادات',
+                    type: 'collapsable',
+                    icon: 'build',
+                    children: [
+                        {
+                            id: 'subscriptionstatus',
+                            title: 'حالة الاشتراك\t',
+                            type: 'item',
+                            url: '/lookup/subscriptionstatus',
+                            exactMatch: true
+                        },
+                        {
+                            id: 'terminationtypes',
+                            title: 'نوع الانهاء الخدمة من الصندوق',
+                            type: 'item',
+                            url: '/lookup/terminationtypes',
+                            exactMatch: true
+                        },
+                        {
+                            id: 'paymenttypes',
+                            title: 'نوع السداد',
+                            type: 'item',
+                            url: '/lookup/paymenttypes',
+                            exactMatch: true
+                        },
+                        {
+                            id: 'departmentssections',
+                            title: 'أقسام الادارات',
+                            type: 'item',
+                            url: '/lookup/departmentssections',
+                            exactMatch: true
+                        },
+                        {
+                            id: 'employeestatuses',
+                            title: 'حالة الموظف‎',
+                            type: 'item',
+                            url: '/lookup/employeestatuses',
+                            exactMatch: true
+                        },
+                        {
+                            id: 'bankcodes',
+                            title: 'اكواد البنوك',
+                            type: 'item',
+                            url: '/lookup/bankcodes',
+                            exactMatch: true
+                        },
+                        {
+                            id: 'relationshiptypes',
+                            title: 'نوع القرابة',
+                            type: 'item',
+                            url: '/lookup/relationshiptypes',
+                            exactMatch: true
+                        },
+                        {
+                            id: 'deductionreasons',
+                            title: 'سبب الخصم من الصندوق',
+                            type: 'item',
+                            url: '/lookup/deductionreasons',
+                            exactMatch: true
+                        },
+                        {
+                            id: 'boxcodes',
+                            title: 'كود الصندوق',
+                            type: 'item',
+                            url: '/lookup/boxcodes',
+                            exactMatch: true
+                        },
+                        {
+                            id: 'vacationtypes',
+                            title: 'انواع الاجازات',
+                            type: 'item',
+                            url: '/lookup/vacationtypes',
+                            exactMatch: true
+                        }
+                    ]
+                },
+                {
+                    id: 'Social Solidarity Fund B Program',
+                    title: 'البرامج',
+                    type: 'collapsable',
+                    icon: 'apps',
+                    children: [
+                        {
+                            id: 'Contribution of the Fund for previous yearsB',
+                            title: 'اشتراك الصندوق عن سنوات سابقه',
+                            type: 'item',
+                            url: '/social-solidarity-fund-b/contribution-of-the-fund-for-previous-yearsb',
+                            exactMatch: true
+                        },
+                        {
+                            id: 'End of a special vacation for employeeB',
+                            title: 'انهاء اجازه خاصه بالموظف',
+                            type: 'item',
+                            url: '/social-solidarity-fund-b/end-of-a-special-vacation-for-employeeb',
+                            exactMatch: true
+                        },
+                        {
+                            id: 'Termination of the participation of an employee in the FundB',
+                            title: 'انهاء اشتراك موظف بالصندوق',
+                            type: 'item',
+                            url: '/social-solidarity-fund-b/termination-of-the-participation-of-an-employee-in-the-fundb',
+                            exactMatch: true
+                        },
+                        {
+                            id: 'Subscriber data in fundB',
+                            title: 'بيانات المشترك في الصندوق',
+                            type: 'item',
+                            url: '/social-solidarity-fund-b/subscriber-data-in-fundb',
+                            exactMatch: true
+                        },
+                        {
+                            id: 'Deduction of an amount to an employee of the FundB',
+                            title: 'خصم مبلغ لموظف بالصندوق',
+                            type: 'item',
+                            url: '/social-solidarity-fund-b/deduction-of-an-amount-to-an-employee-of-the-fundb',
+                            exactMatch: true
+                        },
+                        {
+                            id: 'Subscription value by ageB',
+                            title: 'قيمة الاشتراك حسب السن',
+                            type: 'item',
+                            url: '/social-solidarity-fund-b/subscription-value-by-ageb',
+                            exactMatch: true
+                        },
+                        {
+                            id: 'Subscription amount under checksB',
+                            title: 'مبلغ اشتراك بموجب الشيكات ',
+                            type: 'item',
+                            url: '/social-solidarity-fund-b/subscription-amount-under-checksb',
+                            exactMatch: true
+                        },
+                        {
+                            id: 'Data to take special leave for employeeB',
+                            title: 'بيانات القيام باجازه خاصه للموظف',
+                            type: 'item',
+                            url: '/social-solidarity-fund-b/data-to-take-special-leave-for-employeeb',
+                            exactMatch: true
+                        }
+                    ]
+                },
+                {
+                    id: 'Social Solidarity Fund B Report',
+                    title: 'التقارير',
+                    type: 'collapsable',
+                    icon: 'assignment',
+                    children: []
+                }
+            ]
+        }
+    ],
+
+    'social-solidarity-fund-g': [
+        {
+            id: 'social-solidarity-fund-g',
+            title: 'برنامج صندوق التكافل الاجتماعي ج',
+            type: 'group',
+            icon: 'app',
+            children: [
+                {
+                    id: 'Social Solidarity Fund G Config',
+                    title: 'الأعدادات',
+                    type: 'collapsable',
+                    icon: 'build',
+                    children: [
+                        {
+                            id: 'subscriptionstatus',
+                            title: 'حالة الاشتراك\t',
+                            type: 'item',
+                            url: '/lookup/subscriptionstatus',
+                            exactMatch: true
+                        },
+                        {
+                            id: 'terminationtypes',
+                            title: 'نوع الانهاء الخدمة من الصندوق',
+                            type: 'item',
+                            url: '/lookup/terminationtypes',
+                            exactMatch: true
+                        },
+                        {
+                            id: 'paymenttypes',
+                            title: 'نوع السداد',
+                            type: 'item',
+                            url: '/lookup/paymenttypes',
+                            exactMatch: true
+                        },
+                        {
+                            id: 'departmentssections',
+                            title: 'أقسام الادارات',
+                            type: 'item',
+                            url: '/lookup/departmentssections',
+                            exactMatch: true
+                        },
+                        {
+                            id: 'employeestatuses',
+                            title: 'حالة الموظف‎',
+                            type: 'item',
+                            url: '/lookup/employeestatuses',
+                            exactMatch: true
+                        },
+                        {
+                            id: 'deductionreasons',
+                            title: 'سبب الخصم من الصندوق',
+                            type: 'item',
+                            url: '/lookup/deductionreasons',
+                            exactMatch: true
+                        },
+                        {
+                            id: 'relationshiptypes',
+                            title: 'نوع القرابة',
+                            type: 'item',
+                            url: '/lookup/relationshiptypes',
+                            exactMatch: true
+                        },
+                        {
+                            id: 'bankcodes',
+                            title: 'اكواد البنوك',
+                            type: 'item',
+                            url: '/lookup/bankcodes',
+                            exactMatch: true
+                        },
+                        {
+                            id: 'boxcodes',
+                            title: 'كود الصندوق',
+                            type: 'item',
+                            url: '/lookup/boxcodes',
+                            exactMatch: true
+                        },
+                        {
+                            id: 'vacationtypes',
+                            title: 'انواع الاجازات',
+                            type: 'item',
+                            url: '/lookup/vacationtypes',
+                            exactMatch: true
+                        }
+                    ]
+                },
+                {
+                    id: 'Social Solidarity Fund G Program',
+                    title: 'البرامج',
+                    type: 'collapsable',
+                    icon: 'apps',
+                    children: [
+                        {
+                            id: 'Contribution of the Fund for previous yearsG',
+                            title: 'اشتراك الصندوق عن سنوات سابقه',
+                            type: 'item',
+                            url: '/social-solidarity-fund-g/contribution-of-the-fund-for-previous-yearsg',
+                            exactMatch: true
+                        },
+                        {
+                            id: 'End of a special vacation for employeeG',
+                            title: 'انهاء اجازه خاصه بالموظف',
+                            type: 'item',
+                            url: '/social-solidarity-fund-g/end-of-a-special-vacation-for-employeeg',
+                            exactMatch: true
+                        },
+                        {
+                            id: 'Termination of the participation of an employee in the FundG',
+                            title: 'انهاء اشتراك موظف بالصندوق',
+                            type: 'item',
+                            url: '/social-solidarity-fund-g/termination-of-the-participation-of-an-employee-in-the-fundg',
+                            exactMatch: true
+                        },
+                        {
+                            id: 'Subscriber data in fundG',
+                            title: 'بيانات المشترك في الصندوق',
+                            type: 'item',
+                            url: '/social-solidarity-fund-g/subscriber-data-in-fundg',
+                            exactMatch: true
+                        },
+                        {
+                            id: 'Deduction of an amount to an employee of the FundG',
+                            title: 'خصم مبلغ لموظف بالصندوق',
+                            type: 'item',
+                            url: '/social-solidarity-fund-g/deduction-of-an-amount-to-an-employee-of-the-fundg',
+                            exactMatch: true
+                        },
+                        {
+                            id: 'Subscription value by ageG',
+                            title: 'قيمة الاشتراك حسب السن',
+                            type: 'item',
+                            url: '/social-solidarity-fund-g/subscription-value-by-ageg',
+                            exactMatch: true
+                        },
+                        {
+                            id: 'Subscription amount under checksG',
+                            title: 'مبلغ اشتراك بموجب الشيكات ',
+                            type: 'item',
+                            url: '/social-solidarity-fund-g/subscription-amount-under-checksg',
+                            exactMatch: true
+                        },
+                        {
+                            id: 'Data to take special leave for employeeG',
+                            title: 'بيانات القيام باجازه خاصه للموظف',
+                            type: 'item',
+                            url: '/social-solidarity-fund-g/data-to-take-special-leave-for-employeeg',
+                            exactMatch: true
+                        }
+                    ]
+                },
+                {
+                    id: 'Social Solidarity Fund G Report',
+                    title: 'التقارير',
+                    type: 'collapsable',
+                    icon: 'assignment',
+                    children: []
+                }
+            ]
+        }
+    ],
+
+    'quality-management': [
+        {
+            id: 'quality-management',
+            title: 'برنامج ادارة الجوده',
+            type: 'group',
+            icon: 'app',
+            children: [
+                {
+                    id: 'Quality Management Config',
+                    title: 'الأعدادات',
+                    type: 'collapsable',
+                    icon: 'build',
+                    children: [
+                        {
+                            id: 'yesOrNo',
+                            title: 'نعم او لا',
+                            type: 'item',
+                            url: '/lookup/yesOrNo',
+                            exactMatch: true
+                        },
+                        {
+                            id: 'pricerelationships',
+                            title: 'علاقة السعر',
+                            type: 'item',
+                            url: '/lookup/pricerelationships',
+                            exactMatch: true
+                        },
+                        {
+                            id: 'measurementunits',
+                            title: 'وحدات القياس',
+                            type: 'item',
+                            url: '/lookup/measurementunits',
+                            exactMatch: true
+                        },
+                        {
+                            id: 'calibrations',
+                            title: 'المعايرة',
+                            type: 'item',
+                            url: '/lookup/calibrations',
+                            exactMatch: true
+                        },
+                        {
+                            id: 'standardvalues',
+                            title: 'القيمة العيارية',
+                            type: 'item',
+                            url: '/lookup/standardvalues',
+                            exactMatch: true
+                        },
+                        {
+                            id: 'branchcodes',
+                            title: 'كود الفرع',
+                            type: 'item',
+                            url: '/lookup/branchcodes',
+                            exactMatch: true
+                        },
+                        {
+                            id: 'laboratories',
+                            title: 'المعمل',
+                            type: 'item',
+                            url: '/lookup/laboratories',
+                            exactMatch: true
+                        },
+                        {
+                            id: 'statementtypes',
+                            title: 'نوع البيان',
+                            type: 'item',
+                            url: '/lookup/statementtypes',
+                            exactMatch: true
+                        },
+                        {
+                            id: 'elements',
+                            title: 'العنصر',
+                            type: 'item',
+                            url: '/lookup/elements',
+                            exactMatch: true
+                        },
+                        {
+                            id: 'constructiontypes',
+                            title: 'انواع الانشاء',
+                            type: 'item',
+                            url: '/lookup/constructiontypes',
+                            exactMatch: true
+                        },
+                        {
+                            id: 'testrequesttypes',
+                            title: 'نوع طلب الاختبار',
+                            type: 'item',
+                            url: '/lookup/testrequesttypes',
+                            exactMatch: true
+                        },
+                        {
+                            id: 'sampletestedtypes',
+                            title: 'نوع العينة المختبره',
+                            type: 'item',
+                            url: '/lookup/sampletestedtypes',
+                            exactMatch: true
+                        },
+                        {
+                            id: 'testdemands',
+                            title: 'طالب الاختبار',
+                            type: 'item',
+                            url: '/lookup/testdemands',
+                            exactMatch: true
+                        },
+                        {
+                            id: 'sampletesteds',
+                            title: 'العينة المختبرة\t',
+                            type: 'item',
+                            url: '/lookup/sampletesteds',
+                            exactMatch: true
+                        },
+                        {
+                            id: 'offeringtypes',
+                            title: 'انواع الطرح',
+                            type: 'item',
+                            url: '/lookup/offeringtypes',
+                            exactMatch: true
+                        },
+                        {
+                            id: 'mixturetypes',
+                            title: 'نوع الخلطة',
+                            type: 'item',
+                            url: '/lookup/mixturetypes',
+                            exactMatch: true
+                        },
+                        {
+                            id: 'cementusedtypes',
+                            title: 'الاسمنت المستخدم',
+                            type: 'item',
+                            url: '/lookup/cementusedtypes',
+                            exactMatch: true
+                        },
+                        {
+                            id: 'sandgradientareaes',
+                            title: 'رمل تدرج منطقه',
+                            type: 'item',
+                            url: '/lookup/sandgradientareaes',
+                            exactMatch: true
+                        },
+                        {
+                            id: 'receiptsorchecks',
+                            title: 'ايصال او شيك',
+                            type: 'item',
+                            url: '/lookup/receiptsorchecks',
+                            exactMatch: true
+                        },
+                        {
+                            id: 'governorates',
+                            title: 'المحافظة',
+                            type: 'item',
+                            url: '/lookup/governorates',
+                            exactMatch: true
+                        },
+                        {
+                            id: 'mainactivities',
+                            title: 'النشاط الأساسي',
+                            type: 'item',
+                            url: '/lookup/mainactivities',
+                            exactMatch: true
+                        },
+                        {
+                            id: 'mamoriatax',
+                            title: 'مامورية الضرائب',
+                            type: 'item',
+                            url: '/lookup/mamoriatax',
+                            exactMatch: true
+                        },
+                        {
+                            id: 'adjectives',
+                            title: 'صفته',
+                            type: 'item',
+                            url: '/lookup/adjectives',
+                            exactMatch: true
+                        },
+                        {
+                            id: 'mainbranchcode',
+                            title: 'كود الفرع الرئيسي',
+                            type: 'item',
+                            url: '/lookup/mainbranchcode',
+                            exactMatch: true
+                        }
+                    ]
+                },
+                {
+                    id: 'Quality Management Program',
+                    title: 'البرامج',
+                    type: 'collapsable',
+                    icon: 'apps',
+                    children: [
+                        {
+                            id: 'test code',
+                            title: 'كود الاختبار',
+                            type: 'item',
+                            url: '/quality-management/test-code',
+                            exactMatch: true
+                        },
+                        {
+                            id: 'Structural component code',
+                            title: 'كود العنصر الانشائي',
+                            type: 'item',
+                            url: '/quality-management/structural-component-code',
+                            exactMatch: true
+                        },
+                        {
+                            id: 'Basic Material Code',
+                            title: 'كود المادة الاساسية',
+                            type: 'item',
+                            url: '/quality-management/basic-material-code',
+                            exactMatch: true
+                        },
+                        {
+                            id: 'Subcategory code',
+                            title: 'كود المادة الفرعية',
+                            type: 'item',
+                            url: '/quality-management/subcategory-code',
+                            exactMatch: true
+                        },
+                        {
+                            id: 'Sample test data',
+                            title: 'بيانات اختبار عينة',
+                            type: 'item',
+                            url: '/quality-management/sample-test-data',
+                            exactMatch: true
+                        },
+                        {
+                            id: 'Main data for the sample',
+                            title: ' بيانات رئيسية للعينة',
+                            type: 'item',
+                            url: '/quality-management/main-data-for-the-sample',
+                            exactMatch: true
+                        },
+                        {
+                            id: 'Lab data',
+                            title: 'بيانات معمل',
+                            type: 'item',
+                            url: '/quality-management/lab-data',
+                            exactMatch: true
+                        },
+                        {
+                            id: 'Calibration unit data',
+                            title: 'بيانات وحدة المعايرة',
+                            type: 'item',
+                            url: '/quality-management/calibration-unit-data',
+                            exactMatch: true
+                        },
+                        {
+                            id: 'Data unit of measurement',
+                            title: 'بيانات وحدة قياس',
+                            type: 'item',
+                            url: '/quality-management/data-unit-of-measurement',
+                            exactMatch: true
+                        },
+                        {
+                            id: 'Sample result',
+                            title: 'نتيجة عينة',
+                            type: 'item',
+                            url: '/quality-management/sample-result',
+                            exactMatch: true
+                        },
+                        {
+                            id: 'Casting data for sample',
+                            title: 'بيانات الصب لعينة',
+                            type: 'item',
+                            url: '/quality-management/casting-data-for-sample',
+                            exactMatch: true
+                        },
+                        {
+                            id: 'Sample test request',
+                            title: 'طلب اختبار عينة',
+                            type: 'item',
+                            url: '/quality-management/sample-test-request',
+                            exactMatch: true
+                        },
+                        {
+                            id: 'Machine related test',
+                            title: ' اختبار مرتبط بالماكينة',
+                            type: 'item',
+                            url: '/quality-management/machine-related-test',
+                            exactMatch: true
+                        },
+                        {
+                            id: 'Laboratory related test',
+                            title: 'اختبار مرتبطه بالمعمل',
+                            type: 'item',
+                            url: '/quality-management/laboratory-related-test',
+                            exactMatch: true
+                        },
+                        {
+                            id: 'Machine linked to the laboratory',
+                            title: 'ماكينة متربطه بالمعمل',
+                            type: 'item',
+                            url: '/quality-management/machine-linked-to-the-laboratory',
+                            exactMatch: true
+                        },
+                        {
+                            id: 'Concrete mixture data',
+                            title: 'بيانات الخلطة الخرسانية',
+                            type: 'item',
+                            url: '/quality-management/concrete-mixture-data',
+                            exactMatch: true
+                        },
+                        {
+                            id: 'the number of application received in the samples hall',
+                            title: 'ادخال رقم الطلب المستلم في صالة العينات',
+                            type: 'item',
+                            url: '/quality-management/the-number-of-application-received-in-the-samples-hall',
+                            exactMatch: true
+                        },
+                        {
+                            id: 'Factory name for order',
+                            title: 'اسم المصنع للطلب',
+                            type: 'item',
+                            url: '/quality-management/factory-name-for-order',
+                            exactMatch: true
+                        },
+                        {
+                            id: 'Conformations and the result of the corresponding concrete mixture',
+                            title: 'التشوينات ونتجة الخلطة الخرسانية المطابقة',
+                            type: 'item',
+                            url: '/quality-management/conformations-and-the-result-of-the-corresponding-concrete-mixture',
+                            exactMatch: true
+                        },
+                        {
+                            id: 'School are excluded from quality control',
+                            title: 'المدرسة المستثناه من ضبط الجوده',
+                            type: 'item',
+                            url: '/quality-management/school-are-excluded-from-quality-control',
+                            exactMatch: true
+                        },
+                        {
+                            id: 'Data limits accept and reject for sample',
+                            title: 'بيانات حدود قبول ورفض لعينة',
+                            type: 'item',
+                            url: '/quality-management/data-limits-accept-and-reject-for-sample',
+                            exactMatch: true
+                        },
+                        {
+                            id: 'The corresponding school number',
+                            title: 'رقم المدرسة المطابق عليها',
+                            type: 'item',
+                            url: '/quality-management/the-corresponding-school-number',
+                            exactMatch: true
+                        },
+                        {
+                            id: 'Note seen by the Chemistry Laboratory',
+                            title: 'ملاحظة يراها معمل الكيمياء',
+                            type: 'item',
+                            url: '/quality-management/note-seen-by-the-chemistry-laboratory',
+                            exactMatch: true
+                        },
+                        {
+                            id: 'Renewal of contract period for approved companغ',
+                            title: 'تجديد فترة العقد للشركة المعتمده',
+                            type: 'item',
+                            url: '/quality-management/renewal-of-contract-period-for-approved-companغ',
+                            exactMatch: true
+                        },
+                        {
+                            id: 'Contractor data Quality Management',
+                            title: 'بيانات المقاول',
+                            type: 'item',
+                            url: '/quality-management/contractor-data-quality-management',
+                            exactMatch: true
+                        },
+                        {
+                            id: 'Project data',
+                            title: 'بيانات مشروع',
+                            type: 'item',
+                            url: '/quality-management/project-data',
+                            exactMatch: true
+                        },
+                        {
+                            id: 'Sample result for the work of others',
+                            title: 'نتيجة عينة لاعمال الغير',
+                            type: 'item',
+                            url: '/quality-management/sample-result-for-the-work-of-others',
+                            exactMatch: true
+                        },
+                        {
+                            id: 'Casting data for sample for the work of others',
+                            title: 'بيانات الصب لعينة لاعمال الغير',
+                            type: 'item',
+                            url: '/quality-management/casting-data-for-sample-for-the-work-of-others',
+                            exactMatch: true
+                        },
+                        {
+                            id: 'Concrete mixture data for the work of others',
+                            title: 'بيانات الخلطة الخرسانية لاعمال الغير',
+                            type: 'item',
+                            url: '/quality-management/concrete-mixture-data-for-the-work-of-others',
+                            exactMatch: true
+                        },
+                        {
+                            id: 'Sample test request for the work of others',
+                            title: 'طلب اختبار عينة لاعمال الغير',
+                            type: 'item',
+                            url: '/quality-management/sample-test-request-for-the-work-of-others',
+                            exactMatch: true
+                        },
+                        {
+                            id: 'Code of various activity of approved companies',
+                            title: 'كود النشاط المختلف للشركات المعتمده',
+                            type: 'item',
+                            url: '/quality-management/code-of-various-activity-of-approved-companies',
+                            exactMatch: true
+                        },
+                        {
+                            id: 'Introducing tax code for the governorate',
+                            title: 'ادخال كود مامورية الضرائب للمحافظة',
+                            type: 'item',
+                            url: '/quality-management/introducing-tax-code-for-the-governorate',
+                            exactMatch: true
+                        },
+                        {
+                            id: 'Code of approved companies representative',
+                            title: 'كود ممثل الشركات المعتمده',
+                            type: 'item',
+                            url: '/quality-management/code-of-approved-companies-representative',
+                            exactMatch: true
+                        },
+                        {
+                            id: 'Producing material for approved companies',
+                            title: 'الماده  المنتجة للشركات المعتمدة',
+                            type: 'item',
+                            url: '/quality-management/producing-material-for-approved-companies',
+                            exactMatch: true
+                        },
+                        {
+                            id: 'Data of company not contracted with the Authority',
+                            title: ' بيانات الشركة الغير متعاقده مع الهيئة',
+                            type: 'item',
+                            url: '/quality-management/data-of-company-not-contracted-with-the-authority',
+                            exactMatch: true
+                        },
+                        {
+                            id: 'Data of company contracted with the Authority',
+                            title: ' بيانات الشركة المتعاقده مع الهيئة',
+                            type: 'item',
+                            url: '/quality-management/data-of-company-contracted-with-the-authority',
+                            exactMatch: true
+                        }
+                    ]
+                },
+                {
+                    id: 'Quality Management Report',
+                    title: 'التقارير',
+                    type: 'collapsable',
+                    icon: 'assignment',
+                    children: []
+                }
+            ]
+        }
+    ],
+
+    'computer-maintenance': [
+        {
+            id: 'computer-maintenance',
+            title: 'برنامج صيانة الحاسبات',
+            type: 'group',
+            icon: 'app',
+            children: [
+                {
+                    id: 'Computer Maintenance Config',
+                    title: 'الأعدادات',
+                    type: 'collapsable',
+                    icon: 'build',
+                    children: [
+                        {
+                            id: 'buildingtypes',
+                            title: 'نوع المبني',
+                            type: 'item',
+                            url: '/lookup/buildingtypes',
+                            exactMatch: true
+                        },
+                        {
+                            id: 'areas',
+                            title: 'مناطق',
+                            type: 'item',
+                            url: '/lookup/areas',
+                            exactMatch: true
+                        },
+                        {
+                            id: 'laboratorytypes',
+                            title: 'نوع المعمل',
+                            type: 'item',
+                            url: '/lookup/laboratorytypes',
+                            exactMatch: true
+                        },
+                        {
+                            id: 'equipmenttypes',
+                            title: 'نوع  المعدة',
+                            type: 'item',
+                            url: '/lookup/equipmenttypes',
+                            exactMatch: true
+                        },
+                        {
+                            id: 'devicetypes',
+                            title: 'نوع الجهاز',
+                            type: 'item',
+                            url: '/lookup/devicetypes',
+                            exactMatch: true
+                        },
+                        {
+                            id: 'warrantyconditions',
+                            title: 'حالة الضمان',
+                            type: 'item',
+                            url: '/lookup/warrantyconditions',
+                            exactMatch: true
+                        },
+                        {
+                            id: 'educationalspaces',
+                            title: 'الفراغات التعليمية',
+                            type: 'item',
+                            url: '/lookup/educationalspaces',
+                            exactMatch: true
+                        },
+                        {
+                            id: 'yesornos',
+                            title: 'نعم او لا',
+                            type: 'item',
+                            url: '/lookup/yesornos',
+                            exactMatch: true
+                        },
+                        {
+                            id: 'jobtypes',
+                            title: 'انواع الوظائف',
+                            type: 'item',
+                            url: '/lookup/jobtypes',
+                            exactMatch: true
+                        },
+                        {
+                            id: 'worktypes',
+                            title: 'نوع العمل',
+                            type: 'item',
+                            url: '/lookup/worktypes',
+                            exactMatch: true
+                        },
+                        {
+                            id: 'equipmentcodes',
+                            title: 'كود المعده',
+                            type: 'item',
+                            url: '/lookup/equipmentcodes',
+                            exactMatch: true
+                        },
+                        {
+                            id: 'malfunctionparts',
+                            title: 'الجزء العاطل',
+                            type: 'item',
+                            url: '/lookup/malfunctionparts',
+                            exactMatch: true
+                        },
+                        {
+                            id: 'branchcodes',
+                            title: 'كود الفرع',
+                            type: 'item',
+                            url: '/lookup/branchcodes',
+                            exactMatch: true
+                        }
+                    ]
+                },
+                {
+                    id: 'Computer Maintenance Program',
+                    title: 'البرامج',
+                    type: 'collapsable',
+                    icon: 'apps',
+                    children: [
+                        {
+                            id: 'Master File',
+                            title: 'بيانات اساسية عن صيانة الحاسبات',
+                            type: 'item',
+                            url: '/computer-maintenance/master-file',
+                            exactMatch: true
+                        },
+                        {
+                            id: 'School Lab',
+                            title: 'بيانات المعامل بالمدرسة',
+                            type: 'item',
+                            url: '/computer-maintenance/school-lab',
+                            exactMatch: true
+                        },
+                        {
+                            id: 'Device Cancellation',
+                            title: 'تكهين الاجهزة',
+                            type: 'item',
+                            url: '/computer-maintenance/device-cancellation',
+                            exactMatch: true
+                        },
+                        {
+                            id: 'Laboratory Space',
+                            title: 'فراغات المعامل التي لم تصل لها اجهزة',
+                            type: 'item',
+                            url: '/computer-maintenance/laboratory-space',
+                            exactMatch: true
+                        },
+                        {
+                            id: 'Add plan conditioning',
+                            title: 'اضافه الخطه تكييف\t',
+                            type: 'item',
+                            url: '/computer-maintenance/add-plan-conditioning',
+                            exactMatch: true
+                        },
+                        {
+                            id: 'Add plan',
+                            title: 'اضافه الخطه ',
+                            type: 'item',
+                            url: '/computer-maintenance/add-plan',
+                            exactMatch: true
+                        },
+                        {
+                            id: 'Add maintenance implementation',
+                            title: 'اضافه  تنفيذ الصيانه',
+                            type: 'item',
+                            url: '/computer-maintenance/add-maintenance-implementation',
+                            exactMatch: true
+                        },
+                        {
+                            id: 'Malfunction',
+                            title: 'الاعطال',
+                            type: 'item',
+                            url: '/computer-maintenance/malfunction',
+                            exactMatch: true
+                        },
+                        {
+                            id: 'Add the implementation of air conditioning maintenance',
+                            title: 'اضافه  تنفيذ صيانه تكييف',
+                            type: 'item',
+                            url: '/computer-maintenance/add-the-implementation-of-air-conditioning-maintenance',
+                            exactMatch: true
+                        },
+                        {
+                            id: 'Master Files Department',
+                            title: 'بيانات اساسيه لاداراه الهيئه',
+                            type: 'item',
+                            url: '/computer-maintenance/master-files-department',
+                            exactMatch: true
+                        }
+                    ]
+                },
+                {
+                    id: 'Computer Maintenance Report',
+                    title: 'التقارير',
+                    type: 'collapsable',
+                    icon: 'assignment',
+                    children: []
                 }
             ]
         }
     ]
+
 };
 
 
