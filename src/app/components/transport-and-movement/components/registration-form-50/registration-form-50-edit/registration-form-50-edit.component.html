@@ -1,0 +1,114 @@
+
+<mat-card>
+    <mat-card-header>
+        <mat-card-title>تسجيل استماره 50</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+        <form [formGroup]="registrationForm50Form" class="form-container">
+          
+
+	<mat-form-field appearance="outline">
+	 <mat-label>سنة الموازنة</mat-label>
+	 <input matInput
+	  [matDatepicker] = "budgetYearDatepicker"
+	  autocomplete = "off"
+	  formControlName= "budgetYear"/>
+	 <mat-datepicker-toggle
+	   matSuffix
+	   [for]="budgetYearDatepicker"
+	 ></mat-datepicker-toggle>
+	 <mat-datepicker #budgetYearDatepicker></mat-datepicker>
+	 <mat-error *ngIf = "getControls('budgetYear').invalid" >
+	  {{ getControls('budgetYear')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>تاريخ لاستمارة</mat-label>
+	 <input matInput
+	  [matDatepicker] = "formDateDatepicker"
+	  autocomplete = "off"
+	  formControlName= "formDate"/>
+	 <mat-datepicker-toggle
+	   matSuffix
+	   [for]="formDateDatepicker"
+	 ></mat-datepicker-toggle>
+	 <mat-datepicker #formDateDatepicker></mat-datepicker>
+	 <mat-error *ngIf = "getControls('formDate').invalid" >
+	  {{ getControls('formDate')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>مسلسل الاستمارة</mat-label>
+	 <input matInput formControlName="formSerial" [disableControl]="true" />
+	 <mat-error *ngIf = "getControls('formSerial').invalid" >
+	  {{ getControls('formSerial')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>مبلغ الاستمارة</mat-label>
+	 <input matInput formControlName="formAmount"/>
+	 <mat-error *ngIf = "getControls('formAmount').invalid" >
+	  {{ getControls('formAmount')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>كود الموظف</mat-label>
+	 <input matInput formControlName="employeeCode"/>
+	 <mat-error *ngIf = "getControls('employeeCode').invalid" >
+	  {{ getControls('employeeCode')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>البيان</mat-label>
+	 <input matInput formControlName="statement"/>
+	 <mat-error *ngIf = "getControls('statement').invalid" >
+	  {{ getControls('statement')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+          
+
+	<app-material-select appearance="outline"
+	  #area 
+	  [options] = "areaSelectOptions"
+	  formControlName = "area"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #administration 
+	  [options] = "administrationSelectOptions"
+	  formControlName = "administration"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #formSource 
+	  [options] = "formSourceSelectOptions"
+	  formControlName = "formSource"
+	></app-material-select>
+
+        </form>
+    </mat-card-content>
+
+    <mat-divider></mat-divider>
+
+	<mat-card-actions>
+			<form [formGroup]="attachmentForm" class="form-container">
+                <app-multi-file-upload [service] = "registrationForm50Service" [id]="registrationForm50Form.get('id').value"
+                    formControlName = "attachmentFiles">
+                </app-multi-file-upload>
+            </form>
+            <button
+                color = "primary"
+                type = "submit"
+                (click) = "onSubmit()"
+                [disabled] = "registrationForm50Form.invalid"
+                mat-raised-button>
+                حفظ
+            </button>
+    </mat-card-actions>
+</mat-card>
+

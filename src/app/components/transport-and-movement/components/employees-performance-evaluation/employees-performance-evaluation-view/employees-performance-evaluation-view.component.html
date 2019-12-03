@@ -1,0 +1,126 @@
+
+<mat-card class="form-card">
+      <mat-card-header>
+  
+          <mat-card-title>
+              تقويم اداء موظف
+          </mat-card-title>
+  
+      </mat-card-header>
+  
+      <mat-card-content>
+  
+        <form [formGroup] = "employeesPerformanceEvaluationForm" class="form-container">
+         
+
+	<mat-form-field appearance="outline">
+	 <mat-label>رقم المدير المباشر</mat-label>
+	 <input matInput formControlName="directManagerNumber"/>
+	 <mat-error *ngIf = "getControls('directManagerNumber').invalid" >
+	  {{ getControls('directManagerNumber')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>رقم المدير الاعلي </mat-label>
+	 <input matInput formControlName="seniorManagerNumber"/>
+	 <mat-error *ngIf = "getControls('seniorManagerNumber').invalid" >
+	  {{ getControls('seniorManagerNumber')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>كود الموظف</mat-label>
+	 <input matInput formControlName="employeeCode"/>
+	 <mat-error *ngIf = "getControls('employeeCode').invalid" >
+	  {{ getControls('employeeCode')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>سنة التقرير</mat-label>
+	 <input matInput
+	  [matDatepicker] = "yearOfReportDatepicker"
+	  autocomplete = "off"
+	  formControlName= "yearOfReport"/>
+	 <mat-datepicker-toggle
+	   matSuffix
+	   [for]="yearOfReportDatepicker"
+	 ></mat-datepicker-toggle>
+	 <mat-datepicker #yearOfReportDatepicker></mat-datepicker>
+	 <mat-error *ngIf = "getControls('yearOfReport').invalid" >
+	  {{ getControls('yearOfReport')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>فترة التقرير</mat-label>
+	 <input matInput formControlName="reportPeriod"/>
+	 <mat-error *ngIf = "getControls('reportPeriod').invalid" >
+	  {{ getControls('reportPeriod')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>من</mat-label>
+	 <input matInput
+	  [matDatepicker] = "fromDatepicker"
+	  autocomplete = "off"
+	  formControlName= "from"/>
+	 <mat-datepicker-toggle
+	   matSuffix
+	   [for]="fromDatepicker"
+	 ></mat-datepicker-toggle>
+	 <mat-datepicker #fromDatepicker></mat-datepicker>
+	 <mat-error *ngIf = "getControls('from').invalid" >
+	  {{ getControls('from')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>الي</mat-label>
+	 <input matInput
+	  [matDatepicker] = "toDatepicker"
+	  autocomplete = "off"
+	  formControlName= "to"/>
+	 <mat-datepicker-toggle
+	   matSuffix
+	   [for]="toDatepicker"
+	 ></mat-datepicker-toggle>
+	 <mat-datepicker #toDatepicker></mat-datepicker>
+	 <mat-error *ngIf = "getControls('to').invalid" >
+	  {{ getControls('to')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>تفاصيل</mat-label>
+	 <input matInput formControlName="details"/>
+	 <mat-error *ngIf = "getControls('details').invalid" >
+	  {{ getControls('details')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+         
+
+	<app-material-select appearance="outline"
+	  #performanceType 
+	  [options] = "performanceTypeSelectOptions"
+	  formControlName = "performanceType"
+	></app-material-select>
+        </form>
+  
+      </mat-card-content >
+  
+      <mat-action-row>
+            <form [formGroup]="attachmentForm" class="form-container">
+                <app-multi-file-upload [service] = "employeesPerformanceEvaluationService" [id]="employeesPerformanceEvaluationForm.get('id').value"
+                    formControlName = "attachmentFiles">
+                </app-multi-file-upload>
+            </form>
+            <button (click) = "onConfirm()" mat-raised-button color = "primary" >
+                غلق
+            </button>
+        </mat-action-row>
+    </mat-card>
+
+    
