@@ -1,0 +1,60 @@
+
+<mat-card>
+    <mat-card-header>
+        <mat-card-title> الموافقة علي تجهيز المدارس (مدارس الموافقات)</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+        <form [formGroup]="approvalForEquippingSchoolsApprovalsForm" class="form-container">
+          
+
+	<mat-form-field appearance="outline">
+	 <mat-label>سنة الخطة</mat-label>
+	 <input matInput
+	  [matDatepicker] = "yearPlanDatepicker"
+	  autocomplete = "off"
+	  formControlName= "yearPlan"/>
+	 <mat-datepicker-toggle
+	   matSuffix
+	   [for]="yearPlanDatepicker"
+	 ></mat-datepicker-toggle>
+	 <mat-datepicker #yearPlanDatepicker></mat-datepicker>
+	 <mat-error *ngIf = "getControls('yearPlan').invalid" >
+	  {{ getControls('yearPlan')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+          
+
+	<app-material-select appearance="outline"
+	  #processingType 
+	  [options] = "processingTypeSelectOptions"
+	  formControlName = "processingType"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #branch 
+	  [options] = "branchSelectOptions"
+	  formControlName = "branch"
+	></app-material-select>
+
+        </form>
+    </mat-card-content>
+
+    <mat-divider></mat-divider>
+
+	<mat-card-actions>
+			<form [formGroup]="attachmentForm" class="form-container">
+                <app-multi-file-upload [service] = "approvalForEquippingSchoolsApprovalsService" [id]="approvalForEquippingSchoolsApprovalsForm.get('id').value"
+                    formControlName = "attachmentFiles">
+                </app-multi-file-upload>
+            </form>
+            <button
+                color = "primary"
+                type = "submit"
+                (click) = "onSubmit()"
+                [disabled] = "approvalForEquippingSchoolsApprovalsForm.invalid"
+                mat-raised-button>
+                حفظ
+            </button>
+    </mat-card-actions>
+</mat-card>
+

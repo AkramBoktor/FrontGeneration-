@@ -1,0 +1,48 @@
+
+<app-new-form-layout
+    dir="rtl"
+    (submitClicked) = "onSubmit()"
+    (back) = "onBack()"
+    [pageTitle] = "'ربط البنود الفرعية بالبنود الرئيسية'"
+>
+    <ng-template newFormContainer >
+        <form [formGroup] = "linkSubitemsToTheMainItemsForm">
+         
+
+	<mat-form-field appearance="outline">
+	 <mat-label>رقم البند الفرعي</mat-label>
+	 <input matInput formControlName="subItemNumber"/>
+	 <mat-error *ngIf = "getControls('subItemNumber').invalid" >
+	  {{ getControls('subItemNumber')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+         
+
+	<app-material-select appearance="outline"
+	  #mainIemNumber 
+	  [options] = "mainIemNumberSelectOptions"
+	  formControlName = "mainIemNumber"
+	></app-material-select>
+
+        </form>
+
+        <mat-divider></mat-divider>
+
+		<mat-card-actions>
+			<form [formGroup]="attachmentForm" class="form-container">
+                <app-multi-file-upload [service] = "linkSubitemsToTheMainItemsService" [id]="linkSubitemsToTheMainItemsForm.get('id').value"
+                    formControlName = "attachmentFiles">
+                </app-multi-file-upload>
+            </form>
+            <button
+                type="submit"
+                (click)="onSubmit()"
+                [disabled]="linkSubitemsToTheMainItemsForm.invalid"
+                mat-raised-button
+                color = "primary">
+             حفظ
+            </button>
+        </mat-card-actions>
+    </ng-template >
+</app-new-form-layout >
+

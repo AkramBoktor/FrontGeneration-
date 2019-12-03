@@ -1,0 +1,62 @@
+
+<app-new-form-layout
+    dir="rtl"
+    (submitClicked) = "onSubmit()"
+    (back) = "onBack()"
+    [pageTitle] = "'القوائم المطلوب تجهيز جميع المدارس بها'"
+>
+    <ng-template newFormContainer >
+        <form [formGroup] = "theListsRequiredToEquipAllSchoolsForm">
+         
+
+	<mat-form-field appearance="outline">
+	 <mat-label>رقم المناقصة</mat-label>
+	 <input matInput formControlName="bidNumber"/>
+	 <mat-error *ngIf = "getControls('bidNumber').invalid" >
+	  {{ getControls('bidNumber')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>رقم القائمة</mat-label>
+	 <input matInput formControlName="listNumber"/>
+	 <mat-error *ngIf = "getControls('listNumber').invalid" >
+	  {{ getControls('listNumber')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+         
+
+	<app-material-select appearance="outline"
+	  #processingType 
+	  [options] = "processingTypeSelectOptions"
+	  formControlName = "processingType"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #offeringType 
+	  [options] = "offeringTypeSelectOptions"
+	  formControlName = "offeringType"
+	></app-material-select>
+
+        </form>
+
+        <mat-divider></mat-divider>
+
+		<mat-card-actions>
+			<form [formGroup]="attachmentForm" class="form-container">
+                <app-multi-file-upload [service] = "theListsRequiredToEquipAllSchoolsService" [id]="theListsRequiredToEquipAllSchoolsForm.get('id').value"
+                    formControlName = "attachmentFiles">
+                </app-multi-file-upload>
+            </form>
+            <button
+                type="submit"
+                (click)="onSubmit()"
+                [disabled]="theListsRequiredToEquipAllSchoolsForm.invalid"
+                mat-raised-button
+                color = "primary">
+             حفظ
+            </button>
+        </mat-card-actions>
+    </ng-template >
+</app-new-form-layout >
+

@@ -1,0 +1,42 @@
+
+<app-search-list-expansion-panel
+    dir="rtl"
+    [pageTitle] = "'الجهات الخارجية المجهزة للمدراس'"
+    (beginSearch) = "onBeginSearch()"
+    (create) = "onCreate()"
+>
+    <ng-template searchFormContainer >
+        <form [formGroup] = "searchForm">
+           
+
+	<mat-form-field appearance="outline">
+	 <mat-label>كود المورد</mat-label>
+	 <input matInput formControlName="supplierCode"/>
+	 <mat-error *ngIf = "getControls('supplierCode').invalid" >
+	  {{ getControls('supplierCode')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>اسم المورد</mat-label>
+	 <input matInput formControlName="supplierName"/>
+	 <mat-error *ngIf = "getControls('supplierName').invalid" >
+	  {{ getControls('supplierName')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+           
+
+        </form>
+    </ng-template >
+    <ng-template searchResultContainer >
+        <app-grid-control
+            #gridControl
+            [rowDataService] = "getPaginatedSortedFiltered"
+            [columnOptions] = "columnOptions"
+            [gridHeaderOptions] = "gridHeaderOptions"
+            [searchInput] = "searchForm.value"
+            (deleteRow) = "onDeleteClicked($event)"
+        >
+        </app-grid-control>
+    </ng-template>
+</app-search-list-expansion-panel >

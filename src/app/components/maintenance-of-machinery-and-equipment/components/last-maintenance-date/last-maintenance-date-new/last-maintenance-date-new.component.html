@@ -1,0 +1,84 @@
+
+<app-new-form-layout
+    dir="rtl"
+    (submitClicked) = "onSubmit()"
+    (back) = "onBack()"
+    [pageTitle] = "'تاريخ اخر صيانة'"
+>
+    <ng-template newFormContainer >
+        <form [formGroup] = "lastMaintenanceDateForm">
+         
+
+	<mat-form-field appearance="outline">
+	 <mat-label>رقم المعدة</mat-label>
+	 <input matInput formControlName="equipmentNumber"/>
+	 <mat-error *ngIf = "getControls('equipmentNumber').invalid" >
+	  {{ getControls('equipmentNumber')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>بند الصيانة الرأيسية</mat-label>
+	 <input matInput formControlName="mainMaintenanceItem"/>
+	 <mat-error *ngIf = "getControls('mainMaintenanceItem').invalid" >
+	  {{ getControls('mainMaintenanceItem')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>تاريخ اخر صيانة</mat-label>
+	 <input matInput
+	  [matDatepicker] = "lastDateMaintenanceDatepicker"
+	  autocomplete = "off"
+	  formControlName= "lastDateMaintenance"/>
+	 <mat-datepicker-toggle
+	   matSuffix
+	   [for]="lastDateMaintenanceDatepicker"
+	 ></mat-datepicker-toggle>
+	 <mat-datepicker #lastDateMaintenanceDatepicker></mat-datepicker>
+	 <mat-error *ngIf = "getControls('lastDateMaintenance').invalid" >
+	  {{ getControls('lastDateMaintenance')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+         
+
+	<app-material-select appearance="outline"
+	  #buildingType 
+	  [options] = "buildingTypeSelectOptions"
+	  formControlName = "buildingType"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #equipmentGroup 
+	  [options] = "equipmentGroupSelectOptions"
+	  formControlName = "equipmentGroup"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #equipmentType 
+	  [options] = "equipmentTypeSelectOptions"
+	  formControlName = "equipmentType"
+	></app-material-select>
+
+        </form>
+
+        <mat-divider></mat-divider>
+
+		<mat-card-actions>
+			<form [formGroup]="attachmentForm" class="form-container">
+                <app-multi-file-upload [service] = "lastMaintenanceDateService" [id]="lastMaintenanceDateForm.get('id').value"
+                    formControlName = "attachmentFiles">
+                </app-multi-file-upload>
+            </form>
+            <button
+                type="submit"
+                (click)="onSubmit()"
+                [disabled]="lastMaintenanceDateForm.invalid"
+                mat-raised-button
+                color = "primary">
+             حفظ
+            </button>
+        </mat-card-actions>
+    </ng-template >
+</app-new-form-layout >
+

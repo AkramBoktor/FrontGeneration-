@@ -1,0 +1,88 @@
+
+<app-new-form-layout
+    dir="rtl"
+    (submitClicked) = "onSubmit()"
+    (back) = "onBack()"
+    [pageTitle] = "'تكوين استمارة صرف'"
+>
+    <ng-template newFormContainer >
+        <form [formGroup] = "formADisbursementFormForm">
+         
+
+	<mat-form-field appearance="outline">
+	 <mat-label>رقم الفاتورة</mat-label>
+	 <input matInput formControlName="billNumber"/>
+	 <mat-error *ngIf = "getControls('billNumber').invalid" >
+	  {{ getControls('billNumber')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>عدد صفحات الفاتوره</mat-label>
+	 <input matInput formControlName="invoicePagesNumber"/>
+	 <mat-error *ngIf = "getControls('invoicePagesNumber').invalid" >
+	  {{ getControls('invoicePagesNumber')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>تاريخ الفاتورة</mat-label>
+	 <input matInput
+	  [matDatepicker] = "invoiceDateDatepicker"
+	  autocomplete = "off"
+	  formControlName= "invoiceDate"/>
+	 <mat-datepicker-toggle
+	   matSuffix
+	   [for]="invoiceDateDatepicker"
+	 ></mat-datepicker-toggle>
+	 <mat-datepicker #invoiceDateDatepicker></mat-datepicker>
+	 <mat-error *ngIf = "getControls('invoiceDate').invalid" >
+	  {{ getControls('invoiceDate')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>رقم المناقصة</mat-label>
+	 <input matInput formControlName="bidNumber"/>
+	 <mat-error *ngIf = "getControls('bidNumber').invalid" >
+	  {{ getControls('bidNumber')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>اسم الشركة</mat-label>
+	 <input matInput formControlName="companyName"/>
+	 <mat-error *ngIf = "getControls('companyName').invalid" >
+	  {{ getControls('companyName')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+         
+
+	<app-material-select appearance="outline"
+	  #offeringType 
+	  [options] = "offeringTypeSelectOptions"
+	  formControlName = "offeringType"
+	></app-material-select>
+
+        </form>
+
+        <mat-divider></mat-divider>
+
+		<mat-card-actions>
+			<form [formGroup]="attachmentForm" class="form-container">
+                <app-multi-file-upload [service] = "formADisbursementFormService" [id]="formADisbursementFormForm.get('id').value"
+                    formControlName = "attachmentFiles">
+                </app-multi-file-upload>
+            </form>
+            <button
+                type="submit"
+                (click)="onSubmit()"
+                [disabled]="formADisbursementFormForm.invalid"
+                mat-raised-button
+                color = "primary">
+             حفظ
+            </button>
+        </mat-card-actions>
+    </ng-template >
+</app-new-form-layout >
+

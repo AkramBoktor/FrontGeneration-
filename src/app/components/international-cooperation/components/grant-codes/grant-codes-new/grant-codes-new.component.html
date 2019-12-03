@@ -1,0 +1,58 @@
+
+<app-new-form-layout
+    dir="rtl"
+    (submitClicked) = "onSubmit()"
+    (back) = "onBack()"
+    [pageTitle] = "'اكواد المنحه '"
+>
+    <ng-template newFormContainer >
+        <form [formGroup] = "grantCodesForm">
+         
+
+	<mat-form-field appearance="outline">
+	 <mat-label>  كود المنحة</mat-label>
+	 <input matInput formControlName="grantCode"/>
+	 <mat-error *ngIf = "getControls('grantCode').invalid" >
+	  {{ getControls('grantCode')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>  اسم المنحة</mat-label>
+	 <input matInput formControlName="grantName" [disableControl]="true" />
+	 <mat-error *ngIf = "getControls('grantName').invalid" >
+	  {{ getControls('grantName')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label> كود الجهة المانحة</mat-label>
+	 <input matInput formControlName="entityCode"/>
+	 <mat-error *ngIf = "getControls('entityCode').invalid" >
+	  {{ getControls('entityCode')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+         
+
+        </form>
+
+        <mat-divider></mat-divider>
+
+		<mat-card-actions>
+			<form [formGroup]="attachmentForm" class="form-container">
+                <app-multi-file-upload [service] = "grantCodesService" [id]="grantCodesForm.get('id').value"
+                    formControlName = "attachmentFiles">
+                </app-multi-file-upload>
+            </form>
+            <button
+                type="submit"
+                (click)="onSubmit()"
+                [disabled]="grantCodesForm.invalid"
+                mat-raised-button
+                color = "primary">
+             حفظ
+            </button>
+        </mat-card-actions>
+    </ng-template >
+</app-new-form-layout >
+

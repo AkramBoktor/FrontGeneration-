@@ -1,0 +1,56 @@
+
+<app-search-list-expansion-panel
+    dir="rtl"
+    [pageTitle] = "'نقل اوامر التوريد من مدارس الاغلاق'"
+    (beginSearch) = "onBeginSearch()"
+    (create) = "onCreate()"
+>
+    <ng-template searchFormContainer >
+        <form [formGroup] = "searchForm">
+           
+
+	<mat-form-field appearance="outline">
+	 <mat-label>رقم المبني المغلق</mat-label>
+	 <input matInput formControlName="closedBuildingNumber"/>
+	 <mat-error *ngIf = "getControls('closedBuildingNumber').invalid" >
+	  {{ getControls('closedBuildingNumber')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>رقم المبني المنقول اليه</mat-label>
+	 <input matInput formControlName="buildingNumberTransferred"/>
+	 <mat-error *ngIf = "getControls('buildingNumberTransferred').invalid" >
+	  {{ getControls('buildingNumberTransferred')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>رقم الملحق</mat-label>
+	 <input matInput formControlName="annexNumber"/>
+	 <mat-error *ngIf = "getControls('annexNumber').invalid" >
+	  {{ getControls('annexNumber')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+           
+
+	<app-material-select appearance="outline"
+	  #closureType 
+	  [options] = "closureTypeSelectOptions"
+	  formControlName = "closureType"
+	></app-material-select>
+
+        </form>
+    </ng-template >
+    <ng-template searchResultContainer >
+        <app-grid-control
+            #gridControl
+            [rowDataService] = "getTransferOfSupplyOrdersFromSchoolsClosurePaginatedSortedFiltered"
+            [columnOptions] = "columnOptions"
+            [gridHeaderOptions] = "gridHeaderOptions"
+            [searchInput] = "searchForm.value"
+            (deleteRow) = "onDeleteClicked($event)"
+        >
+        </app-grid-control>
+    </ng-template>
+</app-search-list-expansion-panel >
