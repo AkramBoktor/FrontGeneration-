@@ -2666,291 +2666,6 @@ export const listMenuConfig: ListMenuConfig = {
             ]
         }
     ],
-    'purchase': [
-        {
-            id: 'purchase',
-            title: 'برنامج مشتريات',
-            type: 'group',
-            icon: 'app',
-            children: [
-                {
-                    id: 'Purchase Config',
-                    title: 'الأعدادات',
-                    type: 'collapsable',
-                    icon: 'build',
-                    children: [
-                        {
-                            id: 'offeringtypes',
-                            title: 'انواع الطرح',
-                            type: 'item',
-                            url: '/lookup/offeringtypes',
-                            exactMatch: true
-                        },
-                        {
-                            id: 'buildingtypes',
-                            title: 'نوع المبني',
-                            type: 'item',
-                            url: '/lookup/buildingtypes',
-                            exactMatch: true
-                        },
-                        {
-                            id: 'areas',
-                            title: 'مناطق',
-                            type: 'item',
-                            url: '/lookup/areas',
-                            exactMatch: true
-                        },
-                        {
-                            id: 'maintenancestatuses ',
-                            title: 'حالة الصيانه ',
-                            type: 'item',
-                            url: '/lookup/maintenancestatuses ',
-                            exactMatch: true
-                        },
-                        {
-                            id: 'constructiontypes',
-                            title: 'انواع الانشاء',
-                            type: 'item',
-                            url: '/lookup/constructiontypes',
-                            exactMatch: true
-                        },
-                        {
-                            id: 'paymentmethods',
-                            title: 'طريقة السداد',
-                            type: 'item',
-                            url: '/lookup/paymentmethods',
-                            exactMatch: true
-                        },
-                        {
-                            id: 'governorates',
-                            title: 'المحافظة',
-                            type: 'item',
-                            url: '/lookup/governorates',
-                            exactMatch: true
-                        },
-                        {
-                            id: 'members',
-                            title: 'الاعضــاء',
-                            type: 'item',
-                            url: '/lookup/members',
-                            exactMatch: true
-                        },
-                        {
-                            id: 'classificationfieldcodes',
-                            title: 'كود مجال التصنيف',
-                            type: 'item',
-                            url: '/lookup/classificationfieldcodes',
-                            exactMatch: true
-                        },
-                        {
-                            id: 'classificationvaluecodes',
-                            title: 'كود قيمة التصنيف',
-                            type: 'item',
-                            url: '/lookup/classificationvaluecodes',
-                            exactMatch: true
-                        },
-                        {
-                            id: 'classificationdecisions',
-                            title: 'قرار التصنيف',
-                            type: 'item',
-                            url: '/lookup/classificationdecisions',
-                            exactMatch: true
-                        },
-                        {
-                            id: 'classificationdegrees',
-                            title: 'درجه التصنيف',
-                            type: 'item',
-                            url: '/lookup/classificationdegrees',
-                            exactMatch: true
-                        },
-                        {
-                            id: 'commissionerrequirements ',
-                            title: 'اشتراطات بعد المفاوضة',
-                            type: 'item',
-                            url: '/lookup/commissionerrequirements ',
-                            exactMatch: true
-                        },
-                        {
-                            id: 'supplierclassifications',
-                            title: 'تصنيف  مورد',
-                            type: 'item',
-                            url: '/lookup/supplierclassifications',
-                            exactMatch: true
-                        },
-                        {
-                            id: 'suppliertypes',
-                            title: 'نوع المورد',
-                            type: 'item',
-                            url: '/lookup/suppliertypes',
-                            exactMatch: true
-                        },
-                        {
-                            id: 'sectionsorcenters',
-                            title: 'مركز/القسم‎',
-                            type: 'item',
-                            url: '/lookup/sectionsorcenters',
-                            exactMatch: true
-                        },
-                        {
-                            id: 'supplierrecordtypes',
-                            title: 'نوع السجل للمورد',
-                            type: 'item',
-                            url: '/lookup/supplierrecordtypes',
-                            exactMatch: true
-                        },
-                        {
-                            id: 'taxdescriptions',
-                            title: 'توصيف الضريبة',
-                            type: 'item',
-                            url: '/lookup/taxdescriptions',
-                            exactMatch: true
-                        },
-                        {
-                            id: 'gearstatuses',
-                            title: 'حاله الترسية',
-                            type: 'item',
-                            url: '/lookup/gearstatuses',
-                            exactMatch: true
-                        },
-                        {
-                            id: 'extracttypes',
-                            title: 'نوع المستخلص',
-                            type: 'item',
-                            url: '/lookup/extracttypes',
-                            exactMatch: true
-                        }
-                    ]
-                },
-                {
-                    id: 'Purchase Program',
-                    title: 'البرامج',
-                    type: 'collapsable',
-                    icon: 'apps',
-                    children: [
-                        {
-                            id: 'Canceled Tender',
-                            title: 'عطاء مستبعد',
-                            type: 'item',
-                            url: '/purchase/canceled-tender',
-                            exactMatch: true
-                        },
-                        {
-                            id: 'Group Details Data',
-                            title: 'بيانات اجزاء مجموعة',
-                            type: 'item',
-                            url: '/purchase/group-details-data',
-                            exactMatch: true
-                        },
-                        {
-                            id: 'Bid Parts Data',
-                            title: 'بيانات اجزاء مناقصة',
-                            type: 'item',
-                            url: '/purchase/bid-parts-data',
-                            exactMatch: true
-                        },
-                        {
-                            id: 'Examination Committee Member Data',
-                            title: 'بيانات اعضاء لجنة البت',
-                            type: 'item',
-                            url: '/purchase/examination-committee-member-data',
-                            exactMatch: true
-                        },
-                        {
-                            id: 'Envelopes Opennig Commety Members Data',
-                            title: 'بيانات اعضاء لجنة فتح الظاريف',
-                            type: 'item',
-                            url: '/purchase/envelopes-opennig-commety-members-data',
-                            exactMatch: true
-                        },
-                        {
-                            id: 'Assignment Data',
-                            title: 'بيانات الاحالة',
-                            type: 'item',
-                            url: '/purchase/assignment-data',
-                            exactMatch: true
-                        },
-                        {
-                            id: 'Contractor Ranking Data',
-                            title: 'بيانات التصنيف للمقاول',
-                            type: 'item',
-                            url: '/purchase/contractor-ranking-data',
-                            exactMatch: true
-                        },
-                        {
-                            id: 'Statements of Supplementary Record of Decision Committee',
-                            title: 'بيانات المحضر التكميلي للجنة البت',
-                            type: 'item',
-                            url: '/purchase/supplementary-record',
-                            exactMatch: true
-                        },
-                        {
-                            id: 'Contractor Data',
-                            title: 'بيانات مقاول',
-                            type: 'item',
-                            url: '/purchase/contractor-data',
-                            exactMatch: true
-                        },
-                        {
-                            id: 'Publishing data',
-                            title: 'بيانات النشر',
-                            type: 'item',
-                            url: '/purchase/publishing-data',
-                            exactMatch: true
-                        },
-                        {
-                            id: 'Job Data',
-                            title: 'بيانات الشغل',
-                            type: 'item',
-                            url: '/purchase/job-data',
-                            exactMatch: true
-                        },
-                        {
-                            id: 'Tender Data',
-                            title: 'بيانات عطاء',
-                            type: 'item',
-                            url: '/purchase/tender-data',
-                            exactMatch: true
-                        },
-                        {
-                            id: 'Examination CommitteeDate Data',
-                            title: 'بيانات لجنة البت',
-                            type: 'item',
-                            url: '/purchase/examination-committee-date-data',
-                            exactMatch: true
-                        },
-                        {
-                            id: 'Envelopes Opennig Commety Data',
-                            title: 'بيانات لجنة فتح الظاريف',
-                            type: 'item',
-                            url: '/purchase/envelopes-opennig-commety-data',
-                            exactMatch: true
-                        },
-                        {
-                            id: 'Invoice 50',
-                            title: 'بيانات مستخلص (استمارة 50)',
-                            type: 'item',
-                            url: '/purchase/invoice-50',
-                            exactMatch: true
-                        },
-                        {
-                            id: 'Conditions Notebook Data',
-                            title: 'بيانات كراسة الشروط',
-                            type: 'item',
-                            url: '/purchase/conditions-notebook-data',
-                            exactMatch: true
-                        }
-                    ]
-                },
-                {
-                    id: 'Purchase Report',
-                    title: 'التقارير',
-                    type: 'collapsable',
-                    icon: 'assignment',
-                    children: []
-                }
-            ]
-        }
-    ],
     'school-map': [
         {
             id: 'school-map',
@@ -5667,7 +5382,1361 @@ export const listMenuConfig: ListMenuConfig = {
                 }
             ]
         }
-    ]
+    ],
+    "purchase": [
+        {
+            "id": "purchase",
+            "title": "برنامج مشتريات",
+            "type": "group",
+            "icon": "app",
+            "children": [
+                {
+                    "id": "Purchase Config",
+                    "title": "الأعدادات",
+                    "type": "collapsable",
+                    "icon": "build",
+                    "children": [
+                        {
+                            "id": "offeringtypes",
+                            "title": "انواع الطرح",
+                            "type": "item",
+                            "url": "/lookup/offeringtypes",
+                            "exactMatch": true
+                        },
+                        {
+                            "id": "buildingtypes",
+                            "title": "نوع المبني",
+                            "type": "item",
+                            "url": "/lookup/buildingtypes",
+                            "exactMatch": true
+                        },
+                        {
+                            "id": "areas",
+                            "title": "مناطق",
+                            "type": "item",
+                            "url": "/lookup/areas",
+                            "exactMatch": true
+                        },
+                        {
+                            "id": "maintenancestatuses",
+                            "title": "حالة الصيانه ",
+                            "type": "item",
+                            "url": "/lookup/maintenancestatuses",
+                            "exactMatch": true
+                        },
+                        {
+                            "id": "constructiontypes",
+                            "title": "انواع الانشاء",
+                            "type": "item",
+                            "url": "/lookup/constructiontypes",
+                            "exactMatch": true
+                        },
+                        {
+                            "id": "paymentmethods",
+                            "title": "طريقة السداد",
+                            "type": "item",
+                            "url": "/lookup/paymentmethods",
+                            "exactMatch": true
+                        },
+                        {
+                            "id": "governorates",
+                            "title": "المحافظة",
+                            "type": "item",
+                            "url": "/lookup/governorates",
+                            "exactMatch": true
+                        },
+                        {
+                            "id": "members",
+                            "title": "الاعضــاء",
+                            "type": "item",
+                            "url": "/lookup/members",
+                            "exactMatch": true
+                        },
+                        {
+                            "id": "classificationfieldcodes",
+                            "title": "كود مجال التصنيف",
+                            "type": "item",
+                            "url": "/lookup/classificationfieldcodes",
+                            "exactMatch": true
+                        },
+                        {
+                            "id": "classificationvaluecodes",
+                            "title": "كود قيمة التصنيف",
+                            "type": "item",
+                            "url": "/lookup/classificationvaluecodes",
+                            "exactMatch": true
+                        },
+                        {
+                            "id": "classificationdecisions",
+                            "title": "قرار التصنيف",
+                            "type": "item",
+                            "url": "/lookup/classificationdecisions",
+                            "exactMatch": true
+                        },
+                        {
+                            "id": "classificationdegrees",
+                            "title": "درجه التصنيف",
+                            "type": "item",
+                            "url": "/lookup/classificationdegrees",
+                            "exactMatch": true
+                        },
+                        {
+                            "id": "commissionerrequirements",
+                            "title": "اشتراطات بعد المفاوضة",
+                            "type": "item",
+                            "url": "/lookup/commissionerrequirements",
+                            "exactMatch": true
+                        },
+                        {
+                            "id": "supplierclassifications",
+                            "title": "تصنيف  مورد",
+                            "type": "item",
+                            "url": "/lookup/supplierclassifications",
+                            "exactMatch": true
+                        },
+                        {
+                            "id": "suppliertypes",
+                            "title": "نوع المورد",
+                            "type": "item",
+                            "url": "/lookup/suppliertypes",
+                            "exactMatch": true
+                        },
+                        {
+                            "id": "sectionsorcenters",
+                            "title": "مركز/القسم‎",
+                            "type": "item",
+                            "url": "/lookup/sectionsorcenters",
+                            "exactMatch": true
+                        },
+                        {
+                            "id": "supplierrecordtypes",
+                            "title": "نوع السجل للمورد",
+                            "type": "item",
+                            "url": "/lookup/supplierrecordtypes",
+                            "exactMatch": true
+                        },
+                        {
+                            "id": "publishingauthorities",
+                            "title": "جهة النشر",
+                            "type": "item",
+                            "url": "/lookup/publishingauthorities",
+                            "exactMatch": true
+                        },
+                        {
+                            "id": "taxdescriptions",
+                            "title": "توصيف الضريبة",
+                            "type": "item",
+                            "url": "/lookup/taxdescriptions",
+                            "exactMatch": true
+                        },
+                        {
+                            "id": "gearstatuses",
+                            "title": "حاله الترسية",
+                            "type": "item",
+                            "url": "/lookup/gearstatuses",
+                            "exactMatch": true
+                        },
+                        {
+                            "id": "extracttypes",
+                            "title": "نوع المستخلص",
+                            "type": "item",
+                            "url": "/lookup/extracttypes",
+                            "exactMatch": true
+                        }
+                    ]
+                },
+                {
+                    "id": "Purchase Program",
+                    "title": "البرامج",
+                    "type": "collapsable",
+                    "icon": "apps",
+                    "children": [
+                        {
+                            "id": "Canceled Tender",
+                            "title": "عطاء مستبعد",
+                            "type": "item",
+                            "url": "/purchase/canceled-tender",
+                            "exactMatch": true
+                        },
+                        {
+                            "id": "Group Details Data",
+                            "title": "بيانات اجزاء مجموعة",
+                            "type": "item",
+                            "url": "/purchase/group-details-data",
+                            "exactMatch": true
+                        },
+                        {
+                            "id": "Bid Parts Data",
+                            "title": "بيانات اجزاء مناقصة",
+                            "type": "item",
+                            "url": "/purchase/bid-parts-data",
+                            "exactMatch": true
+                        },
+                        {
+                            "id": "Examination Committee Member Data",
+                            "title": "بيانات اعضاء لجنة البت",
+                            "type": "item",
+                            "url": "/purchase/examination-committee-member-data",
+                            "exactMatch": true
+                        },
+                        {
+                            "id": "Envelopes Opennig Commety Members Data",
+                            "title": "بيانات اعضاء لجنة فتح الظاريف",
+                            "type": "item",
+                            "url": "/purchase/envelopes-opennig-commety-members-data",
+                            "exactMatch": true
+                        },
+                        {
+                            "id": "Assignment Data",
+                            "title": "بيانات الاحالة",
+                            "type": "item",
+                            "url": "/purchase/assignment-data",
+                            "exactMatch": true
+                        },
+                        {
+                            "id": "Contractor Ranking Data",
+                            "title": "بيانات التصنيف للمقاول",
+                            "type": "item",
+                            "url": "/purchase/contractor-ranking-data",
+                            "exactMatch": true
+                        },
+                        {
+                            "id": "Supplementary Record",
+                            "title": "بيانات المحضر التكميلي للجنة البت",
+                            "type": "item",
+                            "url": "/purchase/supplementary-record",
+                            "exactMatch": true
+                        },
+                        {
+                            "id": "Contractor Data",
+                            "title": "بيانات مقاول",
+                            "type": "item",
+                            "url": "/purchase/contractor-data",
+                            "exactMatch": true
+                        },
+                        {
+                            "id": "Publishing data",
+                            "title": "بيانات النشر",
+                            "type": "item",
+                            "url": "/purchase/publishing-data",
+                            "exactMatch": true
+                        },
+                        {
+                            "id": "Job Data",
+                            "title": "بيانات الشغل",
+                            "type": "item",
+                            "url": "/purchase/job-data",
+                            "exactMatch": true
+                        },
+                        {
+                            "id": "Tender Data",
+                            "title": "بيانات عطاء",
+                            "type": "item",
+                            "url": "/purchase/tender-data",
+                            "exactMatch": true
+                        },
+                        {
+                            "id": "Examination Committee Date Data",
+                            "title": "بيانات لجنة البت",
+                            "type": "item",
+                            "url": "/purchase/examination-committee-date-data",
+                            "exactMatch": true
+                        },
+                        {
+                            "id": "Envelopes Opennig Commety Data",
+                            "title": "بيانات لجنة فتح الظاريف",
+                            "type": "item",
+                            "url": "/purchase/envelopes-opennig-commety-data",
+                            "exactMatch": true
+                        },
+                        {
+                            "id": "Invoice 50",
+                            "title": "بيانات مستخلص (استمارة 50)",
+                            "type": "item",
+                            "url": "/purchase/invoice-50",
+                            "exactMatch": true
+                        },
+                        {
+                            "id": "Conditions Notebook Data",
+                            "title": "بيانات كراسة الشروط",
+                            "type": "item",
+                            "url": "/purchase/conditions-notebook-data",
+                            "exactMatch": true
+                        }
+                    ]
+                },
+                {
+                    "id": "Purchase Report",
+                    "title": "التقارير",
+                    "type": "collapsable",
+                    "icon": "assignment",
+                    "children": []
+                }
+            ]
+        }
+    ],
+    "weights-differences": [
+        {
+            "id": "weights-differences",
+            "title": "برنامج  فروق الاوزان",
+            "type": "group",
+            "icon": "app",
+            "children": [
+                {
+                    "id": "Weights differences Config",
+                    "title": "الأعدادات",
+                    "type": "collapsable",
+                    "icon": "build",
+                    "children": [
+                        {
+                            "id": "offeringtypes",
+                            "title": "انواع الطرح",
+                            "type": "item",
+                            "url": "/lookup/offeringtypes",
+                            "exactMatch": true
+                        },
+                        {
+                            "id": "constructiontypes",
+                            "title": "انواع الانشاء",
+                            "type": "item",
+                            "url": "/lookup/constructiontypes",
+                            "exactMatch": true
+                        },
+                        {
+                            "id": "governorates",
+                            "title": "المحافظة",
+                            "type": "item",
+                            "url": "/lookup/governorates",
+                            "exactMatch": true
+                        },
+                        {
+                            "id": "itemcodes",
+                            "title": "كود البند",
+                            "type": "item",
+                            "url": "/lookup/itemcodes",
+                            "exactMatch": true
+                        },
+                        {
+                            "id": "elements",
+                            "title": "العنصر",
+                            "type": "item",
+                            "url": "/lookup/elements",
+                            "exactMatch": true
+                        },
+                        {
+                            "id": "worktypes",
+                            "title": "نوع العمل",
+                            "type": "item",
+                            "url": "/lookup/worktypes",
+                            "exactMatch": true
+                        }
+                    ]
+                },
+                {
+                    "id": "Weights differences Program",
+                    "title": "البرامج",
+                    "type": "collapsable",
+                    "icon": "apps",
+                    "children": [
+                        {
+                            "id": "The planned start date for the schedule",
+                            "title": "تاريخ البداية المخطط للجدول الزمني",
+                            "type": "item",
+                            "url": "/weights-differences/the-planned-start-date-for-the-schedule",
+                            "exactMatch": true
+                        },
+                        {
+                            "id": "Weights Factor",
+                            "title": "معامل الاوزان",
+                            "type": "item",
+                            "url": "/weights-differences/weights-factor",
+                            "exactMatch": true
+                        },
+                        {
+                            "id": "Assay items due to weights factor",
+                            "title": "بنود المقايسة المستحقة لمعامل الاوزان",
+                            "type": "item",
+                            "url": "/weights-differences/assay-items-due-to-weights-factor",
+                            "exactMatch": true
+                        },
+                        {
+                            "id": "the movement of material indices",
+                            "title": "حركة الارقام القياسية للمواد",
+                            "type": "item",
+                            "url": "/weights-differences/the-movement-of-material-indices",
+                            "exactMatch": true
+                        },
+                        {
+                            "id": "Timetable",
+                            "title": "الجدول الزمني",
+                            "type": "item",
+                            "url": "/weights-differences/timetable",
+                            "exactMatch": true
+                        },
+                        {
+                            "id": "Link item to TimeTable",
+                            "title": " ربط البند بانشطة الجدول الزمني",
+                            "type": "item",
+                            "url": "/weights-differences/link-item-to-time-table",
+                            "exactMatch": true
+                        },
+                        {
+                            "id": "Elements of the measured items due to the weights factor of a building",
+                            "title": "عناصر البنود المقايسة المستحقة لمعامل الاوزان لمبني",
+                            "type": "item",
+                            "url": "/weights-differences/elements-of-the-measured-items-due-to-the-weights-factor-of-a-building",
+                            "exactMatch": true
+                        },
+                        {
+                            "id": "Link Items To Object Codes",
+                            "title": "ربط البنود باكواد العناصر",
+                            "type": "item",
+                            "url": "/weights-differences/link-items-to-object-codes",
+                            "exactMatch": true
+                        },
+                        {
+                            "id": "Schedule at the building level",
+                            "title": "الجدول الزمني علي مستوي المبني",
+                            "type": "item",
+                            "url": "/weights-differences/schedule-at-the-building-level",
+                            "exactMatch": true
+                        }
+                    ]
+                },
+                {
+                    "id": "Weights differences Report",
+                    "title": "التقارير",
+                    "type": "collapsable",
+                    "icon": "assignment",
+                    "children": []
+                }
+            ]
+        }
+    ],
+    "assay-list-of-creation-of-works-of-others": [
+        {
+            "id": "assay-list-of-creation-of-works-of-others",
+            "title": "برنامج مقايسه -قائمة انشاء اعمال الغير",
+            "type": "group",
+            "icon": "app",
+            "children": [
+                {
+                    "id": "Assay List of creation of works of others Config",
+                    "title": "الأعدادات",
+                    "type": "collapsable",
+                    "icon": "build",
+                    "children": [
+                        {
+                            "id": "constructiontypes",
+                            "title": "انواع الانشاء",
+                            "type": "item",
+                            "url": "/lookup/constructiontypes",
+                            "exactMatch": true
+                        },
+                        {
+                            "id": "worktypes",
+                            "title": "نوع العمل",
+                            "type": "item",
+                            "url": "/lookup/worktypes",
+                            "exactMatch": true
+                        },
+                        {
+                            "id": "itemcodes",
+                            "title": "كود البند",
+                            "type": "item",
+                            "url": "/lookup/itemcodes",
+                            "exactMatch": true
+                        },
+                        {
+                            "id": "listtypes",
+                            "title": "نوع القائمة",
+                            "type": "item",
+                            "url": "/lookup/listtypes",
+                            "exactMatch": true
+                        },
+                        {
+                            "id": "modules",
+                            "title": "وحدات",
+                            "type": "item",
+                            "url": "/lookup/modules",
+                            "exactMatch": true
+                        }
+                    ]
+                },
+                {
+                    "id": "Assay List of creation of works of others Program",
+                    "title": "البرامج",
+                    "type": "collapsable",
+                    "icon": "apps",
+                    "children": [
+                        {
+                            "id": "Business assay for others",
+                            "title": "مقايسه اعمل الغير",
+                            "type": "item",
+                            "url": "/assay-list-of-creation-of-works-of-others/business-assay-for-others",
+                            "exactMatch": true
+                        },
+                        {
+                            "id": "Timetable data for third parties",
+                            "title": "بيانات الجدول الزمني لاعمال الغير",
+                            "type": "item",
+                            "url": "/assay-list-of-creation-of-works-of-others/timetable-data-for-third-parties",
+                            "exactMatch": true
+                        },
+                        {
+                            "id": "Electricity works",
+                            "title": "اعمال كهرباء للغير",
+                            "type": "item",
+                            "url": "/assay-list-of-creation-of-works-of-others/electricity-works",
+                            "exactMatch": true
+                        }
+                    ]
+                },
+                {
+                    "id": "Assay List of creation of works of others Report",
+                    "title": "التقارير",
+                    "type": "collapsable",
+                    "icon": "assignment",
+                    "children": []
+                }
+            ]
+        }
+    ], "assay-work-of-clouds-assays": [
+        {
+            "id": "assay-work-of-clouds-assays",
+            "title": "برنامج المقايسة - أعمال مقايسات السحب",
+            "type": "group",
+            "icon": "app",
+            "children": [
+                {
+                    "id": "Assay  Work of clouds assays Config",
+                    "title": "الأعدادات",
+                    "type": "collapsable",
+                    "icon": "build",
+                    "children": [
+                        {
+                            "id": "constructiontypes",
+                            "title": "انواع الانشاء",
+                            "type": "item",
+                            "url": "/lookup/constructiontypes",
+                            "exactMatch": true
+                        },
+                        {
+                            "id": "foundationtypes",
+                            "title": "نوع الاساس",
+                            "type": "item",
+                            "url": "/lookup/foundationtypes",
+                            "exactMatch": true
+                        },
+                        {
+                            "id": "worktypes",
+                            "title": "نوع العمل",
+                            "type": "item",
+                            "url": "/lookup/worktypes",
+                            "exactMatch": true
+                        },
+                        {
+                            "id": "itemcodes",
+                            "title": "كود البند",
+                            "type": "item",
+                            "url": "/lookup/itemcodes",
+                            "exactMatch": true
+                        }
+                    ]
+                },
+                {
+                    "id": "Assay  Work of clouds assays Program",
+                    "title": "البرامج",
+                    "type": "collapsable",
+                    "icon": "apps",
+                    "children": [
+                        {
+                            "id": "Timetable data withdrawn",
+                            "title": "بيانات الجدول الزمني للأعمال المسحوبة",
+                            "type": "item",
+                            "url": "/assay-work-of-clouds-assays/timetable-data-withdrawn",
+                            "exactMatch": true
+                        },
+                        {
+                            "id": "Assay of withdrawn works",
+                            "title": "مقايسة الأعمال المسحوبة",
+                            "type": "item",
+                            "url": "/assay-work-of-clouds-assays/assay-of-withdrawn-works",
+
+                            "exactMatch": true
+                        }
+                    ]
+                },
+                {
+                    "id": "Assay  Work of clouds assays Report",
+                    "title": "التقارير",
+                    "type": "collapsable",
+                    "icon": "assignment",
+                    "children": []
+                }
+            ]
+        }
+    ],
+    "school-branches-map": [
+        {
+            "id": "school-branches-map",
+            "title": "برنامج الخريطه المدرسيه فروع",
+            "type": "group",
+            "icon": "app",
+            "children": [
+                {
+                    "id": " School branches Map Config",
+                    "title": "الأعدادات",
+                    "type": "collapsable",
+                    "icon": "build",
+                    "children": [
+                        {
+                            "id": "governorates",
+                            "title": "المحافظة",
+                            "type": "item",
+                            "url": "/lookup/governorates",
+                            "exactMatch": true
+                        },
+                        {
+                            "id": "sectionsorcenters",
+                            "title": "مركز/القسم‎",
+                            "type": "item",
+                            "url": "/lookup/sectionsorcenters",
+                            "exactMatch": true
+                        },
+                        {
+                            "id": "educationallevels",
+                            "title": "المرحلة التعليمية",
+                            "type": "item",
+                            "url": "/lookup/educationallevels",
+                            "exactMatch": true
+                        },
+                        {
+                            "id": "purposeofconstructions",
+                            "title": "الغرض الأساسي لانشاء المبنى",
+                            "type": "item",
+                            "url": "/lookup/purposeofconstructions",
+                            "exactMatch": true
+                        },
+                        {
+                            "id": "usebuildingpositions",
+                            "title": "موقف استخدام المبنى",
+                            "type": "item",
+                            "url": "/lookup/usebuildingpositions",
+                            "exactMatch": true
+                        },
+                        {
+                            "id": "landownerships",
+                            "title": "ملكية ارض",
+                            "type": "item",
+                            "url": "/lookup/landownerships",
+                            "exactMatch": true
+                        },
+                        {
+                            "id": "buildingownerships",
+                            "title": "ملكية مبني",
+                            "type": "item",
+                            "url": "/lookup/buildingownerships",
+                            "exactMatch": true
+                        },
+                        {
+                            "id": "fencestatuscodes",
+                            "title": "كود حالة السور",
+                            "type": "item",
+                            "url": "/lookup/fencestatuscodes",
+                            "exactMatch": true
+                        },
+                        {
+                            "id": "fencestatuses",
+                            "title": "حالة السور",
+                            "type": "item",
+                            "url": "/lookup/fencestatuses",
+                            "exactMatch": true
+                        },
+                        {
+                            "id": "constructionmaterials",
+                            "title": "مادة البناء",
+                            "type": "item",
+                            "url": "/lookup/constructionmaterials",
+                            "exactMatch": true
+                        },
+                        {
+                            "id": "effecttypecodes",
+                            "title": "كود نوع المؤثر\t",
+                            "type": "item",
+                            "url": "/lookup/effecttypecodes",
+                            "exactMatch": true
+                        },
+                        {
+                            "id": "classrooms",
+                            "title": "الصف الدراسي",
+                            "type": "item",
+                            "url": "/lookup/classrooms",
+                            "exactMatch": true
+                        },
+                        {
+                            "id": "pupilstypes",
+                            "title": "نوع التلاميذ",
+                            "type": "item",
+                            "url": "/lookup/pupilstypes",
+                            "exactMatch": true
+                        },
+                        {
+                            "id": "yesornos",
+                            "title": "نعم او لا",
+                            "type": "item",
+                            "url": "/lookup/yesornos",
+                            "exactMatch": true
+                        },
+                        {
+                            "id": "devicequalities",
+                            "title": "نوعيه الجهاز",
+                            "type": "item",
+                            "url": "/lookup/devicequalities",
+                            "exactMatch": true
+                        },
+                        {
+                            "id": "electricalconductivitycodes",
+                            "title": "كود التوصيل الكهربي",
+                            "type": "item",
+                            "url": "/lookup/electricalconductivitycodes",
+                            "exactMatch": true
+                        },
+                        {
+                            "id": "villages",
+                            "title": "قري",
+                            "type": "item",
+                            "url": "/lookup/villages",
+                            "exactMatch": true
+                        },
+                        {
+                            "id": "followers",
+                            "title": "تابع",
+                            "type": "item",
+                            "url": "/lookup/followers",
+                            "exactMatch": true
+                        },
+                        {
+                            "id": "usepositions",
+                            "title": "موقف الاستخدام",
+                            "type": "item",
+                            "url": "/lookup/usepositions",
+                            "exactMatch": true
+                        },
+                        {
+                            "id": "educationalneedattitudes",
+                            "title": "موقف الاحتياج التربوي",
+                            "type": "item",
+                            "url": "/lookup/educationalneedattitudes",
+                            "exactMatch": true
+                        },
+                        {
+                            "id": "positionareaneeds",
+                            "title": "موقف منطقة الاحتياج",
+                            "type": "item",
+                            "url": "/lookup/positionareaneeds",
+                            "exactMatch": true
+                        },
+                        {
+                            "id": "constructiontypes",
+                            "title": "انواع الانشاء",
+                            "type": "item",
+                            "url": "/lookup/constructiontypes",
+                            "exactMatch": true
+                        },
+                        {
+                            "id": "regionalcentercodes",
+                            "title": "كود المركز الاقليمي",
+                            "type": "item",
+                            "url": "/lookup/regionalcentercodes",
+                            "exactMatch": true
+                        },
+                        {
+                            "id": "branchcodes",
+                            "title": "كود الفرع",
+                            "type": "item",
+                            "url": "/lookup/branchcodes",
+                            "exactMatch": true
+                        },
+                        {
+                            "id": "regionadministrativeclassifications",
+                            "title": "التصنيف الاداري للمنطقة",
+                            "type": "item",
+                            "url": "/lookup/regionadministrativeclassifications",
+                            "exactMatch": true
+                        },
+                        {
+                            "id": "areas",
+                            "title": "مناطق",
+                            "type": "item",
+                            "url": "/lookup/areas",
+                            "exactMatch": true
+                        },
+                        {
+                            "id": "directioncodes",
+                            "title": "كود الاتجاه",
+                            "type": "item",
+                            "url": "/lookup/directioncodes",
+                            "exactMatch": true
+                        },
+                        {
+                            "id": "neighborstates",
+                            "title": "حاله الجار الملاصق",
+                            "type": "item",
+                            "url": "/lookup/neighborstates",
+                            "exactMatch": true
+                        },
+                        {
+                            "id": "closuretypes",
+                            "title": "نوع الاغلاق",
+                            "type": "item",
+                            "url": "/lookup/closuretypes",
+                            "exactMatch": true
+                        },
+                        {
+                            "id": "directionstatuscodes",
+                            "title": "كود حالة الطريق الرئيسي",
+                            "type": "item",
+                            "url": "/lookup/directionstatuscodes",
+                            "exactMatch": true
+                        },
+                        {
+                            "id": "documentcodes",
+                            "title": "أكواد المستندات",
+                            "type": "item",
+                            "url": "/lookup/documentcodes",
+                            "exactMatch": true
+                        },
+                        {
+                            "id": "centraldepartments",
+                            "title": "الادارات المركزية",
+                            "type": "item",
+                            "url": "/lookup/centraldepartments",
+                            "exactMatch": true
+                        }
+                    ]
+                },
+                {
+                    "id": " School branches Map Program",
+                    "title": "البرامج",
+                    "type": "collapsable",
+                    "icon": "apps",
+                    "children": [
+                        {
+                            "id": "Correction data spaces of the educational building CairoBranch",
+                            "title": " تصويب بيانات فراغات المبني التعليمي فرع القاهره",
+                            "type": "item",
+                            "url": "/school-branches-map/correction-data-spaces-of-the-educational-building-cairobranch",
+                            "exactMatch": true
+                        },
+                        {
+                            "id": "Registration of educational buildings used for general purposes",
+                            "title": "تسجيل المباني التعلميه  التي استخدمت ف اغراض عامه",
+                            "type": "item",
+                            "url": "/school-branches-map/registration-of-educational-buildings-used-for-general-purposes",
+                            "exactMatch": true
+                        },
+                        {
+                            "id": "Basic data of the educational building Cairo branch",
+                            "title": " بيانات الاساسيه للمبني التعليمي فرع القاهره",
+                            "type": "item",
+                            "url": "/school-branches-map/basic-data-of-the-educational-building-cairo-branch",
+                            "exactMatch": true
+                        },
+                        {
+                            "id": "Preparing students in classrooms",
+                            "title": " اعداد الطلبه بالصفوف الدراسيه",
+                            "type": "item",
+                            "url": "/school-branches-map/preparing-students-in-classrooms",
+                            "exactMatch": true
+                        },
+                        {
+                            "id": "Complete Titles Of Educational Buildings",
+                            "title": "استكمال عناوين مباني تعليمية",
+                            "type": "item",
+                            "url": "/school-branches-map/complete-titles-of-educational-buildings",
+                            "exactMatch": true
+                        },
+                        {
+                            "id": "Nutrition data for educational building",
+                            "title": " بيانات التغذيه للمبني التعليمي ",
+                            "type": "item",
+                            "url": "/school-branches-map/nutrition-data-for-educational-building",
+                            "exactMatch": true
+                        },
+                        {
+                            "id": "Gas appliances data",
+                            "title": " بيانات اجهزه الغاز",
+                            "type": "item",
+                            "url": "/school-branches-map/gas-appliances-data",
+                            "exactMatch": true
+                        },
+                        {
+                            "id": "Drainage data for the building",
+                            "title": " بيانات الصرف الصحي للميني",
+                            "type": "item",
+                            "url": "/school-branches-map/drainage-data-for-the-building",
+                            "exactMatch": true
+                        },
+                        {
+                            "id": "Electrical connections to the building",
+                            "title": "التوصيلات الكهربائيه للمبني",
+                            "type": "item",
+                            "url": "/school-branches-map/electrical-connections-to-the-building",
+                            "exactMatch": true
+                        },
+                        {
+                            "id": "incubation-program",
+                            "title": "برنامج ادخال الحضانات",
+                            "type": "item",
+                            "url": "/school-branches-map/incubation-program",
+                            "exactMatch": true
+                        },
+                        {
+                            "id": "removal restoration Data of closed buildings",
+                            "title": "ادخال بيانات ( الازاله / الترميم ) للمبانى المغلقه",
+                            "type": "item",
+                            "url": "/school-branches-map/removal-restoration-data-of-closed-buildings",
+                            "exactMatch": true
+                        },
+                        {
+                            "id": "Record the position of need to be removed",
+                            "title": "تسجيل موقف الاحتياج للازاله",
+                            "type": "item",
+                            "url": "/school-branches-map/record-the-position-of-need-to-be-removed",
+                            "exactMatch": true
+                        },
+                        {
+                            "id": "old plans before 97",
+                            "title": "97  الخطط القديمه قبل ",
+                            "type": "item",
+                            "url": "/school-branches-map/old-plans-before-97",
+                            "exactMatch": true
+                        },
+                        {
+                            "id": "Identification data for an administrative building",
+                            "title": "بيانات تعريفية لمبني اداري",
+                            "type": "item",
+                            "url": "/school-branches-map/identification-data-for-an-administrative-building",
+                            "exactMatch": true
+                        },
+                        {
+                            "id": "Basic data for the Youth Center",
+                            "title": "بيانات اساسيه لمركز الشباب",
+                            "type": "item",
+                            "url": "/school-branches-map/basic-data-for-the-youth-center",
+                            "exactMatch": true
+                        },
+                        {
+                            "id": "General location of an administrative building",
+                            "title": "الموقع العام لمبني اداري",
+                            "type": "item",
+                            "url": "/school-branches-map/general-location-of-an-administrative-building",
+                            "exactMatch": true
+                        },
+                        {
+                            "id": "Schools closed to nature",
+                            "title": "المدارس المغلقه على الطبيعه",
+                            "type": "item",
+                            "url": "/school-branches-map/schools-closed-to-nature",
+                            "exactMatch": true
+                        },
+                        {
+                            "id": "The main roads",
+                            "title": "الطرق الرئيسية",
+                            "type": "item",
+                            "url": "/school-branches-map/the-main-roads",
+                            "exactMatch": true
+                        },
+                        {
+                            "id": "Available land position",
+                            "title": "موقف الاراضى المتوفره",
+                            "type": "item",
+                            "url": "/school-branches-map/available-land-position",
+                            "exactMatch": true
+                        },
+                        {
+                            "id": "Linking codes schools with codes schools ministry",
+                            "title": "ربط اكواد مدارس الهيه باكواد مدارس الوزاره",
+                            "type": "item",
+                            "url": "/school-branches-map/linking-codes-schools-with-codes-schools-ministry",
+                            "exactMatch": true
+                        },
+                        {
+                            "id": "Number to create ID",
+                            "title": "شاشة ادخال الرقم لتخليق الرقم التعريفي",
+                            "type": "item",
+                            "url": "/school-branches-map/number-to-create-id",
+                            "exactMatch": true
+                        },
+                        {
+                            "id": "Plan Data Before 1997and1998",
+                            "title": "بيانات خطة ما قبل 1997/1998",
+                            "type": "item",
+                            "url": "/school-branches-map/plan-data-before-1997and1998",
+                            "exactMatch": true
+                        },
+                        {
+                            "id": "Data spaces of the educational building",
+                            "title": " بيانات فراغات المبني التعليمي",
+                            "type": "item",
+                            "url": "/school-branches-map/data-spaces-of-the-educational-building",
+                            "exactMatch": true
+                        }
+                    ]
+                },
+                {
+                    "id": " School branches Map Report",
+                    "title": "التقارير",
+                    "type": "collapsable",
+                    "icon": "assignment",
+                    "children": []
+                }
+            ]
+        }
+    ],
+    "assay--assay-list--authority-price-list": [
+        {
+            "id": "assay--assay-list--authority-price-list",
+            "title": "برنامج المقايسة - قائمة المقايسات - أعمال قائمة أسعار الهيئة",
+            "type": "group",
+            "icon": "app",
+            "children": [
+                {
+                    "id": "Assay  Assay List  Authority price list Config",
+                    "title": "الأعدادات",
+                    "type": "collapsable",
+                    "icon": "build",
+                    "children": [
+                        {
+                            "id": "worktypes",
+                            "title": "نوع العمل",
+                            "type": "item",
+                            "url": "/lookup/worktypes",
+                            "exactMatch": true
+                        },
+                        {
+                            "id": "modules",
+                            "title": "وحدات",
+                            "type": "item",
+                            "url": "/lookup/modules",
+                            "exactMatch": true
+                        },
+                        {
+                            "id": "materialtypes",
+                            "title": "نوع المادة",
+                            "type": "item",
+                            "url": "/lookup/materialtypes",
+                            "exactMatch": true
+                        }
+                    ]
+                },
+                {
+                    "id": "Assay  Assay List  Authority price list Program",
+                    "title": "البرامج",
+                    "type": "collapsable",
+                    "icon": "apps",
+                    "children": [
+                        {
+                            "id": "Assay item",
+                            "title": "بنود المقايسة",
+                            "type": "item",
+                            "url": "/assay--assay-list--authority-price-list/assay-item",
+                            "exactMatch": true
+                        },
+                        {
+                            "id": "Steel Price Cement on the price list",
+                            "title": "اسعار الحديد - الاسمنت على قائمة الاسعار",
+                            "type": "item",
+                            "url": "/assay--assay-list--authority-price-list/steel-price-cement-on-the-price-list",
+                            "exactMatch": true
+                        },
+                        {
+                            "id": "Assay Items Price",
+                            "title": "أسعار بنود المقايسة",
+                            "type": "item",
+                            "url": "/assay--assay-list--authority-price-list/assay-items-price",
+                            "exactMatch": true
+                        }
+                    ]
+                },
+                {
+                    "id": "Assay  Assay List  Authority price list Report",
+                    "title": "التقارير",
+                    "type": "collapsable",
+                    "icon": "assignment",
+                    "children": []
+                }
+            ]
+        }
+    ],
+    "assay--assay-list--building-models-work": [
+        {
+            "id": "assay--assay-list--building-models-work",
+            "title": "برنامج المقايسة - قائمة المقايسات - أعمال نماذج الأبنية",
+            "type": "group",
+            "icon": "app",
+            "children": [
+                {
+                    "id": "Assay  Assay List  Building models work Config",
+                    "title": "الأعدادات",
+                    "type": "collapsable",
+                    "icon": "build",
+                    "children": [
+                        {
+                            "id": "formtypes",
+                            "title": "نوع النموذج",
+                            "type": "item",
+                            "url": "/lookup/formtypes",
+                            "exactMatch": true
+                        },
+                        {
+                            "id": "educationallevels",
+                            "title": "المرحلة التعليمية",
+                            "type": "item",
+                            "url": "/lookup/educationallevels",
+                            "exactMatch": true
+                        },
+                        {
+                            "id": "educationalspaces",
+                            "title": "الفراغات التعليمية",
+                            "type": "item",
+                            "url": "/lookup/educationalspaces",
+                            "exactMatch": true
+                        }
+                    ]
+                },
+                {
+                    "id": "Assay  Assay List  Building models work Program",
+                    "title": "البرامج",
+                    "type": "collapsable",
+                    "icon": "apps",
+                    "children": [
+                        {
+                            "id": "Specify Model blank",
+                            "title": "تحديد فراغات النموذج",
+                            "type": "item",
+                            "url": "/assay--assay-list--building-models-work/specify-model-blank",
+                            "exactMatch": true
+                        }
+                    ]
+                },
+                {
+                    "id": "Assay  Assay List  Building models work Report",
+                    "title": "التقارير",
+                    "type": "collapsable",
+                    "icon": "assignment",
+                    "children": []
+                }
+            ]
+        }
+    ],
+    "building-inspection-and-validity-certificate": [
+        {
+            "id": "building-inspection-and-validity-certificate",
+            "title": "برنامج معاينة المبانى وشهادة الصلاحية",
+            "type": "group",
+            "icon": "app",
+            "children": [
+                {
+                    "id": "Building inspection and validity certificate Config",
+                    "title": "الأعدادات",
+                    "type": "collapsable",
+                    "icon": "build",
+                    "children": [
+                        {
+                            "id": "sectionsorcenters",
+                            "title": "مركز/القسم‎",
+                            "type": "item",
+                            "url": "/lookup/sectionsorcenters",
+                            "exactMatch": true
+                        },
+                        {
+                            "id": "villages",
+                            "title": "قري",
+                            "type": "item",
+                            "url": "/lookup/villages",
+                            "exactMatch": true
+                        },
+                        {
+                            "id": "areas",
+                            "title": "مناطق",
+                            "type": "item",
+                            "url": "/lookup/areas",
+                            "exactMatch": true
+                        },
+                        {
+                            "id": "adjectives",
+                            "title": "صفته",
+                            "type": "item",
+                            "url": "/lookup/adjectives",
+                            "exactMatch": true
+                        },
+                        {
+                            "id": "elements",
+                            "title": "العنصر",
+                            "type": "item",
+                            "url": "/lookup/elements",
+                            "exactMatch": true
+                        },
+                        {
+                            "id": "validitypositions",
+                            "title": "موقف الصلاحية",
+                            "type": "item",
+                            "url": "/lookup/validitypositions",
+                            "exactMatch": true
+                        },
+                        {
+                            "id": "educationvalidities",
+                            "title": "صلاحية المدرسة للعملية التعليميه",
+                            "type": "item",
+                            "url": "/lookup/educationvalidities",
+                            "exactMatch": true
+                        },
+                        {
+                            "id": "statementtypes",
+                            "title": "نوع المعاينة",
+                            "type": "item",
+                            "url": "/lookup/statementtypes",
+                            "exactMatch": true
+                        }
+                    ]
+                },
+                {
+                    "id": "Building inspection and validity certificate Program",
+                    "title": "البرامج",
+                    "type": "collapsable",
+                    "icon": "apps",
+                    "children": [
+                        {
+                            "id": "Record the inspection date in the technical report",
+                            "title": "تسجيل تاريخ المعاينه فى التقرير الفنى",
+                            "type": "item",
+                            "url": "/building-inspection-and-validity-certificate/record-the-inspection-date-in-the-technical-report",
+                            "exactMatch": true
+                        },
+                        {
+                            "id": "Record the expectations of the inspectors",
+                            "title": "تسجيل توقعات المسئولين عن المعاينة فى التقرير الفنى",
+                            "type": "item",
+                            "url": "/building-inspection-and-validity-certificate/record-the-expectations-of-the-inspectors",
+                            "exactMatch": true
+                        },
+                        {
+                            "id": "Report on the resistance of reinforced concrete",
+                            "title": "تقرير فنى عن مقاومة الخرسانة المسلحة للضغط باستخدام مطرقة الارتداد",
+                            "type": "item",
+                            "url": "/building-inspection-and-validity-certificate/report-on-the-resistance-of-reinforced-concrete",
+                            "exactMatch": true
+                        },
+                        {
+                            "id": "Examination and other test",
+                            "title": "الفحص والاختبارات الاخرى",
+                            "type": "item",
+                            "url": "/building-inspection-and-validity-certificate/examination-and-other-test",
+                            "exactMatch": true
+                        },
+                        {
+                            "id": "Technical opinion of consultant",
+                            "title": "الراى الفني للاستشارين",
+                            "type": "item",
+                            "url": "/building-inspection-and-validity-certificate/technical-opinion-of-consultant",
+                            "exactMatch": true
+                        },
+                        {
+                            "id": "Decision of the Director of the Commission",
+                            "title": "قرار مدير الهيئه",
+                            "type": "item",
+                            "url": "/building-inspection-and-validity-certificate/decision-of-the-director-of-the-commission",
+                            "exactMatch": true
+                        },
+                        {
+                            "id": "Summary of Technical Report",
+                            "title": "خلاصة التقرير الفنى",
+                            "type": "item",
+                            "url": "/building-inspection-and-validity-certificate/summary-of-technical-report",
+                            "exactMatch": true
+                        },
+                        {
+                            "id": "Building Validity Certificate",
+                            "title": "شهادة صلاحية المبنى",
+                            "type": "item",
+                            "url": "/building-inspection-and-validity-certificate/building-validity-certificate",
+                            "exactMatch": true
+                        },
+                        {
+                            "id": "Comment on photos and building drawing",
+                            "title": "التعليق على صور ورسوم المبنى",
+                            "type": "item",
+                            "url": "/building-inspection-and-validity-certificate/comment-on-photos-and-building-drawing",
+                            "exactMatch": true
+                        }
+                    ]
+                },
+                {
+                    "id": "Building inspection and validity certificate Report",
+                    "title": "التقارير",
+                    "type": "collapsable",
+                    "icon": "assignment",
+                    "children": []
+                }
+            ]
+        }
+    ],
+    "assay--assay-list--building-assay": [
+        {
+            "id": "assay--assay-list--building-assay",
+            "title": "برنامج المقايسة - قائمة المقايسات - أعمال مقايسات الأبنية",
+            "type": "group",
+            "icon": "app",
+            "children": [
+                {
+                    "id": "Assay  Assay List  Building Assay Config",
+                    "title": "الأعدادات",
+                    "type": "collapsable",
+                    "icon": "build",
+                    "children": [
+                        {
+                            "id": "constructiontypes",
+                            "title": "انواع الانشاء",
+                            "type": "item",
+                            "url": "/lookup/constructiontypes",
+                            "exactMatch": true
+                        },
+                        {
+                            "id": "foundationtypes",
+                            "title": "نوع الاساس",
+                            "type": "item",
+                            "url": "/lookup/foundationtypes",
+                            "exactMatch": true
+                        }
+                    ]
+                },
+                {
+                    "id": "Assay  Assay List  Building Assay Program",
+                    "title": "البرامج",
+                    "type": "collapsable",
+                    "icon": "apps",
+                    "children": [
+                        {
+                            "id": "Schedule Implementation Data Assay Project",
+                            "title": "بيانات الجدول الزمني للتنفيذ - مقايسة المشروع",
+                            "type": "item",
+                            "url": "/assay--assay-list--building-assay/schedule-implementation-data-assay-project",
+                            "exactMatch": true
+                        }
+                    ]
+                },
+                {
+                    "id": "Assay  Assay List  Building Assay Report",
+                    "title": "التقارير",
+                    "type": "collapsable",
+                    "icon": "assignment",
+                    "children": []
+                }
+            ]
+        }
+    ],
 
 };
 
