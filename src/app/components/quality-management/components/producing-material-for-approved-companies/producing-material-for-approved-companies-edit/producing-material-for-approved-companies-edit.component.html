@@ -1,0 +1,64 @@
+
+<mat-card>
+    <mat-card-header>
+        <mat-card-title>الماده  المنتجة للشركات المعتمدة</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+        <form [formGroup]="producingMaterialForApprovedCompaniesForm" class="form-container">
+          
+
+	<mat-form-field appearance="outline">
+	 <mat-label>كود الشركة</mat-label>
+	 <input matInput formControlName="companyCode"/>
+	 <mat-error *ngIf = "getControls('companyCode').invalid" >
+	  {{ getControls('companyCode')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>كود المادة الاساسية</mat-label>
+	 <input matInput formControlName="mainMaterialCode"/>
+	 <mat-error *ngIf = "getControls('mainMaterialCode').invalid" >
+	  {{ getControls('mainMaterialCode')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>كود المادة الفرعية</mat-label>
+	 <input matInput formControlName="subMaterialCode"/>
+	 <mat-error *ngIf = "getControls('subMaterialCode').invalid" >
+	  {{ getControls('subMaterialCode')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>اسم المادة الفرعية</mat-label>
+	 <input matInput formControlName="subMaterialName" [disableControl]="true" />
+	 <mat-error *ngIf = "getControls('subMaterialName').invalid" >
+	  {{ getControls('subMaterialName')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+          
+
+        </form>
+    </mat-card-content>
+
+    <mat-divider></mat-divider>
+
+	<mat-card-actions>
+			<form [formGroup]="attachmentForm" class="form-container">
+                <app-multi-file-upload [service] = "producingMaterialForApprovedCompaniesService" [id]="producingMaterialForApprovedCompaniesForm.get('id').value"
+                    formControlName = "attachmentFiles">
+                </app-multi-file-upload>
+            </form>
+            <button
+                color = "primary"
+                type = "submit"
+                (click) = "onSubmit()"
+                [disabled] = "producingMaterialForApprovedCompaniesForm.invalid"
+                mat-raised-button>
+                حفظ
+            </button>
+    </mat-card-actions>
+</mat-card>
+

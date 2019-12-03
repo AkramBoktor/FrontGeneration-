@@ -1,0 +1,257 @@
+
+<mat-card class="form-card">
+      <mat-card-header>
+  
+          <mat-card-title>
+              بيانات القيام باجازه خاصه للموظف
+          </mat-card-title>
+  
+      </mat-card-header>
+  
+      <mat-card-content>
+  
+        <form [formGroup] = "dataToTakeSpecialLeaveForEmployeeAForm" class="form-container">
+         
+
+	<mat-form-field appearance="outline">
+	 <mat-label>كود الموظف</mat-label>
+	 <input matInput formControlName="employeeCode"/>
+	 <mat-error *ngIf = "getControls('employeeCode').invalid" >
+	  {{ getControls('employeeCode')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>تاريخ الاشترك</mat-label>
+	 <input matInput
+	 [disableControl]="true" 
+	  [matDatepicker] = "subscriptionDateDatepicker"
+	  autocomplete = "off"
+	  formControlName= "subscriptionDate"/>
+	 <mat-datepicker-toggle
+	   matSuffix
+	   [for]="subscriptionDateDatepicker"
+	 ></mat-datepicker-toggle>
+	 <mat-datepicker #subscriptionDateDatepicker></mat-datepicker>
+	 <mat-error *ngIf = "getControls('subscriptionDate').invalid" >
+	  {{ getControls('subscriptionDate')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>رقم عضويه</mat-label>
+	 <input matInput formControlName="membershipNumber" [disableControl]="true" />
+	 <mat-error *ngIf = "getControls('membershipNumber').invalid" >
+	  {{ getControls('membershipNumber')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>تاريخ بداية الاجازة</mat-label>
+	 <input matInput
+	  [matDatepicker] = "vacationStartDateDatepicker"
+	  autocomplete = "off"
+	  formControlName= "vacationStartDate"/>
+	 <mat-datepicker-toggle
+	   matSuffix
+	   [for]="vacationStartDateDatepicker"
+	 ></mat-datepicker-toggle>
+	 <mat-datepicker #vacationStartDateDatepicker></mat-datepicker>
+	 <mat-error *ngIf = "getControls('vacationStartDate').invalid" >
+	  {{ getControls('vacationStartDate')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>تاريخ نهاية الاجازة</mat-label>
+	 <input matInput
+	  [matDatepicker] = "vacationEndDateDatepicker"
+	  autocomplete = "off"
+	  formControlName= "vacationEndDate"/>
+	 <mat-datepicker-toggle
+	   matSuffix
+	   [for]="vacationEndDateDatepicker"
+	 ></mat-datepicker-toggle>
+	 <mat-datepicker #vacationEndDateDatepicker></mat-datepicker>
+	 <mat-error *ngIf = "getControls('vacationEndDate').invalid" >
+	  {{ getControls('vacationEndDate')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline" *ngIf="benefitsAmountIsVisible">
+	 <mat-label>قيمة الفوائد</mat-label>
+	 <input matInput formControlName="benefitsAmount"/>
+	 <mat-error *ngIf = "getControls('benefitsAmount').invalid" >
+	  {{ getControls('benefitsAmount')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>قيمة المصروف</mat-label>
+	 <input matInput formControlName="expenseAmount"/>
+	 <mat-error *ngIf = "getControls('expenseAmount').invalid" >
+	  {{ getControls('expenseAmount')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>رقم امر تنفيذي</mat-label>
+	 <input matInput formControlName="executiveOrderNumber"/>
+	 <mat-error *ngIf = "getControls('executiveOrderNumber').invalid" >
+	  {{ getControls('executiveOrderNumber')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>تاريخ الامر التنفيذي</mat-label>
+	 <input matInput
+	  [matDatepicker] = "executiveOrderDateDatepicker"
+	  autocomplete = "off"
+	  formControlName= "executiveOrderDate"/>
+	 <mat-datepicker-toggle
+	   matSuffix
+	   [for]="executiveOrderDateDatepicker"
+	 ></mat-datepicker-toggle>
+	 <mat-datepicker #executiveOrderDateDatepicker></mat-datepicker>
+	 <mat-error *ngIf = "getControls('executiveOrderDate').invalid" >
+	  {{ getControls('executiveOrderDate')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>رقم الايصال</mat-label>
+	 <input matInput formControlName="receiptNumber"/>
+	 <mat-error *ngIf = "getControls('receiptNumber').invalid" >
+	  {{ getControls('receiptNumber')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>تاريخ الايصال</mat-label>
+	 <input matInput
+	  [matDatepicker] = "receiptDateDatepicker"
+	  autocomplete = "off"
+	  formControlName= "receiptDate"/>
+	 <mat-datepicker-toggle
+	   matSuffix
+	   [for]="receiptDateDatepicker"
+	 ></mat-datepicker-toggle>
+	 <mat-datepicker #receiptDateDatepicker></mat-datepicker>
+	 <mat-error *ngIf = "getControls('receiptDate').invalid" >
+	  {{ getControls('receiptDate')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>غرامه تاخير</mat-label>
+	 <input matInput formControlName="delayPenalty"/>
+	 <mat-error *ngIf = "getControls('delayPenalty').invalid" >
+	  {{ getControls('delayPenalty')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>القيمة الاجمالية</mat-label>
+	 <input matInput formControlName="totalAmount" [disableControl]="true" />
+	 <mat-error *ngIf = "getControls('totalAmount').invalid" >
+	  {{ getControls('totalAmount')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>ألمده من</mat-label>
+	 <input matInput
+	  [matDatepicker] = "durationFromDatepicker"
+	  autocomplete = "off"
+	  formControlName= "durationFrom"/>
+	 <mat-datepicker-toggle
+	   matSuffix
+	   [for]="durationFromDatepicker"
+	 ></mat-datepicker-toggle>
+	 <mat-datepicker #durationFromDatepicker></mat-datepicker>
+	 <mat-error *ngIf = "getControls('durationFrom').invalid" >
+	  {{ getControls('durationFrom')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>المده الى</mat-label>
+	 <input matInput
+	  [matDatepicker] = "durationToDatepicker"
+	  autocomplete = "off"
+	  formControlName= "durationTo"/>
+	 <mat-datepicker-toggle
+	   matSuffix
+	   [for]="durationToDatepicker"
+	 ></mat-datepicker-toggle>
+	 <mat-datepicker #durationToDatepicker></mat-datepicker>
+	 <mat-error *ngIf = "getControls('durationTo').invalid" >
+	  {{ getControls('durationTo')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>المرتب</mat-label>
+	 <input matInput formControlName="salary" [disableControl]="true" />
+	 <mat-error *ngIf = "getControls('salary').invalid" >
+	  {{ getControls('salary')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>علاوات</mat-label>
+	 <input matInput formControlName="bonuses"/>
+	 <mat-error *ngIf = "getControls('bonuses').invalid" >
+	  {{ getControls('bonuses')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>مبلغ مطلوب</mat-label>
+	 <input matInput formControlName="requiredAmount"/>
+	 <mat-error *ngIf = "getControls('requiredAmount').invalid" >
+	  {{ getControls('requiredAmount')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+         
+
+	<app-material-select appearance="outline" [disabled]="true" 
+	  #employeeStatus 
+	  [options] = "employeeStatusSelectOptions"
+	  formControlName = "employeeStatus"
+	></app-material-select>
+
+	<app-material-select appearance="outline" [disabled]="true" 
+	  #administrationCode 
+	  [options] = "administrationCodeSelectOptions"
+	  formControlName = "administrationCode"
+	></app-material-select>
+
+	<app-material-select appearance="outline" [disabled]="true" 
+	  #subscriptionStatus 
+	  [options] = "subscriptionStatusSelectOptions"
+	  formControlName = "subscriptionStatus"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #vacationType 
+	  [options] = "vacationTypeSelectOptions"
+	  formControlName = "vacationType"
+	></app-material-select>
+        </form>
+  
+      </mat-card-content >
+  
+      <mat-action-row>
+            <form [formGroup]="attachmentForm" class="form-container">
+                <app-multi-file-upload [service] = "dataToTakeSpecialLeaveForEmployeeAService" [id]="dataToTakeSpecialLeaveForEmployeeAForm.get('id').value"
+                    formControlName = "attachmentFiles">
+                </app-multi-file-upload>
+            </form>
+            <button (click) = "onConfirm()" mat-raised-button color = "primary" >
+                غلق
+            </button>
+        </mat-action-row>
+    </mat-card>
+
+    

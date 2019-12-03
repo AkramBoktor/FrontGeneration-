@@ -1,0 +1,50 @@
+
+<app-new-form-layout
+    dir="rtl"
+    (submitClicked) = "onSubmit()"
+    (back) = "onBack()"
+    [pageTitle] = "'كود العنصر الانشائي'"
+>
+    <ng-template newFormContainer >
+        <form [formGroup] = "structuralComponentCodeForm">
+         
+
+	<mat-form-field appearance="outline">
+	 <mat-label>كود العنصر</mat-label>
+	 <input matInput formControlName="elementCode"/>
+	 <mat-error *ngIf = "getControls('elementCode').invalid" >
+	  {{ getControls('elementCode')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>اسم العنصر الانشائي</mat-label>
+	 <input matInput formControlName="structuralElementName"/>
+	 <mat-error *ngIf = "getControls('structuralElementName').invalid" >
+	  {{ getControls('structuralElementName')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+         
+
+        </form>
+
+        <mat-divider></mat-divider>
+
+		<mat-card-actions>
+			<form [formGroup]="attachmentForm" class="form-container">
+                <app-multi-file-upload [service] = "structuralComponentCodeService" [id]="structuralComponentCodeForm.get('id').value"
+                    formControlName = "attachmentFiles">
+                </app-multi-file-upload>
+            </form>
+            <button
+                type="submit"
+                (click)="onSubmit()"
+                [disabled]="structuralComponentCodeForm.invalid"
+                mat-raised-button
+                color = "primary">
+             حفظ
+            </button>
+        </mat-card-actions>
+    </ng-template >
+</app-new-form-layout >
+

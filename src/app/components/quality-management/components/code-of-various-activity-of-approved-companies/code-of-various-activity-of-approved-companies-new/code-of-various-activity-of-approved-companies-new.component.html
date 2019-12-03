@@ -1,0 +1,50 @@
+
+<app-new-form-layout
+    dir="rtl"
+    (submitClicked) = "onSubmit()"
+    (back) = "onBack()"
+    [pageTitle] = "'كود النشاط المختلف للشركات المعتمده'"
+>
+    <ng-template newFormContainer >
+        <form [formGroup] = "codeOfVariousActivityOfApprovedCompaniesForm">
+         
+
+	<mat-form-field appearance="outline">
+	 <mat-label>كود النشاط</mat-label>
+	 <input matInput formControlName="activityCode"/>
+	 <mat-error *ngIf = "getControls('activityCode').invalid" >
+	  {{ getControls('activityCode')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>مسمي النشاط</mat-label>
+	 <input matInput formControlName="activityName"/>
+	 <mat-error *ngIf = "getControls('activityName').invalid" >
+	  {{ getControls('activityName')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+         
+
+        </form>
+
+        <mat-divider></mat-divider>
+
+		<mat-card-actions>
+			<form [formGroup]="attachmentForm" class="form-container">
+                <app-multi-file-upload [service] = "codeOfVariousActivityOfApprovedCompaniesService" [id]="codeOfVariousActivityOfApprovedCompaniesForm.get('id').value"
+                    formControlName = "attachmentFiles">
+                </app-multi-file-upload>
+            </form>
+            <button
+                type="submit"
+                (click)="onSubmit()"
+                [disabled]="codeOfVariousActivityOfApprovedCompaniesForm.invalid"
+                mat-raised-button
+                color = "primary">
+             حفظ
+            </button>
+        </mat-card-actions>
+    </ng-template >
+</app-new-form-layout >
+

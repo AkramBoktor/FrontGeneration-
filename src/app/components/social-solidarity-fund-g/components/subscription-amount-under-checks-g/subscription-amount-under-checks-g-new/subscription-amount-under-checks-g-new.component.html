@@ -1,0 +1,149 @@
+
+<app-new-form-layout
+    dir="rtl"
+    (submitClicked) = "onSubmit()"
+    (back) = "onBack()"
+    [pageTitle] = "'مبلغ اشتراك بموجب الشيكات '"
+>
+    <ng-template newFormContainer >
+        <form [formGroup] = "subscriptionAmountUnderChecksGForm">
+         
+
+	<mat-form-field appearance="outline">
+	 <mat-label>كود الموظف</mat-label>
+	 <input matInput formControlName="employeeCode"/>
+	 <mat-error *ngIf = "getControls('employeeCode').invalid" >
+	  {{ getControls('employeeCode')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>رقم العضويه</mat-label>
+	 <input matInput formControlName="membershipNumber" [disableControl]="true" />
+	 <mat-error *ngIf = "getControls('membershipNumber').invalid" >
+	  {{ getControls('membershipNumber')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>تاريخ بدايه الفتره</mat-label>
+	 <input matInput
+	  [matDatepicker] = "periodStartDateDatepicker"
+	  autocomplete = "off"
+	  formControlName= "periodStartDate"/>
+	 <mat-datepicker-toggle
+	   matSuffix
+	   [for]="periodStartDateDatepicker"
+	 ></mat-datepicker-toggle>
+	 <mat-datepicker #periodStartDateDatepicker></mat-datepicker>
+	 <mat-error *ngIf = "getControls('periodStartDate').invalid" >
+	  {{ getControls('periodStartDate')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>تاريخ العضويه</mat-label>
+	 <input matInput
+	 [disableControl]="true" 
+	  [matDatepicker] = "membershipDateDatepicker"
+	  autocomplete = "off"
+	  formControlName= "membershipDate"/>
+	 <mat-datepicker-toggle
+	   matSuffix
+	   [for]="membershipDateDatepicker"
+	 ></mat-datepicker-toggle>
+	 <mat-datepicker #membershipDateDatepicker></mat-datepicker>
+	 <mat-error *ngIf = "getControls('membershipDate').invalid" >
+	  {{ getControls('membershipDate')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>تاريخ نهايه الفتره</mat-label>
+	 <input matInput
+	  [matDatepicker] = "periodEndDateDatepicker"
+	  autocomplete = "off"
+	  formControlName= "periodEndDate"/>
+	 <mat-datepicker-toggle
+	   matSuffix
+	   [for]="periodEndDateDatepicker"
+	 ></mat-datepicker-toggle>
+	 <mat-datepicker #periodEndDateDatepicker></mat-datepicker>
+	 <mat-error *ngIf = "getControls('periodEndDate').invalid" >
+	  {{ getControls('periodEndDate')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>رقم الشيك</mat-label>
+	 <input matInput formControlName="checkNumber"/>
+	 <mat-error *ngIf = "getControls('checkNumber').invalid" >
+	  {{ getControls('checkNumber')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>تاريخ الشيك</mat-label>
+	 <input matInput
+	  [matDatepicker] = "checkDateDatepicker"
+	  autocomplete = "off"
+	  formControlName= "checkDate"/>
+	 <mat-datepicker-toggle
+	   matSuffix
+	   [for]="checkDateDatepicker"
+	 ></mat-datepicker-toggle>
+	 <mat-datepicker #checkDateDatepicker></mat-datepicker>
+	 <mat-error *ngIf = "getControls('checkDate').invalid" >
+	  {{ getControls('checkDate')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>قيمه المبلغ</mat-label>
+	 <input matInput formControlName="amountValue"/>
+	 <mat-error *ngIf = "getControls('amountValue').invalid" >
+	  {{ getControls('amountValue')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+         
+
+	<app-material-select appearance="outline" [disabled]="true" 
+	  #administrationCode 
+	  [options] = "administrationCodeSelectOptions"
+	  formControlName = "administrationCode"
+	></app-material-select>
+
+	<app-material-select appearance="outline" [disabled]="true" 
+	  #employeeStatus 
+	  [options] = "employeeStatusSelectOptions"
+	  formControlName = "employeeStatus"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #issuer 
+	  [options] = "issuerSelectOptions"
+	  formControlName = "issuer"
+	></app-material-select>
+
+        </form>
+
+        <mat-divider></mat-divider>
+
+		<mat-card-actions>
+			<form [formGroup]="attachmentForm" class="form-container">
+                <app-multi-file-upload [service] = "subscriptionAmountUnderChecksGService" [id]="subscriptionAmountUnderChecksGForm.get('id').value"
+                    formControlName = "attachmentFiles">
+                </app-multi-file-upload>
+            </form>
+            <button
+                type="submit"
+                (click)="onSubmit()"
+                [disabled]="subscriptionAmountUnderChecksGForm.invalid"
+                mat-raised-button
+                color = "primary">
+             حفظ
+            </button>
+        </mat-card-actions>
+    </ng-template >
+</app-new-form-layout >
+

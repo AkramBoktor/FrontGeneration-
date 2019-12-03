@@ -1,0 +1,116 @@
+
+<mat-card>
+    <mat-card-header>
+        <mat-card-title>اضافه  تنفيذ صيانه تكييف</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+        <form [formGroup]="addTheImplementationOfAirConditioningMaintenanceForm" class="form-container">
+          
+
+	<mat-form-field appearance="outline">
+	 <mat-label>الفتره</mat-label>
+	 <input matInput
+	  [matDatepicker] = "periodDatepicker"
+	  autocomplete = "off"
+	  formControlName= "period"/>
+	 <mat-datepicker-toggle
+	   matSuffix
+	   [for]="periodDatepicker"
+	 ></mat-datepicker-toggle>
+	 <mat-datepicker #periodDatepicker></mat-datepicker>
+	 <mat-error *ngIf = "getControls('period').invalid" >
+	  {{ getControls('period')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>القائم بالصيانه</mat-label>
+	 <input matInput formControlName="maintainer"/>
+	 <mat-error *ngIf = "getControls('maintainer').invalid" >
+	  {{ getControls('maintainer')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>المبنى</mat-label>
+	 <input matInput formControlName="building"/>
+	 <mat-error *ngIf = "getControls('building').invalid" >
+	  {{ getControls('building')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>رقمه</mat-label>
+	 <input matInput formControlName="code"/>
+	 <mat-error *ngIf = "getControls('code').invalid" >
+	  {{ getControls('code')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>تاريخ المخطط</mat-label>
+	 <input matInput
+	  [matDatepicker] = "plannedDateDatepicker"
+	  autocomplete = "off"
+	  formControlName= "plannedDate"/>
+	 <mat-datepicker-toggle
+	   matSuffix
+	   [for]="plannedDateDatepicker"
+	 ></mat-datepicker-toggle>
+	 <mat-datepicker #plannedDateDatepicker></mat-datepicker>
+	 <mat-error *ngIf = "getControls('plannedDate').invalid" >
+	  {{ getControls('plannedDate')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>تاريخ فعلى</mat-label>
+	 <input matInput
+	  [matDatepicker] = "actualDateDatepicker"
+	  autocomplete = "off"
+	  formControlName= "actualDate"/>
+	 <mat-datepicker-toggle
+	   matSuffix
+	   [for]="actualDateDatepicker"
+	 ></mat-datepicker-toggle>
+	 <mat-datepicker #actualDateDatepicker></mat-datepicker>
+	 <mat-error *ngIf = "getControls('actualDate').invalid" >
+	  {{ getControls('actualDate')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+          
+
+	<app-material-select appearance="outline"
+	  #region 
+	  [options] = "regionSelectOptions"
+	  formControlName = "region"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #laboratoryType 
+	  [options] = "laboratoryTypeSelectOptions"
+	  formControlName = "laboratoryType"
+	></app-material-select>
+
+        </form>
+    </mat-card-content>
+
+    <mat-divider></mat-divider>
+
+	<mat-card-actions>
+			<form [formGroup]="attachmentForm" class="form-container">
+                <app-multi-file-upload [service] = "addTheImplementationOfAirConditioningMaintenanceService" [id]="addTheImplementationOfAirConditioningMaintenanceForm.get('id').value"
+                    formControlName = "attachmentFiles">
+                </app-multi-file-upload>
+            </form>
+            <button
+                color = "primary"
+                type = "submit"
+                (click) = "onSubmit()"
+                [disabled] = "addTheImplementationOfAirConditioningMaintenanceForm.invalid"
+                mat-raised-button>
+                حفظ
+            </button>
+    </mat-card-actions>
+</mat-card>
+

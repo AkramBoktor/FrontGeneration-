@@ -1,0 +1,76 @@
+
+<mat-card>
+    <mat-card-header>
+        <mat-card-title>فراغات المعامل التي لم تصل لها اجهزة</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+        <form [formGroup]="laboratorySpaceForm" class="form-container">
+          
+
+	<mat-form-field appearance="outline">
+	 <mat-label>اسم الفراغ</mat-label>
+	 <input matInput formControlName="spaceName"/>
+	 <mat-error *ngIf = "getControls('spaceName').invalid" >
+	  {{ getControls('spaceName')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>رقم الملحق</mat-label>
+	 <input matInput formControlName="annexNumber"/>
+	 <mat-error *ngIf = "getControls('annexNumber').invalid" >
+	  {{ getControls('annexNumber')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>رقم الدور</mat-label>
+	 <input matInput formControlName="floorNumber"/>
+	 <mat-error *ngIf = "getControls('floorNumber').invalid" >
+	  {{ getControls('floorNumber')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>مسلسل الفراغ</mat-label>
+	 <input matInput formControlName="spaceSeries"/>
+	 <mat-error *ngIf = "getControls('spaceSeries').invalid" >
+	  {{ getControls('spaceSeries')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+          
+
+	<app-material-select appearance="outline"
+	  #spaceCode 
+	  [options] = "spaceCodeSelectOptions"
+	  formControlName = "spaceCode"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #spaceNotConnectedToDevices 
+	  [options] = "spaceNotConnectedToDevicesSelectOptions"
+	  formControlName = "spaceNotConnectedToDevices"
+	></app-material-select>
+
+        </form>
+    </mat-card-content>
+
+    <mat-divider></mat-divider>
+
+	<mat-card-actions>
+			<form [formGroup]="attachmentForm" class="form-container">
+                <app-multi-file-upload [service] = "laboratorySpaceService" [id]="laboratorySpaceForm.get('id').value"
+                    formControlName = "attachmentFiles">
+                </app-multi-file-upload>
+            </form>
+            <button
+                color = "primary"
+                type = "submit"
+                (click) = "onSubmit()"
+                [disabled] = "laboratorySpaceForm.invalid"
+                mat-raised-button>
+                حفظ
+            </button>
+    </mat-card-actions>
+</mat-card>
+

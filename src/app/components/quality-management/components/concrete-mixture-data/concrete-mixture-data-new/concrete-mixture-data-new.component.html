@@ -1,0 +1,220 @@
+
+<app-new-form-layout
+    dir="rtl"
+    (submitClicked) = "onSubmit()"
+    (back) = "onBack()"
+    [pageTitle] = "'بيانات الخلطة الخرسانية'"
+>
+    <ng-template newFormContainer >
+        <form [formGroup] = "concreteMixtureDataForm">
+         
+
+	<mat-form-field appearance="outline">
+	 <mat-label>رقم الطلب</mat-label>
+	 <input matInput formControlName="orderNumber"/>
+	 <mat-error *ngIf = "getControls('orderNumber').invalid" >
+	  {{ getControls('orderNumber')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>اسمنت بالوزن</mat-label>
+	 <input matInput formControlName="cementWeight"/>
+	 <mat-error *ngIf = "getControls('cementWeight').invalid" >
+	  {{ getControls('cementWeight')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>اسمنت بالحجم</mat-label>
+	 <input matInput formControlName="cementBulk"/>
+	 <mat-error *ngIf = "getControls('cementBulk').invalid" >
+	  {{ getControls('cementBulk')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>مياه بالوزن</mat-label>
+	 <input matInput formControlName="waterWeight"/>
+	 <mat-error *ngIf = "getControls('waterWeight').invalid" >
+	  {{ getControls('waterWeight')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>مياه بالحجم</mat-label>
+	 <input matInput formControlName="waterVolume"/>
+	 <mat-error *ngIf = "getControls('waterVolume').invalid" >
+	  {{ getControls('waterVolume')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>رمل بالوزن</mat-label>
+	 <input matInput formControlName="sandWeight"/>
+	 <mat-error *ngIf = "getControls('sandWeight').invalid" >
+	  {{ getControls('sandWeight')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>رمل بالحجم</mat-label>
+	 <input matInput formControlName="sandVolume"/>
+	 <mat-error *ngIf = "getControls('sandVolume').invalid" >
+	  {{ getControls('sandVolume')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>زلط متدرج بالوزن</mat-label>
+	 <input matInput formControlName="stonesWeight"/>
+	 <mat-error *ngIf = "getControls('stonesWeight').invalid" >
+	  {{ getControls('stonesWeight')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>زلط متدرج بالحجم</mat-label>
+	 <input matInput formControlName="stonesVolume"/>
+	 <mat-error *ngIf = "getControls('stonesVolume').invalid" >
+	  {{ getControls('stonesVolume')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>دلوميت بالوزن</mat-label>
+	 <input matInput formControlName="dolomiteWeight"/>
+	 <mat-error *ngIf = "getControls('dolomiteWeight').invalid" >
+	  {{ getControls('dolomiteWeight')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>دلوميت بالحجم</mat-label>
+	 <input matInput formControlName="dolomiteVolume"/>
+	 <mat-error *ngIf = "getControls('dolomiteVolume').invalid" >
+	  {{ getControls('dolomiteVolume')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>الوزن النوعي للرمل</mat-label>
+	 <input matInput formControlName="sandSpecificWeight"/>
+	 <mat-error *ngIf = "getControls('sandSpecificWeight').invalid" >
+	  {{ getControls('sandSpecificWeight')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>الوزن النوعي للزلط</mat-label>
+	 <input matInput formControlName="stonesSpecificWeight"/>
+	 <mat-error *ngIf = "getControls('stonesSpecificWeight').invalid" >
+	  {{ getControls('stonesSpecificWeight')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>الوزن النوعي للدلوميت</mat-label>
+	 <input matInput formControlName="dolomiteSpecificWeight"/>
+	 <mat-error *ngIf = "getControls('dolomiteSpecificWeight').invalid" >
+	  {{ getControls('dolomiteSpecificWeight')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>الوزن النوعي للركام الخليط</mat-label>
+	 <input matInput formControlName="aggregatesSpecificWeight"/>
+	 <mat-error *ngIf = "getControls('aggregatesSpecificWeight').invalid" >
+	  {{ getControls('aggregatesSpecificWeight')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>الهبوط بالمعمل</mat-label>
+	 <input matInput formControlName="laboratoryLanding"/>
+	 <mat-error *ngIf = "getControls('laboratoryLanding').invalid" >
+	  {{ getControls('laboratoryLanding')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>الوزن الحجمي للرمل</mat-label>
+	 <input matInput formControlName="sandWeightVolume"/>
+	 <mat-error *ngIf = "getControls('sandWeightVolume').invalid" >
+	  {{ getControls('sandWeightVolume')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>الوزن الحجمي للدلوميت</mat-label>
+	 <input matInput formControlName="dolomiteWeightVolume"/>
+	 <mat-error *ngIf = "getControls('dolomiteWeightVolume').invalid" >
+	  {{ getControls('dolomiteWeightVolume')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>الوزن الحجمي للزلط</mat-label>
+	 <input matInput formControlName="stonesWeightVolume"/>
+	 <mat-error *ngIf = "getControls('stonesWeightVolume').invalid" >
+	  {{ getControls('stonesWeightVolume')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>تهشيم الزلط</mat-label>
+	 <input matInput formControlName="stonesCrush"/>
+	 <mat-error *ngIf = "getControls('stonesCrush').invalid" >
+	  {{ getControls('stonesCrush')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>تهشيم الدولوميت</mat-label>
+	 <input matInput formControlName="dolomiteStones"/>
+	 <mat-error *ngIf = "getControls('dolomiteStones').invalid" >
+	  {{ getControls('dolomiteStones')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+         
+
+	<app-material-select appearance="outline"
+	  #mixtureType 
+	  [options] = "mixtureTypeSelectOptions"
+	  formControlName = "mixtureType"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #cementUsed 
+	  [options] = "cementUsedSelectOptions"
+	  formControlName = "cementUsed"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #sandGradientArea 
+	  [options] = "sandGradientAreaSelectOptions"
+	  formControlName = "sandGradientArea"
+	></app-material-select>
+
+        </form>
+
+        <mat-divider></mat-divider>
+
+		<mat-card-actions>
+			<form [formGroup]="attachmentForm" class="form-container">
+                <app-multi-file-upload [service] = "concreteMixtureDataService" [id]="concreteMixtureDataForm.get('id').value"
+                    formControlName = "attachmentFiles">
+                </app-multi-file-upload>
+            </form>
+            <button
+                type="submit"
+                (click)="onSubmit()"
+                [disabled]="concreteMixtureDataForm.invalid"
+                mat-raised-button
+                color = "primary">
+             حفظ
+            </button>
+        </mat-card-actions>
+    </ng-template >
+</app-new-form-layout >
+

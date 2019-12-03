@@ -1,0 +1,89 @@
+
+<app-new-form-layout
+    dir="rtl"
+    (submitClicked) = "onSubmit()"
+    (back) = "onBack()"
+    [pageTitle] = "'اشتراك الصندوق عن سنوات سابقه'"
+>
+    <ng-template newFormContainer >
+        <form [formGroup] = "contributionOfTheFundForPreviousYearsAForm">
+         
+
+	<mat-form-field appearance="outline">
+	 <mat-label>كود الموظف</mat-label>
+	 <input matInput formControlName="employeeCode"/>
+	 <mat-error *ngIf = "getControls('employeeCode').invalid" >
+	  {{ getControls('employeeCode')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>تاريخ الاشتراك</mat-label>
+	 <input matInput
+	 [disableControl]="true" 
+	  [matDatepicker] = "joinDateDatepicker"
+	  autocomplete = "off"
+	  formControlName= "joinDate"/>
+	 <mat-datepicker-toggle
+	   matSuffix
+	   [for]="joinDateDatepicker"
+	 ></mat-datepicker-toggle>
+	 <mat-datepicker #joinDateDatepicker></mat-datepicker>
+	 <mat-error *ngIf = "getControls('joinDate').invalid" >
+	  {{ getControls('joinDate')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>رقم عضويه</mat-label>
+	 <input matInput formControlName="membershipNumber"/>
+	 <mat-error *ngIf = "getControls('membershipNumber').invalid" >
+	  {{ getControls('membershipNumber')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>سنة الاشتراك</mat-label>
+	 <input matInput formControlName="subscriptionYear"/>
+	 <mat-error *ngIf = "getControls('subscriptionYear').invalid" >
+	  {{ getControls('subscriptionYear')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>قيمه الاشتراك</mat-label>
+	 <input matInput formControlName="registrationPrice"/>
+	 <mat-error *ngIf = "getControls('registrationPrice').invalid" >
+	  {{ getControls('registrationPrice')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+         
+
+	<app-material-select appearance="outline" [disabled]="true" 
+	  #subscriptionStatus 
+	  [options] = "subscriptionStatusSelectOptions"
+	  formControlName = "subscriptionStatus"
+	></app-material-select>
+
+        </form>
+
+        <mat-divider></mat-divider>
+
+		<mat-card-actions>
+			<form [formGroup]="attachmentForm" class="form-container">
+                <app-multi-file-upload [service] = "contributionOfTheFundForPreviousYearsAService" [id]="contributionOfTheFundForPreviousYearsAForm.get('id').value"
+                    formControlName = "attachmentFiles">
+                </app-multi-file-upload>
+            </form>
+            <button
+                type="submit"
+                (click)="onSubmit()"
+                [disabled]="contributionOfTheFundForPreviousYearsAForm.invalid"
+                mat-raised-button
+                color = "primary">
+             حفظ
+            </button>
+        </mat-card-actions>
+    </ng-template >
+</app-new-form-layout >
+

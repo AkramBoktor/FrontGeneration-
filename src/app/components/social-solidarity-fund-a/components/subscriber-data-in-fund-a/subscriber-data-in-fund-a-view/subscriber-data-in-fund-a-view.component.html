@@ -1,0 +1,165 @@
+
+<mat-card class="form-card">
+      <mat-card-header>
+  
+          <mat-card-title>
+              بيانات المشترك في الصندوق
+          </mat-card-title>
+  
+      </mat-card-header>
+  
+      <mat-card-content>
+  
+        <form [formGroup] = "subscriberDataInFundAForm" class="form-container">
+         
+
+	<mat-form-field appearance="outline">
+	 <mat-label>كود الموظف</mat-label>
+	 <input matInput formControlName="employeeCode"/>
+	 <mat-error *ngIf = "getControls('employeeCode').invalid" >
+	  {{ getControls('employeeCode')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>تاريخ الميلاد</mat-label>
+	 <input matInput
+	 [disableControl]="true" 
+	  [matDatepicker] = "birthDateDatepicker"
+	  autocomplete = "off"
+	  formControlName= "birthDate"/>
+	 <mat-datepicker-toggle
+	   matSuffix
+	   [for]="birthDateDatepicker"
+	 ></mat-datepicker-toggle>
+	 <mat-datepicker #birthDateDatepicker></mat-datepicker>
+	 <mat-error *ngIf = "getControls('birthDate').invalid" >
+	  {{ getControls('birthDate')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>تاريخ المعاش</mat-label>
+	 <input matInput
+	 [disableControl]="true" 
+	  [matDatepicker] = "pensionDateDatepicker"
+	  autocomplete = "off"
+	  formControlName= "pensionDate"/>
+	 <mat-datepicker-toggle
+	   matSuffix
+	   [for]="pensionDateDatepicker"
+	 ></mat-datepicker-toggle>
+	 <mat-datepicker #pensionDateDatepicker></mat-datepicker>
+	 <mat-error *ngIf = "getControls('pensionDate').invalid" >
+	  {{ getControls('pensionDate')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>تاريخ التعيين </mat-label>
+	 <input matInput
+	 [disableControl]="true" 
+	  [matDatepicker] = "hiringDateDatepicker"
+	  autocomplete = "off"
+	  formControlName= "hiringDate"/>
+	 <mat-datepicker-toggle
+	   matSuffix
+	   [for]="hiringDateDatepicker"
+	 ></mat-datepicker-toggle>
+	 <mat-datepicker #hiringDateDatepicker></mat-datepicker>
+	 <mat-error *ngIf = "getControls('hiringDate').invalid" >
+	  {{ getControls('hiringDate')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>تاريخ الاشترك</mat-label>
+	 <input matInput
+	  [matDatepicker] = "subscriptionDateDatepicker"
+	  autocomplete = "off"
+	  formControlName= "subscriptionDate"/>
+	 <mat-datepicker-toggle
+	   matSuffix
+	   [for]="subscriptionDateDatepicker"
+	 ></mat-datepicker-toggle>
+	 <mat-datepicker #subscriptionDateDatepicker></mat-datepicker>
+	 <mat-error *ngIf = "getControls('subscriptionDate').invalid" >
+	  {{ getControls('subscriptionDate')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>قيمه الاشتراك</mat-label>
+	 <input matInput formControlName="subscriptionAmount"/>
+	 <mat-error *ngIf = "getControls('subscriptionAmount').invalid" >
+	  {{ getControls('subscriptionAmount')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>رقم عضويه</mat-label>
+	 <input matInput formControlName="membershipNumber"/>
+	 <mat-error *ngIf = "getControls('membershipNumber').invalid" >
+	  {{ getControls('membershipNumber')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>بيان مستفيد</mat-label>
+	 <input matInput formControlName="beneficiaryStatement"/>
+	 <mat-error *ngIf = "getControls('beneficiaryStatement').invalid" >
+	  {{ getControls('beneficiaryStatement')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>بيانات المستفيد</mat-label>
+	 <input matInput formControlName="beneficiaryData"/>
+	 <mat-error *ngIf = "getControls('beneficiaryData').invalid" >
+	  {{ getControls('beneficiaryData')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>نسبه الاستفاده</mat-label>
+	 <input matInput formControlName="benefitRate"/>
+	 <mat-error *ngIf = "getControls('benefitRate').invalid" >
+	  {{ getControls('benefitRate')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+         
+
+	<app-material-select appearance="outline" [disabled]="true" 
+	  #employeeStatus 
+	  [options] = "employeeStatusSelectOptions"
+	  formControlName = "employeeStatus"
+	></app-material-select>
+
+	<app-material-select appearance="outline" [disabled]="true" 
+	  #administrationCode 
+	  [options] = "administrationCodeSelectOptions"
+	  formControlName = "administrationCode"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #beneficiaryCode 
+	  [options] = "beneficiaryCodeSelectOptions"
+	  formControlName = "beneficiaryCode"
+	></app-material-select>
+        </form>
+  
+      </mat-card-content >
+  
+      <mat-action-row>
+            <form [formGroup]="attachmentForm" class="form-container">
+                <app-multi-file-upload [service] = "subscriberDataInFundAService" [id]="subscriberDataInFundAForm.get('id').value"
+                    formControlName = "attachmentFiles">
+                </app-multi-file-upload>
+            </form>
+            <button (click) = "onConfirm()" mat-raised-button color = "primary" >
+                غلق
+            </button>
+        </mat-action-row>
+    </mat-card>
+
+    

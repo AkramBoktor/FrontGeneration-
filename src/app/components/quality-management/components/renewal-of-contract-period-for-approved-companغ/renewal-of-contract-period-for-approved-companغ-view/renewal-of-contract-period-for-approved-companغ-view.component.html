@@ -1,0 +1,72 @@
+
+<mat-card class="form-card">
+      <mat-card-header>
+  
+          <mat-card-title>
+              تجديد فترة العقد للشركة المعتمده
+          </mat-card-title>
+  
+      </mat-card-header>
+  
+      <mat-card-content>
+  
+        <form [formGroup] = "renewalOfContractPeriodForApprovedCompanغForm" class="form-container">
+         
+
+	<mat-form-field appearance="outline">
+	 <mat-label>كود الشركة</mat-label>
+	 <input matInput formControlName="companyCode"/>
+	 <mat-error *ngIf = "getControls('companyCode').invalid" >
+	  {{ getControls('companyCode')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>تاريخ بداية العقد</mat-label>
+	 <input matInput
+	  [matDatepicker] = "contractStartingDateDatepicker"
+	  autocomplete = "off"
+	  formControlName= "contractStartingDate"/>
+	 <mat-datepicker-toggle
+	   matSuffix
+	   [for]="contractStartingDateDatepicker"
+	 ></mat-datepicker-toggle>
+	 <mat-datepicker #contractStartingDateDatepicker></mat-datepicker>
+	 <mat-error *ngIf = "getControls('contractStartingDate').invalid" >
+	  {{ getControls('contractStartingDate')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>تاريخ نهاية العقد</mat-label>
+	 <input matInput
+	  [matDatepicker] = "contractEndDateDatepicker"
+	  autocomplete = "off"
+	  formControlName= "contractEndDate"/>
+	 <mat-datepicker-toggle
+	   matSuffix
+	   [for]="contractEndDateDatepicker"
+	 ></mat-datepicker-toggle>
+	 <mat-datepicker #contractEndDateDatepicker></mat-datepicker>
+	 <mat-error *ngIf = "getControls('contractEndDate').invalid" >
+	  {{ getControls('contractEndDate')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+         
+        </form>
+  
+      </mat-card-content >
+  
+      <mat-action-row>
+            <form [formGroup]="attachmentForm" class="form-container">
+                <app-multi-file-upload [service] = "renewalOfContractPeriodForApprovedCompanغService" [id]="renewalOfContractPeriodForApprovedCompanغForm.get('id').value"
+                    formControlName = "attachmentFiles">
+                </app-multi-file-upload>
+            </form>
+            <button (click) = "onConfirm()" mat-raised-button color = "primary" >
+                غلق
+            </button>
+        </mat-action-row>
+    </mat-card>
+
+    

@@ -1,0 +1,94 @@
+
+<app-search-list-expansion-panel
+    dir="rtl"
+    [pageTitle] = "'اضافه  تنفيذ صيانه تكييف'"
+    (beginSearch) = "onBeginSearch()"
+    (create) = "onCreate()"
+>
+    <ng-template searchFormContainer >
+        <form [formGroup] = "searchForm">
+           
+
+	<mat-form-field appearance="outline">
+	 <mat-label>الفتره</mat-label>
+	 <input matInput
+	  [matDatepicker] = "periodDatepicker"
+	  autocomplete = "off"
+	  formControlName= "period"/>
+	 <mat-datepicker-toggle
+	   matSuffix
+	   [for]="periodDatepicker"
+	 ></mat-datepicker-toggle>
+	 <mat-datepicker #periodDatepicker></mat-datepicker>
+	 <mat-error *ngIf = "getControls('period').invalid" >
+	  {{ getControls('period')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>القائم بالصيانه</mat-label>
+	 <input matInput formControlName="maintainer"/>
+	 <mat-error *ngIf = "getControls('maintainer').invalid" >
+	  {{ getControls('maintainer')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>المبنى</mat-label>
+	 <input matInput formControlName="building"/>
+	 <mat-error *ngIf = "getControls('building').invalid" >
+	  {{ getControls('building')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>رقمه</mat-label>
+	 <input matInput formControlName="code"/>
+	 <mat-error *ngIf = "getControls('code').invalid" >
+	  {{ getControls('code')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>تاريخ المخطط</mat-label>
+	 <input matInput
+	  [matDatepicker] = "plannedDateDatepicker"
+	  autocomplete = "off"
+	  formControlName= "plannedDate"/>
+	 <mat-datepicker-toggle
+	   matSuffix
+	   [for]="plannedDateDatepicker"
+	 ></mat-datepicker-toggle>
+	 <mat-datepicker #plannedDateDatepicker></mat-datepicker>
+	 <mat-error *ngIf = "getControls('plannedDate').invalid" >
+	  {{ getControls('plannedDate')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+           
+
+	<app-material-select appearance="outline"
+	  #region 
+	  [options] = "regionSelectOptions"
+	  formControlName = "region"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #laboratoryType 
+	  [options] = "laboratoryTypeSelectOptions"
+	  formControlName = "laboratoryType"
+	></app-material-select>
+
+        </form>
+    </ng-template >
+    <ng-template searchResultContainer >
+        <app-grid-control
+            #gridControl
+            [rowDataService] = "getAddTheImplementationOfAirConditioningMaintenancePaginatedSortedFiltered"
+            [columnOptions] = "columnOptions"
+            [gridHeaderOptions] = "gridHeaderOptions"
+            [searchInput] = "searchForm.value"
+            (deleteRow) = "onDeleteClicked($event)"
+        >
+        </app-grid-control>
+    </ng-template>
+</app-search-list-expansion-panel >

@@ -1,0 +1,152 @@
+
+<mat-card>
+    <mat-card-header>
+        <mat-card-title> بيانات الشركة الغير متعاقده مع الهيئة</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+        <form [formGroup]="dataOfCompanyNotContractedWithTheAuthorityForm" class="form-container">
+          
+
+	<mat-form-field appearance="outline">
+	 <mat-label>كود الشركة</mat-label>
+	 <input matInput formControlName="companyCode"/>
+	 <mat-error *ngIf = "getControls('companyCode').invalid" >
+	  {{ getControls('companyCode')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>اسم الشركة</mat-label>
+	 <input matInput formControlName="companyName"/>
+	 <mat-error *ngIf = "getControls('companyName').invalid" >
+	  {{ getControls('companyName')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>عنوان الشركة</mat-label>
+	 <input matInput formControlName="companyAddress"/>
+	 <mat-error *ngIf = "getControls('companyAddress').invalid" >
+	  {{ getControls('companyAddress')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>تليفون الشركة</mat-label>
+	 <input matInput formControlName="companyTelephon"/>
+	 <mat-error *ngIf = "getControls('companyTelephon').invalid" >
+	  {{ getControls('companyTelephon')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>رقم المحل التجاري</mat-label>
+	 <input matInput formControlName="shopNumber"/>
+	 <mat-error *ngIf = "getControls('shopNumber').invalid" >
+	  {{ getControls('shopNumber')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>ملف رقم</mat-label>
+	 <input matInput formControlName="fileNumber"/>
+	 <mat-error *ngIf = "getControls('fileNumber').invalid" >
+	  {{ getControls('fileNumber')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>البطاقة الضريبية</mat-label>
+	 <input matInput formControlName="taxCardNumber"/>
+	 <mat-error *ngIf = "getControls('taxCardNumber').invalid" >
+	  {{ getControls('taxCardNumber')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>ممثل الشركة</mat-label>
+	 <input matInput formControlName="companyPresenter"/>
+	 <mat-error *ngIf = "getControls('companyPresenter').invalid" >
+	  {{ getControls('companyPresenter')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>تاريخ بداية العقد</mat-label>
+	 <input matInput
+	  [matDatepicker] = "contractStartingDateDatepicker"
+	  autocomplete = "off"
+	  formControlName= "contractStartingDate"/>
+	 <mat-datepicker-toggle
+	   matSuffix
+	   [for]="contractStartingDateDatepicker"
+	 ></mat-datepicker-toggle>
+	 <mat-datepicker #contractStartingDateDatepicker></mat-datepicker>
+	 <mat-error *ngIf = "getControls('contractStartingDate').invalid" >
+	  {{ getControls('contractStartingDate')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>تاريخ نهاية العقد</mat-label>
+	 <input matInput
+	  [matDatepicker] = "contractEndingDateDatepicker"
+	  autocomplete = "off"
+	  formControlName= "contractEndingDate"/>
+	 <mat-datepicker-toggle
+	   matSuffix
+	   [for]="contractEndingDateDatepicker"
+	 ></mat-datepicker-toggle>
+	 <mat-datepicker #contractEndingDateDatepicker></mat-datepicker>
+	 <mat-error *ngIf = "getControls('contractEndingDate').invalid" >
+	  {{ getControls('contractEndingDate')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+          
+
+	<app-material-select appearance="outline"
+	  #mainActivity 
+	  [options] = "mainActivitySelectOptions"
+	  formControlName = "mainActivity"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #mamoriaTax 
+	  [options] = "mamoriaTaxSelectOptions"
+	  formControlName = "mamoriaTax"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #adjective 
+	  [options] = "adjectiveSelectOptions"
+	  formControlName = "adjective"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #mainBranchCode 
+	  [options] = "mainBranchCodeSelectOptions"
+	  formControlName = "mainBranchCode"
+	></app-material-select>
+
+        </form>
+    </mat-card-content>
+
+    <mat-divider></mat-divider>
+
+	<mat-card-actions>
+			<form [formGroup]="attachmentForm" class="form-container">
+                <app-multi-file-upload [service] = "dataOfCompanyNotContractedWithTheAuthorityService" [id]="dataOfCompanyNotContractedWithTheAuthorityForm.get('id').value"
+                    formControlName = "attachmentFiles">
+                </app-multi-file-upload>
+            </form>
+            <button
+                color = "primary"
+                type = "submit"
+                (click) = "onSubmit()"
+                [disabled] = "dataOfCompanyNotContractedWithTheAuthorityForm.invalid"
+                mat-raised-button>
+                حفظ
+            </button>
+    </mat-card-actions>
+</mat-card>
+

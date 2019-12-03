@@ -1,0 +1,32 @@
+
+<mat-card>
+    <mat-card-header>
+        <mat-card-title>الاعطال</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+        <form [formGroup]="malfunctionForm" class="form-container">
+          
+          
+
+        </form>
+    </mat-card-content>
+
+    <mat-divider></mat-divider>
+
+	<mat-card-actions>
+			<form [formGroup]="attachmentForm" class="form-container">
+                <app-multi-file-upload [service] = "malfunctionService" [id]="malfunctionForm.get('id').value"
+                    formControlName = "attachmentFiles">
+                </app-multi-file-upload>
+            </form>
+            <button
+                color = "primary"
+                type = "submit"
+                (click) = "onSubmit()"
+                [disabled] = "malfunctionForm.invalid"
+                mat-raised-button>
+                حفظ
+            </button>
+    </mat-card-actions>
+</mat-card>
+
