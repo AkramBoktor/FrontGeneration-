@@ -1,0 +1,80 @@
+
+<app-search-list-expansion-panel
+    dir="rtl"
+    [pageTitle] = "'مدارس مستضافة'"
+    (beginSearch) = "onBeginSearch()"
+    (create) = "onCreate()"
+>
+    <ng-template searchFormContainer >
+        <form [formGroup] = "searchForm">
+           
+
+	<mat-form-field appearance="outline">
+	 <mat-label>رقم المدرسة المستضيفة</mat-label>
+	 <input matInput formControlName="hostSchoolNumber"/>
+	 <mat-error *ngIf = "getControls('hostSchoolNumber').invalid" >
+	  {{ getControls('hostSchoolNumber')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>مدة الاستضافه من </mat-label>
+	 <input matInput
+	  [matDatepicker] = "hostingDurationFromDatepicker"
+	  autocomplete = "off"
+	  formControlName= "hostingDurationFrom"/>
+	 <mat-datepicker-toggle
+	   matSuffix
+	   [for]="hostingDurationFromDatepicker"
+	 ></mat-datepicker-toggle>
+	 <mat-datepicker #hostingDurationFromDatepicker></mat-datepicker>
+	 <mat-error *ngIf = "getControls('hostingDurationFrom').invalid" >
+	  {{ getControls('hostingDurationFrom')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>المدة الي</mat-label>
+	 <input matInput
+	  [matDatepicker] = "durationToDatepicker"
+	  autocomplete = "off"
+	  formControlName= "durationTo"/>
+	 <mat-datepicker-toggle
+	   matSuffix
+	   [for]="durationToDatepicker"
+	 ></mat-datepicker-toggle>
+	 <mat-datepicker #durationToDatepicker></mat-datepicker>
+	 <mat-error *ngIf = "getControls('durationTo').invalid" >
+	  {{ getControls('durationTo')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>رقم المدرسة المستضافة</mat-label>
+	 <input matInput formControlName="hostedSchoolNumber"/>
+	 <mat-error *ngIf = "getControls('hostedSchoolNumber').invalid" >
+	  {{ getControls('hostedSchoolNumber')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+           
+
+	<app-material-select appearance="outline"
+	  #hostingReasons 
+	  [options] = "hostingReasonsSelectOptions"
+	  formControlName = "hostingReasons"
+	></app-material-select>
+
+        </form>
+    </ng-template >
+    <ng-template searchResultContainer >
+        <app-grid-control
+            #gridControl
+            [rowDataService] = "getHostedSchoolsPaginatedSortedFiltered"
+            [columnOptions] = "columnOptions"
+            [gridHeaderOptions] = "gridHeaderOptions"
+            [searchInput] = "searchForm.value"
+            (deleteRow) = "onDeleteClicked($event)"
+        >
+        </app-grid-control>
+    </ng-template>
+</app-search-list-expansion-panel >

@@ -1,0 +1,180 @@
+
+<mat-card class="form-card">
+      <mat-card-header>
+  
+          <mat-card-title>
+              منسوب
+          </mat-card-title>
+  
+      </mat-card-header>
+  
+      <mat-card-content>
+  
+        <form [formGroup] = "levelForm" class="form-container">
+         
+
+	<mat-form-field appearance="outline">
+	 <mat-label>كود المبنى</mat-label>
+	 <input matInput formControlName="buildingCode"/>
+	 <mat-error *ngIf = "getControls('buildingCode').invalid" >
+	  {{ getControls('buildingCode')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>رقم الملحق</mat-label>
+	 <input matInput formControlName="extensionNumber"/>
+	 <mat-error *ngIf = "getControls('extensionNumber').invalid" >
+	  {{ getControls('extensionNumber')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>منسوب الطريق الرئيسي</mat-label>
+	 <input matInput formControlName="mainRoadLevel"/>
+	 <mat-error *ngIf = "getControls('mainRoadLevel').invalid" >
+	  {{ getControls('mainRoadLevel')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>منسوب الشارع الشمالي</mat-label>
+	 <input matInput formControlName="northernStreetLevel"/>
+	 <mat-error *ngIf = "getControls('northernStreetLevel').invalid" >
+	  {{ getControls('northernStreetLevel')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>منسوب الشارع الجنوبي</mat-label>
+	 <input matInput formControlName="southernStreetLevel"/>
+	 <mat-error *ngIf = "getControls('southernStreetLevel').invalid" >
+	  {{ getControls('southernStreetLevel')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>منسوب الشارع الشرقي</mat-label>
+	 <input matInput formControlName="easternStreetLevel"/>
+	 <mat-error *ngIf = "getControls('easternStreetLevel').invalid" >
+	  {{ getControls('easternStreetLevel')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>منسوب الشارع الغربي</mat-label>
+	 <input matInput formControlName="westernStreetLevel"/>
+	 <mat-error *ngIf = "getControls('westernStreetLevel').invalid" >
+	  {{ getControls('westernStreetLevel')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>منسوب شارع الشمال الشرقي</mat-label>
+	 <input matInput formControlName="northEastStreetLevel"/>
+	 <mat-error *ngIf = "getControls('northEastStreetLevel').invalid" >
+	  {{ getControls('northEastStreetLevel')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>منسوب شارع الشمال الغربي</mat-label>
+	 <input matInput formControlName="northWestStreetLevel"/>
+	 <mat-error *ngIf = "getControls('northWestStreetLevel').invalid" >
+	  {{ getControls('northWestStreetLevel')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>منسوب شارع الجنوب الشرقي</mat-label>
+	 <input matInput formControlName="southEastStreetLevel"/>
+	 <mat-error *ngIf = "getControls('southEastStreetLevel').invalid" >
+	  {{ getControls('southEastStreetLevel')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>منسوب شارع الجنوب الغربي</mat-label>
+	 <input matInput formControlName="southWestStreetLevel"/>
+	 <mat-error *ngIf = "getControls('southWestStreetLevel').invalid" >
+	  {{ getControls('southWestStreetLevel')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>منسوب الفناء الشمالي</mat-label>
+	 <input matInput formControlName="northernCourtyardLevel"/>
+	 <mat-error *ngIf = "getControls('northernCourtyardLevel').invalid" >
+	  {{ getControls('northernCourtyardLevel')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>منسوب الفناء الجنوبي</mat-label>
+	 <input matInput formControlName="southernCourtyardLevel"/>
+	 <mat-error *ngIf = "getControls('southernCourtyardLevel').invalid" >
+	  {{ getControls('southernCourtyardLevel')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>منسوب الفناء الشرقي</mat-label>
+	 <input matInput formControlName="easternCourtyardLevel"/>
+	 <mat-error *ngIf = "getControls('easternCourtyardLevel').invalid" >
+	  {{ getControls('easternCourtyardLevel')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>منسوب الفناء الغربي</mat-label>
+	 <input matInput formControlName="westernCourtyardLevel"/>
+	 <mat-error *ngIf = "getControls('westernCourtyardLevel').invalid" >
+	  {{ getControls('westernCourtyardLevel')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>منسوب الفناء داخل الموقع</mat-label>
+	 <input matInput formControlName="courtyardLevelWithinSite"/>
+	 <mat-error *ngIf = "getControls('courtyardLevelWithinSite').invalid" >
+	  {{ getControls('courtyardLevelWithinSite')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>منسوب  أرضية الدور الارضي</mat-label>
+	 <input matInput formControlName="groundFloorLevel"/>
+	 <mat-error *ngIf = "getControls('groundFloorLevel').invalid" >
+	  {{ getControls('groundFloorLevel')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+         
+
+	<app-material-select appearance="outline"
+	  #regionalCenterCode 
+	  [options] = "regionalCenterCodeSelectOptions"
+	  formControlName = "regionalCenterCode"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #branchCode 
+	  [options] = "branchCodeSelectOptions"
+	  formControlName = "branchCode"
+	></app-material-select>
+        </form>
+  
+      </mat-card-content >
+  
+      <mat-action-row>
+            <form [formGroup]="attachmentForm" class="form-container">
+                <app-multi-file-upload [service] = "levelService" [id]="levelForm.get('id').value"
+                    formControlName = "attachmentFiles">
+                </app-multi-file-upload>
+            </form>
+            <button (click) = "onConfirm()" mat-raised-button color = "primary" >
+                غلق
+            </button>
+        </mat-action-row>
+    </mat-card>
+
+    

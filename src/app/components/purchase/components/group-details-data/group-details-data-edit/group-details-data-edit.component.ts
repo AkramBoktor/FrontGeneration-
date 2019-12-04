@@ -29,7 +29,7 @@ export class GroupDetailsDataEditComponent extends AppBaseComponent implements O
   errorMessages: FormControlError[] = [
           
 	{
-	 errorName: 'min',
+	 errorName: 'minLength',
 	 errorMessage: 'لا يوجد مسلسل يساوي صفر'
 	}
       ];
@@ -85,7 +85,7 @@ educationalAdministrationSelectOptions: MaterialSelectOptions;
     this.groupDetailsDataForm = this.formBuilder.group({
       
   id : [this.selectedGroupDetailsData.id],
-  bidNumber : [this.selectedGroupDetailsData.bidNumber, [ Validators.min(1) ]],
+  bidNumber : [this.selectedGroupDetailsData.bidNumber, [ Validators.minLength(1) ]],
   group : [this.selectedGroupDetailsData.group, [ Validators.required ]],
   durationImplementationInMonths : [this.selectedGroupDetailsData.durationImplementationInMonths, [ Validators.required ]],
   buildingType : [this.selectedGroupDetailsData.buildingType, [ Validators.required ]],

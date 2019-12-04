@@ -8,7 +8,13 @@ const routes: Routes = [
   {
     path: '',
     component: AssayAssayListBuildingModelsWorkComponent,
-  }
+  },
+{
+    path: 'specify-model-blank', loadChildren: './components/specify-model-blank/specify-model-blank.module#SpecifyModelBlankModule',
+    data: {
+      moduleName: 'SpecifyModelBlank'
+    },
+},
 ];
 
 @NgModule({

@@ -1,0 +1,64 @@
+
+<app-new-form-layout
+    dir="rtl"
+    (submitClicked) = "onSubmit()"
+    (back) = "onBack()"
+    [pageTitle] = "'تعديل اسعار مدارس لتسعير 2018'"
+>
+    <ng-template newFormContainer >
+        <form [formGroup] = "modifyThePricesOfSchoolsForPricing2018Form">
+         
+
+	<mat-form-field appearance="outline">
+	 <mat-label>رقم المدرسة</mat-label>
+	 <input matInput formControlName="schoolNumber"/>
+	 <mat-error *ngIf = "getControls('schoolNumber').invalid" >
+	  {{ getControls('schoolNumber')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>كود الملحق</mat-label>
+	 <input matInput formControlName="extensionCode"/>
+	 <mat-error *ngIf = "getControls('extensionCode').invalid" >
+	  {{ getControls('extensionCode')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>سنة الخطة</mat-label>
+	 <input matInput formControlName="pLanYear"/>
+	 <mat-error *ngIf = "getControls('pLanYear').invalid" >
+	  {{ getControls('pLanYear')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+         
+
+	<app-material-select appearance="outline"
+	  #constructionType 
+	  [options] = "constructionTypeSelectOptions"
+	  formControlName = "constructionType"
+	></app-material-select>
+
+        </form>
+
+        <mat-divider></mat-divider>
+
+		<mat-card-actions>
+			<form [formGroup]="attachmentForm" class="form-container">
+                <app-multi-file-upload [service] = "modifyThePricesOfSchoolsForPricing2018Service" [id]="modifyThePricesOfSchoolsForPricing2018Form.get('id').value"
+                    formControlName = "attachmentFiles">
+                </app-multi-file-upload>
+            </form>
+            <button
+                type="submit"
+                (click)="onSubmit()"
+                [disabled]="modifyThePricesOfSchoolsForPricing2018Form.invalid"
+                mat-raised-button
+                color = "primary">
+             حفظ
+            </button>
+        </mat-card-actions>
+    </ng-template >
+</app-new-form-layout >
+

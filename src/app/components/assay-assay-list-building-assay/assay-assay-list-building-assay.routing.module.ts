@@ -8,7 +8,14 @@ const routes: Routes = [
   {
     path: '',
     component: AssayAssayListBuildingAssayComponent,
-  }
+  },
+{
+    path: 'schedule-implementation-data-assay-project', loadChildren: './components/schedule-implementation-data-assay-project/schedule-implementation-data-assay-project.module#ScheduleImplementationDataAssayProjectModule',
+    data: {
+      moduleName: 'ScheduleImplementationDataAssayProject'
+    },
+},
+
 ];
 
 @NgModule({

@@ -11,7 +11,7 @@
 
 	<mat-form-field appearance="outline">
 	 <mat-label>كود الموظف</mat-label>
-	 <input matInput formControlName="employeeCode" [disableControl]="true" />
+	 <input matInput formControlName="employeeCode"  [disableControl]="false" />
 	 <mat-error *ngIf = "getControls('employeeCode').invalid" >
 	  {{ getControls('employeeCode')| getErrorMessages : errorMessages}}
 	  </mat-error>
@@ -43,7 +43,7 @@
 
 	<mat-form-field appearance="outline">
 	 <mat-label>اسم الموظف</mat-label>
-	 <input matInput formControlName="employeeName" [disableControl]="true" />
+	 <input matInput formControlName="employeeName"  [disableControl]="false" />
 	 <mat-error *ngIf = "getControls('employeeName').invalid" >
 	  {{ getControls('employeeName')| getErrorMessages : errorMessages}}
 	  </mat-error>

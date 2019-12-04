@@ -1,0 +1,74 @@
+
+<app-search-list-expansion-panel
+    dir="rtl"
+    [pageTitle] = "'ملفات السور'"
+    (beginSearch) = "onBeginSearch()"
+    (create) = "onCreate()"
+>
+    <ng-template searchFormContainer >
+        <form [formGroup] = "searchForm">
+           
+
+	<mat-form-field appearance="outline">
+	 <mat-label>كود المبنى</mat-label>
+	 <input matInput formControlName="buildingCode"/>
+	 <mat-error *ngIf = "getControls('buildingCode').invalid" >
+	  {{ getControls('buildingCode')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>كود السور</mat-label>
+	 <input matInput formControlName="fenceCode"/>
+	 <mat-error *ngIf = "getControls('fenceCode').invalid" >
+	  {{ getControls('fenceCode')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>ارتفاع  السور</mat-label>
+	 <input matInput formControlName="fenceHight"/>
+	 <mat-error *ngIf = "getControls('fenceHight').invalid" >
+	  {{ getControls('fenceHight')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+           
+
+	<app-material-select appearance="outline"
+	  #regionalCenterCode 
+	  [options] = "regionalCenterCodeSelectOptions"
+	  formControlName = "regionalCenterCode"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #branchCode 
+	  [options] = "branchCodeSelectOptions"
+	  formControlName = "branchCode"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #fenceStatusCode 
+	  [options] = "fenceStatusCodeSelectOptions"
+	  formControlName = "fenceStatusCode"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #constructionMaterial 
+	  [options] = "constructionMaterialSelectOptions"
+	  formControlName = "constructionMaterial"
+	></app-material-select>
+
+        </form>
+    </ng-template >
+    <ng-template searchResultContainer >
+        <app-grid-control
+            #gridControl
+            [rowDataService] = "getFenceFilesPaginatedSortedFiltered"
+            [columnOptions] = "columnOptions"
+            [gridHeaderOptions] = "gridHeaderOptions"
+            [searchInput] = "searchForm.value"
+            (deleteRow) = "onDeleteClicked($event)"
+        >
+        </app-grid-control>
+    </ng-template>
+</app-search-list-expansion-panel >

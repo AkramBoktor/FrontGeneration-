@@ -1,0 +1,76 @@
+
+<app-new-form-layout
+    dir="rtl"
+    (submitClicked) = "onSubmit()"
+    (back) = "onBack()"
+    [pageTitle] = "'البوابة'"
+>
+    <ng-template newFormContainer >
+        <form [formGroup] = "gateForm">
+         
+
+	<mat-form-field appearance="outline">
+	 <mat-label>كود المبنى</mat-label>
+	 <input matInput formControlName="buildingCode"/>
+	 <mat-error *ngIf = "getControls('buildingCode').invalid" >
+	  {{ getControls('buildingCode')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>مسلسل البوابات</mat-label>
+	 <input matInput formControlName="gatesSerial"/>
+	 <mat-error *ngIf = "getControls('gatesSerial').invalid" >
+	  {{ getControls('gatesSerial')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>مواقع البوابات</mat-label>
+	 <input matInput formControlName="gatesSites"/>
+	 <mat-error *ngIf = "getControls('gatesSites').invalid" >
+	  {{ getControls('gatesSites')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+         
+
+	<app-material-select appearance="outline"
+	  #regionalCenterCode 
+	  [options] = "regionalCenterCodeSelectOptions"
+	  formControlName = "regionalCenterCode"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #branchCode 
+	  [options] = "branchCodeSelectOptions"
+	  formControlName = "branchCode"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #gatesQualityCode 
+	  [options] = "gatesQualityCodeSelectOptions"
+	  formControlName = "gatesQualityCode"
+	></app-material-select>
+
+        </form>
+
+        <mat-divider></mat-divider>
+
+		<mat-card-actions>
+			<form [formGroup]="attachmentForm" class="form-container">
+                <app-multi-file-upload [service] = "gateService" [id]="gateForm.get('id').value"
+                    formControlName = "attachmentFiles">
+                </app-multi-file-upload>
+            </form>
+            <button
+                type="submit"
+                (click)="onSubmit()"
+                [disabled]="gateForm.invalid"
+                mat-raised-button
+                color = "primary">
+             حفظ
+            </button>
+        </mat-card-actions>
+    </ng-template >
+</app-new-form-layout >
+

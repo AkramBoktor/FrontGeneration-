@@ -1,15 +1,18 @@
 
-import { Component, Injector, Input, OnInit, Optional, ViewChild } from '@angular/core';
-import { FormGroup, Validators } from '@angular/forms';
+import { Component,Input, OnInit, Optional, ViewChild, Injector } from '@angular/core';
+import { AbstractControl, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef } from '@angular/material';
+import { ActivatedRoute,Router } from '@angular/router';
 import { AppBaseComponent } from 'app/shared/base/app-base.component';
-import { MaterialSelectComponent } from 'app/shared/components/material-controls/material-select/material-select.component';
 import { FormControlError } from 'app/shared/models/controls/interfaces';
 import { MaterialSelectOptions } from 'app/shared/models/controls/material-select.model';
+import { startWith } from 'rxjs/operators';
+import { MaterialSelectComponent } from 'app/shared/components/material-controls/material-select/material-select.component';
 import { GroupDetailsData } from 'app/shared/models/group-details-data';
+import { ValidatorFunctions } from 'app/shared/validations/validator-functions';
+import { GroupDetailsDataService } from '../shared/group-details-data.service';
 import { LookupService } from 'app/shared/pages/lookup-form/lookup.service';
 import { switchMap } from 'rxjs/operators';
-import { GroupDetailsDataService } from '../shared/group-details-data.service';
 
 
 @Component({
@@ -26,7 +29,7 @@ export class GroupDetailsDataNewComponent extends AppBaseComponent implements On
   errorMessages: FormControlError[] = [
         
 	{
-	 errorName: 'min',
+	 errorName: 'minLength',
 	 errorMessage: 'لا يوجد مسلسل يساوي صفر'
 	}
   ];
@@ -81,7 +84,7 @@ educationalAdministrationSelectOptions: MaterialSelectOptions;
     this.groupDetailsDataForm = this.formBuilder.group({
      
   id : [0],
-  bidNumber : [this.selectedGroupDetailsData.bidNumber, [ Validators.min(1) ]],
+  bidNumber : [this.selectedGroupDetailsData.bidNumber, [ Validators.minLength(1) ]],
   project : [this.selectedGroupDetailsData.project, [ Validators.required ]],
   durationImplementationInMonths : [this.selectedGroupDetailsData.durationImplementationInMonths, [ Validators.required ]],
   buildingType : [this.selectedGroupDetailsData.buildingType, [ Validators.required ]],

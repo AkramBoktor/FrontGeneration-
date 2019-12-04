@@ -1,0 +1,140 @@
+
+<app-new-form-layout
+    dir="rtl"
+    (submitClicked) = "onSubmit()"
+    (back) = "onBack()"
+    [pageTitle] = "'انهاء تسكين مهندس تنفيذى على مشروع معين (الفروع) ظروف طارئه'"
+>
+    <ng-template newFormContainer >
+        <form [formGroup] = "endingPlacementOfExecutiveEngineerForm">
+         
+
+	<mat-form-field appearance="outline">
+	 <mat-label>رقم المهندس التنفيذى </mat-label>
+	 <input matInput formControlName="executiveEngineerNumber"/>
+	 <mat-error *ngIf = "getControls('executiveEngineerNumber').invalid" >
+	  {{ getControls('executiveEngineerNumber')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>رقم المدرسه</mat-label>
+	 <input matInput formControlName="schoolNumber"/>
+	 <mat-error *ngIf = "getControls('schoolNumber').invalid" >
+	  {{ getControls('schoolNumber')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>رقم الملحق</mat-label>
+	 <input matInput formControlName="atthachEngineerNumber"/>
+	 <mat-error *ngIf = "getControls('atthachEngineerNumber').invalid" >
+	  {{ getControls('atthachEngineerNumber')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>سنه الخطه</mat-label>
+	 <input matInput
+	  [matDatepicker] = "yearPlanDatepicker"
+	  autocomplete = "off"
+	  formControlName= "yearPlan"/>
+	 <mat-datepicker-toggle
+	   matSuffix
+	   [for]="yearPlanDatepicker"
+	 ></mat-datepicker-toggle>
+	 <mat-datepicker #yearPlanDatepicker></mat-datepicker>
+	 <mat-error *ngIf = "getControls('yearPlan').invalid" >
+	  {{ getControls('yearPlan')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>رقم المناقصه</mat-label>
+	 <input matInput formControlName="bidNumber"/>
+	 <mat-error *ngIf = "getControls('bidNumber').invalid" >
+	  {{ getControls('bidNumber')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>تاريخ بدايه الاشراف</mat-label>
+	 <input matInput
+	 [disableControl]="false" 
+	  [matDatepicker] = "supervisionBeginningDateDatepicker"
+	  autocomplete = "off"
+	  formControlName= "supervisionBeginningDate"/>
+	 <mat-datepicker-toggle
+	   matSuffix
+	   [for]="supervisionBeginningDateDatepicker"
+	 ></mat-datepicker-toggle>
+	 <mat-datepicker #supervisionBeginningDateDatepicker></mat-datepicker>
+	 <mat-error *ngIf = "getControls('supervisionBeginningDate').invalid" >
+	  {{ getControls('supervisionBeginningDate')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>تاريخ نهايه الاشراف</mat-label>
+	 <input matInput
+	 [disableControl]="false" 
+	  [matDatepicker] = "supervisionEndDateDatepicker"
+	  autocomplete = "off"
+	  formControlName= "supervisionEndDate"/>
+	 <mat-datepicker-toggle
+	   matSuffix
+	   [for]="supervisionEndDateDatepicker"
+	 ></mat-datepicker-toggle>
+	 <mat-datepicker #supervisionEndDateDatepicker></mat-datepicker>
+	 <mat-error *ngIf = "getControls('supervisionEndDate').invalid" >
+	  {{ getControls('supervisionEndDate')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+         
+
+	<app-material-select appearance="outline"
+	  #branchCode 
+	  [options] = "branchCodeSelectOptions"
+	  formControlName = "branchCode"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #constructionType 
+	  [options] = "constructionTypeSelectOptions"
+	  formControlName = "constructionType"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #offeringType 
+	  [options] = "offeringTypeSelectOptions"
+	  formControlName = "offeringType"
+	></app-material-select>
+
+	<app-material-select appearance="outline" [disabled]="true" 
+	  #supervisionEndReson 
+	  [options] = "supervisionEndResonSelectOptions"
+	  formControlName = "supervisionEndReson"
+	></app-material-select>
+
+        </form>
+
+        <mat-divider></mat-divider>
+
+		<mat-card-actions>
+			<form [formGroup]="attachmentForm" class="form-container">
+                <app-multi-file-upload [service] = "endingPlacementOfExecutiveEngineerService" [id]="endingPlacementOfExecutiveEngineerForm.get('id').value"
+                    formControlName = "attachmentFiles">
+                </app-multi-file-upload>
+            </form>
+            <button
+                type="submit"
+                (click)="onSubmit()"
+                [disabled]="endingPlacementOfExecutiveEngineerForm.invalid"
+                mat-raised-button
+                color = "primary">
+             حفظ
+            </button>
+        </mat-card-actions>
+    </ng-template >
+</app-new-form-layout >
+

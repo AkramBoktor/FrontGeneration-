@@ -1,0 +1,154 @@
+
+<app-new-form-layout
+    dir="rtl"
+    (submitClicked) = "onSubmit()"
+    (back) = "onBack()"
+    [pageTitle] = "'ادخال بيانات المصايف'"
+>
+    <ng-template newFormContainer >
+        <form [formGroup] = "enteringResortDataForm">
+         
+
+	<mat-form-field appearance="outline">
+	 <mat-label>كود الموظف</mat-label>
+	 <input matInput formControlName="employeeCode"/>
+	 <mat-error *ngIf = "getControls('employeeCode').invalid" >
+	  {{ getControls('employeeCode')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label> اسم الموظف</mat-label>
+	 <input matInput formControlName="employeeName" [disableControl]="false" />
+	 <mat-error *ngIf = "getControls('employeeName').invalid" >
+	  {{ getControls('employeeName')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label> رقم العضوية</mat-label>
+	 <input matInput formControlName="membershipNo"/>
+	 <mat-error *ngIf = "getControls('membershipNo').invalid" >
+	  {{ getControls('membershipNo')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label> مكان المصيف</mat-label>
+	 <input matInput formControlName="resortPlace"/>
+	 <mat-error *ngIf = "getControls('resortPlace').invalid" >
+	  {{ getControls('resortPlace')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>          تاريخ بداية المصيف</mat-label>
+	 <input matInput
+	  [matDatepicker] = "resortStartDateDatepicker"
+	  autocomplete = "off"
+	  formControlName= "resortStartDate"/>
+	 <mat-datepicker-toggle
+	   matSuffix
+	   [for]="resortStartDateDatepicker"
+	 ></mat-datepicker-toggle>
+	 <mat-datepicker #resortStartDateDatepicker></mat-datepicker>
+	 <mat-error *ngIf = "getControls('resortStartDate').invalid" >
+	  {{ getControls('resortStartDate')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label> تاريخ  نهاية المصيف</mat-label>
+	 <input matInput
+	  [matDatepicker] = "resortEndDateDatepicker"
+	  autocomplete = "off"
+	  formControlName= "resortEndDate"/>
+	 <mat-datepicker-toggle
+	   matSuffix
+	   [for]="resortEndDateDatepicker"
+	 ></mat-datepicker-toggle>
+	 <mat-datepicker #resortEndDateDatepicker></mat-datepicker>
+	 <mat-error *ngIf = "getControls('resortEndDate').invalid" >
+	  {{ getControls('resortEndDate')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label> رقم الدور</mat-label>
+	 <input matInput formControlName="floorNumber"/>
+	 <mat-error *ngIf = "getControls('floorNumber').invalid" >
+	  {{ getControls('floorNumber')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>  رقم الشقة</mat-label>
+	 <input matInput formControlName="apartmentNumber"/>
+	 <mat-error *ngIf = "getControls('apartmentNumber').invalid" >
+	  {{ getControls('apartmentNumber')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label> قيمة المصيف</mat-label>
+	 <input matInput formControlName="resortValue"/>
+	 <mat-error *ngIf = "getControls('resortValue').invalid" >
+	  {{ getControls('resortValue')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label> قيمة التامين </mat-label>
+	 <input matInput formControlName="insuranceValue"/>
+	 <mat-error *ngIf = "getControls('insuranceValue').invalid" >
+	  {{ getControls('insuranceValue')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label> مصاريف التامين</mat-label>
+	 <input matInput formControlName="insuranceExpenses"/>
+	 <mat-error *ngIf = "getControls('insuranceExpenses').invalid" >
+	  {{ getControls('insuranceExpenses')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label> عدد المرافقين</mat-label>
+	 <input matInput formControlName="companionsNumber"/>
+	 <mat-error *ngIf = "getControls('companionsNumber').invalid" >
+	  {{ getControls('companionsNumber')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label> قيمة خصم التامين</mat-label>
+	 <input matInput formControlName="insuranceDeductionValue"/>
+	 <mat-error *ngIf = "getControls('insuranceDeductionValue').invalid" >
+	  {{ getControls('insuranceDeductionValue')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+         
+
+        </form>
+
+        <mat-divider></mat-divider>
+
+		<mat-card-actions>
+			<form [formGroup]="attachmentForm" class="form-container">
+                <app-multi-file-upload [service] = "enteringResortDataService" [id]="enteringResortDataForm.get('id').value"
+                    formControlName = "attachmentFiles">
+                </app-multi-file-upload>
+            </form>
+            <button
+                type="submit"
+                (click)="onSubmit()"
+                [disabled]="enteringResortDataForm.invalid"
+                mat-raised-button
+                color = "primary">
+             حفظ
+            </button>
+        </mat-card-actions>
+    </ng-template >
+</app-new-form-layout >
+

@@ -99,7 +99,7 @@ export class GridControlComponent implements OnInit {
   view(param): void {
     if (this.gridHeaderOptions.viewDialogClassType) {
       const dialogRef = this.dialogService.openDialog(this.gridHeaderOptions.viewDialogClassType,
-        { data: { ...param.data, ...this.activatedRoute.snapshot.data }, actionType: Constants.actionView });
+        { data: { ...param.data, ...this.activatedRoute.snapshot.data }, actionType: 'view' });
       dialogRef.afterClosed().pipe(take(1)).subscribe(result => {
         if (result) {
           this.refreshData();
@@ -114,7 +114,7 @@ export class GridControlComponent implements OnInit {
   edit(param): void {
     if (this.gridHeaderOptions.editDialogClassType) {
       const dialogRef = this.dialogService.openDialog(this.gridHeaderOptions.editDialogClassType,
-        { data: { ...param.data, ...this.activatedRoute.snapshot.data }, actionType: Constants.actionEdit });
+        { data: { ...param.data, ...this.activatedRoute.snapshot.data }, actionType: 'edit' });
       dialogRef.afterClosed().pipe(take(1)).subscribe(result => {
         if (result) {
           this.refreshData();
@@ -137,7 +137,7 @@ export class GridControlComponent implements OnInit {
 
   create(): void {
     if (this.gridHeaderOptions.newDialogClassType) {
-      const dialogRef = this.dialogService.openDialog(this.gridHeaderOptions.newDialogClassType, { actionType: Constants.actionNew });
+      const dialogRef = this.dialogService.openDialog(this.gridHeaderOptions.newDialogClassType, { actionType: 'create' });
       dialogRef.afterClosed().pipe(take(1)).subscribe(result => {
         if (result) {
           this.refreshData();

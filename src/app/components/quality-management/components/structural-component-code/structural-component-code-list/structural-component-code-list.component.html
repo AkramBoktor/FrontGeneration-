@@ -1,0 +1,42 @@
+
+<app-search-list-expansion-panel
+    dir="rtl"
+    [pageTitle] = "'اكواد العنصر الانشائي'"
+    (beginSearch) = "onBeginSearch()"
+    (create) = "onCreate()"
+>
+    <ng-template searchFormContainer >
+        <form [formGroup] = "searchForm">
+           
+
+	<mat-form-field appearance="outline">
+	 <mat-label>كود العنصر</mat-label>
+	 <input matInput formControlName="elementCode"/>
+	 <mat-error *ngIf = "getControls('elementCode').invalid" >
+	  {{ getControls('elementCode')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>اسم العنصر الانشائي</mat-label>
+	 <input matInput formControlName="structuralElementName"/>
+	 <mat-error *ngIf = "getControls('structuralElementName').invalid" >
+	  {{ getControls('structuralElementName')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+           
+
+        </form>
+    </ng-template >
+    <ng-template searchResultContainer >
+        <app-grid-control
+            #gridControl
+            [rowDataService] = "getStructuralComponentCodesPaginatedSortedFiltered"
+            [columnOptions] = "columnOptions"
+            [gridHeaderOptions] = "gridHeaderOptions"
+            [searchInput] = "searchForm.value"
+            (deleteRow) = "onDeleteClicked($event)"
+        >
+        </app-grid-control>
+    </ng-template>
+</app-search-list-expansion-panel >

@@ -546,7 +546,7 @@ export const widgetConfig: Widget[] = [
                     name: 'برنامج الخريطه المدرسيه فروع'
                     , class: 'red-fg'
                     , icon: 'access_time'
-                    , url: '-school-branches-map'
+                    , url: 'school-branches-map'
                 }
                     , {
                     name: 'الاراضى فروع'
@@ -725,7 +725,7 @@ export const widgetConfig: Widget[] = [
                     name: 'برنامج المقايسة - قائمة المقايسات - أكواد النظام الفرعي للمقايسات'
                     , class: 'red-fg'
                     , icon: 'access_time'
-                    , url: 'assay-assay-list-standardization-subsystem-code'
+                    , url: 'assay-list-subsystem-code'
                 }
                     , {
                     name: 'برنامج المقايسة - النظام الفرعي للمقايسات'
@@ -918,7 +918,7 @@ export const widgetConfig: Widget[] = [
                     name: 'برنامج الوحدات الصحية وزارة التضامن هيئة البريد'
                     , class: 'red-fg'
                     , icon: 'access_time'
-                    , url: 'health-units-ministry-of-solidarity-postal-authority'
+                    , url: 'health-units-ministry'
                 }
                     , {
                     name: 'مكاتب البريد'

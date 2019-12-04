@@ -1,0 +1,86 @@
+
+<app-new-form-layout
+    dir="rtl"
+    (submitClicked) = "onSubmit()"
+    (back) = "onBack()"
+    [pageTitle] = "'بنود المقايسة'"
+>
+    <ng-template newFormContainer >
+        <form [formGroup] = "assayItemForm">
+         
+
+	<mat-form-field appearance="outline">
+	 <mat-label>نوع النشاط</mat-label>
+	 <input matInput formControlName="activityType"/>
+	 <mat-error *ngIf = "getControls('activityType').invalid" >
+	  {{ getControls('activityType')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>نشاط فرعي</mat-label>
+	 <input matInput formControlName="subActivityType"/>
+	 <mat-error *ngIf = "getControls('subActivityType').invalid" >
+	  {{ getControls('subActivityType')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>كود البند</mat-label>
+	 <input matInput formControlName="itemCode"/>
+	 <mat-error *ngIf = "getControls('itemCode').invalid" >
+	  {{ getControls('itemCode')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>اسم البند باللغة العربية</mat-label>
+	 <input matInput formControlName="arabicItemName"/>
+	 <mat-error *ngIf = "getControls('arabicItemName').invalid" >
+	  {{ getControls('arabicItemName')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>اسم البند باللغة الإنجليزية</mat-label>
+	 <input matInput formControlName="englishItemName"/>
+	 <mat-error *ngIf = "getControls('englishItemName').invalid" >
+	  {{ getControls('englishItemName')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+         
+
+	<app-material-select appearance="outline"
+	  #workType 
+	  [options] = "workTypeSelectOptions"
+	  formControlName = "workType"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #unitCode 
+	  [options] = "unitCodeSelectOptions"
+	  formControlName = "unitCode"
+	></app-material-select>
+
+        </form>
+
+        <mat-divider></mat-divider>
+
+		<mat-card-actions>
+			<form [formGroup]="attachmentForm" class="form-container">
+                <app-multi-file-upload [service] = "assayItemService" [id]="assayItemForm.get('id').value"
+                    formControlName = "attachmentFiles">
+                </app-multi-file-upload>
+            </form>
+            <button
+                type="submit"
+                (click)="onSubmit()"
+                [disabled]="assayItemForm.invalid"
+                mat-raised-button
+                color = "primary">
+             حفظ
+            </button>
+        </mat-card-actions>
+    </ng-template >
+</app-new-form-layout >
+

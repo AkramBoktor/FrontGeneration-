@@ -1,0 +1,108 @@
+
+<mat-card>
+    <mat-card-header>
+        <mat-card-title>بيانات معمل</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+        <form [formGroup]="labDataForm" class="form-container">
+          
+
+	<mat-form-field appearance="outline">
+	 <mat-label>كود المعمل</mat-label>
+	 <input matInput formControlName="laboratoryCode"/>
+	 <mat-error *ngIf = "getControls('laboratoryCode').invalid" >
+	  {{ getControls('laboratoryCode')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>عنوان المعمل</mat-label>
+	 <input matInput formControlName="laboratoryAddress"/>
+	 <mat-error *ngIf = "getControls('laboratoryAddress').invalid" >
+	  {{ getControls('laboratoryAddress')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>تليفون العمل</mat-label>
+	 <input matInput formControlName="workPhone"/>
+	 <mat-error *ngIf = "getControls('workPhone').invalid" >
+	  {{ getControls('workPhone')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>مدير المعمل</mat-label>
+	 <input matInput formControlName="laboratoryManger"/>
+	 <mat-error *ngIf = "getControls('laboratoryManger').invalid" >
+	  {{ getControls('laboratoryManger')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>مادة أساسية</mat-label>
+	 <input matInput formControlName="basicMatrial"/>
+	 <mat-error *ngIf = "getControls('basicMatrial').invalid" >
+	  {{ getControls('basicMatrial')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>مادة فرعية </mat-label>
+	 <input matInput formControlName="subMatrial"/>
+	 <mat-error *ngIf = "getControls('subMatrial').invalid" >
+	  {{ getControls('subMatrial')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>كود الاختبار</mat-label>
+	 <input matInput formControlName="testingCode"/>
+	 <mat-error *ngIf = "getControls('testingCode').invalid" >
+	  {{ getControls('testingCode')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>اسم الاختبار</mat-label>
+	 <input matInput formControlName="testingName"/>
+	 <mat-error *ngIf = "getControls('testingName').invalid" >
+	  {{ getControls('testingName')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+          
+
+	<app-material-select appearance="outline"
+	  #branchCode 
+	  [options] = "branchCodeSelectOptions"
+	  formControlName = "branchCode"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #existing 
+	  [options] = "existingSelectOptions"
+	  formControlName = "existing"
+	></app-material-select>
+
+        </form>
+    </mat-card-content>
+
+    <mat-divider></mat-divider>
+
+	<mat-card-actions>
+			<form [formGroup]="attachmentForm" class="form-container">
+                <app-multi-file-upload [service] = "labDataService" [id]="labDataForm.get('id').value"
+                    formControlName = "attachmentFiles">
+                </app-multi-file-upload>
+            </form>
+            <button
+                color = "primary"
+                type = "submit"
+                (click) = "onSubmit()"
+                [disabled] = "labDataForm.invalid"
+                mat-raised-button>
+                حفظ
+            </button>
+    </mat-card-actions>
+</mat-card>
+

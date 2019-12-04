@@ -1,0 +1,231 @@
+
+<app-new-form-layout
+    dir="rtl"
+    (submitClicked) = "onSubmit()"
+    (back) = "onBack()"
+    [pageTitle] = "'الدراسات التربوية'"
+>
+    <ng-template newFormContainer >
+        <form [formGroup] = "educationalStudiesForm">
+         
+
+	<mat-form-field appearance="outline">
+	 <mat-label>كود المبنى</mat-label>
+	 <input matInput formControlName="buildingCode"/>
+	 <mat-error *ngIf = "getControls('buildingCode').invalid" >
+	  {{ getControls('buildingCode')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>اسم المدرسة</mat-label>
+	 <input matInput formControlName="schoolName" [disableControl]="false" />
+	 <mat-error *ngIf = "getControls('schoolName').invalid" >
+	  {{ getControls('schoolName')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>المساحة الكلية</mat-label>
+	 <input matInput formControlName="totalArea"/>
+	 <mat-error *ngIf = "getControls('totalArea').invalid" >
+	  {{ getControls('totalArea')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>رقم التسجيل</mat-label>
+	 <input matInput formControlName="registrationNumber"/>
+	 <mat-error *ngIf = "getControls('registrationNumber').invalid" >
+	  {{ getControls('registrationNumber')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>تاريخ التسجيل</mat-label>
+	 <input matInput
+	 [disableControl]="false" 
+	  [matDatepicker] = "registrationDateDatepicker"
+	  autocomplete = "off"
+	  formControlName= "registrationDate"/>
+	 <mat-datepicker-toggle
+	   matSuffix
+	   [for]="registrationDateDatepicker"
+	 ></mat-datepicker-toggle>
+	 <mat-datepicker #registrationDateDatepicker></mat-datepicker>
+	 <mat-error *ngIf = "getControls('registrationDate').invalid" >
+	  {{ getControls('registrationDate')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>توقيت التسجيل</mat-label>
+	 <input matInput formControlName="registrationTiming" [disableControl]="false" />
+	 <mat-error *ngIf = "getControls('registrationTiming').invalid" >
+	  {{ getControls('registrationTiming')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>اسم المستخدم</mat-label>
+	 <input matInput formControlName="userName" [disableControl]="false" />
+	 <mat-error *ngIf = "getControls('userName').invalid" >
+	  {{ getControls('userName')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>تاريخ الدراسة</mat-label>
+	 <input matInput
+	  [matDatepicker] = "studyHistoryDatepicker"
+	  autocomplete = "off"
+	  formControlName= "studyHistory"/>
+	 <mat-datepicker-toggle
+	   matSuffix
+	   [for]="studyHistoryDatepicker"
+	 ></mat-datepicker-toggle>
+	 <mat-datepicker #studyHistoryDatepicker></mat-datepicker>
+	 <mat-error *ngIf = "getControls('studyHistory').invalid" >
+	  {{ getControls('studyHistory')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>عدد التلاميذ المقرر</mat-label>
+	 <input matInput formControlName="pupilsScheduledNumber"/>
+	 <mat-error *ngIf = "getControls('pupilsScheduledNumber').invalid" >
+	  {{ getControls('pupilsScheduledNumber')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>عدد الفصول</mat-label>
+	 <input matInput formControlName="classesNumber"/>
+	 <mat-error *ngIf = "getControls('classesNumber').invalid" >
+	  {{ getControls('classesNumber')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>نصف قطر دائرة التوطين</mat-label>
+	 <input matInput formControlName="localizationCircleRadius"/>
+	 <mat-error *ngIf = "getControls('localizationCircleRadius').invalid" >
+	  {{ getControls('localizationCircleRadius')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>المسافة من اقرب تجمع سكني</mat-label>
+	 <input matInput formControlName="nearestCommunityDistance"/>
+	 <mat-error *ngIf = "getControls('nearestCommunityDistance').invalid" >
+	  {{ getControls('nearestCommunityDistance')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+         
+
+	<app-material-select appearance="outline"
+	  #studyReason 
+	  [options] = "studyReasonSelectOptions"
+	  formControlName = "studyReason"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #department 
+	  [options] = "departmentSelectOptions"
+	  formControlName = "department"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #village 
+	  [options] = "villageSelectOptions"
+	  formControlName = "village"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #attachedVillage 
+	  [options] = "attachedVillageSelectOptions"
+	  formControlName = "attachedVillage"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #originalLandOwner 
+	  [options] = "originalLandOwnerSelectOptions"
+	  formControlName = "originalLandOwner"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #educationalAdministration 
+	  [options] = "educationalAdministrationSelectOptions"
+	  formControlName = "educationalAdministration"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #regionPopulationDensity 
+	  [options] = "regionPopulationDensitySelectOptions"
+	  formControlName = "regionPopulationDensity"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #regionAdministrativeClassification 
+	  [options] = "regionAdministrativeClassificationSelectOptions"
+	  formControlName = "regionAdministrativeClassification"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #educationalNeedStance 
+	  [options] = "educationalNeedStanceSelectOptions"
+	  formControlName = "educationalNeedStance"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #educationalLevel 
+	  [options] = "educationalLevelSelectOptions"
+	  formControlName = "educationalLevel"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #pupilsType 
+	  [options] = "pupilsTypeSelectOptions"
+	  formControlName = "pupilsType"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #influencingSurroundingSchools 
+	  [options] = "influencingSurroundingSchoolsSelectOptions"
+	  formControlName = "influencingSurroundingSchools"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #localizationDepartmentSecondPeriod 
+	  [options] = "localizationDepartmentSecondPeriodSelectOptions"
+	  formControlName = "localizationDepartmentSecondPeriod"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #needAreaStance 
+	  [options] = "needAreaStanceSelectOptions"
+	  formControlName = "needAreaStance"
+	></app-material-select>
+
+        </form>
+
+        <mat-divider></mat-divider>
+
+		<mat-card-actions>
+			<form [formGroup]="attachmentForm" class="form-container">
+                <app-multi-file-upload [service] = "educationalStudiesService" [id]="educationalStudiesForm.get('id').value"
+                    formControlName = "attachmentFiles">
+                </app-multi-file-upload>
+            </form>
+            <button
+                type="submit"
+                (click)="onSubmit()"
+                [disabled]="educationalStudiesForm.invalid"
+                mat-raised-button
+                color = "primary">
+             حفظ
+            </button>
+        </mat-card-actions>
+    </ng-template >
+</app-new-form-layout >
+

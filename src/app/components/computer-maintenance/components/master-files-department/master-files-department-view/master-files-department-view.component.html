@@ -1,0 +1,110 @@
+
+<mat-card class="form-card">
+      <mat-card-header>
+  
+          <mat-card-title>
+              بيانات اساسيه لاداراه الهيئه
+          </mat-card-title>
+  
+      </mat-card-header>
+  
+      <mat-card-content>
+  
+        <form [formGroup] = "masterFilesDepartmentForm" class="form-container">
+         
+
+	<mat-form-field appearance="outline">
+	 <mat-label>رقم تليفون الغرفه</mat-label>
+	 <input matInput formControlName="roomPhoneNumber"/>
+	 <mat-error *ngIf = "getControls('roomPhoneNumber').invalid" >
+	  {{ getControls('roomPhoneNumber')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>رقم الجهاز</mat-label>
+	 <input matInput formControlName="deviceNumber"/>
+	 <mat-error *ngIf = "getControls('deviceNumber').invalid" >
+	  {{ getControls('deviceNumber')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>جهه الصنع</mat-label>
+	 <input matInput formControlName="manufacturer"/>
+	 <mat-error *ngIf = "getControls('manufacturer').invalid" >
+	  {{ getControls('manufacturer')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>تاريخ بدايه التشغيل</mat-label>
+	 <input matInput
+	  [matDatepicker] = "startDateDatepicker"
+	  autocomplete = "off"
+	  formControlName= "startDate"/>
+	 <mat-datepicker-toggle
+	   matSuffix
+	   [for]="startDateDatepicker"
+	 ></mat-datepicker-toggle>
+	 <mat-datepicker #startDateDatepicker></mat-datepicker>
+	 <mat-error *ngIf = "getControls('startDate').invalid" >
+	  {{ getControls('startDate')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>الشركه المورده</mat-label>
+	 <input matInput formControlName="supplierCompany"/>
+	 <mat-error *ngIf = "getControls('supplierCompany').invalid" >
+	  {{ getControls('supplierCompany')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+         
+
+	<app-material-select appearance="outline"
+	  #branchCodeorAdministration 
+	  [options] = "branchCodeorAdministrationSelectOptions"
+	  formControlName = "branchCodeorAdministration"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #areaCode 
+	  [options] = "areaCodeSelectOptions"
+	  formControlName = "areaCode"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #equimentType 
+	  [options] = "equimentTypeSelectOptions"
+	  formControlName = "equimentType"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #deviceType 
+	  [options] = "deviceTypeSelectOptions"
+	  formControlName = "deviceType"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #warrantyperiod 
+	  [options] = "warrantyperiodSelectOptions"
+	  formControlName = "warrantyperiod"
+	></app-material-select>
+        </form>
+  
+      </mat-card-content >
+  
+      <mat-action-row>
+            <form [formGroup]="attachmentForm" class="form-container">
+                <app-multi-file-upload [service] = "masterFilesDepartmentService" [id]="masterFilesDepartmentForm.get('id').value"
+                    formControlName = "attachmentFiles">
+                </app-multi-file-upload>
+            </form>
+            <button (click) = "onConfirm()" mat-raised-button color = "primary" >
+                غلق
+            </button>
+        </mat-action-row>
+    </mat-card>
+
+    

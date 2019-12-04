@@ -1,0 +1,56 @@
+
+<app-new-form-layout
+    dir="rtl"
+    (submitClicked) = "onSubmit()"
+    (back) = "onBack()"
+    [pageTitle] = "'اسعار الحديد - الاسمنت على قائمة الاسعار'"
+>
+    <ng-template newFormContainer >
+        <form [formGroup] = "steelPriceCementOnThePriceListForm">
+         
+
+	<mat-form-field appearance="outline">
+	 <mat-label>سنة التسعير</mat-label>
+	 <input matInput formControlName="pricingYear"/>
+	 <mat-error *ngIf = "getControls('pricingYear').invalid" >
+	  {{ getControls('pricingYear')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>السعر</mat-label>
+	 <input matInput formControlName="price"/>
+	 <mat-error *ngIf = "getControls('price').invalid" >
+	  {{ getControls('price')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+         
+
+	<app-material-select appearance="outline"
+	  #materialType 
+	  [options] = "materialTypeSelectOptions"
+	  formControlName = "materialType"
+	></app-material-select>
+
+        </form>
+
+        <mat-divider></mat-divider>
+
+		<mat-card-actions>
+			<form [formGroup]="attachmentForm" class="form-container">
+                <app-multi-file-upload [service] = "steelPriceCementOnThePriceListService" [id]="steelPriceCementOnThePriceListForm.get('id').value"
+                    formControlName = "attachmentFiles">
+                </app-multi-file-upload>
+            </form>
+            <button
+                type="submit"
+                (click)="onSubmit()"
+                [disabled]="steelPriceCementOnThePriceListForm.invalid"
+                mat-raised-button
+                color = "primary">
+             حفظ
+            </button>
+        </mat-card-actions>
+    </ng-template >
+</app-new-form-layout >
+

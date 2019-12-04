@@ -1,0 +1,66 @@
+
+<app-new-form-layout
+    dir="rtl"
+    (submitClicked) = "onSubmit()"
+    (back) = "onBack()"
+    [pageTitle] = "'المحيطات المؤثرة'"
+>
+    <ng-template newFormContainer >
+        <form [formGroup] = "influentialOceanForm">
+         
+
+	<mat-form-field appearance="outline">
+	 <mat-label>كود المبنى</mat-label>
+	 <input matInput formControlName="buildingCode"/>
+	 <mat-error *ngIf = "getControls('buildingCode').invalid" >
+	  {{ getControls('buildingCode')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+         
+
+	<app-material-select appearance="outline"
+	  #regionalCenterCode 
+	  [options] = "regionalCenterCodeSelectOptions"
+	  formControlName = "regionalCenterCode"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #branchCode 
+	  [options] = "branchCodeSelectOptions"
+	  formControlName = "branchCode"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #effectTypeCode 
+	  [options] = "effectTypeCodeSelectOptions"
+	  formControlName = "effectTypeCode"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #effectCode 
+	  [options] = "effectCodeSelectOptions"
+	  formControlName = "effectCode"
+	></app-material-select>
+
+        </form>
+
+        <mat-divider></mat-divider>
+
+		<mat-card-actions>
+			<form [formGroup]="attachmentForm" class="form-container">
+                <app-multi-file-upload [service] = "influentialOceanService" [id]="influentialOceanForm.get('id').value"
+                    formControlName = "attachmentFiles">
+                </app-multi-file-upload>
+            </form>
+            <button
+                type="submit"
+                (click)="onSubmit()"
+                [disabled]="influentialOceanForm.invalid"
+                mat-raised-button
+                color = "primary">
+             حفظ
+            </button>
+        </mat-card-actions>
+    </ng-template >
+</app-new-form-layout >
+

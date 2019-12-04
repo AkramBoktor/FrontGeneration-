@@ -33,7 +33,7 @@
 
 	<mat-form-field appearance="outline">
 	 <mat-label>اسم الصنف</mat-label>
-	 <input matInput formControlName="productName" [disableControl]="true" />
+	 <input matInput formControlName="productName" [disableControl]="false" />
 	 <mat-error *ngIf = "getControls('productName').invalid" >
 	  {{ getControls('productName')| getErrorMessages : errorMessages}}
 	  </mat-error>
@@ -57,7 +57,7 @@
 
 	<mat-form-field appearance="outline">
 	 <mat-label>(القيمة ( السعر * الكمية </mat-label>
-	 <input matInput formControlName="value" [disableControl]="true" />
+	 <input matInput formControlName="value" [disableControl]="false" />
 	 <mat-error *ngIf = "getControls('value').invalid" >
 	  {{ getControls('value')| getErrorMessages : errorMessages}}
 	  </mat-error>

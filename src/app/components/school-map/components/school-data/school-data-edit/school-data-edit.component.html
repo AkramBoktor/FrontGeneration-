@@ -1,0 +1,76 @@
+
+<mat-card>
+    <mat-card-header>
+        <mat-card-title>بيانات المدرسة </mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+        <form [formGroup]="schoolDataForm" class="form-container">
+          
+
+	<mat-form-field appearance="outline">
+	 <mat-label>كود المبنى</mat-label>
+	 <input matInput formControlName="buildingCode"/>
+	 <mat-error *ngIf = "getControls('buildingCode').invalid" >
+	  {{ getControls('buildingCode')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+          
+
+	<app-material-select appearance="outline"
+	  #regionalCenterCode 
+	  [options] = "regionalCenterCodeSelectOptions"
+	  formControlName = "regionalCenterCode"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #branchCode 
+	  [options] = "branchCodeSelectOptions"
+	  formControlName = "branchCode"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #dependencyCode 
+	  [options] = "dependencyCodeSelectOptions"
+	  formControlName = "dependencyCode"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #phaseCode 
+	  [options] = "phaseCodeSelectOptions"
+	  formControlName = "phaseCode"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #educationQualityCode 
+	  [options] = "educationQualityCodeSelectOptions"
+	  formControlName = "educationQualityCode"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #periodsOfUseNumber 
+	  [options] = "periodsOfUseNumberSelectOptions"
+	  formControlName = "periodsOfUseNumber"
+	></app-material-select>
+
+        </form>
+    </mat-card-content>
+
+    <mat-divider></mat-divider>
+
+	<mat-card-actions>
+			<form [formGroup]="attachmentForm" class="form-container">
+                <app-multi-file-upload [service] = "schoolDataService" [id]="schoolDataForm.get('id').value"
+                    formControlName = "attachmentFiles">
+                </app-multi-file-upload>
+            </form>
+            <button
+                color = "primary"
+                type = "submit"
+                (click) = "onSubmit()"
+                [disabled] = "schoolDataForm.invalid"
+                mat-raised-button>
+                حفظ
+            </button>
+    </mat-card-actions>
+</mat-card>
+

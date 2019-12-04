@@ -95,7 +95,7 @@
 
 	<mat-form-field appearance="outline">
 	 <mat-label>القيمة الاجمالية</mat-label>
-	 <input matInput formControlName="totalValue" [disableControl]="true" />
+	 <input matInput formControlName="totalValue" [disableControl]="false" />
 	 <mat-error *ngIf = "getControls('totalValue').invalid" >
 	  {{ getControls('totalValue')| getErrorMessages : errorMessages}}
 	  </mat-error>
@@ -103,7 +103,7 @@
 
 	<mat-form-field appearance="outline">
 	 <mat-label>نوع الصيانة</mat-label>
-	 <input matInput formControlName="maintenanceType" [disableControl]="true" />
+	 <input matInput formControlName="maintenanceType" [disableControl]="false" />
 	 <mat-error *ngIf = "getControls('maintenanceType').invalid" >
 	  {{ getControls('maintenanceType')| getErrorMessages : errorMessages}}
 	  </mat-error>

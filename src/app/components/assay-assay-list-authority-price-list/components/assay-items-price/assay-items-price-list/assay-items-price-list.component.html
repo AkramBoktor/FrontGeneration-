@@ -1,0 +1,56 @@
+
+<app-search-list-expansion-panel
+    dir="rtl"
+    [pageTitle] = "'أسعار بنود المقايسات'"
+    (beginSearch) = "onBeginSearch()"
+    (create) = "onCreate()"
+>
+    <ng-template searchFormContainer >
+        <form [formGroup] = "searchForm">
+           
+
+	<mat-form-field appearance="outline">
+	 <mat-label>نوع النشاط</mat-label>
+	 <input matInput formControlName="activityType"/>
+	 <mat-error *ngIf = "getControls('activityType').invalid" >
+	  {{ getControls('activityType')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>سنة التسعير</mat-label>
+	 <input matInput formControlName="pricingYear"/>
+	 <mat-error *ngIf = "getControls('pricingYear').invalid" >
+	  {{ getControls('pricingYear')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>كود البند</mat-label>
+	 <input matInput formControlName="itemCode"/>
+	 <mat-error *ngIf = "getControls('itemCode').invalid" >
+	  {{ getControls('itemCode')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+           
+
+	<app-material-select appearance="outline"
+	  #workType 
+	  [options] = "workTypeSelectOptions"
+	  formControlName = "workType"
+	></app-material-select>
+
+        </form>
+    </ng-template >
+    <ng-template searchResultContainer >
+        <app-grid-control
+            #gridControl
+            [rowDataService] = "getAssayItemsPricesPaginatedSortedFiltered"
+            [columnOptions] = "columnOptions"
+            [gridHeaderOptions] = "gridHeaderOptions"
+            [searchInput] = "searchForm.value"
+            (deleteRow) = "onDeleteClicked($event)"
+        >
+        </app-grid-control>
+    </ng-template>
+</app-search-list-expansion-panel >

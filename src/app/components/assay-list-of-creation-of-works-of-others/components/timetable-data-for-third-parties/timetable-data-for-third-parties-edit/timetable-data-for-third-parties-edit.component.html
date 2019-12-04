@@ -1,0 +1,125 @@
+
+<mat-card>
+    <mat-card-header>
+        <mat-card-title>بيانات الجدول الزمني لاعمال الغير</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+        <form [formGroup]="timetableDataForThirdPartiesForm" class="form-container">
+          
+
+	<mat-form-field appearance="outline">
+	 <mat-label>كود المبنى</mat-label>
+	 <input matInput formControlName="buildingCode"/>
+	 <mat-error *ngIf = "getControls('buildingCode').invalid" >
+	  {{ getControls('buildingCode')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>كود الملحق</mat-label>
+	 <input matInput formControlName="extensionCode"/>
+	 <mat-error *ngIf = "getControls('extensionCode').invalid" >
+	  {{ getControls('extensionCode')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>سنه الخطة</mat-label>
+	 <input matInput
+	 [disableControl]="true" 
+	  [matDatepicker] = "planYearDatepicker"
+	  autocomplete = "off"
+	  formControlName= "planYear"/>
+	 <mat-datepicker-toggle
+	   matSuffix
+	   [for]="planYearDatepicker"
+	 ></mat-datepicker-toggle>
+	 <mat-datepicker #planYearDatepicker></mat-datepicker>
+	 <mat-error *ngIf = "getControls('planYear').invalid" >
+	  {{ getControls('planYear')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>كود النموذج</mat-label>
+	 <input matInput formControlName="modelCode"/>
+	 <mat-error *ngIf = "getControls('modelCode').invalid" >
+	  {{ getControls('modelCode')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>سنه التسعير</mat-label>
+	 <input matInput
+	  [matDatepicker] = "pricingYearDatepicker"
+	  autocomplete = "off"
+	  formControlName= "pricingYear"/>
+	 <mat-datepicker-toggle
+	   matSuffix
+	   [for]="pricingYearDatepicker"
+	 ></mat-datepicker-toggle>
+	 <mat-datepicker #pricingYearDatepicker></mat-datepicker>
+	 <mat-error *ngIf = "getControls('pricingYear').invalid" >
+	  {{ getControls('pricingYear')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>جدول زمني</mat-label>
+	 <input matInput formControlName="timetable"/>
+	 <mat-error *ngIf = "getControls('timetable').invalid" >
+	  {{ getControls('timetable')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>مده التنفيذ</mat-label>
+	 <input matInput formControlName="durationofexecution" [disableControl]="true" />
+	 <mat-error *ngIf = "getControls('durationofexecution').invalid" >
+	  {{ getControls('durationofexecution')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>عدد الادوار</mat-label>
+	 <input matInput formControlName="numberofFloors" [disableControl]="true" />
+	 <mat-error *ngIf = "getControls('numberofFloors').invalid" >
+	  {{ getControls('numberofFloors')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+          
+
+	<app-material-select appearance="outline"
+	  #constructionType 
+	  [options] = "constructionTypeSelectOptions"
+	  formControlName = "constructionType"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #menuType 
+	  [options] = "menuTypeSelectOptions"
+	  formControlName = "menuType"
+	></app-material-select>
+
+        </form>
+    </mat-card-content>
+
+    <mat-divider></mat-divider>
+
+	<mat-card-actions>
+			<form [formGroup]="attachmentForm" class="form-container">
+                <app-multi-file-upload [service] = "timetableDataForThirdPartiesService" [id]="timetableDataForThirdPartiesForm.get('id').value"
+                    formControlName = "attachmentFiles">
+                </app-multi-file-upload>
+            </form>
+            <button
+                color = "primary"
+                type = "submit"
+                (click) = "onSubmit()"
+                [disabled] = "timetableDataForThirdPartiesForm.invalid"
+                mat-raised-button>
+                حفظ
+            </button>
+    </mat-card-actions>
+</mat-card>
+

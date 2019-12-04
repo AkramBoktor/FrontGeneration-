@@ -72,7 +72,7 @@ offeringTypeSelectOptions: MaterialSelectOptions;
     const errorMessages: FormControlError[] = [
           
 	{
-	 errorName: 'min',
+	 errorName: 'minLength',
 	 errorMessage: 'لا يوجد مسلسل يساوي صفر'
 	},
 	{
@@ -80,7 +80,11 @@ offeringTypeSelectOptions: MaterialSelectOptions;
 	 errorMessage: 'لا يوجد مسلسل يساوي صفر'
 	},
 	{
-	 errorName: 'min',
+	 errorName: 'minLength',
+	 errorMessage: 'لا يوجد مسلسل يساوي صفر'
+	},
+	{
+	 errorName: 'minLength',
 	 errorMessage: 'لا يوجد مسلسل يساوي صفر'
 	}
         ];

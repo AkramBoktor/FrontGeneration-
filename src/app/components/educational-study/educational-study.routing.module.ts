@@ -8,6 +8,12 @@ const routes: Routes = [
   {
     path: '',
     component: EducationalStudyComponent,
+  },
+  {
+    path: 'data-of-educational-study', loadChildren: './components/data-of-educational-study/data-of-educational-study.module#DataOfEducationalStudyModule',
+    data: {
+      moduleName: 'DataOfEducationalStudy'
+    },
   }
 ];
 

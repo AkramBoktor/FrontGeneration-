@@ -18,7 +18,7 @@
 	<mat-form-field appearance="outline">
 	 <mat-label>تاريخ تسجيل الاستمارة</mat-label>
 	 <input matInput
-	 [disableControl]="true" 
+	 [disableControl]="false" 
 	  [matDatepicker] = "registrationDateDatepicker"
 	  autocomplete = "off"
 	  formControlName= "registrationDate"/>
@@ -34,7 +34,7 @@
 
 	<mat-form-field appearance="outline">
 	 <mat-label>خصم الدفعة المقدمة</mat-label>
-	 <input matInput formControlName="prepaymentDiscount" [disableControl]="true" />
+	 <input matInput formControlName="prepaymentDiscount" [disableControl]="false" />
 	 <mat-error *ngIf = "getControls('prepaymentDiscount').invalid" >
 	  {{ getControls('prepaymentDiscount')| getErrorMessages : errorMessages}}
 	  </mat-error>
@@ -42,7 +42,7 @@
 
 	<mat-form-field appearance="outline">
 	 <mat-label>صافي المستخلص</mat-label>
-	 <input matInput formControlName="netAbstract" [disableControl]="true" />
+	 <input matInput formControlName="netAbstract" [disableControl]="false" />
 	 <mat-error *ngIf = "getControls('netAbstract').invalid" >
 	  {{ getControls('netAbstract')| getErrorMessages : errorMessages}}
 	  </mat-error>
@@ -50,7 +50,7 @@
 
 	<mat-form-field appearance="outline">
 	 <mat-label>قيمة المستخلص</mat-label>
-	 <input matInput formControlName="abstractValue" [disableControl]="true" />
+	 <input matInput formControlName="abstractValue" [disableControl]="false" />
 	 <mat-error *ngIf = "getControls('abstractValue').invalid" >
 	  {{ getControls('abstractValue')| getErrorMessages : errorMessages}}
 	  </mat-error>
@@ -58,7 +58,7 @@
 
 	<mat-form-field appearance="outline">
 	 <mat-label>رصيد الدفعة المقدمة</mat-label>
-	 <input matInput formControlName="advanceBalance" [disableControl]="true" />
+	 <input matInput formControlName="advanceBalance" [disableControl]="false" />
 	 <mat-error *ngIf = "getControls('advanceBalance').invalid" >
 	  {{ getControls('advanceBalance')| getErrorMessages : errorMessages}}
 	  </mat-error>
@@ -66,7 +66,7 @@
 
 	<mat-form-field appearance="outline">
 	 <mat-label>ما سبق صرفه</mat-label>
-	 <input matInput formControlName="oldSpent" [disableControl]="true" />
+	 <input matInput formControlName="oldSpent" [disableControl]="false" />
 	 <mat-error *ngIf = "getControls('oldSpent').invalid" >
 	  {{ getControls('oldSpent')| getErrorMessages : errorMessages}}
 	  </mat-error>
@@ -98,7 +98,7 @@
 
 	<mat-form-field appearance="outline">
 	 <mat-label>نسبة الدفعة المنصرفة</mat-label>
-	 <input matInput formControlName="disbursementRate" [disableControl]="true" />
+	 <input matInput formControlName="disbursementRate" [disableControl]="false" />
 	 <mat-error *ngIf = "getControls('disbursementRate').invalid" >
 	  {{ getControls('disbursementRate')| getErrorMessages : errorMessages}}
 	  </mat-error>
@@ -114,7 +114,7 @@
 
 	<mat-form-field appearance="outline">
 	 <mat-label>رقم المنطقة الطالبة</mat-label>
-	 <input matInput formControlName="requestingAreaNumber" [disableControl]="true" />
+	 <input matInput formControlName="requestingAreaNumber" [disableControl]="false" />
 	 <mat-error *ngIf = "getControls('requestingAreaNumber').invalid" >
 	  {{ getControls('requestingAreaNumber')| getErrorMessages : errorMessages}}
 	  </mat-error>
@@ -155,7 +155,7 @@
 	<mat-form-field appearance="outline">
 	 <mat-label>تاريخ استلام الموقع</mat-label>
 	 <input matInput
-	 [disableControl]="true" 
+	 [disableControl]="false" 
 	  [matDatepicker] = "receiptDateDatepicker"
 	  autocomplete = "off"
 	  formControlName= "receiptDate"/>
@@ -171,7 +171,7 @@
 
 	<mat-form-field appearance="outline">
 	 <mat-label>دفعة مقدمة</mat-label>
-	 <input matInput formControlName="advancePayment" [disableControl]="true" />
+	 <input matInput formControlName="advancePayment" [disableControl]="false" />
 	 <mat-error *ngIf = "getControls('advancePayment').invalid" >
 	  {{ getControls('advancePayment')| getErrorMessages : errorMessages}}
 	  </mat-error>
@@ -187,7 +187,7 @@
 
 	<mat-form-field appearance="outline">
 	 <mat-label>مدة التنفيذ</mat-label>
-	 <input matInput formControlName="executionDuration" [disableControl]="true" />
+	 <input matInput formControlName="executionDuration" [disableControl]="false" />
 	 <mat-error *ngIf = "getControls('executionDuration').invalid" >
 	  {{ getControls('executionDuration')| getErrorMessages : errorMessages}}
 	  </mat-error>
@@ -195,7 +195,7 @@
 
 	<mat-form-field appearance="outline">
 	 <mat-label>القيمة التعاقدية</mat-label>
-	 <input matInput formControlName="contractualValue" [disableControl]="true" />
+	 <input matInput formControlName="contractualValue" [disableControl]="false" />
 	 <mat-error *ngIf = "getControls('contractualValue').invalid" >
 	  {{ getControls('contractualValue')| getErrorMessages : errorMessages}}
 	  </mat-error>
@@ -211,7 +211,7 @@
 
 	<mat-form-field appearance="outline">
 	 <mat-label>كود المقاول</mat-label>
-	 <input matInput formControlName="contractorCode" [disableControl]="true" />
+	 <input matInput formControlName="contractorCode"/>
 	 <mat-error *ngIf = "getControls('contractorCode').invalid" >
 	  {{ getControls('contractorCode')| getErrorMessages : errorMessages}}
 	  </mat-error>
@@ -236,7 +236,7 @@
 	<mat-form-field appearance="outline">
 	 <mat-label>تاريخ استلام ابتدائي</mat-label>
 	 <input matInput
-	 [disableControl]="true" 
+	 [disableControl]="false" 
 	  [matDatepicker] = "primaryReceiptDateDatepicker"
 	  autocomplete = "off"
 	  formControlName= "primaryReceiptDate"/>
@@ -252,7 +252,7 @@
 
 	<mat-form-field appearance="outline">
 	 <mat-label>مسلسل الاستمارة</mat-label>
-	 <input matInput formControlName="serialForm" [disableControl]="true" />
+	 <input matInput formControlName="serialForm" [disableControl]="false" />
 	 <mat-error *ngIf = "getControls('serialForm').invalid" >
 	  {{ getControls('serialForm')| getErrorMessages : errorMessages}}
 	  </mat-error>

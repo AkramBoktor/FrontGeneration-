@@ -40,20 +40,18 @@
 	  {{ getControls('publicationDate')| getErrorMessages : errorMessages}}
 	  </mat-error>
 	</mat-form-field>
-
-	<mat-form-field appearance="outline">
-	 <mat-label>اسم الجريدة</mat-label>
-	 <input matInput formControlName="newspaperName"/>
-	 <mat-error *ngIf = "getControls('newspaperName').invalid" >
-	  {{ getControls('newspaperName')| getErrorMessages : errorMessages}}
-	  </mat-error>
-	</mat-form-field>
          
 
 	<app-material-select appearance="outline"
 	  #offeringType 
 	  [options] = "offeringTypeSelectOptions"
 	  formControlName = "offeringType"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #newspaperName 
+	  [options] = "newspaperNameSelectOptions"
+	  formControlName = "newspaperName"
 	></app-material-select>
 
         </form>

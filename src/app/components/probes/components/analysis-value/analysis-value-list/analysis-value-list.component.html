@@ -1,0 +1,120 @@
+
+<app-search-list-expansion-panel
+    dir="rtl"
+    [pageTitle] = "'قيم التحاليل'"
+    (beginSearch) = "onBeginSearch()"
+    (create) = "onCreate()"
+>
+    <ng-template searchFormContainer >
+        <form [formGroup] = "searchForm">
+           
+
+	<mat-form-field appearance="outline">
+	 <mat-label>اسم المدرسه</mat-label>
+	 <input matInput formControlName="schoolName"/>
+	 <mat-error *ngIf = "getControls('schoolName').invalid" >
+	  {{ getControls('schoolName')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>رقم الجسه</mat-label>
+	 <input matInput formControlName="sensorsNumber"/>
+	 <mat-error *ngIf = "getControls('sensorsNumber').invalid" >
+	  {{ getControls('sensorsNumber')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>تاريخ الجسه</mat-label>
+	 <input matInput
+	  [matDatepicker] = "sensorsDateDatepicker"
+	  autocomplete = "off"
+	  formControlName= "sensorsDate"/>
+	 <mat-datepicker-toggle
+	   matSuffix
+	   [for]="sensorsDateDatepicker"
+	 ></mat-datepicker-toggle>
+	 <mat-datepicker #sensorsDateDatepicker></mat-datepicker>
+	 <mat-error *ngIf = "getControls('sensorsDate').invalid" >
+	  {{ getControls('sensorsDate')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>منسوب المياه الجوفيه الابتدائي</mat-label>
+	 <input matInput formControlName="primaryGroundwaterLevel"/>
+	 <mat-error *ngIf = "getControls('primaryGroundwaterLevel').invalid" >
+	  {{ getControls('primaryGroundwaterLevel')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>منسوب المياه الجوفيه النهائيه</mat-label>
+	 <input matInput formControlName="finalGroundwaterLevel"/>
+	 <mat-error *ngIf = "getControls('finalGroundwaterLevel').invalid" >
+	  {{ getControls('finalGroundwaterLevel')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>رقم الطبقه</mat-label>
+	 <input matInput formControlName="layerNumber"/>
+	 <mat-error *ngIf = "getControls('layerNumber').invalid" >
+	  {{ getControls('layerNumber')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>نهايه عمق الطبقه</mat-label>
+	 <input matInput formControlName="endOfLayerDepth"/>
+	 <mat-error *ngIf = "getControls('endOfLayerDepth').invalid" >
+	  {{ getControls('endOfLayerDepth')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>منسوب الاختيار</mat-label>
+	 <input matInput formControlName="selectionLevel"/>
+	 <mat-error *ngIf = "getControls('selectionLevel').invalid" >
+	  {{ getControls('selectionLevel')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>كود المستوى الثانى</mat-label>
+	 <input matInput formControlName="secondLevelCode"/>
+	 <mat-error *ngIf = "getControls('secondLevelCode').invalid" >
+	  {{ getControls('secondLevelCode')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>كود المستوى الثالث</mat-label>
+	 <input matInput formControlName="thirdLevelCode"/>
+	 <mat-error *ngIf = "getControls('thirdLevelCode').invalid" >
+	  {{ getControls('thirdLevelCode')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+           
+
+	<app-material-select appearance="outline"
+	  #firstLevelCode 
+	  [options] = "firstLevelCodeSelectOptions"
+	  formControlName = "firstLevelCode"
+	></app-material-select>
+
+        </form>
+    </ng-template >
+    <ng-template searchResultContainer >
+        <app-grid-control
+            #gridControl
+            [rowDataService] = "getAnalysisValuesPaginatedSortedFiltered"
+            [columnOptions] = "columnOptions"
+            [gridHeaderOptions] = "gridHeaderOptions"
+            [searchInput] = "searchForm.value"
+            (deleteRow) = "onDeleteClicked($event)"
+        >
+        </app-grid-control>
+    </ng-template>
+</app-search-list-expansion-panel >

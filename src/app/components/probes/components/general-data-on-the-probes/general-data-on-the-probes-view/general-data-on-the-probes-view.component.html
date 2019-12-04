@@ -1,0 +1,134 @@
+
+<mat-card class="form-card">
+      <mat-card-header>
+  
+          <mat-card-title>
+              بيانات عامه عن الجسات
+          </mat-card-title>
+  
+      </mat-card-header>
+  
+      <mat-card-content>
+  
+        <form [formGroup] = "generalDataOnTheProbesForm" class="form-container">
+         
+
+	<mat-form-field appearance="outline">
+	 <mat-label>اسم المدرسه</mat-label>
+	 <input matInput formControlName="schoolName"/>
+	 <mat-error *ngIf = "getControls('schoolName').invalid" >
+	  {{ getControls('schoolName')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>الاحداثي السيني</mat-label>
+	 <input matInput formControlName="coordinatesX" [disableControl]="false" />
+	 <mat-error *ngIf = "getControls('coordinatesX').invalid" >
+	  {{ getControls('coordinatesX')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>الاحداثي الصادي</mat-label>
+	 <input matInput formControlName="coordinatesY" [disableControl]="false" />
+	 <mat-error *ngIf = "getControls('coordinatesY').invalid" >
+	  {{ getControls('coordinatesY')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>منسوب سطح الارض</mat-label>
+	 <input matInput formControlName="groundLevel" [disableControl]="false" />
+	 <mat-error *ngIf = "getControls('groundLevel').invalid" >
+	  {{ getControls('groundLevel')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>نسبه الاملاح الكليه</mat-label>
+	 <input matInput formControlName="totalSaltsPercentage"/>
+	 <mat-error *ngIf = "getControls('totalSaltsPercentage').invalid" >
+	  {{ getControls('totalSaltsPercentage')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>نسبه الكربونات</mat-label>
+	 <input matInput formControlName="carbonateRatio"/>
+	 <mat-error *ngIf = "getControls('carbonateRatio').invalid" >
+	  {{ getControls('carbonateRatio')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>نسبه الكلوريدات</mat-label>
+	 <input matInput formControlName="chloridesRatio"/>
+	 <mat-error *ngIf = "getControls('chloridesRatio').invalid" >
+	  {{ getControls('chloridesRatio')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>نسبة الكبريتات</mat-label>
+	 <input matInput formControlName="sulfateRatio"/>
+	 <mat-error *ngIf = "getControls('sulfateRatio').invalid" >
+	  {{ getControls('sulfateRatio')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>عمق التاسيس</mat-label>
+	 <input matInput formControlName="foundationDepth"/>
+	 <mat-error *ngIf = "getControls('foundationDepth').invalid" >
+	  {{ getControls('foundationDepth')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>جهد التاسيس</mat-label>
+	 <input matInput formControlName="foundationEffort"/>
+	 <mat-error *ngIf = "getControls('foundationEffort').invalid" >
+	  {{ getControls('foundationEffort')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>نوع الاساسات المقترحه</mat-label>
+	 <input matInput formControlName="foundationsProposedType"/>
+	 <mat-error *ngIf = "getControls('foundationsProposedType').invalid" >
+	  {{ getControls('foundationsProposedType')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>الجهه المنفذه</mat-label>
+	 <input matInput formControlName="executingAgency"/>
+	 <mat-error *ngIf = "getControls('executingAgency').invalid" >
+	  {{ getControls('executingAgency')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+         
+
+	<app-material-select appearance="outline" [disabled]="true" 
+	  #governorate 
+	  [options] = "governorateSelectOptions"
+	  formControlName = "governorate"
+	></app-material-select>
+        </form>
+  
+      </mat-card-content >
+  
+      <mat-action-row>
+            <form [formGroup]="attachmentForm" class="form-container">
+                <app-multi-file-upload [service] = "generalDataOnTheProbesService" [id]="generalDataOnTheProbesForm.get('id').value"
+                    formControlName = "attachmentFiles">
+                </app-multi-file-upload>
+            </form>
+            <button (click) = "onConfirm()" mat-raised-button color = "primary" >
+                غلق
+            </button>
+        </mat-action-row>
+    </mat-card>
+
+    

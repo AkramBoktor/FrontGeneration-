@@ -581,7 +581,25 @@ const routes: Routes = [
       lookupServiceName: 'formtypes',
       lookupLabel: 'نوع النموذج'
     }
-  },
+  }
+  ,
+  {
+    path: 'foundationtypes',
+    component: LookupListComponent,
+    data: {
+      lookupServiceName: 'foundationtypes',
+      lookupLabel: 'نوع الاساس'
+    }
+  } ,
+  {
+    path: 'worktypes',
+    component: LookupListComponent,
+    data: {
+      lookupServiceName: 'worktypes',
+      lookupLabel: 'نوع العمل'
+    }
+  }
+  ,
   {
     path: 'functionalgroups',
     component: LookupListComponent,
@@ -1437,7 +1455,215 @@ const routes: Routes = [
       lookupServiceName: 'violations',
       lookupLabel: 'المخالفات'
     }
-  }
+  },
+  {
+    path: 'elements',
+    component: LookupListComponent,
+    data: {
+      lookupServiceName: 'elements',
+      lookupLabel: 'العنصر'
+    }
+
+  },
+  {
+    path: 'itemcodes',
+    component: LookupListComponent,
+    data: {
+      lookupServiceName: 'itemcodes',
+      lookupLabel: 'كود البند'
+    }
+
+  },
+  {
+    path: 'listtypes',
+    component: LookupListComponent,
+    data: {
+      lookupServiceName: 'listtypes',
+      lookupLabel: 'نوع القائمة'
+    }
+
+  },
+  {
+    path: 'purposeofconstructions',
+    component: LookupListComponent,
+    data: {
+      lookupServiceName: 'purposeofconstructions',
+      lookupLabel: 'الغرض الأساسي لانشاء المبنى'
+    }
+
+  },
+  {
+    path: 'usebuildingpositions',
+    component: LookupListComponent,
+    data: {
+      lookupServiceName: 'usebuildingpositions',
+      lookupLabel: 'موقف استخدام المبنى'
+    }
+
+  }, {
+    path: 'fencestatuscodes',
+    component: LookupListComponent,
+    data: {
+      lookupServiceName: 'fencestatuscodes',
+      lookupLabel: 'كود حالة السور'
+    }
+
+  },{
+    path: 'constructionmaterials',
+    component: LookupListComponent,
+    data: {
+      lookupServiceName: 'constructionmaterials',
+      lookupLabel: 'مادة البناء'
+    }
+
+  },
+  {
+    path: 'effecttypecodes',
+    component: LookupListComponent,
+    data: {
+      lookupServiceName: 'effecttypecodes',
+      lookupLabel: 'كود نوع المؤثر'
+    }
+
+  }, {
+    path: 'classrooms',
+    component: LookupListComponent,
+    data: {
+      lookupServiceName: 'classrooms',
+      lookupLabel: 'الصف الدراسي'
+    }
+
+  },
+  {
+    path: 'yesornos',
+    component: LookupListComponent,
+    data: {
+      lookupServiceName: 'yesornos',
+      lookupLabel: 'نعم او لا'
+    }
+
+  },
+  {
+    path: 'devicequalities',
+    component: LookupListComponent,
+    data: {
+      lookupServiceName: 'devicequalities',
+      lookupLabel: 'نوعيه الجهاز'
+    }
+
+  },
+  {
+    path: 'electricalconductivitycodes',
+    component: LookupListComponent,
+    data: {
+      lookupServiceName: 'electricalconductivitycodes',
+      lookupLabel: 'كود التوصيل الكهربي'
+    }
+
+  },
+  
+  {
+    path: 'usepositions',
+    component: LookupListComponent,
+    data: {
+      lookupServiceName: 'usepositions',
+      lookupLabel: 'موقف الاستخدام'
+    }
+
+  },
+  {
+    path: 'regionalcentercodes',
+    component: LookupListComponent,
+    data: {
+      lookupServiceName: 'regionalcentercodes',
+      lookupLabel: 'كود المركز الاقليمي'
+    }
+
+  }, {
+    path: 'directioncodes',
+    component: LookupListComponent,
+    data: {
+      lookupServiceName: 'directioncodes',
+      lookupLabel: 'كود الاتجاه'
+    }
+
+  },
+  {
+    path: 'neighborstates',
+    component: LookupListComponent,
+    data: {
+      lookupServiceName: 'neighborstates',
+      lookupLabel: 'حاله الجار الملاصق'
+    }
+
+  },
+  {
+    path: 'closuretypes',
+    component: LookupListComponent,
+    data: {
+      lookupServiceName: 'closuretypes',
+      lookupLabel: 'نوع الاغلاق'
+    }
+
+  },
+  
+  {
+    path: 'directionstatuscodes',
+    component: LookupListComponent,
+    data: {
+      lookupServiceName: 'directionstatuscodes',
+      lookupLabel: 'كود حالة الطريق الرئيسي'
+    }
+
+  },
+  {
+    path: 'adjectives',
+    component: LookupListComponent,
+    data: {
+      lookupServiceName: 'adjectives',
+      lookupLabel: 'صفته'
+    }
+
+  },
+  {
+    path: 'validitypositions',
+    component: LookupListComponent,
+    data: {
+      lookupServiceName: 'validitypositions',
+      lookupLabel: 'موقف الصلاحية'
+    }
+
+  }, 
+  {
+    path: 'directionstatuscodes',
+    component: LookupListComponent,
+    data: {
+      lookupServiceName: 'directionstatuscodes',
+      lookupLabel: 'كود حالة الطريق الرئيسي'
+    }
+
+  },
+  {
+    path: 'educationvalidities',
+    component: LookupListComponent,
+    data: {
+      lookupServiceName: 'educationvalidities',
+      lookupLabel: 'صلاحية المدرسة للعملية التعليميه'
+    }
+
+  },
+  {
+    path: 'statementtypes',
+    component: LookupListComponent,
+    data: {
+      lookupServiceName: 'statementtypes',
+      lookupLabel: 'نوع المعاينة '
+    }
+
+  },
+
+  
+  
 ];
 
 @NgModule({

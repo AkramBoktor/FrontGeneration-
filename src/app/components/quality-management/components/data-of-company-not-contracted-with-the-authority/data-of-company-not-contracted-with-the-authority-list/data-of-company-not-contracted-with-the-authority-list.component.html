@@ -1,0 +1,70 @@
+
+<app-search-list-expansion-panel
+    dir="rtl"
+    [pageTitle] = "' بيانات الشركات الغير متعاقده مع الهيئة'"
+    (beginSearch) = "onBeginSearch()"
+    (create) = "onCreate()"
+>
+    <ng-template searchFormContainer >
+        <form [formGroup] = "searchForm">
+           
+
+	<mat-form-field appearance="outline">
+	 <mat-label>كود الشركة</mat-label>
+	 <input matInput formControlName="companyCode"/>
+	 <mat-error *ngIf = "getControls('companyCode').invalid" >
+	  {{ getControls('companyCode')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>اسم الشركة</mat-label>
+	 <input matInput formControlName="companyName"/>
+	 <mat-error *ngIf = "getControls('companyName').invalid" >
+	  {{ getControls('companyName')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>تليفون الشركة</mat-label>
+	 <input matInput formControlName="companyTelephon"/>
+	 <mat-error *ngIf = "getControls('companyTelephon').invalid" >
+	  {{ getControls('companyTelephon')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>رقم المحل التجاري</mat-label>
+	 <input matInput formControlName="shopNumber"/>
+	 <mat-error *ngIf = "getControls('shopNumber').invalid" >
+	  {{ getControls('shopNumber')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+           
+
+	<app-material-select appearance="outline"
+	  #mainActivity 
+	  [options] = "mainActivitySelectOptions"
+	  formControlName = "mainActivity"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #mainBranchCode 
+	  [options] = "mainBranchCodeSelectOptions"
+	  formControlName = "mainBranchCode"
+	></app-material-select>
+
+        </form>
+    </ng-template >
+    <ng-template searchResultContainer >
+        <app-grid-control
+            #gridControl
+            [rowDataService] = "getDataOfCompaniesNotContractedWithTheAuthorityPaginatedSortedFiltered"
+            [columnOptions] = "columnOptions"
+            [gridHeaderOptions] = "gridHeaderOptions"
+            [searchInput] = "searchForm.value"
+            (deleteRow) = "onDeleteClicked($event)"
+        >
+        </app-grid-control>
+    </ng-template>
+</app-search-list-expansion-panel >

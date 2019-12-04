@@ -14,6 +14,12 @@ const routes: Routes = [
                 path: 'lookup', loadChildren: './shared/pages/lookup-form/lookup-form.module#LookupFormModule',
             },
             {
+                path: 'profile', loadChildren: './shared/pages/profile/profile.module#ProfileModule',
+                data: {
+                    menuName: 'profile'
+                }
+            },
+            {
                 path: 'vacation', loadChildren: './components/vacation/vacation.module#VacationModule',
                 data: {
                     menuName: 'vacation'
@@ -98,9 +104,9 @@ const routes: Routes = [
             },
 
             {
-                path: 'health-units-ministry-of-solidarity-postal-authority', loadChildren: './components/health-units-ministry-of-solidarity-postal-authority/health-units-ministry-of-solidarity-postal-authority.module#HealthUnitsMinistryOfSolidarityPostalAuthorityModule',
+                path: 'health-units-ministry', loadChildren: './components/health-units-ministry/health-units-ministry.module#HealthUnitsMinistryOfSolidarityPostalAuthorityModule',
                 data: {
-                    menuName: 'health-units-ministry-of-solidarity-postal-authority'
+                    menuName: 'health-units-ministry'
                 }
             },
 
@@ -329,16 +335,16 @@ const routes: Routes = [
             },
 
             {
-                path: 'assay-unctions-of-items-and-elements-of-the-project', loadChildren: './components/assay-unctions-of-items-and-elements-of-the-project/assay-unctions-of-items-and-elements-of-the-project.module#AssayUnctionsOfItemsAndElementsOfTheProjectModule',
+                path: 'assay--unctions-of-items-and-elements-of-the-project', loadChildren: './components/assay-unctions-of-items-and-elements-of-the-project/assay-unctions-of-items-and-elements-of-the-project.module#AssayUnctionsOfItemsAndElementsOfTheProjectModule',
                 data: {
-                    menuName: 'assay-unctions-of-items-and-elements-of-the-project'
+                    menuName: 'assay--unctions-of-items-and-elements-of-the-project'
                 }
             },
 
             {
-                path: 'assay-assay-list-standardization-subsystem-code', loadChildren: './components/assay-assay-list-standardization-subsystem-code/assay-assay-list-standardization-subsystem-code.module#AssayAssayListStandardizationSubsystemCodeModule',
+                path: 'assay-list-subsystem-code', loadChildren: './components/assay-list-subsystem-code/assay-list-subsystem-code.module#AssayListSubsystemCodeModule',
                 data: {
-                    menuName: 'assay-assay-list-standardization-subsystem-code'
+                    menuName: 'assay-list-subsystem-code'
                 }
             },
 
@@ -562,7 +568,12 @@ const routes: Routes = [
 
 
         ]
+        
     },
+
+    
+    
+    
     {
         path: 'home', loadChildren: './shared/pages/home/home.module#HomeModule',
         data: {

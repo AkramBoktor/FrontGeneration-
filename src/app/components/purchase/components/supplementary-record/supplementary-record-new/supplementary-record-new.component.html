@@ -35,7 +35,7 @@
 
 	<mat-form-field appearance="outline">
 	 <mat-label>كود المقاول</mat-label>
-	 <input matInput formControlName="contractorCode" [disableControl]="true" />
+	 <input matInput formControlName="contractorCode" [disableControl]="false" />
 	 <mat-error *ngIf = "getControls('contractorCode').invalid" >
 	  {{ getControls('contractorCode')| getErrorMessages : errorMessages}}
 	  </mat-error>
@@ -43,7 +43,7 @@
 
 	<mat-form-field appearance="outline">
 	 <mat-label>اسم الشركة</mat-label>
-	 <input matInput formControlName="companyName" [disableControl]="true" />
+	 <input matInput formControlName="companyName" [disableControl]="false" />
 	 <mat-error *ngIf = "getControls('companyName').invalid" >
 	  {{ getControls('companyName')| getErrorMessages : errorMessages}}
 	  </mat-error>
@@ -51,7 +51,7 @@
 
 	<mat-form-field appearance="outline">
 	 <mat-label>المدرسة</mat-label>
-	 <input matInput formControlName="school" [disableControl]="true" />
+	 <input matInput formControlName="school" [disableControl]="false" />
 	 <mat-error *ngIf = "getControls('school').invalid" >
 	  {{ getControls('school')| getErrorMessages : errorMessages}}
 	  </mat-error>
@@ -59,7 +59,7 @@
 
 	<mat-form-field appearance="outline">
 	 <mat-label>دفعة مقدمة</mat-label>
-	 <input matInput formControlName="advancePayment" [disableControl]="true" />
+	 <input matInput formControlName="advancePayment" [disableControl]="false" />
 	 <mat-error *ngIf = "getControls('advancePayment').invalid" >
 	  {{ getControls('advancePayment')| getErrorMessages : errorMessages}}
 	  </mat-error>
@@ -67,7 +67,7 @@
 
 	<mat-form-field appearance="outline">
 	 <mat-label>قيمة المقايسة</mat-label>
-	 <input matInput formControlName="assayValue" [disableControl]="true" />
+	 <input matInput formControlName="assayValue" [disableControl]="false" />
 	 <mat-error *ngIf = "getControls('assayValue').invalid" >
 	  {{ getControls('assayValue')| getErrorMessages : errorMessages}}
 	  </mat-error>
@@ -75,7 +75,7 @@
 
 	<mat-form-field appearance="outline">
 	 <mat-label>اجمالي قيمة العطاء</mat-label>
-	 <input matInput formControlName="tenderTotalValue" [disableControl]="true" />
+	 <input matInput formControlName="tenderTotalValue" [disableControl]="false" />
 	 <mat-error *ngIf = "getControls('tenderTotalValue').invalid" >
 	  {{ getControls('tenderTotalValue')| getErrorMessages : errorMessages}}
 	  </mat-error>
@@ -83,7 +83,7 @@
 
 	<mat-form-field appearance="outline">
 	 <mat-label>العلاوة التي تقدم عنها</mat-label>
-	 <input matInput formControlName="bonusProvided" [disableControl]="true" />
+	 <input matInput formControlName="bonusProvided" [disableControl]="false" />
 	 <mat-error *ngIf = "getControls('bonusProvided').invalid" >
 	  {{ getControls('bonusProvided')| getErrorMessages : errorMessages}}
 	  </mat-error>
@@ -91,7 +91,7 @@
 
 	<mat-form-field appearance="outline">
 	 <mat-label>مدة التنفيذ</mat-label>
-	 <input matInput formControlName="durationExecution" [disableControl]="true" />
+	 <input matInput formControlName="durationExecution" [disableControl]="false" />
 	 <mat-error *ngIf = "getControls('durationExecution').invalid" >
 	  {{ getControls('durationExecution')| getErrorMessages : errorMessages}}
 	  </mat-error>
@@ -99,7 +99,7 @@
 
 	<mat-form-field appearance="outline">
 	 <mat-label>المندوب المفوض</mat-label>
-	 <input matInput formControlName="plenipotentiary" [disableControl]="true" />
+	 <input matInput formControlName="plenipotentiary" [disableControl]="false" />
 	 <mat-error *ngIf = "getControls('plenipotentiary').invalid" >
 	  {{ getControls('plenipotentiary')| getErrorMessages : errorMessages}}
 	  </mat-error>

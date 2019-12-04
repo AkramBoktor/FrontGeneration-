@@ -1,0 +1,84 @@
+
+<app-new-form-layout
+    dir="rtl"
+    (submitClicked) = "onSubmit()"
+    (back) = "onBack()"
+    [pageTitle] = "'بيانات الملعب'"
+>
+    <ng-template newFormContainer >
+        <form [formGroup] = "playgroundDataForm">
+         
+
+	<mat-form-field appearance="outline">
+	 <mat-label>كود المبنى</mat-label>
+	 <input matInput formControlName="buildingCode"/>
+	 <mat-error *ngIf = "getControls('buildingCode').invalid" >
+	  {{ getControls('buildingCode')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>رقم الملعب</mat-label>
+	 <input matInput formControlName="playgroundNumber"/>
+	 <mat-error *ngIf = "getControls('playgroundNumber').invalid" >
+	  {{ getControls('playgroundNumber')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>طول الملعب</mat-label>
+	 <input matInput formControlName="playgroundLength"/>
+	 <mat-error *ngIf = "getControls('playgroundLength').invalid" >
+	  {{ getControls('playgroundLength')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>عرض الملعب</mat-label>
+	 <input matInput formControlName="playgroundWidth"/>
+	 <mat-error *ngIf = "getControls('playgroundWidth').invalid" >
+	  {{ getControls('playgroundWidth')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+         
+
+	<app-material-select appearance="outline"
+	  #playgroundType 
+	  [options] = "playgroundTypeSelectOptions"
+	  formControlName = "playgroundType"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #landType 
+	  [options] = "landTypeSelectOptions"
+	  formControlName = "landType"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #status 
+	  [options] = "statusSelectOptions"
+	  formControlName = "status"
+	></app-material-select>
+
+        </form>
+
+        <mat-divider></mat-divider>
+
+		<mat-card-actions>
+			<form [formGroup]="attachmentForm" class="form-container">
+                <app-multi-file-upload [service] = "playgroundDataService" [id]="playgroundDataForm.get('id').value"
+                    formControlName = "attachmentFiles">
+                </app-multi-file-upload>
+            </form>
+            <button
+                type="submit"
+                (click)="onSubmit()"
+                [disabled]="playgroundDataForm.invalid"
+                mat-raised-button
+                color = "primary">
+             حفظ
+            </button>
+        </mat-card-actions>
+    </ng-template >
+</app-new-form-layout >
+

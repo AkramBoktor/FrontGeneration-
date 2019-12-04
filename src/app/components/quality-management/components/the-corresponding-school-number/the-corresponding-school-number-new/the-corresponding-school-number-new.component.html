@@ -1,0 +1,58 @@
+
+<app-new-form-layout
+    dir="rtl"
+    (submitClicked) = "onSubmit()"
+    (back) = "onBack()"
+    [pageTitle] = "'رقم المدرسة المطابق عليها'"
+>
+    <ng-template newFormContainer >
+        <form [formGroup] = "theCorrespondingSchoolNumberForm">
+         
+
+	<mat-form-field appearance="outline">
+	 <mat-label>رقم الطلب</mat-label>
+	 <input matInput formControlName="oderNumber"/>
+	 <mat-error *ngIf = "getControls('oderNumber').invalid" >
+	  {{ getControls('oderNumber')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>كود المدرسة الحالي</mat-label>
+	 <input matInput formControlName="currentSchoolCode"/>
+	 <mat-error *ngIf = "getControls('currentSchoolCode').invalid" >
+	  {{ getControls('currentSchoolCode')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>كود المدرسة المطابق عليها</mat-label>
+	 <input matInput formControlName="correspondingSchool"/>
+	 <mat-error *ngIf = "getControls('correspondingSchool').invalid" >
+	  {{ getControls('correspondingSchool')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+         
+
+        </form>
+
+        <mat-divider></mat-divider>
+
+		<mat-card-actions>
+			<form [formGroup]="attachmentForm" class="form-container">
+                <app-multi-file-upload [service] = "theCorrespondingSchoolNumberService" [id]="theCorrespondingSchoolNumberForm.get('id').value"
+                    formControlName = "attachmentFiles">
+                </app-multi-file-upload>
+            </form>
+            <button
+                type="submit"
+                (click)="onSubmit()"
+                [disabled]="theCorrespondingSchoolNumberForm.invalid"
+                mat-raised-button
+                color = "primary">
+             حفظ
+            </button>
+        </mat-card-actions>
+    </ng-template >
+</app-new-form-layout >
+

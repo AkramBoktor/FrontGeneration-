@@ -1,0 +1,106 @@
+
+<app-search-list-expansion-panel
+    dir="rtl"
+    [pageTitle] = "'الاعطال'"
+    (beginSearch) = "onBeginSearch()"
+    (create) = "onCreate()"
+>
+    <ng-template searchFormContainer >
+        <form [formGroup] = "searchForm">
+           
+
+	<mat-form-field appearance="outline">
+	 <mat-label>كود المبنى</mat-label>
+	 <input matInput formControlName="buildingCode"/>
+	 <mat-error *ngIf = "getControls('buildingCode').invalid" >
+	  {{ getControls('buildingCode')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>رقم المعمل</mat-label>
+	 <input matInput formControlName="laboratoryNumber"/>
+	 <mat-error *ngIf = "getControls('laboratoryNumber').invalid" >
+	  {{ getControls('laboratoryNumber')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>رقم الجهاز</mat-label>
+	 <input matInput formControlName="deviceNumber"/>
+	 <mat-error *ngIf = "getControls('deviceNumber').invalid" >
+	  {{ getControls('deviceNumber')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>تاريخ العطل من</mat-label>
+	 <input matInput
+	  [matDatepicker] = "malfunctionDateFromDatepicker"
+	  autocomplete = "off"
+	  formControlName= "malfunctionDateFrom"/>
+	 <mat-datepicker-toggle
+	   matSuffix
+	   [for]="malfunctionDateFromDatepicker"
+	 ></mat-datepicker-toggle>
+	 <mat-datepicker #malfunctionDateFromDatepicker></mat-datepicker>
+	 <mat-error *ngIf = "getControls('malfunctionDateFrom').invalid" >
+	  {{ getControls('malfunctionDateFrom')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>تاريخ العطل الي</mat-label>
+	 <input matInput
+	  [matDatepicker] = "malfunctionDateToDatepicker"
+	  autocomplete = "off"
+	  formControlName= "malfunctionDateTo"/>
+	 <mat-datepicker-toggle
+	   matSuffix
+	   [for]="malfunctionDateToDatepicker"
+	 ></mat-datepicker-toggle>
+	 <mat-datepicker #malfunctionDateToDatepicker></mat-datepicker>
+	 <mat-error *ngIf = "getControls('malfunctionDateTo').invalid" >
+	  {{ getControls('malfunctionDateTo')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+           
+
+	<app-material-select appearance="outline"
+	  #buildingType 
+	  [options] = "buildingTypeSelectOptions"
+	  formControlName = "buildingType"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #laboratoryType 
+	  [options] = "laboratoryTypeSelectOptions"
+	  formControlName = "laboratoryType"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #equipmentCode 
+	  [options] = "equipmentCodeSelectOptions"
+	  formControlName = "equipmentCode"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #deviceType 
+	  [options] = "deviceTypeSelectOptions"
+	  formControlName = "deviceType"
+	></app-material-select>
+
+        </form>
+    </ng-template >
+    <ng-template searchResultContainer >
+        <app-grid-control
+            #gridControl
+            [rowDataService] = "getMalfunctionsPaginatedSortedFiltered"
+            [columnOptions] = "columnOptions"
+            [gridHeaderOptions] = "gridHeaderOptions"
+            [searchInput] = "searchForm.value"
+            (deleteRow) = "onDeleteClicked($event)"
+        >
+        </app-grid-control>
+    </ng-template>
+</app-search-list-expansion-panel >

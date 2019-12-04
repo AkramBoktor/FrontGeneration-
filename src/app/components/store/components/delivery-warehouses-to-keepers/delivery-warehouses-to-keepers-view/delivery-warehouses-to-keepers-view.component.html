@@ -23,7 +23,7 @@
 
 	<mat-form-field appearance="outline">
 	 <mat-label>امين المخزن الحالي </mat-label>
-	 <input matInput formControlName="currentStorekeeper" [disableControl]="true" />
+	 <input matInput formControlName="currentStorekeeper" [disableControl]="false" />
 	 <mat-error *ngIf = "getControls('currentStorekeeper').invalid" >
 	  {{ getControls('currentStorekeeper')| getErrorMessages : errorMessages}}
 	  </mat-error>
@@ -32,7 +32,7 @@
 	<mat-form-field appearance="outline">
 	 <mat-label>تاريخ الاستلام </mat-label>
 	 <input matInput
-	 [disableControl]="true" 
+	 [disableControl]="false" 
 	  [matDatepicker] = "receivedDateDatepicker"
 	  autocomplete = "off"
 	  formControlName= "receivedDate"/>

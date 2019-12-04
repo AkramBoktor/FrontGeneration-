@@ -1,0 +1,50 @@
+
+<app-new-form-layout
+    dir="rtl"
+    (submitClicked) = "onSubmit()"
+    (back) = "onBack()"
+    [pageTitle] = "'قيمة الاشتراك حسب السن'"
+>
+    <ng-template newFormContainer >
+        <form [formGroup] = "subscriptionValueByAgeAForm">
+         
+
+	<mat-form-field appearance="outline">
+	 <mat-label>السن</mat-label>
+	 <input matInput formControlName="age"/>
+	 <mat-error *ngIf = "getControls('age').invalid" >
+	  {{ getControls('age')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>القيمه</mat-label>
+	 <input matInput formControlName="amount"/>
+	 <mat-error *ngIf = "getControls('amount').invalid" >
+	  {{ getControls('amount')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+         
+
+        </form>
+
+        <mat-divider></mat-divider>
+
+		<mat-card-actions>
+			<form [formGroup]="attachmentForm" class="form-container">
+                <app-multi-file-upload [service] = "subscriptionValueByAgeAService" [id]="subscriptionValueByAgeAForm.get('id').value"
+                    formControlName = "attachmentFiles">
+                </app-multi-file-upload>
+            </form>
+            <button
+                type="submit"
+                (click)="onSubmit()"
+                [disabled]="subscriptionValueByAgeAForm.invalid"
+                mat-raised-button
+                color = "primary">
+             حفظ
+            </button>
+        </mat-card-actions>
+    </ng-template >
+</app-new-form-layout >
+

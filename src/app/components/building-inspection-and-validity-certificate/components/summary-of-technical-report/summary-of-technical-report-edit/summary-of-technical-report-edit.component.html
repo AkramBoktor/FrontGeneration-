@@ -1,0 +1,133 @@
+
+<mat-card>
+    <mat-card-header>
+        <mat-card-title>خلاصة التقرير الفنى</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+        <form [formGroup]="summaryOfTechnicalReportForm" class="form-container">
+          
+
+	<mat-form-field appearance="outline">
+	 <mat-label>كود المبنى</mat-label>
+	 <input matInput formControlName="buildingCode"/>
+	 <mat-error *ngIf = "getControls('buildingCode').invalid" >
+	  {{ getControls('buildingCode')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>عنوان المدرسة</mat-label>
+	 <input matInput formControlName="schoolAddress" [disableControl]="true" />
+	 <mat-error *ngIf = "getControls('schoolAddress').invalid" >
+	  {{ getControls('schoolAddress')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>تاريخ المعاينة</mat-label>
+	 <input matInput
+	 [disableControl]="true" 
+	  [matDatepicker] = "previewDateDatepicker"
+	  autocomplete = "off"
+	  formControlName= "previewDate"/>
+	 <mat-datepicker-toggle
+	   matSuffix
+	   [for]="previewDateDatepicker"
+	 ></mat-datepicker-toggle>
+	 <mat-datepicker #previewDateDatepicker></mat-datepicker>
+	 <mat-error *ngIf = "getControls('previewDate').invalid" >
+	  {{ getControls('previewDate')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>ت. بداية</mat-label>
+	 <input matInput
+	 [disableControl]="true" 
+	  [matDatepicker] = "startDateDatepicker"
+	  autocomplete = "off"
+	  formControlName= "startDate"/>
+	 <mat-datepicker-toggle
+	   matSuffix
+	   [for]="startDateDatepicker"
+	 ></mat-datepicker-toggle>
+	 <mat-datepicker #startDateDatepicker></mat-datepicker>
+	 <mat-error *ngIf = "getControls('startDate').invalid" >
+	  {{ getControls('startDate')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>ت.النهاية</mat-label>
+	 <input matInput
+	 [disableControl]="true" 
+	  [matDatepicker] = "endDateDatepicker"
+	  autocomplete = "off"
+	  formControlName= "endDate"/>
+	 <mat-datepicker-toggle
+	   matSuffix
+	   [for]="endDateDatepicker"
+	 ></mat-datepicker-toggle>
+	 <mat-datepicker #endDateDatepicker></mat-datepicker>
+	 <mat-error *ngIf = "getControls('endDate').invalid" >
+	  {{ getControls('endDate')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>نوع البيان</mat-label>
+	 <input matInput formControlName="statementType"/>
+	 <mat-error *ngIf = "getControls('statementType').invalid" >
+	  {{ getControls('statementType')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>النص</mat-label>
+	 <input matInput formControlName="text"/>
+	 <mat-error *ngIf = "getControls('text').invalid" >
+	  {{ getControls('text')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+          
+
+	<app-material-select appearance="outline"
+	  #sectionCenter 
+	  [options] = "sectionCenterSelectOptions"
+	  formControlName = "sectionCenter"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #village 
+	  [options] = "villageSelectOptions"
+	  formControlName = "village"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #educationalAdministration 
+	  [options] = "educationalAdministrationSelectOptions"
+	  formControlName = "educationalAdministration"
+	></app-material-select>
+
+        </form>
+    </mat-card-content>
+
+    <mat-divider></mat-divider>
+
+	<mat-card-actions>
+			<form [formGroup]="attachmentForm" class="form-container">
+                <app-multi-file-upload [service] = "summaryOfTechnicalReportService" [id]="summaryOfTechnicalReportForm.get('id').value"
+                    formControlName = "attachmentFiles">
+                </app-multi-file-upload>
+            </form>
+            <button
+                color = "primary"
+                type = "submit"
+                (click) = "onSubmit()"
+                [disabled] = "summaryOfTechnicalReportForm.invalid"
+                mat-raised-button>
+                حفظ
+            </button>
+    </mat-card-actions>
+</mat-card>
+

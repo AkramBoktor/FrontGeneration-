@@ -17,7 +17,7 @@
 
 	<mat-form-field appearance="outline">
 	 <mat-label>الوظيفه</mat-label>
-	 <input matInput formControlName="job" [disableControl]="true" />
+	 <input matInput formControlName="job"  [disableControl]="false" />
 	 <mat-error *ngIf = "getControls('job').invalid" >
 	  {{ getControls('job')| getErrorMessages : errorMessages}}
 	  </mat-error>
@@ -25,7 +25,7 @@
 
 	<mat-form-field appearance="outline">
 	 <mat-label>الرقم القومى</mat-label>
-	 <input matInput formControlName="iDNumber" [disableControl]="true" />
+	 <input matInput formControlName="iDNumber"  [disableControl]="false" />
 	 <mat-error *ngIf = "getControls('iDNumber').invalid" >
 	  {{ getControls('iDNumber')| getErrorMessages : errorMessages}}
 	  </mat-error>
@@ -33,7 +33,7 @@
 
 	<mat-form-field appearance="outline">
 	 <mat-label>محل الاقامه</mat-label>
-	 <input matInput formControlName="residence" [disableControl]="true" />
+	 <input matInput formControlName="residence"  [disableControl]="false" />
 	 <mat-error *ngIf = "getControls('residence').invalid" >
 	  {{ getControls('residence')| getErrorMessages : errorMessages}}
 	  </mat-error>

@@ -1,0 +1,72 @@
+
+<mat-card class="form-card">
+      <mat-card-header>
+  
+          <mat-card-title>
+              بيانات المشتركين بجمعية الخدمات
+          </mat-card-title>
+  
+      </mat-card-header>
+  
+      <mat-card-content>
+  
+        <form [formGroup] = "subscribersDataInServicesAssociationForm" class="form-container">
+         
+
+	<mat-form-field appearance="outline">
+	 <mat-label>كود الموظف</mat-label>
+	 <input matInput formControlName="employeeCode"/>
+	 <mat-error *ngIf = "getControls('employeeCode').invalid" >
+	  {{ getControls('employeeCode')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label> اسم الموظف</mat-label>
+	 <input matInput formControlName="employeeName"/>
+	 <mat-error *ngIf = "getControls('employeeName').invalid" >
+	  {{ getControls('employeeName')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label> رقم العضوية</mat-label>
+	 <input matInput formControlName="membershipNo"/>
+	 <mat-error *ngIf = "getControls('membershipNo').invalid" >
+	  {{ getControls('membershipNo')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label> تاريخ الاشتراك</mat-label>
+	 <input matInput
+	  [matDatepicker] = "subscriptionDateDatepicker"
+	  autocomplete = "off"
+	  formControlName= "subscriptionDate"/>
+	 <mat-datepicker-toggle
+	   matSuffix
+	   [for]="subscriptionDateDatepicker"
+	 ></mat-datepicker-toggle>
+	 <mat-datepicker #subscriptionDateDatepicker></mat-datepicker>
+	 <mat-error *ngIf = "getControls('subscriptionDate').invalid" >
+	  {{ getControls('subscriptionDate')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+         
+        </form>
+  
+      </mat-card-content >
+  
+      <mat-action-row>
+            <form [formGroup]="attachmentForm" class="form-container">
+                <app-multi-file-upload [service] = "subscribersDataInServicesAssociationService" [id]="subscribersDataInServicesAssociationForm.get('id').value"
+                    formControlName = "attachmentFiles">
+                </app-multi-file-upload>
+            </form>
+            <button (click) = "onConfirm()" mat-raised-button color = "primary" >
+                غلق
+            </button>
+        </mat-action-row>
+    </mat-card>
+
+    

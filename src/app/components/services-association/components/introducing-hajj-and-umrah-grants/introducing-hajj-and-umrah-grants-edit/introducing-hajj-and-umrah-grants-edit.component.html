@@ -1,0 +1,146 @@
+
+<mat-card>
+    <mat-card-header>
+        <mat-card-title>ادخال منح الحج والعمرة</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+        <form [formGroup]="introducingHajjAndUmrahGrantsForm" class="form-container">
+          
+
+	<mat-form-field appearance="outline">
+	 <mat-label>كود الموظف</mat-label>
+	 <input matInput formControlName="employeeCode"/>
+	 <mat-error *ngIf = "getControls('employeeCode').invalid" >
+	  {{ getControls('employeeCode')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label> اسم الموظف</mat-label>
+	 <input matInput formControlName="employeeName" [disableControl]="false" />
+	 <mat-error *ngIf = "getControls('employeeName').invalid" >
+	  {{ getControls('employeeName')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label> رقم العضوية</mat-label>
+	 <input matInput formControlName="membershipNo"/>
+	 <mat-error *ngIf = "getControls('membershipNo').invalid" >
+	  {{ getControls('membershipNo')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label> تاريخ</mat-label>
+	 <input matInput
+	  [matDatepicker] = "dateDatepicker"
+	  autocomplete = "off"
+	  formControlName= "date"/>
+	 <mat-datepicker-toggle
+	   matSuffix
+	   [for]="dateDatepicker"
+	 ></mat-datepicker-toggle>
+	 <mat-datepicker #dateDatepicker></mat-datepicker>
+	 <mat-error *ngIf = "getControls('date').invalid" >
+	  {{ getControls('date')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>   قيمة التذكره للعضو</mat-label>
+	 <input matInput formControlName="memberTicketValue"/>
+	 <mat-error *ngIf = "getControls('memberTicketValue').invalid" >
+	  {{ getControls('memberTicketValue')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>قيمة التذكرة للمرافق</mat-label>
+	 <input matInput formControlName="utilitiesTicketValue"/>
+	 <mat-error *ngIf = "getControls('utilitiesTicketValue').invalid" >
+	  {{ getControls('utilitiesTicketValue')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label> قيمة الدعم</mat-label>
+	 <input matInput formControlName="supportValue"/>
+	 <mat-error *ngIf = "getControls('supportValue').invalid" >
+	  {{ getControls('supportValue')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label> عدد الاقساط</mat-label>
+	 <input matInput formControlName="installmentsNumber"/>
+	 <mat-error *ngIf = "getControls('installmentsNumber').invalid" >
+	  {{ getControls('installmentsNumber')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label> قيمة القسط</mat-label>
+	 <input matInput formControlName="installmentsValue"/>
+	 <mat-error *ngIf = "getControls('installmentsValue').invalid" >
+	  {{ getControls('installmentsValue')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>  عدد المرافقين</mat-label>
+	 <input matInput formControlName="companionsNumber"/>
+	 <mat-error *ngIf = "getControls('companionsNumber').invalid" >
+	  {{ getControls('companionsNumber')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label> اسم المرافق</mat-label>
+	 <input matInput formControlName="utilitiesName"/>
+	 <mat-error *ngIf = "getControls('utilitiesName').invalid" >
+	  {{ getControls('utilitiesName')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+          
+
+	<app-material-select appearance="outline" [disabled]="true" 
+	  #status 
+	  [options] = "statusSelectOptions"
+	  formControlName = "status"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #paymentType 
+	  [options] = "paymentTypeSelectOptions"
+	  formControlName = "paymentType"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #travelType 
+	  [options] = "travelTypeSelectOptions"
+	  formControlName = "travelType"
+	></app-material-select>
+
+        </form>
+    </mat-card-content>
+
+    <mat-divider></mat-divider>
+
+	<mat-card-actions>
+			<form [formGroup]="attachmentForm" class="form-container">
+                <app-multi-file-upload [service] = "introducingHajjAndUmrahGrantsService" [id]="introducingHajjAndUmrahGrantsForm.get('id').value"
+                    formControlName = "attachmentFiles">
+                </app-multi-file-upload>
+            </form>
+            <button
+                color = "primary"
+                type = "submit"
+                (click) = "onSubmit()"
+                [disabled] = "introducingHajjAndUmrahGrantsForm.invalid"
+                mat-raised-button>
+                حفظ
+            </button>
+    </mat-card-actions>
+</mat-card>
+

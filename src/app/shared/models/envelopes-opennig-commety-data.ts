@@ -3,7 +3,7 @@
     id: number;
     
 	offeringType: number;
-	bidNumber: number;
+	bidNumber: string;
 	committeeDate: Date;
 	committeeHeadquarters: string;
 	offeringApprovalDate: Date;

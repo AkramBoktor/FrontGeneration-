@@ -1,0 +1,170 @@
+
+<mat-card>
+    <mat-card-header>
+        <mat-card-title>تسجيل قيمة فاتورة خطوط التليفون</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+        <form [formGroup]="recordTheValueOfTelephoneBillForm" class="form-container">
+          
+
+	<mat-form-field appearance="outline">
+	 <mat-label> شهر الدين</mat-label>
+	 <input matInput
+	  [matDatepicker] = "debtMonthDatepicker"
+	  autocomplete = "off"
+	  formControlName= "debtMonth"/>
+	 <mat-datepicker-toggle
+	   matSuffix
+	   [for]="debtMonthDatepicker"
+	 ></mat-datepicker-toggle>
+	 <mat-datepicker #debtMonthDatepicker></mat-datepicker>
+	 <mat-error *ngIf = "getControls('debtMonth').invalid" >
+	  {{ getControls('debtMonth')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label> فترة الحساب من </mat-label>
+	 <input matInput
+	  [matDatepicker] = "calculationPeriodFromDatepicker"
+	  autocomplete = "off"
+	  formControlName= "calculationPeriodFrom"/>
+	 <mat-datepicker-toggle
+	   matSuffix
+	   [for]="calculationPeriodFromDatepicker"
+	 ></mat-datepicker-toggle>
+	 <mat-datepicker #calculationPeriodFromDatepicker></mat-datepicker>
+	 <mat-error *ngIf = "getControls('calculationPeriodFrom').invalid" >
+	  {{ getControls('calculationPeriodFrom')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label> فترة الحساب الي</mat-label>
+	 <input matInput
+	  [matDatepicker] = "calculationPeriodToDatepicker"
+	  autocomplete = "off"
+	  formControlName= "calculationPeriodTo"/>
+	 <mat-datepicker-toggle
+	   matSuffix
+	   [for]="calculationPeriodToDatepicker"
+	 ></mat-datepicker-toggle>
+	 <mat-datepicker #calculationPeriodToDatepicker></mat-datepicker>
+	 <mat-error *ngIf = "getControls('calculationPeriodTo').invalid" >
+	  {{ getControls('calculationPeriodTo')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label> رقم التليفون</mat-label>
+	 <input matInput formControlName="phoneNumber"/>
+	 <mat-error *ngIf = "getControls('phoneNumber').invalid" >
+	  {{ getControls('phoneNumber')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label> مسلسل الفاتورة بالشهر</mat-label>
+	 <input matInput
+	  [matDatepicker] = "invoiceSerialMonthDatepicker"
+	  autocomplete = "off"
+	  formControlName= "invoiceSerialMonth"/>
+	 <mat-datepicker-toggle
+	   matSuffix
+	   [for]="invoiceSerialMonthDatepicker"
+	 ></mat-datepicker-toggle>
+	 <mat-datepicker #invoiceSerialMonthDatepicker></mat-datepicker>
+	 <mat-error *ngIf = "getControls('invoiceSerialMonth').invalid" >
+	  {{ getControls('invoiceSerialMonth')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>كود الموظف</mat-label>
+	 <input matInput formControlName="employeeCode"/>
+	 <mat-error *ngIf = "getControls('employeeCode').invalid" >
+	  {{ getControls('employeeCode')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label> اسم الموظف</mat-label>
+	 <input matInput formControlName="employeeName" [disableControl]="false" />
+	 <mat-error *ngIf = "getControls('employeeName').invalid" >
+	  {{ getControls('employeeName')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label> اسم الادارة</mat-label>
+	 <input matInput formControlName="administrationName" [disableControl]="false" />
+	 <mat-error *ngIf = "getControls('administrationName').invalid" >
+	  {{ getControls('administrationName')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label> قيمة الفاتورة</mat-label>
+	 <input matInput formControlName="invoiceValue"/>
+	 <mat-error *ngIf = "getControls('invoiceValue').invalid" >
+	  {{ getControls('invoiceValue')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>  مصاريف ادارية</mat-label>
+	 <input matInput formControlName="administrativeExpenses"/>
+	 <mat-error *ngIf = "getControls('administrativeExpenses').invalid" >
+	  {{ getControls('administrativeExpenses')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label> جملة الفاتورة</mat-label>
+	 <input matInput formControlName="totalInvoice"/>
+	 <mat-error *ngIf = "getControls('totalInvoice').invalid" >
+	  {{ getControls('totalInvoice')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+          
+
+	<app-material-select appearance="outline"
+	  #managementCode 
+	  [options] = "managementCodeSelectOptions"
+	  formControlName = "managementCode"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #employeeStatusCode 
+	  [options] = "employeeStatusCodeSelectOptions"
+	  formControlName = "employeeStatusCode"
+	></app-material-select>
+
+	<app-material-select appearance="outline" [disabled]="true" 
+	  #employeeStatus 
+	  [options] = "employeeStatusSelectOptions"
+	  formControlName = "employeeStatus"
+	></app-material-select>
+
+        </form>
+    </mat-card-content>
+
+    <mat-divider></mat-divider>
+
+	<mat-card-actions>
+			<form [formGroup]="attachmentForm" class="form-container">
+                <app-multi-file-upload [service] = "recordTheValueOfTelephoneBillService" [id]="recordTheValueOfTelephoneBillForm.get('id').value"
+                    formControlName = "attachmentFiles">
+                </app-multi-file-upload>
+            </form>
+            <button
+                color = "primary"
+                type = "submit"
+                (click) = "onSubmit()"
+                [disabled] = "recordTheValueOfTelephoneBillForm.invalid"
+                mat-raised-button>
+                حفظ
+            </button>
+    </mat-card-actions>
+</mat-card>
+

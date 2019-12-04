@@ -23,7 +23,7 @@
 
 	<mat-form-field appearance="outline">
 	 <mat-label>اسم الدوره</mat-label>
-	 <input matInput formControlName="courseName" [disableControl]="true" />
+	 <input matInput formControlName="courseName" [disableControl]="false" />
 	 <mat-error *ngIf = "getControls('courseName').invalid" >
 	  {{ getControls('courseName')| getErrorMessages : errorMessages}}
 	  </mat-error>

@@ -1,0 +1,102 @@
+
+<app-new-form-layout
+    dir="rtl"
+    (submitClicked) = "onSubmit()"
+    (back) = "onBack()"
+    [pageTitle] = "'تعديل موقف المشروعات  '"
+>
+    <ng-template newFormContainer >
+        <form [formGroup] = "adjustThePositionOfProjectsForm">
+         
+
+	<mat-form-field appearance="outline">
+	 <mat-label>الرقم التعريفي للمبني</mat-label>
+	 <input matInput formControlName="buildingNumber"/>
+	 <mat-error *ngIf = "getControls('buildingNumber').invalid" >
+	  {{ getControls('buildingNumber')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>تاريخ الدخول</mat-label>
+	 <input matInput
+	  [matDatepicker] = "entryDateDatepicker"
+	  autocomplete = "off"
+	  formControlName= "entryDate"/>
+	 <mat-datepicker-toggle
+	   matSuffix
+	   [for]="entryDateDatepicker"
+	 ></mat-datepicker-toggle>
+	 <mat-datepicker #entryDateDatepicker></mat-datepicker>
+	 <mat-error *ngIf = "getControls('entryDate').invalid" >
+	  {{ getControls('entryDate')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>كود الملحق</mat-label>
+	 <input matInput formControlName="extensionCode"/>
+	 <mat-error *ngIf = "getControls('extensionCode').invalid" >
+	  {{ getControls('extensionCode')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>سنة الخطة</mat-label>
+	 <input matInput
+	  [matDatepicker] = "pLanYearDatepicker"
+	  autocomplete = "off"
+	  formControlName= "pLanYear"/>
+	 <mat-datepicker-toggle
+	   matSuffix
+	   [for]="pLanYearDatepicker"
+	 ></mat-datepicker-toggle>
+	 <mat-datepicker #pLanYearDatepicker></mat-datepicker>
+	 <mat-error *ngIf = "getControls('pLanYear').invalid" >
+	  {{ getControls('pLanYear')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>كود الموقف</mat-label>
+	 <input matInput formControlName="positionCode"/>
+	 <mat-error *ngIf = "getControls('positionCode').invalid" >
+	  {{ getControls('positionCode')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+         
+
+	<app-material-select appearance="outline"
+	  #branch 
+	  [options] = "branchSelectOptions"
+	  formControlName = "branch"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #constructionType 
+	  [options] = "constructionTypeSelectOptions"
+	  formControlName = "constructionType"
+	></app-material-select>
+
+        </form>
+
+        <mat-divider></mat-divider>
+
+		<mat-card-actions>
+			<form [formGroup]="attachmentForm" class="form-container">
+                <app-multi-file-upload [service] = "adjustThePositionOfProjectsService" [id]="adjustThePositionOfProjectsForm.get('id').value"
+                    formControlName = "attachmentFiles">
+                </app-multi-file-upload>
+            </form>
+            <button
+                type="submit"
+                (click)="onSubmit()"
+                [disabled]="adjustThePositionOfProjectsForm.invalid"
+                mat-raised-button
+                color = "primary">
+             حفظ
+            </button>
+        </mat-card-actions>
+    </ng-template >
+</app-new-form-layout >
+

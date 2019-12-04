@@ -1,0 +1,74 @@
+
+<app-search-list-expansion-panel
+    dir="rtl"
+    [pageTitle] = "'ادخال ارقام الطلبات المستلمة في صالة العينات'"
+    (beginSearch) = "onBeginSearch()"
+    (create) = "onCreate()"
+>
+    <ng-template searchFormContainer >
+        <form [formGroup] = "searchForm">
+           
+
+	<mat-form-field appearance="outline">
+	 <mat-label> تاريخ من</mat-label>
+	 <input matInput
+	  [matDatepicker] = "datefromDatepicker"
+	  autocomplete = "off"
+	  formControlName= "datefrom"/>
+	 <mat-datepicker-toggle
+	   matSuffix
+	   [for]="datefromDatepicker"
+	 ></mat-datepicker-toggle>
+	 <mat-datepicker #datefromDatepicker></mat-datepicker>
+	 <mat-error *ngIf = "getControls('datefrom').invalid" >
+	  {{ getControls('datefrom')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>رقم الطلب</mat-label>
+	 <input matInput formControlName="orderNumber"/>
+	 <mat-error *ngIf = "getControls('orderNumber').invalid" >
+	  {{ getControls('orderNumber')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>كود الاختبار</mat-label>
+	 <input matInput formControlName="testCode"/>
+	 <mat-error *ngIf = "getControls('testCode').invalid" >
+	  {{ getControls('testCode')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>تاريخ الي</mat-label>
+	 <input matInput
+	  [matDatepicker] = "dateToDatepicker"
+	  autocomplete = "off"
+	  formControlName= "dateTo"/>
+	 <mat-datepicker-toggle
+	   matSuffix
+	   [for]="dateToDatepicker"
+	 ></mat-datepicker-toggle>
+	 <mat-datepicker #dateToDatepicker></mat-datepicker>
+	 <mat-error *ngIf = "getControls('dateTo').invalid" >
+	  {{ getControls('dateTo')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+           
+
+        </form>
+    </ng-template >
+    <ng-template searchResultContainer >
+        <app-grid-control
+            #gridControl
+            [rowDataService] = "getNumbersOfApplicationsReceivedInTheSamplesHallPaginatedSortedFiltered"
+            [columnOptions] = "columnOptions"
+            [gridHeaderOptions] = "gridHeaderOptions"
+            [searchInput] = "searchForm.value"
+            (deleteRow) = "onDeleteClicked($event)"
+        >
+        </app-grid-control>
+    </ng-template>
+</app-search-list-expansion-panel >
