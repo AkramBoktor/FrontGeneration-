@@ -6736,7 +6736,116 @@ export const listMenuConfig: ListMenuConfig = {
                 }
             ]
         }
-    ],
+    ],	"extract": [
+		{
+			"id": "extract",
+			"title": "برنامج مستخلص",
+			"type": "group",
+			"icon": "app",
+			"children": [
+				{
+					"id": "Extract Config",
+					"title": "الأعدادات",
+					"type": "collapsable",
+					"icon": "build",
+					"children": [
+						{
+							"id": "constructiontypes",
+							"title": "انواع الانشاء",
+							"type": "item",
+							"url": "/lookup/constructiontypes",
+							"exactMatch": true
+						},
+						{
+							"id": "offeringtypes",
+							"title": "انواع الطرح",
+							"type": "item",
+							"url": "/lookup/offeringtypes",
+							"exactMatch": true
+						},
+						{
+							"id": "worktypes",
+							"title": "نوع العمل",
+							"type": "item",
+							"url": "/lookup/worktypes",
+							"exactMatch": true
+						},
+						{
+							"id": "itemcodes",
+							"title": "كود البند",
+							"type": "item",
+							"url": "/lookup/itemcodes",
+							"exactMatch": true
+						},
+						{
+							"id": "modules",
+							"title": "وحدات",
+							"type": "item",
+							"url": "/lookup/modules",
+							"exactMatch": true
+						},
+						{
+							"id": "extracttypes",
+							"title": "نوع المستخلص",
+							"type": "item",
+							"url": "/lookup/extracttypes",
+							"exactMatch": true
+						},
+						{
+							"id": "maintenancetypes",
+							"title": "نوع الصيانة",
+							"type": "item",
+							"url": "/lookup/maintenancetypes",
+							"exactMatch": true
+						}
+					]
+				},
+				{
+					"id": "Extract Program",
+					"title": "البرامج",
+					"type": "collapsable",
+					"icon": "apps",
+					"children": [
+						{
+							"id": "Password for the supervisor engineer",
+							"title": "كلمة سر للمهندس المشرف",
+							"type": "item",
+							"url": "/extract/password-for-the-supervisor-engineer",
+							"exactMatch": true
+						},
+						{
+							"id": "Price for new item",
+							"title": "الاسعار للبنود المستجدة (طلب تسعير بنود)",
+							"type": "item",
+							"url": "/extract/price-for-new-item",
+							"exactMatch": true
+						},
+						{
+							"id": "Abstract Statement Structural",
+							"title": "بيان مستخلص - انشائي",
+							"type": "item",
+							"url": "/extract/abstract-statement-structural",
+							"exactMatch": true
+						},
+						{
+							"id": "Abstract Statement Maintenance",
+							"title": "بيان مستخلص - صيانة",
+							"type": "item",
+							"url": "/extract/abstract-statement-maintenance",
+							"exactMatch": true
+						}
+					]
+				},
+				{
+					"id": "Extract Report",
+					"title": "التقارير",
+					"type": "collapsable",
+					"icon": "assignment",
+					"children": []
+				}
+			]
+		}
+	],
 
 };
 
