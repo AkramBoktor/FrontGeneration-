@@ -1,0 +1,134 @@
+
+<app-search-list-expansion-panel
+    dir="rtl"
+    [pageTitle] = "'بيان مستخلص - صيانة'"
+    (beginSearch) = "onBeginSearch()"
+    (create) = "onCreate()"
+>
+    <ng-template searchFormContainer >
+        <form [formGroup] = "searchForm">
+           
+
+	<mat-form-field appearance="outline">
+	 <mat-label>كود المبنى</mat-label>
+	 <input matInput formControlName="buildingCode"/>
+	 <mat-error *ngIf = "getControls('buildingCode').invalid" >
+	  {{ getControls('buildingCode')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>رقم المستخلص</mat-label>
+	 <input matInput formControlName="abstractNumber"/>
+	 <mat-error *ngIf = "getControls('abstractNumber').invalid" >
+	  {{ getControls('abstractNumber')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>اسم المقاول</mat-label>
+	 <input matInput formControlName="contractorName"/>
+	 <mat-error *ngIf = "getControls('contractorName').invalid" >
+	  {{ getControls('contractorName')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>تاريخ تسليم الموقع</mat-label>
+	 <input matInput
+	  [matDatepicker] = "siteDeliveryDateDatepicker"
+	  autocomplete = "off"
+	  formControlName= "siteDeliveryDate"/>
+	 <mat-datepicker-toggle
+	   matSuffix
+	   [for]="siteDeliveryDateDatepicker"
+	 ></mat-datepicker-toggle>
+	 <mat-datepicker #siteDeliveryDateDatepicker></mat-datepicker>
+	 <mat-error *ngIf = "getControls('siteDeliveryDate').invalid" >
+	  {{ getControls('siteDeliveryDate')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>سنة الخطة</mat-label>
+	 <input matInput formControlName="planYear"/>
+	 <mat-error *ngIf = "getControls('planYear').invalid" >
+	  {{ getControls('planYear')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>رقم المناقصة</mat-label>
+	 <input matInput formControlName="bidNumber"/>
+	 <mat-error *ngIf = "getControls('bidNumber').invalid" >
+	  {{ getControls('bidNumber')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>نهاية السابق</mat-label>
+	 <input matInput
+	  [matDatepicker] = "endPreviousDatepicker"
+	  autocomplete = "off"
+	  formControlName= "endPrevious"/>
+	 <mat-datepicker-toggle
+	   matSuffix
+	   [for]="endPreviousDatepicker"
+	 ></mat-datepicker-toggle>
+	 <mat-datepicker #endPreviousDatepicker></mat-datepicker>
+	 <mat-error *ngIf = "getControls('endPrevious').invalid" >
+	  {{ getControls('endPrevious')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>نهاية الاعمال</mat-label>
+	 <input matInput
+	  [matDatepicker] = "businessEndDatepicker"
+	  autocomplete = "off"
+	  formControlName= "businessEnd"/>
+	 <mat-datepicker-toggle
+	   matSuffix
+	   [for]="businessEndDatepicker"
+	 ></mat-datepicker-toggle>
+	 <mat-datepicker #businessEndDatepicker></mat-datepicker>
+	 <mat-error *ngIf = "getControls('businessEnd').invalid" >
+	  {{ getControls('businessEnd')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>رقم الملحق</mat-label>
+	 <input matInput formControlName="extensionNumber"/>
+	 <mat-error *ngIf = "getControls('extensionNumber').invalid" >
+	  {{ getControls('extensionNumber')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+           
+
+	<app-material-select appearance="outline"
+	  #maintenanceType 
+	  [options] = "maintenanceTypeSelectOptions"
+	  formControlName = "maintenanceType"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #offeringType 
+	  [options] = "offeringTypeSelectOptions"
+	  formControlName = "offeringType"
+	></app-material-select>
+
+        </form>
+    </ng-template >
+    <ng-template searchResultContainer >
+        <app-grid-control
+            #gridControl
+            [rowDataService] = "getAbstractStatementMaintenancePaginatedSortedFiltered"
+            [columnOptions] = "columnOptions"
+            [gridHeaderOptions] = "gridHeaderOptions"
+            [searchInput] = "searchForm.value"
+            (deleteRow) = "onDeleteClicked($event)"
+        >
+        </app-grid-control>
+    </ng-template>
+</app-search-list-expansion-panel >

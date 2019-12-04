@@ -23,56 +23,56 @@ export class GroupDetailsDataViewComponent extends AppBaseComponent implements O
   groupDetailsDataForm: FormGroup;
 
   private buildingTypesService: LookupService;
-  private offeringTypesService: LookupService;
-  private areasService: LookupService;
+private offeringTypesService: LookupService;
+private areasService: LookupService;
 
+  
+buildingTypeSelectOptions: MaterialSelectOptions;
+offeringTypeSelectOptions: MaterialSelectOptions;
+educationalAdministrationSelectOptions: MaterialSelectOptions;
 
-  buildingTypeSelectOptions: MaterialSelectOptions;
-  offeringTypeSelectOptions: MaterialSelectOptions;
-  educationalAdministrationSelectOptions: MaterialSelectOptions;
-
-
+  
 
   constructor(injector: Injector,
     @Optional() @Inject(MAT_DIALOG_DATA) public selectedGroupDetailsDataDialog: any,
     @Optional() public dialogRef: MatDialogRef<GroupDetailsDataViewComponent>,
     public groupDetailsDataService: GroupDetailsDataService) {
-    super(injector);
-  }
+		super(injector);
+    }
 
   ngOnInit() {
     this.initializeLookupServices();
     this.selectedGroupDetailsData = this.selectedGroupDetailsDataDialog.data || this.selectedGroupDetailsData;
 
+    
+	this.buildingTypeSelectOptions = new MaterialSelectOptions({
+	 data: this.buildingTypesService.getAll(),
+	 errorMessages: this.errorMessages,
+	 label: 'نوع المبنى',
+	});
 
-    this.buildingTypeSelectOptions = new MaterialSelectOptions({
-      data: this.buildingTypesService.getAll(),
-      errorMessages: this.errorMessages,
-      label: 'نوع المبنى',
-    });
+	this.offeringTypeSelectOptions = new MaterialSelectOptions({
+	 data: this.offeringTypesService.getAll(),
+	 errorMessages: this.errorMessages,
+	 label: 'نوع الطرح',
+	});
 
-    this.offeringTypeSelectOptions = new MaterialSelectOptions({
-      data: this.offeringTypesService.getAll(),
-      errorMessages: this.errorMessages,
-      label: 'نوع الطرح',
-    });
-
-    this.educationalAdministrationSelectOptions = new MaterialSelectOptions({
-      data: this.areasService.getAll(),
-      errorMessages: this.errorMessages,
-      label: 'الادارة التعليمية',
-    });
+	this.educationalAdministrationSelectOptions = new MaterialSelectOptions({
+	 data: this.areasService.getAll(),
+	 errorMessages: this.errorMessages,
+	 label: 'الادارة التعليمية',
+	});
 
 
     this.groupDetailsDataForm = this.formBuilder.group({
-
-      bidNumber: [this.selectedGroupDetailsData.bidNumber],
-      project: [this.selectedGroupDetailsData.project],
-      durationImplementationInMonths: [this.selectedGroupDetailsData.durationImplementationInMonths],
-      buildingType: [this.selectedGroupDetailsData.buildingType],
-      offeringType: [this.selectedGroupDetailsData.offeringType],
-      educationalAdministration: [this.selectedGroupDetailsData.educationalAdministration]
-    });
+      
+  bidNumber : [this.selectedGroupDetailsData.bidNumber],
+  project : [this.selectedGroupDetailsData.project],
+  durationImplementationInMonths : [this.selectedGroupDetailsData.durationImplementationInMonths],
+  buildingType : [this.selectedGroupDetailsData.buildingType],
+  offeringType : [this.selectedGroupDetailsData.offeringType],
+  educationalAdministration : [this.selectedGroupDetailsData.educationalAdministration]
+      });
 
     this.disableControls();
   }
@@ -85,18 +85,18 @@ export class GroupDetailsDataViewComponent extends AppBaseComponent implements O
 
   getErrorMessage = (formCtrl: AbstractControl) => {
     const errorMessages: FormControlError[] = [
-
-      {
-        errorName: 'min',
-        errorMessage: 'لا يوجد مسلسل يساوي صفر'
-      }
-    ];
+          
+	{
+	 errorName: 'minLength',
+	 errorMessage: 'لا يوجد مسلسل يساوي صفر'
+	}
+        ];
     return ValidatorFunctions.getErrorMessage(formCtrl, errorMessages);
-  }
+   }
 
   getControls(name: string) {
     return this.groupDetailsDataForm.get(name);
-  }
+    }
 
 
   disableControls() {
@@ -107,8 +107,8 @@ export class GroupDetailsDataViewComponent extends AppBaseComponent implements O
 
   initializeLookupServices() {
     this.buildingTypesService = new LookupService('buildingtypes', this.http);
-    this.offeringTypesService = new LookupService('offeringtypes', this.http);
-    this.areasService = new LookupService('areas', this.http);
+this.offeringTypesService = new LookupService('offeringtypes', this.http);
+this.areasService = new LookupService('areas', this.http);
   }
 }
 

@@ -3,12 +3,12 @@
     id: number;
     
 	offeringType: number;
-	bidNumber: number;
+	bidNumber: string;
 	meetingNumber: number;
 	committeeDate: Date;
-	committeeHeadquarters: number;
+	committeeHeadquarters: string;
 	approvalFormationDate: Date;
-	offeringProcedures: number;
+	offeringProcedures: string;
 	constructor(arg?: ExaminationCommitteeDateData) {
         if (arg) {
             for (const property in arg) {

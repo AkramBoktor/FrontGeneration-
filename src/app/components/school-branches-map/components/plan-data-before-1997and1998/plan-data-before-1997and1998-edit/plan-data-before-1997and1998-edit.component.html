@@ -1,0 +1,92 @@
+
+<mat-card>
+    <mat-card-header>
+        <mat-card-title>بيانات خطة ما قبل 1997/1998</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+        <form [formGroup]="planDataBefore1997and1998Form" class="form-container">
+          
+
+	<mat-form-field appearance="outline">
+	 <mat-label>رقم المدرسة</mat-label>
+	 <input matInput formControlName="schoolNumber"/>
+	 <mat-error *ngIf = "getControls('schoolNumber').invalid" >
+	  {{ getControls('schoolNumber')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>اسم المدرسة</mat-label>
+	 <input matInput formControlName="schoolName" [disableControl]="true" />
+	 <mat-error *ngIf = "getControls('schoolName').invalid" >
+	  {{ getControls('schoolName')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>الملحق</mat-label>
+	 <input matInput formControlName="extension"/>
+	 <mat-error *ngIf = "getControls('extension').invalid" >
+	  {{ getControls('extension')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>تاريخ تسليم ابتدائي</mat-label>
+	 <input matInput
+	  [matDatepicker] = "primaryDelivaryDateDatepicker"
+	  autocomplete = "off"
+	  formControlName= "primaryDelivaryDate"/>
+	 <mat-datepicker-toggle
+	   matSuffix
+	   [for]="primaryDelivaryDateDatepicker"
+	 ></mat-datepicker-toggle>
+	 <mat-datepicker #primaryDelivaryDateDatepicker></mat-datepicker>
+	 <mat-error *ngIf = "getControls('primaryDelivaryDate').invalid" >
+	  {{ getControls('primaryDelivaryDate')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>سنة الخطة</mat-label>
+	 <input matInput formControlName="planYear"/>
+	 <mat-error *ngIf = "getControls('planYear').invalid" >
+	  {{ getControls('planYear')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+          
+
+	<app-material-select appearance="outline"
+	  #governorate 
+	  [options] = "governorateSelectOptions"
+	  formControlName = "governorate"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #constructionType 
+	  [options] = "constructionTypeSelectOptions"
+	  formControlName = "constructionType"
+	></app-material-select>
+
+        </form>
+    </mat-card-content>
+
+    <mat-divider></mat-divider>
+
+	<mat-card-actions>
+			<form [formGroup]="attachmentForm" class="form-container">
+                <app-multi-file-upload [service] = "planDataBefore1997and1998Service" [id]="planDataBefore1997and1998Form.get('id').value"
+                    formControlName = "attachmentFiles">
+                </app-multi-file-upload>
+            </form>
+            <button
+                color = "primary"
+                type = "submit"
+                (click) = "onSubmit()"
+                [disabled] = "planDataBefore1997and1998Form.invalid"
+                mat-raised-button>
+                حفظ
+            </button>
+    </mat-card-actions>
+</mat-card>
+

@@ -154,7 +154,7 @@ governorateSelectOptions: MaterialSelectOptions;
     this.buildingTypesService = new LookupService('buildingtypes', this.http);
 this.constructionTypesService = new LookupService('constructiontypes', this.http);
 this.offeringTypesService = new LookupService('offeringtypes', this.http);
-this.maintenanceStatusesService = new LookupService('maintenancestatuses', this.http);
+this.maintenanceStatusesService= new LookupService('maintenancestatuses', this.http);
 this.governoratesService = new LookupService('governorates', this.http);
   }
 }

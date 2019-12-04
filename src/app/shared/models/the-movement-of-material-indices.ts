@@ -4,7 +4,7 @@
     
 	startDateForMovement: Date;
 	endDateForMovement: Date;
-	elementCode: string;
+	elementCode: number;
 	standardNumber: string;
 	constructor(arg?: TheMovementOfMaterialIndices) {
         if (arg) {

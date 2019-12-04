@@ -4,13 +4,13 @@
     
 	buildingType: number;
 	offeringType: number;
-	bidNumber: number;
+	bidNumber: string;
 	group: string;
-	school: number;
-	workOrderNumber: number;
+	school: string;
+	workOrderNumber: string;
 	educationalAdministration: number;
 	workOrderDate: Date;
-	supplierNumber: number;
+	supplierNumber: string;
 	executionDuration: number;
 	bouns: number;
 	workOrderValue: number;

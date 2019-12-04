@@ -1,0 +1,52 @@
+
+<app-new-form-layout
+    dir="rtl"
+    (submitClicked) = "onSubmit()"
+    (back) = "onBack()"
+    [pageTitle] = "' تصويب بيانات فراغات المبني التعليمي فرع القاهره'"
+>
+    <ng-template newFormContainer >
+        <form [formGroup] = "correctionDataSpacesOfTheEducationalBuildingCairoBranchForm">
+         
+         
+
+	<app-material-select appearance="outline"
+	  #governorate 
+	  [options] = "governorateSelectOptions"
+	  formControlName = "governorate"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #department 
+	  [options] = "departmentSelectOptions"
+	  formControlName = "department"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #stage 
+	  [options] = "stageSelectOptions"
+	  formControlName = "stage"
+	></app-material-select>
+
+        </form>
+
+        <mat-divider></mat-divider>
+
+		<mat-card-actions>
+			<form [formGroup]="attachmentForm" class="form-container">
+                <app-multi-file-upload [service] = "correctionDataSpacesOfTheEducationalBuildingCairoBranchService" [id]="correctionDataSpacesOfTheEducationalBuildingCairoBranchForm.get('id').value"
+                    formControlName = "attachmentFiles">
+                </app-multi-file-upload>
+            </form>
+            <button
+                type="submit"
+                (click)="onSubmit()"
+                [disabled]="correctionDataSpacesOfTheEducationalBuildingCairoBranchForm.invalid"
+                mat-raised-button
+                color = "primary">
+             حفظ
+            </button>
+        </mat-card-actions>
+    </ng-template >
+</app-new-form-layout >
+

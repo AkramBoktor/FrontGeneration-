@@ -39,7 +39,7 @@
 
 	<mat-form-field appearance="outline">
 	 <mat-label>اسم العضو</mat-label>
-	 <input matInput formControlName="memberName"/>
+	 <input matInput formControlName="memberName" [disableControl]="false" />
 	 <mat-error *ngIf = "getControls('memberName').invalid" >
 	  {{ getControls('memberName')| getErrorMessages : errorMessages}}
 	  </mat-error>

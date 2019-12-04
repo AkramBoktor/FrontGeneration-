@@ -31,7 +31,7 @@
 
 	<mat-form-field appearance="outline">
 	 <mat-label>اسم المشروع</mat-label>
-	 <input matInput formControlName="projectName" [disableControl]="true" />
+	 <input matInput formControlName="projectName" [disableControl]="false" />
 	 <mat-error *ngIf = "getControls('projectName').invalid" >
 	  {{ getControls('projectName')| getErrorMessages : errorMessages}}
 	  </mat-error>
@@ -40,7 +40,7 @@
 	<mat-form-field appearance="outline">
 	 <mat-label>تاريخ لجنة البت</mat-label>
 	 <input matInput
-	 [disableControl]="true" 
+	 [disableControl]="false" 
 	  [matDatepicker] = "examinationCommitteeDateDatepicker"
 	  autocomplete = "off"
 	  formControlName= "examinationCommitteeDate"/>
@@ -57,7 +57,7 @@
 	<mat-form-field appearance="outline">
 	 <mat-label>تاريخ الاسناد</mat-label>
 	 <input matInput
-	 [disableControl]="true" 
+	 [disableControl]="false" 
 	  [matDatepicker] = "referenceDateDatepicker"
 	  autocomplete = "off"
 	  formControlName= "referenceDate"/>
@@ -74,7 +74,7 @@
 	<mat-form-field appearance="outline">
 	 <mat-label>تاريخ فتح المظاريف</mat-label>
 	 <input matInput
-	 [disableControl]="true" 
+	 [disableControl]="false" 
 	  [matDatepicker] = "openingEnvelopesDateDatepicker"
 	  autocomplete = "off"
 	  formControlName= "openingEnvelopesDate"/>
@@ -91,7 +91,7 @@
 	<mat-form-field appearance="outline">
 	 <mat-label>تاريخ تسليم الموقع</mat-label>
 	 <input matInput
-	 [disableControl]="true" 
+	 [disableControl]="false" 
 	  [matDatepicker] = "siteDeliveryDateDatepicker"
 	  autocomplete = "off"
 	  formControlName= "siteDeliveryDate"/>
@@ -107,7 +107,7 @@
 
 	<mat-form-field appearance="outline">
 	 <mat-label>رقم المورد</mat-label>
-	 <input matInput formControlName="supplierNumber" [disableControl]="true" />
+	 <input matInput formControlName="supplierNumber" [disableControl]="false" />
 	 <mat-error *ngIf = "getControls('supplierNumber').invalid" >
 	  {{ getControls('supplierNumber')| getErrorMessages : errorMessages}}
 	  </mat-error>
@@ -131,7 +131,7 @@
 
 	<mat-form-field appearance="outline">
 	 <mat-label>توصيف الضريبة</mat-label>
-	 <input matInput formControlName="taxDescription" [disableControl]="true" />
+	 <input matInput formControlName="taxDescription" [disableControl]="false" />
 	 <mat-error *ngIf = "getControls('taxDescription').invalid" >
 	  {{ getControls('taxDescription')| getErrorMessages : errorMessages}}
 	  </mat-error>
@@ -147,7 +147,7 @@
 
 	<mat-form-field appearance="outline">
 	 <mat-label>القيمة التعاقدية</mat-label>
-	 <input matInput formControlName="contractualValue" [disableControl]="true" />
+	 <input matInput formControlName="contractualValue" [disableControl]="false" />
 	 <mat-error *ngIf = "getControls('contractualValue').invalid" >
 	  {{ getControls('contractualValue')| getErrorMessages : errorMessages}}
 	  </mat-error>
@@ -188,7 +188,7 @@
 	<mat-form-field appearance="outline">
 	 <mat-label>تاريخ الاستلام الابتدائي</mat-label>
 	 <input matInput
-	 [disableControl]="true" 
+	 [disableControl]="false" 
 	  [matDatepicker] = "primaryReceipDateDatepicker"
 	  autocomplete = "off"
 	  formControlName= "primaryReceipDate"/>
@@ -205,7 +205,7 @@
 	<mat-form-field appearance="outline">
 	 <mat-label>تاريخ الاستلام النهائى</mat-label>
 	 <input matInput
-	 [disableControl]="true" 
+	 [disableControl]="false" 
 	  [matDatepicker] = "finalReceiptDateDatepicker"
 	  autocomplete = "off"
 	  formControlName= "finalReceiptDate"/>

@@ -1,0 +1,120 @@
+
+<mat-card>
+    <mat-card-header>
+        <mat-card-title>الموقع العام لمبني اداري</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+        <form [formGroup]="generalLocationOfAnAdministrativeBuildingForm" class="form-container">
+          
+
+	<mat-form-field appearance="outline">
+	 <mat-label>كود المبنى</mat-label>
+	 <input matInput formControlName="buildingCode"/>
+	 <mat-error *ngIf = "getControls('buildingCode').invalid" >
+	  {{ getControls('buildingCode')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>طول الحد</mat-label>
+	 <input matInput formControlName="lengthLimit"/>
+	 <mat-error *ngIf = "getControls('lengthLimit').invalid" >
+	  {{ getControls('lengthLimit')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>زاوية ميل الحد</mat-label>
+	 <input matInput formControlName="theAngleOfInclinationOfTheLimit"/>
+	 <mat-error *ngIf = "getControls('theAngleOfInclinationOfTheLimit').invalid" >
+	  {{ getControls('theAngleOfInclinationOfTheLimit')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>وصف الحد</mat-label>
+	 <input matInput formControlName="descriptionOfTheLimit"/>
+	 <mat-error *ngIf = "getControls('descriptionOfTheLimit').invalid" >
+	  {{ getControls('descriptionOfTheLimit')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>منسوب الطريق الرئيسي</mat-label>
+	 <input matInput formControlName="mainRoadLevel"/>
+	 <mat-error *ngIf = "getControls('mainRoadLevel').invalid" >
+	  {{ getControls('mainRoadLevel')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>منسوب ارضية الدور الارضي</mat-label>
+	 <input matInput formControlName="groundFloorLevel"/>
+	 <mat-error *ngIf = "getControls('groundFloorLevel').invalid" >
+	  {{ getControls('groundFloorLevel')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>منسوب الفناء داخل الموقع</mat-label>
+	 <input matInput formControlName="theLevelOfTheCourtyardWithinTheSite"/>
+	 <mat-error *ngIf = "getControls('theLevelOfTheCourtyardWithinTheSite').invalid" >
+	  {{ getControls('theLevelOfTheCourtyardWithinTheSite')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>منسوب عن سطح البحر</mat-label>
+	 <input matInput formControlName="seaLevel"/>
+	 <mat-error *ngIf = "getControls('seaLevel').invalid" >
+	  {{ getControls('seaLevel')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+          
+
+	<app-material-select appearance="outline"
+	  #centerCode 
+	  [options] = "centerCodeSelectOptions"
+	  formControlName = "centerCode"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #branchCode 
+	  [options] = "branchCodeSelectOptions"
+	  formControlName = "branchCode"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #limitDirection 
+	  [options] = "limitDirectionSelectOptions"
+	  formControlName = "limitDirection"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #adjacentNeighborStatus 
+	  [options] = "adjacentNeighborStatusSelectOptions"
+	  formControlName = "adjacentNeighborStatus"
+	></app-material-select>
+
+        </form>
+    </mat-card-content>
+
+    <mat-divider></mat-divider>
+
+	<mat-card-actions>
+			<form [formGroup]="attachmentForm" class="form-container">
+                <app-multi-file-upload [service] = "generalLocationOfAnAdministrativeBuildingService" [id]="generalLocationOfAnAdministrativeBuildingForm.get('id').value"
+                    formControlName = "attachmentFiles">
+                </app-multi-file-upload>
+            </form>
+            <button
+                color = "primary"
+                type = "submit"
+                (click) = "onSubmit()"
+                [disabled] = "generalLocationOfAnAdministrativeBuildingForm.invalid"
+                mat-raised-button>
+                حفظ
+            </button>
+    </mat-card-actions>
+</mat-card>
+

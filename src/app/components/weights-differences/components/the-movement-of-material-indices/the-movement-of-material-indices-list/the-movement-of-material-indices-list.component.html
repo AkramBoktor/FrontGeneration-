@@ -1,0 +1,58 @@
+
+<app-search-list-expansion-panel
+    dir="rtl"
+    [pageTitle] = "'حركة الارقام القياسية للمواد'"
+    (beginSearch) = "onBeginSearch()"
+    (create) = "onCreate()"
+>
+    <ng-template searchFormContainer >
+        <form [formGroup] = "searchForm">
+           
+
+	<mat-form-field appearance="outline">
+	 <mat-label>تاريخ بداية الحركة</mat-label>
+	 <input matInput
+	  [matDatepicker] = "startDateForMovementDatepicker"
+	  autocomplete = "off"
+	  formControlName= "startDateForMovement"/>
+	 <mat-datepicker-toggle
+	   matSuffix
+	   [for]="startDateForMovementDatepicker"
+	 ></mat-datepicker-toggle>
+	 <mat-datepicker #startDateForMovementDatepicker></mat-datepicker>
+	 <mat-error *ngIf = "getControls('startDateForMovement').invalid" >
+	  {{ getControls('startDateForMovement')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>تاريخ نهاية الحركة</mat-label>
+	 <input matInput
+	  [matDatepicker] = "endDateForMovementDatepicker"
+	  autocomplete = "off"
+	  formControlName= "endDateForMovement"/>
+	 <mat-datepicker-toggle
+	   matSuffix
+	   [for]="endDateForMovementDatepicker"
+	 ></mat-datepicker-toggle>
+	 <mat-datepicker #endDateForMovementDatepicker></mat-datepicker>
+	 <mat-error *ngIf = "getControls('endDateForMovement').invalid" >
+	  {{ getControls('endDateForMovement')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+           
+
+        </form>
+    </ng-template >
+    <ng-template searchResultContainer >
+        <app-grid-control
+            #gridControl
+            [rowDataService] = "getTheMovementOfMaterialIndicesPaginatedSortedFiltered"
+            [columnOptions] = "columnOptions"
+            [gridHeaderOptions] = "gridHeaderOptions"
+            [searchInput] = "searchForm.value"
+            (deleteRow) = "onDeleteClicked($event)"
+        >
+        </app-grid-control>
+    </ng-template>
+</app-search-list-expansion-panel >

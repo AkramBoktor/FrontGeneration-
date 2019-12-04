@@ -1,0 +1,100 @@
+
+<mat-card>
+    <mat-card-header>
+        <mat-card-title>تسجيل المباني التعلميه  التي استخدمت ف اغراض عامه</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+        <form [formGroup]="registrationOfEducationalBuildingsUsedForGeneralPurposesForm" class="form-container">
+          
+
+	<mat-form-field appearance="outline">
+	 <mat-label>كود المبنى</mat-label>
+	 <input matInput formControlName="buildingCode"/>
+	 <mat-error *ngIf = "getControls('buildingCode').invalid" >
+	  {{ getControls('buildingCode')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>الفتره من</mat-label>
+	 <input matInput
+	  [matDatepicker] = "periodFromDatepicker"
+	  autocomplete = "off"
+	  formControlName= "periodFrom"/>
+	 <mat-datepicker-toggle
+	   matSuffix
+	   [for]="periodFromDatepicker"
+	 ></mat-datepicker-toggle>
+	 <mat-datepicker #periodFromDatepicker></mat-datepicker>
+	 <mat-error *ngIf = "getControls('periodFrom').invalid" >
+	  {{ getControls('periodFrom')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>الفتره الي</mat-label>
+	 <input matInput
+	  [matDatepicker] = "periodToDatepicker"
+	  autocomplete = "off"
+	  formControlName= "periodTo"/>
+	 <mat-datepicker-toggle
+	   matSuffix
+	   [for]="periodToDatepicker"
+	 ></mat-datepicker-toggle>
+	 <mat-datepicker #periodToDatepicker></mat-datepicker>
+	 <mat-error *ngIf = "getControls('periodTo').invalid" >
+	  {{ getControls('periodTo')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>فتره الاستخدام</mat-label>
+	 <input matInput formControlName="periodUsage"/>
+	 <mat-error *ngIf = "getControls('periodUsage').invalid" >
+	  {{ getControls('periodUsage')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>عدد الفراغات</mat-label>
+	 <input matInput formControlName="spaceNumber"/>
+	 <mat-error *ngIf = "getControls('spaceNumber').invalid" >
+	  {{ getControls('spaceNumber')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+          
+
+	<app-material-select appearance="outline"
+	  #governorate 
+	  [options] = "governorateSelectOptions"
+	  formControlName = "governorate"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #purposeCode 
+	  [options] = "purposeCodeSelectOptions"
+	  formControlName = "purposeCode"
+	></app-material-select>
+
+        </form>
+    </mat-card-content>
+
+    <mat-divider></mat-divider>
+
+	<mat-card-actions>
+			<form [formGroup]="attachmentForm" class="form-container">
+                <app-multi-file-upload [service] = "registrationOfEducationalBuildingsUsedForGeneralPurposesService" [id]="registrationOfEducationalBuildingsUsedForGeneralPurposesForm.get('id').value"
+                    formControlName = "attachmentFiles">
+                </app-multi-file-upload>
+            </form>
+            <button
+                color = "primary"
+                type = "submit"
+                (click) = "onSubmit()"
+                [disabled] = "registrationOfEducationalBuildingsUsedForGeneralPurposesForm.invalid"
+                mat-raised-button>
+                حفظ
+            </button>
+    </mat-card-actions>
+</mat-card>
+

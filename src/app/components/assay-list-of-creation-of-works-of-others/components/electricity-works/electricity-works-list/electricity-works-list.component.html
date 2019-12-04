@@ -1,0 +1,62 @@
+
+<app-search-list-expansion-panel
+    dir="rtl"
+    [pageTitle] = "'اعمال كهرباء للغير'"
+    (beginSearch) = "onBeginSearch()"
+    (create) = "onCreate()"
+>
+    <ng-template searchFormContainer >
+        <form [formGroup] = "searchForm">
+           
+
+	<mat-form-field appearance="outline">
+	 <mat-label>نوع النشاط </mat-label>
+	 <input matInput formControlName="activityType"/>
+	 <mat-error *ngIf = "getControls('activityType').invalid" >
+	  {{ getControls('activityType')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>سنه التسعير</mat-label>
+	 <input matInput
+	  [matDatepicker] = "pricingYearDatepicker"
+	  autocomplete = "off"
+	  formControlName= "pricingYear"/>
+	 <mat-datepicker-toggle
+	   matSuffix
+	   [for]="pricingYearDatepicker"
+	 ></mat-datepicker-toggle>
+	 <mat-datepicker #pricingYearDatepicker></mat-datepicker>
+	 <mat-error *ngIf = "getControls('pricingYear').invalid" >
+	  {{ getControls('pricingYear')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+           
+
+	<app-material-select appearance="outline"
+	  #menuType 
+	  [options] = "menuTypeSelectOptions"
+	  formControlName = "menuType"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #employmentType 
+	  [options] = "employmentTypeSelectOptions"
+	  formControlName = "employmentType"
+	></app-material-select>
+
+        </form>
+    </ng-template >
+    <ng-template searchResultContainer >
+        <app-grid-control
+            #gridControl
+            [rowDataService] = "getElectricityWorksPaginatedSortedFiltered"
+            [columnOptions] = "columnOptions"
+            [gridHeaderOptions] = "gridHeaderOptions"
+            [searchInput] = "searchForm.value"
+            (deleteRow) = "onDeleteClicked($event)"
+        >
+        </app-grid-control>
+    </ng-template>
+</app-search-list-expansion-panel >

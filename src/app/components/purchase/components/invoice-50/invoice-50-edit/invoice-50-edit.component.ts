@@ -102,7 +102,7 @@ governorateSelectOptions: MaterialSelectOptions;
   executionDuration : [this.selectedInvoice50.executionDuration, [ ]],
   contractualValue : [this.selectedInvoice50.contractualValue, [ ]],
   abstractNumber : [this.selectedInvoice50.abstractNumber, [ Validators.required ]],
-  contractorCode : [this.selectedInvoice50.contractorCode, [ ]],
+  contractorCode : [this.selectedInvoice50.contractorCode, [ Validators.required ]],
   school : [this.selectedInvoice50.school, [ Validators.required ]],
   bidNumber : [this.selectedInvoice50.bidNumber, [ Validators.required ]],
   primaryReceiptDate : [this.selectedInvoice50.primaryReceiptDate, [ ]],

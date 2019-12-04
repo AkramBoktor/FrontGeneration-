@@ -2,14 +2,14 @@
  export class ThePlannedStartDateForTheSchedule {
     id: number;
     
-	buildingNumberEducational: number;
+	buildingNumberEducational: string;
 	tenderCode: string;
 	yearPlan: string;
 	subtractionType: number;
 	serialSupplement: string;
 	constructionType: number;
-	governorateCode: string;
-	typeOFStartDateForChart: number;
+	governorateCode: number;
+	typeOFStartDateForChart: string;
 	startDateForChart: Date;
 	notes: string;
 	constructor(arg?: ThePlannedStartDateForTheSchedule) {

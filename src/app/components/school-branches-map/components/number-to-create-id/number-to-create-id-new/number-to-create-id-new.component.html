@@ -1,0 +1,50 @@
+
+<app-new-form-layout
+    dir="rtl"
+    (submitClicked) = "onSubmit()"
+    (back) = "onBack()"
+    [pageTitle] = "'شاشة ادخال الرقم لتخليق الرقم التعريفي'"
+>
+    <ng-template newFormContainer >
+        <form [formGroup] = "numberToCreateIDForm">
+         
+
+	<mat-form-field appearance="outline">
+	 <mat-label>الرقم</mat-label>
+	 <input matInput formControlName="number"/>
+	 <mat-error *ngIf = "getControls('number').invalid" >
+	  {{ getControls('number')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>تحقق الخانة</mat-label>
+	 <input matInput formControlName="checkDigit"/>
+	 <mat-error *ngIf = "getControls('checkDigit').invalid" >
+	  {{ getControls('checkDigit')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+         
+
+        </form>
+
+        <mat-divider></mat-divider>
+
+		<mat-card-actions>
+			<form [formGroup]="attachmentForm" class="form-container">
+                <app-multi-file-upload [service] = "numberToCreateIDService" [id]="numberToCreateIDForm.get('id').value"
+                    formControlName = "attachmentFiles">
+                </app-multi-file-upload>
+            </form>
+            <button
+                type="submit"
+                (click)="onSubmit()"
+                [disabled]="numberToCreateIDForm.invalid"
+                mat-raised-button
+                color = "primary">
+             حفظ
+            </button>
+        </mat-card-actions>
+    </ng-template >
+</app-new-form-layout >
+

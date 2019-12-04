@@ -75,7 +75,7 @@
 
 	<mat-form-field appearance="outline">
 	 <mat-label>اسم المقاول</mat-label>
-	 <input matInput formControlName="contractorName" [disableControl]="true" />
+	 <input matInput formControlName="contractorName" [disableControl]="false" />
 	 <mat-error *ngIf = "getControls('contractorName').invalid" >
 	  {{ getControls('contractorName')| getErrorMessages : errorMessages}}
 	  </mat-error>
@@ -83,7 +83,7 @@
 
 	<mat-form-field appearance="outline">
 	 <mat-label>اسم المهندس</mat-label>
-	 <input matInput formControlName="engineerName" [disableControl]="true" />
+	 <input matInput formControlName="engineerName" [disableControl]="false" />
 	 <mat-error *ngIf = "getControls('engineerName').invalid" >
 	  {{ getControls('engineerName')| getErrorMessages : errorMessages}}
 	  </mat-error>
@@ -91,7 +91,7 @@
 
 	<mat-form-field appearance="outline">
 	 <mat-label>مده التنفيذ</mat-label>
-	 <input matInput formControlName="executionDuration" [disableControl]="true" />
+	 <input matInput formControlName="executionDuration" [disableControl]="false" />
 	 <mat-error *ngIf = "getControls('executionDuration').invalid" >
 	  {{ getControls('executionDuration')| getErrorMessages : errorMessages}}
 	  </mat-error>
@@ -99,7 +99,7 @@
 
 	<mat-form-field appearance="outline">
 	 <mat-label>اسم المراجع</mat-label>
-	 <input matInput formControlName="referencesName" [disableControl]="true" />
+	 <input matInput formControlName="referencesName" [disableControl]="false" />
 	 <mat-error *ngIf = "getControls('referencesName').invalid" >
 	  {{ getControls('referencesName')| getErrorMessages : errorMessages}}
 	  </mat-error>
@@ -139,7 +139,7 @@
 
 	<mat-form-field appearance="outline">
 	 <mat-label>اسم المحافظه</mat-label>
-	 <input matInput formControlName="governorateName" [disableControl]="true" />
+	 <input matInput formControlName="governorateName" [disableControl]="false" />
 	 <mat-error *ngIf = "getControls('governorateName').invalid" >
 	  {{ getControls('governorateName')| getErrorMessages : errorMessages}}
 	  </mat-error>

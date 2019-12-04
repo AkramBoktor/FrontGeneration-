@@ -39,7 +39,7 @@
 
 	<mat-form-field appearance="outline">
 	 <mat-label>رقم اذن الصرف </mat-label>
-	 <input matInput formControlName="authorizationNumber" [disableControl]="true" />
+	 <input matInput formControlName="authorizationNumber" [disableControl]="false" />
 	 <mat-error *ngIf = "getControls('authorizationNumber').invalid" >
 	  {{ getControls('authorizationNumber')| getErrorMessages : errorMessages}}
 	  </mat-error>
@@ -48,7 +48,7 @@
 	<mat-form-field appearance="outline">
 	 <mat-label>تاريخ الصرف</mat-label>
 	 <input matInput
-	 [disableControl]="true" 
+	 [disableControl]="false" 
 	  [matDatepicker] = "exchangeDateDatepicker"
 	  autocomplete = "off"
 	  formControlName= "exchangeDate"/>
@@ -64,7 +64,7 @@
 
 	<mat-form-field appearance="outline">
 	 <mat-label>الكمية الصرف  </mat-label>
-	 <input matInput formControlName="quantityExchange" [disableControl]="true" />
+	 <input matInput formControlName="quantityExchange" [disableControl]="false" />
 	 <mat-error *ngIf = "getControls('quantityExchange').invalid" >
 	  {{ getControls('quantityExchange')| getErrorMessages : errorMessages}}
 	  </mat-error>
@@ -112,7 +112,7 @@
 
 	<mat-form-field appearance="outline">
 	 <mat-label>اسم الصنف</mat-label>
-	 <input matInput formControlName="productName" [disableControl]="true" />
+	 <input matInput formControlName="productName" [disableControl]="false" />
 	 <mat-error *ngIf = "getControls('productName').invalid" >
 	  {{ getControls('productName')| getErrorMessages : errorMessages}}
 	  </mat-error>
@@ -120,7 +120,7 @@
 
 	<mat-form-field appearance="outline">
 	 <mat-label> الكمية </mat-label>
-	 <input matInput formControlName="quantity" [disableControl]="true" />
+	 <input matInput formControlName="quantity" [disableControl]="false" />
 	 <mat-error *ngIf = "getControls('quantity').invalid" >
 	  {{ getControls('quantity')| getErrorMessages : errorMessages}}
 	  </mat-error>
@@ -128,7 +128,7 @@
 
 	<mat-form-field appearance="outline">
 	 <mat-label>السعر</mat-label>
-	 <input matInput formControlName="price" [disableControl]="true" />
+	 <input matInput formControlName="price" [disableControl]="false" />
 	 <mat-error *ngIf = "getControls('price').invalid" >
 	  {{ getControls('price')| getErrorMessages : errorMessages}}
 	  </mat-error>

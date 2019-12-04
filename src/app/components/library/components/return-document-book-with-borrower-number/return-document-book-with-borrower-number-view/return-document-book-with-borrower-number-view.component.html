@@ -23,7 +23,7 @@
 
 	<mat-form-field appearance="outline">
 	 <mat-label>رقم الكتاب</mat-label>
-	 <input matInput formControlName="bookNumber" [disableControl]="true" />
+	 <input matInput formControlName="bookNumber"  [disableControl]="false" />
 	 <mat-error *ngIf = "getControls('bookNumber').invalid" >
 	  {{ getControls('bookNumber')| getErrorMessages : errorMessages}}
 	  </mat-error>
@@ -31,7 +31,7 @@
 
 	<mat-form-field appearance="outline">
 	 <mat-label>رقم الايصال</mat-label>
-	 <input matInput formControlName="receiptNumber" [disableControl]="true" />
+	 <input matInput formControlName="receiptNumber"  [disableControl]="false" />
 	 <mat-error *ngIf = "getControls('receiptNumber').invalid" >
 	  {{ getControls('receiptNumber')| getErrorMessages : errorMessages}}
 	  </mat-error>
@@ -40,7 +40,7 @@
 	<mat-form-field appearance="outline">
 	 <mat-label>تاريخ الارجاع الافتراضى</mat-label>
 	 <input matInput
-	 [disableControl]="true" 
+	  [disableControl]="false" 
 	  [matDatepicker] = "defaultReturnDateDatepicker"
 	  autocomplete = "off"
 	  formControlName= "defaultReturnDate"/>
@@ -57,7 +57,7 @@
 	<mat-form-field appearance="outline">
 	 <mat-label>تاريخ ارجاع الكتاب</mat-label>
 	 <input matInput
-	 [disableControl]="true" 
+	  [disableControl]="false" 
 	  [matDatepicker] = "returnBookDateDatepicker"
 	  autocomplete = "off"
 	  formControlName= "returnBookDate"/>
@@ -73,7 +73,7 @@
 
 	<mat-form-field appearance="outline">
 	 <mat-label>مده الاستعاره</mat-label>
-	 <input matInput formControlName="loanDuration" [disableControl]="true" />
+	 <input matInput formControlName="loanDuration"  [disableControl]="false" />
 	 <mat-error *ngIf = "getControls('loanDuration').invalid" >
 	  {{ getControls('loanDuration')| getErrorMessages : errorMessages}}
 	  </mat-error>
@@ -82,7 +82,7 @@
 	<mat-form-field appearance="outline">
 	 <mat-label>تاريخ بدء الاستعاره</mat-label>
 	 <input matInput
-	 [disableControl]="true" 
+	  [disableControl]="false" 
 	  [matDatepicker] = "loanStartDateDatepicker"
 	  autocomplete = "off"
 	  formControlName= "loanStartDate"/>

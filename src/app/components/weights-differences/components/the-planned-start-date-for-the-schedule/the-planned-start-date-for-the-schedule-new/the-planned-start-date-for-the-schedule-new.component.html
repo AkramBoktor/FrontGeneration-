@@ -1,0 +1,116 @@
+
+<app-new-form-layout
+    dir="rtl"
+    (submitClicked) = "onSubmit()"
+    (back) = "onBack()"
+    [pageTitle] = "'تاريخ البداية المخطط للجدول الزمني'"
+>
+    <ng-template newFormContainer >
+        <form [formGroup] = "thePlannedStartDateForTheScheduleForm">
+         
+
+	<mat-form-field appearance="outline">
+	 <mat-label>رقم المبني التعليمي</mat-label>
+	 <input matInput formControlName="buildingNumberEducational"/>
+	 <mat-error *ngIf = "getControls('buildingNumberEducational').invalid" >
+	  {{ getControls('buildingNumberEducational')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline" *ngIf="tenderCodeIsVisible">
+	 <mat-label>كود المناقصة</mat-label>
+	 <input matInput formControlName="tenderCode"/>
+	 <mat-error *ngIf = "getControls('tenderCode').invalid" >
+	  {{ getControls('tenderCode')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>سنة الخطة</mat-label>
+	 <input matInput formControlName="yearPlan" [disableControl]="true" />
+	 <mat-error *ngIf = "getControls('yearPlan').invalid" >
+	  {{ getControls('yearPlan')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>مسلسل الملحق</mat-label>
+	 <input matInput formControlName="serialSupplement"/>
+	 <mat-error *ngIf = "getControls('serialSupplement').invalid" >
+	  {{ getControls('serialSupplement')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>نوع تاريخ بداية المخطط</mat-label>
+	 <input matInput formControlName="typeOFStartDateForChart"/>
+	 <mat-error *ngIf = "getControls('typeOFStartDateForChart').invalid" >
+	  {{ getControls('typeOFStartDateForChart')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>تاريخ بداية المخطط</mat-label>
+	 <input matInput
+	  [matDatepicker] = "startDateForChartDatepicker"
+	  autocomplete = "off"
+	  formControlName= "startDateForChart"/>
+	 <mat-datepicker-toggle
+	   matSuffix
+	   [for]="startDateForChartDatepicker"
+	 ></mat-datepicker-toggle>
+	 <mat-datepicker #startDateForChartDatepicker></mat-datepicker>
+	 <mat-error *ngIf = "getControls('startDateForChart').invalid" >
+	  {{ getControls('startDateForChart')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>ملاحظات</mat-label>
+	 <input matInput formControlName="notes"/>
+	 <mat-error *ngIf = "getControls('notes').invalid" >
+	  {{ getControls('notes')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+         
+
+	<app-material-select appearance="outline"
+	  #subtractionType 
+	  [options] = "subtractionTypeSelectOptions"
+	  formControlName = "subtractionType"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #constructionType 
+	  [options] = "constructionTypeSelectOptions"
+	  formControlName = "constructionType"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #governorateCode 
+	  [options] = "governorateCodeSelectOptions"
+	  formControlName = "governorateCode"
+	></app-material-select>
+
+        </form>
+
+        <mat-divider></mat-divider>
+
+		<mat-card-actions>
+			<form [formGroup]="attachmentForm" class="form-container">
+                <app-multi-file-upload [service] = "thePlannedStartDateForTheScheduleService" [id]="thePlannedStartDateForTheScheduleForm.get('id').value"
+                    formControlName = "attachmentFiles">
+                </app-multi-file-upload>
+            </form>
+            <button
+                type="submit"
+                (click)="onSubmit()"
+                [disabled]="thePlannedStartDateForTheScheduleForm.invalid"
+                mat-raised-button
+                color = "primary">
+             حفظ
+            </button>
+        </mat-card-actions>
+    </ng-template >
+</app-new-form-layout >
+

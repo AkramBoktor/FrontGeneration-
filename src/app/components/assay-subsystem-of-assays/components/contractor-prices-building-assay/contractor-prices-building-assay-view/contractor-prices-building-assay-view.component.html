@@ -55,7 +55,7 @@
 
 	<mat-form-field appearance="outline">
 	 <mat-label>كود النموذج</mat-label>
-	 <input matInput formControlName="modelCode" [disableControl]="true" />
+	 <input matInput formControlName="modelCode"  [disableControl]="false" />
 	 <mat-error *ngIf = "getControls('modelCode').invalid" >
 	  {{ getControls('modelCode')| getErrorMessages : errorMessages}}
 	  </mat-error>

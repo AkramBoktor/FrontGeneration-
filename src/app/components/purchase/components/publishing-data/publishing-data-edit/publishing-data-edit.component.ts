@@ -31,12 +31,15 @@ export class PublishingDataEditComponent extends AppBaseComponent implements OnI
       ];
 
   private offeringTypesService: LookupService;
+private publishingAuthoritiesService: LookupService;
 
   
 offeringTypeSelectOptions: MaterialSelectOptions;
+newspaperNameSelectOptions: MaterialSelectOptions;
 
   
 	@ViewChild('offeringType', { static: true }) OfferingTypeSelectComponent: MaterialSelectComponent;
+	@ViewChild('newspaperName', { static: true }) NewspaperNameSelectComponent: MaterialSelectComponent;
 
   
 
@@ -59,6 +62,12 @@ offeringTypeSelectOptions: MaterialSelectOptions;
 	 label: 'نوع الطرح',
 	});
 
+	this.newspaperNameSelectOptions = new MaterialSelectOptions({
+	 data: this.publishingAuthoritiesService.getAll(),
+	 errorMessages: this.errorMessages,
+	 label: 'اسم الجريدة',
+	});
+
 
     this.publishingDataForm = this.formBuilder.group({
       
@@ -66,8 +75,8 @@ offeringTypeSelectOptions: MaterialSelectOptions;
   bidNumber : [this.selectedPublishingData.bidNumber, [ Validators.required ]],
   publicationNumber : [this.selectedPublishingData.publicationNumber, [ Validators.required ]],
   publicationDate : [this.selectedPublishingData.publicationDate, [ Validators.required ]],
-  newspaperName : [this.selectedPublishingData.newspaperName, [ Validators.required ]],
-  offeringType : [this.selectedPublishingData.offeringType, [ Validators.required ]]
+  offeringType : [this.selectedPublishingData.offeringType, [ Validators.required ]],
+  newspaperName : [this.selectedPublishingData.newspaperName, [ Validators.required ]]
    }, {
 	  validators: [ ]
       });
@@ -96,5 +105,6 @@ offeringTypeSelectOptions: MaterialSelectOptions;
 
   initializeLookupServices() {
     this.offeringTypesService = new LookupService('offeringtypes', this.http);
+this.publishingAuthoritiesService = new LookupService('publishingauthorities', this.http);
   }
 }

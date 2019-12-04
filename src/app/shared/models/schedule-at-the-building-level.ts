@@ -3,13 +3,13 @@
     id: number;
     
 	buildingCode: string;
-	date: string;
+	date: Date;
 	extensionCode: string;
 	constructionType: number;
 	yearPlan: Date;
-	itemCode: string;
+	itemCode: number;
 	activityCode: string;
-	activityAmountAccordingToItem: number;
+	activityAmountAccordingToItem: string;
 	constructor(arg?: ScheduleAtTheBuildingLevel) {
         if (arg) {
             for (const property in arg) {

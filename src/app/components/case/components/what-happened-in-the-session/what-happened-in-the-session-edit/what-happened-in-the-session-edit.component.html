@@ -17,7 +17,7 @@
 
 	<mat-form-field appearance="outline">
 	 <mat-label>اسم الجهة</mat-label>
-	 <input matInput formControlName="entityName" [disableControl]="true" />
+	 <input matInput formControlName="entityName"  [disableControl]="false" />
 	 <mat-error *ngIf = "getControls('entityName').invalid" >
 	  {{ getControls('entityName')| getErrorMessages : errorMessages}}
 	  </mat-error>
@@ -25,7 +25,7 @@
 
 	<mat-form-field appearance="outline">
 	 <mat-label>رقم الدعوي</mat-label>
-	 <input matInput formControlName="lawsuitNumber" [disableControl]="true" />
+	 <input matInput formControlName="lawsuitNumber"  [disableControl]="false" />
 	 <mat-error *ngIf = "getControls('lawsuitNumber').invalid" >
 	  {{ getControls('lawsuitNumber')| getErrorMessages : errorMessages}}
 	  </mat-error>
@@ -34,7 +34,7 @@
 	<mat-form-field appearance="outline">
 	 <mat-label>لسنة </mat-label>
 	 <input matInput
-	 [disableControl]="true" 
+	  [disableControl]="false" 
 	  [matDatepicker] = "yearDatepicker"
 	  autocomplete = "off"
 	  formControlName= "year"/>

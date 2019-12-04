@@ -1,0 +1,142 @@
+
+<mat-card class="form-card">
+      <mat-card-header>
+  
+          <mat-card-title>
+              ربط اكواد مدارس الهيه باكواد مدارس الوزاره
+          </mat-card-title>
+  
+      </mat-card-header>
+  
+      <mat-card-content>
+  
+        <form [formGroup] = "linkingCodesSchoolsWithCodesSchoolsMinistryForm" class="form-container">
+         
+
+	<mat-form-field appearance="outline">
+	 <mat-label>كود مدرسة الهيئة</mat-label>
+	 <input matInput formControlName="authoritySchoolCode"/>
+	 <mat-error *ngIf = "getControls('authoritySchoolCode').invalid" >
+	  {{ getControls('authoritySchoolCode')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>عنوان مدرسة</mat-label>
+	 <input matInput formControlName="schoolAddress"/>
+	 <mat-error *ngIf = "getControls('schoolAddress').invalid" >
+	  {{ getControls('schoolAddress')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>عدد الفترات</mat-label>
+	 <input matInput formControlName="periodsNumber"/>
+	 <mat-error *ngIf = "getControls('periodsNumber').invalid" >
+	  {{ getControls('periodsNumber')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>اسم الفترة 1</mat-label>
+	 <input matInput formControlName="periodName1"/>
+	 <mat-error *ngIf = "getControls('periodName1').invalid" >
+	  {{ getControls('periodName1')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>عدد التلاميذ</mat-label>
+	 <input matInput formControlName="pupilsCount1"/>
+	 <mat-error *ngIf = "getControls('pupilsCount1').invalid" >
+	  {{ getControls('pupilsCount1')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>اسم الفترة 2</mat-label>
+	 <input matInput formControlName="periodName2"/>
+	 <mat-error *ngIf = "getControls('periodName2').invalid" >
+	  {{ getControls('periodName2')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>عدد التلاميذ</mat-label>
+	 <input matInput formControlName="pupilsCount2"/>
+	 <mat-error *ngIf = "getControls('pupilsCount2').invalid" >
+	  {{ getControls('pupilsCount2')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>مدرسة مستضافة</mat-label>
+	 <input matInput formControlName="hostedSchool"/>
+	 <mat-error *ngIf = "getControls('hostedSchool').invalid" >
+	  {{ getControls('hostedSchool')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>عدد التلاميذ</mat-label>
+	 <input matInput formControlName="hostedSchoolPupilsCount"/>
+	 <mat-error *ngIf = "getControls('hostedSchoolPupilsCount').invalid" >
+	  {{ getControls('hostedSchoolPupilsCount')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>كود مدرسة وزارة</mat-label>
+	 <input matInput formControlName="ministrySchoolCode"/>
+	 <mat-error *ngIf = "getControls('ministrySchoolCode').invalid" >
+	  {{ getControls('ministrySchoolCode')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+         
+
+	<app-material-select appearance="outline"
+	  #governorate 
+	  [options] = "governorateSelectOptions"
+	  formControlName = "governorate"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #administration 
+	  [options] = "administrationSelectOptions"
+	  formControlName = "administration"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #centerDepartment 
+	  [options] = "centerDepartmentSelectOptions"
+	  formControlName = "centerDepartment"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #villageNeighborhood 
+	  [options] = "villageNeighborhoodSelectOptions"
+	  formControlName = "villageNeighborhood"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #stage 
+	  [options] = "stageSelectOptions"
+	  formControlName = "stage"
+	></app-material-select>
+        </form>
+  
+      </mat-card-content >
+  
+      <mat-action-row>
+            <form [formGroup]="attachmentForm" class="form-container">
+                <app-multi-file-upload [service] = "linkingCodesSchoolsWithCodesSchoolsMinistryService" [id]="linkingCodesSchoolsWithCodesSchoolsMinistryForm.get('id').value"
+                    formControlName = "attachmentFiles">
+                </app-multi-file-upload>
+            </form>
+            <button (click) = "onConfirm()" mat-raised-button color = "primary" >
+                غلق
+            </button>
+        </mat-action-row>
+    </mat-card>
+
+    

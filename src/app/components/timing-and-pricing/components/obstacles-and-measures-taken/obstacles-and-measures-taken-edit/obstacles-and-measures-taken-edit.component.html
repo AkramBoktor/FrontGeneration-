@@ -49,7 +49,7 @@
 
 	<mat-form-field appearance="outline">
 	 <mat-label>رقم المناقصه</mat-label>
-	 <input matInput formControlName="bidNumber" [disableControl]="true" />
+	 <input matInput formControlName="bidNumber" [disableControl]="false" />
 	 <mat-error *ngIf = "getControls('bidNumber').invalid" >
 	  {{ getControls('bidNumber')| getErrorMessages : errorMessages}}
 	  </mat-error>
@@ -57,7 +57,7 @@
 
 	<mat-form-field appearance="outline">
 	 <mat-label>رقم المقال</mat-label>
-	 <input matInput formControlName="contractorCode" [disableControl]="true" />
+	 <input matInput formControlName="contractorCode" [disableControl]="false" />
 	 <mat-error *ngIf = "getControls('contractorCode').invalid" >
 	  {{ getControls('contractorCode')| getErrorMessages : errorMessages}}
 	  </mat-error>

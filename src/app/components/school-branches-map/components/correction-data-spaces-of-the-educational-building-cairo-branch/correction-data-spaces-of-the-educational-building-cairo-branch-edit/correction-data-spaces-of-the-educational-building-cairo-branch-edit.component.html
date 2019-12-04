@@ -1,0 +1,50 @@
+
+<mat-card>
+    <mat-card-header>
+        <mat-card-title> تصويب بيانات فراغات المبني التعليمي فرع القاهره</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+        <form [formGroup]="correctionDataSpacesOfTheEducationalBuildingCairoBranchForm" class="form-container">
+          
+          
+
+	<app-material-select appearance="outline"
+	  #governorate 
+	  [options] = "governorateSelectOptions"
+	  formControlName = "governorate"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #department 
+	  [options] = "departmentSelectOptions"
+	  formControlName = "department"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #stage 
+	  [options] = "stageSelectOptions"
+	  formControlName = "stage"
+	></app-material-select>
+
+        </form>
+    </mat-card-content>
+
+    <mat-divider></mat-divider>
+
+	<mat-card-actions>
+			<form [formGroup]="attachmentForm" class="form-container">
+                <app-multi-file-upload [service] = "correctionDataSpacesOfTheEducationalBuildingCairoBranchService" [id]="correctionDataSpacesOfTheEducationalBuildingCairoBranchForm.get('id').value"
+                    formControlName = "attachmentFiles">
+                </app-multi-file-upload>
+            </form>
+            <button
+                color = "primary"
+                type = "submit"
+                (click) = "onSubmit()"
+                [disabled] = "correctionDataSpacesOfTheEducationalBuildingCairoBranchForm.invalid"
+                mat-raised-button>
+                حفظ
+            </button>
+    </mat-card-actions>
+</mat-card>
+

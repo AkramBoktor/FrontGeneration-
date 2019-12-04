@@ -4,10 +4,10 @@
     project: string;
 	buildingType: number;
 	offeringType: number;
-	bidNumber: number;
+	bidNumber: string;
 	group: string;
 	educationalAdministration: number;
-	durationImplementationInMonths: number;
+	durationImplementationInMonths: string;
 	constructor(arg?: GroupDetailsData) {
         if (arg) {
             for (const property in arg) {

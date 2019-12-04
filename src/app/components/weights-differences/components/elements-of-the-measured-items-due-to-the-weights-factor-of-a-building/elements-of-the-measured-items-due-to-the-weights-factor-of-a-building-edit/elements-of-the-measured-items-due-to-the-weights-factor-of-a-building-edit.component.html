@@ -1,0 +1,105 @@
+
+<mat-card>
+    <mat-card-header>
+        <mat-card-title>عناصر البنود المقايسة المستحقة لمعامل الاوزان لمبني</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+        <form [formGroup]="elementsOfTheMeasuredItemsDueToTheWeightsFactorOfABuildingForm" class="form-container">
+          
+
+	<mat-form-field appearance="outline">
+	 <mat-label>كود المبنى</mat-label>
+	 <input matInput formControlName="buildingCode"/>
+	 <mat-error *ngIf = "getControls('buildingCode').invalid" >
+	  {{ getControls('buildingCode')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>النموذج</mat-label>
+	 <input matInput formControlName="sample"/>
+	 <mat-error *ngIf = "getControls('sample').invalid" >
+	  {{ getControls('sample')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>سنة الخطه</mat-label>
+	 <input matInput
+	 [disableControl]="true" 
+	  [matDatepicker] = "yearPlanDatepicker"
+	  autocomplete = "off"
+	  formControlName= "yearPlan"/>
+	 <mat-datepicker-toggle
+	   matSuffix
+	   [for]="yearPlanDatepicker"
+	 ></mat-datepicker-toggle>
+	 <mat-datepicker #yearPlanDatepicker></mat-datepicker>
+	 <mat-error *ngIf = "getControls('yearPlan').invalid" >
+	  {{ getControls('yearPlan')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>كود الملحق</mat-label>
+	 <input matInput formControlName="extensionCode"/>
+	 <mat-error *ngIf = "getControls('extensionCode').invalid" >
+	  {{ getControls('extensionCode')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>اسم المبني</mat-label>
+	 <input matInput formControlName="buildingName" [disableControl]="true" />
+	 <mat-error *ngIf = "getControls('buildingName').invalid" >
+	  {{ getControls('buildingName')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+          
+
+	<app-material-select appearance="outline"
+	  #itemCode 
+	  [options] = "itemCodeSelectOptions"
+	  formControlName = "itemCode"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #employmentType 
+	  [options] = "employmentTypeSelectOptions"
+	  formControlName = "employmentType"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #constructionType 
+	  [options] = "constructionTypeSelectOptions"
+	  formControlName = "constructionType"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #element 
+	  [options] = "elementSelectOptions"
+	  formControlName = "element"
+	></app-material-select>
+
+        </form>
+    </mat-card-content>
+
+    <mat-divider></mat-divider>
+
+	<mat-card-actions>
+			<form [formGroup]="attachmentForm" class="form-container">
+                <app-multi-file-upload [service] = "elementsOfTheMeasuredItemsDueToTheWeightsFactorOfABuildingService" [id]="elementsOfTheMeasuredItemsDueToTheWeightsFactorOfABuildingForm.get('id').value"
+                    formControlName = "attachmentFiles">
+                </app-multi-file-upload>
+            </form>
+            <button
+                color = "primary"
+                type = "submit"
+                (click) = "onSubmit()"
+                [disabled] = "elementsOfTheMeasuredItemsDueToTheWeightsFactorOfABuildingForm.invalid"
+                mat-raised-button>
+                حفظ
+            </button>
+    </mat-card-actions>
+</mat-card>
+

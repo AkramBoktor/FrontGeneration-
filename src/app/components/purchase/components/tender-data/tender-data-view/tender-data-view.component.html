@@ -78,14 +78,6 @@
 	</mat-form-field>
 
 	<mat-form-field appearance="outline">
-	 <mat-label>مدة سريان العطاء بالشهور</mat-label>
-	 <input matInput formControlName="tenderDurationinMonths"/>
-	 <mat-error *ngIf = "getControls('tenderDurationinMonths').invalid" >
-	  {{ getControls('tenderDurationinMonths')| getErrorMessages : errorMessages}}
-	  </mat-error>
-	</mat-form-field>
-
-	<mat-form-field appearance="outline">
 	 <mat-label>تاريخ تقديم العطاء</mat-label>
 	 <input matInput
 	  [matDatepicker] = "tenderDateDatepicker"

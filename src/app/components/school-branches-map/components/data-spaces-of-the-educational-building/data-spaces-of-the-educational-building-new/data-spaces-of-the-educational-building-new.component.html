@@ -1,0 +1,88 @@
+
+<app-new-form-layout
+    dir="rtl"
+    (submitClicked) = "onSubmit()"
+    (back) = "onBack()"
+    [pageTitle] = "' بيانات فراغات المبني التعليمي'"
+>
+    <ng-template newFormContainer >
+        <form [formGroup] = "dataSpacesOfTheEducationalBuildingForm">
+         
+
+	<mat-form-field appearance="outline">
+	 <mat-label>كود المبنى</mat-label>
+	 <input matInput formControlName="buildingCode"/>
+	 <mat-error *ngIf = "getControls('buildingCode').invalid" >
+	  {{ getControls('buildingCode')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>الملحق</mat-label>
+	 <input matInput formControlName="extension"/>
+	 <mat-error *ngIf = "getControls('extension').invalid" >
+	  {{ getControls('extension')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>الدور</mat-label>
+	 <input matInput formControlName="floor"/>
+	 <mat-error *ngIf = "getControls('floor').invalid" >
+	  {{ getControls('floor')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>اسم الفراغ</mat-label>
+	 <input matInput formControlName="spaceName"/>
+	 <mat-error *ngIf = "getControls('spaceName').invalid" >
+	  {{ getControls('spaceName')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>المساحه</mat-label>
+	 <input matInput formControlName="area"/>
+	 <mat-error *ngIf = "getControls('area').invalid" >
+	  {{ getControls('area')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>مسلسل </mat-label>
+	 <input matInput formControlName="series"/>
+	 <mat-error *ngIf = "getControls('series').invalid" >
+	  {{ getControls('series')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+         
+
+	<app-material-select appearance="outline"
+	  #code 
+	  [options] = "codeSelectOptions"
+	  formControlName = "code"
+	></app-material-select>
+
+        </form>
+
+        <mat-divider></mat-divider>
+
+		<mat-card-actions>
+			<form [formGroup]="attachmentForm" class="form-container">
+                <app-multi-file-upload [service] = "dataSpacesOfTheEducationalBuildingService" [id]="dataSpacesOfTheEducationalBuildingForm.get('id').value"
+                    formControlName = "attachmentFiles">
+                </app-multi-file-upload>
+            </form>
+            <button
+                type="submit"
+                (click)="onSubmit()"
+                [disabled]="dataSpacesOfTheEducationalBuildingForm.invalid"
+                mat-raised-button
+                color = "primary">
+             حفظ
+            </button>
+        </mat-card-actions>
+    </ng-template >
+</app-new-form-layout >
+
