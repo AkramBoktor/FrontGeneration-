@@ -87,7 +87,7 @@
 
 	<mat-form-field appearance="outline">
 	 <mat-label>اسم المهندس</mat-label>
-	 <input matInput formControlName="engineerName" [disableControl]="true" />
+	 <input matInput formControlName="engineerName"/>
 	 <mat-error *ngIf = "getControls('engineerName').invalid" >
 	  {{ getControls('engineerName')| getErrorMessages : errorMessages}}
 	  </mat-error>
@@ -140,14 +140,6 @@
 	  {{ getControls('referenceCode')| getErrorMessages : errorMessages}}
 	  </mat-error>
 	</mat-form-field>
-
-	<mat-form-field appearance="outline">
-	 <mat-label>اسم المحافظه</mat-label>
-	 <input matInput formControlName="governorateName" [disableControl]="true" />
-	 <mat-error *ngIf = "getControls('governorateName').invalid" >
-	  {{ getControls('governorateName')| getErrorMessages : errorMessages}}
-	  </mat-error>
-	</mat-form-field>
          
 
 	<app-material-select appearance="outline"
@@ -160,6 +152,12 @@
 	  #reasonCode 
 	  [options] = "reasonCodeSelectOptions"
 	  formControlName = "reasonCode"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #governorateName 
+	  [options] = "governorateNameSelectOptions"
+	  formControlName = "governorateName"
 	></app-material-select>
         </form>
   

@@ -32,14 +32,17 @@ export class ContractorDurationsEditComponent extends AppBaseComponent implement
 
   private offeringTypesService: LookupService;
 private contractorTideReasonsService: LookupService;
+private governoratesService: LookupService;
 
   
 offeringTypeSelectOptions: MaterialSelectOptions;
 reasonCodeSelectOptions: MaterialSelectOptions;
+governorateNameSelectOptions: MaterialSelectOptions;
 
   
 	@ViewChild('offeringType', { static: true }) OfferingTypeSelectComponent: MaterialSelectComponent;
 	@ViewChild('reasonCode', { static: true }) ReasonCodeSelectComponent: MaterialSelectComponent;
+	@ViewChild('governorateName', { static: true }) GovernorateNameSelectComponent: MaterialSelectComponent;
 
   
 
@@ -68,6 +71,12 @@ reasonCodeSelectOptions: MaterialSelectOptions;
 	 label: 'كود السبب',
 	});
 
+	this.governorateNameSelectOptions = new MaterialSelectOptions({
+	 data: this.governoratesService.getAll(),
+	 errorMessages: this.errorMessages,
+	 label: 'اسم المحافظه',
+	});
+
 
     this.contractorDurationsForm = this.formBuilder.group({
       
@@ -79,15 +88,15 @@ reasonCodeSelectOptions: MaterialSelectOptions;
   bidNumber : [this.selectedContractorDurations.bidNumber, [ Validators.required ]],
   contractorCode : [this.selectedContractorDurations.contractorCode, [ Validators.required ]],
   contractorName : [this.selectedContractorDurations.contractorName, [ ]],
-  engineerName : [this.selectedContractorDurations.engineerName, [ ]],
+  engineerName : [this.selectedContractorDurations.engineerName, [ Validators.required ]],
   executionDuration : [this.selectedContractorDurations.executionDuration, [ ]],
-  referencesName : [this.selectedContractorDurations.referencesName, [ Validators.required ]],
-  supervisorEngineerCode : [this.selectedContractorDurations.supervisorEngineerCode, [ Validators.required ]],
+  referencesName : [this.selectedContractorDurations.referencesName, [ ]],
+  engineerCode : [this.selectedContractorDurations.engineerCode, [ Validators.required ]],
   siteDeliveryDate : [this.selectedContractorDurations.siteDeliveryDate, [ Validators.required ]],
   referenceCode : [this.selectedContractorDurations.referenceCode, [ Validators.required ]],
-  governorateName : [this.selectedContractorDurations.governorateName, [ ]],
   offeringType : [this.selectedContractorDurations.offeringType, [ Validators.required ]],
-  reasonCode : [this.selectedContractorDurations.reasonCode, [ Validators.required ]]
+  reasonCode : [this.selectedContractorDurations.reasonCode, [ Validators.required ]],
+  governorateName : [this.selectedContractorDurations.governorateName, [ Validators.required ]]
    }, {
 	  validators: [ ]
       });
@@ -117,5 +126,6 @@ reasonCodeSelectOptions: MaterialSelectOptions;
   initializeLookupServices() {
     this.offeringTypesService = new LookupService('offeringtypes', this.http);
 this.contractorTideReasonsService = new LookupService('contractortidereasons', this.http);
+this.governoratesService = new LookupService('governorates', this.http);
   }
 }

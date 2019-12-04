@@ -39,7 +39,7 @@
 
 	<mat-form-field appearance="outline">
 	 <mat-label>كود المقاول</mat-label>
-	 <input matInput formControlName="contractorCode" [disableControl]="true" />
+	 <input matInput formControlName="contractorCode"/>
 	 <mat-error *ngIf = "getControls('contractorCode').invalid" >
 	  {{ getControls('contractorCode')| getErrorMessages : errorMessages}}
 	  </mat-error>
@@ -55,7 +55,7 @@
 
 	<mat-form-field appearance="outline">
 	 <mat-label>رقم المهندس</mat-label>
-	 <input matInput formControlName="engineerCode" [disableControl]="true" />
+	 <input matInput formControlName="engineerCode"/>
 	 <mat-error *ngIf = "getControls('engineerCode').invalid" >
 	  {{ getControls('engineerCode')| getErrorMessages : errorMessages}}
 	  </mat-error>
@@ -95,18 +95,10 @@
 	</mat-form-field>
 
 	<mat-form-field appearance="outline">
-	 <mat-label>مرات التمديد</mat-label>
-	 <input matInput formControlName="extensionTimes" [disableControl]="true" />
-	 <mat-error *ngIf = "getControls('extensionTimes').invalid" >
-	  {{ getControls('extensionTimes')| getErrorMessages : errorMessages}}
-	  </mat-error>
-	</mat-form-field>
-
-	<mat-form-field appearance="outline">
 	 <mat-label>رقم المراجع</mat-label>
-	 <input matInput formControlName="referenceNumber"/>
-	 <mat-error *ngIf = "getControls('referenceNumber').invalid" >
-	  {{ getControls('referenceNumber')| getErrorMessages : errorMessages}}
+	 <input matInput formControlName="referenceCode"/>
+	 <mat-error *ngIf = "getControls('referenceCode').invalid" >
+	  {{ getControls('referenceCode')| getErrorMessages : errorMessages}}
 	  </mat-error>
 	</mat-form-field>
 
@@ -141,15 +133,23 @@
 	  {{ getControls('beganStopDate')| getErrorMessages : errorMessages}}
 	  </mat-error>
 	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>مرات التمديد</mat-label>
+	 <input matInput formControlName="extensionTimes" [disableControl]="true" />
+	 <mat-error *ngIf = "getControls('extensionTimes').invalid" >
+	  {{ getControls('extensionTimes')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
          
 
-	<app-material-select appearance="outline" [disabled]="true" 
+	<app-material-select appearance="outline"
 	  #governorate 
 	  [options] = "governorateSelectOptions"
 	  formControlName = "governorate"
 	></app-material-select>
 
-	<app-material-select appearance="outline" [disabled]="true" 
+	<app-material-select appearance="outline"
 	  #offeringType 
 	  [options] = "offeringTypeSelectOptions"
 	  formControlName = "offeringType"

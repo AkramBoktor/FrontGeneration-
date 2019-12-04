@@ -80,11 +80,11 @@ offeringTypeSelectOptions: MaterialSelectOptions;
   engineerName : [this.selectedProjectPeriods.engineerName, [ ]],
   siteDeliveryDate : [this.selectedProjectPeriods.siteDeliveryDate, [ ]],
   executionDuration : [this.selectedProjectPeriods.executionDuration, [ ]],
-  extensionTimes : [this.selectedProjectPeriods.extensionTimes, [ ]],
-  referenceNumber : [this.selectedProjectPeriods.referenceNumber, [ Validators.required ]],
+  referenceCode : [this.selectedProjectPeriods.referenceCode, [ Validators.required ]],
   referencesName : [this.selectedProjectPeriods.referencesName, [ ]],
   extensionDays : [this.selectedProjectPeriods.extensionDays, [ Validators.required ]],
   beganStopDate : [this.selectedProjectPeriods.beganStopDate, [ Validators.required ]],
+  extensionTimes : [this.selectedProjectPeriods.extensionTimes, [ ]],
   governorate : [this.selectedProjectPeriods.governorate, [ ]],
   offeringType : [this.selectedProjectPeriods.offeringType, [ ]]
    }, {

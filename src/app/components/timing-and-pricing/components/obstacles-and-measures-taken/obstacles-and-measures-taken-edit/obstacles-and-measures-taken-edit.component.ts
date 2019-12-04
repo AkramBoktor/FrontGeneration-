@@ -99,18 +99,18 @@ executionCodeSelectOptions: MaterialSelectOptions;
     this.obstaclesAndMeasuresTakenForm = this.formBuilder.group({
       
   id : [this.selectedObstaclesAndMeasuresTaken.id],
-  iD : [this.selectedObstaclesAndMeasuresTaken.iD, [ Validators.required ]],
+  iDNumber : [this.selectedObstaclesAndMeasuresTaken.iDNumber, [ Validators.required ]],
   referencesCode : [this.selectedObstaclesAndMeasuresTaken.referencesCode, [ Validators.required ]],
   difficulties : [this.selectedObstaclesAndMeasuresTaken.difficulties, [ Validators.required ]],
   procedures : [this.selectedObstaclesAndMeasuresTaken.procedures, [ Validators.required ]],
   extensionCode : [this.selectedObstaclesAndMeasuresTaken.extensionCode, [ Validators.required ]],
-  bidNumber : [this.selectedObstaclesAndMeasuresTaken.bidNumber, [ ]],
-  contractorCode : [this.selectedObstaclesAndMeasuresTaken.contractorCode, [ ]],
+  bidNumber : [this.selectedObstaclesAndMeasuresTaken.bidNumber, [ Validators.required ]],
+  contractorCode : [this.selectedObstaclesAndMeasuresTaken.contractorCode, [ Validators.required ]],
   governorate : [this.selectedObstaclesAndMeasuresTaken.governorate, [ Validators.required ]],
-  constructionType : [this.selectedObstaclesAndMeasuresTaken.constructionType, [ ]],
+  constructionType : [this.selectedObstaclesAndMeasuresTaken.constructionType, [ Validators.required ]],
   offeringType : [this.selectedObstaclesAndMeasuresTaken.offeringType, [ Validators.required ]],
-  referenceCode : [this.selectedObstaclesAndMeasuresTaken.referenceCode, [ ]],
-  executionCode : [this.selectedObstaclesAndMeasuresTaken.executionCode, [ ]]
+  referenceCode : [this.selectedObstaclesAndMeasuresTaken.referenceCode, [ Validators.required ]],
+  executionCode : [this.selectedObstaclesAndMeasuresTaken.executionCode, [ Validators.required ]]
    }, {
 	  validators: [ ]
       });

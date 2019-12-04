@@ -30,13 +30,19 @@ export class ContractorDurationsListComponent extends AppBaseComponent implement
   errorMessages: FormControlError[] = [
         
       ];
-  private contractorTideReasonsService: LookupService;
+  private offeringTypesService: LookupService;
+private contractorTideReasonsService: LookupService;
+private governoratesService: LookupService;
 
   
+offeringTypeSelectOptions: MaterialSelectOptions;
 reasonCodeSelectOptions: MaterialSelectOptions;
+governorateNameSelectOptions: MaterialSelectOptions;
 
   
+	@ViewChild('offeringType', { static: true }) OfferingTypeSelectComponent: MaterialSelectComponent;
 	@ViewChild('reasonCode', { static: true }) ReasonCodeSelectComponent: MaterialSelectComponent;
+	@ViewChild('governorateName', { static: true }) GovernorateNameSelectComponent: MaterialSelectComponent;
 
   
   @Input() selectedContractorDurations: ContractorDurations;
@@ -55,12 +61,12 @@ reasonCodeSelectOptions: MaterialSelectOptions;
 	new GridColumnOptions({ headerName: 'اسم المهندس', field: 'engineerName' }),
 	new GridColumnOptions({ headerName: 'مده التنفيذ', field: 'executionDuration' }),
 	new GridColumnOptions({ headerName: 'اسم المراجع', field: 'referencesName' }),
-	new GridColumnOptions({ headerName: 'كود المهندس المشرف', field: 'supervisorEngineerCode' }),
+	new GridColumnOptions({ headerName: 'كود المهندس المشرف', field: 'engineerCode' }),
 	new GridColumnOptions({ headerName: 'تاريخ تسليم الموقع', field: 'siteDeliveryDate' }),
 	new GridColumnOptions({ headerName: 'كود المراجع', field: 'referenceCode' }),
-	new GridColumnOptions({ headerName: 'اسم المحافظه', field: 'governorateName' }),
 	new GridColumnOptions({ headerName: 'نوع الطرح', field: 'offeringType' }),
 	new GridColumnOptions({ headerName: 'كود السبب', field: 'reasonCode' }),
+	new GridColumnOptions({ headerName: 'اسم المحافظه', field: 'governorateName' }),
   ];
 
   gridHeaderOptions = new GridHeaderOptions({
@@ -79,20 +85,42 @@ reasonCodeSelectOptions: MaterialSelectOptions;
     this.selectedContractorDurations = new ContractorDurations();
 
     
+	this.offeringTypeSelectOptions = new MaterialSelectOptions({
+	 data: this.offeringTypesService.getAll(),
+	 errorMessages: this.errorMessages,
+	 label: 'نوع الطرح',
+	});
+
 	this.reasonCodeSelectOptions = new MaterialSelectOptions({
 	 data: this.contractorTideReasonsService.getAll(),
 	 errorMessages: this.errorMessages,
 	 label: 'كود السبب',
 	});
 
+	this.governorateNameSelectOptions = new MaterialSelectOptions({
+	 data: this.governoratesService.getAll(),
+	 errorMessages: this.errorMessages,
+	 label: 'اسم المحافظه',
+	});
+
 
     this.searchForm = this.formBuilder.group({
      	buildingNumber : [],
+	periodFrom : [],
+	periodTo : [],
+	extension : [],
 	bidNumber : [],
 	contractorCode : [],
-	supervisorEngineerCode : [],
+	contractorName : [],
+	engineerName : [],
+	executionDuration : [],
+	referencesName : [],
+	engineerCode : [],
+	siteDeliveryDate : [],
 	referenceCode : [],
-	reasonCode : []
+	offeringType : [],
+	reasonCode : [],
+	governorateName : []
     });
 
      
@@ -121,7 +149,9 @@ reasonCodeSelectOptions: MaterialSelectOptions;
   }
 
   initializeLookupServices() {
-    this.contractorTideReasonsService = new LookupService('contractortidereasons', this.http);
+    this.offeringTypesService = new LookupService('offeringtypes', this.http);
+this.contractorTideReasonsService = new LookupService('contractortidereasons', this.http);
+this.governoratesService = new LookupService('governorates', this.http);
   }
 }
 

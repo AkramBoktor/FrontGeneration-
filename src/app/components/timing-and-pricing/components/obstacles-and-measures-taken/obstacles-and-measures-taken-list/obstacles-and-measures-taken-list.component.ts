@@ -51,7 +51,7 @@ executionCodeSelectOptions: MaterialSelectOptions;
 
   columnOptions = [
         
-	new GridColumnOptions({ headerName: 'الرقم التعريفي', field: 'iD' }),
+	new GridColumnOptions({ headerName: 'الرقم التعريفي', field: 'iDNumber' }),
 	new GridColumnOptions({ headerName: 'كود المراجع', field: 'referencesCode' }),
 	new GridColumnOptions({ headerName: 'المعوقات', field: 'difficulties' }),
 	new GridColumnOptions({ headerName: 'الاجرأت', field: 'procedures' }),
@@ -101,7 +101,7 @@ executionCodeSelectOptions: MaterialSelectOptions;
 
 
     this.searchForm = this.formBuilder.group({
-     	iD : [],
+     	iDNumber : [],
 	referencesCode : [],
 	contractorCode : [],
 	governorate : [],

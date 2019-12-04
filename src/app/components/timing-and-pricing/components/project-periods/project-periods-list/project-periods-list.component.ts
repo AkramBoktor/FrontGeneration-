@@ -52,7 +52,6 @@ offeringTypeSelectOptions: MaterialSelectOptions;
 	new GridColumnOptions({ headerName: 'اسم المراجع', field: 'referencesName' }),
 	new GridColumnOptions({ headerName: 'رقم المراجع', field: 'referenceNumber' }),
 	new GridColumnOptions({ headerName: 'مرات التمديد', field: 'extensionTimes' }),
-	new GridColumnOptions({ headerName: 'مرات التمديد', field: 'extensionTimes' }),
 	new GridColumnOptions({ headerName: 'مدة التنفيذ', field: 'executionDuration' }),
 	new GridColumnOptions({ headerName: 'تاريخ تسليم الموقع', field: 'siteDeliveryDate' }),
 	new GridColumnOptions({ headerName: 'اسم المهندس', field: 'engineerName' }),
