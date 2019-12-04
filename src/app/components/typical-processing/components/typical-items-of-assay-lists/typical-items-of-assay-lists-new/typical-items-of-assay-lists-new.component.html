@@ -1,0 +1,86 @@
+
+<app-new-form-layout
+    dir="rtl"
+    (submitClicked) = "onSubmit()"
+    (back) = "onBack()"
+    [pageTitle] = "'بنود قوائم المقايسة'"
+>
+    <ng-template newFormContainer >
+        <form [formGroup] = "typicalItemsOfAssayListsForm">
+         
+
+	<mat-form-field appearance="outline">
+	 <mat-label>القيمة التقديرية</mat-label>
+	 <input matInput formControlName="estimatedValue"/>
+	 <mat-error *ngIf = "getControls('estimatedValue').invalid" >
+	  {{ getControls('estimatedValue')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>كمية البند</mat-label>
+	 <input matInput formControlName="itemQuantity"/>
+	 <mat-error *ngIf = "getControls('itemQuantity').invalid" >
+	  {{ getControls('itemQuantity')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>رقم القائمة</mat-label>
+	 <input matInput formControlName="listNumber"/>
+	 <mat-error *ngIf = "getControls('listNumber').invalid" >
+	  {{ getControls('listNumber')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>رقم المقايسة</mat-label>
+	 <input matInput formControlName="assayNumber"/>
+	 <mat-error *ngIf = "getControls('assayNumber').invalid" >
+	  {{ getControls('assayNumber')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>رقم البند</mat-label>
+	 <input matInput formControlName="itemNo"/>
+	 <mat-error *ngIf = "getControls('itemNo').invalid" >
+	  {{ getControls('itemNo')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+         
+
+	<app-material-select appearance="outline"
+	  #offeringMethod 
+	  [options] = "offeringMethodSelectOptions"
+	  formControlName = "offeringMethod"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #processingType 
+	  [options] = "processingTypeSelectOptions"
+	  formControlName = "processingType"
+	></app-material-select>
+
+        </form>
+
+        <mat-divider></mat-divider>
+
+		<mat-card-actions>
+			<form [formGroup]="attachmentForm" class="form-container">
+                <app-multi-file-upload [service] = "typicalItemsOfAssayListsService" [id]="typicalItemsOfAssayListsForm.get('id').value"
+                    formControlName = "attachmentFiles">
+                </app-multi-file-upload>
+            </form>
+            <button
+                type="submit"
+                (click)="onSubmit()"
+                [disabled]="typicalItemsOfAssayListsForm.invalid"
+                mat-raised-button
+                color = "primary">
+             حفظ
+            </button>
+        </mat-card-actions>
+    </ng-template >
+</app-new-form-layout >
+
