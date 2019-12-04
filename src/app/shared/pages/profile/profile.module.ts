@@ -9,9 +9,16 @@ import { FuseSharedModule } from '@fuse/shared.module';
 
 import { ProfileService } from 'app/shared/pages/profile/profile.service';
 import { ProfileComponent } from 'app/shared/pages/profile/profile.component';
-import { ProfileTimelineComponent } from './tabs/timeline/timeline.component';
-import { ProfileAboutComponent } from './tabs/about/about.component';
-import { ProfilePhotosVideosComponent } from './tabs/photos-videos/photos-videos.component';
+import { EmployeeInfoComponent } from './tabs/employee-info/employee-info.component';
+import { VacationInfoComponent } from './tabs/vacation-info/vacation-info.component';
+import { CommonModule } from '@angular/common';
+import { MaterialControlsModule } from 'app/shared/components/material-controls/material-controls.module';
+import { CommonPipesModule } from 'app/shared/pipes/common-pipes.module';
+import { GridControlModule } from 'app/shared/components/grid-control/grid-control.module';
+import { NewFormLayoutModule } from 'app/shared/components/new-form-layout/new-form-layout/new-form-layout.module';
+import { SearchListExpansionPanelModule } from 'app/shared/components/search-list-expansion-panel/search-list-expansion-panel.module';
+import { VacationEmployeeService } from 'app/components/vacation/components/vacation-employee/shared/vacation-employee.service';
+import { EmployeeDataService } from 'app/components/employee/components/employee-data/shared/employee-data.service';
 
 
  const routes = [
@@ -25,13 +32,16 @@ import { ProfilePhotosVideosComponent } from './tabs/photos-videos/photos-videos
 @NgModule({
     declarations: [
         ProfileComponent,
-        ProfileTimelineComponent,
-        ProfileAboutComponent,
-        ProfilePhotosVideosComponent
+        EmployeeInfoComponent,
+        VacationInfoComponent
     ],
     imports     : [
          RouterModule.forChild(routes),
-
+         MaterialControlsModule,
+        CommonPipesModule,
+        GridControlModule,
+        NewFormLayoutModule,
+        SearchListExpansionPanelModule,
         MatButtonModule,
         MatDividerModule,
         MatIconModule,
@@ -40,6 +50,8 @@ import { ProfilePhotosVideosComponent } from './tabs/photos-videos/photos-videos
         FuseSharedModule
     ],
     providers   : [
+        EmployeeDataService,
+        VacationEmployeeService,
         ProfileService
     ]
 })

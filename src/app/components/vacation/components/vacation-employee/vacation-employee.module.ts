@@ -35,8 +35,12 @@ import { NewFormLayoutModule } from 'app/shared/components/new-form-layout/new-f
     VacationEmployeeNewComponent,
     VacationEmployeeEditComponent,
     VacationEmployeeViewComponent
+  ],
+  exports: [
+    VacationEmployeeListComponent
   ]
 })
 
 export class VacationEmployeeModule {
 }
+
