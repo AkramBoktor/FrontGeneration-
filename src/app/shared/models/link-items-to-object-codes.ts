@@ -2,9 +2,8 @@
  export class LinkItemsToObjectCodes {
     id: number;
     
-	itemCode: string;
-	itemName: string;
-	elementCode: string;
+	itemCode: number;
+	elementCode: number;
 	constructor(arg?: LinkItemsToObjectCodes) {
         if (arg) {
             for (const property in arg) {

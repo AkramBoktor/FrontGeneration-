@@ -24,10 +24,12 @@ export class ContractorDurationsViewComponent extends AppBaseComponent implement
 
   private offeringTypesService: LookupService;
 private contractorTideReasonsService: LookupService;
+private governoratesService: LookupService;
 
   
 offeringTypeSelectOptions: MaterialSelectOptions;
 reasonCodeSelectOptions: MaterialSelectOptions;
+governorateNameSelectOptions: MaterialSelectOptions;
 
   
 
@@ -55,6 +57,12 @@ reasonCodeSelectOptions: MaterialSelectOptions;
 	 label: 'كود السبب',
 	});
 
+	this.governorateNameSelectOptions = new MaterialSelectOptions({
+	 data: this.governoratesService.getAll(),
+	 errorMessages: this.errorMessages,
+	 label: 'اسم المحافظه',
+	});
+
 
     this.contractorDurationsForm = this.formBuilder.group({
       
@@ -71,9 +79,9 @@ reasonCodeSelectOptions: MaterialSelectOptions;
   engineerCode : [this.selectedContractorDurations.engineerCode],
   siteDeliveryDate : [this.selectedContractorDurations.siteDeliveryDate],
   referenceCode : [this.selectedContractorDurations.referenceCode],
-  governorateName : [this.selectedContractorDurations.governorateName],
   offeringType : [this.selectedContractorDurations.offeringType],
-  reasonCode : [this.selectedContractorDurations.reasonCode]
+  reasonCode : [this.selectedContractorDurations.reasonCode],
+  governorateName : [this.selectedContractorDurations.governorateName]
       });
 
     this.disableControls();
@@ -106,6 +114,7 @@ reasonCodeSelectOptions: MaterialSelectOptions;
   initializeLookupServices() {
     this.offeringTypesService = new LookupService('offeringtypes', this.http);
 this.contractorTideReasonsService = new LookupService('contractortidereasons', this.http);
+this.governoratesService = new LookupService('governorates', this.http);
   }
 }
 

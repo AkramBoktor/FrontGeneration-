@@ -1,0 +1,86 @@
+
+<app-new-form-layout
+    dir="rtl"
+    (submitClicked) = "onSubmit()"
+    (back) = "onBack()"
+    [pageTitle] = "' بيانات اجهزه الغاز'"
+>
+    <ng-template newFormContainer >
+        <form [formGroup] = "gasAppliancesDataForm">
+         
+
+	<mat-form-field appearance="outline">
+	 <mat-label>كود المبنى</mat-label>
+	 <input matInput formControlName="buildingCode"/>
+	 <mat-error *ngIf = "getControls('buildingCode').invalid" >
+	  {{ getControls('buildingCode')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>عدد مصادر التغذيه  بالغاز</mat-label>
+	 <input matInput formControlName="gasFeedingSourcesNumber"/>
+	 <mat-error *ngIf = "getControls('gasFeedingSourcesNumber').invalid" >
+	  {{ getControls('gasFeedingSourcesNumber')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>الملحق</mat-label>
+	 <input matInput formControlName="extenstion"/>
+	 <mat-error *ngIf = "getControls('extenstion').invalid" >
+	  {{ getControls('extenstion')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>الدور</mat-label>
+	 <input matInput formControlName="floor"/>
+	 <mat-error *ngIf = "getControls('floor').invalid" >
+	  {{ getControls('floor')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>اسم الفراغ</mat-label>
+	 <input matInput formControlName="spaceName"/>
+	 <mat-error *ngIf = "getControls('spaceName').invalid" >
+	  {{ getControls('spaceName')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+         
+
+	<app-material-select appearance="outline"
+	  #isThereGasInSchool 
+	  [options] = "isThereGasInSchoolSelectOptions"
+	  formControlName = "isThereGasInSchool"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #deviceQuality 
+	  [options] = "deviceQualitySelectOptions"
+	  formControlName = "deviceQuality"
+	></app-material-select>
+
+        </form>
+
+        <mat-divider></mat-divider>
+
+		<mat-card-actions>
+			<form [formGroup]="attachmentForm" class="form-container">
+                <app-multi-file-upload [service] = "gasAppliancesDataService" [id]="gasAppliancesDataForm.get('id').value"
+                    formControlName = "attachmentFiles">
+                </app-multi-file-upload>
+            </form>
+            <button
+                type="submit"
+                (click)="onSubmit()"
+                [disabled]="gasAppliancesDataForm.invalid"
+                mat-raised-button
+                color = "primary">
+             حفظ
+            </button>
+        </mat-card-actions>
+    </ng-template >
+</app-new-form-layout >
+

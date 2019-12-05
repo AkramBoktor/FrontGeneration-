@@ -1,0 +1,64 @@
+
+<app-new-form-layout
+    dir="rtl"
+    (submitClicked) = "onSubmit()"
+    (back) = "onBack()"
+    [pageTitle] = "'نقل اوامر التوريد من مدارس الاغلاق'"
+>
+    <ng-template newFormContainer >
+        <form [formGroup] = "transferOfSupplyOrdersFromSchoolsClosureForm">
+         
+
+	<mat-form-field appearance="outline">
+	 <mat-label>رقم المبني المغلق</mat-label>
+	 <input matInput formControlName="closedBuildingNumber"/>
+	 <mat-error *ngIf = "getControls('closedBuildingNumber').invalid" >
+	  {{ getControls('closedBuildingNumber')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>رقم المبني المنقول اليه</mat-label>
+	 <input matInput formControlName="buildingNumberTransferred"/>
+	 <mat-error *ngIf = "getControls('buildingNumberTransferred').invalid" >
+	  {{ getControls('buildingNumberTransferred')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>رقم الملحق</mat-label>
+	 <input matInput formControlName="annexNumber"/>
+	 <mat-error *ngIf = "getControls('annexNumber').invalid" >
+	  {{ getControls('annexNumber')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+         
+
+	<app-material-select appearance="outline"
+	  #closureType 
+	  [options] = "closureTypeSelectOptions"
+	  formControlName = "closureType"
+	></app-material-select>
+
+        </form>
+
+        <mat-divider></mat-divider>
+
+		<mat-card-actions>
+			<form [formGroup]="attachmentForm" class="form-container">
+                <app-multi-file-upload [service] = "transferOfSupplyOrdersFromSchoolsClosureService" [id]="transferOfSupplyOrdersFromSchoolsClosureForm.get('id').value"
+                    formControlName = "attachmentFiles">
+                </app-multi-file-upload>
+            </form>
+            <button
+                type="submit"
+                (click)="onSubmit()"
+                [disabled]="transferOfSupplyOrdersFromSchoolsClosureForm.invalid"
+                mat-raised-button
+                color = "primary">
+             حفظ
+            </button>
+        </mat-card-actions>
+    </ng-template >
+</app-new-form-layout >
+

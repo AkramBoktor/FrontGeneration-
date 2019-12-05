@@ -3,11 +3,11 @@
     id: number;
     
 	buildingCode: string;
-	itemCode: string;
+	itemCode: number;
 	sample: string;
 	employmentType: number;
-	yearPlan: string;
-	extensionCode: number;
+	yearPlan: Date;
+	extensionCode: string;
 	constructionType: number;
 	buildingName: string;
 	element: number;

@@ -59,7 +59,7 @@
 
 	<mat-form-field appearance="outline">
 	 <mat-label>اسم المتوفي</mat-label>
-	 <input matInput formControlName="dietName" [disableControl]="true" />
+	 <input matInput formControlName="dietName"  [disableControl]="false" />
 	 <mat-error *ngIf = "getControls('dietName').invalid" >
 	  {{ getControls('dietName')| getErrorMessages : errorMessages}}
 	  </mat-error>

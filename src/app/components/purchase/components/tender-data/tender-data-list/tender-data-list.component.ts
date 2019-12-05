@@ -62,7 +62,6 @@ gearStatusSelectOptions: MaterialSelectOptions;
 	new GridColumnOptions({ headerName: 'قيمة الترسية', field: 'awardValue' }),
 	new GridColumnOptions({ headerName: 'تاريخ تقديم العطاء', field: 'tenderDate' }),
 	new GridColumnOptions({ headerName: 'مدة سريان العطاء بالشهور', field: 'tenderDurationinMonths' }),
-	new GridColumnOptions({ headerName: 'مدة سريان العطاء بالشهور', field: 'tenderDurationinMonths' }),
 	new GridColumnOptions({ headerName: 'اجمالي قيمة العطاء', field: 'tenderTotalValue' }),
 	new GridColumnOptions({ headerName: 'قيمة المقايسة', field: 'assayValue' }),
 	new GridColumnOptions({ headerName: 'رقم ايصال التامين الابتدائي', field: 'insuranceNumber' }),

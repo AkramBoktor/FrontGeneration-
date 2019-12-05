@@ -1,0 +1,52 @@
+
+<mat-card>
+    <mat-card-header>
+        <mat-card-title>بيانات وحدة قياس</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+        <form [formGroup]="dataUnitOfMeasurementForm" class="form-container">
+          
+
+	<mat-form-field appearance="outline">
+	 <mat-label>اسم وحدة القياس</mat-label>
+	 <input matInput formControlName="measurementNameUnit"/>
+	 <mat-error *ngIf = "getControls('measurementNameUnit').invalid" >
+	  {{ getControls('measurementNameUnit')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+          
+
+	<app-material-select appearance="outline"
+	  #calibrationUnitCode 
+	  [options] = "calibrationUnitCodeSelectOptions"
+	  formControlName = "calibrationUnitCode"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #measurementCodeUnit 
+	  [options] = "measurementCodeUnitSelectOptions"
+	  formControlName = "measurementCodeUnit"
+	></app-material-select>
+
+        </form>
+    </mat-card-content>
+
+    <mat-divider></mat-divider>
+
+	<mat-card-actions>
+			<form [formGroup]="attachmentForm" class="form-container">
+                <app-multi-file-upload [service] = "dataUnitOfMeasurementService" [id]="dataUnitOfMeasurementForm.get('id').value"
+                    formControlName = "attachmentFiles">
+                </app-multi-file-upload>
+            </form>
+            <button
+                color = "primary"
+                type = "submit"
+                (click) = "onSubmit()"
+                [disabled] = "dataUnitOfMeasurementForm.invalid"
+                mat-raised-button>
+                حفظ
+            </button>
+    </mat-card-actions>
+</mat-card>
+

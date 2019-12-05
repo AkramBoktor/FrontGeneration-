@@ -74,9 +74,8 @@ governorateSelectOptions: MaterialSelectOptions;
   id : [this.selectedProjectPeriods.id],
   buildingCode : [this.selectedProjectPeriods.buildingCode, [ Validators.required ]],
   referencesName : [this.selectedProjectPeriods.referencesName, [ ]],
-  referenceNumber : [this.selectedProjectPeriods.referenceNumber, [ Validators.required ]],
+  referenceNumber : [this.selectedProjectPeriods.referenceCode, [ Validators.required ]],
   extensionTimes : [this.selectedProjectPeriods.extensionTimes, [ ]],
-  executionDuration : [this.selectedProjectPeriods.executionDuration, [ ]],
   siteDeliveryDate : [this.selectedProjectPeriods.siteDeliveryDate, [ ]],
   engineerName : [this.selectedProjectPeriods.engineerName, [ ]],
   engineerCode : [this.selectedProjectPeriods.engineerCode, [ ]],
@@ -86,6 +85,7 @@ governorateSelectOptions: MaterialSelectOptions;
   buildingName : [this.selectedProjectPeriods.buildingName, [ ]],
   extensionDays : [this.selectedProjectPeriods.extensionDays, [ Validators.required ]],
   beganStopDate : [this.selectedProjectPeriods.beganStopDate, [ Validators.required ]],
+  executionDuration : [this.selectedProjectPeriods.executionDuration, [ ]],
   offeringType : [this.selectedProjectPeriods.offeringType, [ ]],
   governorate : [this.selectedProjectPeriods.governorate, [ ]]
    }, {

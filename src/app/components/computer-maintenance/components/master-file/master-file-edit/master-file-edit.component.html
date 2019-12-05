@@ -1,0 +1,82 @@
+
+<mat-card>
+    <mat-card-header>
+        <mat-card-title>بيانات اساسية عن صيانة الحاسبات</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+        <form [formGroup]="masterFileForm" class="form-container">
+          
+
+	<mat-form-field appearance="outline">
+	 <mat-label>جهة الصنع</mat-label>
+	 <input matInput formControlName="manufactured"/>
+	 <mat-error *ngIf = "getControls('manufactured').invalid" >
+	  {{ getControls('manufactured')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>الطراز</mat-label>
+	 <input matInput formControlName="style"/>
+	 <mat-error *ngIf = "getControls('style').invalid" >
+	  {{ getControls('style')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>توصيف المبني</mat-label>
+	 <input matInput formControlName="buildingDescription" [disableControl]="true" />
+	 <mat-error *ngIf = "getControls('buildingDescription').invalid" >
+	  {{ getControls('buildingDescription')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>الشركة الموردة</mat-label>
+	 <input matInput formControlName="supplyingCompany"/>
+	 <mat-error *ngIf = "getControls('supplyingCompany').invalid" >
+	  {{ getControls('supplyingCompany')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+          
+
+	<app-material-select appearance="outline"
+	  #warrantyCondition 
+	  [options] = "warrantyConditionSelectOptions"
+	  formControlName = "warrantyCondition"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #equipmentType 
+	  [options] = "equipmentTypeSelectOptions"
+	  formControlName = "equipmentType"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #deviceType 
+	  [options] = "deviceTypeSelectOptions"
+	  formControlName = "deviceType"
+	></app-material-select>
+
+        </form>
+    </mat-card-content>
+
+    <mat-divider></mat-divider>
+
+	<mat-card-actions>
+			<form [formGroup]="attachmentForm" class="form-container">
+                <app-multi-file-upload [service] = "masterFileService" [id]="masterFileForm.get('id').value"
+                    formControlName = "attachmentFiles">
+                </app-multi-file-upload>
+            </form>
+            <button
+                color = "primary"
+                type = "submit"
+                (click) = "onSubmit()"
+                [disabled] = "masterFileForm.invalid"
+                mat-raised-button>
+                حفظ
+            </button>
+    </mat-card-actions>
+</mat-card>
+

@@ -73,7 +73,7 @@ memberTypeSelectOptions: MaterialSelectOptions;
   id : [0],
   bidNumber : [this.selectedEnvelopesOpennigCommetyMembersData.bidNumber, [ Validators.required ]],
   serialMember : [this.selectedEnvelopesOpennigCommetyMembersData.serialMember, [ Validators.required ]],
-  memberName : [this.selectedEnvelopesOpennigCommetyMembersData.memberName, [ Validators.required ]],
+  memberName : [this.selectedEnvelopesOpennigCommetyMembersData.memberName, [ ]],
   offeringType : [this.selectedEnvelopesOpennigCommetyMembersData.offeringType, [ Validators.required ]],
   memberType : [this.selectedEnvelopesOpennigCommetyMembersData.memberType, [ Validators.required ]]
    }, {

@@ -1,0 +1,64 @@
+
+<mat-card class="form-card">
+      <mat-card-header>
+  
+          <mat-card-title>
+              بيانات اساسيه لمركز الشباب
+          </mat-card-title>
+  
+      </mat-card-header>
+  
+      <mat-card-content>
+  
+        <form [formGroup] = "basicDataForTheYouthCenterForm" class="form-container">
+         
+
+	<mat-form-field appearance="outline">
+	 <mat-label>الاسم</mat-label>
+	 <input matInput formControlName="centerName"/>
+	 <mat-error *ngIf = "getControls('centerName').invalid" >
+	  {{ getControls('centerName')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+         
+
+	<app-material-select appearance="outline"
+	  #governorate 
+	  [options] = "governorateSelectOptions"
+	  formControlName = "governorate"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #regionalCenter 
+	  [options] = "regionalCenterSelectOptions"
+	  formControlName = "regionalCenter"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #sectionCenter 
+	  [options] = "sectionCenterSelectOptions"
+	  formControlName = "sectionCenter"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #neighborhoodVillage 
+	  [options] = "neighborhoodVillageSelectOptions"
+	  formControlName = "neighborhoodVillage"
+	></app-material-select>
+        </form>
+  
+      </mat-card-content >
+  
+      <mat-action-row>
+            <form [formGroup]="attachmentForm" class="form-container">
+                <app-multi-file-upload [service] = "basicDataForTheYouthCenterService" [id]="basicDataForTheYouthCenterForm.get('id').value"
+                    formControlName = "attachmentFiles">
+                </app-multi-file-upload>
+            </form>
+            <button (click) = "onConfirm()" mat-raised-button color = "primary" >
+                غلق
+            </button>
+        </mat-action-row>
+    </mat-card>
+
+    

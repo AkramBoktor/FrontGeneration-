@@ -1,0 +1,48 @@
+
+<mat-card class="form-card">
+      <mat-card-header>
+  
+          <mat-card-title>
+              قيمة الاشتراك حسب السن
+          </mat-card-title>
+  
+      </mat-card-header>
+  
+      <mat-card-content>
+  
+        <form [formGroup] = "subscriptionValueByAgeBForm" class="form-container">
+         
+
+	<mat-form-field appearance="outline">
+	 <mat-label>القيمه</mat-label>
+	 <input matInput formControlName="amount"/>
+	 <mat-error *ngIf = "getControls('amount').invalid" >
+	  {{ getControls('amount')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>السن</mat-label>
+	 <input matInput formControlName="age"/>
+	 <mat-error *ngIf = "getControls('age').invalid" >
+	  {{ getControls('age')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+         
+        </form>
+  
+      </mat-card-content >
+  
+      <mat-action-row>
+            <form [formGroup]="attachmentForm" class="form-container">
+                <app-multi-file-upload [service] = "subscriptionValueByAgeBService" [id]="subscriptionValueByAgeBForm.get('id').value"
+                    formControlName = "attachmentFiles">
+                </app-multi-file-upload>
+            </form>
+            <button (click) = "onConfirm()" mat-raised-button color = "primary" >
+                غلق
+            </button>
+        </mat-action-row>
+    </mat-card>
+
+    

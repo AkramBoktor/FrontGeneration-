@@ -1,0 +1,86 @@
+
+<app-new-form-layout
+    dir="rtl"
+    (submitClicked) = "onSubmit()"
+    (back) = "onBack()"
+    [pageTitle] = "'97  الخطط القديمه قبل '"
+>
+    <ng-template newFormContainer >
+        <form [formGroup] = "oldPlansBefore97Form">
+         
+
+	<mat-form-field appearance="outline">
+	 <mat-label>المدرسه</mat-label>
+	 <input matInput formControlName="school"/>
+	 <mat-error *ngIf = "getControls('school').invalid" >
+	  {{ getControls('school')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>الملحق</mat-label>
+	 <input matInput formControlName="extension"/>
+	 <mat-error *ngIf = "getControls('extension').invalid" >
+	  {{ getControls('extension')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>تاريخ التسليم ابتدائي</mat-label>
+	 <input matInput
+	  [matDatepicker] = "primaryDeliveryDateDatepicker"
+	  autocomplete = "off"
+	  formControlName= "primaryDeliveryDate"/>
+	 <mat-datepicker-toggle
+	   matSuffix
+	   [for]="primaryDeliveryDateDatepicker"
+	 ></mat-datepicker-toggle>
+	 <mat-datepicker #primaryDeliveryDateDatepicker></mat-datepicker>
+	 <mat-error *ngIf = "getControls('primaryDeliveryDate').invalid" >
+	  {{ getControls('primaryDeliveryDate')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>سنه الخطه</mat-label>
+	 <input matInput formControlName="pLanYear"/>
+	 <mat-error *ngIf = "getControls('pLanYear').invalid" >
+	  {{ getControls('pLanYear')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+         
+
+	<app-material-select appearance="outline"
+	  #governorate 
+	  [options] = "governorateSelectOptions"
+	  formControlName = "governorate"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #constructionType 
+	  [options] = "constructionTypeSelectOptions"
+	  formControlName = "constructionType"
+	></app-material-select>
+
+        </form>
+
+        <mat-divider></mat-divider>
+
+		<mat-card-actions>
+			<form [formGroup]="attachmentForm" class="form-container">
+                <app-multi-file-upload [service] = "oldPlansBefore97Service" [id]="oldPlansBefore97Form.get('id').value"
+                    formControlName = "attachmentFiles">
+                </app-multi-file-upload>
+            </form>
+            <button
+                type="submit"
+                (click)="onSubmit()"
+                [disabled]="oldPlansBefore97Form.invalid"
+                mat-raised-button
+                color = "primary">
+             حفظ
+            </button>
+        </mat-card-actions>
+    </ng-template >
+</app-new-form-layout >
+

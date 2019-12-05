@@ -1,0 +1,90 @@
+
+<mat-card>
+    <mat-card-header>
+        <mat-card-title> بيانات رئيسية للعينة</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+        <form [formGroup]="mainDataForTheSampleForm" class="form-container">
+          
+
+	<mat-form-field appearance="outline">
+	 <mat-label>كود توصيف العينة</mat-label>
+	 <input matInput formControlName="sampleSpecificationCode"/>
+	 <mat-error *ngIf = "getControls('sampleSpecificationCode').invalid" >
+	  {{ getControls('sampleSpecificationCode')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>المادة الأساسية</mat-label>
+	 <input matInput formControlName="basicMaterial"/>
+	 <mat-error *ngIf = "getControls('basicMaterial').invalid" >
+	  {{ getControls('basicMaterial')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>المادة الفرعية</mat-label>
+	 <input matInput formControlName="subMaterial"/>
+	 <mat-error *ngIf = "getControls('subMaterial').invalid" >
+	  {{ getControls('subMaterial')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>كود الاختبار</mat-label>
+	 <input matInput formControlName="testCode"/>
+	 <mat-error *ngIf = "getControls('testCode').invalid" >
+	  {{ getControls('testCode')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>اقل عدد من العينات</mat-label>
+	 <input matInput formControlName="samplesMinimumNumber"/>
+	 <mat-error *ngIf = "getControls('samplesMinimumNumber').invalid" >
+	  {{ getControls('samplesMinimumNumber')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+          
+
+	<app-material-select appearance="outline"
+	  #calibration 
+	  [options] = "calibrationSelectOptions"
+	  formControlName = "calibration"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #unit 
+	  [options] = "unitSelectOptions"
+	  formControlName = "unit"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #standardValue 
+	  [options] = "standardValueSelectOptions"
+	  formControlName = "standardValue"
+	></app-material-select>
+
+        </form>
+    </mat-card-content>
+
+    <mat-divider></mat-divider>
+
+	<mat-card-actions>
+			<form [formGroup]="attachmentForm" class="form-container">
+                <app-multi-file-upload [service] = "mainDataForTheSampleService" [id]="mainDataForTheSampleForm.get('id').value"
+                    formControlName = "attachmentFiles">
+                </app-multi-file-upload>
+            </form>
+            <button
+                color = "primary"
+                type = "submit"
+                (click) = "onSubmit()"
+                [disabled] = "mainDataForTheSampleForm.invalid"
+                mat-raised-button>
+                حفظ
+            </button>
+    </mat-card-actions>
+</mat-card>
+

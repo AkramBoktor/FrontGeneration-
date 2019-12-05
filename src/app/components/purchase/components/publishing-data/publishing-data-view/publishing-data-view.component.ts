@@ -23,9 +23,11 @@ export class PublishingDataViewComponent extends AppBaseComponent implements OnI
   publishingDataForm: FormGroup;
 
   private offeringTypesService: LookupService;
+private publishingAuthoritiesService: LookupService;
 
   
 offeringTypeSelectOptions: MaterialSelectOptions;
+newspaperNameSelectOptions: MaterialSelectOptions;
 
   
 
@@ -47,14 +49,20 @@ offeringTypeSelectOptions: MaterialSelectOptions;
 	 label: 'نوع الطرح',
 	});
 
+	this.newspaperNameSelectOptions = new MaterialSelectOptions({
+	 data: this.publishingAuthoritiesService.getAll(),
+	 errorMessages: this.errorMessages,
+	 label: 'اسم الجريدة',
+	});
+
 
     this.publishingDataForm = this.formBuilder.group({
       
   bidNumber : [this.selectedPublishingData.bidNumber],
   publicationNumber : [this.selectedPublishingData.publicationNumber],
   publicationDate : [this.selectedPublishingData.publicationDate],
-  newspaperName : [this.selectedPublishingData.newspaperName],
-  offeringType : [this.selectedPublishingData.offeringType]
+  offeringType : [this.selectedPublishingData.offeringType],
+  newspaperName : [this.selectedPublishingData.newspaperName]
       });
 
     this.disableControls();
@@ -86,6 +94,7 @@ offeringTypeSelectOptions: MaterialSelectOptions;
 
   initializeLookupServices() {
     this.offeringTypesService = new LookupService('offeringtypes', this.http);
+this.publishingAuthoritiesService = new LookupService('publishingauthorities', this.http);
   }
 }
 

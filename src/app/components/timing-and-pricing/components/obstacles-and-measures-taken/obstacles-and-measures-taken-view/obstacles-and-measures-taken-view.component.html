@@ -15,9 +15,9 @@
 
 	<mat-form-field appearance="outline">
 	 <mat-label>الرقم التعريفي</mat-label>
-	 <input matInput formControlName="iD"/>
-	 <mat-error *ngIf = "getControls('iD').invalid" >
-	  {{ getControls('iD')| getErrorMessages : errorMessages}}
+	 <input matInput formControlName="iDNumber"/>
+	 <mat-error *ngIf = "getControls('iDNumber').invalid" >
+	  {{ getControls('iDNumber')| getErrorMessages : errorMessages}}
 	  </mat-error>
 	</mat-form-field>
 
@@ -55,7 +55,7 @@
 
 	<mat-form-field appearance="outline">
 	 <mat-label>رقم المناقصه</mat-label>
-	 <input matInput formControlName="bidNumber" [disableControl]="true" />
+	 <input matInput formControlName="bidNumber"/>
 	 <mat-error *ngIf = "getControls('bidNumber').invalid" >
 	  {{ getControls('bidNumber')| getErrorMessages : errorMessages}}
 	  </mat-error>
@@ -63,7 +63,7 @@
 
 	<mat-form-field appearance="outline">
 	 <mat-label>رقم المقال</mat-label>
-	 <input matInput formControlName="contractorCode" [disableControl]="true" />
+	 <input matInput formControlName="contractorCode"/>
 	 <mat-error *ngIf = "getControls('contractorCode').invalid" >
 	  {{ getControls('contractorCode')| getErrorMessages : errorMessages}}
 	  </mat-error>
@@ -76,7 +76,7 @@
 	  formControlName = "governorate"
 	></app-material-select>
 
-	<app-material-select appearance="outline" [disabled]="true" 
+	<app-material-select appearance="outline"
 	  #constructionType 
 	  [options] = "constructionTypeSelectOptions"
 	  formControlName = "constructionType"
@@ -88,13 +88,13 @@
 	  formControlName = "offeringType"
 	></app-material-select>
 
-	<app-material-select appearance="outline" [disabled]="true" 
+	<app-material-select appearance="outline"
 	  #referenceCode 
 	  [options] = "referenceCodeSelectOptions"
 	  formControlName = "referenceCode"
 	></app-material-select>
 
-	<app-material-select appearance="outline" [disabled]="true" 
+	<app-material-select appearance="outline"
 	  #executionCode 
 	  [options] = "executionCodeSelectOptions"
 	  formControlName = "executionCode"

@@ -1,15 +1,18 @@
 
-import { Component, Injector, Input, OnInit, Optional, ViewChild } from '@angular/core';
-import { FormGroup, Validators } from '@angular/forms';
+import { Component,Input, OnInit, Optional, ViewChild, Injector } from '@angular/core';
+import { AbstractControl, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef } from '@angular/material';
+import { ActivatedRoute,Router } from '@angular/router';
 import { AppBaseComponent } from 'app/shared/base/app-base.component';
-import { MaterialSelectComponent } from 'app/shared/components/material-controls/material-select/material-select.component';
-import { AgendaInternal } from 'app/shared/models/agenda-internal';
 import { FormControlError } from 'app/shared/models/controls/interfaces';
 import { MaterialSelectOptions } from 'app/shared/models/controls/material-select.model';
+import { startWith } from 'rxjs/operators';
+import { MaterialSelectComponent } from 'app/shared/components/material-controls/material-select/material-select.component';
+import { AgendaInternal } from 'app/shared/models/agenda-internal';
+import { ValidatorFunctions } from 'app/shared/validations/validator-functions';
+import { AgendaInternalService } from '../shared/agenda-internal.service';
 import { LookupService } from 'app/shared/pages/lookup-form/lookup.service';
 import { switchMap } from 'rxjs/operators';
-import { AgendaInternalService } from '../shared/agenda-internal.service';
 
 
 @Component({

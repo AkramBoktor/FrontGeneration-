@@ -25,7 +25,7 @@
 
 	<mat-form-field appearance="outline">
 	 <mat-label>كود النموذج</mat-label>
-	 <input matInput formControlName="modelCode" [disableControl]="true" />
+	 <input matInput formControlName="modelCode"  [disableControl]="false" />
 	 <mat-error *ngIf = "getControls('modelCode').invalid" >
 	  {{ getControls('modelCode')| getErrorMessages : errorMessages}}
 	  </mat-error>
@@ -33,7 +33,7 @@
 
 	<mat-form-field appearance="outline">
 	 <mat-label>سنة الخطة</mat-label>
-	 <input matInput formControlName="planYear" [disableControl]="true" />
+	 <input matInput formControlName="planYear"  [disableControl]="false" />
 	 <mat-error *ngIf = "getControls('planYear').invalid" >
 	  {{ getControls('planYear')| getErrorMessages : errorMessages}}
 	  </mat-error>
@@ -42,7 +42,7 @@
 	<mat-form-field appearance="outline">
 	 <mat-label>سنة التسعير</mat-label>
 	 <input matInput
-	 [disableControl]="true" 
+	  [disableControl]="false" 
 	  [matDatepicker] = "pricingYearDatepicker"
 	  autocomplete = "off"
 	  formControlName= "pricingYear"/>
@@ -66,7 +66,7 @@
 
 	<mat-form-field appearance="outline">
 	 <mat-label>اسم البند</mat-label>
-	 <input matInput formControlName="itemName" [disableControl]="true" />
+	 <input matInput formControlName="itemName"  [disableControl]="false" />
 	 <mat-error *ngIf = "getControls('itemName').invalid" >
 	  {{ getControls('itemName')| getErrorMessages : errorMessages}}
 	  </mat-error>
@@ -82,7 +82,7 @@
 
 	<mat-form-field appearance="outline">
 	 <mat-label>السعر</mat-label>
-	 <input matInput formControlName="price" [disableControl]="true" />
+	 <input matInput formControlName="price"  [disableControl]="false" />
 	 <mat-error *ngIf = "getControls('price').invalid" >
 	  {{ getControls('price')| getErrorMessages : errorMessages}}
 	  </mat-error>

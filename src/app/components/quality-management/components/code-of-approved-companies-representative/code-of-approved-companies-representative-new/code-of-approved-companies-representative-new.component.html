@@ -1,0 +1,50 @@
+
+<app-new-form-layout
+    dir="rtl"
+    (submitClicked) = "onSubmit()"
+    (back) = "onBack()"
+    [pageTitle] = "'كود ممثل الشركات المعتمده'"
+>
+    <ng-template newFormContainer >
+        <form [formGroup] = "codeOfApprovedCompaniesRepresentativeForm">
+         
+
+	<mat-form-field appearance="outline">
+	 <mat-label>كود الصفة</mat-label>
+	 <input matInput formControlName="objectiveCode"/>
+	 <mat-error *ngIf = "getControls('objectiveCode').invalid" >
+	  {{ getControls('objectiveCode')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>اسم الصفة</mat-label>
+	 <input matInput formControlName="objectiveName"/>
+	 <mat-error *ngIf = "getControls('objectiveName').invalid" >
+	  {{ getControls('objectiveName')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+         
+
+        </form>
+
+        <mat-divider></mat-divider>
+
+		<mat-card-actions>
+			<form [formGroup]="attachmentForm" class="form-container">
+                <app-multi-file-upload [service] = "codeOfApprovedCompaniesRepresentativeService" [id]="codeOfApprovedCompaniesRepresentativeForm.get('id').value"
+                    formControlName = "attachmentFiles">
+                </app-multi-file-upload>
+            </form>
+            <button
+                type="submit"
+                (click)="onSubmit()"
+                [disabled]="codeOfApprovedCompaniesRepresentativeForm.invalid"
+                mat-raised-button
+                color = "primary">
+             حفظ
+            </button>
+        </mat-card-actions>
+    </ng-template >
+</app-new-form-layout >
+

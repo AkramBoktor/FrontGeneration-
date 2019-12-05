@@ -19,7 +19,7 @@ import { LookupService } from 'app/shared/pages/lookup-form/lookup.service';
 
 export class ContractorRankingDataViewComponent extends AppBaseComponent implements OnInit {
 
-  @Input() selectedContractorRankingData : ContractorRankingData;
+  @Input() selectedContractorRankingData: ContractorRankingData;
   contractorRankingDataForm: FormGroup;
 
   private offeringTypesService: LookupService;
@@ -46,7 +46,7 @@ decisionSelectOptions: MaterialSelectOptions;
 
   ngOnInit() {
     this.initializeLookupServices();
-    this.selectedContractorRankingData  = this.selectedContractorRankingDataDialog.data || this.selectedContractorRankingData ;
+    this.selectedContractorRankingData = this.selectedContractorRankingDataDialog.data || this.selectedContractorRankingData;
 
     
 	this.offeringTypeSelectOptions = new MaterialSelectOptions({
@@ -82,18 +82,18 @@ decisionSelectOptions: MaterialSelectOptions;
 
     this.contractorRankingDataForm = this.formBuilder.group({
       
-  bidNumber : [this.selectedContractorRankingData .bidNumber],
-  projectNumber : [this.selectedContractorRankingData .projectNumber],
-  contractorCode : [this.selectedContractorRankingData .contractorCode],
-  ongoingBusinessTotalValue : [this.selectedContractorRankingData .ongoingBusinessTotalValue],
-  classificationCardNumber : [this.selectedContractorRankingData .classificationCardNumber],
-  dateCardRating : [this.selectedContractorRankingData .dateCardRating],
-  reason : [this.selectedContractorRankingData .reason],
-  offeringType : [this.selectedContractorRankingData .offeringType],
-  constructionType : [this.selectedContractorRankingData .constructionType],
-  classificationCode : [this.selectedContractorRankingData .classificationCode],
-  classificationValueCode : [this.selectedContractorRankingData .classificationValueCode],
-  decision : [this.selectedContractorRankingData .decision]
+  bidNumber : [this.selectedContractorRankingData.bidNumber],
+  projectNumber : [this.selectedContractorRankingData.projectNumber],
+  contractorCode : [this.selectedContractorRankingData.contractorCode],
+  ongoingBusinessTotalValue : [this.selectedContractorRankingData.ongoingBusinessTotalValue],
+  classificationCardNumber : [this.selectedContractorRankingData.classificationCardNumber],
+  dateCardRating : [this.selectedContractorRankingData.dateCardRating],
+  reason : [this.selectedContractorRankingData.reason],
+  offeringType : [this.selectedContractorRankingData.offeringType],
+  constructionType : [this.selectedContractorRankingData.constructionType],
+  classificationCode : [this.selectedContractorRankingData.classificationCode],
+  classificationValueCode : [this.selectedContractorRankingData.classificationValueCode],
+  decision : [this.selectedContractorRankingData.decision]
       });
 
     this.disableControls();

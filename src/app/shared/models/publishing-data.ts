@@ -3,10 +3,10 @@
     id: number;
     
 	offeringType: number;
-	bidNumber: number;
-	publicationNumber: number;
+	bidNumber: string;
+	publicationNumber: string;
 	publicationDate: Date;
-	newspaperName: string;
+	newspaperName: number;
 	constructor(arg?: PublishingData) {
         if (arg) {
             for (const property in arg) {

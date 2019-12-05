@@ -73,7 +73,7 @@
 
 	<mat-form-field appearance="outline">
 	 <mat-label>عنوان الكتاب</mat-label>
-	 <input matInput formControlName="bookTitle" [disableControl]="true" />
+	 <input matInput formControlName="bookTitle"  [disableControl]="false" />
 	 <mat-error *ngIf = "getControls('bookTitle').invalid" >
 	  {{ getControls('bookTitle')| getErrorMessages : errorMessages}}
 	  </mat-error>

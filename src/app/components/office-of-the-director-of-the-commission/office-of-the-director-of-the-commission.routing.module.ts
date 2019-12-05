@@ -12,13 +12,6 @@ const routes: Routes = [
   
   
 {
-    path: 'external-job-type', loadChildren: './components/external-job-type/external-job-type.module#ExternalJobTypeModule',
-    data: {
-      moduleName: 'ExternalJobType'
-    },
-},
-
-{
     path: 'agenda-internal', loadChildren: './components/agenda-internal/agenda-internal.module#AgendaInternalModule',
     data: {
       moduleName: 'AgendaInternal'
@@ -26,9 +19,23 @@ const routes: Routes = [
 },
 
 {
+    path: 'external-job-type', loadChildren: './components/external-job-type/external-job-type.module#ExternalJobTypeModule',
+    data: {
+      moduleName: 'ExternalJobType'
+    },
+},
+
+{
     path: 'thirdparties', loadChildren: './components/thirdparties/thirdparties.module#ThirdpartiesModule',
     data: {
       moduleName: 'Thirdparties'
+    },
+},
+
+{
+    path: 'agenda-external', loadChildren: './components/agenda-external/agenda-external.module#AgendaExternalModule',
+    data: {
+      moduleName: 'AgendaExternal'
     },
 },
 

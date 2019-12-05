@@ -15,7 +15,7 @@
 
 	<mat-form-field appearance="outline">
 	 <mat-label>كود الوظيفه</mat-label>
-	 <input matInput formControlName="jobCode" [disableControl]="true" />
+	 <input matInput formControlName="jobCode" [disableControl]="false" />
 	 <mat-error *ngIf = "getControls('jobCode').invalid" >
 	  {{ getControls('jobCode')| getErrorMessages : errorMessages}}
 	  </mat-error>
@@ -23,7 +23,7 @@
 
 	<mat-form-field appearance="outline">
 	 <mat-label>اسم الوظيفه</mat-label>
-	 <input matInput formControlName="jobName" [disableControl]="true" />
+	 <input matInput formControlName="jobName" [disableControl]="false" />
 	 <mat-error *ngIf = "getControls('jobName').invalid" >
 	  {{ getControls('jobName')| getErrorMessages : errorMessages}}
 	  </mat-error>
@@ -31,7 +31,7 @@
 
 	<mat-form-field appearance="outline">
 	 <mat-label>العدد المقرر</mat-label>
-	 <input matInput formControlName="scheduledNumber" [disableControl]="true" />
+	 <input matInput formControlName="scheduledNumber" [disableControl]="false" />
 	 <mat-error *ngIf = "getControls('scheduledNumber').invalid" >
 	  {{ getControls('scheduledNumber')| getErrorMessages : errorMessages}}
 	  </mat-error>

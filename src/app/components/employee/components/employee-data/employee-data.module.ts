@@ -35,6 +35,9 @@ import { EmployeeDataService } from './shared/employee-data.service';
     EmployeeDataNewComponent,
     EmployeeDataEditComponent,
     EmployeeDataViewComponent
+  ],
+  exports:[
+    EmployeeDataViewComponent
   ]
 })
 

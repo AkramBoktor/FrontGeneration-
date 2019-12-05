@@ -11,7 +11,7 @@
 	referenceDate: Date;
 	openingEnvelopesDate: Date;
 	siteDeliveryDate: Date;
-	supplierNumber: number;
+	supplierNumber: string;
 	implementationDurationOrSupply: number;
 	maintenanceStatus: number;
 	bidRequirementsValue: number;
@@ -22,7 +22,7 @@
 	awardBonus: number;
 	outgoingPayment: number;
 	paymentMethod: number;
-	finalInsurance: number;
+	finalInsurance: string;
 	projectState: string;
 	primaryReceipDate: Date;
 	finalReceiptDate: Date;

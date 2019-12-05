@@ -1,0 +1,186 @@
+
+<app-new-form-layout
+    dir="rtl"
+    (submitClicked) = "onSubmit()"
+    (back) = "onBack()"
+    [pageTitle] = "'بيان مستخلص - صيانة'"
+>
+    <ng-template newFormContainer >
+        <form [formGroup] = "abstractStatementMaintenanceForm">
+         
+
+	<mat-form-field appearance="outline">
+	 <mat-label>كود المبنى</mat-label>
+	 <input matInput formControlName="buildingCode"/>
+	 <mat-error *ngIf = "getControls('buildingCode').invalid" >
+	  {{ getControls('buildingCode')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>رقم المستخلص</mat-label>
+	 <input matInput formControlName="abstractNumber"/>
+	 <mat-error *ngIf = "getControls('abstractNumber').invalid" >
+	  {{ getControls('abstractNumber')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>اسم المقاول</mat-label>
+	 <input matInput formControlName="contractorName"/>
+	 <mat-error *ngIf = "getControls('contractorName').invalid" >
+	  {{ getControls('contractorName')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>تاريخ تسليم الموقع</mat-label>
+	 <input matInput
+	 [disableControl]="true" 
+	  [matDatepicker] = "siteDeliveryDateDatepicker"
+	  autocomplete = "off"
+	  formControlName= "siteDeliveryDate"/>
+	 <mat-datepicker-toggle
+	   matSuffix
+	   [for]="siteDeliveryDateDatepicker"
+	 ></mat-datepicker-toggle>
+	 <mat-datepicker #siteDeliveryDateDatepicker></mat-datepicker>
+	 <mat-error *ngIf = "getControls('siteDeliveryDate').invalid" >
+	  {{ getControls('siteDeliveryDate')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>سنة الخطة</mat-label>
+	 <input matInput formControlName="planYear" [disableControl]="true" />
+	 <mat-error *ngIf = "getControls('planYear').invalid" >
+	  {{ getControls('planYear')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>رقم المناقصة</mat-label>
+	 <input matInput formControlName="bidNumber"/>
+	 <mat-error *ngIf = "getControls('bidNumber').invalid" >
+	  {{ getControls('bidNumber')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>نهاية السابق</mat-label>
+	 <input matInput
+	 [disableControl]="true" 
+	  [matDatepicker] = "endPreviousDatepicker"
+	  autocomplete = "off"
+	  formControlName= "endPrevious"/>
+	 <mat-datepicker-toggle
+	   matSuffix
+	   [for]="endPreviousDatepicker"
+	 ></mat-datepicker-toggle>
+	 <mat-datepicker #endPreviousDatepicker></mat-datepicker>
+	 <mat-error *ngIf = "getControls('endPrevious').invalid" >
+	  {{ getControls('endPrevious')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>نهاية الاعمال</mat-label>
+	 <input matInput
+	  [matDatepicker] = "businessEndDatepicker"
+	  autocomplete = "off"
+	  formControlName= "businessEnd"/>
+	 <mat-datepicker-toggle
+	   matSuffix
+	   [for]="businessEndDatepicker"
+	 ></mat-datepicker-toggle>
+	 <mat-datepicker #businessEndDatepicker></mat-datepicker>
+	 <mat-error *ngIf = "getControls('businessEnd').invalid" >
+	  {{ getControls('businessEnd')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>رقم الملحق</mat-label>
+	 <input matInput formControlName="extensionNumber"/>
+	 <mat-error *ngIf = "getControls('extensionNumber').invalid" >
+	  {{ getControls('extensionNumber')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>اسم البند</mat-label>
+	 <input matInput formControlName="itemName" [disableControl]="true" />
+	 <mat-error *ngIf = "getControls('itemName').invalid" >
+	  {{ getControls('itemName')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>الكمية بالعقد</mat-label>
+	 <input matInput formControlName="contractQuantity" [disableControl]="true" />
+	 <mat-error *ngIf = "getControls('contractQuantity').invalid" >
+	  {{ getControls('contractQuantity')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>الكمية الاجمالية</mat-label>
+	 <input matInput formControlName="totalQuantity"/>
+	 <mat-error *ngIf = "getControls('totalQuantity').invalid" >
+	  {{ getControls('totalQuantity')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+         
+
+	<app-material-select appearance="outline"
+	  #maintenanceType 
+	  [options] = "maintenanceTypeSelectOptions"
+	  formControlName = "maintenanceType"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #offeringType 
+	  [options] = "offeringTypeSelectOptions"
+	  formControlName = "offeringType"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #abstractType 
+	  [options] = "abstractTypeSelectOptions"
+	  formControlName = "abstractType"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #workType 
+	  [options] = "workTypeSelectOptions"
+	  formControlName = "workType"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #itemCode 
+	  [options] = "itemCodeSelectOptions"
+	  formControlName = "itemCode"
+	></app-material-select>
+
+        </form>
+
+        <mat-divider></mat-divider>
+
+		<mat-card-actions>
+			<form [formGroup]="attachmentForm" class="form-container">
+                <app-multi-file-upload [service] = "abstractStatementMaintenanceService" [id]="abstractStatementMaintenanceForm.get('id').value"
+                    formControlName = "attachmentFiles">
+                </app-multi-file-upload>
+            </form>
+            <button
+                type="submit"
+                (click)="onSubmit()"
+                [disabled]="abstractStatementMaintenanceForm.invalid"
+                mat-raised-button
+                color = "primary">
+             حفظ
+            </button>
+        </mat-card-actions>
+    </ng-template >
+</app-new-form-layout >
+

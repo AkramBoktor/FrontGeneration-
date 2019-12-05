@@ -1,0 +1,50 @@
+
+<app-new-form-layout
+    dir="rtl"
+    (submitClicked) = "onSubmit()"
+    (back) = "onBack()"
+    [pageTitle] = "'الجهات الخارجية المجهزة للمدراس'"
+>
+    <ng-template newFormContainer >
+        <form [formGroup] = "externalBodiesEquippedForSchoolsForm">
+         
+
+	<mat-form-field appearance="outline">
+	 <mat-label>كود المورد</mat-label>
+	 <input matInput formControlName="supplierCode"/>
+	 <mat-error *ngIf = "getControls('supplierCode').invalid" >
+	  {{ getControls('supplierCode')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>اسم المورد</mat-label>
+	 <input matInput formControlName="supplierName"/>
+	 <mat-error *ngIf = "getControls('supplierName').invalid" >
+	  {{ getControls('supplierName')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+         
+
+        </form>
+
+        <mat-divider></mat-divider>
+
+		<mat-card-actions>
+			<form [formGroup]="attachmentForm" class="form-container">
+                <app-multi-file-upload [service] = "externalBodiesEquippedForSchoolsService" [id]="externalBodiesEquippedForSchoolsForm.get('id').value"
+                    formControlName = "attachmentFiles">
+                </app-multi-file-upload>
+            </form>
+            <button
+                type="submit"
+                (click)="onSubmit()"
+                [disabled]="externalBodiesEquippedForSchoolsForm.invalid"
+                mat-raised-button
+                color = "primary">
+             حفظ
+            </button>
+        </mat-card-actions>
+    </ng-template >
+</app-new-form-layout >
+

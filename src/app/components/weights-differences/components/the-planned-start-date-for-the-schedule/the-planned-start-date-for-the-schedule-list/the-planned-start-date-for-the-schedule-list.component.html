@@ -1,0 +1,108 @@
+
+<app-search-list-expansion-panel
+    dir="rtl"
+    [pageTitle] = "'تاريخ البداية المخطط للجدول الزمني'"
+    (beginSearch) = "onBeginSearch()"
+    (create) = "onCreate()"
+>
+    <ng-template searchFormContainer >
+        <form [formGroup] = "searchForm">
+           
+
+	<mat-form-field appearance="outline">
+	 <mat-label>رقم المبني التعليمي</mat-label>
+	 <input matInput formControlName="buildingNumberEducational"/>
+	 <mat-error *ngIf = "getControls('buildingNumberEducational').invalid" >
+	  {{ getControls('buildingNumberEducational')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline" *ngIf="tenderCodeIsVisible">
+	 <mat-label>كود المناقصة</mat-label>
+	 <input matInput formControlName="tenderCode"/>
+	 <mat-error *ngIf = "getControls('tenderCode').invalid" >
+	  {{ getControls('tenderCode')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>سنة الخطة</mat-label>
+	 <input matInput formControlName="yearPlan"/>
+	 <mat-error *ngIf = "getControls('yearPlan').invalid" >
+	  {{ getControls('yearPlan')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>مسلسل الملحق</mat-label>
+	 <input matInput formControlName="serialSupplement"/>
+	 <mat-error *ngIf = "getControls('serialSupplement').invalid" >
+	  {{ getControls('serialSupplement')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>نوع تاريخ بداية المخطط</mat-label>
+	 <input matInput formControlName="typeOFStartDateForChart"/>
+	 <mat-error *ngIf = "getControls('typeOFStartDateForChart').invalid" >
+	  {{ getControls('typeOFStartDateForChart')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>تاريخ بداية المخطط</mat-label>
+	 <input matInput
+	  [matDatepicker] = "startDateForChartDatepicker"
+	  autocomplete = "off"
+	  formControlName= "startDateForChart"/>
+	 <mat-datepicker-toggle
+	   matSuffix
+	   [for]="startDateForChartDatepicker"
+	 ></mat-datepicker-toggle>
+	 <mat-datepicker #startDateForChartDatepicker></mat-datepicker>
+	 <mat-error *ngIf = "getControls('startDateForChart').invalid" >
+	  {{ getControls('startDateForChart')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>ملاحظات</mat-label>
+	 <input matInput formControlName="notes"/>
+	 <mat-error *ngIf = "getControls('notes').invalid" >
+	  {{ getControls('notes')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+           
+
+	<app-material-select appearance="outline"
+	  #subtractionType 
+	  [options] = "subtractionTypeSelectOptions"
+	  formControlName = "subtractionType"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #constructionType 
+	  [options] = "constructionTypeSelectOptions"
+	  formControlName = "constructionType"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #governorateCode 
+	  [options] = "governorateCodeSelectOptions"
+	  formControlName = "governorateCode"
+	></app-material-select>
+
+        </form>
+    </ng-template >
+    <ng-template searchResultContainer >
+        <app-grid-control
+            #gridControl
+            [rowDataService] = "getThePlannedStartDateForTheSchedulePaginatedSortedFiltered"
+            [columnOptions] = "columnOptions"
+            [gridHeaderOptions] = "gridHeaderOptions"
+            [searchInput] = "searchForm.value"
+            (deleteRow) = "onDeleteClicked($event)"
+        >
+        </app-grid-control>
+    </ng-template>
+</app-search-list-expansion-panel >

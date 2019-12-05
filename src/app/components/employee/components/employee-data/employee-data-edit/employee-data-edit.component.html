@@ -50,7 +50,7 @@
 	<mat-form-field appearance="outline">
 	 <mat-label>تاريخ اخر اقرار ذمه ماليه</mat-label>
 	 <input matInput
-	 [disableControl]="true" 
+	  [disableControl]="false" 
 	  [matDatepicker] = "lastFinancialDisclosureDatepicker"
 	  autocomplete = "off"
 	  formControlName= "lastFinancialDisclosure"/>
@@ -154,7 +154,7 @@
 
 	<mat-form-field appearance="outline">
 	 <mat-label>مدة الفترة</mat-label>
-	 <input matInput formControlName="durationPeriod" [disableControl]="true" />
+	 <input matInput formControlName="durationPeriod"  [disableControl]="false" />
 	 <mat-error *ngIf = "getControls('durationPeriod').invalid" >
 	  {{ getControls('durationPeriod')| getErrorMessages : errorMessages}}
 	  </mat-error>

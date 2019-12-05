@@ -3,12 +3,12 @@
     id: number;
     
 	offeringType: number;
-	bidNumber: number;
+	bidNumber: string;
 	project: string;
 	company: string;
 	insuranceValue: number;
 	paymentMethod: number;
-	insuranceNumber: number;
+	insuranceNumber: string;
 	assayValue: number;
 	tenderTotalValue: number;
 	tenderDurationinMonths: number;
@@ -17,7 +17,7 @@
 	gearStatus: number;
 	awardValue: number;
 	batchRatio: number;
-	tenderNumber: number;
+	tenderNumber: string;
 	bounsRate: number;
 	valueAfterPractice: number;
 	highestPriceValue: number;

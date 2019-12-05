@@ -1,12 +1,14 @@
 
-import { Component, Inject, Injector, Input, OnInit, Optional } from '@angular/core';
-import { AbstractControl, FormGroup } from '@angular/forms';
+import { Component, Inject, Input, OnInit, Optional, Injector } from '@angular/core';
+import { FormGroup, AbstractControl } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
+import { MaterialSelectOptions } from 'app/shared/models/controls/material-select.model';
 import { AppBaseComponent } from 'app/shared/base/app-base.component';
-import { FormControlError } from 'app/shared/models/controls/interfaces';
 import { ExternalJobType } from 'app/shared/models/external-job-type';
 import { ValidatorFunctions } from 'app/shared/validations/validator-functions';
+import { FormControlError } from 'app/shared/models/controls/interfaces';
 import { ExternalJobTypeService } from '../shared/external-job-type.service';
+import { LookupService } from 'app/shared/pages/lookup-form/lookup.service';
 
 @Component({
   selector: 'app-external-job-type-view',

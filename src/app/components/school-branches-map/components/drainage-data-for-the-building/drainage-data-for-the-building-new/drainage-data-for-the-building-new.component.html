@@ -1,0 +1,142 @@
+
+<app-new-form-layout
+    dir="rtl"
+    (submitClicked) = "onSubmit()"
+    (back) = "onBack()"
+    [pageTitle] = "' بيانات الصرف الصحي للميني'"
+>
+    <ng-template newFormContainer >
+        <form [formGroup] = "drainageDataForTheBuildingForm">
+         
+
+	<mat-form-field appearance="outline">
+	 <mat-label>كود المبنى</mat-label>
+	 <input matInput formControlName="buildingCode"/>
+	 <mat-error *ngIf = "getControls('buildingCode').invalid" >
+	  {{ getControls('buildingCode')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>قطر الشبكه</mat-label>
+	 <input matInput formControlName="networkDiameter"/>
+	 <mat-error *ngIf = "getControls('networkDiameter').invalid" >
+	  {{ getControls('networkDiameter')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>عمق الشبكه</mat-label>
+	 <input matInput formControlName="networkDepth"/>
+	 <mat-error *ngIf = "getControls('networkDepth').invalid" >
+	  {{ getControls('networkDepth')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline" *ngIf="lengthIsVisible">
+	 <mat-label>طول</mat-label>
+	 <input matInput formControlName="length"/>
+	 <mat-error *ngIf = "getControls('length').invalid" >
+	  {{ getControls('length')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline" *ngIf="widthIsVisible">
+	 <mat-label>عرض</mat-label>
+	 <input matInput formControlName="width"/>
+	 <mat-error *ngIf = "getControls('width').invalid" >
+	  {{ getControls('width')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline" *ngIf="deepIsVisible">
+	 <mat-label>عمق</mat-label>
+	 <input matInput formControlName="deep"/>
+	 <mat-error *ngIf = "getControls('deep').invalid" >
+	  {{ getControls('deep')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+         
+
+	<app-material-select appearance="outline"
+	  #sanitationExists 
+	  [options] = "sanitationExistsSelectOptions"
+	  formControlName = "sanitationExists"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #sanitationGeneral 
+	  [options] = "sanitationGeneralSelectOptions"
+	  formControlName = "sanitationGeneral"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #sanitationLocal 
+	  [options] = "sanitationLocalSelectOptions"
+	  formControlName = "sanitationLocal"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  *ngIf="TankanalysisIsVisible" 
+	  #tankanalysis 
+	  [options] = "tankanalysisSelectOptions"
+	  formControlName = "tankanalysis"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  *ngIf="TankAssemblyIsVisible" 
+	  #tankAssembly 
+	  [options] = "tankAssemblySelectOptions"
+	  formControlName = "tankAssembly"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  *ngIf="CandidateIsVisible" 
+	  #candidate 
+	  [options] = "candidateSelectOptions"
+	  formControlName = "candidate"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  *ngIf="SanitationDitchIsVisible" 
+	  #sanitationDitch 
+	  [options] = "sanitationDitchSelectOptions"
+	  formControlName = "sanitationDitch"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  *ngIf="PlantationIsVisible" 
+	  #plantation 
+	  [options] = "plantationSelectOptions"
+	  formControlName = "plantation"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  *ngIf="GaysonIsVisible" 
+	  #gayson 
+	  [options] = "gaysonSelectOptions"
+	  formControlName = "gayson"
+	></app-material-select>
+
+        </form>
+
+        <mat-divider></mat-divider>
+
+		<mat-card-actions>
+			<form [formGroup]="attachmentForm" class="form-container">
+                <app-multi-file-upload [service] = "drainageDataForTheBuildingService" [id]="drainageDataForTheBuildingForm.get('id').value"
+                    formControlName = "attachmentFiles">
+                </app-multi-file-upload>
+            </form>
+            <button
+                type="submit"
+                (click)="onSubmit()"
+                [disabled]="drainageDataForTheBuildingForm.invalid"
+                mat-raised-button
+                color = "primary">
+             حفظ
+            </button>
+        </mat-card-actions>
+    </ng-template >
+</app-new-form-layout >
+

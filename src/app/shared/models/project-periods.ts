@@ -5,19 +5,19 @@
 	buildingCode: string;
 	buildingName: string;
 	governorate: number;
-	bidNumber: number;
+	bidNumber: string;
 	offeringType: number;
 	contractorCode: string;
 	contractorName: string;
 	engineerCode: string;
 	engineerName: string;
 	siteDeliveryDate: Date;
-	executionDuration: number;
-	extensionTimes: number;
-	referenceNumber: number;
+	executionDuration: string;
+	referenceCode: string;
 	referencesName: string;
-	extensionDays: number;
+	extensionDays: string;
 	beganStopDate: Date;
+	extensionTimes: string;
 	constructor(arg?: ProjectPeriods) {
         if (arg) {
             for (const property in arg) {

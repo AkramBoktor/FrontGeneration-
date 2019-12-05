@@ -1,0 +1,118 @@
+
+<app-search-list-expansion-panel
+    dir="rtl"
+    [pageTitle] = "'بيانات الجدول الزمني لاعمال الغير'"
+    (beginSearch) = "onBeginSearch()"
+    (create) = "onCreate()"
+>
+    <ng-template searchFormContainer >
+        <form [formGroup] = "searchForm">
+           
+
+	<mat-form-field appearance="outline">
+	 <mat-label>كود المبنى</mat-label>
+	 <input matInput formControlName="buildingCode"/>
+	 <mat-error *ngIf = "getControls('buildingCode').invalid" >
+	  {{ getControls('buildingCode')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>كود الملحق</mat-label>
+	 <input matInput formControlName="extensionCode"/>
+	 <mat-error *ngIf = "getControls('extensionCode').invalid" >
+	  {{ getControls('extensionCode')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>سنه الخطة</mat-label>
+	 <input matInput
+	  [matDatepicker] = "planYearDatepicker"
+	  autocomplete = "off"
+	  formControlName= "planYear"/>
+	 <mat-datepicker-toggle
+	   matSuffix
+	   [for]="planYearDatepicker"
+	 ></mat-datepicker-toggle>
+	 <mat-datepicker #planYearDatepicker></mat-datepicker>
+	 <mat-error *ngIf = "getControls('planYear').invalid" >
+	  {{ getControls('planYear')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>كود النموذج</mat-label>
+	 <input matInput formControlName="modelCode"/>
+	 <mat-error *ngIf = "getControls('modelCode').invalid" >
+	  {{ getControls('modelCode')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>سنه التسعير</mat-label>
+	 <input matInput
+	  [matDatepicker] = "pricingYearDatepicker"
+	  autocomplete = "off"
+	  formControlName= "pricingYear"/>
+	 <mat-datepicker-toggle
+	   matSuffix
+	   [for]="pricingYearDatepicker"
+	 ></mat-datepicker-toggle>
+	 <mat-datepicker #pricingYearDatepicker></mat-datepicker>
+	 <mat-error *ngIf = "getControls('pricingYear').invalid" >
+	  {{ getControls('pricingYear')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>جدول زمني</mat-label>
+	 <input matInput formControlName="timetable"/>
+	 <mat-error *ngIf = "getControls('timetable').invalid" >
+	  {{ getControls('timetable')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>مده التنفيذ</mat-label>
+	 <input matInput formControlName="durationofexecution"/>
+	 <mat-error *ngIf = "getControls('durationofexecution').invalid" >
+	  {{ getControls('durationofexecution')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>عدد الادوار</mat-label>
+	 <input matInput formControlName="numberofFloors"/>
+	 <mat-error *ngIf = "getControls('numberofFloors').invalid" >
+	  {{ getControls('numberofFloors')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+           
+
+	<app-material-select appearance="outline"
+	  #constructionType 
+	  [options] = "constructionTypeSelectOptions"
+	  formControlName = "constructionType"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #menuType 
+	  [options] = "menuTypeSelectOptions"
+	  formControlName = "menuType"
+	></app-material-select>
+
+        </form>
+    </ng-template >
+    <ng-template searchResultContainer >
+        <app-grid-control
+            #gridControl
+            [rowDataService] = "getTimetableDataForThirdPartiesPaginatedSortedFiltered"
+            [columnOptions] = "columnOptions"
+            [gridHeaderOptions] = "gridHeaderOptions"
+            [searchInput] = "searchForm.value"
+            (deleteRow) = "onDeleteClicked($event)"
+        >
+        </app-grid-control>
+    </ng-template>
+</app-search-list-expansion-panel >

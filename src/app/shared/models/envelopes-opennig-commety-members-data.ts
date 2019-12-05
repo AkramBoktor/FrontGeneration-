@@ -3,8 +3,8 @@
     id: number;
     
 	offeringType: number;
-	bidNumber: number;
-	serialMember: number;
+	bidNumber: string;
+	serialMember: string;
 	memberType: number;
 	memberName: string;
 	constructor(arg?: EnvelopesOpennigCommetyMembersData) {

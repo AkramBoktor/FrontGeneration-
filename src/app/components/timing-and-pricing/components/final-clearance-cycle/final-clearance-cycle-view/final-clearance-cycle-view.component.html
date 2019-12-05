@@ -23,7 +23,7 @@
 
 	<mat-form-field appearance="outline">
 	 <mat-label>اسم المبنى</mat-label>
-	 <input matInput formControlName="schoolName" [disableControl]="true" />
+	 <input matInput formControlName="schoolName" [disableControl]="false" />
 	 <mat-error *ngIf = "getControls('schoolName').invalid" >
 	  {{ getControls('schoolName')| getErrorMessages : errorMessages}}
 	  </mat-error>
@@ -31,7 +31,7 @@
 
 	<mat-form-field appearance="outline">
 	 <mat-label>رقم المناقصة</mat-label>
-	 <input matInput formControlName="bidNumber" [disableControl]="true" />
+	 <input matInput formControlName="bidNumber"/>
 	 <mat-error *ngIf = "getControls('bidNumber').invalid" >
 	  {{ getControls('bidNumber')| getErrorMessages : errorMessages}}
 	  </mat-error>
@@ -39,7 +39,7 @@
 
 	<mat-form-field appearance="outline">
 	 <mat-label>كود المقاول</mat-label>
-	 <input matInput formControlName="contractorCode" [disableControl]="true" />
+	 <input matInput formControlName="contractorCode"/>
 	 <mat-error *ngIf = "getControls('contractorCode').invalid" >
 	  {{ getControls('contractorCode')| getErrorMessages : errorMessages}}
 	  </mat-error>
@@ -47,7 +47,7 @@
 
 	<mat-form-field appearance="outline">
 	 <mat-label>اسم المقاول</mat-label>
-	 <input matInput formControlName="contractorName" [disableControl]="true" />
+	 <input matInput formControlName="contractorName" [disableControl]="false" />
 	 <mat-error *ngIf = "getControls('contractorName').invalid" >
 	  {{ getControls('contractorName')| getErrorMessages : errorMessages}}
 	  </mat-error>
@@ -55,15 +55,15 @@
 
 	<mat-form-field appearance="outline">
 	 <mat-label>رقم المهندس</mat-label>
-	 <input matInput formControlName="employeeCode" [disableControl]="true" />
-	 <mat-error *ngIf = "getControls('employeeCode').invalid" >
-	  {{ getControls('employeeCode')| getErrorMessages : errorMessages}}
+	 <input matInput formControlName="engineerCode"/>
+	 <mat-error *ngIf = "getControls('engineerCode').invalid" >
+	  {{ getControls('engineerCode')| getErrorMessages : errorMessages}}
 	  </mat-error>
 	</mat-form-field>
 
 	<mat-form-field appearance="outline">
 	 <mat-label>اسم المهندس</mat-label>
-	 <input matInput formControlName="engineerName" [disableControl]="true" />
+	 <input matInput formControlName="engineerName" [disableControl]="false" />
 	 <mat-error *ngIf = "getControls('engineerName').invalid" >
 	  {{ getControls('engineerName')| getErrorMessages : errorMessages}}
 	  </mat-error>
@@ -72,7 +72,7 @@
 	<mat-form-field appearance="outline">
 	 <mat-label>تاريخ التسليم الابتدائي</mat-label>
 	 <input matInput
-	 [disableControl]="true" 
+	 [disableControl]="false" 
 	  [matDatepicker] = "primaryDeliveryDateDatepicker"
 	  autocomplete = "off"
 	  formControlName= "primaryDeliveryDate"/>
@@ -128,15 +128,15 @@
 
 	<mat-form-field appearance="outline">
 	 <mat-label>رقم المراجع</mat-label>
-	 <input matInput formControlName="referenceNumber"/>
-	 <mat-error *ngIf = "getControls('referenceNumber').invalid" >
-	  {{ getControls('referenceNumber')| getErrorMessages : errorMessages}}
+	 <input matInput formControlName="referenceCode"/>
+	 <mat-error *ngIf = "getControls('referenceCode').invalid" >
+	  {{ getControls('referenceCode')| getErrorMessages : errorMessages}}
 	  </mat-error>
 	</mat-form-field>
 
 	<mat-form-field appearance="outline">
 	 <mat-label>اسم المراجع</mat-label>
-	 <input matInput formControlName="referencesName"/>
+	 <input matInput formControlName="referencesName" [disableControl]="true" />
 	 <mat-error *ngIf = "getControls('referencesName').invalid" >
 	  {{ getControls('referencesName')| getErrorMessages : errorMessages}}
 	  </mat-error>
@@ -183,19 +183,19 @@
 	</mat-form-field>
          
 
-	<app-material-select appearance="outline" [disabled]="true" 
+	<app-material-select appearance="outline"
 	  #governorate 
 	  [options] = "governorateSelectOptions"
 	  formControlName = "governorate"
 	></app-material-select>
 
-	<app-material-select appearance="outline" [disabled]="true" 
+	<app-material-select appearance="outline"
 	  #offeringType 
 	  [options] = "offeringTypeSelectOptions"
 	  formControlName = "offeringType"
 	></app-material-select>
 
-	<app-material-select appearance="outline" [disabled]="true" 
+	<app-material-select appearance="outline"
 	  #constructionType 
 	  [options] = "constructionTypeSelectOptions"
 	  formControlName = "constructionType"

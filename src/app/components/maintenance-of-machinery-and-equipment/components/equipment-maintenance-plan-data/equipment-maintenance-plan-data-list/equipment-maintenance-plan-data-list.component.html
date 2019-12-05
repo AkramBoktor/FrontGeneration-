@@ -1,0 +1,116 @@
+
+<app-search-list-expansion-panel
+    dir="rtl"
+    [pageTitle] = "'بيانات خطة صيانة رئيسية لمعدة'"
+    (beginSearch) = "onBeginSearch()"
+    (create) = "onCreate()"
+>
+    <ng-template searchFormContainer >
+        <form [formGroup] = "searchForm">
+           
+
+	<mat-form-field appearance="outline">
+	 <mat-label>رقم المعدة</mat-label>
+	 <input matInput formControlName="equipmentNumber"/>
+	 <mat-error *ngIf = "getControls('equipmentNumber').invalid" >
+	  {{ getControls('equipmentNumber')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>بند الصيانة الرئيسية</mat-label>
+	 <input matInput formControlName="mainMaintenanceItem"/>
+	 <mat-error *ngIf = "getControls('mainMaintenanceItem').invalid" >
+	  {{ getControls('mainMaintenanceItem')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>مسلسل خطة صيانة معدات</mat-label>
+	 <input matInput formControlName="equipmentMaintenancePlanSerial"/>
+	 <mat-error *ngIf = "getControls('equipmentMaintenancePlanSerial').invalid" >
+	  {{ getControls('equipmentMaintenancePlanSerial')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>تاريخ الصيانة المخطط</mat-label>
+	 <input matInput
+	  [matDatepicker] = "plannedMaintenanceDateDatepicker"
+	  autocomplete = "off"
+	  formControlName= "plannedMaintenanceDate"/>
+	 <mat-datepicker-toggle
+	   matSuffix
+	   [for]="plannedMaintenanceDateDatepicker"
+	 ></mat-datepicker-toggle>
+	 <mat-datepicker #plannedMaintenanceDateDatepicker></mat-datepicker>
+	 <mat-error *ngIf = "getControls('plannedMaintenanceDate').invalid" >
+	  {{ getControls('plannedMaintenanceDate')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>تاريخ الصيانة الفعلي</mat-label>
+	 <input matInput
+	  [matDatepicker] = "actualMaintenanceDateDatepicker"
+	  autocomplete = "off"
+	  formControlName= "actualMaintenanceDate"/>
+	 <mat-datepicker-toggle
+	   matSuffix
+	   [for]="actualMaintenanceDateDatepicker"
+	 ></mat-datepicker-toggle>
+	 <mat-datepicker #actualMaintenanceDateDatepicker></mat-datepicker>
+	 <mat-error *ngIf = "getControls('actualMaintenanceDate').invalid" >
+	  {{ getControls('actualMaintenanceDate')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>القائم بأعمال الصيانة</mat-label>
+	 <input matInput formControlName="maintenanceIndividual"/>
+	 <mat-error *ngIf = "getControls('maintenanceIndividual').invalid" >
+	  {{ getControls('maintenanceIndividual')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>رقم القائم بأعمال الصيانة</mat-label>
+	 <input matInput formControlName="maintenanceIndividualNumber"/>
+	 <mat-error *ngIf = "getControls('maintenanceIndividualNumber').invalid" >
+	  {{ getControls('maintenanceIndividualNumber')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+           
+
+	<app-material-select appearance="outline"
+	  #buildingType 
+	  [options] = "buildingTypeSelectOptions"
+	  formControlName = "buildingType"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #equipmentGroup 
+	  [options] = "equipmentGroupSelectOptions"
+	  formControlName = "equipmentGroup"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #equipmentType 
+	  [options] = "equipmentTypeSelectOptions"
+	  formControlName = "equipmentType"
+	></app-material-select>
+
+        </form>
+    </ng-template >
+    <ng-template searchResultContainer >
+        <app-grid-control
+            #gridControl
+            [rowDataService] = "getEquipmentMaintenancePlanDataPaginatedSortedFiltered"
+            [columnOptions] = "columnOptions"
+            [gridHeaderOptions] = "gridHeaderOptions"
+            [searchInput] = "searchForm.value"
+            (deleteRow) = "onDeleteClicked($event)"
+        >
+        </app-grid-control>
+    </ng-template>
+</app-search-list-expansion-panel >

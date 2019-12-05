@@ -3,9 +3,9 @@
     id: number;
     
 	offeringType: number;
-	bidNumber: number;
+	bidNumber: string;
 	project: string;
-	supplier: number;
+	supplier: string;
 	brochureValue: number;
 	brochureNo: number;
 	brochurePurchaseDate: Date;

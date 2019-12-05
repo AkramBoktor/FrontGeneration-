@@ -21,7 +21,7 @@ const routes: Routes = [
 {
     path: 'drugs-information', loadChildren: './components/drugs-information/drugs-information.module#DrugsInformationModule',
     data: {
-      moduleName: 'DrugsInformation '
+      moduleName: 'DrugsInformation'
     },
 },
 

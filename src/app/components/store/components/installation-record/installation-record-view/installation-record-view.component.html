@@ -31,7 +31,7 @@
 
 	<mat-form-field appearance="outline">
 	 <mat-label>رقم المخزن</mat-label>
-	 <input matInput formControlName="storeNumber" [disableControl]="true" />
+	 <input matInput formControlName="storeNumber" [disableControl]="false" />
 	 <mat-error *ngIf = "getControls('storeNumber').invalid" >
 	  {{ getControls('storeNumber')| getErrorMessages : errorMessages}}
 	  </mat-error>
@@ -39,7 +39,7 @@
 
 	<mat-form-field appearance="outline">
 	 <mat-label>رقم اذن الصرف</mat-label>
-	 <input matInput formControlName="exchangeAuthorizationNumber" [disableControl]="true" />
+	 <input matInput formControlName="exchangeAuthorizationNumber" [disableControl]="false" />
 	 <mat-error *ngIf = "getControls('exchangeAuthorizationNumber').invalid" >
 	  {{ getControls('exchangeAuthorizationNumber')| getErrorMessages : errorMessages}}
 	  </mat-error>
@@ -48,7 +48,7 @@
 	<mat-form-field appearance="outline">
 	 <mat-label>تاريخ الصرف</mat-label>
 	 <input matInput
-	 [disableControl]="true" 
+	 [disableControl]="false" 
 	  [matDatepicker] = "exchangeDateDatepicker"
 	  autocomplete = "off"
 	  formControlName= "exchangeDate"/>
@@ -64,7 +64,7 @@
 
 	<mat-form-field appearance="outline">
 	 <mat-label>الكمية الصرف</mat-label>
-	 <input matInput formControlName="quantityExchange" [disableControl]="true" />
+	 <input matInput formControlName="quantityExchange" [disableControl]="false" />
 	 <mat-error *ngIf = "getControls('quantityExchange').invalid" >
 	  {{ getControls('quantityExchange')| getErrorMessages : errorMessages}}
 	  </mat-error>

@@ -1,17 +1,18 @@
 
-import { Component, Inject, Injector, Input, OnInit, Optional, ViewChild } from '@angular/core';
-import { FormGroup, Validators } from '@angular/forms';
-import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
-import { AppBaseComponent } from 'app/shared/base/app-base.component';
-import { MaterialSelectComponent } from 'app/shared/components/material-controls/material-select/material-select.component';
-import { ContractorRankingData } from 'app/shared/models/contractor-ranking-data';
-import { FormControlError } from 'app/shared/models/controls/interfaces';
+import { Component,Inject, Input, OnInit, Optional, ViewChild, Injector } from '@angular/core';
+import { AbstractControl,FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { MatDialogRef,MAT_DIALOG_DATA } from '@angular/material';
 import { MaterialSelectOptions } from 'app/shared/models/controls/material-select.model';
+import { ContractorRankingData } from 'app/shared/models/contractor-ranking-data';
+import { ValidatorFunctions } from 'app/shared/validations/validator-functions';
+
 import { LookupService } from 'app/shared/pages/lookup-form/lookup.service';
-import { switchMap } from 'rxjs/operators';
+
 import { ContractorRankingDataService } from '../shared/contractor-ranking-data.service';
-
-
+import { MaterialSelectComponent } from 'app/shared/components/material-controls/material-select/material-select.component';
+import { AppBaseComponent } from 'app/shared/base/app-base.component';
+import { FormControlError } from 'app/shared/models/controls/interfaces';
+import { startWith, switchMap } from 'rxjs/operators';
 
 
 @Component({
@@ -23,7 +24,7 @@ import { ContractorRankingDataService } from '../shared/contractor-ranking-data.
 
 export class ContractorRankingDataEditComponent extends AppBaseComponent implements OnInit {
 
-  @Input() selectedContractorRankingData : ContractorRankingData;
+  @Input() selectedContractorRankingData: ContractorRankingData;
   contractorRankingDataForm: FormGroup;
   errorMessages: FormControlError[] = [
           
@@ -57,8 +58,8 @@ classificationValueCodeSelectOptions: MaterialSelectOptions;
 
   ngOnInit() {
     this.initializeLookupServices();
-    this.selectedContractorRankingData  = new ContractorRankingData();
-    this.selectedContractorRankingData  = this.selectedContractorRankingDataDialog.data || this.selectedContractorRankingData ;
+    this.selectedContractorRankingData = new ContractorRankingData();
+    this.selectedContractorRankingData = this.selectedContractorRankingDataDialog.data || this.selectedContractorRankingData;
 
     
 	this.offeringTypeSelectOptions = new MaterialSelectOptions({
@@ -88,19 +89,19 @@ classificationValueCodeSelectOptions: MaterialSelectOptions;
 
     this.contractorRankingDataForm = this.formBuilder.group({
       
-  id : [this.selectedContractorRankingData .id],
-  bidNumber : [this.selectedContractorRankingData .bidNumber, [ Validators.required ]],
-  projectNumber : [this.selectedContractorRankingData .projectNumber, [ Validators.required ]],
-  contractorCode : [this.selectedContractorRankingData .contractorCode, [ Validators.required ]],
-  ongoingBusinessTotalValue : [this.selectedContractorRankingData .ongoingBusinessTotalValue, [ ]],
-  classificationCardNumber : [this.selectedContractorRankingData .classificationCardNumber, [ ]],
-  dateCardRating : [this.selectedContractorRankingData .dateCardRating, [ Validators.required ]],
-  decision : [this.selectedContractorRankingData .decision, [ Validators.required ]],
-  reason : [this.selectedContractorRankingData .reason, [ Validators.required ]],
-  offeringType : [this.selectedContractorRankingData .offeringType, [ Validators.required ]],
-  constructionType : [this.selectedContractorRankingData .constructionType, [ Validators.required ]],
-  classificationCode : [this.selectedContractorRankingData .classificationCode, [ Validators.required ]],
-  classificationValueCode : [this.selectedContractorRankingData .classificationValueCode, [ Validators.required ]]
+  id : [this.selectedContractorRankingData.id],
+  bidNumber : [this.selectedContractorRankingData.bidNumber, [ Validators.required ]],
+  projectNumber : [this.selectedContractorRankingData.projectNumber, [ Validators.required ]],
+  contractorCode : [this.selectedContractorRankingData.contractorCode, [ Validators.required ]],
+  ongoingBusinessTotalValue : [this.selectedContractorRankingData.ongoingBusinessTotalValue, [ ]],
+  classificationCardNumber : [this.selectedContractorRankingData.classificationCardNumber, [ ]],
+  dateCardRating : [this.selectedContractorRankingData.dateCardRating, [ Validators.required ]],
+  decision : [this.selectedContractorRankingData.decision, [ Validators.required ]],
+  reason : [this.selectedContractorRankingData.reason, [ Validators.required ]],
+  offeringType : [this.selectedContractorRankingData.offeringType, [ Validators.required ]],
+  constructionType : [this.selectedContractorRankingData.constructionType, [ Validators.required ]],
+  classificationCode : [this.selectedContractorRankingData.classificationCode, [ Validators.required ]],
+  classificationValueCode : [this.selectedContractorRankingData.classificationValueCode, [ Validators.required ]]
    }, {
 	  validators: [ ]
       });
