@@ -532,9 +532,9 @@ const routes: Routes = [
             },
 
             {
-                path: 'land-branch', loadChildren: './components/land-branch/land-branch.module#LandBranchModule',
+                path: 'landbranch', loadChildren: './components/landbranch/landbranch.module#LandBranchModule',
                 data: {
-                    menuName: 'land-branch'
+                    menuName: 'landbranch'
                 }
             },
 
