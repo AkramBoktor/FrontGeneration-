@@ -23,7 +23,7 @@
 
 	<mat-form-field appearance="outline">
 	 <mat-label>اسم الموظف</mat-label>
-	 <input matInput formControlName="employeeName" [disableControl]="true" />
+	 <input matInput formControlName="employeeName" [disableControl]="false" />
 	 <mat-error *ngIf = "getControls('employeeName').invalid" >
 	  {{ getControls('employeeName')| getErrorMessages : errorMessages}}
 	  </mat-error>
@@ -31,7 +31,7 @@
 
 	<mat-form-field appearance="outline">
 	 <mat-label>الاجازات الاعتيادية خلال مدة خدمة الموظف</mat-label>
-	 <input matInput formControlName="regularPreviousVacations" [disableControl]="true" />
+	 <input matInput formControlName="regularPreviousVacations" [disableControl]="false" />
 	 <mat-error *ngIf = "getControls('regularPreviousVacations').invalid" >
 	  {{ getControls('regularPreviousVacations')| getErrorMessages : errorMessages}}
 	  </mat-error>
@@ -39,7 +39,7 @@
 
 	<mat-form-field appearance="outline">
 	 <mat-label>رصيد السنوي اعتيادي</mat-label>
-	 <input matInput formControlName="regularBalance" [disableControl]="true" />
+	 <input matInput formControlName="regularBalance" [disableControl]="false" />
 	 <mat-error *ngIf = "getControls('regularBalance').invalid" >
 	  {{ getControls('regularBalance')| getErrorMessages : errorMessages}}
 	  </mat-error>
@@ -47,7 +47,7 @@
 
 	<mat-form-field appearance="outline">
 	 <mat-label>رصيد السنوي عارضة</mat-label>
-	 <input matInput formControlName="casualBalance" [disableControl]="true" />
+	 <input matInput formControlName="casualBalance" [disableControl]="false" />
 	 <mat-error *ngIf = "getControls('casualBalance').invalid" >
 	  {{ getControls('casualBalance')| getErrorMessages : errorMessages}}
 	  </mat-error>
@@ -119,7 +119,7 @@
 
 	<mat-form-field appearance="outline">
 	 <mat-label>مدة الاجازة</mat-label>
-	 <input matInput formControlName="implementationDuration" [disableControl]="true" />
+	 <input matInput formControlName="implementationDuration" [disableControl]="false" />
 	 <mat-error *ngIf = "getControls('implementationDuration').invalid" >
 	  {{ getControls('implementationDuration')| getErrorMessages : errorMessages}}
 	  </mat-error>

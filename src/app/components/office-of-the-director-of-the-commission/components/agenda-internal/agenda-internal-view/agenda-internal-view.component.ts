@@ -1,14 +1,14 @@
 
-import { Component, Inject, Injector, Input, OnInit, Optional } from '@angular/core';
-import { AbstractControl, FormGroup } from '@angular/forms';
+import { Component, Inject, Input, OnInit, Optional, Injector } from '@angular/core';
+import { FormGroup, AbstractControl } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
+import { MaterialSelectOptions } from 'app/shared/models/controls/material-select.model';
 import { AppBaseComponent } from 'app/shared/base/app-base.component';
 import { AgendaInternal } from 'app/shared/models/agenda-internal';
-import { FormControlError } from 'app/shared/models/controls/interfaces';
-import { MaterialSelectOptions } from 'app/shared/models/controls/material-select.model';
-import { LookupService } from 'app/shared/pages/lookup-form/lookup.service';
 import { ValidatorFunctions } from 'app/shared/validations/validator-functions';
+import { FormControlError } from 'app/shared/models/controls/interfaces';
 import { AgendaInternalService } from '../shared/agenda-internal.service';
+import { LookupService } from 'app/shared/pages/lookup-form/lookup.service';
 
 @Component({
   selector: 'app-agenda-internal-view',

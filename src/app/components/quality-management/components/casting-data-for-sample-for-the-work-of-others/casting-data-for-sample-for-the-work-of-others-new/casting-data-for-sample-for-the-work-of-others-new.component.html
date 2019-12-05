@@ -1,0 +1,78 @@
+
+<app-new-form-layout
+    dir="rtl"
+    (submitClicked) = "onSubmit()"
+    (back) = "onBack()"
+    [pageTitle] = "'بيانات الصب لعينة لاعمال الغير'"
+>
+    <ng-template newFormContainer >
+        <form [formGroup] = "castingDataForSampleForTheWorkOfOthersForm">
+         
+
+	<mat-form-field appearance="outline">
+	 <mat-label>اسم العنصر الانشائي</mat-label>
+	 <input matInput formControlName="structuralElementName"/>
+	 <mat-error *ngIf = "getControls('structuralElementName').invalid" >
+	  {{ getControls('structuralElementName')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>تاريخ الصب</mat-label>
+	 <input matInput
+	  [matDatepicker] = "castingHistoryDatepicker"
+	  autocomplete = "off"
+	  formControlName= "castingHistory"/>
+	 <mat-datepicker-toggle
+	   matSuffix
+	   [for]="castingHistoryDatepicker"
+	 ></mat-datepicker-toggle>
+	 <mat-datepicker #castingHistoryDatepicker></mat-datepicker>
+	 <mat-error *ngIf = "getControls('castingHistory').invalid" >
+	  {{ getControls('castingHistory')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>رقم طلب الاختبار</mat-label>
+	 <input matInput formControlName="testOrderNumber"/>
+	 <mat-error *ngIf = "getControls('testOrderNumber').invalid" >
+	  {{ getControls('testOrderNumber')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+         
+
+	<app-material-select appearance="outline"
+	  #constructionType 
+	  [options] = "constructionTypeSelectOptions"
+	  formControlName = "constructionType"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #elementCode 
+	  [options] = "elementCodeSelectOptions"
+	  formControlName = "elementCode"
+	></app-material-select>
+
+        </form>
+
+        <mat-divider></mat-divider>
+
+		<mat-card-actions>
+			<form [formGroup]="attachmentForm" class="form-container">
+                <app-multi-file-upload [service] = "castingDataForSampleForTheWorkOfOthersService" [id]="castingDataForSampleForTheWorkOfOthersForm.get('id').value"
+                    formControlName = "attachmentFiles">
+                </app-multi-file-upload>
+            </form>
+            <button
+                type="submit"
+                (click)="onSubmit()"
+                [disabled]="castingDataForSampleForTheWorkOfOthersForm.invalid"
+                mat-raised-button
+                color = "primary">
+             حفظ
+            </button>
+        </mat-card-actions>
+    </ng-template >
+</app-new-form-layout >
+

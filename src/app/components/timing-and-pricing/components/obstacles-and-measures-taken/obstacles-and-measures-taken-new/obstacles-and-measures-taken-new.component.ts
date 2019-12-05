@@ -1,15 +1,18 @@
 
-import { Component, Injector, Input, OnInit, Optional, ViewChild } from '@angular/core';
-import { FormGroup, Validators } from '@angular/forms';
+import { Component,Input, OnInit, Optional, ViewChild, Injector } from '@angular/core';
+import { AbstractControl, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef } from '@angular/material';
+import { ActivatedRoute,Router } from '@angular/router';
 import { AppBaseComponent } from 'app/shared/base/app-base.component';
-import { MaterialSelectComponent } from 'app/shared/components/material-controls/material-select/material-select.component';
 import { FormControlError } from 'app/shared/models/controls/interfaces';
 import { MaterialSelectOptions } from 'app/shared/models/controls/material-select.model';
+import { startWith } from 'rxjs/operators';
+import { MaterialSelectComponent } from 'app/shared/components/material-controls/material-select/material-select.component';
 import { ObstaclesAndMeasuresTaken } from 'app/shared/models/obstacles-and-measures-taken';
+import { ValidatorFunctions } from 'app/shared/validations/validator-functions';
+import { ObstaclesAndMeasuresTakenService } from '../shared/obstacles-and-measures-taken.service';
 import { LookupService } from 'app/shared/pages/lookup-form/lookup.service';
 import { switchMap } from 'rxjs/operators';
-import { ObstaclesAndMeasuresTakenService } from '../shared/obstacles-and-measures-taken.service';
 
 
 @Component({
@@ -95,18 +98,18 @@ executionCodeSelectOptions: MaterialSelectOptions;
     this.obstaclesAndMeasuresTakenForm = this.formBuilder.group({
      
   id : [0],
-  iD : [this.selectedObstaclesAndMeasuresTaken.iD, [ Validators.required ]],
+  iDNumber : [this.selectedObstaclesAndMeasuresTaken.iDNumber, [ Validators.required ]],
   referencesCode : [this.selectedObstaclesAndMeasuresTaken.referencesCode, [ Validators.required ]],
   difficulties : [this.selectedObstaclesAndMeasuresTaken.difficulties, [ Validators.required ]],
   procedures : [this.selectedObstaclesAndMeasuresTaken.procedures, [ Validators.required ]],
   extensionCode : [this.selectedObstaclesAndMeasuresTaken.extensionCode, [ Validators.required ]],
-  bidNumber : [this.selectedObstaclesAndMeasuresTaken.bidNumber, [ ]],
-  contractorCode : [this.selectedObstaclesAndMeasuresTaken.contractorCode, [ ]],
+  bidNumber : [this.selectedObstaclesAndMeasuresTaken.bidNumber, [ Validators.required ]],
+  contractorCode : [this.selectedObstaclesAndMeasuresTaken.contractorCode, [ Validators.required ]],
   governorate : [this.selectedObstaclesAndMeasuresTaken.governorate, [ Validators.required ]],
-  constructionType : [this.selectedObstaclesAndMeasuresTaken.constructionType, [ ]],
+  constructionType : [this.selectedObstaclesAndMeasuresTaken.constructionType, [ Validators.required ]],
   offeringType : [this.selectedObstaclesAndMeasuresTaken.offeringType, [ Validators.required ]],
-  referenceCode : [this.selectedObstaclesAndMeasuresTaken.referenceCode, [ ]],
-  executionCode : [this.selectedObstaclesAndMeasuresTaken.executionCode, [ ]]
+  referenceCode : [this.selectedObstaclesAndMeasuresTaken.referenceCode, [ Validators.required ]],
+  executionCode : [this.selectedObstaclesAndMeasuresTaken.executionCode, [ Validators.required ]]
    }, {
 	  validators: [ ]
       });

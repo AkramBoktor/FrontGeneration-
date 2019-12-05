@@ -1,0 +1,50 @@
+
+<app-new-form-layout
+    dir="rtl"
+    (submitClicked) = "onSubmit()"
+    (back) = "onBack()"
+    [pageTitle] = "'اكواد الخدمات'"
+>
+    <ng-template newFormContainer >
+        <form [formGroup] = "serviceCodesForm">
+         
+
+	<mat-form-field appearance="outline">
+	 <mat-label>كود الخدمة</mat-label>
+	 <input matInput formControlName="serviceCode"/>
+	 <mat-error *ngIf = "getControls('serviceCode').invalid" >
+	  {{ getControls('serviceCode')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>توصيف الخدمة</mat-label>
+	 <input matInput formControlName="serviceConfiguration"/>
+	 <mat-error *ngIf = "getControls('serviceConfiguration').invalid" >
+	  {{ getControls('serviceConfiguration')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+         
+
+        </form>
+
+        <mat-divider></mat-divider>
+
+		<mat-card-actions>
+			<form [formGroup]="attachmentForm" class="form-container">
+                <app-multi-file-upload [service] = "serviceCodesService" [id]="serviceCodesForm.get('id').value"
+                    formControlName = "attachmentFiles">
+                </app-multi-file-upload>
+            </form>
+            <button
+                type="submit"
+                (click)="onSubmit()"
+                [disabled]="serviceCodesForm.invalid"
+                mat-raised-button
+                color = "primary">
+             حفظ
+            </button>
+        </mat-card-actions>
+    </ng-template >
+</app-new-form-layout >
+

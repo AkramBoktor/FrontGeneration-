@@ -15,6 +15,11 @@
 	serviceName: string;
 	advanceRequiredRatio: number;
 	applictionDate: Date;
+	orderDate: Date;
+	school: string;
+	department: string;
+	applicationDate: Date;
+	aadvanceRequiredRatio: number;
 	constructor(arg?: RequiredServices) {
         if (arg) {
             for (const property in arg) {

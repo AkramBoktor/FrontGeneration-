@@ -1,0 +1,56 @@
+
+<app-search-list-expansion-panel
+    dir="rtl"
+    [pageTitle] = "'بيانات المزانية الشبكية'"
+    (beginSearch) = "onBeginSearch()"
+    (create) = "onCreate()"
+>
+    <ng-template searchFormContainer >
+        <form [formGroup] = "searchForm">
+           
+
+	<mat-form-field appearance="outline">
+	 <mat-label>كود قطعة الارض</mat-label>
+	 <input matInput formControlName="landID"/>
+	 <mat-error *ngIf = "getControls('landID').invalid" >
+	  {{ getControls('landID')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>منسوب روبير</mat-label>
+	 <input matInput formControlName="robertLevel"/>
+	 <mat-error *ngIf = "getControls('robertLevel').invalid" >
+	  {{ getControls('robertLevel')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>وصف منسوب روبير للاتجاه</mat-label>
+	 <input matInput formControlName="directionDescription"/>
+	 <mat-error *ngIf = "getControls('directionDescription').invalid" >
+	  {{ getControls('directionDescription')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+           
+
+	<app-material-select appearance="outline"
+	  #directionCode 
+	  [options] = "directionCodeSelectOptions"
+	  formControlName = "directionCode"
+	></app-material-select>
+
+        </form>
+    </ng-template >
+    <ng-template searchResultContainer >
+        <app-grid-control
+            #gridControl
+            [rowDataService] = "getNetworkBudgetDataPaginatedSortedFiltered"
+            [columnOptions] = "columnOptions"
+            [gridHeaderOptions] = "gridHeaderOptions"
+            [searchInput] = "searchForm.value"
+            (deleteRow) = "onDeleteClicked($event)"
+        >
+        </app-grid-control>
+    </ng-template>
+</app-search-list-expansion-panel >

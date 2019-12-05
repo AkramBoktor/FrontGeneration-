@@ -8,7 +8,27 @@ const routes: Routes = [
   {
     path: '',
     component: TransportAndMovementComponent,
-  }
+  },
+  
+{
+    path: 'employees-performance-evaluation', loadChildren: './components/employees-performance-evaluation/employees-performance-evaluation.module#EmployeesPerformanceEvaluationModule',
+    data: {
+      moduleName: 'EmployeesPerformanceEvaluation'
+    },
+},
+
+{
+    path: 'registration-form-50', loadChildren: './components/registration-form-50/registration-form-50.module#RegistrationForm50Module',
+    data: {
+      moduleName: 'RegistrationForm50'
+    },
+},
+
+  
+  
+  
+  
+  
 ];
 
 @NgModule({

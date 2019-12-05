@@ -1,0 +1,162 @@
+
+<app-search-list-expansion-panel
+    dir="rtl"
+    [pageTitle] = "'بيانات اّلة'"
+    (beginSearch) = "onBeginSearch()"
+    (create) = "onCreate()"
+>
+    <ng-template searchFormContainer >
+        <form [formGroup] = "searchForm">
+           
+
+	<mat-form-field appearance="outline">
+	 <mat-label>رقم المعدة</mat-label>
+	 <input matInput formControlName="equipmentNumber"/>
+	 <mat-error *ngIf = "getControls('equipmentNumber').invalid" >
+	  {{ getControls('equipmentNumber')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>الطراز</mat-label>
+	 <input matInput formControlName="equipmentModel"/>
+	 <mat-error *ngIf = "getControls('equipmentModel').invalid" >
+	  {{ getControls('equipmentModel')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>تاريخ بداية التشغيل</mat-label>
+	 <input matInput
+	  [matDatepicker] = "operationBeganingdateDatepicker"
+	  autocomplete = "off"
+	  formControlName= "operationBeganingdate"/>
+	 <mat-datepicker-toggle
+	   matSuffix
+	   [for]="operationBeganingdateDatepicker"
+	 ></mat-datepicker-toggle>
+	 <mat-datepicker #operationBeganingdateDatepicker></mat-datepicker>
+	 <mat-error *ngIf = "getControls('operationBeganingdate').invalid" >
+	  {{ getControls('operationBeganingdate')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>فترة الضمان بالسنوات</mat-label>
+	 <input matInput formControlName="warrantyPeriodInYears"/>
+	 <mat-error *ngIf = "getControls('warrantyPeriodInYears').invalid" >
+	  {{ getControls('warrantyPeriodInYears')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>الشركة الموردة</mat-label>
+	 <input matInput formControlName="vendor"/>
+	 <mat-error *ngIf = "getControls('vendor').invalid" >
+	  {{ getControls('vendor')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>كود المبنى</mat-label>
+	 <input matInput formControlName="buildingCode"/>
+	 <mat-error *ngIf = "getControls('buildingCode').invalid" >
+	  {{ getControls('buildingCode')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>مسلسل الملحق</mat-label>
+	 <input matInput formControlName="extensionSerial"/>
+	 <mat-error *ngIf = "getControls('extensionSerial').invalid" >
+	  {{ getControls('extensionSerial')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>رقم الدور</mat-label>
+	 <input matInput formControlName="floorNumber"/>
+	 <mat-error *ngIf = "getControls('floorNumber').invalid" >
+	  {{ getControls('floorNumber')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>تاريخ التوريد</mat-label>
+	 <input matInput
+	  [matDatepicker] = "vendingDateDatepicker"
+	  autocomplete = "off"
+	  formControlName= "vendingDate"/>
+	 <mat-datepicker-toggle
+	   matSuffix
+	   [for]="vendingDateDatepicker"
+	 ></mat-datepicker-toggle>
+	 <mat-datepicker #vendingDateDatepicker></mat-datepicker>
+	 <mat-error *ngIf = "getControls('vendingDate').invalid" >
+	  {{ getControls('vendingDate')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+           
+
+	<app-material-select appearance="outline"
+	  #buildingType 
+	  [options] = "buildingTypeSelectOptions"
+	  formControlName = "buildingType"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #primaryGroup 
+	  [options] = "primaryGroupSelectOptions"
+	  formControlName = "primaryGroup"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #equipmentGroup 
+	  [options] = "equipmentGroupSelectOptions"
+	  formControlName = "equipmentGroup"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #equipmentType 
+	  [options] = "equipmentTypeSelectOptions"
+	  formControlName = "equipmentType"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #manufacturer 
+	  [options] = "manufacturerSelectOptions"
+	  formControlName = "manufacturer"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #territoryCenter 
+	  [options] = "territoryCenterSelectOptions"
+	  formControlName = "territoryCenter"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #region 
+	  [options] = "regionSelectOptions"
+	  formControlName = "region"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #workshopType 
+	  [options] = "workshopTypeSelectOptions"
+	  formControlName = "workshopType"
+	></app-material-select>
+
+        </form>
+    </ng-template >
+    <ng-template searchResultContainer >
+        <app-grid-control
+            #gridControl
+            [rowDataService] = "getMachineDataPaginatedSortedFiltered"
+            [columnOptions] = "columnOptions"
+            [gridHeaderOptions] = "gridHeaderOptions"
+            [searchInput] = "searchForm.value"
+            (deleteRow) = "onDeleteClicked($event)"
+        >
+        </app-grid-control>
+    </ng-template>
+</app-search-list-expansion-panel >

@@ -1,0 +1,54 @@
+
+<app-search-list-expansion-panel
+    dir="rtl"
+    [pageTitle] = "'بيانات المستندات'"
+    (beginSearch) = "onBeginSearch()"
+    (create) = "onCreate()"
+>
+    <ng-template searchFormContainer >
+        <form [formGroup] = "searchForm">
+           
+
+	<mat-form-field appearance="outline">
+	 <mat-label>كود قطعة الارض</mat-label>
+	 <input matInput formControlName="landID"/>
+	 <mat-error *ngIf = "getControls('landID').invalid" >
+	  {{ getControls('landID')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>المرفقات</mat-label>
+	 <input matInput formControlName="attachment"/>
+	 <mat-error *ngIf = "getControls('attachment').invalid" >
+	  {{ getControls('attachment')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+           
+
+	<app-material-select appearance="outline"
+	  #documentCode 
+	  [options] = "documentCodeSelectOptions"
+	  formControlName = "documentCode"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #documentStatusCode 
+	  [options] = "documentStatusCodeSelectOptions"
+	  formControlName = "documentStatusCode"
+	></app-material-select>
+
+        </form>
+    </ng-template >
+    <ng-template searchResultContainer >
+        <app-grid-control
+            #gridControl
+            [rowDataService] = "getDocumentDataPaginatedSortedFiltered"
+            [columnOptions] = "columnOptions"
+            [gridHeaderOptions] = "gridHeaderOptions"
+            [searchInput] = "searchForm.value"
+            (deleteRow) = "onDeleteClicked($event)"
+        >
+        </app-grid-control>
+    </ng-template>
+</app-search-list-expansion-panel >

@@ -1,0 +1,72 @@
+
+<mat-card>
+    <mat-card-header>
+        <mat-card-title> لجان مرور المدارس الخاصة</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+        <form [formGroup]="privateSchoolTrafficCommitteeForm" class="form-container">
+          
+
+	<mat-form-field appearance="outline">
+	 <mat-label>كود المدرسة</mat-label>
+	 <input matInput formControlName="schoolCode"/>
+	 <mat-error *ngIf = "getControls('schoolCode').invalid" >
+	  {{ getControls('schoolCode')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>تاريخ المرور</mat-label>
+	 <input matInput
+	  [matDatepicker] = "passageDateDatepicker"
+	  autocomplete = "off"
+	  formControlName= "passageDate"/>
+	 <mat-datepicker-toggle
+	   matSuffix
+	   [for]="passageDateDatepicker"
+	 ></mat-datepicker-toggle>
+	 <mat-datepicker #passageDateDatepicker></mat-datepicker>
+	 <mat-error *ngIf = "getControls('passageDate').invalid" >
+	  {{ getControls('passageDate')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>كود الملاحظة</mat-label>
+	 <input matInput formControlName="noteCode"/>
+	 <mat-error *ngIf = "getControls('noteCode').invalid" >
+	  {{ getControls('noteCode')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>الاجراءات</mat-label>
+	 <input matInput formControlName="measures"/>
+	 <mat-error *ngIf = "getControls('measures').invalid" >
+	  {{ getControls('measures')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+          
+
+        </form>
+    </mat-card-content>
+
+    <mat-divider></mat-divider>
+
+	<mat-card-actions>
+			<form [formGroup]="attachmentForm" class="form-container">
+                <app-multi-file-upload [service] = "privateSchoolTrafficCommitteeService" [id]="privateSchoolTrafficCommitteeForm.get('id').value"
+                    formControlName = "attachmentFiles">
+                </app-multi-file-upload>
+            </form>
+            <button
+                color = "primary"
+                type = "submit"
+                (click) = "onSubmit()"
+                [disabled] = "privateSchoolTrafficCommitteeForm.invalid"
+                mat-raised-button>
+                حفظ
+            </button>
+    </mat-card-actions>
+</mat-card>
+

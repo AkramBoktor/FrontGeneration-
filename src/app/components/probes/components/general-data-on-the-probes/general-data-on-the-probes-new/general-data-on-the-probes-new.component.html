@@ -19,7 +19,7 @@
 
 	<mat-form-field appearance="outline">
 	 <mat-label>الاحداثي السيني</mat-label>
-	 <input matInput formControlName="coordinatesX" [disableControl]="true" />
+	 <input matInput formControlName="coordinatesX" [disableControl]="false" />
 	 <mat-error *ngIf = "getControls('coordinatesX').invalid" >
 	  {{ getControls('coordinatesX')| getErrorMessages : errorMessages}}
 	  </mat-error>
@@ -27,7 +27,7 @@
 
 	<mat-form-field appearance="outline">
 	 <mat-label>الاحداثي الصادي</mat-label>
-	 <input matInput formControlName="coordinatesY" [disableControl]="true" />
+	 <input matInput formControlName="coordinatesY" [disableControl]="false" />
 	 <mat-error *ngIf = "getControls('coordinatesY').invalid" >
 	  {{ getControls('coordinatesY')| getErrorMessages : errorMessages}}
 	  </mat-error>
@@ -35,7 +35,7 @@
 
 	<mat-form-field appearance="outline">
 	 <mat-label>منسوب سطح الارض</mat-label>
-	 <input matInput formControlName="groundLevel" [disableControl]="true" />
+	 <input matInput formControlName="groundLevel" [disableControl]="false" />
 	 <mat-error *ngIf = "getControls('groundLevel').invalid" >
 	  {{ getControls('groundLevel')| getErrorMessages : errorMessages}}
 	  </mat-error>

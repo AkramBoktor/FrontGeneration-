@@ -1,0 +1,188 @@
+
+<mat-card class="form-card">
+      <mat-card-header>
+  
+          <mat-card-title>
+              تسميح استمارات صرف
+          </mat-card-title>
+  
+      </mat-card-header>
+  
+      <mat-card-content>
+  
+        <form [formGroup] = "cashFormAllowanceForm" class="form-container">
+         
+
+	<mat-form-field appearance="outline">
+	 <mat-label>تاريخ تسجيل الاستمارة</mat-label>
+	 <input matInput
+	  [matDatepicker] = "formRegistrationDateDatepicker"
+	  autocomplete = "off"
+	  formControlName= "formRegistrationDate"/>
+	 <mat-datepicker-toggle
+	   matSuffix
+	   [for]="formRegistrationDateDatepicker"
+	 ></mat-datepicker-toggle>
+	 <mat-datepicker #formRegistrationDateDatepicker></mat-datepicker>
+	 <mat-error *ngIf = "getControls('formRegistrationDate').invalid" >
+	  {{ getControls('formRegistrationDate')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>مسلسل الاستمارة بالموازنة</mat-label>
+	 <input matInput formControlName="formSerial"/>
+	 <mat-error *ngIf = "getControls('formSerial').invalid" >
+	  {{ getControls('formSerial')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>كود المبنى</mat-label>
+	 <input matInput formControlName="buildingCode"/>
+	 <mat-error *ngIf = "getControls('buildingCode').invalid" >
+	  {{ getControls('buildingCode')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>رقم حالة الاستمارة</mat-label>
+	 <input matInput formControlName="formStatus"/>
+	 <mat-error *ngIf = "getControls('formStatus').invalid" >
+	  {{ getControls('formStatus')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>اسم حالة الاستمارة</mat-label>
+	 <input matInput formControlName="formName"/>
+	 <mat-error *ngIf = "getControls('formName').invalid" >
+	  {{ getControls('formName')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>رقم الباب</mat-label>
+	 <input matInput formControlName="sectionNumber"/>
+	 <mat-error *ngIf = "getControls('sectionNumber').invalid" >
+	  {{ getControls('sectionNumber')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>اسم الباب</mat-label>
+	 <input matInput formControlName="sectionName"/>
+	 <mat-error *ngIf = "getControls('sectionName').invalid" >
+	  {{ getControls('sectionName')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>رقم نوع العمل</mat-label>
+	 <input matInput formControlName="workTypeNumber"/>
+	 <mat-error *ngIf = "getControls('workTypeNumber').invalid" >
+	  {{ getControls('workTypeNumber')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>اسم نوع العمل</mat-label>
+	 <input matInput formControlName="businessTypeName"/>
+	 <mat-error *ngIf = "getControls('businessTypeName').invalid" >
+	  {{ getControls('businessTypeName')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>تاريخ حالة الاستمارة</mat-label>
+	 <input matInput
+	  [matDatepicker] = "formDateDatepicker"
+	  autocomplete = "off"
+	  formControlName= "formDate"/>
+	 <mat-datepicker-toggle
+	   matSuffix
+	   [for]="formDateDatepicker"
+	 ></mat-datepicker-toggle>
+	 <mat-datepicker #formDateDatepicker></mat-datepicker>
+	 <mat-error *ngIf = "getControls('formDate').invalid" >
+	  {{ getControls('formDate')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>رقم صادر المنطقة الطالبة</mat-label>
+	 <input matInput formControlName="numberIssuedRequestingArea"/>
+	 <mat-error *ngIf = "getControls('numberIssuedRequestingArea').invalid" >
+	  {{ getControls('numberIssuedRequestingArea')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>تاريخ صادر المنطقة الطالبة</mat-label>
+	 <input matInput
+	  [matDatepicker] = "budgetDateDatepicker"
+	  autocomplete = "off"
+	  formControlName= "budgetDate"/>
+	 <mat-datepicker-toggle
+	   matSuffix
+	   [for]="budgetDateDatepicker"
+	 ></mat-datepicker-toggle>
+	 <mat-datepicker #budgetDateDatepicker></mat-datepicker>
+	 <mat-error *ngIf = "getControls('budgetDate').invalid" >
+	  {{ getControls('budgetDate')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>تاريخ وارد الموازنة</mat-label>
+	 <input matInput
+	  [matDatepicker] = "budgetDateDatepicker"
+	  autocomplete = "off"
+	  formControlName= "budgetDate"/>
+	 <mat-datepicker-toggle
+	   matSuffix
+	   [for]="budgetDateDatepicker"
+	 ></mat-datepicker-toggle>
+	 <mat-datepicker #budgetDateDatepicker></mat-datepicker>
+	 <mat-error *ngIf = "getControls('budgetDate').invalid" >
+	  {{ getControls('budgetDate')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>صافي المستخلص</mat-label>
+	 <input matInput formControlName="netAbstract"/>
+	 <mat-error *ngIf = "getControls('netAbstract').invalid" >
+	  {{ getControls('netAbstract')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+         
+
+	<app-material-select appearance="outline"
+	  #requestingArea 
+	  [options] = "requestingAreaSelectOptions"
+	  formControlName = "requestingArea"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #jobNumber 
+	  [options] = "jobNumberSelectOptions"
+	  formControlName = "jobNumber"
+	></app-material-select>
+        </form>
+  
+      </mat-card-content >
+  
+      <mat-action-row>
+            <form [formGroup]="attachmentForm" class="form-container">
+                <app-multi-file-upload [service] = "cashFormAllowanceService" [id]="cashFormAllowanceForm.get('id').value"
+                    formControlName = "attachmentFiles">
+                </app-multi-file-upload>
+            </form>
+            <button (click) = "onConfirm()" mat-raised-button color = "primary" >
+                غلق
+            </button>
+        </mat-action-row>
+    </mat-card>
+
+    

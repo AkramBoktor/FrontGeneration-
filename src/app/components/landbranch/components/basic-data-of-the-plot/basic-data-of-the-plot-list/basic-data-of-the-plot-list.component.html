@@ -1,0 +1,74 @@
+
+<app-search-list-expansion-panel
+    dir="rtl"
+    [pageTitle] = "'البيانات الاساسية لقطعة الارض'"
+    (beginSearch) = "onBeginSearch()"
+    (create) = "onCreate()"
+>
+    <ng-template searchFormContainer >
+        <form [formGroup] = "searchForm">
+           
+
+	<mat-form-field appearance="outline">
+	 <mat-label>رقم القطعة</mat-label>
+	 <input matInput formControlName="pieceNumber"/>
+	 <mat-error *ngIf = "getControls('pieceNumber').invalid" >
+	  {{ getControls('pieceNumber')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>مسمى قطعة الارض</mat-label>
+	 <input matInput formControlName="landName"/>
+	 <mat-error *ngIf = "getControls('landName').invalid" >
+	  {{ getControls('landName')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>المساحة الكلية بالمتر المربع</mat-label>
+	 <input matInput formControlName="totalArea"/>
+	 <mat-error *ngIf = "getControls('totalArea').invalid" >
+	  {{ getControls('totalArea')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+           
+
+	<app-material-select appearance="outline"
+	  #centerDepartment 
+	  [options] = "centerDepartmentSelectOptions"
+	  formControlName = "centerDepartment"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #villageNeighborhood 
+	  [options] = "villageNeighborhoodSelectOptions"
+	  formControlName = "villageNeighborhood"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #followVillage 
+	  [options] = "followVillageSelectOptions"
+	  formControlName = "followVillage"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #landOwner 
+	  [options] = "landOwnerSelectOptions"
+	  formControlName = "landOwner"
+	></app-material-select>
+
+        </form>
+    </ng-template >
+    <ng-template searchResultContainer >
+        <app-grid-control
+            #gridControl
+            [rowDataService] = "getBasicDataOfThePlotPaginatedSortedFiltered"
+            [columnOptions] = "columnOptions"
+            [gridHeaderOptions] = "gridHeaderOptions"
+            [searchInput] = "searchForm.value"
+            (deleteRow) = "onDeleteClicked($event)"
+        >
+        </app-grid-control>
+    </ng-template>
+</app-search-list-expansion-panel >

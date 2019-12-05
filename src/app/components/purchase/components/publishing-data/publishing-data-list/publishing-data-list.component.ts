@@ -31,12 +31,15 @@ export class PublishingDataListComponent extends AppBaseComponent implements OnI
         
       ];
   private offeringTypesService: LookupService;
+private publishingAuthoritiesService: LookupService;
 
   
 offeringTypeSelectOptions: MaterialSelectOptions;
+newspaperNameSelectOptions: MaterialSelectOptions;
 
   
 	@ViewChild('offeringType', { static: true }) OfferingTypeSelectComponent: MaterialSelectComponent;
+	@ViewChild('newspaperName', { static: true }) NewspaperNameSelectComponent: MaterialSelectComponent;
 
   
   @Input() selectedPublishingData: PublishingData;
@@ -48,8 +51,8 @@ offeringTypeSelectOptions: MaterialSelectOptions;
 	new GridColumnOptions({ headerName: 'رقم المناقصة', field: 'bidNumber' }),
 	new GridColumnOptions({ headerName: 'رقم النشر', field: 'publicationNumber' }),
 	new GridColumnOptions({ headerName: 'تاريخ النشر', field: 'publicationDate' }),
-	new GridColumnOptions({ headerName: 'اسم الجريدة', field: 'newspaperName' }),
 	new GridColumnOptions({ headerName: 'نوع الطرح', field: 'offeringType' }),
+	new GridColumnOptions({ headerName: 'اسم الجريدة', field: 'newspaperName' }),
   ];
 
   gridHeaderOptions = new GridHeaderOptions({
@@ -74,13 +77,19 @@ offeringTypeSelectOptions: MaterialSelectOptions;
 	 label: 'نوع الطرح',
 	});
 
+	this.newspaperNameSelectOptions = new MaterialSelectOptions({
+	 data: this.publishingAuthoritiesService.getAll(),
+	 errorMessages: this.errorMessages,
+	 label: 'اسم الجريدة',
+	});
+
 
     this.searchForm = this.formBuilder.group({
      	bidNumber : [],
 	publicationNumber : [],
 	publicationDate : [],
-	newspaperName : [],
-	offeringType : []
+	offeringType : [],
+	newspaperName : []
     });
 
      
@@ -110,6 +119,7 @@ offeringTypeSelectOptions: MaterialSelectOptions;
 
   initializeLookupServices() {
     this.offeringTypesService = new LookupService('offeringtypes', this.http);
+this.publishingAuthoritiesService = new LookupService('publishingauthorities', this.http);
   }
 }
 

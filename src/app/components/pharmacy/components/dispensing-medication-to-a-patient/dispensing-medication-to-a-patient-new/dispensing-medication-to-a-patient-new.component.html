@@ -75,7 +75,7 @@
 
 	<mat-form-field appearance="outline">
 	 <mat-label>اسم الطبيب</mat-label>
-	 <input matInput formControlName="doctorName" [disableControl]="true" />
+	 <input matInput formControlName="doctorName" [disableControl]="false" />
 	 <mat-error *ngIf = "getControls('doctorName').invalid" >
 	  {{ getControls('doctorName')| getErrorMessages : errorMessages}}
 	  </mat-error>
@@ -83,7 +83,7 @@
 
 	<mat-form-field appearance="outline">
 	 <mat-label>اسم المريض</mat-label>
-	 <input matInput formControlName="patientName" [disableControl]="true" />
+	 <input matInput formControlName="patientName" [disableControl]="false" />
 	 <mat-error *ngIf = "getControls('patientName').invalid" >
 	  {{ getControls('patientName')| getErrorMessages : errorMessages}}
 	  </mat-error>
@@ -91,7 +91,7 @@
 
 	<mat-form-field appearance="outline">
 	 <mat-label>اسم الصيدلي</mat-label>
-	 <input matInput formControlName="pharmacistName" [disableControl]="true" />
+	 <input matInput formControlName="pharmacistName" [disableControl]="false" />
 	 <mat-error *ngIf = "getControls('pharmacistName').invalid" >
 	  {{ getControls('pharmacistName')| getErrorMessages : errorMessages}}
 	  </mat-error>
@@ -99,7 +99,7 @@
 
 	<mat-form-field appearance="outline">
 	 <mat-label>أسم الدواء</mat-label>
-	 <input matInput formControlName="drugName" [disableControl]="true" />
+	 <input matInput formControlName="drugName" [disableControl]="false" />
 	 <mat-error *ngIf = "getControls('drugName').invalid" >
 	  {{ getControls('drugName')| getErrorMessages : errorMessages}}
 	  </mat-error>

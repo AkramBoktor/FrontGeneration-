@@ -1,0 +1,158 @@
+
+<mat-card class="form-card">
+      <mat-card-header>
+  
+          <mat-card-title>
+              موافقات المدارس الخاصة
+          </mat-card-title>
+  
+      </mat-card-header>
+  
+      <mat-card-content>
+  
+        <form [formGroup] = "privateSchoolApprovalForm" class="form-container">
+         
+
+	<mat-form-field appearance="outline">
+	 <mat-label>كود مدرسة مكملة</mat-label>
+	 <input matInput formControlName="complementarySchoolCode"/>
+	 <mat-error *ngIf = "getControls('complementarySchoolCode').invalid" >
+	  {{ getControls('complementarySchoolCode')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>كود المدرسة</mat-label>
+	 <input matInput formControlName="schoolCode"/>
+	 <mat-error *ngIf = "getControls('schoolCode').invalid" >
+	  {{ getControls('schoolCode')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>تاريخ الموافقة</mat-label>
+	 <input matInput
+	  [matDatepicker] = "approvalDateDatepicker"
+	  autocomplete = "off"
+	  formControlName= "approvalDate"/>
+	 <mat-datepicker-toggle
+	   matSuffix
+	   [for]="approvalDateDatepicker"
+	 ></mat-datepicker-toggle>
+	 <mat-datepicker #approvalDateDatepicker></mat-datepicker>
+	 <mat-error *ngIf = "getControls('approvalDate').invalid" >
+	  {{ getControls('approvalDate')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>رقم الموافقة</mat-label>
+	 <input matInput formControlName="approvalNumber"/>
+	 <mat-error *ngIf = "getControls('approvalNumber').invalid" >
+	  {{ getControls('approvalNumber')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>نوع الموافقة</mat-label>
+	 <input matInput formControlName="approvalType"/>
+	 <mat-error *ngIf = "getControls('approvalType').invalid" >
+	  {{ getControls('approvalType')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>ملاحظات</mat-label>
+	 <input matInput formControlName="notes"/>
+	 <mat-error *ngIf = "getControls('notes').invalid" >
+	  {{ getControls('notes')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>م. موقع عام</mat-label>
+	 <input matInput formControlName="generalSiteManager"/>
+	 <mat-error *ngIf = "getControls('generalSiteManager').invalid" >
+	  {{ getControls('generalSiteManager')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>جهة الاعتماد</mat-label>
+	 <input matInput formControlName="accreditationBody"/>
+	 <mat-error *ngIf = "getControls('accreditationBody').invalid" >
+	  {{ getControls('accreditationBody')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>عدد الفصول</mat-label>
+	 <input matInput formControlName="classesNumber"/>
+	 <mat-error *ngIf = "getControls('classesNumber').invalid" >
+	  {{ getControls('classesNumber')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>StudentDensity الكثافة الطلابية</mat-label>
+	 <input matInput formControlName="studentDensity"/>
+	 <mat-error *ngIf = "getControls('studentDensity').invalid" >
+	  {{ getControls('studentDensity')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>اجمالي الطاقة الاستيعابية</mat-label>
+	 <input matInput formControlName="totalCapacity"/>
+	 <mat-error *ngIf = "getControls('totalCapacity').invalid" >
+	  {{ getControls('totalCapacity')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+         
+
+	<app-material-select appearance="outline"
+	  #governorate 
+	  [options] = "governorateSelectOptions"
+	  formControlName = "governorate"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #qualityCode 
+	  [options] = "qualityCodeSelectOptions"
+	  formControlName = "qualityCode"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #approvalPosition 
+	  [options] = "approvalPositionSelectOptions"
+	  formControlName = "approvalPosition"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #schoolDependency 
+	  [options] = "schoolDependencySelectOptions"
+	  formControlName = "schoolDependency"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #phaseCode 
+	  [options] = "phaseCodeSelectOptions"
+	  formControlName = "phaseCode"
+	></app-material-select>
+        </form>
+  
+      </mat-card-content >
+  
+      <mat-action-row>
+            <form [formGroup]="attachmentForm" class="form-container">
+                <app-multi-file-upload [service] = "privateSchoolApprovalService" [id]="privateSchoolApprovalForm.get('id').value"
+                    formControlName = "attachmentFiles">
+                </app-multi-file-upload>
+            </form>
+            <button (click) = "onConfirm()" mat-raised-button color = "primary" >
+                غلق
+            </button>
+        </mat-action-row>
+    </mat-card>
+
+    

@@ -1,0 +1,120 @@
+
+<app-new-form-layout
+    dir="rtl"
+    (submitClicked) = "onSubmit()"
+    (back) = "onBack()"
+    [pageTitle] = "'بيانات المنحة'"
+>
+    <ng-template newFormContainer >
+        <form [formGroup] = "grantInformationForm">
+         
+
+	<mat-form-field appearance="outline">
+	 <mat-label>  كود المنحة</mat-label>
+	 <input matInput formControlName="grantCode"/>
+	 <mat-error *ngIf = "getControls('grantCode').invalid" >
+	  {{ getControls('grantCode')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>  اسم المنحة</mat-label>
+	 <input matInput formControlName="grantName"/>
+	 <mat-error *ngIf = "getControls('grantName').invalid" >
+	  {{ getControls('grantName')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>كود الجهة المانحة</mat-label>
+	 <input matInput formControlName="entityCode" [disableControl]="true" />
+	 <mat-error *ngIf = "getControls('entityCode').invalid" >
+	  {{ getControls('entityCode')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>عدد المدراس</mat-label>
+	 <input matInput formControlName="schoolNumber"/>
+	 <mat-error *ngIf = "getControls('schoolNumber').invalid" >
+	  {{ getControls('schoolNumber')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label> نسبة المساهمة</mat-label>
+	 <input matInput formControlName="contributionRatio"/>
+	 <mat-error *ngIf = "getControls('contributionRatio').invalid" >
+	  {{ getControls('contributionRatio')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>  تاريخ بداية المنحة</mat-label>
+	 <input matInput
+	  [matDatepicker] = "grantStartdateDatepicker"
+	  autocomplete = "off"
+	  formControlName= "grantStartdate"/>
+	 <mat-datepicker-toggle
+	   matSuffix
+	   [for]="grantStartdateDatepicker"
+	 ></mat-datepicker-toggle>
+	 <mat-datepicker #grantStartdateDatepicker></mat-datepicker>
+	 <mat-error *ngIf = "getControls('grantStartdate').invalid" >
+	  {{ getControls('grantStartdate')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>   تاريخ نهاية المنحة</mat-label>
+	 <input matInput
+	  [matDatepicker] = "grantEndDateDatepicker"
+	  autocomplete = "off"
+	  formControlName= "grantEndDate"/>
+	 <mat-datepicker-toggle
+	   matSuffix
+	   [for]="grantEndDateDatepicker"
+	 ></mat-datepicker-toggle>
+	 <mat-datepicker #grantEndDateDatepicker></mat-datepicker>
+	 <mat-error *ngIf = "getControls('grantEndDate').invalid" >
+	  {{ getControls('grantEndDate')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label> جملة المبلغ</mat-label>
+	 <input matInput formControlName="totalAmount"/>
+	 <mat-error *ngIf = "getControls('totalAmount').invalid" >
+	  {{ getControls('totalAmount')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+         
+
+	<app-material-select appearance="outline"
+	  #offeringType 
+	  [options] = "offeringTypeSelectOptions"
+	  formControlName = "offeringType"
+	></app-material-select>
+
+        </form>
+
+        <mat-divider></mat-divider>
+
+		<mat-card-actions>
+			<form [formGroup]="attachmentForm" class="form-container">
+                <app-multi-file-upload [service] = "grantInformationService" [id]="grantInformationForm.get('id').value"
+                    formControlName = "attachmentFiles">
+                </app-multi-file-upload>
+            </form>
+            <button
+                type="submit"
+                (click)="onSubmit()"
+                [disabled]="grantInformationForm.invalid"
+                mat-raised-button
+                color = "primary">
+             حفظ
+            </button>
+        </mat-card-actions>
+    </ng-template >
+</app-new-form-layout >
+

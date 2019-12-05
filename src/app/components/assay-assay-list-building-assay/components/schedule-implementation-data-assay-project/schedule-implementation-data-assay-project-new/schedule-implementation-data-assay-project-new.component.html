@@ -1,0 +1,110 @@
+
+<app-new-form-layout
+    dir="rtl"
+    (submitClicked) = "onSubmit()"
+    (back) = "onBack()"
+    [pageTitle] = "'بيانات الجدول الزمني للتنفيذ - مقايسة المشروع'"
+>
+    <ng-template newFormContainer >
+        <form [formGroup] = "scheduleImplementationDataAssayProjectForm">
+         
+
+	<mat-form-field appearance="outline">
+	 <mat-label>كود المبنى</mat-label>
+	 <input matInput formControlName="buildingCode"/>
+	 <mat-error *ngIf = "getControls('buildingCode').invalid" >
+	  {{ getControls('buildingCode')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>كود الملحق</mat-label>
+	 <input matInput formControlName="extensionCode"/>
+	 <mat-error *ngIf = "getControls('extensionCode').invalid" >
+	  {{ getControls('extensionCode')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>سنة الخطة</mat-label>
+	 <input matInput formControlName="planYear" [disableControl]="true" />
+	 <mat-error *ngIf = "getControls('planYear').invalid" >
+	  {{ getControls('planYear')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>كود النموذج</mat-label>
+	 <input matInput formControlName="modelCode"/>
+	 <mat-error *ngIf = "getControls('modelCode').invalid" >
+	  {{ getControls('modelCode')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>سنة التسعير</mat-label>
+	 <input matInput formControlName="pricingYear"/>
+	 <mat-error *ngIf = "getControls('pricingYear').invalid" >
+	  {{ getControls('pricingYear')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>كود جدول زمني</mat-label>
+	 <input matInput formControlName="scheduleCode"/>
+	 <mat-error *ngIf = "getControls('scheduleCode').invalid" >
+	  {{ getControls('scheduleCode')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>مدة التنفيذ</mat-label>
+	 <input matInput formControlName="executionDuration" [disableControl]="true" />
+	 <mat-error *ngIf = "getControls('executionDuration').invalid" >
+	  {{ getControls('executionDuration')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>عدد الأدوار</mat-label>
+	 <input matInput formControlName="floorNumber" [disableControl]="true" />
+	 <mat-error *ngIf = "getControls('floorNumber').invalid" >
+	  {{ getControls('floorNumber')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+         
+
+	<app-material-select appearance="outline"
+	  #constructionType 
+	  [options] = "constructionTypeSelectOptions"
+	  formControlName = "constructionType"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #baseType 
+	  [options] = "baseTypeSelectOptions"
+	  formControlName = "baseType"
+	></app-material-select>
+
+        </form>
+
+        <mat-divider></mat-divider>
+
+		<mat-card-actions>
+			<form [formGroup]="attachmentForm" class="form-container">
+                <app-multi-file-upload [service] = "scheduleImplementationDataAssayProjectService" [id]="scheduleImplementationDataAssayProjectForm.get('id').value"
+                    formControlName = "attachmentFiles">
+                </app-multi-file-upload>
+            </form>
+            <button
+                type="submit"
+                (click)="onSubmit()"
+                [disabled]="scheduleImplementationDataAssayProjectForm.invalid"
+                mat-raised-button
+                color = "primary">
+             حفظ
+            </button>
+        </mat-card-actions>
+    </ng-template >
+</app-new-form-layout >
+

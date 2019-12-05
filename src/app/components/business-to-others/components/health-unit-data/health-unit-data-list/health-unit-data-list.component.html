@@ -1,0 +1,80 @@
+
+<app-search-list-expansion-panel
+    dir="rtl"
+    [pageTitle] = "'بيانات الوحده الصحية'"
+    (beginSearch) = "onBeginSearch()"
+    (create) = "onCreate()"
+>
+    <ng-template searchFormContainer >
+        <form [formGroup] = "searchForm">
+           
+
+	<mat-form-field appearance="outline">
+	 <mat-label>رقم الوحدة</mat-label>
+	 <input matInput formControlName="unitCode"/>
+	 <mat-error *ngIf = "getControls('unitCode').invalid" >
+	  {{ getControls('unitCode')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>اسم الوحدة</mat-label>
+	 <input matInput formControlName="unitName"/>
+	 <mat-error *ngIf = "getControls('unitName').invalid" >
+	  {{ getControls('unitName')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>الملكية</mat-label>
+	 <input matInput formControlName="property"/>
+	 <mat-error *ngIf = "getControls('property').invalid" >
+	  {{ getControls('property')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+           
+
+	<app-material-select appearance="outline"
+	  #governorateCode 
+	  [options] = "governorateCodeSelectOptions"
+	  formControlName = "governorateCode"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #department 
+	  [options] = "departmentSelectOptions"
+	  formControlName = "department"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #village 
+	  [options] = "villageSelectOptions"
+	  formControlName = "village"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #healthDirectorate 
+	  [options] = "healthDirectorateSelectOptions"
+	  formControlName = "healthDirectorate"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #healthManagement 
+	  [options] = "healthManagementSelectOptions"
+	  formControlName = "healthManagement"
+	></app-material-select>
+
+        </form>
+    </ng-template >
+    <ng-template searchResultContainer >
+        <app-grid-control
+            #gridControl
+            [rowDataService] = "getHealthUnitDataPaginatedSortedFiltered"
+            [columnOptions] = "columnOptions"
+            [gridHeaderOptions] = "gridHeaderOptions"
+            [searchInput] = "searchForm.value"
+            (deleteRow) = "onDeleteClicked($event)"
+        >
+        </app-grid-control>
+    </ng-template>
+</app-search-list-expansion-panel >

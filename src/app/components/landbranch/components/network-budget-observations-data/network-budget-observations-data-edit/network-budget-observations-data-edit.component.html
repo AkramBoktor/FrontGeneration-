@@ -1,0 +1,68 @@
+
+<mat-card>
+    <mat-card-header>
+        <mat-card-title>بيانات ملاحظات الميزانية الشبكية</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+        <form [formGroup]="networkBudgetObservationsDataForm" class="form-container">
+          
+
+	<mat-form-field appearance="outline">
+	 <mat-label>كود قطعة الارض</mat-label>
+	 <input matInput formControlName="landID"/>
+	 <mat-error *ngIf = "getControls('landID').invalid" >
+	  {{ getControls('landID')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>متوسط قيم الارتفاع</mat-label>
+	 <input matInput formControlName="averageHeightValues"/>
+	 <mat-error *ngIf = "getControls('averageHeightValues').invalid" >
+	  {{ getControls('averageHeightValues')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>متوسط قيم الانخفاض</mat-label>
+	 <input matInput formControlName="averageValuesDecline"/>
+	 <mat-error *ngIf = "getControls('averageValuesDecline').invalid" >
+	  {{ getControls('averageValuesDecline')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+          
+
+	<app-material-select appearance="outline"
+	  #networkNoteTypeCode 
+	  [options] = "networkNoteTypeCodeSelectOptions"
+	  formControlName = "networkNoteTypeCode"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #borderCode 
+	  [options] = "borderCodeSelectOptions"
+	  formControlName = "borderCode"
+	></app-material-select>
+
+        </form>
+    </mat-card-content>
+
+    <mat-divider></mat-divider>
+
+	<mat-card-actions>
+			<form [formGroup]="attachmentForm" class="form-container">
+                <app-multi-file-upload [service] = "networkBudgetObservationsDataService" [id]="networkBudgetObservationsDataForm.get('id').value"
+                    formControlName = "attachmentFiles">
+                </app-multi-file-upload>
+            </form>
+            <button
+                color = "primary"
+                type = "submit"
+                (click) = "onSubmit()"
+                [disabled] = "networkBudgetObservationsDataForm.invalid"
+                mat-raised-button>
+                حفظ
+            </button>
+    </mat-card-actions>
+</mat-card>
+

@@ -1,0 +1,50 @@
+
+<app-new-form-layout
+    dir="rtl"
+    (submitClicked) = "onSubmit()"
+    (back) = "onBack()"
+    [pageTitle] = "'جهه الاعتماد'"
+>
+    <ng-template newFormContainer >
+        <form [formGroup] = "accreditationForm">
+         
+
+	<mat-form-field appearance="outline">
+	 <mat-label>كود الاعتماد</mat-label>
+	 <input matInput formControlName="accreditationCode"/>
+	 <mat-error *ngIf = "getControls('accreditationCode').invalid" >
+	  {{ getControls('accreditationCode')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>اسم الاعتماد</mat-label>
+	 <input matInput formControlName="accreditationName"/>
+	 <mat-error *ngIf = "getControls('accreditationName').invalid" >
+	  {{ getControls('accreditationName')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+         
+
+        </form>
+
+        <mat-divider></mat-divider>
+
+		<mat-card-actions>
+			<form [formGroup]="attachmentForm" class="form-container">
+                <app-multi-file-upload [service] = "accreditationService" [id]="accreditationForm.get('id').value"
+                    formControlName = "attachmentFiles">
+                </app-multi-file-upload>
+            </form>
+            <button
+                type="submit"
+                (click)="onSubmit()"
+                [disabled]="accreditationForm.invalid"
+                mat-raised-button
+                color = "primary">
+             حفظ
+            </button>
+        </mat-card-actions>
+    </ng-template >
+</app-new-form-layout >
+

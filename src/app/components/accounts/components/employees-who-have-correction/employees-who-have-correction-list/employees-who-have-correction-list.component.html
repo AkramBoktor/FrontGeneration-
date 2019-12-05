@@ -1,0 +1,64 @@
+
+<app-search-list-expansion-panel
+    dir="rtl"
+    [pageTitle] = "'الموظفين الذين لهم تصويب'"
+    (beginSearch) = "onBeginSearch()"
+    (create) = "onCreate()"
+>
+    <ng-template searchFormContainer >
+        <form [formGroup] = "searchForm">
+           
+
+	<mat-form-field appearance="outline">
+	 <mat-label>شهروسنه الوارد</mat-label>
+	 <input matInput
+	  [matDatepicker] = "incomingYearAndMonthDatepicker"
+	  autocomplete = "off"
+	  formControlName= "incomingYearAndMonth"/>
+	 <mat-datepicker-toggle
+	   matSuffix
+	   [for]="incomingYearAndMonthDatepicker"
+	 ></mat-datepicker-toggle>
+	 <mat-datepicker #incomingYearAndMonthDatepicker></mat-datepicker>
+	 <mat-error *ngIf = "getControls('incomingYearAndMonth').invalid" >
+	  {{ getControls('incomingYearAndMonth')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>كود الموظف</mat-label>
+	 <input matInput formControlName="employeeCode"/>
+	 <mat-error *ngIf = "getControls('employeeCode').invalid" >
+	  {{ getControls('employeeCode')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>بيان الموظف</mat-label>
+	 <input matInput formControlName="employeeDate"/>
+	 <mat-error *ngIf = "getControls('employeeDate').invalid" >
+	  {{ getControls('employeeDate')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+           
+
+	<app-material-select appearance="outline"
+	  #entryType 
+	  [options] = "entryTypeSelectOptions"
+	  formControlName = "entryType"
+	></app-material-select>
+
+        </form>
+    </ng-template >
+    <ng-template searchResultContainer >
+        <app-grid-control
+            #gridControl
+            [rowDataService] = "getEmployeesWhoHaveCorrectionPaginatedSortedFiltered"
+            [columnOptions] = "columnOptions"
+            [gridHeaderOptions] = "gridHeaderOptions"
+            [searchInput] = "searchForm.value"
+            (deleteRow) = "onDeleteClicked($event)"
+        >
+        </app-grid-control>
+    </ng-template>
+</app-search-list-expansion-panel >

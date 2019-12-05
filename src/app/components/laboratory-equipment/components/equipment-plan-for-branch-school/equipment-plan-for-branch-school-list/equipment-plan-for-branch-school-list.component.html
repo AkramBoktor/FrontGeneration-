@@ -1,0 +1,68 @@
+
+<app-search-list-expansion-panel
+    dir="rtl"
+    [pageTitle] = "'خطة التجهيزات لمدارس الفرع'"
+    (beginSearch) = "onBeginSearch()"
+    (create) = "onCreate()"
+>
+    <ng-template searchFormContainer >
+        <form [formGroup] = "searchForm">
+           
+
+	<mat-form-field appearance="outline">
+	 <mat-label>سنة الخطة للتجهيزات</mat-label>
+	 <input matInput formControlName="equipmentPlanYear"/>
+	 <mat-error *ngIf = "getControls('equipmentPlanYear').invalid" >
+	  {{ getControls('equipmentPlanYear')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>رقم المدرسة</mat-label>
+	 <input matInput formControlName="schoolNumber"/>
+	 <mat-error *ngIf = "getControls('schoolNumber').invalid" >
+	  {{ getControls('schoolNumber')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>رقم الملحق</mat-label>
+	 <input matInput formControlName="extensionNumber"/>
+	 <mat-error *ngIf = "getControls('extensionNumber').invalid" >
+	  {{ getControls('extensionNumber')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+           
+
+	<app-material-select appearance="outline"
+	  #processingType 
+	  [options] = "processingTypeSelectOptions"
+	  formControlName = "processingType"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #planType 
+	  [options] = "planTypeSelectOptions"
+	  formControlName = "planType"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #branch 
+	  [options] = "branchSelectOptions"
+	  formControlName = "branch"
+	></app-material-select>
+
+        </form>
+    </ng-template >
+    <ng-template searchResultContainer >
+        <app-grid-control
+            #gridControl
+            [rowDataService] = "getEquipmentPlanForBranchSchoolsPaginatedSortedFiltered"
+            [columnOptions] = "columnOptions"
+            [gridHeaderOptions] = "gridHeaderOptions"
+            [searchInput] = "searchForm.value"
+            (deleteRow) = "onDeleteClicked($event)"
+        >
+        </app-grid-control>
+    </ng-template>
+</app-search-list-expansion-panel >

@@ -1,0 +1,152 @@
+
+<mat-card>
+    <mat-card-header>
+        <mat-card-title>تسجيل مبالغ جديدة لحوافظ تمويل المناطق</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+        <form [formGroup]="insertNewExpensesForRegionalFinancialPortfoliosForm" class="form-container">
+          
+
+	<mat-form-field appearance="outline">
+	 <mat-label>كود  المنطقة</mat-label>
+	 <input matInput formControlName="areaCode"/>
+	 <mat-error *ngIf = "getControls('areaCode').invalid" >
+	  {{ getControls('areaCode')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>اسم المنطقة</mat-label>
+	 <input matInput formControlName="areaName"/>
+	 <mat-error *ngIf = "getControls('areaName').invalid" >
+	  {{ getControls('areaName')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>سنة الموازنة</mat-label>
+	 <input matInput
+	  [matDatepicker] = "budgetYearDatepicker"
+	  autocomplete = "off"
+	  formControlName= "budgetYear"/>
+	 <mat-datepicker-toggle
+	   matSuffix
+	   [for]="budgetYearDatepicker"
+	 ></mat-datepicker-toggle>
+	 <mat-datepicker #budgetYearDatepicker></mat-datepicker>
+	 <mat-error *ngIf = "getControls('budgetYear').invalid" >
+	  {{ getControls('budgetYear')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>مصدر التمويل رقم</mat-label>
+	 <input matInput formControlName="fundingSourceNumber"/>
+	 <mat-error *ngIf = "getControls('fundingSourceNumber').invalid" >
+	  {{ getControls('fundingSourceNumber')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>مصدر التمويل اسم</mat-label>
+	 <input matInput formControlName="fundingSourceName"/>
+	 <mat-error *ngIf = "getControls('fundingSourceName').invalid" >
+	  {{ getControls('fundingSourceName')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>مسلسل الحافظة الاصلية</mat-label>
+	 <input matInput formControlName="originalClipboardSerial"/>
+	 <mat-error *ngIf = "getControls('originalClipboardSerial').invalid" >
+	  {{ getControls('originalClipboardSerial')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>مسلسل حافظة المنطقة</mat-label>
+	 <input matInput formControlName="serialClipboardArea"/>
+	 <mat-error *ngIf = "getControls('serialClipboardArea').invalid" >
+	  {{ getControls('serialClipboardArea')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>تاريخ حافظة التمويل</mat-label>
+	 <input matInput
+	  [matDatepicker] = "financingClipboardDateDatepicker"
+	  autocomplete = "off"
+	  formControlName= "financingClipboardDate"/>
+	 <mat-datepicker-toggle
+	   matSuffix
+	   [for]="financingClipboardDateDatepicker"
+	 ></mat-datepicker-toggle>
+	 <mat-datepicker #financingClipboardDateDatepicker></mat-datepicker>
+	 <mat-error *ngIf = "getControls('financingClipboardDate').invalid" >
+	  {{ getControls('financingClipboardDate')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>رصيد المحافظة</mat-label>
+	 <input matInput formControlName="balanceProvince"/>
+	 <mat-error *ngIf = "getControls('balanceProvince').invalid" >
+	  {{ getControls('balanceProvince')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>مبلغ الحافظة القديم</mat-label>
+	 <input matInput formControlName="oldClipboardAmount"/>
+	 <mat-error *ngIf = "getControls('oldClipboardAmount').invalid" >
+	  {{ getControls('oldClipboardAmount')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>مبلغ الحافظة الجديد</mat-label>
+	 <input matInput formControlName="newClipboardAmount"/>
+	 <mat-error *ngIf = "getControls('newClipboardAmount').invalid" >
+	  {{ getControls('newClipboardAmount')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>مبلغ التسوية</mat-label>
+	 <input matInput formControlName="settlementAmount"/>
+	 <mat-error *ngIf = "getControls('settlementAmount').invalid" >
+	  {{ getControls('settlementAmount')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>متبقي من اعتماد سابق</mat-label>
+	 <input matInput formControlName="remainingFromPreviousSubmission"/>
+	 <mat-error *ngIf = "getControls('remainingFromPreviousSubmission').invalid" >
+	  {{ getControls('remainingFromPreviousSubmission')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+          
+
+        </form>
+    </mat-card-content>
+
+    <mat-divider></mat-divider>
+
+	<mat-card-actions>
+			<form [formGroup]="attachmentForm" class="form-container">
+                <app-multi-file-upload [service] = "insertNewExpensesForRegionalFinancialPortfoliosService" [id]="insertNewExpensesForRegionalFinancialPortfoliosForm.get('id').value"
+                    formControlName = "attachmentFiles">
+                </app-multi-file-upload>
+            </form>
+            <button
+                color = "primary"
+                type = "submit"
+                (click) = "onSubmit()"
+                [disabled] = "insertNewExpensesForRegionalFinancialPortfoliosForm.invalid"
+                mat-raised-button>
+                حفظ
+            </button>
+    </mat-card-actions>
+</mat-card>
+

@@ -1,0 +1,76 @@
+
+<app-new-form-layout
+    dir="rtl"
+    (submitClicked) = "onSubmit()"
+    (back) = "onBack()"
+    [pageTitle] = "'تسجيل مطالبة الاستماره مع بند الصرف'"
+>
+    <ng-template newFormContainer >
+        <form [formGroup] = "recordTheClaimFormWithTheExchangeItemForm">
+         
+
+	<mat-form-field appearance="outline">
+	 <mat-label>تاريخ تسجيل الاستماره</mat-label>
+	 <input matInput
+	  [matDatepicker] = "registerationFormDataDatepicker"
+	  autocomplete = "off"
+	  formControlName= "registerationFormData"/>
+	 <mat-datepicker-toggle
+	   matSuffix
+	   [for]="registerationFormDataDatepicker"
+	 ></mat-datepicker-toggle>
+	 <mat-datepicker #registerationFormDataDatepicker></mat-datepicker>
+	 <mat-error *ngIf = "getControls('registerationFormData').invalid" >
+	  {{ getControls('registerationFormData')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>مسلسل الاستماره</mat-label>
+	 <input matInput formControlName="formSerial"/>
+	 <mat-error *ngIf = "getControls('formSerial').invalid" >
+	  {{ getControls('formSerial')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+         
+
+	<app-material-select appearance="outline"
+	  #requestingAreaNumber 
+	  [options] = "requestingAreaNumberSelectOptions"
+	  formControlName = "requestingAreaNumber"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #fundingSource 
+	  [options] = "fundingSourceSelectOptions"
+	  formControlName = "fundingSource"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #budgetItem 
+	  [options] = "budgetItemSelectOptions"
+	  formControlName = "budgetItem"
+	></app-material-select>
+
+        </form>
+
+        <mat-divider></mat-divider>
+
+		<mat-card-actions>
+			<form [formGroup]="attachmentForm" class="form-container">
+                <app-multi-file-upload [service] = "recordTheClaimFormWithTheExchangeItemService" [id]="recordTheClaimFormWithTheExchangeItemForm.get('id').value"
+                    formControlName = "attachmentFiles">
+                </app-multi-file-upload>
+            </form>
+            <button
+                type="submit"
+                (click)="onSubmit()"
+                [disabled]="recordTheClaimFormWithTheExchangeItemForm.invalid"
+                mat-raised-button
+                color = "primary">
+             حفظ
+            </button>
+        </mat-card-actions>
+    </ng-template >
+</app-new-form-layout >
+

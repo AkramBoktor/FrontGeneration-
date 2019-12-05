@@ -1,0 +1,80 @@
+
+<mat-card>
+    <mat-card-header>
+        <mat-card-title>ادخال بيانات استماره129 مكافات علي مستوي اداره</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+        <form [formGroup]="dataEntryForm129BonusesAtTheManagementLevelForm" class="form-container">
+          
+
+	<mat-form-field appearance="outline">
+	 <mat-label>رقم الوارد</mat-label>
+	 <input matInput formControlName="incomingNumber"/>
+	 <mat-error *ngIf = "getControls('incomingNumber').invalid" >
+	  {{ getControls('incomingNumber')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>شهر</mat-label>
+	 <input matInput
+	  [matDatepicker] = "monthDatepicker"
+	  autocomplete = "off"
+	  formControlName= "month"/>
+	 <mat-datepicker-toggle
+	   matSuffix
+	   [for]="monthDatepicker"
+	 ></mat-datepicker-toggle>
+	 <mat-datepicker #monthDatepicker></mat-datepicker>
+	 <mat-error *ngIf = "getControls('month').invalid" >
+	  {{ getControls('month')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>كود المكافاه</mat-label>
+	 <input matInput formControlName="bonusCode"/>
+	 <mat-error *ngIf = "getControls('bonusCode').invalid" >
+	  {{ getControls('bonusCode')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>شهر وسنه المكافاه</mat-label>
+	 <input matInput
+	  [matDatepicker] = "monthAndYearBonusDatepicker"
+	  autocomplete = "off"
+	  formControlName= "monthAndYearBonus"/>
+	 <mat-datepicker-toggle
+	   matSuffix
+	   [for]="monthAndYearBonusDatepicker"
+	 ></mat-datepicker-toggle>
+	 <mat-datepicker #monthAndYearBonusDatepicker></mat-datepicker>
+	 <mat-error *ngIf = "getControls('monthAndYearBonus').invalid" >
+	  {{ getControls('monthAndYearBonus')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+          
+
+        </form>
+    </mat-card-content>
+
+    <mat-divider></mat-divider>
+
+	<mat-card-actions>
+			<form [formGroup]="attachmentForm" class="form-container">
+                <app-multi-file-upload [service] = "dataEntryForm129BonusesAtTheManagementLevelService" [id]="dataEntryForm129BonusesAtTheManagementLevelForm.get('id').value"
+                    formControlName = "attachmentFiles">
+                </app-multi-file-upload>
+            </form>
+            <button
+                color = "primary"
+                type = "submit"
+                (click) = "onSubmit()"
+                [disabled] = "dataEntryForm129BonusesAtTheManagementLevelForm.invalid"
+                mat-raised-button>
+                حفظ
+            </button>
+    </mat-card-actions>
+</mat-card>
+

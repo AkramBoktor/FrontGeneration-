@@ -1,0 +1,68 @@
+
+<app-search-list-expansion-panel
+    dir="rtl"
+    [pageTitle] = "'تسجيل مطالبة الاستماره مع بند الصرف'"
+    (beginSearch) = "onBeginSearch()"
+    (create) = "onCreate()"
+>
+    <ng-template searchFormContainer >
+        <form [formGroup] = "searchForm">
+           
+
+	<mat-form-field appearance="outline">
+	 <mat-label>تاريخ تسجيل الاستماره</mat-label>
+	 <input matInput
+	  [matDatepicker] = "registerationFormDataDatepicker"
+	  autocomplete = "off"
+	  formControlName= "registerationFormData"/>
+	 <mat-datepicker-toggle
+	   matSuffix
+	   [for]="registerationFormDataDatepicker"
+	 ></mat-datepicker-toggle>
+	 <mat-datepicker #registerationFormDataDatepicker></mat-datepicker>
+	 <mat-error *ngIf = "getControls('registerationFormData').invalid" >
+	  {{ getControls('registerationFormData')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>مسلسل الاستماره</mat-label>
+	 <input matInput formControlName="formSerial"/>
+	 <mat-error *ngIf = "getControls('formSerial').invalid" >
+	  {{ getControls('formSerial')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+           
+
+	<app-material-select appearance="outline"
+	  #requestingAreaNumber 
+	  [options] = "requestingAreaNumberSelectOptions"
+	  formControlName = "requestingAreaNumber"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #fundingSource 
+	  [options] = "fundingSourceSelectOptions"
+	  formControlName = "fundingSource"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #budgetItem 
+	  [options] = "budgetItemSelectOptions"
+	  formControlName = "budgetItem"
+	></app-material-select>
+
+        </form>
+    </ng-template >
+    <ng-template searchResultContainer >
+        <app-grid-control
+            #gridControl
+            [rowDataService] = "getRecordTheClaimFormWithTheExchangeItemPaginatedSortedFiltered"
+            [columnOptions] = "columnOptions"
+            [gridHeaderOptions] = "gridHeaderOptions"
+            [searchInput] = "searchForm.value"
+            (deleteRow) = "onDeleteClicked($event)"
+        >
+        </app-grid-control>
+    </ng-template>
+</app-search-list-expansion-panel >

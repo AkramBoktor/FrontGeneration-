@@ -19,7 +19,7 @@
 
 	<mat-form-field appearance="outline">
 	 <mat-label>رقم الفتره</mat-label>
-	 <input matInput formControlName="periodNumber" [disableControl]="true" />
+	 <input matInput formControlName="periodNumber"  [disableControl]="false" />
 	 <mat-error *ngIf = "getControls('periodNumber').invalid" >
 	  {{ getControls('periodNumber')| getErrorMessages : errorMessages}}
 	  </mat-error>
@@ -28,7 +28,7 @@
 	<mat-form-field appearance="outline">
 	 <mat-label>تاريخ بدايه الفتره</mat-label>
 	 <input matInput
-	 [disableControl]="true" 
+	  [disableControl]="false" 
 	  [matDatepicker] = "periodStartDateDatepicker"
 	  autocomplete = "off"
 	  formControlName= "periodStartDate"/>
@@ -44,7 +44,7 @@
 
 	<mat-form-field appearance="outline">
 	 <mat-label>قيمة العقد</mat-label>
-	 <input matInput formControlName="contractAmount" [disableControl]="true" />
+	 <input matInput formControlName="contractAmount"  [disableControl]="false" />
 	 <mat-error *ngIf = "getControls('contractAmount').invalid" >
 	  {{ getControls('contractAmount')| getErrorMessages : errorMessages}}
 	  </mat-error>
@@ -53,7 +53,7 @@
 	<mat-form-field appearance="outline">
 	 <mat-label>تاريخ الالتحاق بها</mat-label>
 	 <input matInput
-	 [disableControl]="true" 
+	  [disableControl]="false" 
 	  [matDatepicker] = "hiringDateDatepicker"
 	  autocomplete = "off"
 	  formControlName= "hiringDate"/>
@@ -102,7 +102,7 @@
 	<mat-form-field appearance="outline">
 	 <mat-label>تاريخ نهايه الفتره</mat-label>
 	 <input matInput
-	 [disableControl]="true" 
+	  [disableControl]="false" 
 	  [matDatepicker] = "periodEndDateDatepicker"
 	  autocomplete = "off"
 	  formControlName= "periodEndDate"/>

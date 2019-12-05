@@ -26,7 +26,7 @@
 	<mat-form-field appearance="outline">
 	 <mat-label>تاريخ بدايه الفتره</mat-label>
 	 <input matInput
-	 [disableControl]="true" 
+	  [disableControl]="false" 
 	  [matDatepicker] = "periodStartDateDatepicker"
 	  autocomplete = "off"
 	  formControlName= "periodStartDate"/>
@@ -43,7 +43,7 @@
 	<mat-form-field appearance="outline">
 	 <mat-label>تاريخ نهايه الفتره</mat-label>
 	 <input matInput
-	 [disableControl]="true" 
+	  [disableControl]="false" 
 	  [matDatepicker] = "periodEndDateDatepicker"
 	  autocomplete = "off"
 	  formControlName= "periodEndDate"/>
@@ -60,7 +60,7 @@
 	<mat-form-field appearance="outline">
 	 <mat-label>تاريخ الالتحاق يها</mat-label>
 	 <input matInput
-	 [disableControl]="true" 
+	  [disableControl]="false" 
 	  [matDatepicker] = "hiringDateDatepicker"
 	  autocomplete = "off"
 	  formControlName= "hiringDate"/>

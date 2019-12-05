@@ -2,7 +2,7 @@
  export class LinkItemToTimeTable {
     id: number;
     
-	itemCode: string;
+	itemCode: number;
 	itemName: string;
 	activityCode: string;
 	activityName: string;

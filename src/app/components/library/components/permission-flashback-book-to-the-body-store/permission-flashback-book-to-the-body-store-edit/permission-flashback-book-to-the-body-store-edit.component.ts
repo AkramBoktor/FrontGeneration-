@@ -1,14 +1,18 @@
 
-import { Component, Inject, Injector, Input, OnInit, Optional } from '@angular/core';
-import { FormGroup, Validators } from '@angular/forms';
-import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
+import { Component,Inject, Input, OnInit, Optional, ViewChild, Injector } from '@angular/core';
+import { AbstractControl,FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { MatDialogRef,MAT_DIALOG_DATA } from '@angular/material';
+import { MaterialSelectOptions } from 'app/shared/models/controls/material-select.model';
+import { PermissionFlashbackBookToTheBodyStore } from 'app/shared/models/permission-flashback-book-to-the-body-store';
+import { ValidatorFunctions } from 'app/shared/validations/validator-functions';
+
+import { LookupService } from 'app/shared/pages/lookup-form/lookup.service';
+
+import { PermissionFlashbackBookToTheBodyStoreService } from '../shared/permission-flashback-book-to-the-body-store.service';
+import { MaterialSelectComponent } from 'app/shared/components/material-controls/material-select/material-select.component';
 import { AppBaseComponent } from 'app/shared/base/app-base.component';
 import { FormControlError } from 'app/shared/models/controls/interfaces';
-import { PermissionFlashbackBookToTheBodyStore } from 'app/shared/models/permission-flashback-book-to-the-body-store';
-import { switchMap } from 'rxjs/operators';
-import { PermissionFlashbackBookToTheBodyStoreService } from '../shared/permission-flashback-book-to-the-body-store.service';
-
-
+import { startWith, switchMap } from 'rxjs/operators';
 
 
 @Component({
@@ -56,8 +60,8 @@ export class PermissionFlashbackBookToTheBodyStoreEditComponent extends AppBaseC
   returnAuthorizationDate : [this.selectedPermissionFlashbackBookToTheBodyStore.returnAuthorizationDate, [ Validators.required ]],
   outgoingLibraryRecipient : [this.selectedPermissionFlashbackBookToTheBodyStore.outgoingLibraryRecipient, [ Validators.required ]],
   employeeCode : [this.selectedPermissionFlashbackBookToTheBodyStore.employeeCode, [ Validators.required ]],
-  extensionNumber : [this.selectedPermissionFlashbackBookToTheBodyStore.extensionNumber, [ ]],
-  generalNumber : [this.selectedPermissionFlashbackBookToTheBodyStore.generalNumber, [ ]],
+  extensionNumber : [this.selectedPermissionFlashbackBookToTheBodyStore.extensionNumber, [ Validators.required ]],
+  generalNumber : [this.selectedPermissionFlashbackBookToTheBodyStore.generalNumber, [ Validators.required ]],
   bookTitle : [this.selectedPermissionFlashbackBookToTheBodyStore.bookTitle, [ ]]
    }, {
 	  validators: [ ]

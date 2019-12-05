@@ -1,0 +1,81 @@
+
+<app-new-form-layout
+    dir="rtl"
+    (submitClicked) = "onSubmit()"
+    (back) = "onBack()"
+    [pageTitle] = "'حركة الارقام القياسية للمواد'"
+>
+    <ng-template newFormContainer >
+        <form [formGroup] = "theMovementOfMaterialIndicesForm">
+         
+
+	<mat-form-field appearance="outline">
+	 <mat-label>تاريخ بداية الحركة</mat-label>
+	 <input matInput
+	  [matDatepicker] = "startDateForMovementDatepicker"
+	  autocomplete = "off"
+	  formControlName= "startDateForMovement"/>
+	 <mat-datepicker-toggle
+	   matSuffix
+	   [for]="startDateForMovementDatepicker"
+	 ></mat-datepicker-toggle>
+	 <mat-datepicker #startDateForMovementDatepicker></mat-datepicker>
+	 <mat-error *ngIf = "getControls('startDateForMovement').invalid" >
+	  {{ getControls('startDateForMovement')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>تاريخ نهاية الحركة</mat-label>
+	 <input matInput
+	  [matDatepicker] = "endDateForMovementDatepicker"
+	  autocomplete = "off"
+	  formControlName= "endDateForMovement"/>
+	 <mat-datepicker-toggle
+	   matSuffix
+	   [for]="endDateForMovementDatepicker"
+	 ></mat-datepicker-toggle>
+	 <mat-datepicker #endDateForMovementDatepicker></mat-datepicker>
+	 <mat-error *ngIf = "getControls('endDateForMovement').invalid" >
+	  {{ getControls('endDateForMovement')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>الرقم القياسي</mat-label>
+	 <input matInput formControlName="standardNumber"/>
+	 <mat-error *ngIf = "getControls('standardNumber').invalid" >
+	  {{ getControls('standardNumber')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+         
+
+	<app-material-select appearance="outline"
+	  #elementCode 
+	  [options] = "elementCodeSelectOptions"
+	  formControlName = "elementCode"
+	  
+	></app-material-select>
+
+        </form>
+
+        <mat-divider></mat-divider>
+
+		<mat-card-actions>
+			<form [formGroup]="attachmentForm" class="form-container">
+                <app-multi-file-upload [service] = "theMovementOfMaterialIndicesService" [id]="theMovementOfMaterialIndicesForm.get('id').value"
+                    formControlName = "attachmentFiles">
+                </app-multi-file-upload>
+            </form>
+            <button
+                type="submit"
+                (click)="onSubmit()"
+                [disabled]="theMovementOfMaterialIndicesForm.invalid"
+                mat-raised-button
+                color = "primary">
+             حفظ
+            </button>
+        </mat-card-actions>
+    </ng-template >
+</app-new-form-layout >
+

@@ -1,0 +1,84 @@
+
+<mat-card>
+    <mat-card-header>
+        <mat-card-title>بنود المقايسة</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+        <form [formGroup]="assayItemForm" class="form-container">
+          
+
+	<mat-form-field appearance="outline">
+	 <mat-label>نوع النشاط</mat-label>
+	 <input matInput formControlName="activityType"/>
+	 <mat-error *ngIf = "getControls('activityType').invalid" >
+	  {{ getControls('activityType')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>نشاط فرعي</mat-label>
+	 <input matInput formControlName="subActivityType"/>
+	 <mat-error *ngIf = "getControls('subActivityType').invalid" >
+	  {{ getControls('subActivityType')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>كود البند</mat-label>
+	 <input matInput formControlName="itemCode"/>
+	 <mat-error *ngIf = "getControls('itemCode').invalid" >
+	  {{ getControls('itemCode')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>اسم البند باللغة العربية</mat-label>
+	 <input matInput formControlName="arabicItemName"/>
+	 <mat-error *ngIf = "getControls('arabicItemName').invalid" >
+	  {{ getControls('arabicItemName')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>اسم البند باللغة الإنجليزية</mat-label>
+	 <input matInput formControlName="englishItemName"/>
+	 <mat-error *ngIf = "getControls('englishItemName').invalid" >
+	  {{ getControls('englishItemName')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+          
+
+	<app-material-select appearance="outline"
+	  #workType 
+	  [options] = "workTypeSelectOptions"
+	  formControlName = "workType"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #unitCode 
+	  [options] = "unitCodeSelectOptions"
+	  formControlName = "unitCode"
+	></app-material-select>
+
+        </form>
+    </mat-card-content>
+
+    <mat-divider></mat-divider>
+
+	<mat-card-actions>
+			<form [formGroup]="attachmentForm" class="form-container">
+                <app-multi-file-upload [service] = "assayItemService" [id]="assayItemForm.get('id').value"
+                    formControlName = "attachmentFiles">
+                </app-multi-file-upload>
+            </form>
+            <button
+                color = "primary"
+                type = "submit"
+                (click) = "onSubmit()"
+                [disabled] = "assayItemForm.invalid"
+                mat-raised-button>
+                حفظ
+            </button>
+    </mat-card-actions>
+</mat-card>
+

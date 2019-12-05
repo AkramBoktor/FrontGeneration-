@@ -1,0 +1,66 @@
+
+<app-search-list-expansion-panel
+    dir="rtl"
+    [pageTitle] = "'انهاء اشتراك موظفين بالصندوق'"
+    (beginSearch) = "onBeginSearch()"
+    (create) = "onCreate()"
+>
+    <ng-template searchFormContainer >
+        <form [formGroup] = "searchForm">
+           
+
+	<mat-form-field appearance="outline">
+	 <mat-label>كود الموظف</mat-label>
+	 <input matInput formControlName="employeeCode"/>
+	 <mat-error *ngIf = "getControls('employeeCode').invalid" >
+	  {{ getControls('employeeCode')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>كود العضويه</mat-label>
+	 <input matInput formControlName="membershipCode"/>
+	 <mat-error *ngIf = "getControls('membershipCode').invalid" >
+	  {{ getControls('membershipCode')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+           
+
+	<app-material-select appearance="outline"
+	  #terminationType 
+	  [options] = "terminationTypeSelectOptions"
+	  formControlName = "terminationType"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #administrationCode 
+	  [options] = "administrationCodeSelectOptions"
+	  formControlName = "administrationCode"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #subscriptionStatus 
+	  [options] = "subscriptionStatusSelectOptions"
+	  formControlName = "subscriptionStatus"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #employeeStatus 
+	  [options] = "employeeStatusSelectOptions"
+	  formControlName = "employeeStatus"
+	></app-material-select>
+
+        </form>
+    </ng-template >
+    <ng-template searchResultContainer >
+        <app-grid-control
+            #gridControl
+            [rowDataService] = "getTerminationOfTheParticipationOfAnEmployeesInTheFundPaginatedSortedFiltered"
+            [columnOptions] = "columnOptions"
+            [gridHeaderOptions] = "gridHeaderOptions"
+            [searchInput] = "searchForm.value"
+            (deleteRow) = "onDeleteClicked($event)"
+        >
+        </app-grid-control>
+    </ng-template>
+</app-search-list-expansion-panel >

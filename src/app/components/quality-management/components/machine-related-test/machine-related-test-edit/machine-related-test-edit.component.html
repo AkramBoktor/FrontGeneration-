@@ -1,0 +1,48 @@
+
+<mat-card>
+    <mat-card-header>
+        <mat-card-title> اختبار مرتبط بالماكينة</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+        <form [formGroup]="machineRelatedTestForm" class="form-container">
+          
+
+	<mat-form-field appearance="outline">
+	 <mat-label>كود الماكينة</mat-label>
+	 <input matInput formControlName="machineCode"/>
+	 <mat-error *ngIf = "getControls('machineCode').invalid" >
+	  {{ getControls('machineCode')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>كود الاختبار</mat-label>
+	 <input matInput formControlName="testCode"/>
+	 <mat-error *ngIf = "getControls('testCode').invalid" >
+	  {{ getControls('testCode')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+          
+
+        </form>
+    </mat-card-content>
+
+    <mat-divider></mat-divider>
+
+	<mat-card-actions>
+			<form [formGroup]="attachmentForm" class="form-container">
+                <app-multi-file-upload [service] = "machineRelatedTestService" [id]="machineRelatedTestForm.get('id').value"
+                    formControlName = "attachmentFiles">
+                </app-multi-file-upload>
+            </form>
+            <button
+                color = "primary"
+                type = "submit"
+                (click) = "onSubmit()"
+                [disabled] = "machineRelatedTestForm.invalid"
+                mat-raised-button>
+                حفظ
+            </button>
+    </mat-card-actions>
+</mat-card>
+

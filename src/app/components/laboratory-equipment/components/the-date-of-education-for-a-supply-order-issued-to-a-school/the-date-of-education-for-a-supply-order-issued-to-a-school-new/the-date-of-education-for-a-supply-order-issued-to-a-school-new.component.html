@@ -1,0 +1,146 @@
+
+<app-new-form-layout
+    dir="rtl"
+    (submitClicked) = "onSubmit()"
+    (back) = "onBack()"
+    [pageTitle] = "'تاريخ التعليم لامر توريد صادر لمدرسة'"
+>
+    <ng-template newFormContainer >
+        <form [formGroup] = "theDateOfEducationForASupplyOrderIssuedToASchoolForm">
+         
+
+	<mat-form-field appearance="outline">
+	 <mat-label>سنة الخطة</mat-label>
+	 <input matInput formControlName="yearPlan"/>
+	 <mat-error *ngIf = "getControls('yearPlan').invalid" >
+	  {{ getControls('yearPlan')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>رقم المناقصة</mat-label>
+	 <input matInput formControlName="bidNumber"/>
+	 <mat-error *ngIf = "getControls('bidNumber').invalid" >
+	  {{ getControls('bidNumber')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>رقم امر التوريد</mat-label>
+	 <input matInput formControlName="orderNumber"/>
+	 <mat-error *ngIf = "getControls('orderNumber').invalid" >
+	  {{ getControls('orderNumber')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>تاريخ امر التوريد</mat-label>
+	 <input matInput
+	  [matDatepicker] = "supplyOrderDateDatepicker"
+	  autocomplete = "off"
+	  formControlName= "supplyOrderDate"/>
+	 <mat-datepicker-toggle
+	   matSuffix
+	   [for]="supplyOrderDateDatepicker"
+	 ></mat-datepicker-toggle>
+	 <mat-datepicker #supplyOrderDateDatepicker></mat-datepicker>
+	 <mat-error *ngIf = "getControls('supplyOrderDate').invalid" >
+	  {{ getControls('supplyOrderDate')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>سنة الخطة الانشائية</mat-label>
+	 <input matInput formControlName="constructionPlanYear" [disableControl]="true" />
+	 <mat-error *ngIf = "getControls('constructionPlanYear').invalid" >
+	  {{ getControls('constructionPlanYear')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>اسم المبني</mat-label>
+	 <input matInput formControlName="buildingName"/>
+	 <mat-error *ngIf = "getControls('buildingName').invalid" >
+	  {{ getControls('buildingName')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>رقم الملحق</mat-label>
+	 <input matInput formControlName="annexNumber"/>
+	 <mat-error *ngIf = "getControls('annexNumber').invalid" >
+	  {{ getControls('annexNumber')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>اسم الشركة</mat-label>
+	 <input matInput formControlName="campanyName"/>
+	 <mat-error *ngIf = "getControls('campanyName').invalid" >
+	  {{ getControls('campanyName')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>تاريخ التسليم</mat-label>
+	 <input matInput
+	  [matDatepicker] = "deliveryDateDatepicker"
+	  autocomplete = "off"
+	  formControlName= "deliveryDate"/>
+	 <mat-datepicker-toggle
+	   matSuffix
+	   [for]="deliveryDateDatepicker"
+	 ></mat-datepicker-toggle>
+	 <mat-datepicker #deliveryDateDatepicker></mat-datepicker>
+	 <mat-error *ngIf = "getControls('deliveryDate').invalid" >
+	  {{ getControls('deliveryDate')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+         
+
+	<app-material-select appearance="outline"
+	  #processingType 
+	  [options] = "processingTypeSelectOptions"
+	  formControlName = "processingType"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #offeringType 
+	  [options] = "offeringTypeSelectOptions"
+	  formControlName = "offeringType"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #offeringMethod 
+	  [options] = "offeringMethodSelectOptions"
+	  formControlName = "offeringMethod"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #constructionType 
+	  [options] = "constructionTypeSelectOptions"
+	  formControlName = "constructionType"
+	></app-material-select>
+
+        </form>
+
+        <mat-divider></mat-divider>
+
+		<mat-card-actions>
+			<form [formGroup]="attachmentForm" class="form-container">
+                <app-multi-file-upload [service] = "theDateOfEducationForASupplyOrderIssuedToASchoolService" [id]="theDateOfEducationForASupplyOrderIssuedToASchoolForm.get('id').value"
+                    formControlName = "attachmentFiles">
+                </app-multi-file-upload>
+            </form>
+            <button
+                type="submit"
+                (click)="onSubmit()"
+                [disabled]="theDateOfEducationForASupplyOrderIssuedToASchoolForm.invalid"
+                mat-raised-button
+                color = "primary">
+             حفظ
+            </button>
+        </mat-card-actions>
+    </ng-template >
+</app-new-form-layout >
+

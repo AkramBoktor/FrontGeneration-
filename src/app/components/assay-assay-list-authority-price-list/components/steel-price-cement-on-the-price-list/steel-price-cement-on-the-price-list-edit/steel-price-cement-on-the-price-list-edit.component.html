@@ -1,0 +1,54 @@
+
+<mat-card>
+    <mat-card-header>
+        <mat-card-title>اسعار الحديد - الاسمنت على قائمة الاسعار</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+        <form [formGroup]="steelPriceCementOnThePriceListForm" class="form-container">
+          
+
+	<mat-form-field appearance="outline">
+	 <mat-label>سنة التسعير</mat-label>
+	 <input matInput formControlName="pricingYear"/>
+	 <mat-error *ngIf = "getControls('pricingYear').invalid" >
+	  {{ getControls('pricingYear')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>السعر</mat-label>
+	 <input matInput formControlName="price"/>
+	 <mat-error *ngIf = "getControls('price').invalid" >
+	  {{ getControls('price')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+          
+
+	<app-material-select appearance="outline"
+	  #materialType 
+	  [options] = "materialTypeSelectOptions"
+	  formControlName = "materialType"
+	></app-material-select>
+
+        </form>
+    </mat-card-content>
+
+    <mat-divider></mat-divider>
+
+	<mat-card-actions>
+			<form [formGroup]="attachmentForm" class="form-container">
+                <app-multi-file-upload [service] = "steelPriceCementOnThePriceListService" [id]="steelPriceCementOnThePriceListForm.get('id').value"
+                    formControlName = "attachmentFiles">
+                </app-multi-file-upload>
+            </form>
+            <button
+                color = "primary"
+                type = "submit"
+                (click) = "onSubmit()"
+                [disabled] = "steelPriceCementOnThePriceListForm.invalid"
+                mat-raised-button>
+                حفظ
+            </button>
+    </mat-card-actions>
+</mat-card>
+

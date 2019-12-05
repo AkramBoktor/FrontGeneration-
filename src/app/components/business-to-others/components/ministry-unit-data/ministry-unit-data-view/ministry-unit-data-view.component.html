@@ -1,0 +1,88 @@
+
+<mat-card class="form-card">
+      <mat-card-header>
+  
+          <mat-card-title>
+              بيانات وحدة الوزارة
+          </mat-card-title>
+  
+      </mat-card-header>
+  
+      <mat-card-content>
+  
+        <form [formGroup] = "ministryUnitDataForm" class="form-container">
+         
+
+	<mat-form-field appearance="outline">
+	 <mat-label>رقم الوحدة</mat-label>
+	 <input matInput formControlName="unitCode"/>
+	 <mat-error *ngIf = "getControls('unitCode').invalid" >
+	  {{ getControls('unitCode')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>اسم الوحدة</mat-label>
+	 <input matInput formControlName="unitName"/>
+	 <mat-error *ngIf = "getControls('unitName').invalid" >
+	  {{ getControls('unitName')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>عنوان الوحدة</mat-label>
+	 <input matInput formControlName="unitAddress"/>
+	 <mat-error *ngIf = "getControls('unitAddress').invalid" >
+	  {{ getControls('unitAddress')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>المقر</mat-label>
+	 <input matInput formControlName="headquarters"/>
+	 <mat-error *ngIf = "getControls('headquarters').invalid" >
+	  {{ getControls('headquarters')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+         
+
+	<app-material-select appearance="outline"
+	  #ministryType 
+	  [options] = "ministryTypeSelectOptions"
+	  formControlName = "ministryType"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #branchCode 
+	  [options] = "branchCodeSelectOptions"
+	  formControlName = "branchCode"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #departmentCode 
+	  [options] = "departmentCodeSelectOptions"
+	  formControlName = "departmentCode"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #unitType 
+	  [options] = "unitTypeSelectOptions"
+	  formControlName = "unitType"
+	></app-material-select>
+        </form>
+  
+      </mat-card-content >
+  
+      <mat-action-row>
+            <form [formGroup]="attachmentForm" class="form-container">
+                <app-multi-file-upload [service] = "ministryUnitDataService" [id]="ministryUnitDataForm.get('id').value"
+                    formControlName = "attachmentFiles">
+                </app-multi-file-upload>
+            </form>
+            <button (click) = "onConfirm()" mat-raised-button color = "primary" >
+                غلق
+            </button>
+        </mat-action-row>
+    </mat-card>
+
+    

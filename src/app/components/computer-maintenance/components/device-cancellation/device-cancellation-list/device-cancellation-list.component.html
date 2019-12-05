@@ -1,0 +1,82 @@
+
+<app-search-list-expansion-panel
+    dir="rtl"
+    [pageTitle] = "'تكهين الاجهزة'"
+    (beginSearch) = "onBeginSearch()"
+    (create) = "onCreate()"
+>
+    <ng-template searchFormContainer >
+        <form [formGroup] = "searchForm">
+           
+
+	<mat-form-field appearance="outline">
+	 <mat-label>التاريخ من</mat-label>
+	 <input matInput
+	  [matDatepicker] = "periodFromDatepicker"
+	  autocomplete = "off"
+	  formControlName= "periodFrom"/>
+	 <mat-datepicker-toggle
+	   matSuffix
+	   [for]="periodFromDatepicker"
+	 ></mat-datepicker-toggle>
+	 <mat-datepicker #periodFromDatepicker></mat-datepicker>
+	 <mat-error *ngIf = "getControls('periodFrom').invalid" >
+	  {{ getControls('periodFrom')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>التاريخ الي</mat-label>
+	 <input matInput
+	  [matDatepicker] = "periodToDatepicker"
+	  autocomplete = "off"
+	  formControlName= "periodTo"/>
+	 <mat-datepicker-toggle
+	   matSuffix
+	   [for]="periodToDatepicker"
+	 ></mat-datepicker-toggle>
+	 <mat-datepicker #periodToDatepicker></mat-datepicker>
+	 <mat-error *ngIf = "getControls('periodTo').invalid" >
+	  {{ getControls('periodTo')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>نوع  المعدة</mat-label>
+	 <input matInput formControlName="equipmentType"/>
+	 <mat-error *ngIf = "getControls('equipmentType').invalid" >
+	  {{ getControls('equipmentType')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>نوع الجهاز</mat-label>
+	 <input matInput formControlName="deviceType"/>
+	 <mat-error *ngIf = "getControls('deviceType').invalid" >
+	  {{ getControls('deviceType')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>نوع المعمل</mat-label>
+	 <input matInput formControlName="laboratoryType"/>
+	 <mat-error *ngIf = "getControls('laboratoryType').invalid" >
+	  {{ getControls('laboratoryType')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+           
+
+        </form>
+    </ng-template >
+    <ng-template searchResultContainer >
+        <app-grid-control
+            #gridControl
+            [rowDataService] = "getDeviceCancellationPaginatedSortedFiltered"
+            [columnOptions] = "columnOptions"
+            [gridHeaderOptions] = "gridHeaderOptions"
+            [searchInput] = "searchForm.value"
+            (deleteRow) = "onDeleteClicked($event)"
+        >
+        </app-grid-control>
+    </ng-template>
+</app-search-list-expansion-panel >

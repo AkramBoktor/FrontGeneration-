@@ -30,22 +30,22 @@ export class FinalClearanceCycleListComponent extends AppBaseComponent implement
   errorMessages: FormControlError[] = [
         
       ];
-  private governoratesService: LookupService;
-private offeringTypesService: LookupService;
+  private extractTypesService: LookupService;
 private constructionTypesService: LookupService;
-private extractTypesService: LookupService;
+private offeringTypesService: LookupService;
+private governoratesService: LookupService;
 
   
-governorateSelectOptions: MaterialSelectOptions;
-offeringTypeSelectOptions: MaterialSelectOptions;
-constructionTypeSelectOptions: MaterialSelectOptions;
 abstractPositionSelectOptions: MaterialSelectOptions;
+constructionTypeSelectOptions: MaterialSelectOptions;
+offeringTypeSelectOptions: MaterialSelectOptions;
+governorateSelectOptions: MaterialSelectOptions;
 
   
-	@ViewChild('governorate', { static: true }) GovernorateSelectComponent: MaterialSelectComponent;
-	@ViewChild('offeringType', { static: true }) OfferingTypeSelectComponent: MaterialSelectComponent;
-	@ViewChild('constructionType', { static: true }) ConstructionTypeSelectComponent: MaterialSelectComponent;
 	@ViewChild('abstractPosition', { static: true }) AbstractPositionSelectComponent: MaterialSelectComponent;
+	@ViewChild('constructionType', { static: true }) ConstructionTypeSelectComponent: MaterialSelectComponent;
+	@ViewChild('offeringType', { static: true }) OfferingTypeSelectComponent: MaterialSelectComponent;
+	@ViewChild('governorate', { static: true }) GovernorateSelectComponent: MaterialSelectComponent;
 
   
   @Input() selectedFinalClearanceCycle: FinalClearanceCycle;
@@ -57,7 +57,7 @@ abstractPositionSelectOptions: MaterialSelectOptions;
 	new GridColumnOptions({ headerName: 'كود المبنى', field: 'buildingCode' }),
 	new GridColumnOptions({ headerName: 'تاريخ الخروج من المكتب الفني', field: 'departureTechnicalOfficeDate' }),
 	new GridColumnOptions({ headerName: 'اسم المراجع', field: 'referencesName' }),
-	new GridColumnOptions({ headerName: 'رقم المراجع', field: 'referenceNumber' }),
+	new GridColumnOptions({ headerName: 'رقم المراجع', field: 'referenceCode' }),
 	new GridColumnOptions({ headerName: 'عدد الموافقات', field: 'approvalsNumber' }),
 	new GridColumnOptions({ headerName: 'رقم الحافظة', field: 'portfolioNumber' }),
 	new GridColumnOptions({ headerName: 'عدد مرات الوارد', field: 'numberOfTimesReceived' }),
@@ -68,7 +68,7 @@ abstractPositionSelectOptions: MaterialSelectOptions;
 	new GridColumnOptions({ headerName: 'اسم المقاول', field: 'contractorName' }),
 	new GridColumnOptions({ headerName: 'كود المقاول', field: 'contractorCode' }),
 	new GridColumnOptions({ headerName: 'رقم المناقصة', field: 'bidNumber' }),
-	new GridColumnOptions({ headerName: 'اسم المبنى', field: 'buildingName' }),
+	new GridColumnOptions({ headerName: 'اسم المبنى', field: 'schoolName' }),
 	new GridColumnOptions({ headerName: 'تاريخ التسليم الابتدائي', field: 'primaryDeliveryDate' }),
 	new GridColumnOptions({ headerName: 'رقم الصادر', field: 'outboundNumber' }),
 	new GridColumnOptions({ headerName: 'موقف المستخلص', field: 'abstractPosition' }),
@@ -93,16 +93,10 @@ abstractPositionSelectOptions: MaterialSelectOptions;
     this.selectedFinalClearanceCycle = new FinalClearanceCycle();
 
     
-	this.governorateSelectOptions = new MaterialSelectOptions({
-	 data: this.governoratesService.getAll(),
+	this.abstractPositionSelectOptions = new MaterialSelectOptions({
+	 data: this.extractTypesService.getAll(),
 	 errorMessages: this.errorMessages,
-	 label: 'المحافظة',
-	});
-
-	this.offeringTypeSelectOptions = new MaterialSelectOptions({
-	 data: this.offeringTypesService.getAll(),
-	 errorMessages: this.errorMessages,
-	 label: 'نوع الطرح',
+	 label: 'موقف المستخلص',
 	});
 
 	this.constructionTypeSelectOptions = new MaterialSelectOptions({
@@ -111,35 +105,41 @@ abstractPositionSelectOptions: MaterialSelectOptions;
 	 label: 'نوع الانشاء',
 	});
 
-	this.abstractPositionSelectOptions = new MaterialSelectOptions({
-	 data: this.extractTypesService.getAll(),
+	this.offeringTypeSelectOptions = new MaterialSelectOptions({
+	 data: this.offeringTypesService.getAll(),
 	 errorMessages: this.errorMessages,
-	 label: 'موقف المستخلص',
+	 label: 'نوع الطرح',
+	});
+
+	this.governorateSelectOptions = new MaterialSelectOptions({
+	 data: this.governoratesService.getAll(),
+	 errorMessages: this.errorMessages,
+	 label: 'المحافظة',
 	});
 
 
     this.searchForm = this.formBuilder.group({
      	buildingCode : [],
-	buildingName : [],
-	bidNumber : [],
-	contractorCode : [],
-	contractorName : [],
-	engineerCode : [],
-	engineerName : [],
-	primaryDeliveryDate : [],
-	incomingDate : [],
-	numberOfTimesReceived : [],
-	portfolioNumber : [],
-	approvalsNumber : [],
-	referenceNumber : [],
-	referencesName : [],
 	departureTechnicalOfficeDate : [],
+	referencesName : [],
+	referenceCode : [],
+	approvalsNumber : [],
+	portfolioNumber : [],
+	numberOfTimesReceived : [],
+	incomingDate : [],
 	exchangeAuthoritiesDate : [],
+	engineerName : [],
+	engineerCode : [],
+	contractorName : [],
+	contractorCode : [],
+	bidNumber : [],
+	schoolName : [],
+	primaryDeliveryDate : [],
 	outboundNumber : [],
-	governorate : [],
-	offeringType : [],
+	abstractPosition : [],
 	constructionType : [],
-	abstractPosition : []
+	offeringType : [],
+	governorate : []
     });
 
      
@@ -168,10 +168,10 @@ abstractPositionSelectOptions: MaterialSelectOptions;
   }
 
   initializeLookupServices() {
-    this.governoratesService = new LookupService('governorates', this.http);
-this.offeringTypesService = new LookupService('offeringtypes', this.http);
+    this.extractTypesService = new LookupService('extracttypes', this.http);
 this.constructionTypesService = new LookupService('constructiontypes', this.http);
-this.extractTypesService = new LookupService('extracttypes', this.http);
+this.offeringTypesService = new LookupService('offeringtypes', this.http);
+this.governoratesService = new LookupService('governorates', this.http);
   }
 }
 

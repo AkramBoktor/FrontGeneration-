@@ -3,10 +3,10 @@
     id: number;
     
 	offeringType: number;
-	bidNumber: number;
-	tenderNumber: number;
+	bidNumber: string;
+	tenderNumber: string;
 	contractorCode: string;
-	schoolNumber: number;
+	schoolNumber: string;
 	schoolName: string;
 	exclusionReason: string;
 	constructor(arg?: CanceledTender) {

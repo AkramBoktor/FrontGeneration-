@@ -23,7 +23,7 @@
 
 	<mat-form-field appearance="outline">
 	 <mat-label>اسم المدرسة</mat-label>
-	 <input matInput formControlName="schoolName" [disableControl]="true" />
+	 <input matInput formControlName="schoolName" [disableControl]="false" />
 	 <mat-error *ngIf = "getControls('schoolName').invalid" >
 	  {{ getControls('schoolName')| getErrorMessages : errorMessages}}
 	  </mat-error>
@@ -48,7 +48,7 @@
 	<mat-form-field appearance="outline">
 	 <mat-label>تاريخ التسجيل</mat-label>
 	 <input matInput
-	 [disableControl]="true" 
+	 [disableControl]="false" 
 	  [matDatepicker] = "registrationDateDatepicker"
 	  autocomplete = "off"
 	  formControlName= "registrationDate"/>
@@ -64,7 +64,7 @@
 
 	<mat-form-field appearance="outline">
 	 <mat-label>توقيت التسجيل</mat-label>
-	 <input matInput formControlName="registrationTiming" [disableControl]="true" />
+	 <input matInput formControlName="registrationTiming" [disableControl]="false" />
 	 <mat-error *ngIf = "getControls('registrationTiming').invalid" >
 	  {{ getControls('registrationTiming')| getErrorMessages : errorMessages}}
 	  </mat-error>
@@ -72,7 +72,7 @@
 
 	<mat-form-field appearance="outline">
 	 <mat-label>اسم المستخدم</mat-label>
-	 <input matInput formControlName="userName" [disableControl]="true" />
+	 <input matInput formControlName="userName" [disableControl]="false" />
 	 <mat-error *ngIf = "getControls('userName').invalid" >
 	  {{ getControls('userName')| getErrorMessages : errorMessages}}
 	  </mat-error>

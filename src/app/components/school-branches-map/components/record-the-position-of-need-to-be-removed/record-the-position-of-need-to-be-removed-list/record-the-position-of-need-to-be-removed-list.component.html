@@ -1,0 +1,54 @@
+
+<app-search-list-expansion-panel
+    dir="rtl"
+    [pageTitle] = "'تسجيل موقف الاحتياج للازاله'"
+    (beginSearch) = "onBeginSearch()"
+    (create) = "onCreate()"
+>
+    <ng-template searchFormContainer >
+        <form [formGroup] = "searchForm">
+           
+
+	<mat-form-field appearance="outline">
+	 <mat-label>كود المدرسة</mat-label>
+	 <input matInput formControlName="schoolCode"/>
+	 <mat-error *ngIf = "getControls('schoolCode').invalid" >
+	  {{ getControls('schoolCode')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>الملحق</mat-label>
+	 <input matInput formControlName="extension"/>
+	 <mat-error *ngIf = "getControls('extension').invalid" >
+	  {{ getControls('extension')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+           
+
+	<app-material-select appearance="outline"
+	  #status 
+	  [options] = "statusSelectOptions"
+	  formControlName = "status"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #needCode 
+	  [options] = "needCodeSelectOptions"
+	  formControlName = "needCode"
+	></app-material-select>
+
+        </form>
+    </ng-template >
+    <ng-template searchResultContainer >
+        <app-grid-control
+            #gridControl
+            [rowDataService] = "getRecordThePositionOfNeedToBeRemovedPaginatedSortedFiltered"
+            [columnOptions] = "columnOptions"
+            [gridHeaderOptions] = "gridHeaderOptions"
+            [searchInput] = "searchForm.value"
+            (deleteRow) = "onDeleteClicked($event)"
+        >
+        </app-grid-control>
+    </ng-template>
+</app-search-list-expansion-panel >

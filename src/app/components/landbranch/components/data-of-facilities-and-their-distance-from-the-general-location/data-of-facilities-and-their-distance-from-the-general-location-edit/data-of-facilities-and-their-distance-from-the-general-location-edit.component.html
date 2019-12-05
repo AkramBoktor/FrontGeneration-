@@ -1,0 +1,72 @@
+
+<mat-card>
+    <mat-card-header>
+        <mat-card-title>بيانات المرافق وبعدها عن الموقع العام</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+        <form [formGroup]="dataOfFacilitiesAndTheirDistanceFromTheGeneralLocationForm" class="form-container">
+          
+
+	<mat-form-field appearance="outline">
+	 <mat-label>كود قطعة الارض</mat-label>
+	 <input matInput formControlName="landCode"/>
+	 <mat-error *ngIf = "getControls('landCode').invalid" >
+	  {{ getControls('landCode')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>كود المرفق</mat-label>
+	 <input matInput formControlName="facilityCode"/>
+	 <mat-error *ngIf = "getControls('facilityCode').invalid" >
+	  {{ getControls('facilityCode')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>مسمى المرفق</mat-label>
+	 <input matInput formControlName="facilityName"/>
+	 <mat-error *ngIf = "getControls('facilityName').invalid" >
+	  {{ getControls('facilityName')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>بعد المرفق</mat-label>
+	 <input matInput formControlName="facilityDimension"/>
+	 <mat-error *ngIf = "getControls('facilityDimension').invalid" >
+	  {{ getControls('facilityDimension')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>ملاحظات</mat-label>
+	 <input matInput formControlName="notes"/>
+	 <mat-error *ngIf = "getControls('notes').invalid" >
+	  {{ getControls('notes')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+          
+
+        </form>
+    </mat-card-content>
+
+    <mat-divider></mat-divider>
+
+	<mat-card-actions>
+			<form [formGroup]="attachmentForm" class="form-container">
+                <app-multi-file-upload [service] = "dataOfFacilitiesAndTheirDistanceFromTheGeneralLocationService" [id]="dataOfFacilitiesAndTheirDistanceFromTheGeneralLocationForm.get('id').value"
+                    formControlName = "attachmentFiles">
+                </app-multi-file-upload>
+            </form>
+            <button
+                color = "primary"
+                type = "submit"
+                (click) = "onSubmit()"
+                [disabled] = "dataOfFacilitiesAndTheirDistanceFromTheGeneralLocationForm.invalid"
+                mat-raised-button>
+                حفظ
+            </button>
+    </mat-card-actions>
+</mat-card>
+

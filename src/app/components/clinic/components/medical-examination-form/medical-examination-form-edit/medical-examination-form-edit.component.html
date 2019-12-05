@@ -33,7 +33,7 @@
 
 	<mat-form-field appearance="outline">
 	 <mat-label>اسم المريض</mat-label>
-	 <input matInput formControlName="patientName" [disableControl]="true" />
+	 <input matInput formControlName="patientName"  [disableControl]="false" />
 	 <mat-error *ngIf = "getControls('patientName').invalid" >
 	  {{ getControls('patientName')| getErrorMessages : errorMessages}}
 	  </mat-error>
@@ -57,7 +57,7 @@
 
 	<mat-form-field appearance="outline">
 	 <mat-label>اسم الموظف الطبيب</mat-label>
-	 <input matInput formControlName="doctorName" [disableControl]="true" />
+	 <input matInput formControlName="doctorName"  [disableControl]="false" />
 	 <mat-error *ngIf = "getControls('doctorName').invalid" >
 	  {{ getControls('doctorName')| getErrorMessages : errorMessages}}
 	  </mat-error>

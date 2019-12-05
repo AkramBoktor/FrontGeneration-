@@ -1,0 +1,46 @@
+
+<app-new-form-layout
+    dir="rtl"
+    (submitClicked) = "onSubmit()"
+    (back) = "onBack()"
+    [pageTitle] = "'ربط البنود باكواد العناصر'"
+>
+    <ng-template newFormContainer >
+        <form [formGroup] = "bindingItemsWithElementsCodesForm">
+         
+         
+
+	<app-material-select appearance="outline"
+	  #itemCode 
+	  [options] = "itemCodeSelectOptions"
+	  formControlName = "itemCode"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #elementCode 
+	  [options] = "elementCodeSelectOptions"
+	  formControlName = "elementCode"
+	></app-material-select>
+
+        </form>
+
+        <mat-divider></mat-divider>
+
+		<mat-card-actions>
+			<form [formGroup]="attachmentForm" class="form-container">
+                <app-multi-file-upload [service] = "bindingItemsWithElementsCodesService" [id]="bindingItemsWithElementsCodesForm.get('id').value"
+                    formControlName = "attachmentFiles">
+                </app-multi-file-upload>
+            </form>
+            <button
+                type="submit"
+                (click)="onSubmit()"
+                [disabled]="bindingItemsWithElementsCodesForm.invalid"
+                mat-raised-button
+                color = "primary">
+             حفظ
+            </button>
+        </mat-card-actions>
+    </ng-template >
+</app-new-form-layout >
+

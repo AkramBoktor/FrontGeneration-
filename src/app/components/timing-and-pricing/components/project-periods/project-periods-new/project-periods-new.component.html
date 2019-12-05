@@ -19,7 +19,7 @@
 
 	<mat-form-field appearance="outline">
 	 <mat-label>اسم المبنى</mat-label>
-	 <input matInput formControlName="buildingName" [disableControl]="true" />
+	 <input matInput formControlName="buildingName" [disableControl]="false" />
 	 <mat-error *ngIf = "getControls('buildingName').invalid" >
 	  {{ getControls('buildingName')| getErrorMessages : errorMessages}}
 	  </mat-error>
@@ -35,7 +35,7 @@
 
 	<mat-form-field appearance="outline">
 	 <mat-label>كود المقاول</mat-label>
-	 <input matInput formControlName="contractorCode" [disableControl]="true" />
+	 <input matInput formControlName="contractorCode"/>
 	 <mat-error *ngIf = "getControls('contractorCode').invalid" >
 	  {{ getControls('contractorCode')| getErrorMessages : errorMessages}}
 	  </mat-error>
@@ -43,7 +43,7 @@
 
 	<mat-form-field appearance="outline">
 	 <mat-label>اسم المقاول</mat-label>
-	 <input matInput formControlName="contractorName" [disableControl]="true" />
+	 <input matInput formControlName="contractorName" [disableControl]="false" />
 	 <mat-error *ngIf = "getControls('contractorName').invalid" >
 	  {{ getControls('contractorName')| getErrorMessages : errorMessages}}
 	  </mat-error>
@@ -51,7 +51,7 @@
 
 	<mat-form-field appearance="outline">
 	 <mat-label>رقم المهندس</mat-label>
-	 <input matInput formControlName="engineerCode" [disableControl]="true" />
+	 <input matInput formControlName="engineerCode"/>
 	 <mat-error *ngIf = "getControls('engineerCode').invalid" >
 	  {{ getControls('engineerCode')| getErrorMessages : errorMessages}}
 	  </mat-error>
@@ -59,7 +59,7 @@
 
 	<mat-form-field appearance="outline">
 	 <mat-label>اسم المهندس</mat-label>
-	 <input matInput formControlName="engineerName" [disableControl]="true" />
+	 <input matInput formControlName="engineerName" [disableControl]="false" />
 	 <mat-error *ngIf = "getControls('engineerName').invalid" >
 	  {{ getControls('engineerName')| getErrorMessages : errorMessages}}
 	  </mat-error>
@@ -68,7 +68,7 @@
 	<mat-form-field appearance="outline">
 	 <mat-label>تاريخ تسليم الموقع</mat-label>
 	 <input matInput
-	 [disableControl]="true" 
+	 [disableControl]="false" 
 	  [matDatepicker] = "siteDeliveryDateDatepicker"
 	  autocomplete = "off"
 	  formControlName= "siteDeliveryDate"/>
@@ -84,31 +84,23 @@
 
 	<mat-form-field appearance="outline">
 	 <mat-label>مدة التنفيذ</mat-label>
-	 <input matInput formControlName="executionDuration" [disableControl]="true" />
+	 <input matInput formControlName="executionDuration" [disableControl]="false" />
 	 <mat-error *ngIf = "getControls('executionDuration').invalid" >
 	  {{ getControls('executionDuration')| getErrorMessages : errorMessages}}
 	  </mat-error>
 	</mat-form-field>
 
 	<mat-form-field appearance="outline">
-	 <mat-label>مرات التمديد</mat-label>
-	 <input matInput formControlName="extensionTimes" [disableControl]="true" />
-	 <mat-error *ngIf = "getControls('extensionTimes').invalid" >
-	  {{ getControls('extensionTimes')| getErrorMessages : errorMessages}}
-	  </mat-error>
-	</mat-form-field>
-
-	<mat-form-field appearance="outline">
 	 <mat-label>رقم المراجع</mat-label>
-	 <input matInput formControlName="referenceNumber"/>
-	 <mat-error *ngIf = "getControls('referenceNumber').invalid" >
-	  {{ getControls('referenceNumber')| getErrorMessages : errorMessages}}
+	 <input matInput formControlName="referenceCode"/>
+	 <mat-error *ngIf = "getControls('referenceCode').invalid" >
+	  {{ getControls('referenceCode')| getErrorMessages : errorMessages}}
 	  </mat-error>
 	</mat-form-field>
 
 	<mat-form-field appearance="outline">
 	 <mat-label>اسم المراجع</mat-label>
-	 <input matInput formControlName="referencesName" [disableControl]="true" />
+	 <input matInput formControlName="referencesName" [disableControl]="false" />
 	 <mat-error *ngIf = "getControls('referencesName').invalid" >
 	  {{ getControls('referencesName')| getErrorMessages : errorMessages}}
 	  </mat-error>
@@ -137,15 +129,23 @@
 	  {{ getControls('beganStopDate')| getErrorMessages : errorMessages}}
 	  </mat-error>
 	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>مرات التمديد</mat-label>
+	 <input matInput formControlName="extensionTimes" [disableControl]="true" />
+	 <mat-error *ngIf = "getControls('extensionTimes').invalid" >
+	  {{ getControls('extensionTimes')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
          
 
-	<app-material-select appearance="outline" [disabled]="true" 
+	<app-material-select appearance="outline"
 	  #governorate 
 	  [options] = "governorateSelectOptions"
 	  formControlName = "governorate"
 	></app-material-select>
 
-	<app-material-select appearance="outline" [disabled]="true" 
+	<app-material-select appearance="outline"
 	  #offeringType 
 	  [options] = "offeringTypeSelectOptions"
 	  formControlName = "offeringType"

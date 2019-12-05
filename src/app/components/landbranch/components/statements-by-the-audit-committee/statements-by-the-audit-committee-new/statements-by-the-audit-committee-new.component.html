@@ -1,0 +1,58 @@
+
+<app-new-form-layout
+    dir="rtl"
+    (submitClicked) = "onSubmit()"
+    (back) = "onBack()"
+    [pageTitle] = "'بيانات ملاحظات لجنة المراجعة'"
+>
+    <ng-template newFormContainer >
+        <form [formGroup] = "statementsByTheAuditCommitteeForm">
+         
+
+	<mat-form-field appearance="outline">
+	 <mat-label>كود قطعة الارض</mat-label>
+	 <input matInput formControlName="landID"/>
+	 <mat-error *ngIf = "getControls('landID').invalid" >
+	  {{ getControls('landID')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>رقم اللجنة</mat-label>
+	 <input matInput formControlName="committeeNumber"/>
+	 <mat-error *ngIf = "getControls('committeeNumber').invalid" >
+	  {{ getControls('committeeNumber')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>كود ملاحظة المراجعة</mat-label>
+	 <input matInput formControlName="reviewNoteCode"/>
+	 <mat-error *ngIf = "getControls('reviewNoteCode').invalid" >
+	  {{ getControls('reviewNoteCode')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+         
+
+        </form>
+
+        <mat-divider></mat-divider>
+
+		<mat-card-actions>
+			<form [formGroup]="attachmentForm" class="form-container">
+                <app-multi-file-upload [service] = "statementsByTheAuditCommitteeService" [id]="statementsByTheAuditCommitteeForm.get('id').value"
+                    formControlName = "attachmentFiles">
+                </app-multi-file-upload>
+            </form>
+            <button
+                type="submit"
+                (click)="onSubmit()"
+                [disabled]="statementsByTheAuditCommitteeForm.invalid"
+                mat-raised-button
+                color = "primary">
+             حفظ
+            </button>
+        </mat-card-actions>
+    </ng-template >
+</app-new-form-layout >
+

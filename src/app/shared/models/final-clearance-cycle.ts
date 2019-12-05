@@ -1,29 +1,28 @@
 
  export class FinalClearanceCycle {
-	id: number;
-	engineerCode: string;
-    buildingName: string;
+    id: number;
+    
 	buildingCode: string;
 	schoolName: string;
 	governorate: number;
-	bidNumber: number;
+	bidNumber: string;
 	offeringType: number;
 	contractorCode: string;
 	contractorName: string;
-	employeeCode: string;
+	engineerCode: string;
 	engineerName: string;
 	primaryDeliveryDate: Date;
 	constructionType: number;
 	incomingDate: Date;
-	numberOfTimesReceived: number;
-	portfolioNumber: number;
-	approvalsNumber: number;
-	referenceNumber: string;
+	numberOfTimesReceived: string;
+	portfolioNumber: string;
+	approvalsNumber: string;
+	referenceCode: string;
 	referencesName: string;
 	abstractPosition: number;
 	departureTechnicalOfficeDate: Date;
 	exchangeAuthoritiesDate: Date;
-	outboundNumber: number;
+	outboundNumber: string;
 	constructor(arg?: FinalClearanceCycle) {
         if (arg) {
             for (const property in arg) {

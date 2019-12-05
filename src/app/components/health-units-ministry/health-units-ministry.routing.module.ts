@@ -10,19 +10,6 @@ const routes: Routes = [
     component: HealthUnitsMinistryOfSolidarityPostalAuthorityComponent,
   },
   
-{
-    path: 'new-service-request', loadChildren: './components/new-service-request/new-service-request.module#NewServiceRequestModule',
-    data: {
-      moduleName: 'NewServiceRequest'
-    },
-},
-
-{
-    path: 'required-services', loadChildren: './components/required-services/required-services.module#RequiredServicesModule',
-    data: {
-      moduleName: 'RequiredServices'
-    },
-},
 
 {
     path: 'external-services-codes-and-cost', loadChildren: './components/external-services-codes-and-cost/external-services-codes-and-cost.module#ExternalServicesCodesAndCostModule',
@@ -30,6 +17,21 @@ const routes: Routes = [
       moduleName: 'ExternalServicesCodesAndCost'
     },
 },
+
+{
+    path: 'new-services-requests', loadChildren: './components/new-services-requests/new-services-requests.module#NewServicesRequestsModule',
+    data: {
+      moduleName: 'NewServicesRequests'
+    },
+},
+
+{
+    path: 'required-serviceses', loadChildren: './components/required-serviceses/required-serviceses.module#RequiredServicesesModule',
+    data: {
+      moduleName: 'RequiredServiceses'
+    },
+},
+
 
 ];
 

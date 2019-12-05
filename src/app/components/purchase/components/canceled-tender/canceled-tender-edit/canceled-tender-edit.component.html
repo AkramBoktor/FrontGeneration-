@@ -25,7 +25,7 @@
 
 	<mat-form-field appearance="outline">
 	 <mat-label>كود المقاول</mat-label>
-	 <input matInput formControlName="contractorCode" [disableControl]="true" />
+	 <input matInput formControlName="contractorCode"  [disableControl]="false" />
 	 <mat-error *ngIf = "getControls('contractorCode').invalid" >
 	  {{ getControls('contractorCode')| getErrorMessages : errorMessages}}
 	  </mat-error>
@@ -41,7 +41,7 @@
 
 	<mat-form-field appearance="outline">
 	 <mat-label>اسم المدرسة</mat-label>
-	 <input matInput formControlName="schoolName" [disableControl]="true" />
+	 <input matInput formControlName="schoolName"  [disableControl]="false" />
 	 <mat-error *ngIf = "getControls('schoolName').invalid" >
 	  {{ getControls('schoolName')| getErrorMessages : errorMessages}}
 	  </mat-error>

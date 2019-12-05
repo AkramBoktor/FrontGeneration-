@@ -1,0 +1,86 @@
+
+<app-search-list-expansion-panel
+    dir="rtl"
+    [pageTitle] = "'تسجيل تصويبات المتغير  للموظفين'"
+    (beginSearch) = "onBeginSearch()"
+    (create) = "onCreate()"
+>
+    <ng-template searchFormContainer >
+        <form [formGroup] = "searchForm">
+           
+
+	<mat-form-field appearance="outline">
+	 <mat-label>كود الموظف</mat-label>
+	 <input matInput formControlName="employeeCode"/>
+	 <mat-error *ngIf = "getControls('employeeCode').invalid" >
+	  {{ getControls('employeeCode')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>السنه</mat-label>
+	 <input matInput
+	  [matDatepicker] = "yearDatepicker"
+	  autocomplete = "off"
+	  formControlName= "year"/>
+	 <mat-datepicker-toggle
+	   matSuffix
+	   [for]="yearDatepicker"
+	 ></mat-datepicker-toggle>
+	 <mat-datepicker #yearDatepicker></mat-datepicker>
+	 <mat-error *ngIf = "getControls('year').invalid" >
+	  {{ getControls('year')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>رقم القرار</mat-label>
+	 <input matInput formControlName="decisionNumber"/>
+	 <mat-error *ngIf = "getControls('decisionNumber').invalid" >
+	  {{ getControls('decisionNumber')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>تاريخ الاستحقاق</mat-label>
+	 <input matInput
+	  [matDatepicker] = "dueDateDatepicker"
+	  autocomplete = "off"
+	  formControlName= "dueDate"/>
+	 <mat-datepicker-toggle
+	   matSuffix
+	   [for]="dueDateDatepicker"
+	 ></mat-datepicker-toggle>
+	 <mat-datepicker #dueDateDatepicker></mat-datepicker>
+	 <mat-error *ngIf = "getControls('dueDate').invalid" >
+	  {{ getControls('dueDate')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+           
+
+	<app-material-select appearance="outline"
+	  #financialDegree 
+	  [options] = "financialDegreeSelectOptions"
+	  formControlName = "financialDegree"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #bonus 
+	  [options] = "bonusSelectOptions"
+	  formControlName = "bonus"
+	></app-material-select>
+
+        </form>
+    </ng-template >
+    <ng-template searchResultContainer >
+        <app-grid-control
+            #gridControl
+            [rowDataService] = "getRecordVariableCorrectionsForEmployeesPaginatedSortedFiltered"
+            [columnOptions] = "columnOptions"
+            [gridHeaderOptions] = "gridHeaderOptions"
+            [searchInput] = "searchForm.value"
+            (deleteRow) = "onDeleteClicked($event)"
+        >
+        </app-grid-control>
+    </ng-template>
+</app-search-list-expansion-panel >

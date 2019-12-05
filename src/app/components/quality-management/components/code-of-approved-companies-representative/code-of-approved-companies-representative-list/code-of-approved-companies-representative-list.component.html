@@ -1,0 +1,42 @@
+
+<app-search-list-expansion-panel
+    dir="rtl"
+    [pageTitle] = "'اكواد ممثلين الشركات المعتمده'"
+    (beginSearch) = "onBeginSearch()"
+    (create) = "onCreate()"
+>
+    <ng-template searchFormContainer >
+        <form [formGroup] = "searchForm">
+           
+
+	<mat-form-field appearance="outline">
+	 <mat-label>كود الصفة</mat-label>
+	 <input matInput formControlName="objectiveCode"/>
+	 <mat-error *ngIf = "getControls('objectiveCode').invalid" >
+	  {{ getControls('objectiveCode')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>اسم الصفة</mat-label>
+	 <input matInput formControlName="objectiveName"/>
+	 <mat-error *ngIf = "getControls('objectiveName').invalid" >
+	  {{ getControls('objectiveName')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+           
+
+        </form>
+    </ng-template >
+    <ng-template searchResultContainer >
+        <app-grid-control
+            #gridControl
+            [rowDataService] = "getCodesOfApprovedCompaniesRepresentativesPaginatedSortedFiltered"
+            [columnOptions] = "columnOptions"
+            [gridHeaderOptions] = "gridHeaderOptions"
+            [searchInput] = "searchForm.value"
+            (deleteRow) = "onDeleteClicked($event)"
+        >
+        </app-grid-control>
+    </ng-template>
+</app-search-list-expansion-panel >

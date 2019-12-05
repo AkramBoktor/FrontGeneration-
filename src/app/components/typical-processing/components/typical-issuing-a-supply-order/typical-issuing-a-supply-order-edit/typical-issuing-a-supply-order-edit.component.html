@@ -1,0 +1,166 @@
+
+<mat-card>
+    <mat-card-header>
+        <mat-card-title>اصدار امر توريد</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+        <form [formGroup]="typicalIssuingASupplyOrderForm" class="form-container">
+          
+
+	<mat-form-field appearance="outline">
+	 <mat-label>الكمية</mat-label>
+	 <input matInput formControlName="quantity"/>
+	 <mat-error *ngIf = "getControls('quantity').invalid" >
+	  {{ getControls('quantity')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>اسم القائمة</mat-label>
+	 <input matInput formControlName="listName"/>
+	 <mat-error *ngIf = "getControls('listName').invalid" >
+	  {{ getControls('listName')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>اسم الشركة</mat-label>
+	 <input matInput formControlName="companyName"/>
+	 <mat-error *ngIf = "getControls('companyName').invalid" >
+	  {{ getControls('companyName')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>رقم المحلق</mat-label>
+	 <input matInput formControlName="number"/>
+	 <mat-error *ngIf = "getControls('number').invalid" >
+	  {{ getControls('number')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>سنة الخطة</mat-label>
+	 <input matInput formControlName="yearPlan"/>
+	 <mat-error *ngIf = "getControls('yearPlan').invalid" >
+	  {{ getControls('yearPlan')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>رقم المناقصة</mat-label>
+	 <input matInput formControlName="bidNumber"/>
+	 <mat-error *ngIf = "getControls('bidNumber').invalid" >
+	  {{ getControls('bidNumber')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>اسم المبني</mat-label>
+	 <input matInput formControlName="buildingName"/>
+	 <mat-error *ngIf = "getControls('buildingName').invalid" >
+	  {{ getControls('buildingName')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>نوع الامر</mat-label>
+	 <input matInput formControlName="orderType"/>
+	 <mat-error *ngIf = "getControls('orderType').invalid" >
+	  {{ getControls('orderType')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>تاريخ امر التوريد</mat-label>
+	 <input matInput
+	  [matDatepicker] = "supplyOrderDateDatepicker"
+	  autocomplete = "off"
+	  formControlName= "supplyOrderDate"/>
+	 <mat-datepicker-toggle
+	   matSuffix
+	   [for]="supplyOrderDateDatepicker"
+	 ></mat-datepicker-toggle>
+	 <mat-datepicker #supplyOrderDateDatepicker></mat-datepicker>
+	 <mat-error *ngIf = "getControls('supplyOrderDate').invalid" >
+	  {{ getControls('supplyOrderDate')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>رقم امر التوريد</mat-label>
+	 <input matInput formControlName="orderNumber"/>
+	 <mat-error *ngIf = "getControls('orderNumber').invalid" >
+	  {{ getControls('orderNumber')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>سنة الخطة الانشائية</mat-label>
+	 <input matInput
+	  [matDatepicker] = "constructionPlanYearDatepicker"
+	  autocomplete = "off"
+	  formControlName= "constructionPlanYear"/>
+	 <mat-datepicker-toggle
+	   matSuffix
+	   [for]="constructionPlanYearDatepicker"
+	 ></mat-datepicker-toggle>
+	 <mat-datepicker #constructionPlanYearDatepicker></mat-datepicker>
+	 <mat-error *ngIf = "getControls('constructionPlanYear').invalid" >
+	  {{ getControls('constructionPlanYear')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+          
+
+	<app-material-select appearance="outline"
+	  #constructionType 
+	  [options] = "constructionTypeSelectOptions"
+	  formControlName = "constructionType"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #offeringType 
+	  [options] = "offeringTypeSelectOptions"
+	  formControlName = "offeringType"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #processingType 
+	  [options] = "processingTypeSelectOptions"
+	  formControlName = "processingType"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #offeringMethod 
+	  [options] = "offeringMethodSelectOptions"
+	  formControlName = "offeringMethod"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #typeOfFunding 
+	  [options] = "typeOfFundingSelectOptions"
+	  formControlName = "typeOfFunding"
+	></app-material-select>
+
+        </form>
+    </mat-card-content>
+
+    <mat-divider></mat-divider>
+
+	<mat-card-actions>
+			<form [formGroup]="attachmentForm" class="form-container">
+                <app-multi-file-upload [service] = "typicalIssuingASupplyOrderService" [id]="typicalIssuingASupplyOrderForm.get('id').value"
+                    formControlName = "attachmentFiles">
+                </app-multi-file-upload>
+            </form>
+            <button
+                color = "primary"
+                type = "submit"
+                (click) = "onSubmit()"
+                [disabled] = "typicalIssuingASupplyOrderForm.invalid"
+                mat-raised-button>
+                حفظ
+            </button>
+    </mat-card-actions>
+</mat-card>
+

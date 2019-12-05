@@ -1,0 +1,56 @@
+
+<app-search-list-expansion-panel
+    dir="rtl"
+    [pageTitle] = "'ادخال بيانات استماره 129 علي مستوي اداره'"
+    (beginSearch) = "onBeginSearch()"
+    (create) = "onCreate()"
+>
+    <ng-template searchFormContainer >
+        <form [formGroup] = "searchForm">
+           
+
+	<mat-form-field appearance="outline">
+	 <mat-label>شهر الوارد</mat-label>
+	 <input matInput
+	  [matDatepicker] = "incomingMonthDatepicker"
+	  autocomplete = "off"
+	  formControlName= "incomingMonth"/>
+	 <mat-datepicker-toggle
+	   matSuffix
+	   [for]="incomingMonthDatepicker"
+	 ></mat-datepicker-toggle>
+	 <mat-datepicker #incomingMonthDatepicker></mat-datepicker>
+	 <mat-error *ngIf = "getControls('incomingMonth').invalid" >
+	  {{ getControls('incomingMonth')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>رقم الوارد</mat-label>
+	 <input matInput formControlName="incomingNumber"/>
+	 <mat-error *ngIf = "getControls('incomingNumber').invalid" >
+	  {{ getControls('incomingNumber')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+           
+
+	<app-material-select appearance="outline"
+	  #administrationOrBranch 
+	  [options] = "administrationOrBranchSelectOptions"
+	  formControlName = "administrationOrBranch"
+	></app-material-select>
+
+        </form>
+    </ng-template >
+    <ng-template searchResultContainer >
+        <app-grid-control
+            #gridControl
+            [rowDataService] = "getDataEntryForm129AtTheManagementLevelPaginatedSortedFiltered"
+            [columnOptions] = "columnOptions"
+            [gridHeaderOptions] = "gridHeaderOptions"
+            [searchInput] = "searchForm.value"
+            (deleteRow) = "onDeleteClicked($event)"
+        >
+        </app-grid-control>
+    </ng-template>
+</app-search-list-expansion-panel >

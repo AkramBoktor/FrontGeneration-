@@ -1,0 +1,126 @@
+
+<app-new-form-layout
+    dir="rtl"
+    (submitClicked) = "onSubmit()"
+    (back) = "onBack()"
+    [pageTitle] = "'طلب خدمة جديد'"
+>
+    <ng-template newFormContainer >
+        <form [formGroup] = "newServiceRequestForm">
+         
+
+	<mat-form-field appearance="outline">
+	 <mat-label>تاريخ الطلب</mat-label>
+	 <input matInput
+	  [matDatepicker] = "orderDateDatepicker"
+	  autocomplete = "off"
+	  formControlName= "orderDate"/>
+	 <mat-datepicker-toggle
+	   matSuffix
+	   [for]="orderDateDatepicker"
+	 ></mat-datepicker-toggle>
+	 <mat-datepicker #orderDateDatepicker></mat-datepicker>
+	 <mat-error *ngIf = "getControls('orderDate').invalid" >
+	  {{ getControls('orderDate')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>اسم الجهة</mat-label>
+	 <input matInput formControlName="entityName"/>
+	 <mat-error *ngIf = "getControls('entityName').invalid" >
+	  {{ getControls('entityName')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>مساحة الارض</mat-label>
+	 <input matInput formControlName="landArea"/>
+	 <mat-error *ngIf = "getControls('landArea').invalid" >
+	  {{ getControls('landArea')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>النسبة البنائية</mat-label>
+	 <input matInput formControlName="structuralRatio"/>
+	 <mat-error *ngIf = "getControls('structuralRatio').invalid" >
+	  {{ getControls('structuralRatio')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>عدد الادوار</mat-label>
+	 <input matInput formControlName="floorsNumber"/>
+	 <mat-error *ngIf = "getControls('floorsNumber').invalid" >
+	  {{ getControls('floorsNumber')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>اسم المدرسة</mat-label>
+	 <input matInput formControlName="schoolName"/>
+	 <mat-error *ngIf = "getControls('schoolName').invalid" >
+	  {{ getControls('schoolName')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>رقم الايصال</mat-label>
+	 <input matInput formControlName="receiptNumber"/>
+	 <mat-error *ngIf = "getControls('receiptNumber').invalid" >
+	  {{ getControls('receiptNumber')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>تاريخ الايصال</mat-label>
+	 <input matInput
+	  [matDatepicker] = "receiptDateDatepicker"
+	  autocomplete = "off"
+	  formControlName= "receiptDate"/>
+	 <mat-datepicker-toggle
+	   matSuffix
+	   [for]="receiptDateDatepicker"
+	 ></mat-datepicker-toggle>
+	 <mat-datepicker #receiptDateDatepicker></mat-datepicker>
+	 <mat-error *ngIf = "getControls('receiptDate').invalid" >
+	  {{ getControls('receiptDate')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+         
+
+	<app-material-select appearance="outline"
+	  #governorate 
+	  [options] = "governorateSelectOptions"
+	  formControlName = "governorate"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #department 
+	  [options] = "departmentSelectOptions"
+	  formControlName = "department"
+	></app-material-select>
+
+        </form>
+
+        <mat-divider></mat-divider>
+
+		<mat-card-actions>
+			<form [formGroup]="attachmentForm" class="form-container">
+                <app-multi-file-upload [service] = "newServiceRequestService" [id]="newServiceRequestForm.get('id').value"
+                    formControlName = "attachmentFiles">
+                </app-multi-file-upload>
+            </form>
+            <button
+                type="submit"
+                (click)="onSubmit()"
+                [disabled]="newServiceRequestForm.invalid"
+                mat-raised-button
+                color = "primary">
+             حفظ
+            </button>
+        </mat-card-actions>
+    </ng-template >
+</app-new-form-layout >
+

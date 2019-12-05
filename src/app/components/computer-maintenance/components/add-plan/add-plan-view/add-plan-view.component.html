@@ -1,0 +1,106 @@
+
+<mat-card class="form-card">
+      <mat-card-header>
+  
+          <mat-card-title>
+              اضافه الخطه
+          </mat-card-title>
+  
+      </mat-card-header>
+  
+      <mat-card-content>
+  
+        <form [formGroup] = "addPlanForm" class="form-container">
+         
+
+	<mat-form-field appearance="outline">
+	 <mat-label>الفتره</mat-label>
+	 <input matInput
+	  [matDatepicker] = "periodDatepicker"
+	  autocomplete = "off"
+	  formControlName= "period"/>
+	 <mat-datepicker-toggle
+	   matSuffix
+	   [for]="periodDatepicker"
+	 ></mat-datepicker-toggle>
+	 <mat-datepicker #periodDatepicker></mat-datepicker>
+	 <mat-error *ngIf = "getControls('period').invalid" >
+	  {{ getControls('period')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>القائم بالصيانه</mat-label>
+	 <input matInput formControlName="maintainer"/>
+	 <mat-error *ngIf = "getControls('maintainer').invalid" >
+	  {{ getControls('maintainer')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>المبنى</mat-label>
+	 <input matInput formControlName="building"/>
+	 <mat-error *ngIf = "getControls('building').invalid" >
+	  {{ getControls('building')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>عدد المبانى</mat-label>
+	 <input matInput formControlName="buildingNumber"/>
+	 <mat-error *ngIf = "getControls('buildingNumber').invalid" >
+	  {{ getControls('buildingNumber')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>تاريخ المخطط</mat-label>
+	 <input matInput
+	  [matDatepicker] = "plannedDateDatepicker"
+	  autocomplete = "off"
+	  formControlName= "plannedDate"/>
+	 <mat-datepicker-toggle
+	   matSuffix
+	   [for]="plannedDateDatepicker"
+	 ></mat-datepicker-toggle>
+	 <mat-datepicker #plannedDateDatepicker></mat-datepicker>
+	 <mat-error *ngIf = "getControls('plannedDate').invalid" >
+	  {{ getControls('plannedDate')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+         
+
+	<app-material-select appearance="outline"
+	  #region 
+	  [options] = "regionSelectOptions"
+	  formControlName = "region"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #maintenanceDescription 
+	  [options] = "maintenanceDescriptionSelectOptions"
+	  formControlName = "maintenanceDescription"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #buildingType 
+	  [options] = "buildingTypeSelectOptions"
+	  formControlName = "buildingType"
+	></app-material-select>
+        </form>
+  
+      </mat-card-content >
+  
+      <mat-action-row>
+            <form [formGroup]="attachmentForm" class="form-container">
+                <app-multi-file-upload [service] = "addPlanService" [id]="addPlanForm.get('id').value"
+                    formControlName = "attachmentFiles">
+                </app-multi-file-upload>
+            </form>
+            <button (click) = "onConfirm()" mat-raised-button color = "primary" >
+                غلق
+            </button>
+        </mat-action-row>
+    </mat-card>
+
+    

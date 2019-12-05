@@ -1,0 +1,160 @@
+
+<mat-card>
+    <mat-card-header>
+        <mat-card-title>نتيجة عينة</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+        <form [formGroup]="sampleResultForm" class="form-container">
+          
+
+	<mat-form-field appearance="outline">
+	 <mat-label>رقم الطلب</mat-label>
+	 <input matInput formControlName="orderNumber"/>
+	 <mat-error *ngIf = "getControls('orderNumber').invalid" >
+	  {{ getControls('orderNumber')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>كود توصيف العينة</mat-label>
+	 <input matInput formControlName="sampleSpecificationCode"/>
+	 <mat-error *ngIf = "getControls('sampleSpecificationCode').invalid" >
+	  {{ getControls('sampleSpecificationCode')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>المادة الأساسية</mat-label>
+	 <input matInput formControlName="basicArticle"/>
+	 <mat-error *ngIf = "getControls('basicArticle').invalid" >
+	  {{ getControls('basicArticle')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>المادة الفرعية</mat-label>
+	 <input matInput formControlName="subArticle"/>
+	 <mat-error *ngIf = "getControls('subArticle').invalid" >
+	  {{ getControls('subArticle')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>مسمي الاختبار</mat-label>
+	 <input matInput formControlName="calledTesting"/>
+	 <mat-error *ngIf = "getControls('calledTesting').invalid" >
+	  {{ getControls('calledTesting')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>مسلسل العينة</mat-label>
+	 <input matInput formControlName="serialSample"/>
+	 <mat-error *ngIf = "getControls('serialSample').invalid" >
+	  {{ getControls('serialSample')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>تاريخ اختبار العينة</mat-label>
+	 <input matInput
+	  [matDatepicker] = "sampleTestDateDatepicker"
+	  autocomplete = "off"
+	  formControlName= "sampleTestDate"/>
+	 <mat-datepicker-toggle
+	   matSuffix
+	   [for]="sampleTestDateDatepicker"
+	 ></mat-datepicker-toggle>
+	 <mat-datepicker #sampleTestDateDatepicker></mat-datepicker>
+	 <mat-error *ngIf = "getControls('sampleTestDate').invalid" >
+	  {{ getControls('sampleTestDate')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>مهندس المعمل</mat-label>
+	 <input matInput formControlName="laboratoryEngineer"/>
+	 <mat-error *ngIf = "getControls('laboratoryEngineer').invalid" >
+	  {{ getControls('laboratoryEngineer')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>كود بيان الاختبار</mat-label>
+	 <input matInput formControlName="testStatementCode"/>
+	 <mat-error *ngIf = "getControls('testStatementCode').invalid" >
+	  {{ getControls('testStatementCode')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>اسم بيان الاختبار</mat-label>
+	 <input matInput formControlName="statementTestName"/>
+	 <mat-error *ngIf = "getControls('statementTestName').invalid" >
+	  {{ getControls('statementTestName')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>نتيجة البيان</mat-label>
+	 <input matInput formControlName="statementResult"/>
+	 <mat-error *ngIf = "getControls('statementResult').invalid" >
+	  {{ getControls('statementResult')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>عمرها</mat-label>
+	 <input matInput formControlName="age"/>
+	 <mat-error *ngIf = "getControls('age').invalid" >
+	  {{ getControls('age')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+          
+
+	<app-material-select appearance="outline"
+	  #laboratory 
+	  [options] = "laboratorySelectOptions"
+	  formControlName = "laboratory"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #sampleMatch 
+	  [options] = "sampleMatchSelectOptions"
+	  formControlName = "sampleMatch"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #measruingUnit 
+	  [options] = "measruingUnitSelectOptions"
+	  formControlName = "measruingUnit"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #statementType 
+	  [options] = "statementTypeSelectOptions"
+	  formControlName = "statementType"
+	></app-material-select>
+
+        </form>
+    </mat-card-content>
+
+    <mat-divider></mat-divider>
+
+	<mat-card-actions>
+			<form [formGroup]="attachmentForm" class="form-container">
+                <app-multi-file-upload [service] = "sampleResultService" [id]="sampleResultForm.get('id').value"
+                    formControlName = "attachmentFiles">
+                </app-multi-file-upload>
+            </form>
+            <button
+                color = "primary"
+                type = "submit"
+                (click) = "onSubmit()"
+                [disabled] = "sampleResultForm.invalid"
+                mat-raised-button>
+                حفظ
+            </button>
+    </mat-card-actions>
+</mat-card>
+

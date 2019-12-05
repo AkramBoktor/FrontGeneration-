@@ -95,7 +95,7 @@
 
 	<mat-form-field appearance="outline">
 	 <mat-label> اسم الموظف</mat-label>
-	 <input matInput formControlName="employeeName" [disableControl]="true" />
+	 <input matInput formControlName="employeeName" [disableControl]="false" />
 	 <mat-error *ngIf = "getControls('employeeName').invalid" >
 	  {{ getControls('employeeName')| getErrorMessages : errorMessages}}
 	  </mat-error>
@@ -103,7 +103,7 @@
 
 	<mat-form-field appearance="outline">
 	 <mat-label> اسم الادارة</mat-label>
-	 <input matInput formControlName="administrationName" [disableControl]="true" />
+	 <input matInput formControlName="administrationName" [disableControl]="false" />
 	 <mat-error *ngIf = "getControls('administrationName').invalid" >
 	  {{ getControls('administrationName')| getErrorMessages : errorMessages}}
 	  </mat-error>
@@ -111,7 +111,7 @@
 
 	<mat-form-field appearance="outline">
 	 <mat-label> حالة الموظف</mat-label>
-	 <input matInput formControlName="employeeStatus" [disableControl]="true" />
+	 <input matInput formControlName="employeeStatus" [disableControl]="false" />
 	 <mat-error *ngIf = "getControls('employeeStatus').invalid" >
 	  {{ getControls('employeeStatus')| getErrorMessages : errorMessages}}
 	  </mat-error>

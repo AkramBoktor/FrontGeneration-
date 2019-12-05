@@ -1,0 +1,86 @@
+
+<mat-card>
+    <mat-card-header>
+        <mat-card-title>علاوة 5% 7%</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+        <form [formGroup]="bonus57Form" class="form-container">
+          
+
+	<mat-form-field appearance="outline">
+	 <mat-label>كود الموظف</mat-label>
+	 <input matInput formControlName="employeeCode"/>
+	 <mat-error *ngIf = "getControls('employeeCode').invalid" >
+	  {{ getControls('employeeCode')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>السنة</mat-label>
+	 <input matInput formControlName="year"/>
+	 <mat-error *ngIf = "getControls('year').invalid" >
+	  {{ getControls('year')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>الاجر الوظيفي</mat-label>
+	 <input matInput formControlName="employmentSalary"/>
+	 <mat-error *ngIf = "getControls('employmentSalary').invalid" >
+	  {{ getControls('employmentSalary')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>نسبه العلاوه</mat-label>
+	 <input matInput formControlName="ratio"/>
+	 <mat-error *ngIf = "getControls('ratio').invalid" >
+	  {{ getControls('ratio')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>علاوة دورية</mat-label>
+	 <input matInput formControlName="periodBonus"/>
+	 <mat-error *ngIf = "getControls('periodBonus').invalid" >
+	  {{ getControls('periodBonus')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>الاجر الوظيفي بعد العلاوه</mat-label>
+	 <input matInput formControlName="employmentSalaryWithBonus"/>
+	 <mat-error *ngIf = "getControls('employmentSalaryWithBonus').invalid" >
+	  {{ getControls('employmentSalaryWithBonus')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+          
+
+	<app-material-select appearance="outline"
+	  #financialDegree 
+	  [options] = "financialDegreeSelectOptions"
+	  formControlName = "financialDegree"
+	></app-material-select>
+
+        </form>
+    </mat-card-content>
+
+    <mat-divider></mat-divider>
+
+	<mat-card-actions>
+			<form [formGroup]="attachmentForm" class="form-container">
+                <app-multi-file-upload [service] = "bonus57Service" [id]="bonus57Form.get('id').value"
+                    formControlName = "attachmentFiles">
+                </app-multi-file-upload>
+            </form>
+            <button
+                color = "primary"
+                type = "submit"
+                (click) = "onSubmit()"
+                [disabled] = "bonus57Form.invalid"
+                mat-raised-button>
+                حفظ
+            </button>
+    </mat-card-actions>
+</mat-card>
+

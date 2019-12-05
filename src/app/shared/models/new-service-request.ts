@@ -2,19 +2,16 @@
  export class NewServiceRequest {
     id: number;
     
-	applicationDate: Date;
-	entityName: number;
-	schoolName: string;
+	orderDate: Date;
 	governorate: number;
-	centerOrSection: number;
+	department: number;
+	entityName: string;
 	landArea: number;
 	structuralRatio: number;
 	floorsNumber: number;
+	schoolName: string;
 	receiptNumber: string;
 	receiptDate: Date;
-	serviceType: number;
-	buildingCode: string;
-	orderNumber: string;
 	constructor(arg?: NewServiceRequest) {
         if (arg) {
             for (const property in arg) {

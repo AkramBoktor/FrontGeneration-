@@ -1,0 +1,64 @@
+
+<app-search-list-expansion-panel
+    dir="rtl"
+    [pageTitle] = "'بيانات قرار التخصيص لقطعة ارض'"
+    (beginSearch) = "onBeginSearch()"
+    (create) = "onCreate()"
+>
+    <ng-template searchFormContainer >
+        <form [formGroup] = "searchForm">
+           
+
+	<mat-form-field appearance="outline">
+	 <mat-label>الرقم التعريفى</mat-label>
+	 <input matInput formControlName="landID"/>
+	 <mat-error *ngIf = "getControls('landID').invalid" >
+	  {{ getControls('landID')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>رقم التخصيص</mat-label>
+	 <input matInput formControlName="allocationNumber"/>
+	 <mat-error *ngIf = "getControls('allocationNumber').invalid" >
+	  {{ getControls('allocationNumber')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>تاريخ التخصيص</mat-label>
+	 <input matInput
+	  [matDatepicker] = "allocationDateDatepicker"
+	  autocomplete = "off"
+	  formControlName= "allocationDate"/>
+	 <mat-datepicker-toggle
+	   matSuffix
+	   [for]="allocationDateDatepicker"
+	 ></mat-datepicker-toggle>
+	 <mat-datepicker #allocationDateDatepicker></mat-datepicker>
+	 <mat-error *ngIf = "getControls('allocationDate').invalid" >
+	  {{ getControls('allocationDate')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+           
+
+	<app-material-select appearance="outline"
+	  #allocationTypeCode 
+	  [options] = "allocationTypeCodeSelectOptions"
+	  formControlName = "allocationTypeCode"
+	></app-material-select>
+
+        </form>
+    </ng-template >
+    <ng-template searchResultContainer >
+        <app-grid-control
+            #gridControl
+            [rowDataService] = "getLandAllocationDecisionDataPaginatedSortedFiltered"
+            [columnOptions] = "columnOptions"
+            [gridHeaderOptions] = "gridHeaderOptions"
+            [searchInput] = "searchForm.value"
+            (deleteRow) = "onDeleteClicked($event)"
+        >
+        </app-grid-control>
+    </ng-template>
+</app-search-list-expansion-panel >

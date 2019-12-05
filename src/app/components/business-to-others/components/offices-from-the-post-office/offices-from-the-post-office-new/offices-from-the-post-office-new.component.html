@@ -1,0 +1,72 @@
+
+<app-new-form-layout
+    dir="rtl"
+    (submitClicked) = "onSubmit()"
+    (back) = "onBack()"
+    [pageTitle] = "'المكاتب الواردة من هيئة البريد'"
+>
+    <ng-template newFormContainer >
+        <form [formGroup] = "officesFromThePostOfficeForm">
+         
+
+	<mat-form-field appearance="outline">
+	 <mat-label>سنة ورود المكتب من هيئة البريد</mat-label>
+	 <input matInput
+	  [matDatepicker] = "postOfficeReceiptYearDatepicker"
+	  autocomplete = "off"
+	  formControlName= "postOfficeReceiptYear"/>
+	 <mat-datepicker-toggle
+	   matSuffix
+	   [for]="postOfficeReceiptYearDatepicker"
+	 ></mat-datepicker-toggle>
+	 <mat-datepicker #postOfficeReceiptYearDatepicker></mat-datepicker>
+	 <mat-error *ngIf = "getControls('postOfficeReceiptYear').invalid" >
+	  {{ getControls('postOfficeReceiptYear')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>الرقم التعريفي</mat-label>
+	 <input matInput formControlName="iD"/>
+	 <mat-error *ngIf = "getControls('iD').invalid" >
+	  {{ getControls('iD')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>اسم المكتب</mat-label>
+	 <input matInput formControlName="officeNmae"/>
+	 <mat-error *ngIf = "getControls('officeNmae').invalid" >
+	  {{ getControls('officeNmae')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+         
+
+	<app-material-select appearance="outline"
+	  #governorate 
+	  [options] = "governorateSelectOptions"
+	  formControlName = "governorate"
+	></app-material-select>
+
+        </form>
+
+        <mat-divider></mat-divider>
+
+		<mat-card-actions>
+			<form [formGroup]="attachmentForm" class="form-container">
+                <app-multi-file-upload [service] = "officesFromThePostOfficeService" [id]="officesFromThePostOfficeForm.get('id').value"
+                    formControlName = "attachmentFiles">
+                </app-multi-file-upload>
+            </form>
+            <button
+                type="submit"
+                (click)="onSubmit()"
+                [disabled]="officesFromThePostOfficeForm.invalid"
+                mat-raised-button
+                color = "primary">
+             حفظ
+            </button>
+        </mat-card-actions>
+    </ng-template >
+</app-new-form-layout >
+

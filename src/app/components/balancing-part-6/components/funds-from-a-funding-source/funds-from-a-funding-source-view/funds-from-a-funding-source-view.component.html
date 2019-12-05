@@ -1,0 +1,86 @@
+
+<mat-card class="form-card">
+      <mat-card-header>
+  
+          <mat-card-title>
+              حوافظ التمويل الواردة من مصدر تمويل
+          </mat-card-title>
+  
+      </mat-card-header>
+  
+      <mat-card-content>
+  
+        <form [formGroup] = "fundsFromAFundingSourceForm" class="form-container">
+         
+
+	<mat-form-field appearance="outline">
+	 <mat-label>سنه الموازنه</mat-label>
+	 <input matInput formControlName="budgetYear"/>
+	 <mat-error *ngIf = "getControls('budgetYear').invalid" >
+	  {{ getControls('budgetYear')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>مسلسل المحافظه</mat-label>
+	 <input matInput formControlName="clipboardSerial"/>
+	 <mat-error *ngIf = "getControls('clipboardSerial').invalid" >
+	  {{ getControls('clipboardSerial')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>رقم حافظ التمويل</mat-label>
+	 <input matInput formControlName="fundClipboardNumber"/>
+	 <mat-error *ngIf = "getControls('fundClipboardNumber').invalid" >
+	  {{ getControls('fundClipboardNumber')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>تاريخ حافظه التمويل</mat-label>
+	 <input matInput
+	  [matDatepicker] = "fundingDateDatepicker"
+	  autocomplete = "off"
+	  formControlName= "fundingDate"/>
+	 <mat-datepicker-toggle
+	   matSuffix
+	   [for]="fundingDateDatepicker"
+	 ></mat-datepicker-toggle>
+	 <mat-datepicker #fundingDateDatepicker></mat-datepicker>
+	 <mat-error *ngIf = "getControls('fundingDate').invalid" >
+	  {{ getControls('fundingDate')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>مبلغ حافظه التمويل</mat-label>
+	 <input matInput formControlName="fundClipboardAmount"/>
+	 <mat-error *ngIf = "getControls('fundClipboardAmount').invalid" >
+	  {{ getControls('fundClipboardAmount')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+         
+
+	<app-material-select appearance="outline"
+	  #fundingSourceNumber 
+	  [options] = "fundingSourceNumberSelectOptions"
+	  formControlName = "fundingSourceNumber"
+	></app-material-select>
+        </form>
+  
+      </mat-card-content >
+  
+      <mat-action-row>
+            <form [formGroup]="attachmentForm" class="form-container">
+                <app-multi-file-upload [service] = "fundsFromAFundingSourceService" [id]="fundsFromAFundingSourceForm.get('id').value"
+                    formControlName = "attachmentFiles">
+                </app-multi-file-upload>
+            </form>
+            <button (click) = "onConfirm()" mat-raised-button color = "primary" >
+                غلق
+            </button>
+        </mat-action-row>
+    </mat-card>
+
+    

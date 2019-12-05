@@ -1,0 +1,106 @@
+
+<mat-card>
+    <mat-card-header>
+        <mat-card-title>موقف تشغيل المدارس الخاصة</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+        <form [formGroup]="employmentForPrivateSchoolForm" class="form-container">
+          
+
+	<mat-form-field appearance="outline">
+	 <mat-label>كود المدرسة</mat-label>
+	 <input matInput formControlName="schoolCode"/>
+	 <mat-error *ngIf = "getControls('schoolCode').invalid" >
+	  {{ getControls('schoolCode')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>تاريخ الموافقة</mat-label>
+	 <input matInput
+	  [matDatepicker] = "approvalDateDatepicker"
+	  autocomplete = "off"
+	  formControlName= "approvalDate"/>
+	 <mat-datepicker-toggle
+	   matSuffix
+	   [for]="approvalDateDatepicker"
+	 ></mat-datepicker-toggle>
+	 <mat-datepicker #approvalDateDatepicker></mat-datepicker>
+	 <mat-error *ngIf = "getControls('approvalDate').invalid" >
+	  {{ getControls('approvalDate')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>تاريخ التشغيل</mat-label>
+	 <input matInput
+	  [matDatepicker] = "operationDateDatepicker"
+	  autocomplete = "off"
+	  formControlName= "operationDate"/>
+	 <mat-datepicker-toggle
+	   matSuffix
+	   [for]="operationDateDatepicker"
+	 ></mat-datepicker-toggle>
+	 <mat-datepicker #operationDateDatepicker></mat-datepicker>
+	 <mat-error *ngIf = "getControls('operationDate').invalid" >
+	  {{ getControls('operationDate')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>الملاحظات</mat-label>
+	 <input matInput formControlName="notes"/>
+	 <mat-error *ngIf = "getControls('notes').invalid" >
+	  {{ getControls('notes')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>عدد الفصول</mat-label>
+	 <input matInput formControlName="classesNumber"/>
+	 <mat-error *ngIf = "getControls('classesNumber').invalid" >
+	  {{ getControls('classesNumber')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+          
+
+	<app-material-select appearance="outline"
+	  #operationType 
+	  [options] = "operationTypeSelectOptions"
+	  formControlName = "operationType"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #schoolDependency 
+	  [options] = "schoolDependencySelectOptions"
+	  formControlName = "schoolDependency"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #phaseCode 
+	  [options] = "phaseCodeSelectOptions"
+	  formControlName = "phaseCode"
+	></app-material-select>
+
+        </form>
+    </mat-card-content>
+
+    <mat-divider></mat-divider>
+
+	<mat-card-actions>
+			<form [formGroup]="attachmentForm" class="form-container">
+                <app-multi-file-upload [service] = "employmentForPrivateSchoolService" [id]="employmentForPrivateSchoolForm.get('id').value"
+                    formControlName = "attachmentFiles">
+                </app-multi-file-upload>
+            </form>
+            <button
+                color = "primary"
+                type = "submit"
+                (click) = "onSubmit()"
+                [disabled] = "employmentForPrivateSchoolForm.invalid"
+                mat-raised-button>
+                حفظ
+            </button>
+    </mat-card-actions>
+</mat-card>
+

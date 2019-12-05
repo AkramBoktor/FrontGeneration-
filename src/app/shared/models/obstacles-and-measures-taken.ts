@@ -3,7 +3,7 @@
     id: number;
     
 	governorate: number;
-	iD: number;
+	iDNumber: number;
 	referencesCode: string;
 	difficulties: string;
 	procedures: string;

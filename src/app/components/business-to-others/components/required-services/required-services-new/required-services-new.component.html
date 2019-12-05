@@ -1,0 +1,140 @@
+
+<app-new-form-layout
+    dir="rtl"
+    (submitClicked) = "onSubmit()"
+    (back) = "onBack()"
+    [pageTitle] = "'الخدمات المطلوبة'"
+>
+    <ng-template newFormContainer >
+        <form [formGroup] = "requiredServicesForm">
+         
+
+	<mat-form-field appearance="outline">
+	 <mat-label>تاريخ الطلب</mat-label>
+	 <input matInput
+	  [matDatepicker] = "orderDateDatepicker"
+	  autocomplete = "off"
+	  formControlName= "orderDate"/>
+	 <mat-datepicker-toggle
+	   matSuffix
+	   [for]="orderDateDatepicker"
+	 ></mat-datepicker-toggle>
+	 <mat-datepicker #orderDateDatepicker></mat-datepicker>
+	 <mat-error *ngIf = "getControls('orderDate').invalid" >
+	  {{ getControls('orderDate')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>رقم الطلب</mat-label>
+	 <input matInput formControlName="orderNumber"/>
+	 <mat-error *ngIf = "getControls('orderNumber').invalid" >
+	  {{ getControls('orderNumber')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>اسم الجهة</mat-label>
+	 <input matInput formControlName="entityName"/>
+	 <mat-error *ngIf = "getControls('entityName').invalid" >
+	  {{ getControls('entityName')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>المدرسة</mat-label>
+	 <input matInput formControlName="school"/>
+	 <mat-error *ngIf = "getControls('school').invalid" >
+	  {{ getControls('school')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>مساحه الارض</mat-label>
+	 <input matInput formControlName="landArea" [disableControl]="true" />
+	 <mat-error *ngIf = "getControls('landArea').invalid" >
+	  {{ getControls('landArea')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>النسبة البنائية</mat-label>
+	 <input matInput formControlName="structuralRatio" [disableControl]="true" />
+	 <mat-error *ngIf = "getControls('structuralRatio').invalid" >
+	  {{ getControls('structuralRatio')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>عدد الادوار</mat-label>
+	 <input matInput formControlName="floorsNumber" [disableControl]="true" />
+	 <mat-error *ngIf = "getControls('floorsNumber').invalid" >
+	  {{ getControls('floorsNumber')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>كود الخدمة</mat-label>
+	 <input matInput formControlName="serviceCode"/>
+	 <mat-error *ngIf = "getControls('serviceCode').invalid" >
+	  {{ getControls('serviceCode')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>اسم الخدمة</mat-label>
+	 <input matInput formControlName="serviceName"/>
+	 <mat-error *ngIf = "getControls('serviceName').invalid" >
+	  {{ getControls('serviceName')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>النسبة المطلوبة مقدما</mat-label>
+	 <input matInput formControlName="aadvanceRequiredRatio" [disableControl]="true" />
+	 <mat-error *ngIf = "getControls('aadvanceRequiredRatio').invalid" >
+	  {{ getControls('aadvanceRequiredRatio')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+         
+
+	<app-material-select appearance="outline"
+	  #governorate 
+	  [options] = "governorateSelectOptions"
+	  formControlName = "governorate"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #department 
+	  [options] = "departmentSelectOptions"
+	  formControlName = "department"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #serviceType 
+	  [options] = "serviceTypeSelectOptions"
+	  formControlName = "serviceType"
+	></app-material-select>
+
+        </form>
+
+        <mat-divider></mat-divider>
+
+		<mat-card-actions>
+			<form [formGroup]="attachmentForm" class="form-container">
+                <app-multi-file-upload [service] = "requiredServicesService" [id]="requiredServicesForm.get('id').value"
+                    formControlName = "attachmentFiles">
+                </app-multi-file-upload>
+            </form>
+            <button
+                type="submit"
+                (click)="onSubmit()"
+                [disabled]="requiredServicesForm.invalid"
+                mat-raised-button
+                color = "primary">
+             حفظ
+            </button>
+        </mat-card-actions>
+    </ng-template >
+</app-new-form-layout >
+

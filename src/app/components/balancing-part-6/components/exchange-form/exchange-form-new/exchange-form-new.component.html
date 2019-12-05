@@ -1,0 +1,112 @@
+
+<app-new-form-layout
+    dir="rtl"
+    (submitClicked) = "onSubmit()"
+    (back) = "onBack()"
+    [pageTitle] = "'استمارة صرف'"
+>
+    <ng-template newFormContainer >
+        <form [formGroup] = "exchangeFormForm">
+         
+
+	<mat-form-field appearance="outline">
+	 <mat-label>رقم الاستمارة</mat-label>
+	 <input matInput formControlName="formNumber"/>
+	 <mat-error *ngIf = "getControls('formNumber').invalid" >
+	  {{ getControls('formNumber')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>تاريخ الاستمارة</mat-label>
+	 <input matInput
+	  [matDatepicker] = "formDateDatepicker"
+	  autocomplete = "off"
+	  formControlName= "formDate"/>
+	 <mat-datepicker-toggle
+	   matSuffix
+	   [for]="formDateDatepicker"
+	 ></mat-datepicker-toggle>
+	 <mat-datepicker #formDateDatepicker></mat-datepicker>
+	 <mat-error *ngIf = "getControls('formDate').invalid" >
+	  {{ getControls('formDate')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>مبلغ الاستمارة</mat-label>
+	 <input matInput formControlName="formAmount"/>
+	 <mat-error *ngIf = "getControls('formAmount').invalid" >
+	  {{ getControls('formAmount')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>بيان الاستمارة</mat-label>
+	 <input matInput formControlName="formStatement"/>
+	 <mat-error *ngIf = "getControls('formStatement').invalid" >
+	  {{ getControls('formStatement')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>رقم المدرسة</mat-label>
+	 <input matInput formControlName="schoolNumber"/>
+	 <mat-error *ngIf = "getControls('schoolNumber').invalid" >
+	  {{ getControls('schoolNumber')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>اسم المدرسة</mat-label>
+	 <input matInput formControlName="schoolName"/>
+	 <mat-error *ngIf = "getControls('schoolName').invalid" >
+	  {{ getControls('schoolName')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>مبلغ</mat-label>
+	 <input matInput formControlName="amount"/>
+	 <mat-error *ngIf = "getControls('amount').invalid" >
+	  {{ getControls('amount')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>اجمالي</mat-label>
+	 <input matInput formControlName="total"/>
+	 <mat-error *ngIf = "getControls('total').invalid" >
+	  {{ getControls('total')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+         
+
+	<app-material-select appearance="outline"
+	  #zipCode 
+	  [options] = "zipCodeSelectOptions"
+	  formControlName = "zipCode"
+	></app-material-select>
+
+        </form>
+
+        <mat-divider></mat-divider>
+
+		<mat-card-actions>
+			<form [formGroup]="attachmentForm" class="form-container">
+                <app-multi-file-upload [service] = "exchangeFormService" [id]="exchangeFormForm.get('id').value"
+                    formControlName = "attachmentFiles">
+                </app-multi-file-upload>
+            </form>
+            <button
+                type="submit"
+                (click)="onSubmit()"
+                [disabled]="exchangeFormForm.invalid"
+                mat-raised-button
+                color = "primary">
+             حفظ
+            </button>
+        </mat-card-actions>
+    </ng-template >
+</app-new-form-layout >
+

@@ -1,0 +1,142 @@
+
+<app-new-form-layout
+    dir="rtl"
+    (submitClicked) = "onSubmit()"
+    (back) = "onBack()"
+    [pageTitle] = "'علاوه تشجيعيه او علاه ترقيه'"
+>
+    <ng-template newFormContainer >
+        <form [formGroup] = "promotionalBonusForm">
+         
+
+	<mat-form-field appearance="outline">
+	 <mat-label>كود الموظف</mat-label>
+	 <input matInput formControlName="employeeCode"/>
+	 <mat-error *ngIf = "getControls('employeeCode').invalid" >
+	  {{ getControls('employeeCode')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>السنه</mat-label>
+	 <input matInput
+	  [matDatepicker] = "yearDatepicker"
+	  autocomplete = "off"
+	  formControlName= "year"/>
+	 <mat-datepicker-toggle
+	   matSuffix
+	   [for]="yearDatepicker"
+	 ></mat-datepicker-toggle>
+	 <mat-datepicker #yearDatepicker></mat-datepicker>
+	 <mat-error *ngIf = "getControls('year').invalid" >
+	  {{ getControls('year')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>الاجر الوظيفي</mat-label>
+	 <input matInput formControlName="employmentSalary"/>
+	 <mat-error *ngIf = "getControls('employmentSalary').invalid" >
+	  {{ getControls('employmentSalary')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>القيمه</mat-label>
+	 <input matInput formControlName="amount"/>
+	 <mat-error *ngIf = "getControls('amount').invalid" >
+	  {{ getControls('amount')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>النسبه</mat-label>
+	 <input matInput formControlName="ratio"/>
+	 <mat-error *ngIf = "getControls('ratio').invalid" >
+	  {{ getControls('ratio')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>رقم القرار</mat-label>
+	 <input matInput formControlName="decisionNumber"/>
+	 <mat-error *ngIf = "getControls('decisionNumber').invalid" >
+	  {{ getControls('decisionNumber')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>تاريخ القرار</mat-label>
+	 <input matInput
+	  [matDatepicker] = "decisionDateDatepicker"
+	  autocomplete = "off"
+	  formControlName= "decisionDate"/>
+	 <mat-datepicker-toggle
+	   matSuffix
+	   [for]="decisionDateDatepicker"
+	 ></mat-datepicker-toggle>
+	 <mat-datepicker #decisionDateDatepicker></mat-datepicker>
+	 <mat-error *ngIf = "getControls('decisionDate').invalid" >
+	  {{ getControls('decisionDate')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>تاريخ الاستحقاق</mat-label>
+	 <input matInput
+	  [matDatepicker] = "dueDateDatepicker"
+	  autocomplete = "off"
+	  formControlName= "dueDate"/>
+	 <mat-datepicker-toggle
+	   matSuffix
+	   [for]="dueDateDatepicker"
+	 ></mat-datepicker-toggle>
+	 <mat-datepicker #dueDateDatepicker></mat-datepicker>
+	 <mat-error *ngIf = "getControls('dueDate').invalid" >
+	  {{ getControls('dueDate')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>الاجر الوظيفي بعد العلاوه</mat-label>
+	 <input matInput formControlName="employmentSalaryWithBonus"/>
+	 <mat-error *ngIf = "getControls('employmentSalaryWithBonus').invalid" >
+	  {{ getControls('employmentSalaryWithBonus')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+         
+
+	<app-material-select appearance="outline"
+	  #financialDegree 
+	  [options] = "financialDegreeSelectOptions"
+	  formControlName = "financialDegree"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #bonus 
+	  [options] = "bonusSelectOptions"
+	  formControlName = "bonus"
+	></app-material-select>
+
+        </form>
+
+        <mat-divider></mat-divider>
+
+		<mat-card-actions>
+			<form [formGroup]="attachmentForm" class="form-container">
+                <app-multi-file-upload [service] = "promotionalBonusService" [id]="promotionalBonusForm.get('id').value"
+                    formControlName = "attachmentFiles">
+                </app-multi-file-upload>
+            </form>
+            <button
+                type="submit"
+                (click)="onSubmit()"
+                [disabled]="promotionalBonusForm.invalid"
+                mat-raised-button
+                color = "primary">
+             حفظ
+            </button>
+        </mat-card-actions>
+    </ng-template >
+</app-new-form-layout >
+

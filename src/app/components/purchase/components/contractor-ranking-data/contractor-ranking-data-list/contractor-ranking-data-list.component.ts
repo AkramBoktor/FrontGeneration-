@@ -48,7 +48,7 @@ classificationValueCodeSelectOptions: MaterialSelectOptions;
 	@ViewChild('classificationValueCode', { static: true }) ClassificationValueCodeSelectComponent: MaterialSelectComponent;
 
   
-  @Input() selectedContractorRankingData : ContractorRankingData;
+  @Input() selectedContractorRankingData: ContractorRankingData;
   // static: false --> very important
   @ViewChild('gridControl', { static: false }) grid: GridControlComponent;
 
@@ -81,7 +81,7 @@ classificationValueCodeSelectOptions: MaterialSelectOptions;
 
   ngOnInit(): void {
     this.initializeLookupServices();
-    this.selectedContractorRankingData  = new ContractorRankingData();
+    this.selectedContractorRankingData = new ContractorRankingData();
 
     
 	this.offeringTypeSelectOptions = new MaterialSelectOptions({

@@ -1,0 +1,60 @@
+
+<mat-card>
+    <mat-card-header>
+        <mat-card-title>القوائم المطلوب تجهيز جميع المدارس بها</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+        <form [formGroup]="theListsRequiredToEquipAllSchoolsForm" class="form-container">
+          
+
+	<mat-form-field appearance="outline">
+	 <mat-label>رقم المناقصة</mat-label>
+	 <input matInput formControlName="bidNumber"/>
+	 <mat-error *ngIf = "getControls('bidNumber').invalid" >
+	  {{ getControls('bidNumber')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>رقم القائمة</mat-label>
+	 <input matInput formControlName="listNumber"/>
+	 <mat-error *ngIf = "getControls('listNumber').invalid" >
+	  {{ getControls('listNumber')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+          
+
+	<app-material-select appearance="outline"
+	  #processingType 
+	  [options] = "processingTypeSelectOptions"
+	  formControlName = "processingType"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #offeringType 
+	  [options] = "offeringTypeSelectOptions"
+	  formControlName = "offeringType"
+	></app-material-select>
+
+        </form>
+    </mat-card-content>
+
+    <mat-divider></mat-divider>
+
+	<mat-card-actions>
+			<form [formGroup]="attachmentForm" class="form-container">
+                <app-multi-file-upload [service] = "theListsRequiredToEquipAllSchoolsService" [id]="theListsRequiredToEquipAllSchoolsForm.get('id').value"
+                    formControlName = "attachmentFiles">
+                </app-multi-file-upload>
+            </form>
+            <button
+                color = "primary"
+                type = "submit"
+                (click) = "onSubmit()"
+                [disabled] = "theListsRequiredToEquipAllSchoolsForm.invalid"
+                mat-raised-button>
+                حفظ
+            </button>
+    </mat-card-actions>
+</mat-card>
+

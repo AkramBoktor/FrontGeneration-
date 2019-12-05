@@ -1,0 +1,62 @@
+
+<mat-card>
+    <mat-card-header>
+        <mat-card-title>ادخال بيانات استماره 129 علي مستوي اداره</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+        <form [formGroup]="dataEntryForm129AtTheManagementLevelForm" class="form-container">
+          
+
+	<mat-form-field appearance="outline">
+	 <mat-label>شهر الوارد</mat-label>
+	 <input matInput
+	  [matDatepicker] = "incomingMonthDatepicker"
+	  autocomplete = "off"
+	  formControlName= "incomingMonth"/>
+	 <mat-datepicker-toggle
+	   matSuffix
+	   [for]="incomingMonthDatepicker"
+	 ></mat-datepicker-toggle>
+	 <mat-datepicker #incomingMonthDatepicker></mat-datepicker>
+	 <mat-error *ngIf = "getControls('incomingMonth').invalid" >
+	  {{ getControls('incomingMonth')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>رقم الوارد</mat-label>
+	 <input matInput formControlName="incomingNumber"/>
+	 <mat-error *ngIf = "getControls('incomingNumber').invalid" >
+	  {{ getControls('incomingNumber')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+          
+
+	<app-material-select appearance="outline"
+	  #administrationOrBranch 
+	  [options] = "administrationOrBranchSelectOptions"
+	  formControlName = "administrationOrBranch"
+	></app-material-select>
+
+        </form>
+    </mat-card-content>
+
+    <mat-divider></mat-divider>
+
+	<mat-card-actions>
+			<form [formGroup]="attachmentForm" class="form-container">
+                <app-multi-file-upload [service] = "dataEntryForm129AtTheManagementLevelService" [id]="dataEntryForm129AtTheManagementLevelForm.get('id').value"
+                    formControlName = "attachmentFiles">
+                </app-multi-file-upload>
+            </form>
+            <button
+                color = "primary"
+                type = "submit"
+                (click) = "onSubmit()"
+                [disabled] = "dataEntryForm129AtTheManagementLevelForm.invalid"
+                mat-raised-button>
+                حفظ
+            </button>
+    </mat-card-actions>
+</mat-card>
+

@@ -1,15 +1,18 @@
 
-import { Component, Injector, Input, OnInit, Optional, ViewChild } from '@angular/core';
-import { FormGroup, Validators } from '@angular/forms';
+import { Component,Input, OnInit, Optional, ViewChild, Injector } from '@angular/core';
+import { AbstractControl, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef } from '@angular/material';
+import { ActivatedRoute,Router } from '@angular/router';
 import { AppBaseComponent } from 'app/shared/base/app-base.component';
-import { MaterialSelectComponent } from 'app/shared/components/material-controls/material-select/material-select.component';
 import { FormControlError } from 'app/shared/models/controls/interfaces';
 import { MaterialSelectOptions } from 'app/shared/models/controls/material-select.model';
+import { startWith } from 'rxjs/operators';
+import { MaterialSelectComponent } from 'app/shared/components/material-controls/material-select/material-select.component';
 import { ReturnDocumentBookWithBorrowerNumber } from 'app/shared/models/return-document-book-with-borrower-number';
+import { ValidatorFunctions } from 'app/shared/validations/validator-functions';
+import { ReturnDocumentBookWithBorrowerNumberService } from '../shared/return-document-book-with-borrower-number.service';
 import { LookupService } from 'app/shared/pages/lookup-form/lookup.service';
 import { switchMap } from 'rxjs/operators';
-import { ReturnDocumentBookWithBorrowerNumberService } from '../shared/return-document-book-with-borrower-number.service';
 
 
 @Component({
@@ -69,14 +72,14 @@ jobBorrowerSelectOptions: MaterialSelectOptions;
      
   id : [0],
   borrowerNumber : [this.selectedReturnDocumentBookWithBorrowerNumber.borrowerNumber, [ Validators.required ]],
-  bookNumber : [this.selectedReturnDocumentBookWithBorrowerNumber.bookNumber, [ ]],
-  receiptNumber : [this.selectedReturnDocumentBookWithBorrowerNumber.receiptNumber, [ ]],
+  bookNumber : [this.selectedReturnDocumentBookWithBorrowerNumber.bookNumber, [ Validators.required ]],
+  receiptNumber : [this.selectedReturnDocumentBookWithBorrowerNumber.receiptNumber, [ Validators.required ]],
   defaultReturnDate : [this.selectedReturnDocumentBookWithBorrowerNumber.defaultReturnDate, [ ]],
   returnBookDate : [this.selectedReturnDocumentBookWithBorrowerNumber.returnBookDate, [ ]],
   loanDuration : [this.selectedReturnDocumentBookWithBorrowerNumber.loanDuration, [ ]],
   loanStartDate : [this.selectedReturnDocumentBookWithBorrowerNumber.loanStartDate, [ ]],
-  administration : [this.selectedReturnDocumentBookWithBorrowerNumber.administration, [ ]],
-  jobBorrower : [this.selectedReturnDocumentBookWithBorrowerNumber.jobBorrower, [ ]]
+  administration : [this.selectedReturnDocumentBookWithBorrowerNumber.administration, [ Validators.required ]],
+  jobBorrower : [this.selectedReturnDocumentBookWithBorrowerNumber.jobBorrower, [ Validators.required ]]
    }, {
 	  validators: [ ]
       });

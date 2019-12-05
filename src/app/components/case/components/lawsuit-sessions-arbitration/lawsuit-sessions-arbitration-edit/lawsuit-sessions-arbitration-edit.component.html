@@ -17,7 +17,7 @@
 
 	<mat-form-field appearance="outline">
 	 <mat-label>رقم التحكيم</mat-label>
-	 <input matInput formControlName="arbitrationNumber" [disableControl]="true" />
+	 <input matInput formControlName="arbitrationNumber"  [disableControl]="false" />
 	 <mat-error *ngIf = "getControls('arbitrationNumber').invalid" >
 	  {{ getControls('arbitrationNumber')| getErrorMessages : errorMessages}}
 	  </mat-error>
@@ -26,7 +26,7 @@
 	<mat-form-field appearance="outline">
 	 <mat-label>لسنة</mat-label>
 	 <input matInput
-	 [disableControl]="true" 
+	  [disableControl]="false" 
 	  [matDatepicker] = "yearDatepicker"
 	  autocomplete = "off"
 	  formControlName= "year"/>

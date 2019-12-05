@@ -1,0 +1,116 @@
+
+<mat-card>
+    <mat-card-header>
+        <mat-card-title>برنامج ادخال الحضانات</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+        <form [formGroup]="incubationProgramForm" class="form-container">
+          
+
+	<mat-form-field appearance="outline">
+	 <mat-label>رقم المبني </mat-label>
+	 <input matInput formControlName="buildingNumber"/>
+	 <mat-error *ngIf = "getControls('buildingNumber').invalid" >
+	  {{ getControls('buildingNumber')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>اسم المبني</mat-label>
+	 <input matInput formControlName="buildingName"/>
+	 <mat-error *ngIf = "getControls('buildingName').invalid" >
+	  {{ getControls('buildingName')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>اسم الشارع</mat-label>
+	 <input matInput formControlName="streetName"/>
+	 <mat-error *ngIf = "getControls('streetName').invalid" >
+	  {{ getControls('streetName')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>رقم التليفون</mat-label>
+	 <input matInput formControlName="phoneNumber"/>
+	 <mat-error *ngIf = "getControls('phoneNumber').invalid" >
+	  {{ getControls('phoneNumber')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>سن القبول</mat-label>
+	 <input matInput formControlName="admissionAge"/>
+	 <mat-error *ngIf = "getControls('admissionAge').invalid" >
+	  {{ getControls('admissionAge')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>احداثيات </mat-label>
+	 <input matInput formControlName="coordinates"/>
+	 <mat-error *ngIf = "getControls('coordinates').invalid" >
+	  {{ getControls('coordinates')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+          
+
+	<app-material-select appearance="outline"
+	  #department 
+	  [options] = "departmentSelectOptions"
+	  formControlName = "department"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #village 
+	  [options] = "villageSelectOptions"
+	  formControlName = "village"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #followed 
+	  [options] = "followedSelectOptions"
+	  formControlName = "followed"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #landOwnership 
+	  [options] = "landOwnershipSelectOptions"
+	  formControlName = "landOwnership"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #buildingOwnership 
+	  [options] = "buildingOwnershipSelectOptions"
+	  formControlName = "buildingOwnership"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #usePosition 
+	  [options] = "usePositionSelectOptions"
+	  formControlName = "usePosition"
+	></app-material-select>
+
+        </form>
+    </mat-card-content>
+
+    <mat-divider></mat-divider>
+
+	<mat-card-actions>
+			<form [formGroup]="attachmentForm" class="form-container">
+                <app-multi-file-upload [service] = "incubationProgramService" [id]="incubationProgramForm.get('id').value"
+                    formControlName = "attachmentFiles">
+                </app-multi-file-upload>
+            </form>
+            <button
+                color = "primary"
+                type = "submit"
+                (click) = "onSubmit()"
+                [disabled] = "incubationProgramForm.invalid"
+                mat-raised-button>
+                حفظ
+            </button>
+    </mat-card-actions>
+</mat-card>
+

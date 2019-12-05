@@ -1,0 +1,70 @@
+
+<app-new-form-layout
+    dir="rtl"
+    (submitClicked) = "onSubmit()"
+    (back) = "onBack()"
+    [pageTitle] = "'مرتب البنك'"
+>
+    <ng-template newFormContainer >
+        <form [formGroup] = "bankSalaryForm">
+         
+
+	<mat-form-field appearance="outline">
+	 <mat-label>كود الموظف</mat-label>
+	 <input matInput formControlName="employeeCode"/>
+	 <mat-error *ngIf = "getControls('employeeCode').invalid" >
+	  {{ getControls('employeeCode')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>البنك</mat-label>
+	 <input matInput formControlName="bank"/>
+	 <mat-error *ngIf = "getControls('bank').invalid" >
+	  {{ getControls('bank')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>رقم الحساب</mat-label>
+	 <input matInput formControlName="accountNumber"/>
+	 <mat-error *ngIf = "getControls('accountNumber').invalid" >
+	  {{ getControls('accountNumber')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+         
+
+	<app-material-select appearance="outline"
+	  #select 
+	  [options] = "selectSelectOptions"
+	  formControlName = "select"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #bankCode 
+	  [options] = "bankCodeSelectOptions"
+	  formControlName = "bankCode"
+	></app-material-select>
+
+        </form>
+
+        <mat-divider></mat-divider>
+
+		<mat-card-actions>
+			<form [formGroup]="attachmentForm" class="form-container">
+                <app-multi-file-upload [service] = "bankSalaryService" [id]="bankSalaryForm.get('id').value"
+                    formControlName = "attachmentFiles">
+                </app-multi-file-upload>
+            </form>
+            <button
+                type="submit"
+                (click)="onSubmit()"
+                [disabled]="bankSalaryForm.invalid"
+                mat-raised-button
+                color = "primary">
+             حفظ
+            </button>
+        </mat-card-actions>
+    </ng-template >
+</app-new-form-layout >
+

@@ -1,0 +1,76 @@
+
+<app-search-list-expansion-panel
+    dir="rtl"
+    [pageTitle] = "'تاريخ اخر صيانة'"
+    (beginSearch) = "onBeginSearch()"
+    (create) = "onCreate()"
+>
+    <ng-template searchFormContainer >
+        <form [formGroup] = "searchForm">
+           
+
+	<mat-form-field appearance="outline">
+	 <mat-label>رقم المعدة</mat-label>
+	 <input matInput formControlName="equipmentNumber"/>
+	 <mat-error *ngIf = "getControls('equipmentNumber').invalid" >
+	  {{ getControls('equipmentNumber')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>بند الصيانة الرأيسية</mat-label>
+	 <input matInput formControlName="mainMaintenanceItem"/>
+	 <mat-error *ngIf = "getControls('mainMaintenanceItem').invalid" >
+	  {{ getControls('mainMaintenanceItem')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>تاريخ اخر صيانة</mat-label>
+	 <input matInput
+	  [matDatepicker] = "lastDateMaintenanceDatepicker"
+	  autocomplete = "off"
+	  formControlName= "lastDateMaintenance"/>
+	 <mat-datepicker-toggle
+	   matSuffix
+	   [for]="lastDateMaintenanceDatepicker"
+	 ></mat-datepicker-toggle>
+	 <mat-datepicker #lastDateMaintenanceDatepicker></mat-datepicker>
+	 <mat-error *ngIf = "getControls('lastDateMaintenance').invalid" >
+	  {{ getControls('lastDateMaintenance')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+           
+
+	<app-material-select appearance="outline"
+	  #buildingType 
+	  [options] = "buildingTypeSelectOptions"
+	  formControlName = "buildingType"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #equipmentGroup 
+	  [options] = "equipmentGroupSelectOptions"
+	  formControlName = "equipmentGroup"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #equipmentType 
+	  [options] = "equipmentTypeSelectOptions"
+	  formControlName = "equipmentType"
+	></app-material-select>
+
+        </form>
+    </ng-template >
+    <ng-template searchResultContainer >
+        <app-grid-control
+            #gridControl
+            [rowDataService] = "getLastMaintenanceDatePaginatedSortedFiltered"
+            [columnOptions] = "columnOptions"
+            [gridHeaderOptions] = "gridHeaderOptions"
+            [searchInput] = "searchForm.value"
+            (deleteRow) = "onDeleteClicked($event)"
+        >
+        </app-grid-control>
+    </ng-template>
+</app-search-list-expansion-panel >

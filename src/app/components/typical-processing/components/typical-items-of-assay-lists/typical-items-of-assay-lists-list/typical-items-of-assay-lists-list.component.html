@@ -1,0 +1,78 @@
+
+<app-search-list-expansion-panel
+    dir="rtl"
+    [pageTitle] = "'بنود قوائم المقايسة'"
+    (beginSearch) = "onBeginSearch()"
+    (create) = "onCreate()"
+>
+    <ng-template searchFormContainer >
+        <form [formGroup] = "searchForm">
+           
+
+	<mat-form-field appearance="outline">
+	 <mat-label>القيمة التقديرية</mat-label>
+	 <input matInput formControlName="estimatedValue"/>
+	 <mat-error *ngIf = "getControls('estimatedValue').invalid" >
+	  {{ getControls('estimatedValue')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>كمية البند</mat-label>
+	 <input matInput formControlName="itemQuantity"/>
+	 <mat-error *ngIf = "getControls('itemQuantity').invalid" >
+	  {{ getControls('itemQuantity')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>رقم القائمة</mat-label>
+	 <input matInput formControlName="listNumber"/>
+	 <mat-error *ngIf = "getControls('listNumber').invalid" >
+	  {{ getControls('listNumber')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>رقم المقايسة</mat-label>
+	 <input matInput formControlName="assayNumber"/>
+	 <mat-error *ngIf = "getControls('assayNumber').invalid" >
+	  {{ getControls('assayNumber')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>رقم البند</mat-label>
+	 <input matInput formControlName="itemNo"/>
+	 <mat-error *ngIf = "getControls('itemNo').invalid" >
+	  {{ getControls('itemNo')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+           
+
+	<app-material-select appearance="outline"
+	  #offeringMethod 
+	  [options] = "offeringMethodSelectOptions"
+	  formControlName = "offeringMethod"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #processingType 
+	  [options] = "processingTypeSelectOptions"
+	  formControlName = "processingType"
+	></app-material-select>
+
+        </form>
+    </ng-template >
+    <ng-template searchResultContainer >
+        <app-grid-control
+            #gridControl
+            [rowDataService] = "getTypicalItemsOfAssayListsPaginatedSortedFiltered"
+            [columnOptions] = "columnOptions"
+            [gridHeaderOptions] = "gridHeaderOptions"
+            [searchInput] = "searchForm.value"
+            (deleteRow) = "onDeleteClicked($event)"
+        >
+        </app-grid-control>
+    </ng-template>
+</app-search-list-expansion-panel >

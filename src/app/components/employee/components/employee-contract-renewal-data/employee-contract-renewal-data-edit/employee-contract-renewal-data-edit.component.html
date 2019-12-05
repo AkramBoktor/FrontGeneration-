@@ -18,7 +18,7 @@
 	<mat-form-field appearance="outline">
 	 <mat-label>تاريخ استلام العمل</mat-label>
 	 <input matInput
-	 [disableControl]="true" 
+	  [disableControl]="false" 
 	  [matDatepicker] = "receiptDateDatepicker"
 	  autocomplete = "off"
 	  formControlName= "receiptDate"/>
@@ -50,7 +50,7 @@
 
 	<mat-form-field appearance="outline">
 	 <mat-label>مده فتره التجديد</mat-label>
-	 <input matInput formControlName="renewalPeriod" [disableControl]="true" />
+	 <input matInput formControlName="renewalPeriod"  [disableControl]="false" />
 	 <mat-error *ngIf = "getControls('renewalPeriod').invalid" >
 	  {{ getControls('renewalPeriod')| getErrorMessages : errorMessages}}
 	  </mat-error>
@@ -58,7 +58,7 @@
 
 	<mat-form-field appearance="outline">
 	 <mat-label>رقم الفترة السابقة</mat-label>
-	 <input matInput formControlName="prePeriodNumber" [disableControl]="true" />
+	 <input matInput formControlName="prePeriodNumber"  [disableControl]="false" />
 	 <mat-error *ngIf = "getControls('prePeriodNumber').invalid" >
 	  {{ getControls('prePeriodNumber')| getErrorMessages : errorMessages}}
 	  </mat-error>
@@ -67,7 +67,7 @@
 	<mat-form-field appearance="outline">
 	 <mat-label>تاريخ بداية الفترة السابقة</mat-label>
 	 <input matInput
-	 [disableControl]="true" 
+	  [disableControl]="false" 
 	  [matDatepicker] = "prePeriodStartingDateDatepicker"
 	  autocomplete = "off"
 	  formControlName= "prePeriodStartingDate"/>
@@ -84,7 +84,7 @@
 	<mat-form-field appearance="outline">
 	 <mat-label>تاريخ نهاية الفترة السابقة</mat-label>
 	 <input matInput
-	 [disableControl]="true" 
+	  [disableControl]="false" 
 	  [matDatepicker] = "prePeriodEndDateDatepicker"
 	  autocomplete = "off"
 	  formControlName= "prePeriodEndDate"/>
@@ -100,7 +100,7 @@
 
 	<mat-form-field appearance="outline">
 	 <mat-label>مدة الفترة</mat-label>
-	 <input matInput formControlName="durationPeriod" [disableControl]="true" />
+	 <input matInput formControlName="durationPeriod"  [disableControl]="false" />
 	 <mat-error *ngIf = "getControls('durationPeriod').invalid" >
 	  {{ getControls('durationPeriod')| getErrorMessages : errorMessages}}
 	  </mat-error>
@@ -108,7 +108,7 @@
 
 	<mat-form-field appearance="outline">
 	 <mat-label>رقم الفترة الجديدة</mat-label>
-	 <input matInput formControlName="newPeriodNumber" [disableControl]="true" />
+	 <input matInput formControlName="newPeriodNumber"  [disableControl]="false" />
 	 <mat-error *ngIf = "getControls('newPeriodNumber').invalid" >
 	  {{ getControls('newPeriodNumber')| getErrorMessages : errorMessages}}
 	  </mat-error>

@@ -67,11 +67,11 @@ offeringTypeSelectOptions: MaterialSelectOptions;
   engineerName : [this.selectedProjectPeriods.engineerName],
   siteDeliveryDate : [this.selectedProjectPeriods.siteDeliveryDate],
   executionDuration : [this.selectedProjectPeriods.executionDuration],
-  extensionTimes : [this.selectedProjectPeriods.extensionTimes],
-  referenceNumber : [this.selectedProjectPeriods.referenceNumber],
+  referenceCode : [this.selectedProjectPeriods.referenceCode],
   referencesName : [this.selectedProjectPeriods.referencesName],
   extensionDays : [this.selectedProjectPeriods.extensionDays],
   beganStopDate : [this.selectedProjectPeriods.beganStopDate],
+  extensionTimes : [this.selectedProjectPeriods.extensionTimes],
   governorate : [this.selectedProjectPeriods.governorate],
   offeringType : [this.selectedProjectPeriods.offeringType]
       });

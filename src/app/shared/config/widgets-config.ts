@@ -546,13 +546,13 @@ export const widgetConfig: Widget[] = [
                     name: 'برنامج الخريطه المدرسيه فروع'
                     , class: 'red-fg'
                     , icon: 'access_time'
-                    , url: '-school-branches-map'
+                    , url: 'school-branches-map'
                 }
                     , {
                     name: 'الاراضى فروع'
                     , class: 'red-fg'
                     , icon: 'access_time'
-                    , url: 'land-branch-'
+                    , url: 'landbranch'
                 }]
             }]
         }, {
@@ -725,7 +725,7 @@ export const widgetConfig: Widget[] = [
                     name: 'برنامج المقايسة - قائمة المقايسات - أكواد النظام الفرعي للمقايسات'
                     , class: 'red-fg'
                     , icon: 'access_time'
-                    , url: 'assay-assay-list-standardization-subsystem-code'
+                    , url: 'assay-list-subsystem-code'
                 }
                     , {
                     name: 'برنامج المقايسة - النظام الفرعي للمقايسات'

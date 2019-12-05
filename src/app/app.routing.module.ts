@@ -15,6 +15,12 @@ const routes: Routes = [
                 path: 'lookup', loadChildren: './shared/pages/lookup-form/lookup-form.module#LookupFormModule',
             },
             {
+                path: 'profile', loadChildren: './shared/pages/profile/profile.module#ProfileModule',
+                data: {
+                    menuName: 'profile'
+                }
+            },
+            {
                 path: 'vacation', loadChildren: './components/vacation/vacation.module#VacationModule',
                 data: {
                     menuName: 'vacation'

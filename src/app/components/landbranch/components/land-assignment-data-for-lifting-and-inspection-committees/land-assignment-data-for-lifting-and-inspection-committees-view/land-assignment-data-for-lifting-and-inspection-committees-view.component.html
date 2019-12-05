@@ -1,0 +1,94 @@
+
+<mat-card class="form-card">
+      <mat-card-header>
+  
+          <mat-card-title>
+              بيانات اسناد الاراضى للجان الرفع والمعاينة
+          </mat-card-title>
+  
+      </mat-card-header>
+  
+      <mat-card-content>
+  
+        <form [formGroup] = "landAssignmentDataForLiftingAndInspectionCommitteesForm" class="form-container">
+         
+
+	<mat-form-field appearance="outline">
+	 <mat-label>تاريخ التشكيل</mat-label>
+	 <input matInput
+	  [matDatepicker] = "formationDateDatepicker"
+	  autocomplete = "off"
+	  formControlName= "formationDate"/>
+	 <mat-datepicker-toggle
+	   matSuffix
+	   [for]="formationDateDatepicker"
+	 ></mat-datepicker-toggle>
+	 <mat-datepicker #formationDateDatepicker></mat-datepicker>
+	 <mat-error *ngIf = "getControls('formationDate').invalid" >
+	  {{ getControls('formationDate')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>رقم اللجنة</mat-label>
+	 <input matInput formControlName="committeeNumber"/>
+	 <mat-error *ngIf = "getControls('committeeNumber').invalid" >
+	  {{ getControls('committeeNumber')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>رقم قطعة الارض</mat-label>
+	 <input matInput formControlName="landNumber"/>
+	 <mat-error *ngIf = "getControls('landNumber').invalid" >
+	  {{ getControls('landNumber')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>اسم قطعة الارض</mat-label>
+	 <input matInput formControlName="landName"/>
+	 <mat-error *ngIf = "getControls('landName').invalid" >
+	  {{ getControls('landName')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>تاريخ الاسناد</mat-label>
+	 <input matInput
+	  [matDatepicker] = "referenceDateDatepicker"
+	  autocomplete = "off"
+	  formControlName= "referenceDate"/>
+	 <mat-datepicker-toggle
+	   matSuffix
+	   [for]="referenceDateDatepicker"
+	 ></mat-datepicker-toggle>
+	 <mat-datepicker #referenceDateDatepicker></mat-datepicker>
+	 <mat-error *ngIf = "getControls('referenceDate').invalid" >
+	  {{ getControls('referenceDate')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+         
+
+	<app-material-select appearance="outline"
+	  #committeeType 
+	  [options] = "committeeTypeSelectOptions"
+	  formControlName = "committeeType"
+	></app-material-select>
+        </form>
+  
+      </mat-card-content >
+  
+      <mat-action-row>
+            <form [formGroup]="attachmentForm" class="form-container">
+                <app-multi-file-upload [service] = "landAssignmentDataForLiftingAndInspectionCommitteesService" [id]="landAssignmentDataForLiftingAndInspectionCommitteesForm.get('id').value"
+                    formControlName = "attachmentFiles">
+                </app-multi-file-upload>
+            </form>
+            <button (click) = "onConfirm()" mat-raised-button color = "primary" >
+                غلق
+            </button>
+        </mat-action-row>
+    </mat-card>
+
+    

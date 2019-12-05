@@ -40,7 +40,7 @@
 	<mat-form-field appearance="outline">
 	 <mat-label>سنه الخطه</mat-label>
 	 <input matInput
-	 [disableControl]="true" 
+	 [disableControl]="false" 
 	  [matDatepicker] = "yearPlanDatepicker"
 	  autocomplete = "off"
 	  formControlName= "yearPlan"/>
@@ -56,7 +56,7 @@
 
 	<mat-form-field appearance="outline">
 	 <mat-label>رقم المناقصه</mat-label>
-	 <input matInput formControlName="bidNumber" [disableControl]="true" />
+	 <input matInput formControlName="bidNumber" [disableControl]="false" />
 	 <mat-error *ngIf = "getControls('bidNumber').invalid" >
 	  {{ getControls('bidNumber')| getErrorMessages : errorMessages}}
 	  </mat-error>

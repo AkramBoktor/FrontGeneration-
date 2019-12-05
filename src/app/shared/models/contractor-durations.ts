@@ -8,17 +8,16 @@
 	periodTo: Date;
 	reasonCode: number;
 	extension: string;
-	bidNumber: number;
+	bidNumber: string;
 	contractorCode: string;
 	contractorName: string;
 	engineerName: string;
-	executionDuration: number;
+	executionDuration: string;
 	referencesName: string;
 	engineerCode: string;
 	siteDeliveryDate: Date;
 	referenceCode: string;
-	governorateName: string;
-	supervisorEngineerCode: string;
+	governorateName: number;
 	constructor(arg?: ContractorDurations) {
         if (arg) {
             for (const property in arg) {

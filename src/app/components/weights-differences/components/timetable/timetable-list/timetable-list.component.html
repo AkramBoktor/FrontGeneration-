@@ -1,0 +1,74 @@
+
+<app-search-list-expansion-panel
+    dir="rtl"
+    [pageTitle] = "'الجدول الزمني'"
+    (beginSearch) = "onBeginSearch()"
+    (create) = "onCreate()"
+>
+    <ng-template searchFormContainer >
+        <form [formGroup] = "searchForm">
+           
+
+	<mat-form-field appearance="outline">
+	 <mat-label>رقم الجدول</mat-label>
+	 <input matInput formControlName="tableTumber"/>
+	 <mat-error *ngIf = "getControls('tableTumber').invalid" >
+	  {{ getControls('tableTumber')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>رقم النشاط</mat-label>
+	 <input matInput formControlName="activityNumber"/>
+	 <mat-error *ngIf = "getControls('activityNumber').invalid" >
+	  {{ getControls('activityNumber')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>التاريخ من</mat-label>
+	 <input matInput
+	  [matDatepicker] = "fromDateDatepicker"
+	  autocomplete = "off"
+	  formControlName= "fromDate"/>
+	 <mat-datepicker-toggle
+	   matSuffix
+	   [for]="fromDateDatepicker"
+	 ></mat-datepicker-toggle>
+	 <mat-datepicker #fromDateDatepicker></mat-datepicker>
+	 <mat-error *ngIf = "getControls('fromDate').invalid" >
+	  {{ getControls('fromDate')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>التاريخ الي</mat-label>
+	 <input matInput
+	  [matDatepicker] = "toDateDatepicker"
+	  autocomplete = "off"
+	  formControlName= "toDate"/>
+	 <mat-datepicker-toggle
+	   matSuffix
+	   [for]="toDateDatepicker"
+	 ></mat-datepicker-toggle>
+	 <mat-datepicker #toDateDatepicker></mat-datepicker>
+	 <mat-error *ngIf = "getControls('toDate').invalid" >
+	  {{ getControls('toDate')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+           
+
+        </form>
+    </ng-template >
+    <ng-template searchResultContainer >
+        <app-grid-control
+            #gridControl
+            [rowDataService] = "getTimetablesPaginatedSortedFiltered"
+            [columnOptions] = "columnOptions"
+            [gridHeaderOptions] = "gridHeaderOptions"
+            [searchInput] = "searchForm.value"
+            (deleteRow) = "onDeleteClicked($event)"
+        >
+        </app-grid-control>
+    </ng-template>
+</app-search-list-expansion-panel >

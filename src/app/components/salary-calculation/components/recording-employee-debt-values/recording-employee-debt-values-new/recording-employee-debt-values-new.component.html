@@ -1,0 +1,64 @@
+
+<app-new-form-layout
+    dir="rtl"
+    (submitClicked) = "onSubmit()"
+    (back) = "onBack()"
+    [pageTitle] = "'تسجيل قيم الدين الخاصه بالموظفين'"
+>
+    <ng-template newFormContainer >
+        <form [formGroup] = "recordingEmployeeDebtValuesForm">
+         
+
+	<mat-form-field appearance="outline">
+	 <mat-label>رقم التصويب</mat-label>
+	 <input matInput formControlName="correctionNumber"/>
+	 <mat-error *ngIf = "getControls('correctionNumber').invalid" >
+	  {{ getControls('correctionNumber')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>كود الموظف</mat-label>
+	 <input matInput formControlName="employeeCode"/>
+	 <mat-error *ngIf = "getControls('employeeCode').invalid" >
+	  {{ getControls('employeeCode')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>قيمه الخصم</mat-label>
+	 <input matInput formControlName="discountValue"/>
+	 <mat-error *ngIf = "getControls('discountValue').invalid" >
+	  {{ getControls('discountValue')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+         
+
+	<app-material-select appearance="outline"
+	  #discountType 
+	  [options] = "discountTypeSelectOptions"
+	  formControlName = "discountType"
+	></app-material-select>
+
+        </form>
+
+        <mat-divider></mat-divider>
+
+		<mat-card-actions>
+			<form [formGroup]="attachmentForm" class="form-container">
+                <app-multi-file-upload [service] = "recordingEmployeeDebtValuesService" [id]="recordingEmployeeDebtValuesForm.get('id').value"
+                    formControlName = "attachmentFiles">
+                </app-multi-file-upload>
+            </form>
+            <button
+                type="submit"
+                (click)="onSubmit()"
+                [disabled]="recordingEmployeeDebtValuesForm.invalid"
+                mat-raised-button
+                color = "primary">
+             حفظ
+            </button>
+        </mat-card-actions>
+    </ng-template >
+</app-new-form-layout >
+

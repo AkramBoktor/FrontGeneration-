@@ -1,0 +1,48 @@
+
+<mat-card class="form-card">
+      <mat-card-header>
+  
+          <mat-card-title>
+              كود ممثل الشركات المعتمده
+          </mat-card-title>
+  
+      </mat-card-header>
+  
+      <mat-card-content>
+  
+        <form [formGroup] = "codeOfApprovedCompaniesRepresentativeForm" class="form-container">
+         
+
+	<mat-form-field appearance="outline">
+	 <mat-label>كود الصفة</mat-label>
+	 <input matInput formControlName="objectiveCode"/>
+	 <mat-error *ngIf = "getControls('objectiveCode').invalid" >
+	  {{ getControls('objectiveCode')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>اسم الصفة</mat-label>
+	 <input matInput formControlName="objectiveName"/>
+	 <mat-error *ngIf = "getControls('objectiveName').invalid" >
+	  {{ getControls('objectiveName')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+         
+        </form>
+  
+      </mat-card-content >
+  
+      <mat-action-row>
+            <form [formGroup]="attachmentForm" class="form-container">
+                <app-multi-file-upload [service] = "codeOfApprovedCompaniesRepresentativeService" [id]="codeOfApprovedCompaniesRepresentativeForm.get('id').value"
+                    formControlName = "attachmentFiles">
+                </app-multi-file-upload>
+            </form>
+            <button (click) = "onConfirm()" mat-raised-button color = "primary" >
+                غلق
+            </button>
+        </mat-action-row>
+    </mat-card>
+
+    

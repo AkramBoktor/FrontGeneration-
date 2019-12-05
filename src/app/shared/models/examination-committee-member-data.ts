@@ -3,9 +3,9 @@
     id: number;
     
 	offeringType: number;
-	bidNumber: number;
+	bidNumber: string;
 	meetingNumber: number;
-	serialMember: number;
+	serialMember: string;
 	memberType: number;
 	memberName: string;
 	constructor(arg?: ExaminationCommitteeMemberData) {

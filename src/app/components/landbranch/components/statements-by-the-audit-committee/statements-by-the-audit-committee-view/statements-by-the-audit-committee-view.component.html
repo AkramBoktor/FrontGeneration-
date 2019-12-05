@@ -1,0 +1,56 @@
+
+<mat-card class="form-card">
+      <mat-card-header>
+  
+          <mat-card-title>
+              بيانات ملاحظات لجنة المراجعة
+          </mat-card-title>
+  
+      </mat-card-header>
+  
+      <mat-card-content>
+  
+        <form [formGroup] = "statementsByTheAuditCommitteeForm" class="form-container">
+         
+
+	<mat-form-field appearance="outline">
+	 <mat-label>كود قطعة الارض</mat-label>
+	 <input matInput formControlName="landID"/>
+	 <mat-error *ngIf = "getControls('landID').invalid" >
+	  {{ getControls('landID')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>رقم اللجنة</mat-label>
+	 <input matInput formControlName="committeeNumber"/>
+	 <mat-error *ngIf = "getControls('committeeNumber').invalid" >
+	  {{ getControls('committeeNumber')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>كود ملاحظة المراجعة</mat-label>
+	 <input matInput formControlName="reviewNoteCode"/>
+	 <mat-error *ngIf = "getControls('reviewNoteCode').invalid" >
+	  {{ getControls('reviewNoteCode')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+         
+        </form>
+  
+      </mat-card-content >
+  
+      <mat-action-row>
+            <form [formGroup]="attachmentForm" class="form-container">
+                <app-multi-file-upload [service] = "statementsByTheAuditCommitteeService" [id]="statementsByTheAuditCommitteeForm.get('id').value"
+                    formControlName = "attachmentFiles">
+                </app-multi-file-upload>
+            </form>
+            <button (click) = "onConfirm()" mat-raised-button color = "primary" >
+                غلق
+            </button>
+        </mat-action-row>
+    </mat-card>
+
+    

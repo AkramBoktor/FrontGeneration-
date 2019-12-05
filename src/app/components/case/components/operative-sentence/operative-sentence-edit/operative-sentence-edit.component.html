@@ -17,7 +17,7 @@
 
 	<mat-form-field appearance="outline">
 	 <mat-label>اسم الجهة</mat-label>
-	 <input matInput formControlName="entityName" [disableControl]="true" />
+	 <input matInput formControlName="entityName"  [disableControl]="false" />
 	 <mat-error *ngIf = "getControls('entityName').invalid" >
 	  {{ getControls('entityName')| getErrorMessages : errorMessages}}
 	  </mat-error>

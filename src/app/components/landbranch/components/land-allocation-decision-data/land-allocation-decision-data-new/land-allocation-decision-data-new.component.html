@@ -1,0 +1,72 @@
+
+<app-new-form-layout
+    dir="rtl"
+    (submitClicked) = "onSubmit()"
+    (back) = "onBack()"
+    [pageTitle] = "'بيانات قرار التخصيص لقطعة ارض'"
+>
+    <ng-template newFormContainer >
+        <form [formGroup] = "landAllocationDecisionDataForm">
+         
+
+	<mat-form-field appearance="outline">
+	 <mat-label>الرقم التعريفى</mat-label>
+	 <input matInput formControlName="landID"/>
+	 <mat-error *ngIf = "getControls('landID').invalid" >
+	  {{ getControls('landID')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>رقم التخصيص</mat-label>
+	 <input matInput formControlName="allocationNumber"/>
+	 <mat-error *ngIf = "getControls('allocationNumber').invalid" >
+	  {{ getControls('allocationNumber')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>تاريخ التخصيص</mat-label>
+	 <input matInput
+	  [matDatepicker] = "allocationDateDatepicker"
+	  autocomplete = "off"
+	  formControlName= "allocationDate"/>
+	 <mat-datepicker-toggle
+	   matSuffix
+	   [for]="allocationDateDatepicker"
+	 ></mat-datepicker-toggle>
+	 <mat-datepicker #allocationDateDatepicker></mat-datepicker>
+	 <mat-error *ngIf = "getControls('allocationDate').invalid" >
+	  {{ getControls('allocationDate')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+         
+
+	<app-material-select appearance="outline"
+	  #allocationTypeCode 
+	  [options] = "allocationTypeCodeSelectOptions"
+	  formControlName = "allocationTypeCode"
+	></app-material-select>
+
+        </form>
+
+        <mat-divider></mat-divider>
+
+		<mat-card-actions>
+			<form [formGroup]="attachmentForm" class="form-container">
+                <app-multi-file-upload [service] = "landAllocationDecisionDataService" [id]="landAllocationDecisionDataForm.get('id').value"
+                    formControlName = "attachmentFiles">
+                </app-multi-file-upload>
+            </form>
+            <button
+                type="submit"
+                (click)="onSubmit()"
+                [disabled]="landAllocationDecisionDataForm.invalid"
+                mat-raised-button
+                color = "primary">
+             حفظ
+            </button>
+        </mat-card-actions>
+    </ng-template >
+</app-new-form-layout >
+
