@@ -4170,90 +4170,6 @@ export const listMenuConfig: ListMenuConfig = {
             ]
         }
     ],
-    'health-units-ministry': [
-        {
-            id: 'health-units-ministry',
-            title: 'برنامج الوحدات الصحية وزارة التضامن هيئة البريد',
-            type: 'group',
-            icon: 'app',
-            children: [
-                {
-                    id: 'Health Units Ministry Config',
-                    title: 'الأعدادات',
-                    type: 'collapsable',
-                    icon: 'build',
-                    children: [
-                        {
-                            id: 'entitynames',
-                            title: 'اسم الجهة وحدات صحة',
-                            type: 'item',
-                            url: '/lookup/entitynames',
-                            exactMatch: true
-                        },
-                        {
-                            id: 'governorates',
-                            title: 'المحافظة',
-                            type: 'item',
-                            url: '/lookup/governorates',
-                            exactMatch: true
-                        },
-                        {
-                            id: 'sectionsorcenters',
-                            title: 'مركز/القسم‎',
-                            type: 'item',
-                            url: '/lookup/sectionsorcenters',
-                            exactMatch: true
-                        },
-                        {
-                            id: 'servicetypes',
-                            title: 'نوع الخدمة وحدات صحية',
-                            type: 'item',
-                            url: '/lookup/servicetypes',
-                            exactMatch: true
-                        }
-                    ]
-                },
-                {
-                    id: 'Health Units Ministry Program',
-                    title: 'البرامج',
-                    type: 'collapsable',
-                    icon: 'apps',
-                    children: [
-                        {
-                            id: 'new service request',
-                            title: ' طلب خدمة جديد',
-                            type: 'item',
-                            url: '/health-units-ministry/new-service-request',
-                            exactMatch: true
-                        },
-                        {
-                            id: 'required services',
-                            title: 'الخدمات المطلوبة',
-                            type: 'item',
-                            url: '/health-units-ministry/required-services',
-                            exactMatch: true
-                        },
-                        {
-                            id: 'external services codes and cost',
-                            title: 'اكواد الخدمات الخارجية وتكلفتها',
-                            type: 'item',
-                            url: '/health-units-ministry/external-services-codes-and-cost',
-                            exactMatch: true
-                        }
-                    ]
-                },
-                {
-                    id: 'Health Units Ministry Report',
-                    title: 'التقارير',
-                    type: 'collapsable',
-                    icon: 'assignment',
-                    children: [
-
-                    ]
-                }
-            ]
-        }
-    ],
 
     'social-solidarity-fund-a': [
         {
@@ -6845,7 +6761,1195 @@ export const listMenuConfig: ListMenuConfig = {
 				}
 			]
 		}
+    ],
+    
+
+
+
+    'health-units-ministry': [
+		{
+			id: 'health-units-ministry',
+			title: 'برنامج الوحدات الصحية وزارة التضامن هيئة البريد',
+			type: 'group',
+			icon: 'app',
+			children: [
+				{
+					id: 'health-units-ministry Config',
+					title: 'الأعدادات',
+					type: 'collapsable',
+					icon: 'build',
+					children: [
+						{
+							id: 'entitynames',
+							title: 'اسم الجهة وحدات صحة',
+							type: 'item',
+							url: '/lookup/entitynames',
+							exactMatch: true
+						},
+						{
+							id: 'governorates',
+							title: 'المحافظة',
+							type: 'item',
+							url: '/lookup/governorates',
+							exactMatch: true
+						},
+						{
+							id: 'sectionsorcenters',
+							title: 'مركز/القسم‎',
+							type: 'item',
+							url: '/lookup/sectionsorcenters',
+							exactMatch: true
+						},
+						{
+							id: 'servicetypes',
+							title: 'نوع الخدمة وحدات صحية',
+							type: 'item',
+							url: '/lookup/servicetypes',
+							exactMatch: true
+						}
+					]
+				},
+				{
+					id: 'health-units-ministry Program',
+					title: 'البرامج',
+					type: 'collapsable',
+					icon: 'apps',
+					children: [
+						{
+							id: 'new services requests',
+							title: ' طلب خدمة جديد',
+							type: 'item',
+							url: '/health-units-ministry/new-services-requests',
+							exactMatch: true
+						},
+						{
+							id: 'required serviceses',
+							title: 'الخدمات المطلوبة',
+							type: 'item',
+							url: '/health-units-ministry/required-serviceses',
+							exactMatch: true
+						},
+						{
+							id: 'external services codes and cost',
+							title: 'اكواد الخدمات الخارجية وتكلفتها',
+							type: 'item',
+							url: '/health-units-ministry/external-services-codes-and-cost',
+							exactMatch: true
+						}
+					]
+				},
+				{
+					id: 'health-units-ministry Report',
+					title: 'التقارير',
+					type: 'collapsable',
+					icon: 'assignment',
+					children: []
+				}
+			]
+		}
 	],
+		
+	
+
+     'landbranch': [ 
+        { 
+           id: 'landbranch',
+           title: 'الاراضى فروع',
+           type: 'group',
+           icon: 'app',
+           children: [ 
+              { 
+                 id: 'LandBranch  Config',
+                 title: 'الأعدادات',
+                 type: 'collapsable',
+                 icon: 'build',
+                 children: [ 
+                    { 
+                       id: 'committeetypecodes',
+                       title: 'نوع اللجنة',
+                       type: 'item',
+                       url: '/lookup/committeetypecodes',
+                       exactMatch: true
+                    },
+                    { 
+                       id: 'sectionsorcenters',
+                       title: 'مركز/القسم‎',
+                       type: 'item',
+                       url: '/lookup/sectionsorcenters',
+                       exactMatch: true
+                    },
+                    { 
+                       id: 'villages',
+                       title: 'قري',
+                       type: 'item',
+                       url: '/lookup/villages',
+                       exactMatch: true
+                    },
+                    { 
+                       id: 'followers',
+                       title: 'تابع',
+                       type: 'item',
+                       url: '/lookup/followers',
+                       exactMatch: true
+                    },
+                    { 
+                       id: 'landownerships',
+                       title: 'ملكية ارض',
+                       type: 'item',
+                       url: '/lookup/landownerships',
+                       exactMatch: true
+                    },
+                    { 
+                       id: 'yesornos',
+                       title: 'نعم او لا',
+                       type: 'item',
+                       url: '/lookup/yesornos',
+                       exactMatch: true
+                    },
+                    { 
+                       id: 'fencestatuscodes',
+                       title: 'كود حالة السور',
+                       type: 'item',
+                       url: '/lookup/fencestatuscodes',
+                       exactMatch: true
+                    },
+                    { 
+                       id: 'bordercodes\t',
+                       title: 'كود المحدد',
+                       type: 'item',
+                       url: '/lookup/bordercodes\t',
+                       exactMatch: true
+                    },
+                    { 
+                       id: 'insideoutsidesites',
+                       title: 'داخل / خارج الموقع',
+                       type: 'item',
+                       url: '/lookup/insideoutsidesites',
+                       exactMatch: true
+                    },
+                    { 
+                       id: 'obstaclecodes',
+                       title: 'كود العائق',
+                       type: 'item',
+                       url: '/lookup/obstaclecodes',
+                       exactMatch: true
+                    },
+                    { 
+                       id: 'documentcodes',
+                       title: 'أكواد المستندات',
+                       type: 'item',
+                       url: '/lookup/documentcodes',
+                       exactMatch: true
+                    },
+                    { 
+                       id: 'documentstatuscodes\t',
+                       title: 'كود حالة المستند',
+                       type: 'item',
+                       url: '/lookup/documentstatuscodes\t',
+                       exactMatch: true
+                    },
+                    { 
+                       id: 'allocationtypecodes',
+                       title: 'نوع التخصيص لقطعة الارض',
+                       type: 'item',
+                       url: '/lookup/allocationtypecodes',
+                       exactMatch: true
+                    },
+                    { 
+                       id: 'directioncodes',
+                       title: 'كود الاتجاه',
+                       type: 'item',
+                       url: '/lookup/directioncodes',
+                       exactMatch: true
+                    },
+                    { 
+                       id: 'networknotetypecodes',
+                       title: 'كود نوع ملاحظة الشبكة',
+                       type: 'item',
+                       url: '/lookup/networknotetypecodes',
+                       exactMatch: true
+                    },
+                    { 
+                       id: 'reviewnotecodes',
+                       title: 'كود ملاحظة المراجعة',
+                       type: 'item',
+                       url: '/lookup/reviewnotecodes',
+                       exactMatch: true
+                    },
+                    { 
+                       id: 'receivingpositions',
+                       title: 'موقف الاستلام',
+                       type: 'item',
+                       url: '/lookup/receivingpositions',
+                       exactMatch: true
+                    }
+                 ]
+              },
+              { 
+                 id: 'LandBranch  Program',
+                 title: 'البرامج',
+                 type: 'collapsable',
+                 icon: 'apps',
+                 children: [ 
+                    { 
+                       id: 'Committees formation data',
+                       title: 'بيانات تشكيل اللجان',
+                       type: 'item',
+                       url: '/landbranch/committees-formation-data',
+                       exactMatch: true
+                    },
+                    { 
+                       id: 'Basic data of the plot',
+                       title: 'البيانات الاساسية لقطعة الارض',
+                       type: 'item',
+                       url: '/landbranch/basic-data-of-the-plot',
+                       exactMatch: true
+                    },
+                    { 
+                       id: 'Land assignment data for lifting and inspection committees',
+                       title: 'بيانات اسناد الاراضى للجان الرفع والمعاينة',
+                       type: 'item',
+                       url: '/landbranch/land-assignment-data-for-lifting-and-inspection-committees',
+                       exactMatch: true
+                    },
+                    { 
+                       id: 'Public site boundary data',
+                       title: 'بيانات حدود الموقع العام',
+                       type: 'item',
+                       url: '/landbranch/public-site-boundary-data',
+                       exactMatch: true
+                    },
+                    { 
+                       id: 'Data of facilities and their distance from the general location',
+                       title: 'بيانات المرافق وبعدها عن الموقع العام',
+                       type: 'item',
+                       url: '/landbranch/data-of-facilities-and-their-distance-from-the-general-location',
+                       exactMatch: true
+                    },
+                    { 
+                       id: 'Preview notes data',
+                       title: 'بيانات ملاحظات المعاينة',
+                       type: 'item',
+                       url: '/landbranch/preview-notes-data',
+                       exactMatch: true
+                    },
+                    { 
+                       id: 'Barrier data for the plot of land',
+                       title: 'بيانات العوائق لقطعة الارض',
+                       type: 'item',
+                       url: '/landbranch/barrier-data-for-the-plot-of-land',
+                       exactMatch: true
+                    },
+                    { 
+                       id: 'Document data',
+                       title: 'بيانات المستندات',
+                       type: 'item',
+                       url: '/landbranch/document-data',
+                       exactMatch: true
+                    },
+                    { 
+                       id: 'Land allocation decision data',
+                       title: 'بيانات قرار التخصيص لقطعة ارض',
+                       type: 'item',
+                       url: '/landbranch/land-allocation-decision-data',
+                       exactMatch: true
+                    },
+                    { 
+                       id: 'Network budget data',
+                       title: 'بيانات المزانية الشبكية',
+                       type: 'item',
+                       url: '/landbranch/network-budget-data',
+                       exactMatch: true
+                    },
+                    { 
+                       id: 'Network budget observations data',
+                       title: 'بيانات ملاحظات الميزانية الشبكية',
+                       type: 'item',
+                       url: '/landbranch/network-budget-observations-data',
+                       exactMatch: true
+                    },
+                    { 
+                       id: 'Statements by the Audit Committee',
+                       title: 'بيانات ملاحظات لجنة المراجعة',
+                       type: 'item',
+                       url: '/landbranch/statements-by-the-audit-committee',
+                       exactMatch: true
+                    },
+                    { 
+                       id: 'Data of the land series in legal affairs',
+                       title: 'بيانات مسلسل الاراضى بالشئون القانونية',
+                       type: 'item',
+                       url: '/landbranch/data-of-the-land-series-in-legal-affairs',
+                       exactMatch: true
+                    },
+                    { 
+                       id: 'Recording the position of receiving a space land',
+                       title: 'موقف استلام ارض فضاء',
+                       type: 'item',
+                       url: '/landbranch/recording-the-position-of-receiving-a-space-land',
+                       exactMatch: true
+                    }
+                 ]
+              },
+              { 
+                 id: 'LandBranch  Report',
+                 title: 'التقارير',
+                 type: 'collapsable',
+                 icon: 'assignment',
+                 children: [ 
+  
+                 ]
+              }
+           ]
+        }
+     ],
+	 
+	'land': [
+		{
+			id: 'land',
+			title: 'برنامج الاراضى',
+			type: 'group',
+			icon: 'app',
+			children: [
+				{
+					id: 'Land Config',
+					title: 'الأعدادات',
+					type: 'collapsable',
+					icon: 'build',
+					children: [
+						{
+							id: 'documentcodes',
+							title: 'أكواد المستندات',
+							type: 'item',
+							url: '/lookup/documentcodes',
+							exactMatch: true
+						}
+					]
+				},
+				{
+					id: 'Land Program',
+					title: 'البرامج',
+					type: 'collapsable',
+					icon: 'apps',
+					children: [
+						{
+							id: 'The positions of land available',
+							title: 'مواقف الاراضي المتوفرة',
+							type: 'item',
+							url: '/land/the-positions-of-land-available',
+							exactMatch: true
+						}
+					]
+				},
+				{
+					id: 'Land Report',
+					title: 'التقارير',
+					type: 'collapsable',
+					icon: 'assignment',
+					children: []
+				}
+			]
+		}
+    ],
+	'assay-building-weight-factor-list': [
+		{
+			id: 'assay-building-weight-factor-list',
+			title: 'برنامج المقايسة - قائمة معامل الاوزان للمبني',
+			type: 'group',
+			icon: 'app',
+			children: [
+				{
+					id: 'assay-building-weight-factor-list Config',
+					title: 'الأعدادات',
+					type: 'collapsable',
+					icon: 'build',
+					children: [
+						{
+							id: 'itemcodes',
+							title: 'كود البند',
+							type: 'item',
+							url: '/lookup/itemcodes',
+							exactMatch: true
+						},
+						{
+							id: 'elements',
+							title: 'العنصر',
+							type: 'item',
+							url: '/lookup/elements',
+							exactMatch: true
+						},
+						{
+							id: 'constructiontypes',
+							title: 'انواع الانشاء',
+							type: 'item',
+							url: '/lookup/constructiontypes',
+							exactMatch: true
+						},
+						{
+							id: 'worktypes',
+							title: 'نوع العمل',
+							type: 'item',
+							url: '/lookup/worktypes',
+							exactMatch: true
+						}
+					]
+				},
+				{
+					id: 'assay-building-weight-factor-list Program',
+					title: 'البرامج',
+					type: 'collapsable',
+					icon: 'apps',
+					children: [
+						{
+							id: 'Binding Items With Elements Codes',
+							title: 'ربط البنود باكواد العناصر',
+							type: 'item',
+							url: '/assay-building-weight-factor-list/binding-items-with-elements-codes',
+							exactMatch: true
+						},
+						{
+							id: 'Assay Weights Factor Items',
+							title: 'بنود المقايسة المستحقة لمعامل الاوزان',
+							type: 'item',
+							url: '/assay-building-weight-factor-list/assay-weights-factor-items',
+							exactMatch: true
+						},
+						{
+							id: 'Elements of Assay items for weights factor of a building',
+							title: 'عناصر بنود المقايسة المستحقة لمعامل الاوزان لمبني',
+							type: 'item',
+							url: '/assay-building-weight-factor-list/elements-of-assay-items-for-weights-factor-of-a-building',
+							exactMatch: true
+						},
+						{
+							id: 'Schedule On Building Scope',
+							title: 'الجدول الزمني علي مستوي المبني ',
+							type: 'item',
+							url: '/assay-building-weight-factor-list/schedule-on-building-scope',
+							exactMatch: true
+						},
+						{
+							id: 'Binding Item With Schedule Activities',
+							title: 'ربط البند بانشطة الجدول الزمني ',
+							type: 'item',
+							url: '/assay-building-weight-factor-list/binding-item-with-schedule-activities',
+							exactMatch: true
+						}
+					]
+				},
+				{
+					id: 'assay-building-weight-factor-list Report',
+					title: 'التقارير',
+					type: 'collapsable',
+					icon: 'assignment',
+					children: []
+				}
+			]
+		}
+	],
+	
+	'research-and-studies': [
+		{
+			id: 'research-and-studies',
+			title: 'برنامج البحوث والدراسات',
+			type: 'group',
+			icon: 'app',
+			children: [
+				{
+					id: 'research-and-studies Config',
+					title: 'الأعدادات',
+					type: 'collapsable',
+					icon: 'build',
+					children: [
+						{
+							id: 'governorates',
+							title: 'المحافظة',
+							type: 'item',
+							url: '/lookup/governorates',
+							exactMatch: true
+						},
+						{
+							id: 'educationtypes',
+							title: 'نوعية التعليم',
+							type: 'item',
+							url: '/lookup/educationtypes',
+							exactMatch: true
+						},
+						{
+							id: 'yesornos',
+							title: 'نعم او لا',
+							type: 'item',
+							url: '/lookup/yesornos',
+							exactMatch: true
+						},
+						{
+							id: 'dependencycodes',
+							title: 'كود التبعية',
+							type: 'item',
+							url: '/lookup/dependencycodes',
+							exactMatch: true
+						},
+						{
+							id: 'educationallevels',
+							title: 'المرحلة التعليمية',
+							type: 'item',
+							url: '/lookup/educationallevels',
+							exactMatch: true
+						},
+						{
+							id: 'operationtypes',
+							title: 'نوع التشغيل',
+							type: 'item',
+							url: '/lookup/operationtypes',
+							exactMatch: true
+						}
+					]
+				},
+				{
+					id: 'research-and-studies Program',
+					title: 'البرامج',
+					type: 'collapsable',
+					icon: 'apps',
+					children: [
+						{
+							id: 'Private school approval',
+							title: 'موافقات المدارس الخاصة',
+							type: 'item',
+							url: '/research-and-studies/private-school-approval',
+							exactMatch: true
+						},
+						{
+							id: 'Employment for private school',
+							title: 'موقف تشغيل المدارس الخاصة',
+							type: 'item',
+							url: '/research-and-studies/employment-for-private-school',
+							exactMatch: true
+						},
+						{
+							id: 'Private school traffic committee',
+							title: ' لجان مرور المدارس الخاصة',
+							type: 'item',
+							url: '/research-and-studies/private-school-traffic-committee',
+							exactMatch: true
+						},
+						{
+							id: 'Accreditation',
+							title: 'جهه الاعتماد',
+							type: 'item',
+							url: '/research-and-studies/accreditation',
+							exactMatch: true
+						},
+						{
+							id: 'ApprovalType',
+							title: 'نوع الموافقه',
+							type: 'item',
+							url: '/research-and-studies/approvaltype',
+							exactMatch: true
+						}
+					]
+				},
+				{
+					id: 'Research and Studies Report',
+					title: 'التقارير',
+					type: 'collapsable',
+					icon: 'assignment',
+					children: []
+				}
+			]
+		}
+	],
+	
+	'business-to-others': [
+		{
+			id: 'business-to-others',
+			title: 'برنامج الاعمال المؤداه للغير',
+			type: 'group',
+			icon: 'app',
+			children: [
+				{
+					id: 'business-to-others Config',
+					title: 'الأعدادات',
+					type: 'collapsable',
+					icon: 'build',
+					children: [
+						{
+							id: 'branchcodes',
+							title: 'كود الفرع',
+							type: 'item',
+							url: '/lookup/branchcodes',
+							exactMatch: true
+						},
+						{
+							id: 'performancetypes',
+							title: 'نوع الاداء',
+							type: 'item',
+							url: '/lookup/performancetypes',
+							exactMatch: true
+						},
+						{
+							id: 'governorates',
+							title: 'المحافظة',
+							type: 'item',
+							url: '/lookup/governorates',
+							exactMatch: true
+						},
+						{
+							id: 'yesornos',
+							title: 'نعم او لا',
+							type: 'item',
+							url: '/lookup/yesornos',
+							exactMatch: true
+						},
+						{
+							id: 'surveyingstatuses',
+							title: 'موقف الرفع المساحي',
+							type: 'item',
+							url: '/lookup/surveyingstatuses',
+							exactMatch: true
+						},
+						{
+							id: 'sectionsorcenters',
+							title: 'مركز/القسم‎',
+							type: 'item',
+							url: '/lookup/sectionsorcenters',
+							exactMatch: true
+						},
+						{
+							id: 'servicetypes',
+							title: 'نوع الخدمة وحدات صحية',
+							type: 'item',
+							url: '/lookup/servicetypes',
+							exactMatch: true
+						},
+						{
+							id: 'villages',
+							title: 'قري',
+							type: 'item',
+							url: '/lookup/villages',
+							exactMatch: true
+						},
+						{
+							id: 'followers',
+							title: 'تابع',
+							type: 'item',
+							url: '/lookup/followers',
+							exactMatch: true
+						},
+						{
+							id: 'entitynames',
+							title: 'اسم الجهة وحدات صحة',
+							type: 'item',
+							url: '/lookup/entitynames',
+							exactMatch: true
+						},
+						{
+							id: 'unittypes',
+							title: 'نوع الوحدة',
+							type: 'item',
+							url: '/lookup/unittypes',
+							exactMatch: true
+						},
+						{
+							id: 'projecttypes',
+							title: 'نوع المشروع',
+							type: 'item',
+							url: '/lookup/projecttypes',
+							exactMatch: true
+						},
+						{
+							id: 'ministries',
+							title: 'وزارات',
+							type: 'item',
+							url: '/lookup/ministries',
+							exactMatch: true
+						}
+					]
+				},
+				{
+					id: 'business-to-others Program',
+					title: 'البرامج',
+					type: 'collapsable',
+					icon: 'apps',
+					children: [
+						{
+							id: 'Internal Training Plans',
+							title: 'خطط تدريب داخلي ادارات',
+							type: 'item',
+							url: '/business-to-others/internal-training-plans',
+							exactMatch: true
+						},
+						{
+							id: 'Statement of employee performance during a certain period',
+							title: 'بيان الاداء الوظيفي للموظف خلال فترة معينة',
+							type: 'item',
+							url: '/business-to-others/statement-of-employee-performance-during-a-certain-period',
+							exactMatch: true
+						},
+						{
+							id: 'Offices from the post office',
+							title: 'المكاتب الواردة من هيئة البريد',
+							type: 'item',
+							url: '/business-to-others/offices-from-the-post-office',
+							exactMatch: true
+						},
+						{
+							id: 'The position of the offices received from the post office',
+							title: 'موقف المكاتب الواردة من هيئة البريد',
+							type: 'item',
+							url: '/business-to-others/the-position-of-the-offices-received-from-the-post-office',
+							exactMatch: true
+						},
+						{
+							id: 'Service Codes',
+							title: 'اكواد الخدمات ',
+							type: 'item',
+							url: '/business-to-others/service-codes',
+							exactMatch: true
+						},
+						{
+							id: 'Required services',
+							title: 'الخدمات المطلوبة ',
+							type: 'item',
+							url: '/business-to-others/required-services',
+							exactMatch: true
+						},
+						{
+							id: 'New service request',
+							title: 'طلب خدمة جديد ',
+							type: 'item',
+							url: '/business-to-others/new-service-request',
+							exactMatch: true
+						},
+						{
+							id: 'Health Unit Data',
+							title: 'بيانات الوحده الصحية ',
+							type: 'item',
+							url: '/business-to-others/health-unit-data',
+							exactMatch: true
+						},
+						{
+							id: 'Ministry unit data',
+							title: 'بيانات وحدة الوزارة ',
+							type: 'item',
+							url: '/business-to-others/ministry-unit-data',
+							exactMatch: true
+						}
+					]
+				},
+				{
+					id: 'business-to-others Report',
+					title: 'التقارير',
+					type: 'collapsable',
+					icon: 'assignment',
+					children: []
+				}
+			]
+		}
+	],
+
+
+	'accounts': [
+		{
+			id: 'accounts',
+			title: 'برنامج حسابات',
+			type: 'group',
+			icon: 'app',
+			children: [
+				{
+					id: 'accounts Config',
+					title: 'الأعدادات',
+					type: 'collapsable',
+					icon: 'build',
+					children: [
+						{
+							id: 'centraldepartments',
+							title: 'الادارات المركزية',
+							type: 'item',
+							url: '/lookup/centraldepartments',
+							exactMatch: true
+						},
+						{
+							id: 'bonuscodes',
+							title: 'كود المكافاه',
+							type: 'item',
+							url: '/lookup/bonuscodes',
+							exactMatch: true
+						},
+						{
+							id: 'departmentssections',
+							title: 'أقسام الادارات',
+							type: 'item',
+							url: '/lookup/departmentssections',
+							exactMatch: true
+						},
+						{
+							id: 'employeestatuses',
+							title: 'حالة الموظف‎',
+							type: 'item',
+							url: '/lookup/employeestatuses',
+							exactMatch: true
+						},
+						{
+							id: 'notecodes',
+							title: 'كود ملاحظة الحسابات',
+							type: 'item',
+							url: '/lookup/notecodes',
+							exactMatch: true
+						},
+						{
+							id: 'entrytypes',
+							title: 'نوع الادخال الحسابات',
+							type: 'item',
+							url: '/lookup/entrytypes',
+							exactMatch: true
+						}
+					]
+				},
+				{
+					id: 'accounts Program',
+					title: 'البرامج',
+					type: 'collapsable',
+					icon: 'apps',
+					children: [
+						{
+							id: 'Data entry form 129 at the management level',
+							title: 'ادخال بيانات استماره 129 علي مستوي اداره',
+							type: 'item',
+							url: '/accounts/data-entry-form-129-at-the-management-level',
+							exactMatch: true
+						},
+						{
+							id: 'Data entry form 129 bonuses at the management level',
+							title: 'ادخال بيانات استماره129 مكافات علي مستوي اداره',
+							type: 'item',
+							url: '/accounts/data-entry-form-129-bonuses-at-the-management-level',
+							exactMatch: true
+						},
+						{
+							id: 'Data entry form 129 corrections',
+							title: 'ادخال بيانات استماره129تصويبات',
+							type: 'item',
+							url: '/accounts/data-entry-form-129-corrections',
+							exactMatch: true
+						},
+						{
+							id: 'reward',
+							title: 'المكافاه',
+							type: 'item',
+							url: '/accounts/reward',
+							exactMatch: true
+						},
+						{
+							id: 'Recording corrections for employees',
+							title: 'تسجيل تصويبات الخاصه بالموظفين ',
+							type: 'item',
+							url: '/accounts/recording-corrections-for-employees',
+							exactMatch: true
+						},
+						{
+							id: 'employees who have correction',
+							title: 'الموظفين الذين لهم تصويب',
+							type: 'item',
+							url: '/accounts/employees-who-have-correction',
+							exactMatch: true
+						}
+					]
+				},
+				{
+					id: 'accounts Report',
+					title: 'التقارير',
+					type: 'collapsable',
+					icon: 'assignment',
+					children: []
+				}
+			]
+		}
+    ],
+    
+	'salary-calculation': [
+		{
+			id: 'salary-calculation',
+			title: 'برنامج شئون عاملين -حساب المرتب',
+			type: 'group',
+			icon: 'app',
+			children: [
+				{
+					id: 'salary-calculation Config',
+					title: 'الأعدادات',
+					type: 'collapsable',
+					icon: 'build',
+					children: [
+						{
+							id: 'financialdegrees',
+							title: 'الدرجة المالية',
+							type: 'item',
+							url: '/lookup/financialdegrees',
+							exactMatch: true
+						},
+						{
+							id: 'bonuses',
+							title: 'العلاوات',
+							type: 'item',
+							url: '/lookup/bonuses',
+							exactMatch: true
+						},
+						{
+							id: 'allowancestypes',
+							title: 'نوع البدل',
+							type: 'item',
+							url: '/lookup/allowancestypes',
+							exactMatch: true
+						},
+						{
+							id: 'areas',
+							title: 'مناطق',
+							type: 'item',
+							url: '/lookup/areas',
+							exactMatch: true
+						},
+						{
+							id: 'paidtypes',
+							title: 'نوع المدفوع',
+							type: 'item',
+							url: '/lookup/paidtypes',
+							exactMatch: true
+						},
+						{
+							id: 'selects',
+							title: 'الاختيار تسجيل مرتبات بنك',
+							type: 'item',
+							url: '/lookup/selects',
+							exactMatch: true
+						},
+						{
+							id: 'bankcodes',
+							title: 'اكواد البنوك',
+							type: 'item',
+							url: '/lookup/bankcodes',
+							exactMatch: true
+						},
+						{
+							id: 'discounttypes',
+							title: 'نوع الخصم',
+							type: 'item',
+							url: '/lookup/discounttypes',
+							exactMatch: true
+						},
+						{
+							id: 'correctiontypes',
+							title: 'نوع التصويب',
+							type: 'item',
+							url: '/lookup/correctiontypes',
+							exactMatch: true
+						}
+					]
+				},
+				{
+					id: 'salary-calculation Program',
+					title: 'البرامج',
+					type: 'collapsable',
+					icon: 'apps',
+					children: [
+						{
+							id: 'Promotional bonus',
+							title: 'علاوه تشجيعيه او علاه ترقيه',
+							type: 'item',
+							url: '/salary-calculation/promotional-bonus',
+							exactMatch: true
+						},
+						{
+							id: 'Bonus 5 7',
+							title: 'علاوة 5% 7%',
+							type: 'item',
+							url: '/salary-calculation/bonus-5-7',
+							exactMatch: true
+						},
+						{
+							id: 'Allowance',
+							title: 'البدل',
+							type: 'item',
+							url: '/salary-calculation/allowance',
+							exactMatch: true
+						},
+						{
+							id: 'Abstract Salary',
+							title: 'الراتب المجرد',
+							type: 'item',
+							url: '/salary-calculation/abstract-salary',
+							exactMatch: true
+						},
+						{
+							id: 'Electronic payment form',
+							title: 'استماره دفع الكتروني',
+							type: 'item',
+							url: '/salary-calculation/electronic-payment-form',
+							exactMatch: true
+						},
+						{
+							id: 'Bank Salary',
+							title: 'مرتب البنك ',
+							type: 'item',
+							url: '/salary-calculation/bank-salary',
+							exactMatch: true
+						},
+						{
+							id: 'Employee Bonus',
+							title: 'علاوات موظف',
+							type: 'item',
+							url: '/salary-calculation/employee-bonus',
+							exactMatch: true
+						},
+						{
+							id: 'Recording employee debt values',
+							title: 'تسجيل قيم الدين الخاصه بالموظفين',
+							type: 'item',
+							url: '/salary-calculation/recording-employee-debt-values',
+							exactMatch: true
+						},
+						{
+							id: 'Recording correction of pay',
+							title: 'تسجيل تصويب اجر وظيفي',
+							type: 'item',
+							url: '/salary-calculation/recording-correction-of-pay',
+							exactMatch: true
+						},
+						{
+							id: 'Record variable corrections for employees',
+							title: 'تسجيل تصويبات المتغير  للموظفين',
+							type: 'item',
+							url: '/salary-calculation/record-variable-corrections-for-employees',
+							exactMatch: true
+						}
+					]
+				},
+				{
+					id: 'salary-calculation Report',
+					title: 'التقارير',
+					type: 'collapsable',
+					icon: 'assignment',
+					children: []
+				}
+			]
+		}
+	],
+
+	'balancing-part-6': [
+		{
+			id: 'balancing-part-6',
+			title: 'موازنة - باب سادس',
+			type: 'group',
+			icon: 'app',
+			children: [
+				{
+					id: 'balancing-part-6 Config',
+					title: 'الأعدادات',
+					type: 'collapsable',
+					icon: 'build',
+					children: [
+						{
+							id: 'areas',
+							title: 'مناطق',
+							type: 'item',
+							url: '/lookup/areas',
+							exactMatch: true
+						},
+						{
+							id: 'budgetitems',
+							title: 'بند الموازنة',
+							type: 'item',
+							url: '/lookup/budgetitems',
+							exactMatch: true
+						},
+						{
+							id: 'budgetfundingsourcecodes',
+							title: 'كود مصدر تمويل للموزانه',
+							type: 'item',
+							url: '/lookup/budgetfundingsourcecodes',
+							exactMatch: true
+						},
+						{
+							id: 'jobtypes',
+							title: 'انواع الوظائف',
+							type: 'item',
+							url: '/lookup/jobtypes',
+							exactMatch: true
+						}
+					]
+				},
+				{
+					id: 'balancing-part-6 Program',
+					title: 'البرامج',
+					type: 'collapsable',
+					icon: 'apps',
+					children: [
+						{
+							id: 'Credits for Regions',
+							title: 'اعتمادات للمناطق',
+							type: 'item',
+							url: '/balancing-part-6/credits-for-regions',
+							exactMatch: true
+						},
+						{
+							id: 'Insert new expenses for regional financial portfolios',
+							title: 'تسجيل مبالغ جديدة لحوافظ تمويل المناطق',
+							type: 'item',
+							url: '/balancing-part-6/insert-new-expenses-for-regional-financial-portfolios',
+							exactMatch: true
+						},
+						{
+							id: 'Exchange form',
+							title: 'استمارة صرف',
+							type: 'item',
+							url: '/balancing-part-6/exchange-form',
+							exactMatch: true
+						},
+						{
+							id: 'Funds from a funding source',
+							title: 'حوافظ التمويل الواردة من مصدر تمويل',
+							type: 'item',
+							url: '/balancing-part-6/funds-from-a-funding-source',
+							exactMatch: true
+						},
+						{
+							id: 'Total outgoing',
+							title: 'جملة المنصرف',
+							type: 'item',
+							url: '/balancing-part-6/total-outgoing',
+							exactMatch: true
+						},
+						{
+							id: 'Record the claim form with the exchange item',
+							title: 'تسجيل مطالبة الاستماره مع بند الصرف',
+							type: 'item',
+							url: '/balancing-part-6/record-the-claim-form-with-the-exchange-item',
+							exactMatch: true
+						},
+						{
+							id: 'Cash form allowance',
+							title: 'تسميح استمارات صرف',
+							type: 'item',
+							url: '/balancing-part-6/cash-form-allowance',
+							exactMatch: true
+						},
+						{
+							id: 'Financing portfolios received from a funding source',
+							title: 'حوافظ التمويل الواردة من مصرد تمويل',
+							type: 'item',
+							url: '/balancing-part-6/financing-portfolios-received-from-a-funding-source',
+							exactMatch: true
+						}
+					]
+				},
+				{
+					id: 'balancing-part-6 Report',
+					title: 'التقارير',
+					type: 'collapsable',
+					icon: 'assignment',
+					children: []
+				}
+			]
+		}
+    ],
 
 };
 

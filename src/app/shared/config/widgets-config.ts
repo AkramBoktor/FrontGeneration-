@@ -552,7 +552,7 @@ export const widgetConfig: Widget[] = [
                     name: 'الاراضى فروع'
                     , class: 'red-fg'
                     , icon: 'access_time'
-                    , url: 'land-branch-'
+                    , url: 'landbranch'
                 }]
             }]
         }, {
