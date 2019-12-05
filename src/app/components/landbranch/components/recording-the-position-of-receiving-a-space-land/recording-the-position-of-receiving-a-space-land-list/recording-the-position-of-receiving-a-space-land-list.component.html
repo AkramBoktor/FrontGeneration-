@@ -1,0 +1,78 @@
+
+<app-search-list-expansion-panel
+    dir="rtl"
+    [pageTitle] = "'تسجيل موقف استلام ارض فضاء'"
+    (beginSearch) = "onBeginSearch()"
+    (create) = "onCreate()"
+>
+    <ng-template searchFormContainer >
+        <form [formGroup] = "searchForm">
+           
+
+	<mat-form-field appearance="outline">
+	 <mat-label>رقم الارض</mat-label>
+	 <input matInput formControlName="landID"/>
+	 <mat-error *ngIf = "getControls('landID').invalid" >
+	  {{ getControls('landID')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>تاريخ الاخطار</mat-label>
+	 <input matInput
+	  [matDatepicker] = "notificationDateDatepicker"
+	  autocomplete = "off"
+	  formControlName= "notificationDate"/>
+	 <mat-datepicker-toggle
+	   matSuffix
+	   [for]="notificationDateDatepicker"
+	 ></mat-datepicker-toggle>
+	 <mat-datepicker #notificationDateDatepicker></mat-datepicker>
+	 <mat-error *ngIf = "getControls('notificationDate').invalid" >
+	  {{ getControls('notificationDate')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>سعر المتر</mat-label>
+	 <input matInput
+	  [matDatepicker] = "materPriceDatepicker"
+	  autocomplete = "off"
+	  formControlName= "materPrice"/>
+	 <mat-datepicker-toggle
+	   matSuffix
+	   [for]="materPriceDatepicker"
+	 ></mat-datepicker-toggle>
+	 <mat-datepicker #materPriceDatepicker></mat-datepicker>
+	 <mat-error *ngIf = "getControls('materPrice').invalid" >
+	  {{ getControls('materPrice')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+           
+
+	<app-material-select appearance="outline"
+	  #receivingPosition 
+	  [options] = "receivingPositionSelectOptions"
+	  formControlName = "receivingPosition"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #obstacleCode 
+	  [options] = "obstacleCodeSelectOptions"
+	  formControlName = "obstacleCode"
+	></app-material-select>
+
+        </form>
+    </ng-template >
+    <ng-template searchResultContainer >
+        <app-grid-control
+            #gridControl
+            [rowDataService] = "getRecordingThePositionOfReceivingASpaceLandPaginatedSortedFiltered"
+            [columnOptions] = "columnOptions"
+            [gridHeaderOptions] = "gridHeaderOptions"
+            [searchInput] = "searchForm.value"
+            (deleteRow) = "onDeleteClicked($event)"
+        >
+        </app-grid-control>
+    </ng-template>
+</app-search-list-expansion-panel >

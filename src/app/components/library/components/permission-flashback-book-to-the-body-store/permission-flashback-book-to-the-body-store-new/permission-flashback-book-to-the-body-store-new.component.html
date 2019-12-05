@@ -18,7 +18,7 @@
 	</mat-form-field>
 
 	<mat-form-field appearance="outline">
-	 <mat-label>رقم االكتاب بالفرع</mat-label>
+	 <mat-label>رقم الكتاب بالفرع</mat-label>
 	 <input matInput formControlName="bookNumberBranch"/>
 	 <mat-error *ngIf = "getControls('bookNumberBranch').invalid" >
 	  {{ getControls('bookNumberBranch')| getErrorMessages : errorMessages}}
@@ -59,7 +59,7 @@
 
 	<mat-form-field appearance="outline">
 	 <mat-label>الرقم الفرعى</mat-label>
-	 <input matInput formControlName="extensionNumber" [disableControl]="true" />
+	 <input matInput formControlName="extensionNumber"/>
 	 <mat-error *ngIf = "getControls('extensionNumber').invalid" >
 	  {{ getControls('extensionNumber')| getErrorMessages : errorMessages}}
 	  </mat-error>
@@ -67,7 +67,7 @@
 
 	<mat-form-field appearance="outline">
 	 <mat-label>الرقم العام</mat-label>
-	 <input matInput formControlName="generalNumber" [disableControl]="true" />
+	 <input matInput formControlName="generalNumber"/>
 	 <mat-error *ngIf = "getControls('generalNumber').invalid" >
 	  {{ getControls('generalNumber')| getErrorMessages : errorMessages}}
 	  </mat-error>

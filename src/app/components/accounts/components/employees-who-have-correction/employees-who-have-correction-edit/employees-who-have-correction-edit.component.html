@@ -1,0 +1,70 @@
+
+<mat-card>
+    <mat-card-header>
+        <mat-card-title>الموظفين الذين لهم تصويب</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+        <form [formGroup]="employeesWhoHaveCorrectionForm" class="form-container">
+          
+
+	<mat-form-field appearance="outline">
+	 <mat-label>شهروسنه الوارد</mat-label>
+	 <input matInput
+	  [matDatepicker] = "incomingYearAndMonthDatepicker"
+	  autocomplete = "off"
+	  formControlName= "incomingYearAndMonth"/>
+	 <mat-datepicker-toggle
+	   matSuffix
+	   [for]="incomingYearAndMonthDatepicker"
+	 ></mat-datepicker-toggle>
+	 <mat-datepicker #incomingYearAndMonthDatepicker></mat-datepicker>
+	 <mat-error *ngIf = "getControls('incomingYearAndMonth').invalid" >
+	  {{ getControls('incomingYearAndMonth')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>كود الموظف</mat-label>
+	 <input matInput formControlName="employeeCode"/>
+	 <mat-error *ngIf = "getControls('employeeCode').invalid" >
+	  {{ getControls('employeeCode')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>بيان الموظف</mat-label>
+	 <input matInput formControlName="employeeDate"/>
+	 <mat-error *ngIf = "getControls('employeeDate').invalid" >
+	  {{ getControls('employeeDate')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+          
+
+	<app-material-select appearance="outline"
+	  #entryType 
+	  [options] = "entryTypeSelectOptions"
+	  formControlName = "entryType"
+	></app-material-select>
+
+        </form>
+    </mat-card-content>
+
+    <mat-divider></mat-divider>
+
+	<mat-card-actions>
+			<form [formGroup]="attachmentForm" class="form-container">
+                <app-multi-file-upload [service] = "employeesWhoHaveCorrectionService" [id]="employeesWhoHaveCorrectionForm.get('id').value"
+                    formControlName = "attachmentFiles">
+                </app-multi-file-upload>
+            </form>
+            <button
+                color = "primary"
+                type = "submit"
+                (click) = "onSubmit()"
+                [disabled] = "employeesWhoHaveCorrectionForm.invalid"
+                mat-raised-button>
+                حفظ
+            </button>
+    </mat-card-actions>
+</mat-card>
+

@@ -1,0 +1,50 @@
+
+<app-new-form-layout
+    dir="rtl"
+    (submitClicked) = "onSubmit()"
+    (back) = "onBack()"
+    [pageTitle] = "'نوع الموافقه'"
+>
+    <ng-template newFormContainer >
+        <form [formGroup] = "approvalTypeForm">
+         
+
+	<mat-form-field appearance="outline">
+	 <mat-label>كود الموافقه</mat-label>
+	 <input matInput formControlName="approvalCode"/>
+	 <mat-error *ngIf = "getControls('approvalCode').invalid" >
+	  {{ getControls('approvalCode')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>اسم الموافقه</mat-label>
+	 <input matInput formControlName="approvalName"/>
+	 <mat-error *ngIf = "getControls('approvalName').invalid" >
+	  {{ getControls('approvalName')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+         
+
+        </form>
+
+        <mat-divider></mat-divider>
+
+		<mat-card-actions>
+			<form [formGroup]="attachmentForm" class="form-container">
+                <app-multi-file-upload [service] = "approvalTypeService" [id]="approvalTypeForm.get('id').value"
+                    formControlName = "attachmentFiles">
+                </app-multi-file-upload>
+            </form>
+            <button
+                type="submit"
+                (click)="onSubmit()"
+                [disabled]="approvalTypeForm.invalid"
+                mat-raised-button
+                color = "primary">
+             حفظ
+            </button>
+        </mat-card-actions>
+    </ng-template >
+</app-new-form-layout >
+

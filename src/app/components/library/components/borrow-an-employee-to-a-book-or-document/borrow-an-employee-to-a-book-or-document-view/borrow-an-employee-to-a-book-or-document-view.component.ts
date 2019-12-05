@@ -1,14 +1,14 @@
 
-import { Component, Inject, Injector, Input, OnInit, Optional } from '@angular/core';
-import { AbstractControl, FormGroup } from '@angular/forms';
+import { Component, Inject, Input, OnInit, Optional, Injector } from '@angular/core';
+import { FormGroup, AbstractControl } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
+import { MaterialSelectOptions } from 'app/shared/models/controls/material-select.model';
 import { AppBaseComponent } from 'app/shared/base/app-base.component';
 import { BorrowAnEmployeeToABookOrDocument } from 'app/shared/models/borrow-an-employee-to-a-book-or-document';
-import { FormControlError } from 'app/shared/models/controls/interfaces';
-import { MaterialSelectOptions } from 'app/shared/models/controls/material-select.model';
-import { LookupService } from 'app/shared/pages/lookup-form/lookup.service';
 import { ValidatorFunctions } from 'app/shared/validations/validator-functions';
+import { FormControlError } from 'app/shared/models/controls/interfaces';
 import { BorrowAnEmployeeToABookOrDocumentService } from '../shared/borrow-an-employee-to-a-book-or-document.service';
+import { LookupService } from 'app/shared/pages/lookup-form/lookup.service';
 
 @Component({
   selector: 'app-borrow-an-employee-to-a-book-or-document-view',

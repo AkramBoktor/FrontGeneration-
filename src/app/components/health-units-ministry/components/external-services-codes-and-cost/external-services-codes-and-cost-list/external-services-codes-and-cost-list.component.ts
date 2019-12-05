@@ -43,11 +43,11 @@ export class ExternalServicesCodesAndCostListComponent extends AppBaseComponent 
 
   columnOptions = [
         
-	new GridColumnOptions({ headerName: ' كود الخدمة', field: 'serviceCode' }),
-	new GridColumnOptions({ headerName: ' اسم الخدمة', field: 'serviceName' }),
-	new GridColumnOptions({ headerName: '   نسبة تكلفة التصنيف الاول', field: 'firstClassificationCostRatio' }),
-	new GridColumnOptions({ headerName: ' نسبة تكلفة التصنيف  الثاني', field: 'secondClassificationCostRatio' }),
-	new GridColumnOptions({ headerName: ' نسبة تكلفة التصنيف  الثالث', field: 'thirdClassificationCostRatio' }),
+	new GridColumnOptions({ headerName: 'كود الخدمة', field: 'serviceCode' }),
+	new GridColumnOptions({ headerName: 'اسم الخدمة', field: 'serviceName' }),
+	new GridColumnOptions({ headerName: 'نسبة تكلفة التصنيف الاول', field: 'firstClassificationCostRatio' }),
+	new GridColumnOptions({ headerName: 'نسبة تكلفة التصنيف  الثاني', field: 'secondClassificationCostRatio' }),
+	new GridColumnOptions({ headerName: 'نسبة تكلفة التصنيف  الثالث', field: 'thirdClassificationCostRatio' }),
   ];
 
   gridHeaderOptions = new GridHeaderOptions({

@@ -1,0 +1,86 @@
+
+<mat-card>
+    <mat-card-header>
+        <mat-card-title>موقف المكاتب الواردة من هيئة البريد</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+        <form [formGroup]="thePositionOfTheOfficesReceivedFromThePostOfficeForm" class="form-container">
+          
+
+	<mat-form-field appearance="outline">
+	 <mat-label>سنة ورود المكتب من هيئة البريد</mat-label>
+	 <input matInput
+	  [matDatepicker] = "postOfficeReceiptYearDatepicker"
+	  autocomplete = "off"
+	  formControlName= "postOfficeReceiptYear"/>
+	 <mat-datepicker-toggle
+	   matSuffix
+	   [for]="postOfficeReceiptYearDatepicker"
+	 ></mat-datepicker-toggle>
+	 <mat-datepicker #postOfficeReceiptYearDatepicker></mat-datepicker>
+	 <mat-error *ngIf = "getControls('postOfficeReceiptYear').invalid" >
+	  {{ getControls('postOfficeReceiptYear')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>الرقم التعريفي</mat-label>
+	 <input matInput formControlName="iD"/>
+	 <mat-error *ngIf = "getControls('iD').invalid" >
+	  {{ getControls('iD')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+          
+
+	<app-material-select appearance="outline"
+	  #governorate 
+	  [options] = "governorateSelectOptions"
+	  formControlName = "governorate"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #officeIsCanceledOrDeferred 
+	  [options] = "officeIsCanceledOrDeferredSelectOptions"
+	  formControlName = "officeIsCanceledOrDeferred"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #duplicatedOffice 
+	  [options] = "duplicatedOfficeSelectOptions"
+	  formControlName = "duplicatedOffice"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #undeveloped 
+	  [options] = "undevelopedSelectOptions"
+	  formControlName = "undeveloped"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #surveyingStatus 
+	  [options] = "surveyingStatusSelectOptions"
+	  formControlName = "surveyingStatus"
+	></app-material-select>
+
+        </form>
+    </mat-card-content>
+
+    <mat-divider></mat-divider>
+
+	<mat-card-actions>
+			<form [formGroup]="attachmentForm" class="form-container">
+                <app-multi-file-upload [service] = "thePositionOfTheOfficesReceivedFromThePostOfficeService" [id]="thePositionOfTheOfficesReceivedFromThePostOfficeForm.get('id').value"
+                    formControlName = "attachmentFiles">
+                </app-multi-file-upload>
+            </form>
+            <button
+                color = "primary"
+                type = "submit"
+                (click) = "onSubmit()"
+                [disabled] = "thePositionOfTheOfficesReceivedFromThePostOfficeForm.invalid"
+                mat-raised-button>
+                حفظ
+            </button>
+    </mat-card-actions>
+</mat-card>
+

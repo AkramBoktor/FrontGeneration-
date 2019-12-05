@@ -1,0 +1,68 @@
+
+<mat-card>
+    <mat-card-header>
+        <mat-card-title>استماره دفع الكتروني</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+        <form [formGroup]="electronicPaymentFormForm" class="form-container">
+          
+
+	<mat-form-field appearance="outline">
+	 <mat-label>تاريخ تسجيل الاستماره</mat-label>
+	 <input matInput
+	  [matDatepicker] = "form55DateDatepicker"
+	  autocomplete = "off"
+	  formControlName= "form55Date"/>
+	 <mat-datepicker-toggle
+	   matSuffix
+	   [for]="form55DateDatepicker"
+	 ></mat-datepicker-toggle>
+	 <mat-datepicker #form55DateDatepicker></mat-datepicker>
+	 <mat-error *ngIf = "getControls('form55Date').invalid" >
+	  {{ getControls('form55Date')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>رقم الاستماره</mat-label>
+	 <input matInput formControlName="form55Number"/>
+	 <mat-error *ngIf = "getControls('form55Number').invalid" >
+	  {{ getControls('form55Number')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+          
+
+	<app-material-select appearance="outline"
+	  #areaNumber 
+	  [options] = "areaNumberSelectOptions"
+	  formControlName = "areaNumber"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #paidType 
+	  [options] = "paidTypeSelectOptions"
+	  formControlName = "paidType"
+	></app-material-select>
+
+        </form>
+    </mat-card-content>
+
+    <mat-divider></mat-divider>
+
+	<mat-card-actions>
+			<form [formGroup]="attachmentForm" class="form-container">
+                <app-multi-file-upload [service] = "electronicPaymentFormService" [id]="electronicPaymentFormForm.get('id').value"
+                    formControlName = "attachmentFiles">
+                </app-multi-file-upload>
+            </form>
+            <button
+                color = "primary"
+                type = "submit"
+                (click) = "onSubmit()"
+                [disabled] = "electronicPaymentFormForm.invalid"
+                mat-raised-button>
+                حفظ
+            </button>
+    </mat-card-actions>
+</mat-card>
+

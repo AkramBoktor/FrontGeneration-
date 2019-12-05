@@ -1,0 +1,58 @@
+
+<app-search-list-expansion-panel
+    dir="rtl"
+    [pageTitle] = "'بيانات المرافق وبعدها عن الموقع العام'"
+    (beginSearch) = "onBeginSearch()"
+    (create) = "onCreate()"
+>
+    <ng-template searchFormContainer >
+        <form [formGroup] = "searchForm">
+           
+
+	<mat-form-field appearance="outline">
+	 <mat-label>كود قطعة الارض</mat-label>
+	 <input matInput formControlName="landCode"/>
+	 <mat-error *ngIf = "getControls('landCode').invalid" >
+	  {{ getControls('landCode')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>كود المرفق</mat-label>
+	 <input matInput formControlName="facilityCode"/>
+	 <mat-error *ngIf = "getControls('facilityCode').invalid" >
+	  {{ getControls('facilityCode')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>مسمى المرفق</mat-label>
+	 <input matInput formControlName="facilityName"/>
+	 <mat-error *ngIf = "getControls('facilityName').invalid" >
+	  {{ getControls('facilityName')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>بعد المرفق</mat-label>
+	 <input matInput formControlName="facilityDimension"/>
+	 <mat-error *ngIf = "getControls('facilityDimension').invalid" >
+	  {{ getControls('facilityDimension')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+           
+
+        </form>
+    </ng-template >
+    <ng-template searchResultContainer >
+        <app-grid-control
+            #gridControl
+            [rowDataService] = "getDataOfFacilitiesAndTheirDistanceFromTheGeneralLocationPaginatedSortedFiltered"
+            [columnOptions] = "columnOptions"
+            [gridHeaderOptions] = "gridHeaderOptions"
+            [searchInput] = "searchForm.value"
+            (deleteRow) = "onDeleteClicked($event)"
+        >
+        </app-grid-control>
+    </ng-template>
+</app-search-list-expansion-panel >

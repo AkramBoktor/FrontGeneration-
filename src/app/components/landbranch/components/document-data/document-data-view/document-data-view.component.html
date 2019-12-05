@@ -1,0 +1,60 @@
+
+<mat-card class="form-card">
+      <mat-card-header>
+  
+          <mat-card-title>
+              بيانات المستندات
+          </mat-card-title>
+  
+      </mat-card-header>
+  
+      <mat-card-content>
+  
+        <form [formGroup] = "documentDataForm" class="form-container">
+         
+
+	<mat-form-field appearance="outline">
+	 <mat-label>كود قطعة الارض</mat-label>
+	 <input matInput formControlName="landID"/>
+	 <mat-error *ngIf = "getControls('landID').invalid" >
+	  {{ getControls('landID')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>المرفقات</mat-label>
+	 <input matInput formControlName="attachment"/>
+	 <mat-error *ngIf = "getControls('attachment').invalid" >
+	  {{ getControls('attachment')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+         
+
+	<app-material-select appearance="outline"
+	  #documentCode 
+	  [options] = "documentCodeSelectOptions"
+	  formControlName = "documentCode"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #documentStatusCode 
+	  [options] = "documentStatusCodeSelectOptions"
+	  formControlName = "documentStatusCode"
+	></app-material-select>
+        </form>
+  
+      </mat-card-content >
+  
+      <mat-action-row>
+            <form [formGroup]="attachmentForm" class="form-container">
+                <app-multi-file-upload [service] = "documentDataService" [id]="documentDataForm.get('id').value"
+                    formControlName = "attachmentFiles">
+                </app-multi-file-upload>
+            </form>
+            <button (click) = "onConfirm()" mat-raised-button color = "primary" >
+                غلق
+            </button>
+        </mat-action-row>
+    </mat-card>
+
+    

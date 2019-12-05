@@ -1,0 +1,134 @@
+
+<mat-card>
+    <mat-card-header>
+        <mat-card-title>تسجيل تصويبات المتغير  للموظفين</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+        <form [formGroup]="recordVariableCorrectionsForEmployeesForm" class="form-container">
+          
+
+	<mat-form-field appearance="outline">
+	 <mat-label>رقم التصويب</mat-label>
+	 <input matInput formControlName="correctionNumber"/>
+	 <mat-error *ngIf = "getControls('correctionNumber').invalid" >
+	  {{ getControls('correctionNumber')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>شهر الوارد</mat-label>
+	 <input matInput
+	  [matDatepicker] = "incomingMonthDatepicker"
+	  autocomplete = "off"
+	  formControlName= "incomingMonth"/>
+	 <mat-datepicker-toggle
+	   matSuffix
+	   [for]="incomingMonthDatepicker"
+	 ></mat-datepicker-toggle>
+	 <mat-datepicker #incomingMonthDatepicker></mat-datepicker>
+	 <mat-error *ngIf = "getControls('incomingMonth').invalid" >
+	  {{ getControls('incomingMonth')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>كود الموظف</mat-label>
+	 <input matInput formControlName="employeeCode"/>
+	 <mat-error *ngIf = "getControls('employeeCode').invalid" >
+	  {{ getControls('employeeCode')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>شهر الاستحقاق</mat-label>
+	 <input matInput
+	  [matDatepicker] = "benefitsMonthDatepicker"
+	  autocomplete = "off"
+	  formControlName= "benefitsMonth"/>
+	 <mat-datepicker-toggle
+	   matSuffix
+	   [for]="benefitsMonthDatepicker"
+	 ></mat-datepicker-toggle>
+	 <mat-datepicker #benefitsMonthDatepicker></mat-datepicker>
+	 <mat-error *ngIf = "getControls('benefitsMonth').invalid" >
+	  {{ getControls('benefitsMonth')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>عدد الملاحظات</mat-label>
+	 <input matInput formControlName="noteNumber"/>
+	 <mat-error *ngIf = "getControls('noteNumber').invalid" >
+	  {{ getControls('noteNumber')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>المرتب الاساسي</mat-label>
+	 <input matInput formControlName="basicaSalary"/>
+	 <mat-error *ngIf = "getControls('basicaSalary').invalid" >
+	  {{ getControls('basicaSalary')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>قيمه الجهود</mat-label>
+	 <input matInput formControlName="valuableEfforts"/>
+	 <mat-error *ngIf = "getControls('valuableEfforts').invalid" >
+	  {{ getControls('valuableEfforts')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>قيمه الحوافز</mat-label>
+	 <input matInput formControlName="incentiveValue"/>
+	 <mat-error *ngIf = "getControls('incentiveValue').invalid" >
+	  {{ getControls('incentiveValue')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>قيمه الاضافي</mat-label>
+	 <input matInput formControlName="extraValue"/>
+	 <mat-error *ngIf = "getControls('extraValue').invalid" >
+	  {{ getControls('extraValue')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>قيمه مكافاه</mat-label>
+	 <input matInput formControlName="bonusValue"/>
+	 <mat-error *ngIf = "getControls('bonusValue').invalid" >
+	  {{ getControls('bonusValue')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+          
+
+	<app-material-select appearance="outline"
+	  #correctionCode 
+	  [options] = "correctionCodeSelectOptions"
+	  formControlName = "correctionCode"
+	></app-material-select>
+
+        </form>
+    </mat-card-content>
+
+    <mat-divider></mat-divider>
+
+	<mat-card-actions>
+			<form [formGroup]="attachmentForm" class="form-container">
+                <app-multi-file-upload [service] = "recordVariableCorrectionsForEmployeesService" [id]="recordVariableCorrectionsForEmployeesForm.get('id').value"
+                    formControlName = "attachmentFiles">
+                </app-multi-file-upload>
+            </form>
+            <button
+                color = "primary"
+                type = "submit"
+                (click) = "onSubmit()"
+                [disabled] = "recordVariableCorrectionsForEmployeesForm.invalid"
+                mat-raised-button>
+                حفظ
+            </button>
+    </mat-card-actions>
+</mat-card>
+

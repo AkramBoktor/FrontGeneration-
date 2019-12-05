@@ -1,0 +1,134 @@
+
+<mat-card class="form-card">
+      <mat-card-header>
+  
+          <mat-card-title>
+              المكافاه
+          </mat-card-title>
+  
+      </mat-card-header>
+  
+      <mat-card-content>
+  
+        <form [formGroup] = "rewardForm" class="form-container">
+         
+
+	<mat-form-field appearance="outline">
+	 <mat-label>كود المكافاه</mat-label>
+	 <input matInput formControlName="bonusCode"/>
+	 <mat-error *ngIf = "getControls('bonusCode').invalid" >
+	  {{ getControls('bonusCode')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>رقم الوارد</mat-label>
+	 <input matInput formControlName="incomingNumber"/>
+	 <mat-error *ngIf = "getControls('incomingNumber').invalid" >
+	  {{ getControls('incomingNumber')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>شهر وسنه الوارد</mat-label>
+	 <input matInput
+	  [matDatepicker] = "incomingYearAndMonthDatepicker"
+	  autocomplete = "off"
+	  formControlName= "incomingYearAndMonth"/>
+	 <mat-datepicker-toggle
+	   matSuffix
+	   [for]="incomingYearAndMonthDatepicker"
+	 ></mat-datepicker-toggle>
+	 <mat-datepicker #incomingYearAndMonthDatepicker></mat-datepicker>
+	 <mat-error *ngIf = "getControls('incomingYearAndMonth').invalid" >
+	  {{ getControls('incomingYearAndMonth')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>صافي القيمه</mat-label>
+	 <input matInput formControlName="netValue"/>
+	 <mat-error *ngIf = "getControls('netValue').invalid" >
+	  {{ getControls('netValue')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>رقم الشطب</mat-label>
+	 <input matInput formControlName="writeOffNumber"/>
+	 <mat-error *ngIf = "getControls('writeOffNumber').invalid" >
+	  {{ getControls('writeOffNumber')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>تاريخ الفعليه</mat-label>
+	 <input matInput
+	  [matDatepicker] = "atualDateDatepicker"
+	  autocomplete = "off"
+	  formControlName= "atualDate"/>
+	 <mat-datepicker-toggle
+	   matSuffix
+	   [for]="atualDateDatepicker"
+	 ></mat-datepicker-toggle>
+	 <mat-datepicker #atualDateDatepicker></mat-datepicker>
+	 <mat-error *ngIf = "getControls('atualDate').invalid" >
+	  {{ getControls('atualDate')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>تاريخ الافراج</mat-label>
+	 <input matInput
+	  [matDatepicker] = "releaseDateDatepicker"
+	  autocomplete = "off"
+	  formControlName= "releaseDate"/>
+	 <mat-datepicker-toggle
+	   matSuffix
+	   [for]="releaseDateDatepicker"
+	 ></mat-datepicker-toggle>
+	 <mat-datepicker #releaseDateDatepicker></mat-datepicker>
+	 <mat-error *ngIf = "getControls('releaseDate').invalid" >
+	  {{ getControls('releaseDate')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>تاريخ الشطب</mat-label>
+	 <input matInput
+	  [matDatepicker] = "delistingDateDatepicker"
+	  autocomplete = "off"
+	  formControlName= "delistingDate"/>
+	 <mat-datepicker-toggle
+	   matSuffix
+	   [for]="delistingDateDatepicker"
+	 ></mat-datepicker-toggle>
+	 <mat-datepicker #delistingDateDatepicker></mat-datepicker>
+	 <mat-error *ngIf = "getControls('delistingDate').invalid" >
+	  {{ getControls('delistingDate')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+         
+
+	<app-material-select appearance="outline"
+	  #administrationCode 
+	  [options] = "administrationCodeSelectOptions"
+	  formControlName = "administrationCode"
+	></app-material-select>
+        </form>
+  
+      </mat-card-content >
+  
+      <mat-action-row>
+            <form [formGroup]="attachmentForm" class="form-container">
+                <app-multi-file-upload [service] = "rewardService" [id]="rewardForm.get('id').value"
+                    formControlName = "attachmentFiles">
+                </app-multi-file-upload>
+            </form>
+            <button (click) = "onConfirm()" mat-raised-button color = "primary" >
+                غلق
+            </button>
+        </mat-action-row>
+    </mat-card>
+
+    

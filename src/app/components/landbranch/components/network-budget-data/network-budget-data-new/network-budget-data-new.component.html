@@ -1,0 +1,64 @@
+
+<app-new-form-layout
+    dir="rtl"
+    (submitClicked) = "onSubmit()"
+    (back) = "onBack()"
+    [pageTitle] = "'بيانات المزانية الشبكية'"
+>
+    <ng-template newFormContainer >
+        <form [formGroup] = "networkBudgetDataForm">
+         
+
+	<mat-form-field appearance="outline">
+	 <mat-label>كود قطعة الارض</mat-label>
+	 <input matInput formControlName="landID"/>
+	 <mat-error *ngIf = "getControls('landID').invalid" >
+	  {{ getControls('landID')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>منسوب روبير</mat-label>
+	 <input matInput formControlName="robertLevel"/>
+	 <mat-error *ngIf = "getControls('robertLevel').invalid" >
+	  {{ getControls('robertLevel')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>وصف منسوب روبير للاتجاه</mat-label>
+	 <input matInput formControlName="directionDescription" [disableControl]="true" />
+	 <mat-error *ngIf = "getControls('directionDescription').invalid" >
+	  {{ getControls('directionDescription')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+         
+
+	<app-material-select appearance="outline"
+	  #directionCode 
+	  [options] = "directionCodeSelectOptions"
+	  formControlName = "directionCode"
+	></app-material-select>
+
+        </form>
+
+        <mat-divider></mat-divider>
+
+		<mat-card-actions>
+			<form [formGroup]="attachmentForm" class="form-container">
+                <app-multi-file-upload [service] = "networkBudgetDataService" [id]="networkBudgetDataForm.get('id').value"
+                    formControlName = "attachmentFiles">
+                </app-multi-file-upload>
+            </form>
+            <button
+                type="submit"
+                (click)="onSubmit()"
+                [disabled]="networkBudgetDataForm.invalid"
+                mat-raised-button
+                color = "primary">
+             حفظ
+            </button>
+        </mat-card-actions>
+    </ng-template >
+</app-new-form-layout >
+

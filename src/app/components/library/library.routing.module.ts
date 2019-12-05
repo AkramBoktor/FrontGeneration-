@@ -10,14 +10,6 @@ const routes: Routes = [
     component: LibraryComponent,
   },
   
-  
-{
-    path: 'smooth-data', loadChildren: './components/smooth-data/smooth-data.module#SmoothDataModule',
-    data: {
-      moduleName: 'SmoothData'
-    },
-},
-
 {
     path: 'return-document-book-with-borrower-number', loadChildren: './components/return-document-book-with-borrower-number/return-document-book-with-borrower-number.module#ReturnDocumentBookWithBorrowerNumberModule',
     data: {
@@ -26,9 +18,9 @@ const routes: Routes = [
 },
 
 {
-    path: 'permission-flashback-book-to-the-body-store', loadChildren: './components/permission-flashback-book-to-the-body-store/permission-flashback-book-to-the-body-store.module#PermissionFlashbackBookToTheBodyStoreModule',
+    path: 'smooth-data', loadChildren: './components/smooth-data/smooth-data.module#SmoothDataModule',
     data: {
-      moduleName: 'PermissionFlashbackBookToTheBodyStore'
+      moduleName: 'SmoothData'
     },
 },
 
@@ -43,6 +35,13 @@ const routes: Routes = [
     path: 'data-for-document', loadChildren: './components/data-for-document/data-for-document.module#DataForDocumentModule',
     data: {
       moduleName: 'DataForDocument'
+    },
+},
+
+{
+    path: 'permission-flashback-book-to-the-body-store', loadChildren: './components/permission-flashback-book-to-the-body-store/permission-flashback-book-to-the-body-store.module#PermissionFlashbackBookToTheBodyStoreModule',
+    data: {
+      moduleName: 'PermissionFlashbackBookToTheBodyStore'
     },
 },
 

@@ -1,0 +1,38 @@
+
+<app-search-list-expansion-panel
+    dir="rtl"
+    [pageTitle] = "'ربط البنود باكواد العناصر'"
+    (beginSearch) = "onBeginSearch()"
+    (create) = "onCreate()"
+>
+    <ng-template searchFormContainer >
+        <form [formGroup] = "searchForm">
+           
+           
+
+	<app-material-select appearance="outline"
+	  #itemCode 
+	  [options] = "itemCodeSelectOptions"
+	  formControlName = "itemCode"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #elementCode 
+	  [options] = "elementCodeSelectOptions"
+	  formControlName = "elementCode"
+	></app-material-select>
+
+        </form>
+    </ng-template >
+    <ng-template searchResultContainer >
+        <app-grid-control
+            #gridControl
+            [rowDataService] = "getBindingItemsWithElementsCodesPaginatedSortedFiltered"
+            [columnOptions] = "columnOptions"
+            [gridHeaderOptions] = "gridHeaderOptions"
+            [searchInput] = "searchForm.value"
+            (deleteRow) = "onDeleteClicked($event)"
+        >
+        </app-grid-control>
+    </ng-template>
+</app-search-list-expansion-panel >

@@ -1,0 +1,62 @@
+
+<app-new-form-layout
+    dir="rtl"
+    (submitClicked) = "onSubmit()"
+    (back) = "onBack()"
+    [pageTitle] = "'بيانات ملاحظات المعاينة'"
+>
+    <ng-template newFormContainer >
+        <form [formGroup] = "previewNotesDataForm">
+         
+
+	<mat-form-field appearance="outline">
+	 <mat-label>كود قطعة الارض</mat-label>
+	 <input matInput formControlName="landID"/>
+	 <mat-error *ngIf = "getControls('landID').invalid" >
+	  {{ getControls('landID')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>البعد</mat-label>
+	 <input matInput formControlName="dimension"/>
+	 <mat-error *ngIf = "getControls('dimension').invalid" >
+	  {{ getControls('dimension')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+         
+
+	<app-material-select appearance="outline"
+	  #borderCode 
+	  [options] = "borderCodeSelectOptions"
+	  formControlName = "borderCode"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #insideOutsideSite 
+	  [options] = "insideOutsideSiteSelectOptions"
+	  formControlName = "insideOutsideSite"
+	></app-material-select>
+
+        </form>
+
+        <mat-divider></mat-divider>
+
+		<mat-card-actions>
+			<form [formGroup]="attachmentForm" class="form-container">
+                <app-multi-file-upload [service] = "previewNotesDataService" [id]="previewNotesDataForm.get('id').value"
+                    formControlName = "attachmentFiles">
+                </app-multi-file-upload>
+            </form>
+            <button
+                type="submit"
+                (click)="onSubmit()"
+                [disabled]="previewNotesDataForm.invalid"
+                mat-raised-button
+                color = "primary">
+             حفظ
+            </button>
+        </mat-card-actions>
+    </ng-template >
+</app-new-form-layout >
+

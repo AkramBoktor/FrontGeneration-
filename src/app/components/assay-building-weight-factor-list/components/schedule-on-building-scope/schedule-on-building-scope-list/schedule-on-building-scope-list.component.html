@@ -1,0 +1,86 @@
+
+<app-search-list-expansion-panel
+    dir="rtl"
+    [pageTitle] = "'الجدول الزمني علي مستوي المبني '"
+    (beginSearch) = "onBeginSearch()"
+    (create) = "onCreate()"
+>
+    <ng-template searchFormContainer >
+        <form [formGroup] = "searchForm">
+           
+
+	<mat-form-field appearance="outline">
+	 <mat-label>كود المبنى</mat-label>
+	 <input matInput formControlName="buildingCode"/>
+	 <mat-error *ngIf = "getControls('buildingCode').invalid" >
+	  {{ getControls('buildingCode')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>تاريخ </mat-label>
+	 <input matInput formControlName="date"/>
+	 <mat-error *ngIf = "getControls('date').invalid" >
+	  {{ getControls('date')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>كود الملحق</mat-label>
+	 <input matInput formControlName="extensionCode"/>
+	 <mat-error *ngIf = "getControls('extensionCode').invalid" >
+	  {{ getControls('extensionCode')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>سنة الخطة</mat-label>
+	 <input matInput formControlName="planYear"/>
+	 <mat-error *ngIf = "getControls('planYear').invalid" >
+	  {{ getControls('planYear')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>كود النشاط</mat-label>
+	 <input matInput formControlName="activityCode"/>
+	 <mat-error *ngIf = "getControls('activityCode').invalid" >
+	  {{ getControls('activityCode')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>كمية النشاط وفقا للبند</mat-label>
+	 <input matInput formControlName="activityQuantityAccordingToItem"/>
+	 <mat-error *ngIf = "getControls('activityQuantityAccordingToItem').invalid" >
+	  {{ getControls('activityQuantityAccordingToItem')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+           
+
+	<app-material-select appearance="outline"
+	  #constructionType 
+	  [options] = "constructionTypeSelectOptions"
+	  formControlName = "constructionType"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #itemCode 
+	  [options] = "itemCodeSelectOptions"
+	  formControlName = "itemCode"
+	></app-material-select>
+
+        </form>
+    </ng-template >
+    <ng-template searchResultContainer >
+        <app-grid-control
+            #gridControl
+            [rowDataService] = "getScheduleOnBuildingScopePaginatedSortedFiltered"
+            [columnOptions] = "columnOptions"
+            [gridHeaderOptions] = "gridHeaderOptions"
+            [searchInput] = "searchForm.value"
+            (deleteRow) = "onDeleteClicked($event)"
+        >
+        </app-grid-control>
+    </ng-template>
+</app-search-list-expansion-panel >

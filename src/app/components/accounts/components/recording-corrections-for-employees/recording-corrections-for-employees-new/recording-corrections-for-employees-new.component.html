@@ -1,0 +1,102 @@
+
+<app-new-form-layout
+    dir="rtl"
+    (submitClicked) = "onSubmit()"
+    (back) = "onBack()"
+    [pageTitle] = "'تسجيل تصويبات الخاصه بالموظفين'"
+>
+    <ng-template newFormContainer >
+        <form [formGroup] = "recordingCorrectionsForEmployeesForm">
+         
+
+	<mat-form-field appearance="outline">
+	 <mat-label>كود الموظف</mat-label>
+	 <input matInput formControlName="employeeCode"/>
+	 <mat-error *ngIf = "getControls('employeeCode').invalid" >
+	  {{ getControls('employeeCode')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>رقم الوارد</mat-label>
+	 <input matInput formControlName="incomingNumber"/>
+	 <mat-error *ngIf = "getControls('incomingNumber').invalid" >
+	  {{ getControls('incomingNumber')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>شهور وسنه الوارد</mat-label>
+	 <input matInput
+	  [matDatepicker] = "incomingMonthAndYearDatepicker"
+	  autocomplete = "off"
+	  formControlName= "incomingMonthAndYear"/>
+	 <mat-datepicker-toggle
+	   matSuffix
+	   [for]="incomingMonthAndYearDatepicker"
+	 ></mat-datepicker-toggle>
+	 <mat-datepicker #incomingMonthAndYearDatepicker></mat-datepicker>
+	 <mat-error *ngIf = "getControls('incomingMonthAndYear').invalid" >
+	  {{ getControls('incomingMonthAndYear')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>شهر الملاحظه</mat-label>
+	 <input matInput
+	  [matDatepicker] = "noteMonthDatepicker"
+	  autocomplete = "off"
+	  formControlName= "noteMonth"/>
+	 <mat-datepicker-toggle
+	   matSuffix
+	   [for]="noteMonthDatepicker"
+	 ></mat-datepicker-toggle>
+	 <mat-datepicker #noteMonthDatepicker></mat-datepicker>
+	 <mat-error *ngIf = "getControls('noteMonth').invalid" >
+	  {{ getControls('noteMonth')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>القيمه</mat-label>
+	 <input matInput formControlName="value"/>
+	 <mat-error *ngIf = "getControls('value').invalid" >
+	  {{ getControls('value')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+         
+
+	<app-material-select appearance="outline"
+	  #employeeStatus 
+	  [options] = "employeeStatusSelectOptions"
+	  formControlName = "employeeStatus"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #noteCode 
+	  [options] = "noteCodeSelectOptions"
+	  formControlName = "noteCode"
+	></app-material-select>
+
+        </form>
+
+        <mat-divider></mat-divider>
+
+		<mat-card-actions>
+			<form [formGroup]="attachmentForm" class="form-container">
+                <app-multi-file-upload [service] = "recordingCorrectionsForEmployeesService" [id]="recordingCorrectionsForEmployeesForm.get('id').value"
+                    formControlName = "attachmentFiles">
+                </app-multi-file-upload>
+            </form>
+            <button
+                type="submit"
+                (click)="onSubmit()"
+                [disabled]="recordingCorrectionsForEmployeesForm.invalid"
+                mat-raised-button
+                color = "primary">
+             حفظ
+            </button>
+        </mat-card-actions>
+    </ng-template >
+</app-new-form-layout >
+

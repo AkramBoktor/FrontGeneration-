@@ -1,0 +1,74 @@
+
+<mat-card>
+    <mat-card-header>
+        <mat-card-title>اعتمادات للمناطق</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+        <form [formGroup]="creditsForRegionsForm" class="form-container">
+          
+
+	<mat-form-field appearance="outline">
+	 <mat-label>سنة الموازنة</mat-label>
+	 <input matInput formControlName="budgetYear"/>
+	 <mat-error *ngIf = "getControls('budgetYear').invalid" >
+	  {{ getControls('budgetYear')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>مبلغ معتمد للمنطقة</mat-label>
+	 <input matInput formControlName="regionApprovedAmount"/>
+	 <mat-error *ngIf = "getControls('regionApprovedAmount').invalid" >
+	  {{ getControls('regionApprovedAmount')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>المبلغ المخصوم من الاعتماد</mat-label>
+	 <input matInput formControlName="amountDeductedFromCredit"/>
+	 <mat-error *ngIf = "getControls('amountDeductedFromCredit').invalid" >
+	  {{ getControls('amountDeductedFromCredit')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+          
+
+	<app-material-select appearance="outline"
+	  #areaCode 
+	  [options] = "areaCodeSelectOptions"
+	  formControlName = "areaCode"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #budgetItem 
+	  [options] = "budgetItemSelectOptions"
+	  formControlName = "budgetItem"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #fundingSourceNumber 
+	  [options] = "fundingSourceNumberSelectOptions"
+	  formControlName = "fundingSourceNumber"
+	></app-material-select>
+
+        </form>
+    </mat-card-content>
+
+    <mat-divider></mat-divider>
+
+	<mat-card-actions>
+			<form [formGroup]="attachmentForm" class="form-container">
+                <app-multi-file-upload [service] = "creditsForRegionsService" [id]="creditsForRegionsForm.get('id').value"
+                    formControlName = "attachmentFiles">
+                </app-multi-file-upload>
+            </form>
+            <button
+                color = "primary"
+                type = "submit"
+                (click) = "onSubmit()"
+                [disabled] = "creditsForRegionsForm.invalid"
+                mat-raised-button>
+                حفظ
+            </button>
+    </mat-card-actions>
+</mat-card>
+

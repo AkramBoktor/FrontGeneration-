@@ -1,0 +1,88 @@
+
+<app-new-form-layout
+    dir="rtl"
+    (submitClicked) = "onSubmit()"
+    (back) = "onBack()"
+    [pageTitle] = "'حوافظ التمويل الواردة من مصدر تمويل'"
+>
+    <ng-template newFormContainer >
+        <form [formGroup] = "fundsFromAFundingSourceForm">
+         
+
+	<mat-form-field appearance="outline">
+	 <mat-label>سنه الموازنه</mat-label>
+	 <input matInput formControlName="budgetYear"/>
+	 <mat-error *ngIf = "getControls('budgetYear').invalid" >
+	  {{ getControls('budgetYear')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>مسلسل المحافظه</mat-label>
+	 <input matInput formControlName="clipboardSerial"/>
+	 <mat-error *ngIf = "getControls('clipboardSerial').invalid" >
+	  {{ getControls('clipboardSerial')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>رقم حافظ التمويل</mat-label>
+	 <input matInput formControlName="fundClipboardNumber"/>
+	 <mat-error *ngIf = "getControls('fundClipboardNumber').invalid" >
+	  {{ getControls('fundClipboardNumber')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>تاريخ حافظه التمويل</mat-label>
+	 <input matInput
+	  [matDatepicker] = "fundingDateDatepicker"
+	  autocomplete = "off"
+	  formControlName= "fundingDate"/>
+	 <mat-datepicker-toggle
+	   matSuffix
+	   [for]="fundingDateDatepicker"
+	 ></mat-datepicker-toggle>
+	 <mat-datepicker #fundingDateDatepicker></mat-datepicker>
+	 <mat-error *ngIf = "getControls('fundingDate').invalid" >
+	  {{ getControls('fundingDate')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>مبلغ حافظه التمويل</mat-label>
+	 <input matInput formControlName="fundClipboardAmount"/>
+	 <mat-error *ngIf = "getControls('fundClipboardAmount').invalid" >
+	  {{ getControls('fundClipboardAmount')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+         
+
+	<app-material-select appearance="outline"
+	  #fundingSourceNumber 
+	  [options] = "fundingSourceNumberSelectOptions"
+	  formControlName = "fundingSourceNumber"
+	></app-material-select>
+
+        </form>
+
+        <mat-divider></mat-divider>
+
+		<mat-card-actions>
+			<form [formGroup]="attachmentForm" class="form-container">
+                <app-multi-file-upload [service] = "fundsFromAFundingSourceService" [id]="fundsFromAFundingSourceForm.get('id').value"
+                    formControlName = "attachmentFiles">
+                </app-multi-file-upload>
+            </form>
+            <button
+                type="submit"
+                (click)="onSubmit()"
+                [disabled]="fundsFromAFundingSourceForm.invalid"
+                mat-raised-button
+                color = "primary">
+             حفظ
+            </button>
+        </mat-card-actions>
+    </ng-template >
+</app-new-form-layout >
+

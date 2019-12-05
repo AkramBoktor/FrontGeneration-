@@ -16,16 +16,8 @@
 	</mat-form-field>
 
 	<mat-form-field appearance="outline">
-	 <mat-label>وظيفه المستعير</mat-label>
-	 <input matInput formControlName="jobBorrower" [disableControl]="true" />
-	 <mat-error *ngIf = "getControls('jobBorrower').invalid" >
-	  {{ getControls('jobBorrower')| getErrorMessages : errorMessages}}
-	  </mat-error>
-	</mat-form-field>
-
-	<mat-form-field appearance="outline">
 	 <mat-label>رقم الكتاب</mat-label>
-	 <input matInput formControlName="bookNumber" [disableControl]="true" />
+	 <input matInput formControlName="bookNumber"/>
 	 <mat-error *ngIf = "getControls('bookNumber').invalid" >
 	  {{ getControls('bookNumber')| getErrorMessages : errorMessages}}
 	  </mat-error>
@@ -33,7 +25,7 @@
 
 	<mat-form-field appearance="outline">
 	 <mat-label>رقم الايصال</mat-label>
-	 <input matInput formControlName="receiptNumber" [disableControl]="true" />
+	 <input matInput formControlName="receiptNumber"/>
 	 <mat-error *ngIf = "getControls('receiptNumber').invalid" >
 	  {{ getControls('receiptNumber')| getErrorMessages : errorMessages}}
 	  </mat-error>
@@ -99,10 +91,16 @@
 	</mat-form-field>
           
 
-	<app-material-select appearance="outline" [disabled]="true" 
+	<app-material-select appearance="outline"
 	  #administration 
 	  [options] = "administrationSelectOptions"
 	  formControlName = "administration"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #jobBorrower 
+	  [options] = "jobBorrowerSelectOptions"
+	  formControlName = "jobBorrower"
 	></app-material-select>
 
         </form>

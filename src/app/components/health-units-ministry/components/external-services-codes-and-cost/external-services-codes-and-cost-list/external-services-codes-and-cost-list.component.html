@@ -10,7 +10,7 @@
            
 
 	<mat-form-field appearance="outline">
-	 <mat-label> كود الخدمة</mat-label>
+	 <mat-label>كود الخدمة</mat-label>
 	 <input matInput formControlName="serviceCode"/>
 	 <mat-error *ngIf = "getControls('serviceCode').invalid" >
 	  {{ getControls('serviceCode')| getErrorMessages : errorMessages}}
@@ -18,7 +18,7 @@
 	</mat-form-field>
 
 	<mat-form-field appearance="outline">
-	 <mat-label> اسم الخدمة</mat-label>
+	 <mat-label>اسم الخدمة</mat-label>
 	 <input matInput formControlName="serviceName"/>
 	 <mat-error *ngIf = "getControls('serviceName').invalid" >
 	  {{ getControls('serviceName')| getErrorMessages : errorMessages}}
@@ -26,7 +26,7 @@
 	</mat-form-field>
 
 	<mat-form-field appearance="outline">
-	 <mat-label>   نسبة تكلفة التصنيف الاول</mat-label>
+	 <mat-label>نسبة تكلفة التصنيف الاول</mat-label>
 	 <input matInput formControlName="firstClassificationCostRatio"/>
 	 <mat-error *ngIf = "getControls('firstClassificationCostRatio').invalid" >
 	  {{ getControls('firstClassificationCostRatio')| getErrorMessages : errorMessages}}
@@ -34,7 +34,7 @@
 	</mat-form-field>
 
 	<mat-form-field appearance="outline">
-	 <mat-label> نسبة تكلفة التصنيف  الثاني</mat-label>
+	 <mat-label>نسبة تكلفة التصنيف  الثاني</mat-label>
 	 <input matInput formControlName="secondClassificationCostRatio"/>
 	 <mat-error *ngIf = "getControls('secondClassificationCostRatio').invalid" >
 	  {{ getControls('secondClassificationCostRatio')| getErrorMessages : errorMessages}}
@@ -42,7 +42,7 @@
 	</mat-form-field>
 
 	<mat-form-field appearance="outline">
-	 <mat-label> نسبة تكلفة التصنيف  الثالث</mat-label>
+	 <mat-label>نسبة تكلفة التصنيف  الثالث</mat-label>
 	 <input matInput formControlName="thirdClassificationCostRatio"/>
 	 <mat-error *ngIf = "getControls('thirdClassificationCostRatio').invalid" >
 	  {{ getControls('thirdClassificationCostRatio')| getErrorMessages : errorMessages}}

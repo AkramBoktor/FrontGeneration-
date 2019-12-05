@@ -1,15 +1,18 @@
 
-import { Component, Injector, Input, OnInit, Optional, ViewChild } from '@angular/core';
-import { FormGroup, Validators } from '@angular/forms';
+import { Component,Input, OnInit, Optional, ViewChild, Injector } from '@angular/core';
+import { AbstractControl, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef } from '@angular/material';
+import { ActivatedRoute,Router } from '@angular/router';
 import { AppBaseComponent } from 'app/shared/base/app-base.component';
-import { MaterialSelectComponent } from 'app/shared/components/material-controls/material-select/material-select.component';
-import { BorrowAnEmployeeToABookOrDocument } from 'app/shared/models/borrow-an-employee-to-a-book-or-document';
 import { FormControlError } from 'app/shared/models/controls/interfaces';
 import { MaterialSelectOptions } from 'app/shared/models/controls/material-select.model';
+import { startWith } from 'rxjs/operators';
+import { MaterialSelectComponent } from 'app/shared/components/material-controls/material-select/material-select.component';
+import { BorrowAnEmployeeToABookOrDocument } from 'app/shared/models/borrow-an-employee-to-a-book-or-document';
+import { ValidatorFunctions } from 'app/shared/validations/validator-functions';
+import { BorrowAnEmployeeToABookOrDocumentService } from '../shared/borrow-an-employee-to-a-book-or-document.service';
 import { LookupService } from 'app/shared/pages/lookup-form/lookup.service';
 import { switchMap } from 'rxjs/operators';
-import { BorrowAnEmployeeToABookOrDocumentService } from '../shared/borrow-an-employee-to-a-book-or-document.service';
 
 
 @Component({
@@ -84,8 +87,8 @@ jobTitleSelectOptions: MaterialSelectOptions;
   loanDuration : [this.selectedBorrowAnEmployeeToABookOrDocument.loanDuration, [ Validators.required ]],
   defaultReturnDate : [this.selectedBorrowAnEmployeeToABookOrDocument.defaultReturnDate, [ Validators.required ]],
   bookState : [this.selectedBorrowAnEmployeeToABookOrDocument.bookState, [ Validators.required ]],
-  subAdministration : [this.selectedBorrowAnEmployeeToABookOrDocument.subAdministration, [ ]],
-  jobTitle : [this.selectedBorrowAnEmployeeToABookOrDocument.jobTitle, [ ]]
+  subAdministration : [this.selectedBorrowAnEmployeeToABookOrDocument.subAdministration, [ Validators.required ]],
+  jobTitle : [this.selectedBorrowAnEmployeeToABookOrDocument.jobTitle, [ Validators.required ]]
    }, {
 	  validators: [ ]
       });

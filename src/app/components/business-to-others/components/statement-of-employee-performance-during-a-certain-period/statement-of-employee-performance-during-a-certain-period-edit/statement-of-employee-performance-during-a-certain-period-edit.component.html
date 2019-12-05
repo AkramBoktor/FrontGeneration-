@@ -1,0 +1,118 @@
+
+<mat-card>
+    <mat-card-header>
+        <mat-card-title>بيان الاداء الوظيفي للموظف خلال فترة معينة</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+        <form [formGroup]="statementOfEmployeePerformanceDuringACertainPeriodForm" class="form-container">
+          
+
+	<mat-form-field appearance="outline">
+	 <mat-label>رقم المدير المباشر</mat-label>
+	 <input matInput formControlName="directManagerCode"/>
+	 <mat-error *ngIf = "getControls('directManagerCode').invalid" >
+	  {{ getControls('directManagerCode')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>رقم المدير الاعلي</mat-label>
+	 <input matInput formControlName="seniorManagerCode"/>
+	 <mat-error *ngIf = "getControls('seniorManagerCode').invalid" >
+	  {{ getControls('seniorManagerCode')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>كود الموظف</mat-label>
+	 <input matInput formControlName="employeeCode"/>
+	 <mat-error *ngIf = "getControls('employeeCode').invalid" >
+	  {{ getControls('employeeCode')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>سنة التقدير</mat-label>
+	 <input matInput
+	  [matDatepicker] = "estimationYearDatepicker"
+	  autocomplete = "off"
+	  formControlName= "estimationYear"/>
+	 <mat-datepicker-toggle
+	   matSuffix
+	   [for]="estimationYearDatepicker"
+	 ></mat-datepicker-toggle>
+	 <mat-datepicker #estimationYearDatepicker></mat-datepicker>
+	 <mat-error *ngIf = "getControls('estimationYear').invalid" >
+	  {{ getControls('estimationYear')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>فترة التقدير من</mat-label>
+	 <input matInput
+	  [matDatepicker] = "estimatePeriodFromDatepicker"
+	  autocomplete = "off"
+	  formControlName= "estimatePeriodFrom"/>
+	 <mat-datepicker-toggle
+	   matSuffix
+	   [for]="estimatePeriodFromDatepicker"
+	 ></mat-datepicker-toggle>
+	 <mat-datepicker #estimatePeriodFromDatepicker></mat-datepicker>
+	 <mat-error *ngIf = "getControls('estimatePeriodFrom').invalid" >
+	  {{ getControls('estimatePeriodFrom')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>فترة التقدير الي</mat-label>
+	 <input matInput
+	  [matDatepicker] = "estimatePeriodToDatepicker"
+	  autocomplete = "off"
+	  formControlName= "estimatePeriodTo"/>
+	 <mat-datepicker-toggle
+	   matSuffix
+	   [for]="estimatePeriodToDatepicker"
+	 ></mat-datepicker-toggle>
+	 <mat-datepicker #estimatePeriodToDatepicker></mat-datepicker>
+	 <mat-error *ngIf = "getControls('estimatePeriodTo').invalid" >
+	  {{ getControls('estimatePeriodTo')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>توصيف الاداء</mat-label>
+	 <input matInput formControlName="performanceCharacterization"/>
+	 <mat-error *ngIf = "getControls('performanceCharacterization').invalid" >
+	  {{ getControls('performanceCharacterization')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+          
+
+	<app-material-select appearance="outline"
+	  #performanceType 
+	  [options] = "performanceTypeSelectOptions"
+	  formControlName = "performanceType"
+	></app-material-select>
+
+        </form>
+    </mat-card-content>
+
+    <mat-divider></mat-divider>
+
+	<mat-card-actions>
+			<form [formGroup]="attachmentForm" class="form-container">
+                <app-multi-file-upload [service] = "statementOfEmployeePerformanceDuringACertainPeriodService" [id]="statementOfEmployeePerformanceDuringACertainPeriodForm.get('id').value"
+                    formControlName = "attachmentFiles">
+                </app-multi-file-upload>
+            </form>
+            <button
+                color = "primary"
+                type = "submit"
+                (click) = "onSubmit()"
+                [disabled] = "statementOfEmployeePerformanceDuringACertainPeriodForm.invalid"
+                mat-raised-button>
+                حفظ
+            </button>
+    </mat-card-actions>
+</mat-card>
+

@@ -1,0 +1,114 @@
+
+<app-new-form-layout
+    dir="rtl"
+    (submitClicked) = "onSubmit()"
+    (back) = "onBack()"
+    [pageTitle] = "'عناصر بنود المقايسة المستحقة لمعامل الاوزان لمبني'"
+>
+    <ng-template newFormContainer >
+        <form [formGroup] = "elementsOfAssayItemsForWeightsFactorOfABuildingForm">
+         
+
+	<mat-form-field appearance="outline">
+	 <mat-label>كود المبنى</mat-label>
+	 <input matInput formControlName="buildingCode"/>
+	 <mat-error *ngIf = "getControls('buildingCode').invalid" >
+	  {{ getControls('buildingCode')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>كود الملحق</mat-label>
+	 <input matInput formControlName="extensionCode"/>
+	 <mat-error *ngIf = "getControls('extensionCode').invalid" >
+	  {{ getControls('extensionCode')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>سنة الخطة</mat-label>
+	 <input matInput formControlName="planYear" [disableControl]="true" />
+	 <mat-error *ngIf = "getControls('planYear').invalid" >
+	  {{ getControls('planYear')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>تاريخ</mat-label>
+	 <input matInput
+	  [matDatepicker] = "dateDatepicker"
+	  autocomplete = "off"
+	  formControlName= "date"/>
+	 <mat-datepicker-toggle
+	   matSuffix
+	   [for]="dateDatepicker"
+	 ></mat-datepicker-toggle>
+	 <mat-datepicker #dateDatepicker></mat-datepicker>
+	 <mat-error *ngIf = "getControls('date').invalid" >
+	  {{ getControls('date')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>كود الاختبار</mat-label>
+	 <input matInput formControlName="testCode"/>
+	 <mat-error *ngIf = "getControls('testCode').invalid" >
+	  {{ getControls('testCode')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>اسم العنصر</mat-label>
+	 <input matInput formControlName="elementName" [disableControl]="true" />
+	 <mat-error *ngIf = "getControls('elementName').invalid" >
+	  {{ getControls('elementName')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+         
+
+	<app-material-select appearance="outline"
+	  #constructionType 
+	  [options] = "constructionTypeSelectOptions"
+	  formControlName = "constructionType"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #jobType 
+	  [options] = "jobTypeSelectOptions"
+	  formControlName = "jobType"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #itemCode 
+	  [options] = "itemCodeSelectOptions"
+	  formControlName = "itemCode"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #elementCode 
+	  [options] = "elementCodeSelectOptions"
+	  formControlName = "elementCode"
+	></app-material-select>
+
+        </form>
+
+        <mat-divider></mat-divider>
+
+		<mat-card-actions>
+			<form [formGroup]="attachmentForm" class="form-container">
+                <app-multi-file-upload [service] = "elementsOfAssayItemsForWeightsFactorOfABuildingService" [id]="elementsOfAssayItemsForWeightsFactorOfABuildingForm.get('id').value"
+                    formControlName = "attachmentFiles">
+                </app-multi-file-upload>
+            </form>
+            <button
+                type="submit"
+                (click)="onSubmit()"
+                [disabled]="elementsOfAssayItemsForWeightsFactorOfABuildingForm.invalid"
+                mat-raised-button
+                color = "primary">
+             حفظ
+            </button>
+        </mat-card-actions>
+    </ng-template >
+</app-new-form-layout >
+

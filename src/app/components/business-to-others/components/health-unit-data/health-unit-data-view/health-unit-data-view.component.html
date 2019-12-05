@@ -1,0 +1,136 @@
+
+<mat-card class="form-card">
+      <mat-card-header>
+  
+          <mat-card-title>
+              بيانات الوحده الصحية
+          </mat-card-title>
+  
+      </mat-card-header>
+  
+      <mat-card-content>
+  
+        <form [formGroup] = "healthUnitDataForm" class="form-container">
+         
+
+	<mat-form-field appearance="outline">
+	 <mat-label>نوع الوحدة فرعي</mat-label>
+	 <input matInput formControlName="subUnitType"/>
+	 <mat-error *ngIf = "getControls('subUnitType').invalid" >
+	  {{ getControls('subUnitType')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>رقم الوحدة</mat-label>
+	 <input matInput formControlName="unitCode"/>
+	 <mat-error *ngIf = "getControls('unitCode').invalid" >
+	  {{ getControls('unitCode')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>اسم الوحدة</mat-label>
+	 <input matInput formControlName="unitName"/>
+	 <mat-error *ngIf = "getControls('unitName').invalid" >
+	  {{ getControls('unitName')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>عنوان الوحدة</mat-label>
+	 <input matInput formControlName="unitAddress"/>
+	 <mat-error *ngIf = "getControls('unitAddress').invalid" >
+	  {{ getControls('unitAddress')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>هاتف الوحدة</mat-label>
+	 <input matInput formControlName="unitPhone"/>
+	 <mat-error *ngIf = "getControls('unitPhone').invalid" >
+	  {{ getControls('unitPhone')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>الملكية</mat-label>
+	 <input matInput formControlName="property"/>
+	 <mat-error *ngIf = "getControls('property').invalid" >
+	  {{ getControls('property')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>عدد الاسرة</mat-label>
+	 <input matInput formControlName="familyNumber"/>
+	 <mat-error *ngIf = "getControls('familyNumber').invalid" >
+	  {{ getControls('familyNumber')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+         
+
+	<app-material-select appearance="outline"
+	  #governorateCode 
+	  [options] = "governorateCodeSelectOptions"
+	  formControlName = "governorateCode"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #department 
+	  [options] = "departmentSelectOptions"
+	  formControlName = "department"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #village 
+	  [options] = "villageSelectOptions"
+	  formControlName = "village"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #follower 
+	  [options] = "followerSelectOptions"
+	  formControlName = "follower"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #healthDirectorate 
+	  [options] = "healthDirectorateSelectOptions"
+	  formControlName = "healthDirectorate"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #healthManagement 
+	  [options] = "healthManagementSelectOptions"
+	  formControlName = "healthManagement"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #mainUnitType 
+	  [options] = "mainUnitTypeSelectOptions"
+	  formControlName = "mainUnitType"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #projectType 
+	  [options] = "projectTypeSelectOptions"
+	  formControlName = "projectType"
+	></app-material-select>
+        </form>
+  
+      </mat-card-content >
+  
+      <mat-action-row>
+            <form [formGroup]="attachmentForm" class="form-container">
+                <app-multi-file-upload [service] = "healthUnitDataService" [id]="healthUnitDataForm.get('id').value"
+                    formControlName = "attachmentFiles">
+                </app-multi-file-upload>
+            </form>
+            <button (click) = "onConfirm()" mat-raised-button color = "primary" >
+                غلق
+            </button>
+        </mat-action-row>
+    </mat-card>
+
+    

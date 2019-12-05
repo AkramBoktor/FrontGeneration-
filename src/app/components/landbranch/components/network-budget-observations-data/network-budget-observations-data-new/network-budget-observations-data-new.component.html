@@ -1,0 +1,70 @@
+
+<app-new-form-layout
+    dir="rtl"
+    (submitClicked) = "onSubmit()"
+    (back) = "onBack()"
+    [pageTitle] = "'بيانات ملاحظات الميزانية الشبكية'"
+>
+    <ng-template newFormContainer >
+        <form [formGroup] = "networkBudgetObservationsDataForm">
+         
+
+	<mat-form-field appearance="outline">
+	 <mat-label>كود قطعة الارض</mat-label>
+	 <input matInput formControlName="landID"/>
+	 <mat-error *ngIf = "getControls('landID').invalid" >
+	  {{ getControls('landID')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>متوسط قيم الارتفاع</mat-label>
+	 <input matInput formControlName="averageHeightValues"/>
+	 <mat-error *ngIf = "getControls('averageHeightValues').invalid" >
+	  {{ getControls('averageHeightValues')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>متوسط قيم الانخفاض</mat-label>
+	 <input matInput formControlName="averageValuesDecline"/>
+	 <mat-error *ngIf = "getControls('averageValuesDecline').invalid" >
+	  {{ getControls('averageValuesDecline')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+         
+
+	<app-material-select appearance="outline"
+	  #networkNoteTypeCode 
+	  [options] = "networkNoteTypeCodeSelectOptions"
+	  formControlName = "networkNoteTypeCode"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #borderCode 
+	  [options] = "borderCodeSelectOptions"
+	  formControlName = "borderCode"
+	></app-material-select>
+
+        </form>
+
+        <mat-divider></mat-divider>
+
+		<mat-card-actions>
+			<form [formGroup]="attachmentForm" class="form-container">
+                <app-multi-file-upload [service] = "networkBudgetObservationsDataService" [id]="networkBudgetObservationsDataForm.get('id').value"
+                    formControlName = "attachmentFiles">
+                </app-multi-file-upload>
+            </form>
+            <button
+                type="submit"
+                (click)="onSubmit()"
+                [disabled]="networkBudgetObservationsDataForm.invalid"
+                mat-raised-button
+                color = "primary">
+             حفظ
+            </button>
+        </mat-card-actions>
+    </ng-template >
+</app-new-form-layout >
+

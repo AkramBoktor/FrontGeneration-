@@ -1,0 +1,52 @@
+
+<app-search-list-expansion-panel
+    dir="rtl"
+    [pageTitle] = "'اعتمادات للمناطق'"
+    (beginSearch) = "onBeginSearch()"
+    (create) = "onCreate()"
+>
+    <ng-template searchFormContainer >
+        <form [formGroup] = "searchForm">
+           
+
+	<mat-form-field appearance="outline">
+	 <mat-label>سنة الموازنة</mat-label>
+	 <input matInput formControlName="budgetYear"/>
+	 <mat-error *ngIf = "getControls('budgetYear').invalid" >
+	  {{ getControls('budgetYear')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+           
+
+	<app-material-select appearance="outline"
+	  #areaCode 
+	  [options] = "areaCodeSelectOptions"
+	  formControlName = "areaCode"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #budgetItem 
+	  [options] = "budgetItemSelectOptions"
+	  formControlName = "budgetItem"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #fundingSourceNumber 
+	  [options] = "fundingSourceNumberSelectOptions"
+	  formControlName = "fundingSourceNumber"
+	></app-material-select>
+
+        </form>
+    </ng-template >
+    <ng-template searchResultContainer >
+        <app-grid-control
+            #gridControl
+            [rowDataService] = "getCreditsForRegionsPaginatedSortedFiltered"
+            [columnOptions] = "columnOptions"
+            [gridHeaderOptions] = "gridHeaderOptions"
+            [searchInput] = "searchForm.value"
+            (deleteRow) = "onDeleteClicked($event)"
+        >
+        </app-grid-control>
+    </ng-template>
+</app-search-list-expansion-panel >

@@ -1,0 +1,158 @@
+
+<mat-card>
+    <mat-card-header>
+        <mat-card-title>تسجيل تصويب اجر وظيفي</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+        <form [formGroup]="recordingCorrectionOfPayForm" class="form-container">
+          
+
+	<mat-form-field appearance="outline">
+	 <mat-label>رقم التصويب</mat-label>
+	 <input matInput formControlName="correctionNumber"/>
+	 <mat-error *ngIf = "getControls('correctionNumber').invalid" >
+	  {{ getControls('correctionNumber')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>كود الموظف</mat-label>
+	 <input matInput formControlName="employeeCode"/>
+	 <mat-error *ngIf = "getControls('employeeCode').invalid" >
+	  {{ getControls('employeeCode')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>فتره التصويب من</mat-label>
+	 <input matInput
+	  [matDatepicker] = "correctionPeriodFromDatepicker"
+	  autocomplete = "off"
+	  formControlName= "correctionPeriodFrom"/>
+	 <mat-datepicker-toggle
+	   matSuffix
+	   [for]="correctionPeriodFromDatepicker"
+	 ></mat-datepicker-toggle>
+	 <mat-datepicker #correctionPeriodFromDatepicker></mat-datepicker>
+	 <mat-error *ngIf = "getControls('correctionPeriodFrom').invalid" >
+	  {{ getControls('correctionPeriodFrom')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>فتره التصويب الي</mat-label>
+	 <input matInput
+	  [matDatepicker] = "correctionPeriodToDatepicker"
+	  autocomplete = "off"
+	  formControlName= "correctionPeriodTo"/>
+	 <mat-datepicker-toggle
+	   matSuffix
+	   [for]="correctionPeriodToDatepicker"
+	 ></mat-datepicker-toggle>
+	 <mat-datepicker #correctionPeriodToDatepicker></mat-datepicker>
+	 <mat-error *ngIf = "getControls('correctionPeriodTo').invalid" >
+	  {{ getControls('correctionPeriodTo')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>الاجر المكمل</mat-label>
+	 <input matInput formControlName="supplementaryPay"/>
+	 <mat-error *ngIf = "getControls('supplementaryPay').invalid" >
+	  {{ getControls('supplementaryPay')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>قيمه الاضافي</mat-label>
+	 <input matInput formControlName="extraValue"/>
+	 <mat-error *ngIf = "getControls('extraValue').invalid" >
+	  {{ getControls('extraValue')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>بدلات</mat-label>
+	 <input matInput formControlName="allowances"/>
+	 <mat-error *ngIf = "getControls('allowances').invalid" >
+	  {{ getControls('allowances')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>بدل نقدي</mat-label>
+	 <input matInput formControlName="cashAllowance"/>
+	 <mat-error *ngIf = "getControls('cashAllowance').invalid" >
+	  {{ getControls('cashAllowance')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>بدل سياره</mat-label>
+	 <input matInput formControlName="carAllowance"/>
+	 <mat-error *ngIf = "getControls('carAllowance').invalid" >
+	  {{ getControls('carAllowance')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>اقساط معاشات</mat-label>
+	 <input matInput formControlName="retirementInstallments"/>
+	 <mat-error *ngIf = "getControls('retirementInstallments').invalid" >
+	  {{ getControls('retirementInstallments')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>اجمالي الديون</mat-label>
+	 <input matInput formControlName="totalDebt"/>
+	 <mat-error *ngIf = "getControls('totalDebt').invalid" >
+	  {{ getControls('totalDebt')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>الجزاءات</mat-label>
+	 <input matInput formControlName="sanctions"/>
+	 <mat-error *ngIf = "getControls('sanctions').invalid" >
+	  {{ getControls('sanctions')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>حصه حكومه ارباب عهد</mat-label>
+	 <input matInput formControlName="governmentShare"/>
+	 <mat-error *ngIf = "getControls('governmentShare').invalid" >
+	  {{ getControls('governmentShare')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+          
+
+	<app-material-select appearance="outline"
+	  #correctionType 
+	  [options] = "correctionTypeSelectOptions"
+	  formControlName = "correctionType"
+	></app-material-select>
+
+        </form>
+    </mat-card-content>
+
+    <mat-divider></mat-divider>
+
+	<mat-card-actions>
+			<form [formGroup]="attachmentForm" class="form-container">
+                <app-multi-file-upload [service] = "recordingCorrectionOfPayService" [id]="recordingCorrectionOfPayForm.get('id').value"
+                    formControlName = "attachmentFiles">
+                </app-multi-file-upload>
+            </form>
+            <button
+                color = "primary"
+                type = "submit"
+                (click) = "onSubmit()"
+                [disabled] = "recordingCorrectionOfPayForm.invalid"
+                mat-raised-button>
+                حفظ
+            </button>
+    </mat-card-actions>
+</mat-card>
+

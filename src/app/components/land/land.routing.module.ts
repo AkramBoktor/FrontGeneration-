@@ -8,7 +8,14 @@ const routes: Routes = [
   {
     path: '',
     component: LandComponent,
-  }
+  },
+{
+    path: 'the-positions-of-land-available', loadChildren: './components/the-positions-of-land-available/the-positions-of-land-available.module#ThePositionsOfLandAvailableModule',
+    data: {
+      moduleName: 'ThePositionsOfLandAvailable'
+    },
+},
+
 ];
 
 @NgModule({

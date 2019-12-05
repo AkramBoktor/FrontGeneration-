@@ -1,0 +1,94 @@
+
+<mat-card>
+    <mat-card-header>
+        <mat-card-title>حوافظ التمويل الواردة من مصرد تمويل</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+        <form [formGroup]="financingPortfoliosReceivedFromAFundingSourceForm" class="form-container">
+          
+
+	<mat-form-field appearance="outline">
+	 <mat-label>سنة الموازنة</mat-label>
+	 <input matInput formControlName="budgetYear"/>
+	 <mat-error *ngIf = "getControls('budgetYear').invalid" >
+	  {{ getControls('budgetYear')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>مصدر التمويل اسم</mat-label>
+	 <input matInput formControlName="fundingSourceName"/>
+	 <mat-error *ngIf = "getControls('fundingSourceName').invalid" >
+	  {{ getControls('fundingSourceName')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>مسلسل الحافظة</mat-label>
+	 <input matInput formControlName="clipboardSerial"/>
+	 <mat-error *ngIf = "getControls('clipboardSerial').invalid" >
+	  {{ getControls('clipboardSerial')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>رقم حافظة التمويل</mat-label>
+	 <input matInput formControlName="clipboardNumber"/>
+	 <mat-error *ngIf = "getControls('clipboardNumber').invalid" >
+	  {{ getControls('clipboardNumber')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>تاريخ حافظة التمويل</mat-label>
+	 <input matInput
+	  [matDatepicker] = "financingClipboardDateDatepicker"
+	  autocomplete = "off"
+	  formControlName= "financingClipboardDate"/>
+	 <mat-datepicker-toggle
+	   matSuffix
+	   [for]="financingClipboardDateDatepicker"
+	 ></mat-datepicker-toggle>
+	 <mat-datepicker #financingClipboardDateDatepicker></mat-datepicker>
+	 <mat-error *ngIf = "getControls('financingClipboardDate').invalid" >
+	  {{ getControls('financingClipboardDate')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>مبلغ حافظة التمويل</mat-label>
+	 <input matInput formControlName="clipboardAmount"/>
+	 <mat-error *ngIf = "getControls('clipboardAmount').invalid" >
+	  {{ getControls('clipboardAmount')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+          
+
+	<app-material-select appearance="outline"
+	  #fundingSourceNumber 
+	  [options] = "fundingSourceNumberSelectOptions"
+	  formControlName = "fundingSourceNumber"
+	></app-material-select>
+
+        </form>
+    </mat-card-content>
+
+    <mat-divider></mat-divider>
+
+	<mat-card-actions>
+			<form [formGroup]="attachmentForm" class="form-container">
+                <app-multi-file-upload [service] = "financingPortfoliosReceivedFromAFundingSourceService" [id]="financingPortfoliosReceivedFromAFundingSourceForm.get('id').value"
+                    formControlName = "attachmentFiles">
+                </app-multi-file-upload>
+            </form>
+            <button
+                color = "primary"
+                type = "submit"
+                (click) = "onSubmit()"
+                [disabled] = "financingPortfoliosReceivedFromAFundingSourceForm.invalid"
+                mat-raised-button>
+                حفظ
+            </button>
+    </mat-card-actions>
+</mat-card>
+
