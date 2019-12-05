@@ -1,0 +1,48 @@
+
+<app-new-form-layout
+    dir="rtl"
+    (submitClicked) = "onSubmit()"
+    (back) = "onBack()"
+    [pageTitle] = "'اكواد ومسميات حالات الدورات '"
+>
+    <ng-template newFormContainer >
+        <form [formGroup] = "theCodesAndNamesOfTheCasesForm">
+         
+
+	<mat-form-field appearance="outline">
+	 <mat-label> اسم الحاله</mat-label>
+	 <input matInput formControlName="statusName"/>
+	 <mat-error *ngIf = "getControls('statusName').invalid" >
+	  {{ getControls('statusName')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+         
+
+	<app-material-select appearance="outline"
+	  #statusCode 
+	  [options] = "statusCodeSelectOptions"
+	  formControlName = "statusCode"
+	></app-material-select>
+
+        </form>
+
+        <mat-divider></mat-divider>
+
+		<mat-card-actions>
+			<form [formGroup]="attachmentForm" class="form-container">
+                <app-multi-file-upload [service] = "theCodesAndNamesOfTheCasesService" [id]="theCodesAndNamesOfTheCasesForm.get('id').value"
+                    formControlName = "attachmentFiles">
+                </app-multi-file-upload>
+            </form>
+            <button
+                type="submit"
+                (click)="onSubmit()"
+                [disabled]="theCodesAndNamesOfTheCasesForm.invalid"
+                mat-raised-button
+                color = "primary">
+             حفظ
+            </button>
+        </mat-card-actions>
+    </ng-template >
+</app-new-form-layout >
+

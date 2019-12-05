@@ -1,0 +1,58 @@
+
+<app-search-list-expansion-panel
+    dir="rtl"
+    [pageTitle] = "'رعاية اجتماعية لورثة موظف'"
+    (beginSearch) = "onBeginSearch()"
+    (create) = "onCreate()"
+>
+    <ng-template searchFormContainer >
+        <form [formGroup] = "searchForm">
+           
+
+	<mat-form-field appearance="outline">
+	 <mat-label> رقم الشيك </mat-label>
+	 <input matInput formControlName="checkNumber"/>
+	 <mat-error *ngIf = "getControls('checkNumber').invalid" >
+	  {{ getControls('checkNumber')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>كود الموظف</mat-label>
+	 <input matInput formControlName="employeeCode"/>
+	 <mat-error *ngIf = "getControls('employeeCode').invalid" >
+	  {{ getControls('employeeCode')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label> رقم شيك الوريث</mat-label>
+	 <input matInput formControlName="heirCheckNo"/>
+	 <mat-error *ngIf = "getControls('heirCheckNo').invalid" >
+	  {{ getControls('heirCheckNo')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label> اسم الوريث</mat-label>
+	 <input matInput formControlName="heirName"/>
+	 <mat-error *ngIf = "getControls('heirName').invalid" >
+	  {{ getControls('heirName')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+           
+
+        </form>
+    </ng-template >
+    <ng-template searchResultContainer >
+        <app-grid-control
+            #gridControl
+            [rowDataService] = "getSocialWelfareForTheHeirsOfAnEmployeePaginatedSortedFiltered"
+            [columnOptions] = "columnOptions"
+            [gridHeaderOptions] = "gridHeaderOptions"
+            [searchInput] = "searchForm.value"
+            (deleteRow) = "onDeleteClicked($event)"
+        >
+        </app-grid-control>
+    </ng-template>
+</app-search-list-expansion-panel >

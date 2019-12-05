@@ -1,0 +1,48 @@
+
+<app-search-list-expansion-panel
+    dir="rtl"
+    [pageTitle] = "'تسجيل كود جهة جديد '"
+    (beginSearch) = "onBeginSearch()"
+    (create) = "onCreate()"
+>
+    <ng-template searchFormContainer >
+        <form [formGroup] = "searchForm">
+           
+
+	<mat-form-field appearance="outline">
+	 <mat-label> المبلغ   الجهة </mat-label>
+	 <input matInput formControlName="entityAmount"/>
+	 <mat-error *ngIf = "getControls('entityAmount').invalid" >
+	  {{ getControls('entityAmount')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label> اسم  الجهة</mat-label>
+	 <input matInput formControlName="entityName"/>
+	 <mat-error *ngIf = "getControls('entityName').invalid" >
+	  {{ getControls('entityName')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+           
+
+	<app-material-select appearance="outline"
+	  #entityCode 
+	  [options] = "entityCodeSelectOptions"
+	  formControlName = "entityCode"
+	></app-material-select>
+
+        </form>
+    </ng-template >
+    <ng-template searchResultContainer >
+        <app-grid-control
+            #gridControl
+            [rowDataService] = "getRegisterANewDestinationCodePaginatedSortedFiltered"
+            [columnOptions] = "columnOptions"
+            [gridHeaderOptions] = "gridHeaderOptions"
+            [searchInput] = "searchForm.value"
+            (deleteRow) = "onDeleteClicked($event)"
+        >
+        </app-grid-control>
+    </ng-template>
+</app-search-list-expansion-panel >

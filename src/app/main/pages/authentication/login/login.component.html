@@ -14,21 +14,21 @@
 
                 <mat-form-field appearance="outline">
                     <mat-label>Email</mat-label>
-                    <input matInput formControlName="email">
+                    <input matInput formControlName="Username">
                     <mat-icon matSuffix class="secondary-text">mail</mat-icon>
-                    <mat-error *ngIf="loginForm.get('email').hasError('required')">
+                    <mat-error *ngIf="loginForm.get('Username').hasError('required')">
                         Email is required
                     </mat-error>
                     <mat-error
-                        *ngIf="!loginForm.get('email').hasError('required') &&
-                                loginForm.get('email').hasError('email')">
+                        *ngIf="!loginForm.get('Username').hasError('required') &&
+                                loginForm.get('Username').hasError('Username')">
                         Please enter a valid email address
                     </mat-error>
                 </mat-form-field>
 
                 <mat-form-field appearance="outline">
                     <mat-label>Password</mat-label>
-                    <input matInput type="password" formControlName="password">
+                    <input matInput type="Password" formControlName="Password">
                     <mat-icon matSuffix class="secondary-text">vpn_key</mat-icon>
                     <mat-error>
                         Password is required
@@ -47,7 +47,7 @@
                 </div>
 
                 <button mat-raised-button color="accent" class="submit-button" aria-label="LOG IN"
-                        [disabled]="loginForm.invalid">
+                        [disabled]="loginForm.invalid" (click)="login()">
                     LOGIN
                 </button>
 
@@ -57,11 +57,11 @@
                 <span class="text">OR</span>
             </div>
 
-            <button mat-raised-button class="google">
+            <button mat-raised-button (click)="test2()" class="google">
                 Log in with Google
             </button>
 
-            <button mat-raised-button class="facebook">
+            <button mat-raised-button (click)="test()" class="facebook">
                 Log in with Facebook
             </button>
 

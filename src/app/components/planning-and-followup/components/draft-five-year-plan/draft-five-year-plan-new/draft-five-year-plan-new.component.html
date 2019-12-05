@@ -1,0 +1,110 @@
+
+<app-new-form-layout
+    dir="rtl"
+    (submitClicked) = "onSubmit()"
+    (back) = "onBack()"
+    [pageTitle] = "'مشروع الخطة الخمسية'"
+>
+    <ng-template newFormContainer >
+        <form [formGroup] = "draftFiveYearPlanForm">
+         
+
+	<mat-form-field appearance="outline">
+	 <mat-label>  رقم الخطة الخمسية</mat-label>
+	 <input matInput formControlName="fiveYearPlanNumber"/>
+	 <mat-error *ngIf = "getControls('fiveYearPlanNumber').invalid" >
+	  {{ getControls('fiveYearPlanNumber')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label> رقم المشروع</mat-label>
+	 <input matInput formControlName="projectNumber"/>
+	 <mat-error *ngIf = "getControls('projectNumber').invalid" >
+	  {{ getControls('projectNumber')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>  رقم المشروع بوزارة التخطيط</mat-label>
+	 <input matInput formControlName="planningProjectNumberMinistry"/>
+	 <mat-error *ngIf = "getControls('planningProjectNumberMinistry').invalid" >
+	  {{ getControls('planningProjectNumberMinistry')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>  اسم المشروع</mat-label>
+	 <input matInput formControlName="projectName"/>
+	 <mat-error *ngIf = "getControls('projectName').invalid" >
+	  {{ getControls('projectName')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>  القيمة المقترحة</mat-label>
+	 <input matInput formControlName="suggestedValue"/>
+	 <mat-error *ngIf = "getControls('suggestedValue').invalid" >
+	  {{ getControls('suggestedValue')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>  قيمة الاعتماد</mat-label>
+	 <input matInput formControlName="creditValue"/>
+	 <mat-error *ngIf = "getControls('creditValue').invalid" >
+	  {{ getControls('creditValue')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>  عدد المدارس</mat-label>
+	 <input matInput formControlName="schoolsNumber"/>
+	 <mat-error *ngIf = "getControls('schoolsNumber').invalid" >
+	  {{ getControls('schoolsNumber')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label> عدد الفصول</mat-label>
+	 <input matInput formControlName="classesNumber"/>
+	 <mat-error *ngIf = "getControls('classesNumber').invalid" >
+	  {{ getControls('classesNumber')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+         
+
+	<app-material-select appearance="outline"
+	  #projectType 
+	  [options] = "projectTypeSelectOptions"
+	  formControlName = "projectType"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #educationallevel 
+	  [options] = "educationallevelSelectOptions"
+	  formControlName = "educationallevel"
+	></app-material-select>
+
+        </form>
+
+        <mat-divider></mat-divider>
+
+		<mat-card-actions>
+			<form [formGroup]="attachmentForm" class="form-container">
+                <app-multi-file-upload [service] = "draftFiveYearPlanService" [id]="draftFiveYearPlanForm.get('id').value"
+                    formControlName = "attachmentFiles">
+                </app-multi-file-upload>
+            </form>
+            <button
+                type="submit"
+                (click)="onSubmit()"
+                [disabled]="draftFiveYearPlanForm.invalid"
+                mat-raised-button
+                color = "primary">
+             حفظ
+            </button>
+        </mat-card-actions>
+    </ng-template >
+</app-new-form-layout >
+

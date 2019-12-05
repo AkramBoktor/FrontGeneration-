@@ -1,0 +1,78 @@
+
+<mat-card>
+    <mat-card-header>
+        <mat-card-title>تسجيل  حركه دورات المياه الجاهزه</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+        <form [formGroup]="registerTheMovementOfReadyToiletsForm" class="form-container">
+          
+
+	<mat-form-field appearance="outline">
+	 <mat-label>  تاريخ الطلب </mat-label>
+	 <input matInput
+	  [matDatepicker] = "orderDateDatepicker"
+	  autocomplete = "off"
+	  formControlName= "orderDate"/>
+	 <mat-datepicker-toggle
+	   matSuffix
+	   [for]="orderDateDatepicker"
+	 ></mat-datepicker-toggle>
+	 <mat-datepicker #orderDateDatepicker></mat-datepicker>
+	 <mat-error *ngIf = "getControls('orderDate').invalid" >
+	  {{ getControls('orderDate')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label> كود  دوره المياه</mat-label>
+	 <input matInput formControlName="toiletCode"/>
+	 <mat-error *ngIf = "getControls('toiletCode').invalid" >
+	  {{ getControls('toiletCode')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>المدرسه المطلوب النقل منها </mat-label>
+	 <input matInput formControlName="schoolRequiredTransport"/>
+	 <mat-error *ngIf = "getControls('schoolRequiredTransport').invalid" >
+	  {{ getControls('schoolRequiredTransport')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>المدرسه المطلوب النقل  اليها </mat-label>
+	 <input matInput formControlName="transportationSchool"/>
+	 <mat-error *ngIf = "getControls('transportationSchool').invalid" >
+	  {{ getControls('transportationSchool')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+          
+
+	<app-material-select appearance="outline" [disabled]="true" 
+	  #governorate 
+	  [options] = "governorateSelectOptions"
+	  formControlName = "governorate"
+	></app-material-select>
+
+        </form>
+    </mat-card-content>
+
+    <mat-divider></mat-divider>
+
+	<mat-card-actions>
+			<form [formGroup]="attachmentForm" class="form-container">
+                <app-multi-file-upload [service] = "registerTheMovementOfReadyToiletsService" [id]="registerTheMovementOfReadyToiletsForm.get('id').value"
+                    formControlName = "attachmentFiles">
+                </app-multi-file-upload>
+            </form>
+            <button
+                color = "primary"
+                type = "submit"
+                (click) = "onSubmit()"
+                [disabled] = "registerTheMovementOfReadyToiletsForm.invalid"
+                mat-raised-button>
+                حفظ
+            </button>
+    </mat-card-actions>
+</mat-card>
+

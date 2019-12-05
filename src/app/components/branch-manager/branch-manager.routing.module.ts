@@ -8,7 +8,15 @@ const routes: Routes = [
   {
     path: '',
     component: BranchManagerComponent,
-  }
+  },
+  
+{
+    path: 'land-adoption', loadChildren: './components/land-adoption/land-adoption.module#LandAdoptionModule',
+    data: {
+      moduleName: 'LandAdoption'
+    },
+},
+
 ];
 
 @NgModule({

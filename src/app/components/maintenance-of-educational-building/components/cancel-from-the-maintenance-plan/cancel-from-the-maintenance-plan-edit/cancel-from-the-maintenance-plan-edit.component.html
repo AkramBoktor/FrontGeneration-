@@ -1,0 +1,72 @@
+
+<mat-card>
+    <mat-card-header>
+        <mat-card-title>الغاء من خطه الصيانه</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+        <form [formGroup]="cancelFromTheMaintenancePlanForm" class="form-container">
+          
+
+	<mat-form-field appearance="outline">
+	 <mat-label> الرقم التعريفي</mat-label>
+	 <input matInput formControlName="buildinNumber"/>
+	 <mat-error *ngIf = "getControls('buildinNumber').invalid" >
+	  {{ getControls('buildinNumber')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label> سنه الخطه</mat-label>
+	 <input matInput
+	  [matDatepicker] = "planYearDatepicker"
+	  autocomplete = "off"
+	  formControlName= "planYear"/>
+	 <mat-datepicker-toggle
+	   matSuffix
+	   [for]="planYearDatepicker"
+	 ></mat-datepicker-toggle>
+	 <mat-datepicker #planYearDatepicker></mat-datepicker>
+	 <mat-error *ngIf = "getControls('planYear').invalid" >
+	  {{ getControls('planYear')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label> نوع الصيانه</mat-label>
+	 <input matInput formControlName="maintenanceType"/>
+	 <mat-error *ngIf = "getControls('maintenanceType').invalid" >
+	  {{ getControls('maintenanceType')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>سبب الاستبعاد</mat-label>
+	 <input matInput formControlName="exclusionReason"/>
+	 <mat-error *ngIf = "getControls('exclusionReason').invalid" >
+	  {{ getControls('exclusionReason')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+          
+
+        </form>
+    </mat-card-content>
+
+    <mat-divider></mat-divider>
+
+	<mat-card-actions>
+			<form [formGroup]="attachmentForm" class="form-container">
+                <app-multi-file-upload [service] = "cancelFromTheMaintenancePlanService" [id]="cancelFromTheMaintenancePlanForm.get('id').value"
+                    formControlName = "attachmentFiles">
+                </app-multi-file-upload>
+            </form>
+            <button
+                color = "primary"
+                type = "submit"
+                (click) = "onSubmit()"
+                [disabled] = "cancelFromTheMaintenancePlanForm.invalid"
+                mat-raised-button>
+                حفظ
+            </button>
+    </mat-card-actions>
+</mat-card>
+

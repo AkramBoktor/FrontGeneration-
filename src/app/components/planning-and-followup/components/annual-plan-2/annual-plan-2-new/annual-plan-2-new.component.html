@@ -1,0 +1,74 @@
+
+<app-new-form-layout
+    dir="rtl"
+    (submitClicked) = "onSubmit()"
+    (back) = "onBack()"
+    [pageTitle] = "'الخطةالسنويه'"
+>
+    <ng-template newFormContainer >
+        <form [formGroup] = "annualPlan2Form">
+         
+
+	<mat-form-field appearance="outline">
+	 <mat-label> رقم الخطة الخمسية</mat-label>
+	 <input matInput formControlName="fiveYearplanNumber"/>
+	 <mat-error *ngIf = "getControls('fiveYearplanNumber').invalid" >
+	  {{ getControls('fiveYearplanNumber')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>  عدد المشاريع </mat-label>
+	 <input matInput formControlName="projectsNumber"/>
+	 <mat-error *ngIf = "getControls('projectsNumber').invalid" >
+	  {{ getControls('projectsNumber')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>سنة الخطه</mat-label>
+	 <input matInput
+	  [matDatepicker] = "pLanYearDatepicker"
+	  autocomplete = "off"
+	  formControlName= "pLanYear"/>
+	 <mat-datepicker-toggle
+	   matSuffix
+	   [for]="pLanYearDatepicker"
+	 ></mat-datepicker-toggle>
+	 <mat-datepicker #pLanYearDatepicker></mat-datepicker>
+	 <mat-error *ngIf = "getControls('pLanYear').invalid" >
+	  {{ getControls('pLanYear')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>رقم الخطة السنوية</mat-label>
+	 <input matInput formControlName="yearplanNumber"/>
+	 <mat-error *ngIf = "getControls('yearplanNumber').invalid" >
+	  {{ getControls('yearplanNumber')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+         
+
+        </form>
+
+        <mat-divider></mat-divider>
+
+		<mat-card-actions>
+			<form [formGroup]="attachmentForm" class="form-container">
+                <app-multi-file-upload [service] = "annualPlan2Service" [id]="annualPlan2Form.get('id').value"
+                    formControlName = "attachmentFiles">
+                </app-multi-file-upload>
+            </form>
+            <button
+                type="submit"
+                (click)="onSubmit()"
+                [disabled]="annualPlan2Form.invalid"
+                mat-raised-button
+                color = "primary">
+             حفظ
+            </button>
+        </mat-card-actions>
+    </ng-template >
+</app-new-form-layout >
+

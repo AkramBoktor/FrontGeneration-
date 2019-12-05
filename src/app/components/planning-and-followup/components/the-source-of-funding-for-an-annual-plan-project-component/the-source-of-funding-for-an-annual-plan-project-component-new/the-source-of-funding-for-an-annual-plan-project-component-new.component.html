@@ -1,0 +1,96 @@
+
+<app-new-form-layout
+    dir="rtl"
+    (submitClicked) = "onSubmit()"
+    (back) = "onBack()"
+    [pageTitle] = "'مصدر التمويل لمكون مشورع خطة سنوية'"
+>
+    <ng-template newFormContainer >
+        <form [formGroup] = "theSourceOfFundingForAnAnnualPlanProjectComponentForm">
+         
+
+	<mat-form-field appearance="outline">
+	 <mat-label>  القيمة المقترحة</mat-label>
+	 <input matInput formControlName="suggesteValue"/>
+	 <mat-error *ngIf = "getControls('suggesteValue').invalid" >
+	  {{ getControls('suggesteValue')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>رمز المصدر</mat-label>
+	 <input matInput formControlName="sourceCode"/>
+	 <mat-error *ngIf = "getControls('sourceCode').invalid" >
+	  {{ getControls('sourceCode')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>  سنة الخطة</mat-label>
+	 <input matInput
+	  [matDatepicker] = "yearPlanDatepicker"
+	  autocomplete = "off"
+	  formControlName= "yearPlan"/>
+	 <mat-datepicker-toggle
+	   matSuffix
+	   [for]="yearPlanDatepicker"
+	 ></mat-datepicker-toggle>
+	 <mat-datepicker #yearPlanDatepicker></mat-datepicker>
+	 <mat-error *ngIf = "getControls('yearPlan').invalid" >
+	  {{ getControls('yearPlan')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>  رمز مشروع خطة</mat-label>
+	 <input matInput formControlName="projectPlanCode"/>
+	 <mat-error *ngIf = "getControls('projectPlanCode').invalid" >
+	  {{ getControls('projectPlanCode')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label> الاعتماد بعد التعديل</mat-label>
+	 <input matInput formControlName="accreditationAfterAmendment"/>
+	 <mat-error *ngIf = "getControls('accreditationAfterAmendment').invalid" >
+	  {{ getControls('accreditationAfterAmendment')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label> قيمة الاعتماد</mat-label>
+	 <input matInput formControlName="creditValue"/>
+	 <mat-error *ngIf = "getControls('creditValue').invalid" >
+	  {{ getControls('creditValue')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+         
+
+	<app-material-select appearance="outline"
+	  #componentCode 
+	  [options] = "componentCodeSelectOptions"
+	  formControlName = "componentCode"
+	></app-material-select>
+
+        </form>
+
+        <mat-divider></mat-divider>
+
+		<mat-card-actions>
+			<form [formGroup]="attachmentForm" class="form-container">
+                <app-multi-file-upload [service] = "theSourceOfFundingForAnAnnualPlanProjectComponentService" [id]="theSourceOfFundingForAnAnnualPlanProjectComponentForm.get('id').value"
+                    formControlName = "attachmentFiles">
+                </app-multi-file-upload>
+            </form>
+            <button
+                type="submit"
+                (click)="onSubmit()"
+                [disabled]="theSourceOfFundingForAnAnnualPlanProjectComponentForm.invalid"
+                mat-raised-button
+                color = "primary">
+             حفظ
+            </button>
+        </mat-card-actions>
+    </ng-template >
+</app-new-form-layout >
+

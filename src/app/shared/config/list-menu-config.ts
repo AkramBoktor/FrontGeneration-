@@ -4539,7 +4539,289 @@ export const listMenuConfig: ListMenuConfig = {
            ]
         }
      ],
-  
+     'guild': [
+		{
+			id: 'guild',
+			title: 'برنامج النقابه',
+			type: 'group',
+			icon: 'app',
+			children: [
+				{
+					id: 'Guild Config',
+					title: 'الأعدادات',
+					type: 'collapsable',
+					icon: 'build',
+					children: [
+						{
+							id: 'subdepartments',
+							title: 'الادارات الفرعية',
+							type: 'item',
+							url: '/lookup/subdepartments',
+							exactMatch: true
+						},
+						{
+							id: 'employeestatuses',
+							title: 'حالة الموظف‎',
+							type: 'item',
+							url: '/lookup/employeestatuses',
+							exactMatch: true
+						},
+						{
+							id: 'linetypes',
+							title: ' نوع الخط',
+							type: 'item',
+							url: '/lookup/linetypes',
+							exactMatch: true
+						},
+						{
+							id: 'subsidytypes',
+							title: '  نوع الاعانه',
+							type: 'item',
+							url: '/lookup/subsidytypes',
+							exactMatch: true
+						},
+						{
+							id: 'entitycodes',
+							title: 'كود الجهة',
+							type: 'item',
+							url: '/lookup/entitycodes',
+							exactMatch: true
+						},
+						{
+							id: 'processtypes',
+							title: '  نوع العملية',
+							type: 'item',
+							url: '/lookup/processtypes',
+							exactMatch: true
+						},
+						{
+							'id': 'collectiontypes',
+							'title': ' نوع التحصيل',
+							'type': 'item',
+							'url': '/lookup/collectiontypes',
+							'exactMatch': true
+						}
+					]
+				},
+				{
+					'id': 'Guild Program',
+					'title': 'البرامج',
+					'type': 'collapsable',
+					'icon': 'apps',
+					'children': [
+						{
+							'id': 'Bill telephone lines',
+							'title': 'فاتوره خطوط التليفون',
+							'type': 'item',
+							'url': '/guild/bill-telephone-lines',
+							'exactMatch': true
+						},
+						{
+							'id': 'Etisalat Billing Account',
+							'title': 'حساب فواتير اتصالات',
+							'type': 'item',
+							'url': '/guild/etisalat-billing-account',
+							'exactMatch': true
+						},
+						{
+							'id': 'Subscriber data',
+							'title': 'بيانات المشتركين',
+							'type': 'item',
+							'url': '/guild/subscriber-data',
+							'exactMatch': true
+						},
+						{
+							'id': 'Employee benefits not loaded on a check',
+							'title': 'اعانات موظفين غير محملة علي شيك',
+							'type': 'item',
+							'url': '/guild/employee-benefits-not-loaded-on-a-check',
+							'exactMatch': true
+						},
+						{
+							'id': 'Entering withdrawal and deposit amounts',
+							'title': 'ادخال مبالغ السحب والايداع',
+							'type': 'item',
+							'url': '/guild/entering-withdrawal-and-deposit-amounts',
+							'exactMatch': true
+						},
+						{
+							'id': 'employee benefits after cashing a check',
+							'title': 'اعانات موظفين بعد صرف علي شيك',
+							'type': 'item',
+							'url': '/guild/employee-benefits-after-cashing-a-check',
+							'exactMatch': true
+						},
+						{
+							'id': 'benefits for the heirs of an employee',
+							'title': 'اعانات لورثه موظف',
+							'type': 'item',
+							'url': '/guild/benefits-for-the-heirs-of-an-employee',
+							'exactMatch': true
+						},
+						{
+							'id': 'social welfare for the heirs of an employee',
+							'title': 'رعاية اجتماعية لورثة موظف',
+							'type': 'item',
+							'url': '/guild/social-welfare-for-the-heirs-of-an-employee',
+							'exactMatch': true
+						},
+						{
+							'id': 'Fund statistics',
+							'title': 'تحصيات الصندوق',
+							'type': 'item',
+							'url': '/guild/fund-statistics',
+							'exactMatch': true
+						},
+						{
+							'id': 'supply',
+							'title': 'التوريد',
+							'type': 'item',
+							'url': '/guild/supply',
+							'exactMatch': true
+						},
+						{
+							'id': 'Registering the payment of statistics to its own authority',
+							'title': 'تسجيل سداد تحصيات الي الجهة الخاصة بها',
+							'type': 'item',
+							'url': '/guild/registering-the-payment-of-statistics-to-its-own-authority',
+							'exactMatch': true
+						},
+						{
+							'id': 'Register a new subsidy code',
+							'title': 'تسجيل كود الاعانة جديد ',
+							'type': 'item',
+							'url': '/guild/register-a-new-subsidy-code',
+							'exactMatch': true
+						},
+						{
+							'id': 'Register a new collection code',
+							'title': 'تسجيل كود تحصيل جديد ',
+							'type': 'item',
+							'url': '/guild/register-a-new-collection-code',
+							'exactMatch': true
+						},
+						{
+							'id': 'Register a new destination code',
+							'title': 'تسجيل كود جهة جديد ',
+							'type': 'item',
+							'url': '/guild/register-a-new-destination-code',
+							'exactMatch': true
+						}
+					]
+				},
+				{
+					'id': 'Guild Report',
+					'title': 'التقارير',
+					'type': 'collapsable',
+					'icon': 'assignment',
+					'children': []
+				}
+			]
+		}
+	]  ,
+		'rented-buildings': [
+		{
+			"id": "rented-buildings",
+			"title": "برنامج المبانى المؤجرة",
+			"type": "group",
+			"icon": "app",
+			"children": [
+				{
+					"id": "Rented Buildings Config",
+					"title": "الأعدادات",
+					"type": "collapsable",
+					"icon": "build",
+					"children": []
+				},
+				{
+					"id": "Rented Buildings Program",
+					"title": "البرامج",
+					"type": "collapsable",
+					"icon": "apps",
+					"children": [
+						{
+							"id": "Position of leased buildings",
+							"title": "موقف المباني المؤجرة",
+							"type": "item",
+							"url": "/rented-buildings/position-of-leased-buildings",
+							"exactMatch": true
+						}
+					]
+				},
+				{
+					"id": "Rented Buildings Report",
+					"title": "التقارير",
+					"type": "collapsable",
+					"icon": "assignment",
+					"children": []
+				}
+			]
+		}
+    ],
+    
+	"branch-manager": [
+		{
+			"id": "branch-manager",
+			"title": "برنامج مدير الفرع",
+			"type": "group",
+			"icon": "app",
+			"children": [
+				{
+					"id": "Branch Manager Config",
+					"title": "الأعدادات",
+					"type": "collapsable",
+					"icon": "build",
+					"children": [
+						{
+							"id": "educationallevels",
+							"title": "المرحلة التعليمية",
+							"type": "item",
+							"url": "/lookup/educationallevels",
+							"exactMatch": true
+						},
+						{
+							"id": "yesornos",
+							"title": "نعم او لا",
+							"type": "item",
+							"url": "/lookup/yesornos",
+							"exactMatch": true
+						},
+						{
+							"id": "rejectionreasoncodes",
+							"title": "كود سبب الرفض",
+							"type": "item",
+							"url": "/lookup/rejectionreasoncodes",
+							"exactMatch": true
+						}
+					]
+				},
+				{
+					"id": "Branch Manager Program",
+					"title": "البرامج",
+					"type": "collapsable",
+					"icon": "apps",
+					"children": [
+						{
+							"id": "Land Adoption",
+							"title": "اعتماد قطعه ارض",
+							"type": "item",
+							"url": "/branch-manager/land-adoption",
+							"exactMatch": true
+						}
+					]
+				},
+				{
+					"id": "Branch Manager Report",
+					"title": "التقارير",
+					"type": "collapsable",
+					"icon": "assignment",
+					"children": []
+				}
+			]
+		}
+	]
+
+	
 };
 
 

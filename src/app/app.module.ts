@@ -25,7 +25,7 @@ import { MyInterceptor } from './core/interceptors/my-interceptor';
 import { HttpResponseHandler } from './shared/async-services/http-response-handler.service';
 import { MaterialControlsModule } from './shared/components/material-controls/material-controls.module';
 import { AppODataConfig } from './shared/config/odata-config';
-
+import { LoginComponent } from './main/pages/authentication/login/login.component';
 
 
 const appRoutes: Routes = [
@@ -37,6 +37,7 @@ const appRoutes: Routes = [
         AppComponent,
         // FooterComponent,
         LayoutComponent,
+        LoginComponent
     ],
     imports: [
         BrowserModule,

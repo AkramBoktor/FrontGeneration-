@@ -1,0 +1,150 @@
+
+<app-new-form-layout
+    dir="rtl"
+    (submitClicked) = "onSubmit()"
+    (back) = "onBack()"
+    [pageTitle] = "'مطالبه مقاول'"
+>
+    <ng-template newFormContainer >
+        <form [formGroup] = "contractorsClaimForm">
+         
+
+	<mat-form-field appearance="outline">
+	 <mat-label>رقم المطالبه</mat-label>
+	 <input matInput formControlName="claimCode"/>
+	 <mat-error *ngIf = "getControls('claimCode').invalid" >
+	  {{ getControls('claimCode')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>رقم المدرسه</mat-label>
+	 <input matInput formControlName="schoolNumber"/>
+	 <mat-error *ngIf = "getControls('schoolNumber').invalid" >
+	  {{ getControls('schoolNumber')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>رقم المناقصه</mat-label>
+	 <input matInput formControlName="bidNumber"/>
+	 <mat-error *ngIf = "getControls('bidNumber').invalid" >
+	  {{ getControls('bidNumber')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>نوع العمل</mat-label>
+	 <input matInput formControlName="workType"/>
+	 <mat-error *ngIf = "getControls('workType').invalid" >
+	  {{ getControls('workType')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>اسم المقاول</mat-label>
+	 <input matInput formControlName="contractorName"/>
+	 <mat-error *ngIf = "getControls('contractorName').invalid" >
+	  {{ getControls('contractorName')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>تاريخ تسليم الموقع</mat-label>
+	 <input matInput
+	  [matDatepicker] = "siteDeliveryDateDatepicker"
+	  autocomplete = "off"
+	  formControlName= "siteDeliveryDate"/>
+	 <mat-datepicker-toggle
+	   matSuffix
+	   [for]="siteDeliveryDateDatepicker"
+	 ></mat-datepicker-toggle>
+	 <mat-datepicker #siteDeliveryDateDatepicker></mat-datepicker>
+	 <mat-error *ngIf = "getControls('siteDeliveryDate').invalid" >
+	  {{ getControls('siteDeliveryDate')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>نوع المطالبه</mat-label>
+	 <input matInput formControlName="claimType"/>
+	 <mat-error *ngIf = "getControls('claimType').invalid" >
+	  {{ getControls('claimType')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>مده التنفيذ</mat-label>
+	 <input matInput
+	  [matDatepicker] = "executionDurationDatepicker"
+	  autocomplete = "off"
+	  formControlName= "executionDuration"/>
+	 <mat-datepicker-toggle
+	   matSuffix
+	   [for]="executionDurationDatepicker"
+	 ></mat-datepicker-toggle>
+	 <mat-datepicker #executionDurationDatepicker></mat-datepicker>
+	 <mat-error *ngIf = "getControls('executionDuration').invalid" >
+	  {{ getControls('executionDuration')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>تاريخ المطالبه</mat-label>
+	 <input matInput
+	  [matDatepicker] = "claimDateDatepicker"
+	  autocomplete = "off"
+	  formControlName= "claimDate"/>
+	 <mat-datepicker-toggle
+	   matSuffix
+	   [for]="claimDateDatepicker"
+	 ></mat-datepicker-toggle>
+	 <mat-datepicker #claimDateDatepicker></mat-datepicker>
+	 <mat-error *ngIf = "getControls('claimDate').invalid" >
+	  {{ getControls('claimDate')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>مهندس مشرف</mat-label>
+	 <input matInput formControlName="supervisingEngineer"/>
+	 <mat-error *ngIf = "getControls('supervisingEngineer').invalid" >
+	  {{ getControls('supervisingEngineer')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+         
+
+	<app-material-select appearance="outline"
+	  #areaCode 
+	  [options] = "areaCodeSelectOptions"
+	  formControlName = "areaCode"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #offeringType 
+	  [options] = "offeringTypeSelectOptions"
+	  formControlName = "offeringType"
+	></app-material-select>
+
+        </form>
+
+        <mat-divider></mat-divider>
+
+		<mat-card-actions>
+			<form [formGroup]="attachmentForm" class="form-container">
+                <app-multi-file-upload [service] = "contractorsClaimService" [id]="contractorsClaimForm.get('id').value"
+                    formControlName = "attachmentFiles">
+                </app-multi-file-upload>
+            </form>
+            <button
+                type="submit"
+                (click)="onSubmit()"
+                [disabled]="contractorsClaimForm.invalid"
+                mat-raised-button
+                color = "primary">
+             حفظ
+            </button>
+        </mat-card-actions>
+    </ng-template >
+</app-new-form-layout >
+

@@ -1,0 +1,70 @@
+
+<app-search-list-expansion-panel
+    dir="rtl"
+    [pageTitle] = "'مطالبه مقاول'"
+    (beginSearch) = "onBeginSearch()"
+    (create) = "onCreate()"
+>
+    <ng-template searchFormContainer >
+        <form [formGroup] = "searchForm">
+           
+
+	<mat-form-field appearance="outline">
+	 <mat-label>رقم المدرسه</mat-label>
+	 <input matInput formControlName="schoolNumber"/>
+	 <mat-error *ngIf = "getControls('schoolNumber').invalid" >
+	  {{ getControls('schoolNumber')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>رقم المناقصه</mat-label>
+	 <input matInput formControlName="bidNumber"/>
+	 <mat-error *ngIf = "getControls('bidNumber').invalid" >
+	  {{ getControls('bidNumber')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>اسم المقاول</mat-label>
+	 <input matInput formControlName="contractorName"/>
+	 <mat-error *ngIf = "getControls('contractorName').invalid" >
+	  {{ getControls('contractorName')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>نوع المطالبه</mat-label>
+	 <input matInput formControlName="claimType"/>
+	 <mat-error *ngIf = "getControls('claimType').invalid" >
+	  {{ getControls('claimType')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+           
+
+	<app-material-select appearance="outline"
+	  #areaCode 
+	  [options] = "areaCodeSelectOptions"
+	  formControlName = "areaCode"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #offeringType 
+	  [options] = "offeringTypeSelectOptions"
+	  formControlName = "offeringType"
+	></app-material-select>
+
+        </form>
+    </ng-template >
+    <ng-template searchResultContainer >
+        <app-grid-control
+            #gridControl
+            [rowDataService] = "getContractorsClaimPaginatedSortedFiltered"
+            [columnOptions] = "columnOptions"
+            [gridHeaderOptions] = "gridHeaderOptions"
+            [searchInput] = "searchForm.value"
+            (deleteRow) = "onDeleteClicked($event)"
+        >
+        </app-grid-control>
+    </ng-template>
+</app-search-list-expansion-panel >

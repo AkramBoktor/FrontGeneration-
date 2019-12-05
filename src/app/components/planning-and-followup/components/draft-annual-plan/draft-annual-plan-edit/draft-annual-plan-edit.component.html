@@ -1,0 +1,104 @@
+
+<mat-card>
+    <mat-card-header>
+        <mat-card-title>مشروع الخطة السنويه </mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+        <form [formGroup]="draftAnnualPlanForm" class="form-container">
+          
+
+	<mat-form-field appearance="outline">
+	 <mat-label>  القيمة المقترحة</mat-label>
+	 <input matInput formControlName="suggestedValue"/>
+	 <mat-error *ngIf = "getControls('suggestedValue').invalid" >
+	  {{ getControls('suggestedValue')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>  قيمة الاعتماد</mat-label>
+	 <input matInput formControlName="creditValue"/>
+	 <mat-error *ngIf = "getControls('creditValue').invalid" >
+	  {{ getControls('creditValue')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label> عدد الفصول</mat-label>
+	 <input matInput formControlName="classesNumber"/>
+	 <mat-error *ngIf = "getControls('classesNumber').invalid" >
+	  {{ getControls('classesNumber')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>  عدد المدارس</mat-label>
+	 <input matInput formControlName="schoolsNumber"/>
+	 <mat-error *ngIf = "getControls('schoolsNumber').invalid" >
+	  {{ getControls('schoolsNumber')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>  سنة الخطة</mat-label>
+	 <input matInput
+	  [matDatepicker] = "yearPlanDatepicker"
+	  autocomplete = "off"
+	  formControlName= "yearPlan"/>
+	 <mat-datepicker-toggle
+	   matSuffix
+	   [for]="yearPlanDatepicker"
+	 ></mat-datepicker-toggle>
+	 <mat-datepicker #yearPlanDatepicker></mat-datepicker>
+	 <mat-error *ngIf = "getControls('yearPlan').invalid" >
+	  {{ getControls('yearPlan')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>  رمز مشروع خطة سنوية</mat-label>
+	 <input matInput formControlName="annualProjectPlanCode"/>
+	 <mat-error *ngIf = "getControls('annualProjectPlanCode').invalid" >
+	  {{ getControls('annualProjectPlanCode')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label> رمز مشروع خطة خمسة</mat-label>
+	 <input matInput formControlName="fivePlanProjectCode"/>
+	 <mat-error *ngIf = "getControls('fivePlanProjectCode').invalid" >
+	  {{ getControls('fivePlanProjectCode')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label> الاعتماد بعد التعديل</mat-label>
+	 <input matInput formControlName="accreditationAfterAmendment"/>
+	 <mat-error *ngIf = "getControls('accreditationAfterAmendment').invalid" >
+	  {{ getControls('accreditationAfterAmendment')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+          
+
+        </form>
+    </mat-card-content>
+
+    <mat-divider></mat-divider>
+
+	<mat-card-actions>
+			<form [formGroup]="attachmentForm" class="form-container">
+                <app-multi-file-upload [service] = "draftAnnualPlanService" [id]="draftAnnualPlanForm.get('id').value"
+                    formControlName = "attachmentFiles">
+                </app-multi-file-upload>
+            </form>
+            <button
+                color = "primary"
+                type = "submit"
+                (click) = "onSubmit()"
+                [disabled] = "draftAnnualPlanForm.invalid"
+                mat-raised-button>
+                حفظ
+            </button>
+    </mat-card-actions>
+</mat-card>
+

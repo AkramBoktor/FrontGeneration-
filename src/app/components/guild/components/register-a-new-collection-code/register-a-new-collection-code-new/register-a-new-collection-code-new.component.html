@@ -1,0 +1,58 @@
+
+<app-new-form-layout
+    dir="rtl"
+    (submitClicked) = "onSubmit()"
+    (back) = "onBack()"
+    [pageTitle] = "'تسجيل كود تحصيل جديد '"
+>
+    <ng-template newFormContainer >
+        <form [formGroup] = "registerANewCollectionCodeForm">
+         
+
+	<mat-form-field appearance="outline">
+	 <mat-label>كود التحصيل</mat-label>
+	 <input matInput formControlName="collectionCode"/>
+	 <mat-error *ngIf = "getControls('collectionCode').invalid" >
+	  {{ getControls('collectionCode')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>  المبلغ   تحصيل </mat-label>
+	 <input matInput formControlName="collectionAmount"/>
+	 <mat-error *ngIf = "getControls('collectionAmount').invalid" >
+	  {{ getControls('collectionAmount')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>  اسم  تحصيل </mat-label>
+	 <input matInput formControlName="collectionName"/>
+	 <mat-error *ngIf = "getControls('collectionName').invalid" >
+	  {{ getControls('collectionName')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+         
+
+        </form>
+
+        <mat-divider></mat-divider>
+
+		<mat-card-actions>
+			<form [formGroup]="attachmentForm" class="form-container">
+                <app-multi-file-upload [service] = "registerANewCollectionCodeService" [id]="registerANewCollectionCodeForm.get('id').value"
+                    formControlName = "attachmentFiles">
+                </app-multi-file-upload>
+            </form>
+            <button
+                type="submit"
+                (click)="onSubmit()"
+                [disabled]="registerANewCollectionCodeForm.invalid"
+                mat-raised-button
+                color = "primary">
+             حفظ
+            </button>
+        </mat-card-actions>
+    </ng-template >
+</app-new-form-layout >
+

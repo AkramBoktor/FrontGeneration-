@@ -1,0 +1,74 @@
+
+<app-new-form-layout
+    dir="rtl"
+    (submitClicked) = "onSubmit()"
+    (back) = "onBack()"
+    [pageTitle] = "'ادخال بيانات القائمين بمقايسة مبني'"
+>
+    <ng-template newFormContainer >
+        <form [formGroup] = "buildingDataForm">
+         
+
+	<mat-form-field appearance="outline">
+	 <mat-label>المهندس القائم باعمال المقايسه</mat-label>
+	 <input matInput formControlName="actingEngineer"/>
+	 <mat-error *ngIf = "getControls('actingEngineer').invalid" >
+	  {{ getControls('actingEngineer')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>  رئيس القطاع</mat-label>
+	 <input matInput formControlName="sectorHead"/>
+	 <mat-error *ngIf = "getControls('sectorHead').invalid" >
+	  {{ getControls('sectorHead')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>رئيس قسم الصيانه</mat-label>
+	 <input matInput formControlName="maintenanceDepartmentHead"/>
+	 <mat-error *ngIf = "getControls('maintenanceDepartmentHead').invalid" >
+	  {{ getControls('maintenanceDepartmentHead')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>مدير المنطقه</mat-label>
+	 <input matInput formControlName="areaManager"/>
+	 <mat-error *ngIf = "getControls('areaManager').invalid" >
+	  {{ getControls('areaManager')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>مهندس ديوان المتابع للفرع</mat-label>
+	 <input matInput formControlName="followerEngineerOfficeBranch"/>
+	 <mat-error *ngIf = "getControls('followerEngineerOfficeBranch').invalid" >
+	  {{ getControls('followerEngineerOfficeBranch')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+         
+
+        </form>
+
+        <mat-divider></mat-divider>
+
+		<mat-card-actions>
+			<form [formGroup]="attachmentForm" class="form-container">
+                <app-multi-file-upload [service] = "buildingDataService" [id]="buildingDataForm.get('id').value"
+                    formControlName = "attachmentFiles">
+                </app-multi-file-upload>
+            </form>
+            <button
+                type="submit"
+                (click)="onSubmit()"
+                [disabled]="buildingDataForm.invalid"
+                mat-raised-button
+                color = "primary">
+             حفظ
+            </button>
+        </mat-card-actions>
+    </ng-template >
+</app-new-form-layout >
+

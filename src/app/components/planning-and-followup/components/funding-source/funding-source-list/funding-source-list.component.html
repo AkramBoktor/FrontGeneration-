@@ -1,0 +1,74 @@
+
+<app-search-list-expansion-panel
+    dir="rtl"
+    [pageTitle] = "'مصدر التمويل'"
+    (beginSearch) = "onBeginSearch()"
+    (create) = "onCreate()"
+>
+    <ng-template searchFormContainer >
+        <form [formGroup] = "searchForm">
+           
+
+	<mat-form-field appearance="outline">
+	 <mat-label>رمز المصدر</mat-label>
+	 <input matInput formControlName="sourceCode"/>
+	 <mat-error *ngIf = "getControls('sourceCode').invalid" >
+	  {{ getControls('sourceCode')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label> اسم المصدر</mat-label>
+	 <input matInput formControlName="sourceName"/>
+	 <mat-error *ngIf = "getControls('sourceName').invalid" >
+	  {{ getControls('sourceName')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>  بداية التمويل</mat-label>
+	 <input matInput
+	  [matDatepicker] = "fundingStartDatepicker"
+	  autocomplete = "off"
+	  formControlName= "fundingStart"/>
+	 <mat-datepicker-toggle
+	   matSuffix
+	   [for]="fundingStartDatepicker"
+	 ></mat-datepicker-toggle>
+	 <mat-datepicker #fundingStartDatepicker></mat-datepicker>
+	 <mat-error *ngIf = "getControls('fundingStart').invalid" >
+	  {{ getControls('fundingStart')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>  نهاية التمويل</mat-label>
+	 <input matInput
+	  [matDatepicker] = "fundingEndDatepicker"
+	  autocomplete = "off"
+	  formControlName= "fundingEnd"/>
+	 <mat-datepicker-toggle
+	   matSuffix
+	   [for]="fundingEndDatepicker"
+	 ></mat-datepicker-toggle>
+	 <mat-datepicker #fundingEndDatepicker></mat-datepicker>
+	 <mat-error *ngIf = "getControls('fundingEnd').invalid" >
+	  {{ getControls('fundingEnd')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+           
+
+        </form>
+    </ng-template >
+    <ng-template searchResultContainer >
+        <app-grid-control
+            #gridControl
+            [rowDataService] = "getFundingSourcePaginatedSortedFiltered"
+            [columnOptions] = "columnOptions"
+            [gridHeaderOptions] = "gridHeaderOptions"
+            [searchInput] = "searchForm.value"
+            (deleteRow) = "onDeleteClicked($event)"
+        >
+        </app-grid-control>
+    </ng-template>
+</app-search-list-expansion-panel >

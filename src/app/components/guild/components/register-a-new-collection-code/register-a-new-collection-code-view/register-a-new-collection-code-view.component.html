@@ -1,0 +1,56 @@
+
+<mat-card class="form-card">
+      <mat-card-header>
+  
+          <mat-card-title>
+              تسجيل كود تحصيل جديد 
+          </mat-card-title>
+  
+      </mat-card-header>
+  
+      <mat-card-content>
+  
+        <form [formGroup] = "registerANewCollectionCodeForm" class="form-container">
+         
+
+	<mat-form-field appearance="outline">
+	 <mat-label>كود التحصيل</mat-label>
+	 <input matInput formControlName="collectionCode"/>
+	 <mat-error *ngIf = "getControls('collectionCode').invalid" >
+	  {{ getControls('collectionCode')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>  المبلغ   تحصيل </mat-label>
+	 <input matInput formControlName="collectionAmount"/>
+	 <mat-error *ngIf = "getControls('collectionAmount').invalid" >
+	  {{ getControls('collectionAmount')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>  اسم  تحصيل </mat-label>
+	 <input matInput formControlName="collectionName"/>
+	 <mat-error *ngIf = "getControls('collectionName').invalid" >
+	  {{ getControls('collectionName')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+         
+        </form>
+  
+      </mat-card-content >
+  
+      <mat-action-row>
+            <form [formGroup]="attachmentForm" class="form-container">
+                <app-multi-file-upload [service] = "registerANewCollectionCodeService" [id]="registerANewCollectionCodeForm.get('id').value"
+                    formControlName = "attachmentFiles">
+                </app-multi-file-upload>
+            </form>
+            <button (click) = "onConfirm()" mat-raised-button color = "primary" >
+                غلق
+            </button>
+        </mat-action-row>
+    </mat-card>
+
+    

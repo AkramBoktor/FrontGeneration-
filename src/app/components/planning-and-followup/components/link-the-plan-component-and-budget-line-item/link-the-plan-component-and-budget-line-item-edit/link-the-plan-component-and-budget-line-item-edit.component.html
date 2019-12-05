@@ -1,0 +1,86 @@
+
+<mat-card>
+    <mat-card-header>
+        <mat-card-title>ربط مكون الخطة و بند الموازنة</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+        <form [formGroup]="linkThePlanComponentAndBudgetLineItemForm" class="form-container">
+          
+
+	<mat-form-field appearance="outline">
+	 <mat-label>  سنة الخطة</mat-label>
+	 <input matInput
+	  [matDatepicker] = "yearPlanDatepicker"
+	  autocomplete = "off"
+	  formControlName= "yearPlan"/>
+	 <mat-datepicker-toggle
+	   matSuffix
+	   [for]="yearPlanDatepicker"
+	 ></mat-datepicker-toggle>
+	 <mat-datepicker #yearPlanDatepicker></mat-datepicker>
+	 <mat-error *ngIf = "getControls('yearPlan').invalid" >
+	  {{ getControls('yearPlan')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>  رقم المشروع</mat-label>
+	 <input matInput formControlName="projectNumber"/>
+	 <mat-error *ngIf = "getControls('projectNumber').invalid" >
+	  {{ getControls('projectNumber')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label> سنة الموازنة</mat-label>
+	 <input matInput
+	  [matDatepicker] = "budgetYearDatepicker"
+	  autocomplete = "off"
+	  formControlName= "budgetYear"/>
+	 <mat-datepicker-toggle
+	   matSuffix
+	   [for]="budgetYearDatepicker"
+	 ></mat-datepicker-toggle>
+	 <mat-datepicker #budgetYearDatepicker></mat-datepicker>
+	 <mat-error *ngIf = "getControls('budgetYear').invalid" >
+	  {{ getControls('budgetYear')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label> كود بند الموازنة</mat-label>
+	 <input matInput formControlName="budgetItemCode"/>
+	 <mat-error *ngIf = "getControls('budgetItemCode').invalid" >
+	  {{ getControls('budgetItemCode')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+          
+
+	<app-material-select appearance="outline"
+	  #componentCode 
+	  [options] = "componentCodeSelectOptions"
+	  formControlName = "componentCode"
+	></app-material-select>
+
+        </form>
+    </mat-card-content>
+
+    <mat-divider></mat-divider>
+
+	<mat-card-actions>
+			<form [formGroup]="attachmentForm" class="form-container">
+                <app-multi-file-upload [service] = "linkThePlanComponentAndBudgetLineItemService" [id]="linkThePlanComponentAndBudgetLineItemForm.get('id').value"
+                    formControlName = "attachmentFiles">
+                </app-multi-file-upload>
+            </form>
+            <button
+                color = "primary"
+                type = "submit"
+                (click) = "onSubmit()"
+                [disabled] = "linkThePlanComponentAndBudgetLineItemForm.invalid"
+                mat-raised-button>
+                حفظ
+            </button>
+    </mat-card-actions>
+</mat-card>
+

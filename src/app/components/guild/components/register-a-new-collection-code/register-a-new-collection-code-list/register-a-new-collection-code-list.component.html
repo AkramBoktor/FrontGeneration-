@@ -1,0 +1,42 @@
+
+<app-search-list-expansion-panel
+    dir="rtl"
+    [pageTitle] = "'تسجيل كود تحصيل جديد '"
+    (beginSearch) = "onBeginSearch()"
+    (create) = "onCreate()"
+>
+    <ng-template searchFormContainer >
+        <form [formGroup] = "searchForm">
+           
+
+	<mat-form-field appearance="outline">
+	 <mat-label>كود التحصيل</mat-label>
+	 <input matInput formControlName="collectionCode"/>
+	 <mat-error *ngIf = "getControls('collectionCode').invalid" >
+	  {{ getControls('collectionCode')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>  اسم  تحصيل </mat-label>
+	 <input matInput formControlName="collectionName"/>
+	 <mat-error *ngIf = "getControls('collectionName').invalid" >
+	  {{ getControls('collectionName')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+           
+
+        </form>
+    </ng-template >
+    <ng-template searchResultContainer >
+        <app-grid-control
+            #gridControl
+            [rowDataService] = "getRegisterANewCollectionCodePaginatedSortedFiltered"
+            [columnOptions] = "columnOptions"
+            [gridHeaderOptions] = "gridHeaderOptions"
+            [searchInput] = "searchForm.value"
+            (deleteRow) = "onDeleteClicked($event)"
+        >
+        </app-grid-control>
+    </ng-template>
+</app-search-list-expansion-panel >

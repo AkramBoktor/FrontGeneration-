@@ -1,0 +1,112 @@
+
+<mat-card>
+    <mat-card-header>
+        <mat-card-title>مصدر التمويل</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+        <form [formGroup]="fundingSourceForm" class="form-container">
+          
+
+	<mat-form-field appearance="outline">
+	 <mat-label>  فئة المصدر</mat-label>
+	 <input matInput formControlName="sourceCategory"/>
+	 <mat-error *ngIf = "getControls('sourceCategory').invalid" >
+	  {{ getControls('sourceCategory')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>رمز المصدر</mat-label>
+	 <input matInput formControlName="sourceCode"/>
+	 <mat-error *ngIf = "getControls('sourceCode').invalid" >
+	  {{ getControls('sourceCode')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label> اسم المصدر</mat-label>
+	 <input matInput formControlName="sourceName"/>
+	 <mat-error *ngIf = "getControls('sourceName').invalid" >
+	  {{ getControls('sourceName')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>  بداية التمويل</mat-label>
+	 <input matInput
+	  [matDatepicker] = "fundingStartDatepicker"
+	  autocomplete = "off"
+	  formControlName= "fundingStart"/>
+	 <mat-datepicker-toggle
+	   matSuffix
+	   [for]="fundingStartDatepicker"
+	 ></mat-datepicker-toggle>
+	 <mat-datepicker #fundingStartDatepicker></mat-datepicker>
+	 <mat-error *ngIf = "getControls('fundingStart').invalid" >
+	  {{ getControls('fundingStart')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>  نهاية التمويل</mat-label>
+	 <input matInput
+	  [matDatepicker] = "fundingEndDatepicker"
+	  autocomplete = "off"
+	  formControlName= "fundingEnd"/>
+	 <mat-datepicker-toggle
+	   matSuffix
+	   [for]="fundingEndDatepicker"
+	 ></mat-datepicker-toggle>
+	 <mat-datepicker #fundingEndDatepicker></mat-datepicker>
+	 <mat-error *ngIf = "getControls('fundingEnd').invalid" >
+	  {{ getControls('fundingEnd')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>  القيمة المقترحة</mat-label>
+	 <input matInput formControlName="suggesteValue"/>
+	 <mat-error *ngIf = "getControls('suggesteValue').invalid" >
+	  {{ getControls('suggesteValue')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>  القيمة حتي تاريخة</mat-label>
+	 <input matInput formControlName="dateValue"/>
+	 <mat-error *ngIf = "getControls('dateValue').invalid" >
+	  {{ getControls('dateValue')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label> القيمة في السنة الحالية</mat-label>
+	 <input matInput formControlName="currentYearValue"/>
+	 <mat-error *ngIf = "getControls('currentYearValue').invalid" >
+	  {{ getControls('currentYearValue')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+          
+
+        </form>
+    </mat-card-content>
+
+    <mat-divider></mat-divider>
+
+	<mat-card-actions>
+			<form [formGroup]="attachmentForm" class="form-container">
+                <app-multi-file-upload [service] = "fundingSourceService" [id]="fundingSourceForm.get('id').value"
+                    formControlName = "attachmentFiles">
+                </app-multi-file-upload>
+            </form>
+            <button
+                color = "primary"
+                type = "submit"
+                (click) = "onSubmit()"
+                [disabled] = "fundingSourceForm.invalid"
+                mat-raised-button>
+                حفظ
+            </button>
+    </mat-card-actions>
+</mat-card>
+

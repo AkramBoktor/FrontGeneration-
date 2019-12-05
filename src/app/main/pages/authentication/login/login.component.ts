@@ -3,6 +3,8 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 import { FuseConfigService } from '@fuse/services/config.service';
 import { fuseAnimations } from '@fuse/animations';
+import { AuthService } from 'app/core/auth/auth.service';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
     selector     : 'login',
@@ -14,7 +16,7 @@ import { fuseAnimations } from '@fuse/animations';
 export class LoginComponent implements OnInit
 {
     loginForm: FormGroup;
-
+    ReturnUrl: string;
     /**
      * Constructor
      *
@@ -23,9 +25,12 @@ export class LoginComponent implements OnInit
      */
     constructor(
         private _fuseConfigService: FuseConfigService,
-        private _formBuilder: FormBuilder
+        private _formBuilder: FormBuilder,
+        private _authService: AuthService,
+        private _route: ActivatedRoute
     )
     {
+        
         // Configure the layout
         this._fuseConfigService.config = {
             layout: {
@@ -43,6 +48,9 @@ export class LoginComponent implements OnInit
                 }
             }
         };
+        _route.queryParams.subscribe(params => {
+            this.ReturnUrl = params['ReturnUrl'];
+        });
     }
 
     // -----------------------------------------------------------------------------------------------------
@@ -55,8 +63,26 @@ export class LoginComponent implements OnInit
     ngOnInit(): void
     {
         this.loginForm = this._formBuilder.group({
-            email   : ['', [Validators.required, Validators.email]],
-            password: ['', Validators.required]
+            Username   : ['', [Validators.required, Validators.email]],
+            Password: ['', Validators.required]
         });
+    }
+
+    login(){
+        this._authService.login2({
+            Username : this.loginForm.value.Username, 
+            Password : this.loginForm.value.Password,
+            ReturnUrl: this.ReturnUrl}).subscribe(
+            a => {
+                console.log(a);
+            }
+        );
+    }
+
+    test(){
+        this._authService.login().then(a => console.log(a));
+    }
+    test2(){
+        this._authService.isLoggedIn();
     }
 }

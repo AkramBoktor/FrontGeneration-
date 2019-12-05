@@ -1,0 +1,136 @@
+
+<mat-card>
+    <mat-card-header>
+        <mat-card-title>بيانات متابعة موقف بيع الاراضي</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+        <form [formGroup]="followupDataOnTheSaleOfLandForm" class="form-container">
+          
+
+	<mat-form-field appearance="outline">
+	 <mat-label>   رقم الارض</mat-label>
+	 <input matInput formControlName="landNumber"/>
+	 <mat-error *ngIf = "getControls('landNumber').invalid" >
+	  {{ getControls('landNumber')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>القسم</mat-label>
+	 <input matInput formControlName="department"/>
+	 <mat-error *ngIf = "getControls('department').invalid" >
+	  {{ getControls('department')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label> القرية</mat-label>
+	 <input matInput formControlName="village"/>
+	 <mat-error *ngIf = "getControls('village').invalid" >
+	  {{ getControls('village')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label> المساحة الكلية</mat-label>
+	 <input matInput formControlName="totalArea"/>
+	 <mat-error *ngIf = "getControls('totalArea').invalid" >
+	  {{ getControls('totalArea')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>  مالك الحالي</mat-label>
+	 <input matInput formControlName="currentOwner"/>
+	 <mat-error *ngIf = "getControls('currentOwner').invalid" >
+	  {{ getControls('currentOwner')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label> المرحلة</mat-label>
+	 <input matInput formControlName="stage"/>
+	 <mat-error *ngIf = "getControls('stage').invalid" >
+	  {{ getControls('stage')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label> النموذج</mat-label>
+	 <input matInput formControlName="sample"/>
+	 <mat-error *ngIf = "getControls('sample').invalid" >
+	  {{ getControls('sample')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>  الاعتماد</mat-label>
+	 <input matInput formControlName="accreditation"/>
+	 <mat-error *ngIf = "getControls('accreditation').invalid" >
+	  {{ getControls('accreditation')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>المستندات</mat-label>
+	 <input matInput formControlName="documents"/>
+	 <mat-error *ngIf = "getControls('documents').invalid" >
+	  {{ getControls('documents')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>  التسكين</mat-label>
+	 <input matInput formControlName="soothing"/>
+	 <mat-error *ngIf = "getControls('soothing').invalid" >
+	  {{ getControls('soothing')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label> الخطة</mat-label>
+	 <input matInput formControlName="plan"/>
+	 <mat-error *ngIf = "getControls('plan').invalid" >
+	  {{ getControls('plan')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>جهة التفاوض</mat-label>
+	 <input matInput formControlName="negotiationEntity"/>
+	 <mat-error *ngIf = "getControls('negotiationEntity').invalid" >
+	  {{ getControls('negotiationEntity')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label> مفاوضات البيع</mat-label>
+	 <input matInput formControlName="saleNegotiations"/>
+	 <mat-error *ngIf = "getControls('saleNegotiations').invalid" >
+	  {{ getControls('saleNegotiations')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+          
+
+        </form>
+    </mat-card-content>
+
+    <mat-divider></mat-divider>
+
+	<mat-card-actions>
+			<form [formGroup]="attachmentForm" class="form-container">
+                <app-multi-file-upload [service] = "followupDataOnTheSaleOfLandService" [id]="followupDataOnTheSaleOfLandForm.get('id').value"
+                    formControlName = "attachmentFiles">
+                </app-multi-file-upload>
+            </form>
+            <button
+                color = "primary"
+                type = "submit"
+                (click) = "onSubmit()"
+                [disabled] = "followupDataOnTheSaleOfLandForm.invalid"
+                mat-raised-button>
+                حفظ
+            </button>
+    </mat-card-actions>
+</mat-card>
+

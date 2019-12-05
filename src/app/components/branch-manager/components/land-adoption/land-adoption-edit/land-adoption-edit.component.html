@@ -1,0 +1,90 @@
+
+<mat-card>
+    <mat-card-header>
+        <mat-card-title>اعتماد قطعه ارض</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+        <form [formGroup]="landAdoptionForm" class="form-container">
+          
+
+	<mat-form-field appearance="outline">
+	 <mat-label>كود قطعه ارض</mat-label>
+	 <input matInput formControlName="landCode"/>
+	 <mat-error *ngIf = "getControls('landCode').invalid" >
+	  {{ getControls('landCode')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>كود النموزج</mat-label>
+	 <input matInput formControlName="modelCode"/>
+	 <mat-error *ngIf = "getControls('modelCode').invalid" >
+	  {{ getControls('modelCode')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>تاريخ الاعتماد</mat-label>
+	 <input matInput
+	  [matDatepicker] = "accreditationDateDatepicker"
+	  autocomplete = "off"
+	  formControlName= "accreditationDate"/>
+	 <mat-datepicker-toggle
+	   matSuffix
+	   [for]="accreditationDateDatepicker"
+	 ></mat-datepicker-toggle>
+	 <mat-datepicker #accreditationDateDatepicker></mat-datepicker>
+	 <mat-error *ngIf = "getControls('accreditationDate').invalid" >
+	  {{ getControls('accreditationDate')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>ملاحظات</mat-label>
+	 <input matInput formControlName="notes"/>
+	 <mat-error *ngIf = "getControls('notes').invalid" >
+	  {{ getControls('notes')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+          
+
+	<app-material-select appearance="outline"
+	  #proposedPhase 
+	  [options] = "proposedPhaseSelectOptions"
+	  formControlName = "proposedPhase"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #landValidity 
+	  [options] = "landValiditySelectOptions"
+	  formControlName = "landValidity"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #rejectionReasonCode 
+	  [options] = "rejectionReasonCodeSelectOptions"
+	  formControlName = "rejectionReasonCode"
+	></app-material-select>
+
+        </form>
+    </mat-card-content>
+
+    <mat-divider></mat-divider>
+
+	<mat-card-actions>
+			<form [formGroup]="attachmentForm" class="form-container">
+                <app-multi-file-upload [service] = "landAdoptionService" [id]="landAdoptionForm.get('id').value"
+                    formControlName = "attachmentFiles">
+                </app-multi-file-upload>
+            </form>
+            <button
+                color = "primary"
+                type = "submit"
+                (click) = "onSubmit()"
+                [disabled] = "landAdoptionForm.invalid"
+                mat-raised-button>
+                حفظ
+            </button>
+    </mat-card-actions>
+</mat-card>
+

@@ -1,0 +1,82 @@
+
+<app-search-list-expansion-panel
+    dir="rtl"
+    [pageTitle] = "'مقايسه صيانه مبني'"
+    (beginSearch) = "onBeginSearch()"
+    (create) = "onCreate()"
+>
+    <ng-template searchFormContainer >
+        <form [formGroup] = "searchForm">
+           
+
+	<mat-form-field appearance="outline">
+	 <mat-label>كود المبنى</mat-label>
+	 <input matInput formControlName="buildingCode"/>
+	 <mat-error *ngIf = "getControls('buildingCode').invalid" >
+	  {{ getControls('buildingCode')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>سنه الخطه</mat-label>
+	 <input matInput
+	  [matDatepicker] = "yearPlanDatepicker"
+	  autocomplete = "off"
+	  formControlName= "yearPlan"/>
+	 <mat-datepicker-toggle
+	   matSuffix
+	   [for]="yearPlanDatepicker"
+	 ></mat-datepicker-toggle>
+	 <mat-datepicker #yearPlanDatepicker></mat-datepicker>
+	 <mat-error *ngIf = "getControls('yearPlan').invalid" >
+	  {{ getControls('yearPlan')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label> نوع الصيانه</mat-label>
+	 <input matInput formControlName="maintenanceType"/>
+	 <mat-error *ngIf = "getControls('maintenanceType').invalid" >
+	  {{ getControls('maintenanceType')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label> سنه التسعير</mat-label>
+	 <input matInput
+	  [matDatepicker] = "yearPricingDatepicker"
+	  autocomplete = "off"
+	  formControlName= "yearPricing"/>
+	 <mat-datepicker-toggle
+	   matSuffix
+	   [for]="yearPricingDatepicker"
+	 ></mat-datepicker-toggle>
+	 <mat-datepicker #yearPricingDatepicker></mat-datepicker>
+	 <mat-error *ngIf = "getControls('yearPricing').invalid" >
+	  {{ getControls('yearPricing')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>  نوع العمل</mat-label>
+	 <input matInput formControlName="employmentType"/>
+	 <mat-error *ngIf = "getControls('employmentType').invalid" >
+	  {{ getControls('employmentType')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+           
+
+        </form>
+    </ng-template >
+    <ng-template searchResultContainer >
+        <app-grid-control
+            #gridControl
+            [rowDataService] = "getIndexationBuildingMaintenancePaginatedSortedFiltered"
+            [columnOptions] = "columnOptions"
+            [gridHeaderOptions] = "gridHeaderOptions"
+            [searchInput] = "searchForm.value"
+            (deleteRow) = "onDeleteClicked($event)"
+        >
+        </app-grid-control>
+    </ng-template>
+</app-search-list-expansion-panel >

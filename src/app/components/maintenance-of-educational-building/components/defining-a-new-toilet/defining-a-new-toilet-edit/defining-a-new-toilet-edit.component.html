@@ -1,0 +1,72 @@
+
+<mat-card>
+    <mat-card-header>
+        <mat-card-title> تحديد دورة مياه جديدة</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+        <form [formGroup]="definingANewToiletForm" class="form-container">
+          
+
+	<mat-form-field appearance="outline">
+	 <mat-label>  كود دوره المياه </mat-label>
+	 <input matInput formControlName="toiletCode"/>
+	 <mat-error *ngIf = "getControls('toiletCode').invalid" >
+	  {{ getControls('toiletCode')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label> نموج دوره المياه </mat-label>
+	 <input matInput formControlName="toiletModel"/>
+	 <mat-error *ngIf = "getControls('toiletModel').invalid" >
+	  {{ getControls('toiletModel')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label> تاريخ الصنع</mat-label>
+	 <input matInput
+	  [matDatepicker] = "productionDateDatepicker"
+	  autocomplete = "off"
+	  formControlName= "productionDate"/>
+	 <mat-datepicker-toggle
+	   matSuffix
+	   [for]="productionDateDatepicker"
+	 ></mat-datepicker-toggle>
+	 <mat-datepicker #productionDateDatepicker></mat-datepicker>
+	 <mat-error *ngIf = "getControls('productionDate').invalid" >
+	  {{ getControls('productionDate')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label> كود الشركه المصنعة</mat-label>
+	 <input matInput formControlName="manufacturerCode"/>
+	 <mat-error *ngIf = "getControls('manufacturerCode').invalid" >
+	  {{ getControls('manufacturerCode')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+          
+
+        </form>
+    </mat-card-content>
+
+    <mat-divider></mat-divider>
+
+	<mat-card-actions>
+			<form [formGroup]="attachmentForm" class="form-container">
+                <app-multi-file-upload [service] = "definingANewToiletService" [id]="definingANewToiletForm.get('id').value"
+                    formControlName = "attachmentFiles">
+                </app-multi-file-upload>
+            </form>
+            <button
+                color = "primary"
+                type = "submit"
+                (click) = "onSubmit()"
+                [disabled] = "definingANewToiletForm.invalid"
+                mat-raised-button>
+                حفظ
+            </button>
+    </mat-card-actions>
+</mat-card>
+

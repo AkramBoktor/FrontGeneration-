@@ -1,0 +1,56 @@
+
+<app-new-form-layout
+    dir="rtl"
+    (submitClicked) = "onSubmit()"
+    (back) = "onBack()"
+    [pageTitle] = "'تسجيل كود جهة جديد '"
+>
+    <ng-template newFormContainer >
+        <form [formGroup] = "registerANewDestinationCodeForm">
+         
+
+	<mat-form-field appearance="outline">
+	 <mat-label> المبلغ   الجهة </mat-label>
+	 <input matInput formControlName="entityAmount"/>
+	 <mat-error *ngIf = "getControls('entityAmount').invalid" >
+	  {{ getControls('entityAmount')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label> اسم  الجهة</mat-label>
+	 <input matInput formControlName="entityName"/>
+	 <mat-error *ngIf = "getControls('entityName').invalid" >
+	  {{ getControls('entityName')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+         
+
+	<app-material-select appearance="outline"
+	  #entityCode 
+	  [options] = "entityCodeSelectOptions"
+	  formControlName = "entityCode"
+	></app-material-select>
+
+        </form>
+
+        <mat-divider></mat-divider>
+
+		<mat-card-actions>
+			<form [formGroup]="attachmentForm" class="form-container">
+                <app-multi-file-upload [service] = "registerANewDestinationCodeService" [id]="registerANewDestinationCodeForm.get('id').value"
+                    formControlName = "attachmentFiles">
+                </app-multi-file-upload>
+            </form>
+            <button
+                type="submit"
+                (click)="onSubmit()"
+                [disabled]="registerANewDestinationCodeForm.invalid"
+                mat-raised-button
+                color = "primary">
+             حفظ
+            </button>
+        </mat-card-actions>
+    </ng-template >
+</app-new-form-layout >
+

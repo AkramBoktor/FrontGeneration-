@@ -1,0 +1,94 @@
+
+<app-search-list-expansion-panel
+    dir="rtl"
+    [pageTitle] = "'استماره التفتيش '"
+    (beginSearch) = "onBeginSearch()"
+    (create) = "onCreate()"
+>
+    <ng-template searchFormContainer >
+        <form [formGroup] = "searchForm">
+           
+
+	<mat-form-field appearance="outline">
+	 <mat-label> رقم المدرسه </mat-label>
+	 <input matInput formControlName="schoolNumber"/>
+	 <mat-error *ngIf = "getControls('schoolNumber').invalid" >
+	  {{ getControls('schoolNumber')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label> تاريخ التفتيش </mat-label>
+	 <input matInput
+	  [matDatepicker] = "inspectionDateDatepicker"
+	  autocomplete = "off"
+	  formControlName= "inspectionDate"/>
+	 <mat-datepicker-toggle
+	   matSuffix
+	   [for]="inspectionDateDatepicker"
+	 ></mat-datepicker-toggle>
+	 <mat-datepicker #inspectionDateDatepicker></mat-datepicker>
+	 <mat-error *ngIf = "getControls('inspectionDate').invalid" >
+	  {{ getControls('inspectionDate')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>مدير المدرسه </mat-label>
+	 <input matInput formControlName="schoolManger"/>
+	 <mat-error *ngIf = "getControls('schoolManger').invalid" >
+	  {{ getControls('schoolManger')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>عضو التفتيش عن الاداره التعلميه </mat-label>
+	 <input matInput formControlName="managementEducationInspectionMember"/>
+	 <mat-error *ngIf = "getControls('managementEducationInspectionMember').invalid" >
+	  {{ getControls('managementEducationInspectionMember')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label> اعتماد مدير الاداره التعلميه </mat-label>
+	 <input matInput formControlName="directorEducationalAdministrationAccreditation"/>
+	 <mat-error *ngIf = "getControls('directorEducationalAdministrationAccreditation').invalid" >
+	  {{ getControls('directorEducationalAdministrationAccreditation')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label> اعتماد مدير المنطقه </mat-label>
+	 <input matInput formControlName="arealAdministrationAccreditation"/>
+	 <mat-error *ngIf = "getControls('arealAdministrationAccreditation').invalid" >
+	  {{ getControls('arealAdministrationAccreditation')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+           
+
+	<app-material-select appearance="outline"
+	  #branchCode 
+	  [options] = "branchCodeSelectOptions"
+	  formControlName = "branchCode"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #administrationCode 
+	  [options] = "administrationCodeSelectOptions"
+	  formControlName = "administrationCode"
+	></app-material-select>
+
+        </form>
+    </ng-template >
+    <ng-template searchResultContainer >
+        <app-grid-control
+            #gridControl
+            [rowDataService] = "getInspectionFormPaginatedSortedFiltered"
+            [columnOptions] = "columnOptions"
+            [gridHeaderOptions] = "gridHeaderOptions"
+            [searchInput] = "searchForm.value"
+            (deleteRow) = "onDeleteClicked($event)"
+        >
+        </app-grid-control>
+    </ng-template>
+</app-search-list-expansion-panel >

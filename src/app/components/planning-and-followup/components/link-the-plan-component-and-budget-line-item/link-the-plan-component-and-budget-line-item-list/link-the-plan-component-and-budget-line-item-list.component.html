@@ -1,0 +1,80 @@
+
+<app-search-list-expansion-panel
+    dir="rtl"
+    [pageTitle] = "'ربط مكون الخطة و بند الموازنة'"
+    (beginSearch) = "onBeginSearch()"
+    (create) = "onCreate()"
+>
+    <ng-template searchFormContainer >
+        <form [formGroup] = "searchForm">
+           
+
+	<mat-form-field appearance="outline">
+	 <mat-label>  سنة الخطة</mat-label>
+	 <input matInput
+	  [matDatepicker] = "yearPlanDatepicker"
+	  autocomplete = "off"
+	  formControlName= "yearPlan"/>
+	 <mat-datepicker-toggle
+	   matSuffix
+	   [for]="yearPlanDatepicker"
+	 ></mat-datepicker-toggle>
+	 <mat-datepicker #yearPlanDatepicker></mat-datepicker>
+	 <mat-error *ngIf = "getControls('yearPlan').invalid" >
+	  {{ getControls('yearPlan')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>  رقم المشروع</mat-label>
+	 <input matInput formControlName="projectNumber"/>
+	 <mat-error *ngIf = "getControls('projectNumber').invalid" >
+	  {{ getControls('projectNumber')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label> سنة الموازنة</mat-label>
+	 <input matInput
+	  [matDatepicker] = "budgetYearDatepicker"
+	  autocomplete = "off"
+	  formControlName= "budgetYear"/>
+	 <mat-datepicker-toggle
+	   matSuffix
+	   [for]="budgetYearDatepicker"
+	 ></mat-datepicker-toggle>
+	 <mat-datepicker #budgetYearDatepicker></mat-datepicker>
+	 <mat-error *ngIf = "getControls('budgetYear').invalid" >
+	  {{ getControls('budgetYear')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label> كود بند الموازنة</mat-label>
+	 <input matInput formControlName="budgetItemCode"/>
+	 <mat-error *ngIf = "getControls('budgetItemCode').invalid" >
+	  {{ getControls('budgetItemCode')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+           
+
+	<app-material-select appearance="outline"
+	  #componentCode 
+	  [options] = "componentCodeSelectOptions"
+	  formControlName = "componentCode"
+	></app-material-select>
+
+        </form>
+    </ng-template >
+    <ng-template searchResultContainer >
+        <app-grid-control
+            #gridControl
+            [rowDataService] = "getLinkThePlanComponentAndBudgetLineItemPaginatedSortedFiltered"
+            [columnOptions] = "columnOptions"
+            [gridHeaderOptions] = "gridHeaderOptions"
+            [searchInput] = "searchForm.value"
+            (deleteRow) = "onDeleteClicked($event)"
+        >
+        </app-grid-control>
+    </ng-template>
+</app-search-list-expansion-panel >

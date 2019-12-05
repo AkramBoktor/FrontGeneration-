@@ -1,0 +1,94 @@
+
+<app-new-form-layout
+    dir="rtl"
+    (submitClicked) = "onSubmit()"
+    (back) = "onBack()"
+    [pageTitle] = "'اعانات موظفين غير محملة علي شيك'"
+>
+    <ng-template newFormContainer >
+        <form [formGroup] = "employeeBenefitsNotLoadedOnACheckForm">
+         
+
+	<mat-form-field appearance="outline">
+	 <mat-label> اسم الموظف</mat-label>
+	 <input matInput formControlName="employeeName"/>
+	 <mat-error *ngIf = "getControls('employeeName').invalid" >
+	  {{ getControls('employeeName')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label> رقم واسم الاعانة</mat-label>
+	 <input matInput formControlName="subsidyNoandName"/>
+	 <mat-error *ngIf = "getControls('subsidyNoandName').invalid" >
+	  {{ getControls('subsidyNo.andName')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label> مبلغ الاعانة</mat-label>
+	 <input matInput formControlName="subsidyAmount"/>
+	 <mat-error *ngIf = "getControls('subsidyAmount').invalid" >
+	  {{ getControls('subsidyAmount')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label> تاريخ الصرف</mat-label>
+	 <input matInput
+	  [matDatepicker] = "exchangeDateDatepicker"
+	  autocomplete = "off"
+	  formControlName= "exchangeDate"/>
+	 <mat-datepicker-toggle
+	   matSuffix
+	   [for]="exchangeDateDatepicker"
+	 ></mat-datepicker-toggle>
+	 <mat-datepicker #exchangeDateDatepicker></mat-datepicker>
+	 <mat-error *ngIf = "getControls('exchangeDate').invalid" >
+	  {{ getControls('exchangeDate')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label> الايصال</mat-label>
+	 <input matInput formControlName="receipt"/>
+	 <mat-error *ngIf = "getControls('receipt').invalid" >
+	  {{ getControls('receipt')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+         
+
+	<app-material-select appearance="outline"
+	  #affiliateManagement 
+	  [options] = "affiliateManagementSelectOptions"
+	  formControlName = "affiliateManagement"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #subsidyType 
+	  [options] = "subsidyTypeSelectOptions"
+	  formControlName = "subsidyType"
+	></app-material-select>
+
+        </form>
+
+        <mat-divider></mat-divider>
+
+		<mat-card-actions>
+			<form [formGroup]="attachmentForm" class="form-container">
+                <app-multi-file-upload [service] = "employeeBenefitsNotLoadedOnACheckService" [id]="employeeBenefitsNotLoadedOnACheckForm.get('id').value"
+                    formControlName = "attachmentFiles">
+                </app-multi-file-upload>
+            </form>
+            <button
+                type="submit"
+                (click)="onSubmit()"
+                [disabled]="employeeBenefitsNotLoadedOnACheckForm.invalid"
+                mat-raised-button
+                color = "primary">
+             حفظ
+            </button>
+        </mat-card-actions>
+    </ng-template >
+</app-new-form-layout >
+

@@ -45,14 +45,14 @@ export class AuthService {
             loadUserInfo: true,
             filterProtocolClaims: true,
             authority: Constants.stsAuthority, // url for identity server provider
-            client_id: 'spa-client',
-            redirect_uri: 'http://localhost:4200/assets/oidc-login-redirect.html', // redirect after success login
+            client_id: 'Angular-Client',
+            redirect_uri: 'http://www.google.com', // redirect after success login
             scope: 'openid profile',
             response_type: 'id_token token', // respons type for impilict flow (id_token token)
-            post_logout_redirect_uri: 'http://localhost:4200/?postLogout=true',
+            post_logout_redirect_uri: 'http://www.google.com',
             userStore: new WebStorageStateStore({ store: window.localStorage }),
             automaticSilentRenew: true,
-            silent_redirect_uri: 'http://localhost:4200/assets/silent-redirect.html'
+            silent_redirect_uri: 'http://www.google.com'
             // both redirect Uris need to be set.
         };
         this._userManager = new UserManager(config);
@@ -79,6 +79,10 @@ export class AuthService {
 
     login(): Promise<any> {
         return this._userManager.signinRedirect();
+    }
+
+    login2(loginModel): Observable<any> {
+        return this.httpClient.post('http://localhost:9889/account/LoginClient', loginModel);
     }
 
     logout(): Promise<any> {

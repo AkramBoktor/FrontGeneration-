@@ -1,0 +1,54 @@
+
+<app-search-list-expansion-panel
+    dir="rtl"
+    [pageTitle] = "'مشروع الخطة الخمسية'"
+    (beginSearch) = "onBeginSearch()"
+    (create) = "onCreate()"
+>
+    <ng-template searchFormContainer >
+        <form [formGroup] = "searchForm">
+           
+
+	<mat-form-field appearance="outline">
+	 <mat-label>  رقم الخطة الخمسية</mat-label>
+	 <input matInput formControlName="fiveYearPlanNumber"/>
+	 <mat-error *ngIf = "getControls('fiveYearPlanNumber').invalid" >
+	  {{ getControls('fiveYearPlanNumber')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label> رقم المشروع</mat-label>
+	 <input matInput formControlName="projectNumber"/>
+	 <mat-error *ngIf = "getControls('projectNumber').invalid" >
+	  {{ getControls('projectNumber')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+           
+
+	<app-material-select appearance="outline"
+	  #projectType 
+	  [options] = "projectTypeSelectOptions"
+	  formControlName = "projectType"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #educationallevel 
+	  [options] = "educationallevelSelectOptions"
+	  formControlName = "educationallevel"
+	></app-material-select>
+
+        </form>
+    </ng-template >
+    <ng-template searchResultContainer >
+        <app-grid-control
+            #gridControl
+            [rowDataService] = "getDraftFiveYearPlanPaginatedSortedFiltered"
+            [columnOptions] = "columnOptions"
+            [gridHeaderOptions] = "gridHeaderOptions"
+            [searchInput] = "searchForm.value"
+            (deleteRow) = "onDeleteClicked($event)"
+        >
+        </app-grid-control>
+    </ng-template>
+</app-search-list-expansion-panel >

@@ -1,0 +1,112 @@
+
+<app-new-form-layout
+    dir="rtl"
+    (submitClicked) = "onSubmit()"
+    (back) = "onBack()"
+    [pageTitle] = "'خطة اعمال النظافة '"
+>
+    <ng-template newFormContainer >
+        <form [formGroup] = "cleanlinessBusinessPlanForm">
+         
+
+	<mat-form-field appearance="outline">
+	 <mat-label>السنه</mat-label>
+	 <input matInput
+	  [matDatepicker] = "yearDatepicker"
+	  autocomplete = "off"
+	  formControlName= "year"/>
+	 <mat-datepicker-toggle
+	   matSuffix
+	   [for]="yearDatepicker"
+	 ></mat-datepicker-toggle>
+	 <mat-datepicker #yearDatepicker></mat-datepicker>
+	 <mat-error *ngIf = "getControls('year').invalid" >
+	  {{ getControls('year')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label> الشهر          </mat-label>
+	 <input matInput
+	  [matDatepicker] = "monthDatepicker"
+	  autocomplete = "off"
+	  formControlName= "month"/>
+	 <mat-datepicker-toggle
+	   matSuffix
+	   [for]="monthDatepicker"
+	 ></mat-datepicker-toggle>
+	 <mat-datepicker #monthDatepicker></mat-datepicker>
+	 <mat-error *ngIf = "getControls('month').invalid" >
+	  {{ getControls('month')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>تاريخ بدايه الخطه </mat-label>
+	 <input matInput
+	  [matDatepicker] = "beginningPlanDateDatepicker"
+	  autocomplete = "off"
+	  formControlName= "beginningPlanDate"/>
+	 <mat-datepicker-toggle
+	   matSuffix
+	   [for]="beginningPlanDateDatepicker"
+	 ></mat-datepicker-toggle>
+	 <mat-datepicker #beginningPlanDateDatepicker></mat-datepicker>
+	 <mat-error *ngIf = "getControls('beginningPlanDate').invalid" >
+	  {{ getControls('beginningPlanDate')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label> تاريخ نهايه الخطه</mat-label>
+	 <input matInput
+	  [matDatepicker] = "endPlanDateDatepicker"
+	  autocomplete = "off"
+	  formControlName= "endPlanDate"/>
+	 <mat-datepicker-toggle
+	   matSuffix
+	   [for]="endPlanDateDatepicker"
+	 ></mat-datepicker-toggle>
+	 <mat-datepicker #endPlanDateDatepicker></mat-datepicker>
+	 <mat-error *ngIf = "getControls('endPlanDate').invalid" >
+	  {{ getControls('endPlanDate')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>المستهدف</mat-label>
+	 <input matInput formControlName="target"/>
+	 <mat-error *ngIf = "getControls('target').invalid" >
+	  {{ getControls('target')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+         
+
+	<app-material-select appearance="outline"
+	  #branch 
+	  [options] = "branchSelectOptions"
+	  formControlName = "branch"
+	></app-material-select>
+
+        </form>
+
+        <mat-divider></mat-divider>
+
+		<mat-card-actions>
+			<form [formGroup]="attachmentForm" class="form-container">
+                <app-multi-file-upload [service] = "cleanlinessBusinessPlanService" [id]="cleanlinessBusinessPlanForm.get('id').value"
+                    formControlName = "attachmentFiles">
+                </app-multi-file-upload>
+            </form>
+            <button
+                type="submit"
+                (click)="onSubmit()"
+                [disabled]="cleanlinessBusinessPlanForm.invalid"
+                mat-raised-button
+                color = "primary">
+             حفظ
+            </button>
+        </mat-card-actions>
+    </ng-template >
+</app-new-form-layout >
+

@@ -1,0 +1,96 @@
+
+<mat-card>
+    <mat-card-header>
+        <mat-card-title>تسجيل سداد تحصيات الي الجهة الخاصة بها</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+        <form [formGroup]="registeringThePaymentOfStatisticsToItsOwnAuthorityForm" class="form-container">
+          
+
+	<mat-form-field appearance="outline">
+	 <mat-label> رقم التحصيل </mat-label>
+	 <input matInput formControlName="collectionNumber"/>
+	 <mat-error *ngIf = "getControls('collectionNumber').invalid" >
+	  {{ getControls('collectionNumber')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label> تاريخ التحصيل</mat-label>
+	 <input matInput
+	  [matDatepicker] = "collectionDateDatepicker"
+	  autocomplete = "off"
+	  formControlName= "collectionDate"/>
+	 <mat-datepicker-toggle
+	   matSuffix
+	   [for]="collectionDateDatepicker"
+	 ></mat-datepicker-toggle>
+	 <mat-datepicker #collectionDateDatepicker></mat-datepicker>
+	 <mat-error *ngIf = "getControls('collectionDate').invalid" >
+	  {{ getControls('collectionDate')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label> المبلغ  التحصيل</mat-label>
+	 <input matInput formControlName="collectionAmount"/>
+	 <mat-error *ngIf = "getControls('collectionAmount').invalid" >
+	  {{ getControls('collectionAmount')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label> من </mat-label>
+	 <input matInput
+	  [matDatepicker] = "fromDatepicker"
+	  autocomplete = "off"
+	  formControlName= "from"/>
+	 <mat-datepicker-toggle
+	   matSuffix
+	   [for]="fromDatepicker"
+	 ></mat-datepicker-toggle>
+	 <mat-datepicker #fromDatepicker></mat-datepicker>
+	 <mat-error *ngIf = "getControls('from').invalid" >
+	  {{ getControls('from')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label> الي</mat-label>
+	 <input matInput
+	  [matDatepicker] = "toDatepicker"
+	  autocomplete = "off"
+	  formControlName= "to"/>
+	 <mat-datepicker-toggle
+	   matSuffix
+	   [for]="toDatepicker"
+	 ></mat-datepicker-toggle>
+	 <mat-datepicker #toDatepicker></mat-datepicker>
+	 <mat-error *ngIf = "getControls('to').invalid" >
+	  {{ getControls('to')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+          
+
+        </form>
+    </mat-card-content>
+
+    <mat-divider></mat-divider>
+
+	<mat-card-actions>
+			<form [formGroup]="attachmentForm" class="form-container">
+                <app-multi-file-upload [service] = "registeringThePaymentOfStatisticsToItsOwnAuthorityService" [id]="registeringThePaymentOfStatisticsToItsOwnAuthorityForm.get('id').value"
+                    formControlName = "attachmentFiles">
+                </app-multi-file-upload>
+            </form>
+            <button
+                color = "primary"
+                type = "submit"
+                (click) = "onSubmit()"
+                [disabled] = "registeringThePaymentOfStatisticsToItsOwnAuthorityForm.invalid"
+                mat-raised-button>
+                حفظ
+            </button>
+    </mat-card-actions>
+</mat-card>
+

@@ -1,0 +1,56 @@
+
+<mat-card class="form-card">
+      <mat-card-header>
+  
+          <mat-card-title>
+              تسجيل كود الاعانة جديد 
+          </mat-card-title>
+  
+      </mat-card-header>
+  
+      <mat-card-content>
+  
+        <form [formGroup] = "registerANewSubsidyCodeForm" class="form-container">
+         
+
+	<mat-form-field appearance="outline">
+	 <mat-label> كود  الاعانة </mat-label>
+	 <input matInput formControlName="subsidyCode"/>
+	 <mat-error *ngIf = "getControls('subsidyCode').invalid" >
+	  {{ getControls('subsidyCode')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label> اسم  الاعانة</mat-label>
+	 <input matInput formControlName="subsidyName"/>
+	 <mat-error *ngIf = "getControls('subsidyName').invalid" >
+	  {{ getControls('subsidyName')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>المبلغ الاعانة</mat-label>
+	 <input matInput formControlName="subsidyAmount"/>
+	 <mat-error *ngIf = "getControls('subsidyAmount').invalid" >
+	  {{ getControls('subsidyAmount')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+         
+        </form>
+  
+      </mat-card-content >
+  
+      <mat-action-row>
+            <form [formGroup]="attachmentForm" class="form-container">
+                <app-multi-file-upload [service] = "registerANewSubsidyCodeService" [id]="registerANewSubsidyCodeForm.get('id').value"
+                    formControlName = "attachmentFiles">
+                </app-multi-file-upload>
+            </form>
+            <button (click) = "onConfirm()" mat-raised-button color = "primary" >
+                غلق
+            </button>
+        </mat-action-row>
+    </mat-card>
+
+    

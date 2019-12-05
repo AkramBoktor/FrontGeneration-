@@ -1,0 +1,88 @@
+
+<mat-card>
+    <mat-card-header>
+        <mat-card-title>حساب فواتير اتصالات</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+        <form [formGroup]="etisalatBillingAccountForm" class="form-container">
+          
+
+	<mat-form-field appearance="outline">
+	 <mat-label> شهر الدين</mat-label>
+	 <input matInput
+	  [matDatepicker] = "monthDebtDatepicker"
+	  autocomplete = "off"
+	  formControlName= "monthDebt"/>
+	 <mat-datepicker-toggle
+	   matSuffix
+	   [for]="monthDebtDatepicker"
+	 ></mat-datepicker-toggle>
+	 <mat-datepicker #monthDebtDatepicker></mat-datepicker>
+	 <mat-error *ngIf = "getControls('monthDebt').invalid" >
+	  {{ getControls('monthDebt')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>الفتره من </mat-label>
+	 <input matInput
+	  [matDatepicker] = "periodOfDatepicker"
+	  autocomplete = "off"
+	  formControlName= "periodOf"/>
+	 <mat-datepicker-toggle
+	   matSuffix
+	   [for]="periodOfDatepicker"
+	 ></mat-datepicker-toggle>
+	 <mat-datepicker #periodOfDatepicker></mat-datepicker>
+	 <mat-error *ngIf = "getControls('periodOf').invalid" >
+	  {{ getControls('periodOf')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label> الفتره الي </mat-label>
+	 <input matInput
+	  [matDatepicker] = "periodToDatepicker"
+	  autocomplete = "off"
+	  formControlName= "periodTo"/>
+	 <mat-datepicker-toggle
+	   matSuffix
+	   [for]="periodToDatepicker"
+	 ></mat-datepicker-toggle>
+	 <mat-datepicker #periodToDatepicker></mat-datepicker>
+	 <mat-error *ngIf = "getControls('periodTo').invalid" >
+	  {{ getControls('periodTo')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>كود الموظف</mat-label>
+	 <input matInput formControlName="employeeCode"/>
+	 <mat-error *ngIf = "getControls('employeeCode').invalid" >
+	  {{ getControls('employeeCode')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+          
+
+        </form>
+    </mat-card-content>
+
+    <mat-divider></mat-divider>
+
+	<mat-card-actions>
+			<form [formGroup]="attachmentForm" class="form-container">
+                <app-multi-file-upload [service] = "etisalatBillingAccountService" [id]="etisalatBillingAccountForm.get('id').value"
+                    formControlName = "attachmentFiles">
+                </app-multi-file-upload>
+            </form>
+            <button
+                color = "primary"
+                type = "submit"
+                (click) = "onSubmit()"
+                [disabled] = "etisalatBillingAccountForm.invalid"
+                mat-raised-button>
+                حفظ
+            </button>
+    </mat-card-actions>
+</mat-card>
+

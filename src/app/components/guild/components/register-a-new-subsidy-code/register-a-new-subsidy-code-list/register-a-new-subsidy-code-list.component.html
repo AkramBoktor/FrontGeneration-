@@ -1,0 +1,50 @@
+
+<app-search-list-expansion-panel
+    dir="rtl"
+    [pageTitle] = "'تسجيل كود الاعانة جديد '"
+    (beginSearch) = "onBeginSearch()"
+    (create) = "onCreate()"
+>
+    <ng-template searchFormContainer >
+        <form [formGroup] = "searchForm">
+           
+
+	<mat-form-field appearance="outline">
+	 <mat-label> كود  الاعانة </mat-label>
+	 <input matInput formControlName="subsidyCode"/>
+	 <mat-error *ngIf = "getControls('subsidyCode').invalid" >
+	  {{ getControls('subsidyCode')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label> المبلغ   الاعانة </mat-label>
+	 <input matInput formControlName="subsidyAmount"/>
+	 <mat-error *ngIf = "getControls('subsidyAmount').invalid" >
+	  {{ getControls('subsidyAmount')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label> اسم  الاعانة</mat-label>
+	 <input matInput formControlName="subsidyName"/>
+	 <mat-error *ngIf = "getControls('subsidyName').invalid" >
+	  {{ getControls('subsidyName')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+           
+
+        </form>
+    </ng-template >
+    <ng-template searchResultContainer >
+        <app-grid-control
+            #gridControl
+            [rowDataService] = "getRegisterANewSubsidyCodePaginatedSortedFiltered"
+            [columnOptions] = "columnOptions"
+            [gridHeaderOptions] = "gridHeaderOptions"
+            [searchInput] = "searchForm.value"
+            (deleteRow) = "onDeleteClicked($event)"
+        >
+        </app-grid-control>
+    </ng-template>
+</app-search-list-expansion-panel >

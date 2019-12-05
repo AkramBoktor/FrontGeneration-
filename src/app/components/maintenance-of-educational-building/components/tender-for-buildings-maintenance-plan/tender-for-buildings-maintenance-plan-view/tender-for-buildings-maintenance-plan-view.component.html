@@ -1,0 +1,76 @@
+
+<mat-card class="form-card">
+      <mat-card-header>
+  
+          <mat-card-title>
+              المناقصه للمباني بخطه الصيانه
+          </mat-card-title>
+  
+      </mat-card-header>
+  
+      <mat-card-content>
+  
+        <form [formGroup] = "tenderForBuildingsMaintenancePlanForm" class="form-container">
+         
+
+	<mat-form-field appearance="outline">
+	 <mat-label> سنه الخطه</mat-label>
+	 <input matInput
+	  [matDatepicker] = "yearPlanDatepicker"
+	  autocomplete = "off"
+	  formControlName= "yearPlan"/>
+	 <mat-datepicker-toggle
+	   matSuffix
+	   [for]="yearPlanDatepicker"
+	 ></mat-datepicker-toggle>
+	 <mat-datepicker #yearPlanDatepicker></mat-datepicker>
+	 <mat-error *ngIf = "getControls('yearPlan').invalid" >
+	  {{ getControls('yearPlan')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>الرقم التعريفي</mat-label>
+	 <input matInput formControlName="buildingNumber"/>
+	 <mat-error *ngIf = "getControls('buildingNumber').invalid" >
+	  {{ getControls('buildingNumber')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label> اسم المدرسه</mat-label>
+	 <input matInput formControlName="schoolName"/>
+	 <mat-error *ngIf = "getControls('schoolName').invalid" >
+	  {{ getControls('schoolName')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+         
+
+	<app-material-select appearance="outline"
+	  #governorate 
+	  [options] = "governorateSelectOptions"
+	  formControlName = "governorate"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #maintenanceType 
+	  [options] = "maintenanceTypeSelectOptions"
+	  formControlName = "maintenanceType"
+	></app-material-select>
+        </form>
+  
+      </mat-card-content >
+  
+      <mat-action-row>
+            <form [formGroup]="attachmentForm" class="form-container">
+                <app-multi-file-upload [service] = "tenderForBuildingsMaintenancePlanService" [id]="tenderForBuildingsMaintenancePlanForm.get('id').value"
+                    formControlName = "attachmentFiles">
+                </app-multi-file-upload>
+            </form>
+            <button (click) = "onConfirm()" mat-raised-button color = "primary" >
+                غلق
+            </button>
+        </mat-action-row>
+    </mat-card>
+
+    

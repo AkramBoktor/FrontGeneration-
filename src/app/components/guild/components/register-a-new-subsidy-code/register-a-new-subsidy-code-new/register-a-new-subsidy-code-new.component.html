@@ -1,0 +1,58 @@
+
+<app-new-form-layout
+    dir="rtl"
+    (submitClicked) = "onSubmit()"
+    (back) = "onBack()"
+    [pageTitle] = "'تسجيل كود الاعانة جديد '"
+>
+    <ng-template newFormContainer >
+        <form [formGroup] = "registerANewSubsidyCodeForm">
+         
+
+	<mat-form-field appearance="outline">
+	 <mat-label> كود  الاعانة </mat-label>
+	 <input matInput formControlName="subsidyCode"/>
+	 <mat-error *ngIf = "getControls('subsidyCode').invalid" >
+	  {{ getControls('subsidyCode')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label> اسم  الاعانة</mat-label>
+	 <input matInput formControlName="subsidyName"/>
+	 <mat-error *ngIf = "getControls('subsidyName').invalid" >
+	  {{ getControls('subsidyName')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>المبلغ الاعانة</mat-label>
+	 <input matInput formControlName="subsidyAmount"/>
+	 <mat-error *ngIf = "getControls('subsidyAmount').invalid" >
+	  {{ getControls('subsidyAmount')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+         
+
+        </form>
+
+        <mat-divider></mat-divider>
+
+		<mat-card-actions>
+			<form [formGroup]="attachmentForm" class="form-container">
+                <app-multi-file-upload [service] = "registerANewSubsidyCodeService" [id]="registerANewSubsidyCodeForm.get('id').value"
+                    formControlName = "attachmentFiles">
+                </app-multi-file-upload>
+            </form>
+            <button
+                type="submit"
+                (click)="onSubmit()"
+                [disabled]="registerANewSubsidyCodeForm.invalid"
+                mat-raised-button
+                color = "primary">
+             حفظ
+            </button>
+        </mat-card-actions>
+    </ng-template >
+</app-new-form-layout >
+

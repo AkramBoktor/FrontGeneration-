@@ -1,0 +1,50 @@
+
+<app-new-form-layout
+    dir="rtl"
+    (submitClicked) = "onSubmit()"
+    (back) = "onBack()"
+    [pageTitle] = "'تعريف نموذج جديد '"
+>
+    <ng-template newFormContainer >
+        <form [formGroup] = "defineANewModelForm">
+         
+
+	<mat-form-field appearance="outline">
+	 <mat-label>كود النموذج</mat-label>
+	 <input matInput formControlName="modelCode"/>
+	 <mat-error *ngIf = "getControls('modelCode').invalid" >
+	  {{ getControls('modelCode')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label> اسم النموذج </mat-label>
+	 <input matInput formControlName="modelName"/>
+	 <mat-error *ngIf = "getControls('modelName').invalid" >
+	  {{ getControls('modelName')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+         
+
+        </form>
+
+        <mat-divider></mat-divider>
+
+		<mat-card-actions>
+			<form [formGroup]="attachmentForm" class="form-container">
+                <app-multi-file-upload [service] = "defineANewModelService" [id]="defineANewModelForm.get('id').value"
+                    formControlName = "attachmentFiles">
+                </app-multi-file-upload>
+            </form>
+            <button
+                type="submit"
+                (click)="onSubmit()"
+                [disabled]="defineANewModelForm.invalid"
+                mat-raised-button
+                color = "primary">
+             حفظ
+            </button>
+        </mat-card-actions>
+    </ng-template >
+</app-new-form-layout >
+

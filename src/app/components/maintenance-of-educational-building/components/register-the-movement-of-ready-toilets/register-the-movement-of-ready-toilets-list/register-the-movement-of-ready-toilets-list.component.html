@@ -1,0 +1,72 @@
+
+<app-search-list-expansion-panel
+    dir="rtl"
+    [pageTitle] = "'تسجيل  حركه دورات المياه الجاهزه'"
+    (beginSearch) = "onBeginSearch()"
+    (create) = "onCreate()"
+>
+    <ng-template searchFormContainer >
+        <form [formGroup] = "searchForm">
+           
+
+	<mat-form-field appearance="outline">
+	 <mat-label>  تاريخ الطلب </mat-label>
+	 <input matInput
+	  [matDatepicker] = "orderDateDatepicker"
+	  autocomplete = "off"
+	  formControlName= "orderDate"/>
+	 <mat-datepicker-toggle
+	   matSuffix
+	   [for]="orderDateDatepicker"
+	 ></mat-datepicker-toggle>
+	 <mat-datepicker #orderDateDatepicker></mat-datepicker>
+	 <mat-error *ngIf = "getControls('orderDate').invalid" >
+	  {{ getControls('orderDate')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label> كود  دوره المياه</mat-label>
+	 <input matInput formControlName="toiletCode"/>
+	 <mat-error *ngIf = "getControls('toiletCode').invalid" >
+	  {{ getControls('toiletCode')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>المدرسه المطلوب النقل منها </mat-label>
+	 <input matInput formControlName="schoolRequiredTransport"/>
+	 <mat-error *ngIf = "getControls('schoolRequiredTransport').invalid" >
+	  {{ getControls('schoolRequiredTransport')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>المدرسه المطلوب النقل  اليها </mat-label>
+	 <input matInput formControlName="transportationSchool"/>
+	 <mat-error *ngIf = "getControls('transportationSchool').invalid" >
+	  {{ getControls('transportationSchool')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+           
+
+	<app-material-select appearance="outline"
+	  #governorate 
+	  [options] = "governorateSelectOptions"
+	  formControlName = "governorate"
+	></app-material-select>
+
+        </form>
+    </ng-template >
+    <ng-template searchResultContainer >
+        <app-grid-control
+            #gridControl
+            [rowDataService] = "getRegisterTheMovementOfReadyToiletsPaginatedSortedFiltered"
+            [columnOptions] = "columnOptions"
+            [gridHeaderOptions] = "gridHeaderOptions"
+            [searchInput] = "searchForm.value"
+            (deleteRow) = "onDeleteClicked($event)"
+        >
+        </app-grid-control>
+    </ng-template>
+</app-search-list-expansion-panel >

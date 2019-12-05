@@ -1,0 +1,140 @@
+
+<mat-card class="form-card">
+      <mat-card-header>
+  
+          <mat-card-title>
+              خطه الصيانه
+          </mat-card-title>
+  
+      </mat-card-header>
+  
+      <mat-card-content>
+  
+        <form [formGroup] = "maintenancePlanForm" class="form-container">
+         
+
+	<mat-form-field appearance="outline">
+	 <mat-label>المبني التعليمي </mat-label>
+	 <input matInput formControlName="buildingNumber"/>
+	 <mat-error *ngIf = "getControls('buildingNumber').invalid" >
+	  {{ getControls('buildingNumber')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>الفرع </mat-label>
+	 <input matInput formControlName="branch"/>
+	 <mat-error *ngIf = "getControls('branch').invalid" >
+	  {{ getControls('branch')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>المنطقه  </mat-label>
+	 <input matInput formControlName="region"/>
+	 <mat-error *ngIf = "getControls('region').invalid" >
+	  {{ getControls('region')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label> سنه الخطه</mat-label>
+	 <input matInput
+	  [matDatepicker] = "yearPlanDatepicker"
+	  autocomplete = "off"
+	  formControlName= "yearPlan"/>
+	 <mat-datepicker-toggle
+	   matSuffix
+	   [for]="yearPlanDatepicker"
+	 ></mat-datepicker-toggle>
+	 <mat-datepicker #yearPlanDatepicker></mat-datepicker>
+	 <mat-error *ngIf = "getControls('yearPlan').invalid" >
+	  {{ getControls('yearPlan')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label> مده التنفيذ</mat-label>
+	 <input matInput
+	  [matDatepicker] = "executionDurationDatepicker"
+	  autocomplete = "off"
+	  formControlName= "executionDuration"/>
+	 <mat-datepicker-toggle
+	   matSuffix
+	   [for]="executionDurationDatepicker"
+	 ></mat-datepicker-toggle>
+	 <mat-datepicker #executionDurationDatepicker></mat-datepicker>
+	 <mat-error *ngIf = "getControls('executionDuration').invalid" >
+	  {{ getControls('executionDuration')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>رقم المناقصه</mat-label>
+	 <input matInput formControlName="bidNumber"/>
+	 <mat-error *ngIf = "getControls('bidNumber').invalid" >
+	  {{ getControls('bidNumber')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>تاريخ استلام موقع فعلي</mat-label>
+	 <input matInput
+	  [matDatepicker] = "physicalLocationreceivingDateDatepicker"
+	  autocomplete = "off"
+	  formControlName= "physicalLocationreceivingDate"/>
+	 <mat-datepicker-toggle
+	   matSuffix
+	   [for]="physicalLocationreceivingDateDatepicker"
+	 ></mat-datepicker-toggle>
+	 <mat-datepicker #physicalLocationreceivingDateDatepicker></mat-datepicker>
+	 <mat-error *ngIf = "getControls('physicalLocationreceivingDate').invalid" >
+	  {{ getControls('physicalLocationreceivingDate')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>تاريخ استلام موقع مخطط</mat-label>
+	 <input matInput
+	  [matDatepicker] = "plannerLocationReceivingDateDatepicker"
+	  autocomplete = "off"
+	  formControlName= "plannerLocationReceivingDate"/>
+	 <mat-datepicker-toggle
+	   matSuffix
+	   [for]="plannerLocationReceivingDateDatepicker"
+	 ></mat-datepicker-toggle>
+	 <mat-datepicker #plannerLocationReceivingDateDatepicker></mat-datepicker>
+	 <mat-error *ngIf = "getControls('plannerLocationReceivingDate').invalid" >
+	  {{ getControls('plannerLocationReceivingDate')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+         
+
+	<app-material-select appearance="outline"
+	  #constructionType 
+	  [options] = "constructionTypeSelectOptions"
+	  formControlName = "constructionType"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #offeringType 
+	  [options] = "offeringTypeSelectOptions"
+	  formControlName = "offeringType"
+	></app-material-select>
+        </form>
+  
+      </mat-card-content >
+  
+      <mat-action-row>
+            <form [formGroup]="attachmentForm" class="form-container">
+                <app-multi-file-upload [service] = "maintenancePlanService" [id]="maintenancePlanForm.get('id').value"
+                    formControlName = "attachmentFiles">
+                </app-multi-file-upload>
+            </form>
+            <button (click) = "onConfirm()" mat-raised-button color = "primary" >
+                غلق
+            </button>
+        </mat-action-row>
+    </mat-card>
+
+    

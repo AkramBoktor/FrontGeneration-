@@ -1,0 +1,58 @@
+
+<app-search-list-expansion-panel
+    dir="rtl"
+    [pageTitle] = "'الخطة الخمسية'"
+    (beginSearch) = "onBeginSearch()"
+    (create) = "onCreate()"
+>
+    <ng-template searchFormContainer >
+        <form [formGroup] = "searchForm">
+           
+
+	<mat-form-field appearance="outline">
+	 <mat-label>  سنة البداية </mat-label>
+	 <input matInput
+	  [matDatepicker] = "startYearDatepicker"
+	  autocomplete = "off"
+	  formControlName= "startYear"/>
+	 <mat-datepicker-toggle
+	   matSuffix
+	   [for]="startYearDatepicker"
+	 ></mat-datepicker-toggle>
+	 <mat-datepicker #startYearDatepicker></mat-datepicker>
+	 <mat-error *ngIf = "getControls('startYear').invalid" >
+	  {{ getControls('startYear')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>سنة النهاية</mat-label>
+	 <input matInput
+	  [matDatepicker] = "endYearDatepicker"
+	  autocomplete = "off"
+	  formControlName= "endYear"/>
+	 <mat-datepicker-toggle
+	   matSuffix
+	   [for]="endYearDatepicker"
+	 ></mat-datepicker-toggle>
+	 <mat-datepicker #endYearDatepicker></mat-datepicker>
+	 <mat-error *ngIf = "getControls('endYear').invalid" >
+	  {{ getControls('endYear')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+           
+
+        </form>
+    </ng-template >
+    <ng-template searchResultContainer >
+        <app-grid-control
+            #gridControl
+            [rowDataService] = "getFiveYearPlanPaginatedSortedFiltered"
+            [columnOptions] = "columnOptions"
+            [gridHeaderOptions] = "gridHeaderOptions"
+            [searchInput] = "searchForm.value"
+            (deleteRow) = "onDeleteClicked($event)"
+        >
+        </app-grid-control>
+    </ng-template>
+</app-search-list-expansion-panel >

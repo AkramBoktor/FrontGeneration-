@@ -1,0 +1,102 @@
+
+<app-search-list-expansion-panel
+    dir="rtl"
+    [pageTitle] = "'بيانات مذكره سحب اعمال'"
+    (beginSearch) = "onBeginSearch()"
+    (create) = "onCreate()"
+>
+    <ng-template searchFormContainer >
+        <form [formGroup] = "searchForm">
+           
+
+	<mat-form-field appearance="outline">
+	 <mat-label>رقم الطرح</mat-label>
+	 <input matInput formControlName="offeringNumber"/>
+	 <mat-error *ngIf = "getControls('offeringNumber').invalid" >
+	  {{ getControls('offeringNumber')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>اسم الطرح</mat-label>
+	 <input matInput formControlName="offeringName"/>
+	 <mat-error *ngIf = "getControls('offeringName').invalid" >
+	  {{ getControls('offeringName')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>رقم المبني</mat-label>
+	 <input matInput formControlName="buildingNumber"/>
+	 <mat-error *ngIf = "getControls('buildingNumber').invalid" >
+	  {{ getControls('buildingNumber')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>كود المقاول</mat-label>
+	 <input matInput formControlName="contractorCode"/>
+	 <mat-error *ngIf = "getControls('contractorCode').invalid" >
+	  {{ getControls('contractorCode')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>رقم المذكره</mat-label>
+	 <input matInput formControlName="noteNumber"/>
+	 <mat-error *ngIf = "getControls('noteNumber').invalid" >
+	  {{ getControls('noteNumber')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>كود النشاط</mat-label>
+	 <input matInput formControlName="activityCode"/>
+	 <mat-error *ngIf = "getControls('activityCode').invalid" >
+	  {{ getControls('activityCode')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>تاريخ التوقف</mat-label>
+	 <input matInput
+	  [matDatepicker] = "stopDateDatepicker"
+	  autocomplete = "off"
+	  formControlName= "stopDate"/>
+	 <mat-datepicker-toggle
+	   matSuffix
+	   [for]="stopDateDatepicker"
+	 ></mat-datepicker-toggle>
+	 <mat-datepicker #stopDateDatepicker></mat-datepicker>
+	 <mat-error *ngIf = "getControls('stopDate').invalid" >
+	  {{ getControls('stopDate')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+           
+
+	<app-material-select appearance="outline"
+	  #offeringType 
+	  [options] = "offeringTypeSelectOptions"
+	  formControlName = "offeringType"
+	></app-material-select>
+
+	<app-material-select appearance="outline"
+	  #constructionType 
+	  [options] = "constructionTypeSelectOptions"
+	  formControlName = "constructionType"
+	></app-material-select>
+
+        </form>
+    </ng-template >
+    <ng-template searchResultContainer >
+        <app-grid-control
+            #gridControl
+            [rowDataService] = "getDataWithdrawalNotePaginatedSortedFiltered"
+            [columnOptions] = "columnOptions"
+            [gridHeaderOptions] = "gridHeaderOptions"
+            [searchInput] = "searchForm.value"
+            (deleteRow) = "onDeleteClicked($event)"
+        >
+        </app-grid-control>
+    </ng-template>
+</app-search-list-expansion-panel >

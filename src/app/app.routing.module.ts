@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { LoginComponent } from './main/pages/authentication/login/login.component';
 
 const routes: Routes = [
     {
@@ -565,9 +566,11 @@ const routes: Routes = [
         
     },
 
-    
-    
-    
+
+    {
+        path: 'login', component: LoginComponent
+    },
+
     {
         path: 'home', loadChildren: './shared/pages/home/home.module#HomeModule',
         data: {

@@ -1,0 +1,66 @@
+
+<app-search-list-expansion-panel
+    dir="rtl"
+    [pageTitle] = "'ادخال بيانات القائمين بمقايسة مبني'"
+    (beginSearch) = "onBeginSearch()"
+    (create) = "onCreate()"
+>
+    <ng-template searchFormContainer >
+        <form [formGroup] = "searchForm">
+           
+
+	<mat-form-field appearance="outline">
+	 <mat-label>المهندس القائم باعمال المقايسه</mat-label>
+	 <input matInput formControlName="actingEngineer"/>
+	 <mat-error *ngIf = "getControls('actingEngineer').invalid" >
+	  {{ getControls('actingEngineer')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>  رئيس القطاع</mat-label>
+	 <input matInput formControlName="sectorHead"/>
+	 <mat-error *ngIf = "getControls('sectorHead').invalid" >
+	  {{ getControls('sectorHead')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>رئيس قسم الصيانه</mat-label>
+	 <input matInput formControlName="maintenanceDepartmentHead"/>
+	 <mat-error *ngIf = "getControls('maintenanceDepartmentHead').invalid" >
+	  {{ getControls('maintenanceDepartmentHead')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>مدير المنطقه</mat-label>
+	 <input matInput formControlName="areaManager"/>
+	 <mat-error *ngIf = "getControls('areaManager').invalid" >
+	  {{ getControls('areaManager')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>مهندس ديوان المتابع للفرع</mat-label>
+	 <input matInput formControlName="followerEngineerOfficeBranch"/>
+	 <mat-error *ngIf = "getControls('followerEngineerOfficeBranch').invalid" >
+	  {{ getControls('followerEngineerOfficeBranch')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+           
+
+        </form>
+    </ng-template >
+    <ng-template searchResultContainer >
+        <app-grid-control
+            #gridControl
+            [rowDataService] = "getBuildingDataPaginatedSortedFiltered"
+            [columnOptions] = "columnOptions"
+            [gridHeaderOptions] = "gridHeaderOptions"
+            [searchInput] = "searchForm.value"
+            (deleteRow) = "onDeleteClicked($event)"
+        >
+        </app-grid-control>
+    </ng-template>
+</app-search-list-expansion-panel >

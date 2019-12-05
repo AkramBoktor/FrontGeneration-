@@ -1,0 +1,106 @@
+
+<app-new-form-layout
+    dir="rtl"
+    (submitClicked) = "onSubmit()"
+    (back) = "onBack()"
+    [pageTitle] = "'بيانات المشتركين'"
+>
+    <ng-template newFormContainer >
+        <form [formGroup] = "subscriberDataForm">
+         
+
+	<mat-form-field appearance="outline">
+	 <mat-label> كود الموظف</mat-label>
+	 <input matInput formControlName="employeeCode"/>
+	 <mat-error *ngIf = "getControls('employeeCode').invalid" >
+	  {{ getControls('employeeCode')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label> تاريخ الميلاد</mat-label>
+	 <input matInput
+	 [disableControl]="true" 
+	  [matDatepicker] = "birthDateDatepicker"
+	  autocomplete = "off"
+	  formControlName= "birthDate"/>
+	 <mat-datepicker-toggle
+	   matSuffix
+	   [for]="birthDateDatepicker"
+	 ></mat-datepicker-toggle>
+	 <mat-datepicker #birthDateDatepicker></mat-datepicker>
+	 <mat-error *ngIf = "getControls('birthDate').invalid" >
+	  {{ getControls('birthDate')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label> تاريخ التعيين</mat-label>
+	 <input matInput
+	 [disableControl]="true" 
+	  [matDatepicker] = "hiringDateDatepicker"
+	  autocomplete = "off"
+	  formControlName= "hiringDate"/>
+	 <mat-datepicker-toggle
+	   matSuffix
+	   [for]="hiringDateDatepicker"
+	 ></mat-datepicker-toggle>
+	 <mat-datepicker #hiringDateDatepicker></mat-datepicker>
+	 <mat-error *ngIf = "getControls('hiringDate').invalid" >
+	  {{ getControls('hiringDate')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label>   تاريخ الاشتراك</mat-label>
+	 <input matInput
+	  [matDatepicker] = "subscriptionDateDatepicker"
+	  autocomplete = "off"
+	  formControlName= "subscriptionDate"/>
+	 <mat-datepicker-toggle
+	   matSuffix
+	   [for]="subscriptionDateDatepicker"
+	 ></mat-datepicker-toggle>
+	 <mat-datepicker #subscriptionDateDatepicker></mat-datepicker>
+	 <mat-error *ngIf = "getControls('subscriptionDate').invalid" >
+	  {{ getControls('subscriptionDate')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label> رقم العضوية</mat-label>
+	 <input matInput formControlName="membershipNo"/>
+	 <mat-error *ngIf = "getControls('membershipNo').invalid" >
+	  {{ getControls('membershipNo')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+         
+
+	<app-material-select appearance="outline"
+	  #admistrationCode 
+	  [options] = "admistrationCodeSelectOptions"
+	  formControlName = "admistrationCode"
+	></app-material-select>
+
+        </form>
+
+        <mat-divider></mat-divider>
+
+		<mat-card-actions>
+			<form [formGroup]="attachmentForm" class="form-container">
+                <app-multi-file-upload [service] = "subscriberDataService" [id]="subscriberDataForm.get('id').value"
+                    formControlName = "attachmentFiles">
+                </app-multi-file-upload>
+            </form>
+            <button
+                type="submit"
+                (click)="onSubmit()"
+                [disabled]="subscriberDataForm.invalid"
+                mat-raised-button
+                color = "primary">
+             حفظ
+            </button>
+        </mat-card-actions>
+    </ng-template >
+</app-new-form-layout >
+

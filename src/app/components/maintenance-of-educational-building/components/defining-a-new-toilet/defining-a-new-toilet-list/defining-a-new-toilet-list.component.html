@@ -1,0 +1,66 @@
+
+<app-search-list-expansion-panel
+    dir="rtl"
+    [pageTitle] = "' تحديد دورة مياه جديدة'"
+    (beginSearch) = "onBeginSearch()"
+    (create) = "onCreate()"
+>
+    <ng-template searchFormContainer >
+        <form [formGroup] = "searchForm">
+           
+
+	<mat-form-field appearance="outline">
+	 <mat-label>  كود دوره المياه </mat-label>
+	 <input matInput formControlName="toiletCode"/>
+	 <mat-error *ngIf = "getControls('toiletCode').invalid" >
+	  {{ getControls('toiletCode')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label> نموج دوره المياه </mat-label>
+	 <input matInput formControlName="toiletModel"/>
+	 <mat-error *ngIf = "getControls('toiletModel').invalid" >
+	  {{ getControls('toiletModel')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label> تاريخ الصنع</mat-label>
+	 <input matInput
+	  [matDatepicker] = "productionDateDatepicker"
+	  autocomplete = "off"
+	  formControlName= "productionDate"/>
+	 <mat-datepicker-toggle
+	   matSuffix
+	   [for]="productionDateDatepicker"
+	 ></mat-datepicker-toggle>
+	 <mat-datepicker #productionDateDatepicker></mat-datepicker>
+	 <mat-error *ngIf = "getControls('productionDate').invalid" >
+	  {{ getControls('productionDate')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+	 <mat-label> كود الشركه المصنعة</mat-label>
+	 <input matInput formControlName="manufacturerCode"/>
+	 <mat-error *ngIf = "getControls('manufacturerCode').invalid" >
+	  {{ getControls('manufacturerCode')| getErrorMessages : errorMessages}}
+	  </mat-error>
+	</mat-form-field>
+           
+
+        </form>
+    </ng-template >
+    <ng-template searchResultContainer >
+        <app-grid-control
+            #gridControl
+            [rowDataService] = "get DefiningANewToiletPaginatedSortedFiltered"
+            [columnOptions] = "columnOptions"
+            [gridHeaderOptions] = "gridHeaderOptions"
+            [searchInput] = "searchForm.value"
+            (deleteRow) = "onDeleteClicked($event)"
+        >
+        </app-grid-control>
+    </ng-template>
+</app-search-list-expansion-panel >
