@@ -46,10 +46,10 @@ export class AuthService {
             filterProtocolClaims: true,
             authority: Constants.stsAuthority, // url for identity server provider
             client_id: 'Angular-Client',
-            redirect_uri: 'http://www.google.com', // redirect after success login
-            scope: 'openid profile',
+            redirect_uri: 'http://localhost:4200/employee/employee-data', // redirect after success login
+            scope: 'openid profile employee-api',
             response_type: 'id_token token', // respons type for impilict flow (id_token token)
-            post_logout_redirect_uri: 'http://www.google.com',
+            post_logout_redirect_uri: 'http://localhost:4200/login',
             userStore: new WebStorageStateStore({ store: window.localStorage }),
             automaticSilentRenew: true,
             silent_redirect_uri: 'http://www.google.com'
@@ -82,7 +82,7 @@ export class AuthService {
     }
 
     login2(loginModel): Observable<any> {
-        return this.httpClient.post('http://localhost:9889/account/LoginClient', loginModel);
+        return this.httpClient.post('http://localhost:9899/account/LoginClient', loginModel);
     }
 
     logout(): Promise<any> {
@@ -103,7 +103,9 @@ export class AuthService {
     }
 
     getAccessToken(): string {
-        return this._user ? this._user.access_token : '';
+        console.log(this.activatedRoute.snapshot.queryParamMap.get('id_token'));
+       // return this._user ? this._user.access_token : '';
+       return this.activatedRoute.snapshot.queryParamMap.get('id_token');
     }
 
     signoutRedirectCallback(): Promise<any> {
@@ -111,13 +113,13 @@ export class AuthService {
     }
 
     getClaims(): any {
-		return this.httpClient.get<any>(`http://localhost:9097/users/GetUserClaim/${this._user.profile.sub}`);
+		return this.httpClient.get<any>(`http://localhost:9899/users/GetUserClaim/${this._user.profile.sub}`);
         // return this._user.profile;
     }
 
     hasPermission(moduleClaims: string | string[], moduleName?: string): boolean {
         return true;
-        // moduleName = moduleName ? moduleName : this.activatedRoute.snapshot.data['moduleName'];
+        // moduleName = moduleName ? moduleName : this.activatedRoute.snapshot.data['moduleName'];activatedRoute
 
         // // const userClaims = this.testClaims.filter(x => x.moduleName === moduleName);
         // let userClaimNames = [];
