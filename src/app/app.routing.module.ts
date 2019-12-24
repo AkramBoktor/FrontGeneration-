@@ -574,7 +574,7 @@ const routes: Routes = [
 
 
     {
-        path: 'login', component: LoginComponent
+        path: 'login', loadChildren: './main/pages/authentication/login/login.module#LoginModule',
     },
 
     {

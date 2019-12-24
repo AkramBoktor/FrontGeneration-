@@ -46,19 +46,22 @@ export class AuthService {
             filterProtocolClaims: true,
             authority: Constants.stsAuthority, // url for identity server provider
             client_id: 'Angular-Client',
-            redirect_uri: 'http://localhost:4200/employee/employee-data', // redirect after success login
+            redirect_uri: 'http://localhost:4200/assets/oidc-login-redirect.html', // redirect after success login
             scope: 'openid profile employee-api',
             response_type: 'id_token token', // respons type for impilict flow (id_token token)
-            post_logout_redirect_uri: 'http://localhost:4200/login',
+            post_logout_redirect_uri: 'http://localhost:4200/?postLogout=true',
             userStore: new WebStorageStateStore({ store: window.localStorage }),
             automaticSilentRenew: true,
-            silent_redirect_uri: 'http://www.google.com'
+            silent_redirect_uri: 'http://localhost:4200/assets/silent-redirect.html'
             // both redirect Uris need to be set.
         };
         this._userManager = new UserManager(config);
         this._userManager.getUser().then(user => {
             if (user && !user.expired) {
                 this._user = user;
+                console.log('p  ' + user.profile);
+                console.log('a  ' + user.access_token);
+                console.log('i  ' + user.id_token);
                 this.getClaims().subscribe(x => {
                     console.log(x);
                     this.userClaims = x;
@@ -103,9 +106,7 @@ export class AuthService {
     }
 
     getAccessToken(): string {
-        console.log(this.activatedRoute.snapshot.queryParamMap.get('id_token'));
-       // return this._user ? this._user.access_token : '';
-       return this.activatedRoute.snapshot.queryParamMap.get('id_token');
+        return this._user ? this._user.access_token : '';
     }
 
     signoutRedirectCallback(): Promise<any> {
@@ -113,7 +114,7 @@ export class AuthService {
     }
 
     getClaims(): any {
-		return this.httpClient.get<any>(`http://localhost:9899/users/GetUserClaim/${this._user.profile.sub}`);
+		return this.httpClient.get<any>(`http://localhost:9899/account/GetUserClaim/${this._user.profile.sub}`);
         // return this._user.profile;
     }
 
