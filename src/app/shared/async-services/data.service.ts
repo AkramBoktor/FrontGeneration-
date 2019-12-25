@@ -6,6 +6,7 @@ import { Observable, of } from 'rxjs';
 import { debounceTime, map } from 'rxjs/operators';
 import { Constants } from '../config/constants';
 import { Attachment } from '../models/controls/interfaces';
+import { LookupModelAutoComplete } from '../models/controls/lookup.model';
 @Injectable()
 export class DataService<T> {
 
@@ -45,13 +46,12 @@ export class DataService<T> {
   public getAttachments(): Observable<Attachment[]> {
     return this.httpClient.get<Attachment[]>(`${this.attachmentUrlPrefix}/attachments/${this.url}`);
   }
-  
+
   public getAttachmentsById(id: number): Observable<Attachment[]> {
     return this.httpClient.get<Attachment[]>(`${this.attachmentUrlPrefix}/attachments/${this.url}/${id}`);
   }
 
   public postAttachments(id: number, fileItems: Attachment[]): Observable<{ status: number, message: number } | Attachment[]> {
-    //debugger;
     const formData = new FormData();
     if (fileItems) {
       for (const fileItem of fileItems) {
@@ -100,5 +100,10 @@ export class DataService<T> {
   public getAllWithFilter(filter: any): Observable<T[]> {
     return this.httpClient
       .post<T[]>(`${this.urlPrefix}/${this.url}/getall`, filter.filter);
+  }
+
+  public getLookupData(filter: any): Observable<LookupModelAutoComplete[]> {
+    return this.httpClient
+      .post<LookupModelAutoComplete[]>(`${this.urlPrefix}/${this.url}/lookup`, filter);
   }
 }
