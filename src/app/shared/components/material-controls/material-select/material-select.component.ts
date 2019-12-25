@@ -71,22 +71,6 @@ export class MaterialSelectComponent implements OnInit, ControlValueAccessor {
     }
   }
 
-  populateListByFilter(dataSource: Observable<any[]> | any[]) {
-    if (isObservable(dataSource)) {
-      dataSource.subscribe(d => {
-        this.viewData = d;
-        if (this.viewData.length > 0) {
-          this.setValue(null);
-          this.setValue(this.viewData[0].code);
-        }
-      }, (error: HttpErrorResponse) => console.log(error.message));
-    } else {
-      this.viewData = dataSource;
-      if (this.viewData.length > 0) {
-        this.setValue(this.viewData[0].code);
-      }
-    }
-  }
   get errorState() {
     return this.control.errors !== null && !!this.control.touched;
   }
@@ -121,6 +105,6 @@ export class MaterialSelectComponent implements OnInit, ControlValueAccessor {
   }
 
   compareFn(x: any, y: any): boolean {
-    return x && y ? x.code === y.code : x === y;
+    return x && y && x.toString() === y.toString();
   }
 }

@@ -1,28 +1,39 @@
-import { Component, OnInit, Optional, Self, ViewChild, Input } from '@angular/core';
+import { Component, Input, OnInit, Optional, Self, ViewChild, OnDestroy, EventEmitter, Output } from '@angular/core';
 import { ControlValueAccessor, FormControl, NgControl } from '@angular/forms';
-import { MatInput } from '@angular/material';
-import { MaterialSelectOptions } from 'app/shared/models/controls/material-select.model';
-import { Observable, isObservable } from 'rxjs';
-import { AutoCompleteWithCode } from 'app/shared/models/controls/interfaces';
+import { LookupModelAutoComplete } from 'app/shared/models/controls/lookup.model';
+import { Subject, Subscription } from 'rxjs';
+import { debounceTime, distinctUntilChanged, finalize, map, startWith, switchMap, tap } from 'rxjs/operators';
+import { MaterialAutocompleteOptions } from 'app/shared/models/controls/material-autocomplete.model';
 
 @Component({
   selector: 'app-material-autocomplete',
   templateUrl: './material-autocomplete.component.html',
   styleUrls: ['./material-autocomplete.component.scss']
 })
-export class MaterialAutocompleteComponent implements OnInit, ControlValueAccessor {
+export class MaterialAutocompleteComponent implements OnInit, ControlValueAccessor, OnDestroy {
+  getDisplayNameFunction = this.getDisplayName.bind(this);
+	
+  private subscriptions: Subscription[] = [];
+  @Input() options: MaterialAutocompleteOptions;
+  @ViewChild('matAutoCompleteInput', { static: true }) matAutoCompleteInput: any;
 
-  @Input() options: MaterialSelectOptions;
-  @ViewChild('matAutoCompleteInput', { static: true }) matAutoCompleteInput: MatInput;
-  matCodeInput = new FormControl();
+  @Output() selectionChanged: EventEmitter<any> = new EventEmitter();
 
-  filteredDatasource: AutoCompleteWithCode[];
-  datasource: AutoCompleteWithCode[] = [];
+  public matCodeInput = new FormControl();
 
-  initialValue: string; // ## id
+  public matNameInputChanged$ = new Subject<string>();
+  public matCodeInputChanged$ = new Subject<string>();
 
-  selectedName: string;
+  // current filtered data visible in the drop down list.
+  public currentVisibleData: any[];
 
+  // store the filtered data for comparison.
+  private currentFilteredData: any[];
+  // store the current selected name for comparison
+  private currentSelectedName: string;
+
+  public isLoading = true;
+  private debounceTime = 500; // debounce time in ms.
   constructor(@Self() @Optional() public control: NgControl) {
     if (this.control != null) {
       this.control.valueAccessor = this;
@@ -30,103 +41,142 @@ export class MaterialAutocompleteComponent implements OnInit, ControlValueAccess
   }
 
   ngOnInit() {
-    this.populateList(this.options.data);
-    
+    // handle disabled state.
     if (this.options.disabled || this.control.disabled) {
       this.matAutoCompleteInput.disabled = true;
       this.matCodeInput.disable();
     }
 
+    // handle error state.
     this.matAutoCompleteInput.errorStateMatcher = {
       isErrorState: () => {
-        return !!(this.control && this.control.invalid && (this.control.dirty || this.control.touched));
+        return !!(this.control && this.control.invalid && this.control.dirty && this.control.touched);
       }
     };
   }
 
-  onCodeChanged(value: string) {
-    this.filterByCode(value);
+  private initialize(initialValue) {
+    // subscribe to code changes.
+    this.subscriptions.push(
+      this.matCodeInputChanged$.pipe(
+        startWith(initialValue),
+        debounceTime(this.debounceTime),
+        tap(() => {
+          this.isLoading = true;
+        }),
+        switchMap((inputCode: string) => this.options.dataService({
+          ...this.options.fetchModel,
+          code: inputCode
+        }) // fetch lookup by code.
+          .pipe(
+            map(filteredList => ({ val: inputCode, filteredList: filteredList })),
+            finalize(() => {
+              this.isLoading = false;
+            })
+          )
+        )
+      ).subscribe(mapReturn => { // mapReturn => { val: inputCode, filteredList: filteredList }
+        // currentFilteredData and currentVisibleData will be the same in case of fetch by code.
+        this.currentFilteredData = mapReturn.filteredList;
+        this.currentVisibleData = this.currentFilteredData;
 
-    if (value === '') {
+        this.matCodeInput.setValue(mapReturn.val);
+
+        this.setcurrentSelectedName(mapReturn);
+      })
+    );
+
+    // subscribe to name changes.
+    this.subscriptions.push(
+      this.matNameInputChanged$.pipe(
+        debounceTime(this.debounceTime),
+        tap(() => {
+          this.isLoading = true;
+        }),
+        switchMap((inputName: string) => this.options.dataService({
+          ...this.options.fetchModel,
+          name: inputName
+        }) // fetch lookup by name.
+          .pipe(
+            map(filteredList => ({ val: inputName, filteredList: filteredList })),
+            finalize(() => {
+              this.isLoading = false;
+            })
+          )
+        )
+      ).subscribe(mapReturn => { // mapReturn => { val: inputName, filteredList: filteredList }
+        // currentVisibleData temporary changes due to fetch by name.
+        this.currentVisibleData = mapReturn.filteredList;
+      })
+    );
+  }
+
+  onSelectionChanged(value: LookupModelAutoComplete) {
+    this.currentFilteredData = this.currentVisibleData;
+    this.currentSelectedName = value[this.options.fetchModel.nameField];
+    this.matCodeInput.setValue(value[this.options.fetchModel.codeField]);
+    this.applyPropagateChange(value[this.options.fetchModel.codeField]); // ## id
+    this.emitSelectionChanged(value);
+  }
+
+  private setcurrentSelectedName(mappedReturn: { val: string, filteredList: LookupModelAutoComplete[] }) {
+    // Empty code entered => revert to last selected name.
+    if (mappedReturn.val === '' || mappedReturn.val === null) {
       this.matCodeInput.setErrors(null);
-      this.selectedName = '';
-      this.matAutoCompleteInput.value = this.selectedName;
+      this.currentSelectedName = '';
+      this.matAutoCompleteInput.value = this.currentSelectedName;
       this.applyPropagateChange(null);
+      this.emitSelectionChanged({});
     }
-    else if (this.filteredDatasource.length === 0) {
+    // Code retrieves an empty list => set error + revert to last selected name.
+    else if (mappedReturn.filteredList.length === 0) {
       this.matCodeInput.setErrors({ undefinedCode: true });
-      this.selectedName = '';
-      this.matAutoCompleteInput.value = this.selectedName;
+      this.currentSelectedName = '';
+      this.matAutoCompleteInput.value = this.currentSelectedName;
       this.applyPropagateChange(null);
+      this.emitSelectionChanged({});
     }
+    // Set first item in list as current selected name + propagate code value.
     else {
       this.matCodeInput.setErrors(null);
-      this.selectedName = this.filteredDatasource[0].name;
-      this.matAutoCompleteInput.value = this.selectedName;
-      this.applyPropagateChange(this.filteredDatasource[0].code); // ## id
+      this.currentSelectedName = mappedReturn.filteredList[0][this.options.fetchModel.nameField];
+      this.matAutoCompleteInput.value = this.currentSelectedName;
+      this.applyPropagateChange(mappedReturn.filteredList[0][this.options.fetchModel.codeField]);
+      this.emitSelectionChanged(mappedReturn.filteredList[0]);
     }
   }
 
-  // filter autocomplete with each key input
-  onAutoCompleteInput(value) {
-    this.filter(value);
-  }
-
-  onSelectionChanged(value: AutoCompleteWithCode) {
-    this.selectedName = value.name;
-    this.filter(value);
-    this.matCodeInput.setValue(value.code);
-    this.applyPropagateChange(value.code); // ## id
-  }
-
-  populateList(dataSource: Observable<any[]> | any[]) {
-    if (isObservable(dataSource)) {
-      dataSource.subscribe(data => {
-        this.datasource = data;
-        this.initialize();
-      });
-    } else {
-      this.datasource = dataSource ? dataSource : [];
-      this.initialize();
+  onAutoCompleteClosed() {
+    // when drop down closed without selecting an item: assign previous values.
+    if (this.matAutoCompleteInput.value !== this.currentSelectedName) {
+      this.currentVisibleData = this.currentFilteredData;
+      this.matAutoCompleteInput.value = this.currentSelectedName;
     }
   }
 
-  private initialize() {
-      const value = this.datasource.find(f => f.code === this.initialValue); // ## id
-      this.selectedName = value ? value.name || '' : '';
-      this.matAutoCompleteInput.value = this.selectedName;
-      this.matCodeInput.setValue(value ? value.code : '');
-      this.filter(this.selectedName); 
-  }
-
-  private filter(value: any): void {
-    let filterValue;
-    if (typeof (value) === 'string') {
-      value = value || '';
-      filterValue = value.toLowerCase();
-    } else {
-      filterValue = value ? value.name.toLowerCase() || '' : '';
-    }
-    this.filteredDatasource = this.datasource.filter(data => data.name.toLowerCase().indexOf(filterValue) === 0);
-  }
-
-  private filterByCode(value: any): void {
-    value = value || '';
-    this.filteredDatasource = value.length > 0 ?
-      this.datasource.filter(data => data.code.toLowerCase() === value.toLowerCase()) :
-      this.datasource;
-  }
   // -------------------------------------- //
-  private applyPropagateChange(value: any) {
-    this.propagateChange(value);
+  private applyPropagateChange(code: string) {
+
+    this.propagateChange(code);
     this.matAutoCompleteInput.updateErrorState();
   }
 
+  private emitSelectionChanged(selectionItem: any) {
+    this.selectionChanged.emit(selectionItem);
+  }
+
+  
+  getDisplayName(option) {
+    return option ? option[this.options.fetchModel.nameField] : '';
+  }
+
+
+  // -------- Control Value Accessor methods --------
   private propagateChange = (_: any) => { };
   private propagateTouched = () => { };
 
   writeValue(code: string): void { // ## id
-    this.initialValue = code;
+    this.initialize(code);
   }
 
   registerOnChange(fn: any): void {
@@ -142,18 +192,19 @@ export class MaterialAutocompleteComponent implements OnInit, ControlValueAccess
   }
 
   onTouched() {
-    if (this.matAutoCompleteInput.value !== this.selectedName) {
-      this.matAutoCompleteInput.value = this.selectedName;
+    if (this.currentVisibleData && this.currentVisibleData.length === 0) {
+      this.currentVisibleData = this.currentFilteredData;
+      this.matAutoCompleteInput.value = this.currentSelectedName;
     }
     this.propagateTouched();
     this.matAutoCompleteInput.updateErrorState();
   }
 
-  getDisplayName(option) {
-    return option ? option.name : '';
-  }
-
   get errorState() {
     return this.control.errors !== null && !!this.control.touched;
+  }
+
+  ngOnDestroy() {
+    this.subscriptions.forEach(x => x.unsubscribe());
   }
 }

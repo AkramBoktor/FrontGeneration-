@@ -22,7 +22,8 @@ import {
     MatAutocompleteModule,
     MatStepperModule,
     MatProgressBarModule,
-    MatDividerModule
+    MatDividerModule,
+    MatProgressSpinnerModule
 } from '@angular/material';
 import { MaterialSelectComponent } from './material-select/material-select.component';
 import { MaterialDialogComponent } from './material-dialog/material-dialog.component';
@@ -56,6 +57,7 @@ import { SharedDirectivesModule } from 'app/shared/directives/shared-directives.
         MatAutocompleteModule,
         MatStepperModule,
         MatProgressBarModule,
+        MatProgressSpinnerModule,
         MatDividerModule,
 
         ScrollingModule,
@@ -87,6 +89,7 @@ import { SharedDirectivesModule } from 'app/shared/directives/shared-directives.
         MatAutocompleteModule,
         MatStepperModule,
         MatProgressBarModule,
+        MatProgressSpinnerModule,
         MatDividerModule,
 
         ScrollingModule,
