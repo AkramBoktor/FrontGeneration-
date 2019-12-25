@@ -74,7 +74,7 @@ export class LoginComponent implements OnInit
             Password : this.loginForm.value.Password,
             ReturnUrl: this.ReturnUrl}).subscribe(
             a => {
-                console.log(a);
+                console.log(this.ReturnUrl);
             }
         );
     }

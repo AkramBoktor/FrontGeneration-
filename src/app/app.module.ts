@@ -36,8 +36,8 @@ const appRoutes: Routes = [
     declarations: [
         AppComponent,
         // FooterComponent,
-        LayoutComponent,
-        LoginComponent
+        LayoutComponent
+        
     ],
     imports: [
         BrowserModule,
